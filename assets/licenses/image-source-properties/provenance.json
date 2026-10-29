@@ -1,0 +1,13 @@
+{
+  "project": "OBS Studio",
+  "tag": "32.2.2",
+  "tag_object": "fc546137470c0f4a5f1493b6e7815545ee1b170b",
+  "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "sources": [
+    "plugins/image-source/image-source.c",
+    "libobs/graphics/srgb.h"
+  ],
+  "license": "GPL-2.0-or-later",
+  "license_copy": "../obs-render-delay/OBS-GPL-2.0-or-later.txt",
+  "scope": "Rust authored Image Source unload and linear-alpha properties, strict OBS interchange and bounded worker cache residency; no native OBS code or binaries loaded; eager preload and automatic watching remain separate."
+}

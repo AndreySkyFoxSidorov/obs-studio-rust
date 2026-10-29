@@ -1,0 +1,9 @@
+[
+  {
+    "key": "MissingFiles.Clear",
+    "language": "ba-RU",
+    "previous_value": "<cleared>",
+    "previous_sha256": "d5766fcbd43a07247af2022cc2a39eef41f3ec0b8daa87f9fe0903596d470631",
+    "reason": "Pure protected-token fallback produced no linguistic translation; left empty"
+  }
+]

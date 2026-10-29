@@ -1,0 +1,9 @@
+{
+  "project": "OBS Studio",
+  "tag": "32.2.2",
+  "tag_object": "fc546137470c0f4a5f1493b6e7815545ee1b170b",
+  "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "source": "plugins/obs-filters/gpu-delay.c",
+  "license": "GPL-2.0-or-later",
+  "scope": "Rust CPU SDR source-owned ordered Render Delay; no native OBS binary linked; no GPU/HDR equivalence claimed"
+}

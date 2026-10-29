@@ -1,0 +1,68 @@
+{
+  "Select this filter to edit its properties. Drag to change its processing order, or use Move Filter Up and Move Filter Down. Apply saves the order; Cancel discards it.": {
+    "es-ES": "Selecciona este filtro para editar sus propiedades. Arrástralo para cambiar el orden de procesamiento, o usa Subir filtro y Bajar filtro. Aplicar guarda el orden; Cancelar lo descarta.",
+    "ru-RU": "Выберите фильтр для изменения свойств. Перетащите его для изменения порядка обработки или используйте кнопки перемещения вверх и вниз. «Применить» сохраняет порядок; «Отмена» отменяет изменения.",
+    "uk-UA": "Виберіть фільтр для зміни властивостей. Перетягніть його для зміни порядку обробки або скористайтеся кнопками переміщення вгору та вниз. «Застосувати» зберігає порядок; «Скасувати» скасовує зміни.",
+    "de-DE": "Diesen Filter auswählen, um seine Eigenschaften zu bearbeiten. Zum Ändern der Verarbeitungsreihenfolge ziehen oder Filter nach oben und Filter nach unten verwenden. Anwenden speichert die Reihenfolge; Abbrechen verwirft die Änderungen."
+  },
+  "A source supports at most eight audio filters. Remove a filter before adding another.": {
+    "es-ES": "Una fuente admite hasta ocho filtros de audio. Elimina un filtro antes de añadir otro.",
+    "ru-RU": "Источник поддерживает до восьми аудиофильтров. Удалите фильтр перед добавлением нового.",
+    "uk-UA": "Джерело підтримує до восьми аудіофільтрів. Видаліть фільтр перед додаванням нового.",
+    "de-DE": "Eine Quelle unterstützt höchstens acht Audiofilter. Vor dem Hinzufügen eines weiteren Filters einen vorhandenen entfernen."
+  },
+  "Search filters": {
+    "es-ES": "Buscar filtros",
+    "ru-RU": "Поиск фильтров",
+    "uk-UA": "Пошук фільтрів",
+    "de-DE": "Filter suchen"
+  },
+  "Find a filter by its translated name, original name or description.": {
+    "es-ES": "Busca un filtro por su nombre traducido, nombre original o descripción.",
+    "ru-RU": "Найдите фильтр по переведённому или оригинальному названию либо описанию.",
+    "uk-UA": "Знайдіть фільтр за перекладеною чи оригінальною назвою або описом.",
+    "de-DE": "Filter anhand des übersetzten Namens, Originalnamens oder der Beschreibung finden."
+  },
+  "Show disabled modules": {
+    "es-ES": "Mostrar módulos desactivados",
+    "ru-RU": "Показывать отключённые модули",
+    "uk-UA": "Показувати вимкнені модулі",
+    "de-DE": "Deaktivierte Module anzeigen"
+  },
+  "Inspect unavailable filters. Enable their module in Tools > Plugins before adding them.": {
+    "es-ES": "Consulta los filtros no disponibles. Activa su módulo en Herramientas > Complementos antes de añadirlos.",
+    "ru-RU": "Просмотрите недоступные фильтры. Чтобы добавить их, включите соответствующий модуль в меню «Инструменты > Плагины».",
+    "uk-UA": "Перегляньте недоступні фільтри. Щоб додати їх, увімкніть відповідний модуль у меню «Інструменти > Плагіни».",
+    "de-DE": "Nicht verfügbare Filter ansehen. Vor dem Hinzufügen ihr Modul unter Werkzeuge > Plugins aktivieren."
+  },
+  "Enable this filter's module in Tools > Plugins before adding it.": {
+    "es-ES": "Activa el módulo de este filtro en Herramientas > Complementos antes de añadirlo.",
+    "ru-RU": "Перед добавлением фильтра включите его модуль в меню «Инструменты > Плагины».",
+    "uk-UA": "Перед додаванням фільтра увімкніть його модуль у меню «Інструменти > Плагіни».",
+    "de-DE": "Vor dem Hinzufügen das Modul dieses Filters unter Werkzeuge > Plugins aktivieren."
+  },
+  "No filters match this search.": {
+    "es-ES": "No hay filtros que coincidan con la búsqueda.",
+    "ru-RU": "По этому запросу фильтры не найдены.",
+    "uk-UA": "За цим запитом фільтрів не знайдено.",
+    "de-DE": "Keine Filter entsprechen dieser Suche."
+  },
+  "Too many filter choices. Close and reopen this menu.": {
+    "es-ES": "Hay demasiados filtros disponibles. Cierra y vuelve a abrir este menú.",
+    "ru-RU": "Слишком много вариантов фильтров. Закройте и снова откройте это меню.",
+    "uk-UA": "Забагато варіантів фільтрів. Закрийте та знову відкрийте це меню.",
+    "de-DE": "Zu viele Filteroptionen. Dieses Menü schließen und erneut öffnen."
+  },
+  "Craft video effects": {
+    "es-ES": "Efectos de vídeo Craft",
+    "ru-RU": "Видеоэффекты Craft",
+    "uk-UA": "Відеоефекти Craft",
+    "de-DE": "Craft-Videoeffekte"
+  },
+  "Neural filters": {
+    "es-ES": "Filtros neuronales",
+    "ru-RU": "Нейросетевые фильтры",
+    "uk-UA": "Нейромережеві фільтри",
+    "de-DE": "Neuronale Filter"
+  }
+}

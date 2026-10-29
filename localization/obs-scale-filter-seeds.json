@@ -1,0 +1,122 @@
+{
+  "Scaling/Aspect Ratio": {
+    "es-ES": "Escalado/Relación de aspecto",
+    "ru-RU": "Масштабирование/Соотношение сторон",
+    "uk-UA": "Масштабування/Співвідношення сторін",
+    "de-DE": "Skalierung/Seitenverhältnis"
+  },
+  "Resize a source or change its aspect ratio before the remaining filters, while retaining transparency.": {
+    "es-ES": "Cambiar el tamaño o la relación de aspecto de una fuente antes de los demás filtros, conservando la transparencia.",
+    "ru-RU": "Изменить размер или соотношение сторон источника перед остальными фильтрами, сохранив прозрачность.",
+    "uk-UA": "Змінити розмір або співвідношення сторін джерела перед рештою фільтрів, зберігши прозорість.",
+    "de-DE": "Größe oder Seitenverhältnis einer Quelle vor den weiteren Filtern ändern und die Transparenz erhalten."
+  },
+  "Choose the reconstruction method used by this source filter.": {
+    "es-ES": "Elegir el método de reconstrucción de este filtro de fuente.",
+    "ru-RU": "Выбрать способ фильтрации при изменении размера источника.",
+    "uk-UA": "Вибрати спосіб фільтрації під час зміни розміру джерела.",
+    "de-DE": "Die Rekonstruktionsmethode dieses Quellenfilters wählen."
+  },
+  "Select no scaling, the current canvas size, or an aspect ratio that expands one source axis.": {
+    "es-ES": "Seleccionar sin escalado, el tamaño actual del lienzo o una relación de aspecto que amplíe un eje de la fuente.",
+    "ru-RU": "Выбрать исходный размер, текущий размер холста или соотношение сторон с расширением одной оси.",
+    "uk-UA": "Вибрати початковий розмір, поточний розмір полотна або співвідношення сторін із розширенням однієї осі.",
+    "de-DE": "Keine Skalierung, die aktuelle Leinwandgröße oder ein Seitenverhältnis wählen, das eine Quellachse erweitert."
+  },
+  "Set an explicit source-filter size derived from the current base canvas.": {
+    "es-ES": "Fijar un tamaño de filtro derivado del lienzo base actual.",
+    "ru-RU": "Задать размер фильтра на основе текущего базового холста.",
+    "uk-UA": "Задати розмір фільтра на основі поточного базового полотна.",
+    "de-DE": "Eine aus der aktuellen Basisleinwand abgeleitete feste Filtergröße einstellen."
+  },
+  "Custom pixel size": {
+    "es-ES": "Tamaño personalizado en píxeles",
+    "ru-RU": "Произвольный размер в пикселях",
+    "uk-UA": "Довільний розмір у пікселях",
+    "de-DE": "Eigene Pixelgröße"
+  },
+  "Custom aspect ratio": {
+    "es-ES": "Relación de aspecto personalizada",
+    "ru-RU": "Произвольное соотношение сторон",
+    "uk-UA": "Довільне співвідношення сторін",
+    "de-DE": "Eigenes Seitenverhältnis"
+  },
+  "Enter an independent width and height in pixels for this source filter.": {
+    "es-ES": "Introducir anchura y altura independientes en píxeles para este filtro de fuente.",
+    "ru-RU": "Задать независимые ширину и высоту фильтра в пикселях.",
+    "uk-UA": "Задати незалежні ширину та висоту фільтра в пікселях.",
+    "de-DE": "Unabhängige Breite und Höhe in Pixeln für diesen Quellenfilter eingeben."
+  },
+  "Enter a ratio. The filter expands width or height while retaining the other source dimension.": {
+    "es-ES": "Introducir una relación. El filtro amplía la anchura o la altura conservando la otra dimensión.",
+    "ru-RU": "Задать соотношение сторон. Фильтр увеличивает ширину или высоту, сохраняя другой размер источника.",
+    "uk-UA": "Задати співвідношення сторін. Фільтр збільшує ширину або висоту, зберігаючи інший розмір джерела.",
+    "de-DE": "Ein Verhältnis eingeben. Der Filter erweitert Breite oder Höhe und behält die andere Quellabmessung bei."
+  },
+  "Set the size or aspect ratio produced before the remaining source filters.": {
+    "es-ES": "Definir el tamaño o la relación de aspecto antes de los demás filtros de fuente.",
+    "ru-RU": "Задать размер или соотношение сторон перед остальными фильтрами источника.",
+    "uk-UA": "Задати розмір або співвідношення сторін перед рештою фільтрів джерела.",
+    "de-DE": "Größe oder Seitenverhältnis vor den weiteren Quellenfiltern einstellen."
+  },
+  "Ratio width": {
+    "es-ES": "Anchura de la relación",
+    "ru-RU": "Ширина соотношения",
+    "uk-UA": "Ширина співвідношення",
+    "de-DE": "Verhältnisbreite"
+  },
+  "Ratio height": {
+    "es-ES": "Altura de la relación",
+    "ru-RU": "Высота соотношения",
+    "uk-UA": "Висота співвідношення",
+    "de-DE": "Verhältnishöhe"
+  },
+  "Enter a positive dimension or ratio term from 1 to 8192.": {
+    "es-ES": "Introducir una dimensión o término de relación positivo entre 1 y 8192.",
+    "ru-RU": "Ввести положительный размер или член соотношения от 1 до 8192.",
+    "uk-UA": "Ввести додатний розмір або член співвідношення від 1 до 8192.",
+    "de-DE": "Eine positive Abmessung oder Verhältniszahl von 1 bis 8192 eingeben."
+  },
+  "Reduce stretching near the image center when changing aspect ratio with Bicubic or Lanczos.": {
+    "es-ES": "Reducir el estiramiento del centro de la imagen al cambiar la relación de aspecto con Bicúbico o Lanczos.",
+    "ru-RU": "Уменьшить растяжение центра изображения при смене соотношения сторон с фильтрацией Bicubic или Lanczos.",
+    "uk-UA": "Зменшити розтягнення центру зображення під час зміни співвідношення сторін із фільтрацією Bicubic або Lanczos.",
+    "de-DE": "Verzerrungen in der Bildmitte beim Ändern des Seitenverhältnisses mit Bikubisch oder Lanczos verringern."
+  },
+  "Scaling/Aspect Ratio, Scroll and Apply LUT currently require CPU processing": {
+    "es-ES": "Escalado/Relación de aspecto, Desplazamiento y Aplicar LUT requieren actualmente procesamiento en CPU",
+    "ru-RU": "Масштабирование/Соотношение сторон, прокрутка и применение LUT сейчас обрабатываются на CPU",
+    "uk-UA": "Масштабування/Співвідношення сторін, прокручування та застосування LUT наразі обробляються на CPU",
+    "de-DE": "Skalierung/Seitenverhältnis, Scrollen und LUT anwenden erfordern derzeit CPU-Verarbeitung"
+  },
+  "scale filter dimensions/aspect terms must be1..8192": {
+    "es-ES": "Las dimensiones o términos de relación deben estar entre 1 y 8192",
+    "ru-RU": "Размеры или члены соотношения должны быть от 1 до 8192",
+    "uk-UA": "Розміри або члени співвідношення мають бути від 1 до 8192",
+    "de-DE": "Filterabmessungen oder Verhältniszahlen müssen zwischen 1 und 8192 liegen"
+  },
+  "scaled image exceeds 8192-edge/32M-pixel limits": {
+    "es-ES": "La imagen escalada supera el límite de 8192 por lado o 32 M de píxeles",
+    "ru-RU": "Масштабированное изображение превышает предел 8192 по стороне или 32 млн пикселей",
+    "uk-UA": "Масштабоване зображення перевищує межу 8192 за стороною або 32 млн пікселів",
+    "de-DE": "Das skalierte Bild überschreitet 8192 je Kante oder 32 Mio. Pixel"
+  },
+  "Canvas scale filter requires explicit canvas dimensions": {
+    "es-ES": "El filtro de lienzo necesita las dimensiones explícitas del lienzo",
+    "ru-RU": "Фильтру масштабирования по холсту нужны явно заданные размеры холста",
+    "uk-UA": "Фільтру масштабування за полотном потрібні явно задані розміри полотна",
+    "de-DE": "Der Leinwand-Skalierungsfilter benötigt explizite Leinwandabmessungen"
+  },
+  "SDR OBS video: Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2, Sharpen v2, Crop/Pad, Image Mask/Blend v2, Apply LUT, Scroll and Scaling/Aspect Ratio. CPU spatial/resource stages; admitted GPU point stages where available. Audio: Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor with external sidechain, Upward Compressor and Expander. RNNoise/Speex, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Vídeo SDR de OBS: Corrección de color v2, Clave de color v2, Clave cromática v2, Clave de luminancia v2, Enfoque v2, Recortar/Rellenar, Máscara de imagen/Mezcla v2, Aplicar LUT, Desplazamiento y Escalado/Relación de aspecto. Etapas espaciales y de recursos en CPU; etapas puntuales en GPU cuando están disponibles. Audio: Ganancia, Invertir polaridad, Puerta de ruido, Ecualizador de 3 bandas, Limitador, Compresor con cadena lateral externa, Compresor ascendente y Expansor. RNNoise/Speex, alojamiento VST, HDR, v1 y los demás filtros estándar no están implementados.",
+    "ru-RU": "Видео SDR OBS: цветокоррекция v2, цветовой ключ v2, хромакей v2, ключ по яркости v2, резкость v2, обрезка/поля, маска изображения/смешивание v2, LUT, прокрутка и масштабирование/соотношение сторон. Пространственные и ресурсные этапы на CPU; доступные точечные этапы на GPU. Звук: усиление, инверсия полярности, шумовые ворота, трёхполосный эквалайзер, лимитер, компрессор с внешним управляющим сигналом, повышающий компрессор и экспандер. RNNoise/Speex, VST, HDR, устаревшие v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Відео SDR OBS: корекція кольору v2, колірний ключ v2, хромакей v2, ключ за яскравістю v2, різкість v2, обрізання/поля, маска зображення/змішування v2, LUT, прокручування та масштабування/співвідношення сторін. Просторові й ресурсні етапи на CPU; доступні точкові етапи на GPU. Звук: підсилення, інверсія полярності, шумові ворота, трисмуговий еквалайзер, лімітер, компресор із зовнішнім керувальним сигналом, підвищувальний компресор та експандер. RNNoise/Speex, VST, HDR, застарілі v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-SDR-Video: Farbkorrektur v2, Farbschlüssel v2, Chroma Key v2, Luma Key v2, Schärfen v2, Zuschneiden/Auffüllen, Bildmaske/Mischung v2, LUT anwenden, Scrollen und Skalierung/Seitenverhältnis. Räumliche und Ressourcenstufen auf CPU; zugelassene Punktstufen auf GPU, sofern verfügbar. Audio: Verstärkung, Polarität umkehren, Noise Gate, 3-Band-Equalizer, Limiter, Kompressor mit externem Sidechain, Aufwärtskompressor und Expander. RNNoise/Speex, VST-Hosting, HDR, alte v1 und übrige Standardfilter sind nicht implementiert."
+  },
+  "SDR OBS video: Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2, Sharpen v2, Crop/Pad, Image Mask/Blend v2, Apply LUT, Scroll and Scaling/Aspect Ratio. CPU spatial stages; admitted GPU point/LUT stages where available. Audio: Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor with external sidechain, Upward Compressor and Expander. RNNoise/Speex, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Vídeo SDR de OBS: Corrección de color v2, Clave de color v2, Clave cromática v2, Clave de luminancia v2, Enfoque v2, Recortar/Rellenar, Máscara de imagen/Mezcla v2, Aplicar LUT, Desplazamiento y Escalado/Relación de aspecto. Etapas espaciales en CPU; etapas puntuales y LUT en GPU cuando están disponibles. Audio: Ganancia, Invertir polaridad, Puerta de ruido, Ecualizador de 3 bandas, Limitador, Compresor con cadena lateral externa, Compresor ascendente y Expansor. RNNoise/Speex, alojamiento VST, HDR, v1 y los demás filtros estándar no están implementados.",
+    "ru-RU": "Видео SDR OBS: цветокоррекция v2, цветовой ключ v2, хромакей v2, ключ по яркости v2, резкость v2, обрезка/поля, маска изображения/смешивание v2, LUT, прокрутка и масштабирование/соотношение сторон. Пространственные этапы на CPU; доступные точечные этапы и LUT на GPU. Звук: усиление, инверсия полярности, шумовые ворота, трёхполосный эквалайзер, лимитер, компрессор с внешним управляющим сигналом, повышающий компрессор и экспандер. RNNoise/Speex, VST, HDR, устаревшие v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Відео SDR OBS: корекція кольору v2, колірний ключ v2, хромакей v2, ключ за яскравістю v2, різкість v2, обрізання/поля, маска зображення/змішування v2, LUT, прокручування та масштабування/співвідношення сторін. Просторові етапи на CPU; доступні точкові етапи та LUT на GPU. Звук: підсилення, інверсія полярності, шумові ворота, трисмуговий еквалайзер, лімітер, компресор із зовнішнім керувальним сигналом, підвищувальний компресор та експандер. RNNoise/Speex, VST, HDR, застарілі v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-SDR-Video: Farbkorrektur v2, Farbschlüssel v2, Chroma Key v2, Luma Key v2, Schärfen v2, Zuschneiden/Auffüllen, Bildmaske/Mischung v2, LUT anwenden, Scrollen und Skalierung/Seitenverhältnis. Räumliche Stufen auf CPU; zugelassene Punkt- und LUT-Stufen auf GPU, sofern verfügbar. Audio: Verstärkung, Polarität umkehren, Noise Gate, 3-Band-Equalizer, Limiter, Kompressor mit externem Sidechain, Aufwärtskompressor und Expander. RNNoise/Speex, VST-Hosting, HDR, alte v1 und übrige Standardfilter sind nicht implementiert."
+  }
+}

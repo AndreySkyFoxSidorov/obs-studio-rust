@@ -1,0 +1,188 @@
+{
+  "Source Playback Shortcuts": {
+    "es-ES": "Atajos de reproducción de fuentes",
+    "ru-RU": "Горячие клавиши воспроизведения источника",
+    "uk-UA": "Гарячі клавіші відтворення джерела",
+    "de-DE": "Wiedergabe-Tastenkürzel für Quellen"
+  },
+  "Playback Hotkeys…": {
+    "es-ES": "Atajos de reproducción…",
+    "ru-RU": "Клавиши воспроизведения…",
+    "uk-UA": "Клавіші відтворення…",
+    "de-DE": "Wiedergabe-Tastenkürzel…"
+  },
+  "Play/Pause": {
+    "es-ES": "Reproducir/Pausar",
+    "ru-RU": "Воспроизведение/пауза",
+    "uk-UA": "Відтворення/пауза",
+    "de-DE": "Wiedergabe/Pause"
+  },
+  "Assign Windows global playback shortcuts to this exact source, independently of the selected scene item.": {
+    "es-ES": "Asigne atajos globales de Windows a esta fuente, independientemente del elemento seleccionado.",
+    "ru-RU": "Назначьте глобальные клавиши Windows этому источнику независимо от выбранного элемента сцены.",
+    "uk-UA": "Призначте глобальні клавіші Windows цьому джерелу незалежно від вибраного елемента сцени.",
+    "de-DE": "Weisen Sie dieser Quelle Windows-weite Wiedergabe-Tastenkürzel unabhängig vom ausgewählten Szenenelement zu."
+  },
+  "Choose a Media Source or Slideshow for playback shortcuts.": {
+    "es-ES": "Elija una fuente multimedia o presentación para sus atajos.",
+    "ru-RU": "Выберите медиаисточник или слайд-шоу для настройки клавиш.",
+    "uk-UA": "Виберіть медіаджерело чи слайд-шоу для налаштування клавіш.",
+    "de-DE": "Wählen Sie eine Medienquelle oder Diashow für Wiedergabe-Tastenkürzel."
+  },
+  "Source shortcut editor identity exhausted.": {
+    "es-ES": "Se agotaron los identificadores del editor de atajos de fuente.",
+    "ru-RU": "Исчерпаны идентификаторы редактора клавиш источника.",
+    "uk-UA": "Вичерпано ідентифікатори редактора клавіш джерела.",
+    "de-DE": "Die Kennungen des Quellen-Tastenkürzeleditors sind erschöpft."
+  },
+  "Waiting for global shortcut suspension…": {
+    "es-ES": "Esperando la suspensión de los atajos globales…",
+    "ru-RU": "Ожидание приостановки глобальных клавиш…",
+    "uk-UA": "Очікування призупинення глобальних клавіш…",
+    "de-DE": "Warte auf das Aussetzen globaler Tastenkürzel…"
+  },
+  "This source shortcut draft is obsolete. Cancel and reopen it.": {
+    "es-ES": "Este borrador de atajos de fuente está obsoleto. Cancele y vuelva a abrirlo.",
+    "ru-RU": "Этот черновик клавиш источника устарел. Отмените изменения и откройте его заново.",
+    "uk-UA": "Ця чернетка клавіш джерела застаріла. Скасуйте зміни та відкрийте її знову.",
+    "de-DE": "Dieser Quellen-Tastenkürzelentwurf ist veraltet. Brechen Sie ab und öffnen Sie ihn erneut."
+  },
+  "Apply or Cancel application shortcut changes before opening a source editor.": {
+    "es-ES": "Aplique o cancele los cambios de atajos de la aplicación antes de abrir el editor de fuente.",
+    "ru-RU": "Примените или отмените изменения клавиш приложения перед открытием редактора источника.",
+    "uk-UA": "Застосуйте або скасуйте зміни клавіш застосунку перед відкриттям редактора джерела.",
+    "de-DE": "Übernehmen oder verwerfen Sie zuerst die Anwendungstastenkürzel, bevor Sie einen Quelleneditor öffnen."
+  },
+  "Add a Media Source or Slideshow to configure source playback shortcuts.": {
+    "es-ES": "Añada una fuente multimedia o presentación para configurar sus atajos.",
+    "ru-RU": "Добавьте медиаисточник или слайд-шоу для настройки клавиш воспроизведения.",
+    "uk-UA": "Додайте медіаджерело чи слайд-шоу для налаштування клавіш відтворення.",
+    "de-DE": "Fügen Sie eine Medienquelle oder Diashow hinzu, um Wiedergabe-Tastenkürzel einzurichten."
+  },
+  "These Windows global shortcuts always address this source. They also work while another app has focus.": {
+    "es-ES": "Estos atajos globales de Windows siempre controlan esta fuente, incluso con otra aplicación enfocada.",
+    "ru-RU": "Эти глобальные клавиши Windows всегда управляют этим источником, в том числе когда активно другое приложение.",
+    "uk-UA": "Ці глобальні клавіші Windows завжди керують цим джерелом, зокрема коли активний інший застосунок.",
+    "de-DE": "Diese Windows-weiten Tastenkürzel steuern immer diese Quelle, auch wenn eine andere App den Fokus hat."
+  },
+  "Apply saves these source bindings; Cancel leaves them unchanged. Playback position is never saved by this editor.": {
+    "es-ES": "Aplicar guarda estas asignaciones; Cancelar las conserva sin cambios. Este editor no guarda la posición de reproducción.",
+    "ru-RU": "Применить сохраняет назначения источника; Отмена оставляет их без изменений. Позиция воспроизведения здесь не сохраняется.",
+    "uk-UA": "Застосувати зберігає призначення джерела; Скасувати залишає їх без змін. Позиція відтворення тут не зберігається.",
+    "de-DE": "Übernehmen speichert diese Quellenzuweisungen; Abbrechen lässt sie unverändert. Die Wiedergabeposition wird hier nicht gespeichert."
+  },
+  "Save playback shortcuts for this exact source.": {
+    "es-ES": "Guarde los atajos de reproducción de esta fuente concreta.",
+    "ru-RU": "Сохранить клавиши воспроизведения именно этого источника.",
+    "uk-UA": "Зберегти клавіші відтворення саме цього джерела.",
+    "de-DE": "Speichern Sie Wiedergabe-Tastenkürzel für genau diese Quelle."
+  },
+  "Resolve source shortcut errors or cancel this draft.": {
+    "es-ES": "Resuelva los errores de atajos de fuente o cancele el borrador.",
+    "ru-RU": "Исправьте ошибки клавиш источника или отмените черновик.",
+    "uk-UA": "Виправте помилки клавіш джерела або скасуйте чернетку.",
+    "de-DE": "Beheben Sie die Quellen-Tastenkürzelfehler oder verwerfen Sie diesen Entwurf."
+  },
+  "Apply or Cancel the current draft before opening source playback shortcuts.": {
+    "es-ES": "Aplique o cancele el borrador actual antes de abrir los atajos de fuente.",
+    "ru-RU": "Примените или отмените текущий черновик перед открытием клавиш источника.",
+    "uk-UA": "Застосуйте або скасуйте поточну чернетку перед відкриттям клавіш джерела.",
+    "de-DE": "Übernehmen oder verwerfen Sie den aktuellen Entwurf vor dem Öffnen der Quellen-Tastenkürzel."
+  },
+  "Source playback admits at most two shortcuts per control.": {
+    "es-ES": "Cada control de reproducción de fuente admite como máximo dos atajos.",
+    "ru-RU": "Каждому действию воспроизведения источника можно назначить не более двух сочетаний.",
+    "uk-UA": "Кожній дії відтворення джерела можна призначити не більш як два сполучення.",
+    "de-DE": "Pro Wiedergabeaktion einer Quelle sind höchstens zwei Tastenkürzel zulässig."
+  },
+  "Source playback shortcuts use the supported Windows global keys; punctuation and F12 are unavailable.": {
+    "es-ES": "Los atajos de fuente usan las teclas globales de Windows admitidas; la puntuación y F12 no están disponibles.",
+    "ru-RU": "Клавиши источника используют поддерживаемые глобальные комбинации Windows; пунктуация и F12 недоступны.",
+    "uk-UA": "Клавіші джерела використовують підтримувані глобальні комбінації Windows; пунктуація та F12 недоступні.",
+    "de-DE": "Quellentastenkürzel verwenden die unterstützten globalen Windows-Tasten; Satzzeichen und F12 sind nicht verfügbar."
+  },
+  "A source playback shortcut is assigned more than once.": {
+    "es-ES": "Un atajo de reproducción de fuente está asignado más de una vez.",
+    "ru-RU": "Одно сочетание воспроизведения источника назначено несколько раз.",
+    "uk-UA": "Одне сполучення відтворення джерела призначено кілька разів.",
+    "de-DE": "Ein Wiedergabe-Tastenkürzel der Quelle wurde mehrfach zugewiesen."
+  },
+  "Playback shortcuts require a matching Media Source or Slideshow control.": {
+    "es-ES": "Los atajos requieren un control compatible de fuente multimedia o presentación.",
+    "ru-RU": "Клавиши требуют соответствующего действия медиаисточника или слайд-шоу.",
+    "uk-UA": "Клавіші потребують відповідної дії медіаджерела чи слайд-шоу.",
+    "de-DE": "Wiedergabe-Tastenkürzel benötigen eine passende Aktion einer Medienquelle oder Diashow."
+  },
+  "Source shortcut count overflow.": {
+    "es-ES": "Desbordamiento del número de atajos de fuente.",
+    "ru-RU": "Переполнение счётчика клавиш источников.",
+    "uk-UA": "Переповнення лічильника клавіш джерел.",
+    "de-DE": "Überlauf der Anzahl der Quellentastenkürzel."
+  },
+  "The collection admits at most 106 source playback shortcuts.": {
+    "es-ES": "La colección admite como máximo 106 atajos de reproducción de fuentes.",
+    "ru-RU": "Коллекция поддерживает не более 106 сочетаний воспроизведения источников.",
+    "uk-UA": "Колекція підтримує не більш як 106 сполучень відтворення джерел.",
+    "de-DE": "Die Sammlung erlaubt höchstens 106 Wiedergabe-Tastenkürzel für Quellen."
+  },
+  "This shortcut is already assigned to another source or application action.": {
+    "es-ES": "Este atajo ya está asignado a otra fuente o acción de la aplicación.",
+    "ru-RU": "Это сочетание уже назначено другому источнику или действию приложения.",
+    "uk-UA": "Це сполучення вже призначено іншому джерелу чи дії застосунку.",
+    "de-DE": "Dieses Tastenkürzel ist bereits einer anderen Quelle oder Anwendungsaktion zugewiesen."
+  },
+  "Source playback shortcuts belong to their source, not the frontend shortcut list.": {
+    "es-ES": "Los atajos de fuente deben configurarse en su fuente, fuera de la lista de atajos de la aplicación.",
+    "ru-RU": "Клавиши воспроизведения настраиваются у источника, отдельно от списка клавиш приложения.",
+    "uk-UA": "Клавіші відтворення налаштовуються в джерела, окремо від списку клавіш застосунку.",
+    "de-DE": "Wiedergabe-Tastenkürzel werden an ihrer Quelle und getrennt von der Anwendungsliste konfiguriert."
+  },
+  "Global shortcut preparation no longer matches the session settings.": {
+    "es-ES": "La preparación de atajos globales ya no coincide con la configuración de la sesión.",
+    "ru-RU": "Подготовленные глобальные клавиши больше не соответствуют настройкам сессии.",
+    "uk-UA": "Підготовлені глобальні клавіші більше не відповідають налаштуванням сеансу.",
+    "de-DE": "Die vorbereiteten globalen Tastenkürzel entsprechen nicht mehr den Sitzungseinstellungen."
+  },
+  "Combined global shortcut registration limit exceeded.": {
+    "es-ES": "Se superó el límite combinado de registro de atajos globales.",
+    "ru-RU": "Превышен общий предел регистрации глобальных клавиш.",
+    "uk-UA": "Перевищено загальну межу реєстрації глобальних клавіш.",
+    "de-DE": "Die gemeinsame Registrierungsgrenze globaler Tastenkürzel wurde überschritten."
+  },
+  "Source playback shortcut limit exceeded.": {
+    "es-ES": "Se superó el límite de atajos de reproducción de fuentes.",
+    "ru-RU": "Превышен предел клавиш воспроизведения источников.",
+    "uk-UA": "Перевищено межу клавіш відтворення джерел.",
+    "de-DE": "Die Grenze für Wiedergabe-Tastenkürzel der Quellen wurde überschritten."
+  },
+  "Cannot allocate global shortcut routes.": {
+    "es-ES": "No se pueden reservar las rutas de atajos globales.",
+    "ru-RU": "Не удалось выделить память для глобальных сочетаний.",
+    "uk-UA": "Не вдалося виділити пам’ять для глобальних сполучень.",
+    "de-DE": "Die Routen globaler Tastenkürzel konnten nicht reserviert werden."
+  },
+  "Cannot allocate source shortcut proofs.": {
+    "es-ES": "No se pueden reservar los datos de identidad de atajos de fuente.",
+    "ru-RU": "Не удалось выделить память для идентичности клавиш источников.",
+    "uk-UA": "Не вдалося виділити пам’ять для ідентичності клавіш джерел.",
+    "de-DE": "Die Identitätsdaten der Quellentastenkürzel konnten nicht reserviert werden."
+  },
+  "source playback shortcuts require native schema9": {
+    "es-ES": "Los atajos de reproducción de fuentes requieren el esquema nativo9",
+    "ru-RU": "Клавиши воспроизведения источников требуют нативную схему9",
+    "uk-UA": "Клавіші відтворення джерел потребують нативної схеми9",
+    "de-DE": "Wiedergabe-Tastenkürzel für Quellen erfordern natives Schema9"
+  },
+  "Source playback shortcuts currently require native storage; OBS hotkey interchange is not represented.": {
+    "es-ES": "Los atajos de fuente requieren actualmente almacenamiento nativo; no se representa el intercambio de atajos de OBS.",
+    "ru-RU": "Клавиши источников пока требуют нативное сохранение; обмен клавишами OBS ещё не реализован.",
+    "uk-UA": "Клавіші джерел наразі потребують нативного збереження; обмін клавішами OBS ще не реалізований.",
+    "de-DE": "Quellentastenkürzel benötigen derzeit native Speicherung; der OBS-Tastenkürzelaustausch ist noch nicht abgebildet."
+  },
+  "Clear application global shortcuts": {
+    "es-ES": "Borrar atajos globales de la aplicación",
+    "ru-RU": "Очистить глобальные клавиши приложения",
+    "uk-UA": "Очистити глобальні клавіші застосунку",
+    "de-DE": "Globale Anwendungstastenkürzel löschen"
+  }
+}

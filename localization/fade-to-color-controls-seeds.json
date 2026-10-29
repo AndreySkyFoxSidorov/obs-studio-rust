@@ -1,0 +1,68 @@
+{
+  "Fade through this opaque color. Alpha is always 255, matching OBS.": {
+    "es-ES": "Fundir a través de este color opaco. El alfa siempre es 255, como en OBS.",
+    "ru-RU": "Переход через выбранный непрозрачный цвет. Альфа всегда равна 255, как в OBS.",
+    "uk-UA": "Перехід через вибраний непрозорий колір. Альфа завжди дорівнює 255, як в OBS.",
+    "de-DE": "Über diese deckende Farbe überblenden. Alpha ist wie in OBS immer 255."
+  },
+  "Encoded RGB channel from 0 to 255; the fade color remains opaque.": {
+    "es-ES": "Canal RGB codificado de 0 a 255; el color del fundido permanece opaco.",
+    "ru-RU": "Канал кодированного RGB от 0 до 255; цвет перехода остаётся непрозрачным.",
+    "uk-UA": "Канал кодованого RGB від 0 до 255; колір переходу залишається непрозорим.",
+    "de-DE": "Kodierter RGB-Kanal von 0 bis 255; die Übergangsfarbe bleibt deckend."
+  },
+  "Peak Color Point": {
+    "es-ES": "Punto máximo de color",
+    "ru-RU": "Положение пика цвета",
+    "uk-UA": "Положення піку кольору",
+    "de-DE": "Farbmaximum"
+  },
+  "Position of the color peak between outgoing and incoming scenes. At 0% or 100%, one fade half has zero duration.": {
+    "es-ES": "Posición del máximo de color entre las escenas saliente y entrante. Al 0% o 100%, una mitad del fundido tiene duración cero.",
+    "ru-RU": "Положение пика цвета между исходящей и входящей сценами. При 0% или 100% длительность одной половины перехода равна нулю.",
+    "uk-UA": "Положення піку кольору між вихідною та вхідною сценами. За 0% або 100% тривалість однієї половини переходу дорівнює нулю.",
+    "de-DE": "Position des Farbmaximums zwischen ausgehender und eingehender Szene. Bei 0% oder 100% dauert eine Überblendhälfte null Sekunden."
+  },
+  "Outgoing and incoming scene audio use separate smoothstep fades around the color peak. Shared sources and global audio keep their existing routing.": {
+    "es-ES": "El audio de las escenas saliente y entrante usa fundidos smoothstep separados alrededor del máximo de color. Las fuentes compartidas y el audio global conservan su enrutamiento.",
+    "ru-RU": "Звук исходящей и входящей сцен плавно затухает и нарастает по отдельным кривым smoothstep вокруг пика цвета. Маршрутизация общих источников и глобального аудио сохраняется.",
+    "uk-UA": "Звук вихідної та вхідної сцен плавно згасає й наростає за окремими кривими smoothstep навколо піку кольору. Маршрутизація спільних джерел і глобального аудіо зберігається.",
+    "de-DE": "Ausgehendes und eingehendes Szenenaudio verwenden getrennte Smoothstep-Verläufe um das Farbmaximum. Gemeinsame Quellen und globales Audio behalten ihr Routing."
+  },
+  "Restore Fade to Color defaults": {
+    "es-ES": "Restablecer los valores de Fundido a color",
+    "ru-RU": "Сбросить настройки перехода через цвет",
+    "uk-UA": "Скинути налаштування переходу через колір",
+    "de-DE": "Standardwerte für Farbüberblendung wiederherstellen"
+  },
+  "Reset this draft to opaque black and a 50% peak. Preset name, duration and references stay unchanged until Apply.": {
+    "es-ES": "Restablecer este borrador a negro opaco y un máximo del 50%. El nombre del preajuste, la duración y las referencias no cambian hasta Aplicar.",
+    "ru-RU": "Сбросить черновик к непрозрачному чёрному цвету и пику 50%. Имя пресета, длительность и ссылки остаются прежними до применения.",
+    "uk-UA": "Скинути чернетку до непрозорого чорного кольору й піку 50%. Назва пресета, тривалість і посилання залишаються попередніми до застосування.",
+    "de-DE": "Diesen Entwurf auf deckendes Schwarz und 50% Farbmaximum zurücksetzen. Presetname, Dauer und Verweise bleiben bis zum Anwenden unverändert."
+  },
+  "Fade to Color is already at its default settings.": {
+    "es-ES": "Fundido a color ya tiene los valores predeterminados.",
+    "ru-RU": "У перехода через цвет уже установлены настройки по умолчанию.",
+    "uk-UA": "Для переходу через колір уже встановлено типові налаштування.",
+    "de-DE": "Farbüberblendung verwendet bereits die Standardwerte."
+  },
+  "Red": {
+    "es-ES": "Rojo",
+    "ru-RU": "Красный",
+    "uk-UA": "Червоний",
+    "de-DE": "Rot"
+  },
+  "Green": {
+    "es-ES": "Verde",
+    "ru-RU": "Зелёный",
+    "uk-UA": "Зелений",
+    "de-DE": "Grün"
+  },
+  "Blue": {
+    "es-ES": "Azul",
+    "ru-RU": "Синий",
+    "uk-UA": "Синій",
+    "de-DE": "Blau"
+  }
+}

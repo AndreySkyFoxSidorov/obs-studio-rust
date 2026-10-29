@@ -1,0 +1,26 @@
+{
+  "Audio Tracks": {
+    "es-ES": "Pistas de audio",
+    "ru-RU": "Аудиодорожки",
+    "uk-UA": "Аудіодоріжки",
+    "de-DE": "Audiospuren"
+  },
+  "Track {track}": {
+    "es-ES": "Pista {track}",
+    "ru-RU": "Дорожка {track}",
+    "uk-UA": "Доріжка {track}",
+    "de-DE": "Spur {track}"
+  },
+  "Assign this source to audio mixes 1 to 6. Recording saves its selected mixes; Streaming, Replay and NDI each use one chosen mix. Clear all boxes for monitoring, meters and sidechain only.": {
+    "es-ES": "Asigna esta fuente a las mezclas de audio de la 1 a la 6. La grabación guarda las mezclas seleccionadas; la emisión, la repetición y NDI usan una mezcla cada uno. Desmarca todas las casillas para usarla solo en la monitorización, los medidores y la cadena lateral.",
+    "ru-RU": "Назначьте источник на аудиомиксы 1–6. Запись сохраняет выбранные миксы; трансляция, Replay и NDI используют по одному выбранному миксу. Снимите все флажки, чтобы оставить источник только для мониторинга, индикаторов и сайдчейна.",
+    "uk-UA": "Призначте джерело на аудіомікси 1–6. Запис зберігає вибрані мікси; трансляція, Replay та NDI використовують по одному вибраному міксу. Зніміть усі прапорці, щоб залишити джерело лише для моніторингу, індикаторів і сайдчейна.",
+    "de-DE": "Weise diese Quelle den Audiomischungen 1 bis 6 zu. Die Aufnahme speichert ihre ausgewählten Mischungen; Streaming, Replay und NDI verwenden jeweils eine gewählte Mischung. Leere alle Kästchen für reine Überwachung, Pegelanzeigen und Sidechain."
+  },
+  "Monitoring uses its own playback device and ignores track assignments. Source sync offsets use the common Program clock; track assignments do not restart capture or source filters.": {
+    "es-ES": "La monitorización usa su propio dispositivo de reproducción e ignora las asignaciones de pista. Los desfases de sincronización usan el reloj común de Programa; cambiar las pistas no reinicia la captura ni los filtros de la fuente.",
+    "ru-RU": "Мониторинг использует своё устройство воспроизведения и не зависит от назначения дорожек. Смещения синхронизации работают на общих часах Program; изменение дорожек не перезапускает захват или фильтры источника.",
+    "uk-UA": "Моніторинг використовує власний пристрій відтворення та не залежить від призначення доріжок. Зсуви синхронізації працюють на спільному годиннику Program; зміна доріжок не перезапускає захоплення чи фільтри джерела.",
+    "de-DE": "Die Überwachung nutzt ihr eigenes Wiedergabegerät und ignoriert Spurzuweisungen. Synchronisationsversätze folgen der gemeinsamen Program-Uhr; Spurwechsel starten weder Aufnahmequelle noch Quellfilter neu."
+  }
+}

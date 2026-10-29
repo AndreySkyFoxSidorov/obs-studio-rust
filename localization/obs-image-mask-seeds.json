@@ -1,0 +1,164 @@
+{
+  "Image Mask/Blend": {
+    "es-ES": "Máscara/mezcla de imagen",
+    "ru-RU": "Маска/смешивание изображения",
+    "uk-UA": "Маска/змішування зображення",
+    "de-DE": "Bildmaske/-mischung"
+  },
+  "Alpha Mask (Color Channel)": {
+    "es-ES": "Máscara alfa (canal de color)",
+    "ru-RU": "Альфа-маска (цветовой канал)",
+    "uk-UA": "Альфа-маска (колірний канал)",
+    "de-DE": "Alphamaske (Farbkanal)"
+  },
+  "Alpha Mask (Alpha Channel)": {
+    "es-ES": "Máscara alfa (canal alfa)",
+    "ru-RU": "Альфа-маска (альфа-канал)",
+    "uk-UA": "Альфа-маска (альфа-канал)",
+    "de-DE": "Alphamaske (Alphakanal)"
+  },
+  "Blend (Multiply)": {
+    "es-ES": "Mezcla (multiplicar)",
+    "ru-RU": "Смешивание (умножение)",
+    "uk-UA": "Змішування (множення)",
+    "de-DE": "Mischung (Multiplizieren)"
+  },
+  "Blend (Addition)": {
+    "es-ES": "Mezcla (sumar)",
+    "ru-RU": "Смешивание (сложение)",
+    "uk-UA": "Змішування (додавання)",
+    "de-DE": "Mischung (Addieren)"
+  },
+  "Blend (Subtraction)": {
+    "es-ES": "Mezcla (restar)",
+    "ru-RU": "Смешивание (вычитание)",
+    "uk-UA": "Змішування (віднімання)",
+    "de-DE": "Mischung (Subtrahieren)"
+  },
+  "Mask image": {
+    "es-ES": "Imagen de máscara",
+    "ru-RU": "Изображение маски",
+    "uk-UA": "Зображення маски",
+    "de-DE": "Maskenbild"
+  },
+  "Static mask images": {
+    "es-ES": "Imágenes de máscara estáticas",
+    "ru-RU": "Статические изображения маски",
+    "uk-UA": "Статичні зображення маски",
+    "de-DE": "Statische Maskenbilder"
+  },
+  "Load / Refresh": {
+    "es-ES": "Cargar / actualizar",
+    "ru-RU": "Загрузить / обновить",
+    "uk-UA": "Завантажити / оновити",
+    "de-DE": "Laden / Aktualisieren"
+  },
+  "Stretch Image (discard image aspect ratio)": {
+    "es-ES": "Estirar imagen (ignorar la relación de aspecto)",
+    "ru-RU": "Растянуть изображение (без сохранения пропорций)",
+    "uk-UA": "Розтягнути зображення (без збереження пропорцій)",
+    "de-DE": "Bild strecken (Seitenverhältnis ignorieren)"
+  },
+  "Apply a static image as an alpha mask or blend it with the source using the five OBS v2 methods.": {
+    "es-ES": "Aplique una imagen estática como máscara alfa o mézclela con la fuente mediante los cinco métodos de OBS v2.",
+    "ru-RU": "Наложить статическое изображение как альфа-маску или смешать его с источником одним из пяти методов OBS v2.",
+    "uk-UA": "Накласти статичне зображення як альфа-маску або змішати його з джерелом одним із п’яти методів OBS v2.",
+    "de-DE": "Ein statisches Bild als Alphamaske anwenden oder mit den fünf OBS-v2-Methoden mit der Quelle mischen."
+  },
+  "Scale source alpha before applying the mask or blend.": {
+    "es-ES": "Ajuste el alfa de la fuente antes de aplicar la máscara o la mezcla.",
+    "ru-RU": "Изменить альфа-канал источника перед наложением маски или смешиванием.",
+    "uk-UA": "Змінити альфа-канал джерела перед накладанням маски або змішуванням.",
+    "de-DE": "Den Quellalphawert vor dem Maskieren oder Mischen skalieren."
+  },
+  "Disable stretching to center the mask at its original aspect ratio with clamped edges.": {
+    "es-ES": "Desactive el estiramiento para centrar la máscara conservando sus proporciones y prolongando sus bordes.",
+    "ru-RU": "Отключите растяжение, чтобы расположить маску по центру с сохранением пропорций и продлением крайних пикселей.",
+    "uk-UA": "Вимкніть розтягування, щоб розмістити маску по центру зі збереженням пропорцій і продовженням крайніх пікселів.",
+    "de-DE": "Das Strecken deaktivieren, um die Maske mit ursprünglichem Seitenverhältnis und fortgesetzten Randpixeln zu zentrieren."
+  },
+  "Static PNG, JPEG, BMP, TGA or WebP. Empty path bypasses this filter; animated files are unsupported.": {
+    "es-ES": "PNG, JPEG, BMP, TGA o WebP estático. Una ruta vacía omite el filtro; no se admiten archivos animados.",
+    "ru-RU": "Статические PNG, JPEG, BMP, TGA или WebP. Пустой путь отключает обработку фильтра; анимация не поддерживается.",
+    "uk-UA": "Статичні PNG, JPEG, BMP, TGA або WebP. Порожній шлях вимикає обробку фільтра; анімація не підтримується.",
+    "de-DE": "Statisches PNG, JPEG, BMP, TGA oder WebP. Ein leerer Pfad umgeht den Filter; animierte Dateien werden nicht unterstützt."
+  },
+  "Choose a mask, then Load / Refresh. Apply saves its exact content identity; Cancel retains the original filter.": {
+    "es-ES": "Elija una máscara y pulse Cargar / actualizar. Aplicar guarda la identidad exacta de su contenido; Cancelar conserva el filtro original.",
+    "ru-RU": "Выберите маску и нажмите «Загрузить / обновить». «Применить» сохраняет точную версию содержимого; «Отмена» оставляет исходный фильтр.",
+    "uk-UA": "Виберіть маску й натисніть «Завантажити / оновити». «Застосувати» зберігає точну версію вмісту; «Скасувати» залишає початковий фільтр.",
+    "de-DE": "Eine Maske wählen und Laden / Aktualisieren drücken. Anwenden speichert ihre genaue Inhaltsidentität; Abbrechen behält den ursprünglichen Filter bei."
+  },
+  "Read the current file on the I/O worker and prepare its exact hash and dimensions for this draft.": {
+    "es-ES": "Lea el archivo actual en el proceso de E/S y prepare su hash y dimensiones exactos para este borrador.",
+    "ru-RU": "Прочитать текущий файл в рабочем потоке ввода-вывода и подготовить его точный хеш и размеры для этого черновика.",
+    "uk-UA": "Прочитати поточний файл у робочому потоці введення-виведення та підготувати його точний хеш і розміри для цієї чернетки.",
+    "de-DE": "Die aktuelle Datei im E/A-Arbeitsthread lesen und ihren genauen Hash sowie ihre Abmessungen für diesen Entwurf vorbereiten."
+  },
+  "Load or refresh the mask image before applying this filter.": {
+    "es-ES": "Cargue o actualice la imagen de máscara antes de aplicar este filtro.",
+    "ru-RU": "Загрузите или обновите изображение маски перед применением фильтра.",
+    "uk-UA": "Завантажте або оновіть зображення маски перед застосуванням фільтра.",
+    "de-DE": "Das Maskenbild vor dem Anwenden dieses Filters laden oder aktualisieren."
+  },
+  "Mask image target changed; load the current draft again.": {
+    "es-ES": "El destino de la imagen de máscara cambió; vuelva a cargar el borrador actual.",
+    "ru-RU": "Цель загрузки маски изменилась; загрузите текущий черновик повторно.",
+    "uk-UA": "Ціль завантаження маски змінилася; завантажте поточну чернетку повторно.",
+    "de-DE": "Das Maskenbildziel wurde geändert; den aktuellen Entwurf erneut laden."
+  },
+  "Mask image returned an unexpected receipt.": {
+    "es-ES": "La imagen de máscara devolvió una respuesta inesperada.",
+    "ru-RU": "При загрузке маски получен неожиданный ответ.",
+    "uk-UA": "Під час завантаження маски отримано неочікувану відповідь.",
+    "de-DE": "Das Maskenbild lieferte eine unerwartete Rückmeldung."
+  },
+  "Video filter draft changed; reopen the editor.": {
+    "es-ES": "El borrador de filtros de vídeo cambió; vuelva a abrir el editor.",
+    "ru-RU": "Черновик видеофильтров изменился; откройте редактор повторно.",
+    "uk-UA": "Чернетка відеофільтрів змінилася; відкрийте редактор повторно.",
+    "de-DE": "Der Videofilterentwurf wurde geändert; den Editor erneut öffnen."
+  },
+  "Video filter editor identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del editor de filtros de vídeo",
+    "ru-RU": "Исчерпаны идентификаторы редактора видеофильтров",
+    "uk-UA": "Вичерпано ідентифікатори редактора відеофільтрів",
+    "de-DE": "Die Identitäten des Videofiltereditors sind ausgeschöpft"
+  },
+  "Animated masks are not supported.": {
+    "es-ES": "No se admiten máscaras animadas.",
+    "ru-RU": "Анимированные маски не поддерживаются.",
+    "uk-UA": "Анімовані маски не підтримуються.",
+    "de-DE": "Animierte Masken werden nicht unterstützt."
+  },
+  "Image Mask/Blend currently requires CPU processing": {
+    "es-ES": "Máscara/mezcla de imagen requiere actualmente procesamiento por CPU",
+    "ru-RU": "Маска/смешивание изображения пока обрабатывается только на CPU",
+    "uk-UA": "Маска/змішування зображення поки обробляється лише на CPU",
+    "de-DE": "Bildmaske/-mischung erfordert derzeit CPU-Verarbeitung"
+  },
+  "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 and Sharpen v2 (SDR; Luma/Sharpen on CPU), Crop/Pad (signed relative crop or absolute dimensions with transparent padding), Image Mask/Blend v2 (five SDR methods, static PNG/JPEG/BMP/TGA/WebP, CPU; animated masks unsupported), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor and Expander. Dynamics use admitted source-block callback boundaries; external sidechain, RNNoise/Speex noise suppression, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 y Sharpen v2 (SDR; Luma/Sharpen por CPU), Crop/Pad (recorte relativo con signo o dimensiones absolutas con relleno transparente), Image Mask/Blend v2 (cinco métodos SDR, PNG/JPEG/BMP/TGA/WebP estáticos, CPU; sin máscaras animadas), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor y Expander. La dinámica usa límites admitidos de bloques de audio de la fuente; no se han implementado cadena lateral externa, supresión RNNoise/Speex, alojamiento VST, HDR, versión antigua v1 ni los demás filtros estándar.",
+    "ru-RU": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 и Sharpen v2 (SDR; Luma/Sharpen на CPU), Crop/Pad (относительная обрезка со знаком или абсолютные размеры с прозрачными полями), Image Mask/Blend v2 (пять методов SDR, статические PNG/JPEG/BMP/TGA/WebP, CPU; без анимированных масок), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor и Expander. Динамическая обработка использует допустимые границы блоков аудиоисточника; внешняя боковая цепь, шумоподавление RNNoise/Speex, хостинг VST, HDR, устаревшая версия v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 і Sharpen v2 (SDR; Luma/Sharpen на CPU), Crop/Pad (відносне обрізання зі знаком або абсолютні розміри з прозорими полями), Image Mask/Blend v2 (п’ять методів SDR, статичні PNG/JPEG/BMP/TGA/WebP, CPU; без анімованих масок), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor і Expander. Динамічна обробка використовує допустимі межі блоків аудіоджерела; зовнішній бічний ланцюг, шумозаглушення RNNoise/Speex, хостинг VST, HDR, застаріла версія v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 und Sharpen v2 (SDR; Luma/Sharpen auf der CPU), Crop/Pad (relativer Beschnitt mit Vorzeichen oder absolute Abmessungen mit transparenten Rändern), Image Mask/Blend v2 (fünf SDR-Methoden, statisches PNG/JPEG/BMP/TGA/WebP, CPU; keine animierten Masken), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor und Expander. Die Dynamikverarbeitung verwendet zugelassene Audioblockgrenzen der Quelle; externe Sidechain, RNNoise/Speex-Rauschunterdrückung, VST-Hosting, HDR, die alte Version v1 und die übrigen Standardfilter sind nicht implementiert."
+  },
+  "Mask image error: {detail}": {
+    "es-ES": "Error de la imagen de máscara: {detail}",
+    "ru-RU": "Ошибка изображения маски: {detail}",
+    "uk-UA": "Помилка зображення маски: {detail}",
+    "de-DE": "Maskenbildfehler: {detail}"
+  },
+  "Image Mask/Blend · CPU · SDR": {
+    "es-ES": "Máscara/mezcla de imagen · CPU · SDR",
+    "ru-RU": "Маска/смешивание изображения · CPU · SDR",
+    "uk-UA": "Маска/змішування зображення · CPU · SDR",
+    "de-DE": "Bildmaske/-mischung · CPU · SDR"
+  },
+  "Prepared mask: {width} × {height}": {
+    "es-ES": "Máscara preparada: {width} × {height}",
+    "ru-RU": "Подготовленная маска: {width} × {height}",
+    "uk-UA": "Підготовлена маска: {width} × {height}",
+    "de-DE": "Vorbereitete Maske: {width} × {height}"
+  }
+}

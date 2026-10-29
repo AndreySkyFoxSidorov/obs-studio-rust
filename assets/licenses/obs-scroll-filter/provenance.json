@@ -1,0 +1,20 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "source_files": [
+    {
+      "path": "plugins/obs-filters/scroll-filter.c",
+      "sha256": "d17bc74b0fa249286178b032d2360a8c561e3a5880d2e447d62f47913cb442c7"
+    },
+    {
+      "path": "plugins/obs-filters/data/crop_filter.effect",
+      "sha256": "e98ed207b244f22143e15633d36949d5f16fa14078d4a92e5c01181925e153a5"
+    },
+    {
+      "path": "libobs/obs-source.c",
+      "sha256": "67f65a476c52664e07d4b33f4d444a09c54acb7351db3c06546fe6a1618c9113"
+    }
+  ],
+  "adaptation": "Rust CPU SDR linear sampler and bounded explicit-time normalized phase owner. No C/libobs/GPU filter implementation; asynchronous last-observed metadata boundary and unverified arithmetic/performance documented. No executions."
+}

@@ -1,0 +1,20 @@
+[package]
+name = "skylive-desktop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+default = ["gpu-filters"]
+gpu-filters = ["skylive-host/gpu-filters"]
+
+[dependencies]
+raw-window-handle = "=0.6.2"
+skylive-core.workspace = true
+skylive-host.workspace = true
+skylive-media.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+eframe = { version = "=0.31.1", default-features = false, features = ["glow", "default_fonts", "accesskit", "x11", "wayland"] }

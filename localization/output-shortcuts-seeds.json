@@ -1,0 +1,62 @@
+{
+  "Pause Recording": {
+    "es-ES": "Pausar grabación",
+    "ru-RU": "Приостановить запись",
+    "uk-UA": "Призупинити запис",
+    "de-DE": "Aufnahme pausieren"
+  },
+  "Resume Recording": {
+    "es-ES": "Reanudar grabación",
+    "ru-RU": "Продолжить запись",
+    "uk-UA": "Продовжити запис",
+    "de-DE": "Aufnahme fortsetzen"
+  },
+  "Start Streaming": {
+    "es-ES": "Iniciar transmisión",
+    "ru-RU": "Начать трансляцию",
+    "uk-UA": "Почати трансляцію",
+    "de-DE": "Stream starten"
+  },
+  "Stop Streaming": {
+    "es-ES": "Detener transmisión",
+    "ru-RU": "Остановить трансляцию",
+    "uk-UA": "Зупинити трансляцію",
+    "de-DE": "Stream beenden"
+  },
+  "Start Replay Buffer": {
+    "es-ES": "Iniciar búfer de repetición",
+    "ru-RU": "Запустить буфер повтора",
+    "uk-UA": "Запустити буфер повтору",
+    "de-DE": "Replay-Puffer starten"
+  },
+  "Stop Replay Buffer": {
+    "es-ES": "Detener búfer de repetición",
+    "ru-RU": "Остановить буфер повтора",
+    "uk-UA": "Зупинити буфер повтору",
+    "de-DE": "Replay-Puffer beenden"
+  },
+  "Save Replay Buffer": {
+    "es-ES": "Guardar búfer de repetición",
+    "ru-RU": "Сохранить повтор из буфера",
+    "uk-UA": "Зберегти повтор із буфера",
+    "de-DE": "Replay aus dem Puffer speichern"
+  },
+  "Start Virtual Camera": {
+    "es-ES": "Iniciar cámara virtual",
+    "ru-RU": "Запустить виртуальную камеру",
+    "uk-UA": "Запустити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera starten"
+  },
+  "Stop Virtual Camera": {
+    "es-ES": "Detener cámara virtual",
+    "ru-RU": "Остановить виртуальную камеру",
+    "uk-UA": "Зупинити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera beenden"
+  },
+  "Application shortcuts exceed two bindings per supported action.": {
+    "es-ES": "Los atajos superan dos asignaciones por acción admitida.",
+    "ru-RU": "Для поддерживаемого действия допускается не больше двух сочетаний клавиш.",
+    "uk-UA": "Для підтримуваної дії дозволено не більше двох сполучень клавіш.",
+    "de-DE": "Pro unterstützter Aktion sind höchstens zwei Tastenkombinationen zulässig."
+  }
+}

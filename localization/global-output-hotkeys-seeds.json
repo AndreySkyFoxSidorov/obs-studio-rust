@@ -1,0 +1,170 @@
+{
+  "In SkyLive": {
+    "es-ES": "En SkyLive",
+    "ru-RU": "В SkyLive",
+    "uk-UA": "У SkyLive",
+    "de-DE": "In SkyLive"
+  },
+  "Windows global": {
+    "es-ES": "Global en Windows",
+    "ru-RU": "Глобальные Windows",
+    "uk-UA": "Глобальні Windows",
+    "de-DE": "Windows-weit"
+  },
+  "Local shortcuts work while SkyLive is focused, outside text entry and dialogs.": {
+    "es-ES": "Los atajos locales funcionan con SkyLive enfocado, fuera de campos de texto y diálogos.",
+    "ru-RU": "Локальные клавиши работают при фокусе SkyLive, вне текстовых полей и диалогов.",
+    "uk-UA": "Локальні клавіші працюють за фокусу SkyLive, поза текстовими полями й діалогами.",
+    "de-DE": "Lokale Kürzel gelten bei fokussiertem SkyLive, außerhalb von Texteingaben und Dialogen."
+  },
+  "Global output shortcuts also work in games and other apps. Windows may reject a combination already in use.": {
+    "es-ES": "Los atajos globales de salida también funcionan en juegos y otras apps. Windows puede rechazar una combinación ocupada.",
+    "ru-RU": "Глобальные клавиши выходов работают также в играх и других приложениях. Windows может отклонить занятое сочетание.",
+    "uk-UA": "Глобальні клавіші виходів працюють також в іграх та інших програмах. Windows може відхилити зайняте поєднання.",
+    "de-DE": "Globale Ausgabekürzel gelten auch in Spielen und anderen Apps. Windows kann belegte Kombinationen ablehnen."
+  },
+  "Ctrl, Alt and Shift are supported. Windows-key combinations, punctuation and F12 are unavailable.": {
+    "es-ES": "Se admiten Ctrl, Alt y Mayús. No se admiten la tecla Windows, signos de puntuación ni F12.",
+    "ru-RU": "Поддерживаются Ctrl, Alt и Shift. Сочетания с клавишей Windows, знаки пунктуации и F12 недоступны.",
+    "uk-UA": "Підтримуються Ctrl, Alt і Shift. Поєднання з клавішею Windows, знаки пунктуації та F12 недоступні.",
+    "de-DE": "Ctrl, Alt und Shift werden unterstützt. Windows-Taste, Satzzeichen und F12 sind nicht verfügbar."
+  },
+  "Global shortcuts are unavailable on this platform. Saved assignments are retained.": {
+    "es-ES": "Los atajos globales no están disponibles en esta plataforma. Se conservan las asignaciones guardadas.",
+    "ru-RU": "Глобальные клавиши недоступны на этой платформе. Сохранённые назначения сохраняются.",
+    "uk-UA": "Глобальні клавіші недоступні на цій платформі. Збережені призначення залишаються.",
+    "de-DE": "Globale Kürzel sind auf dieser Plattform nicht verfügbar. Gespeicherte Zuweisungen bleiben erhalten."
+  },
+  "Waiting for Windows to release global shortcuts before capture.": {
+    "es-ES": "Esperando a que Windows libere los atajos globales antes de capturar.",
+    "ru-RU": "Ожидание снятия глобальных клавиш Windows перед захватом сочетания.",
+    "uk-UA": "Очікування зняття глобальних клавіш Windows перед захопленням поєднання.",
+    "de-DE": "Vor der Erfassung auf die Freigabe globaler Kürzel durch Windows warten."
+  },
+  "Click an assignment and press a key combination. Escape cancels capture. Apply saves both scopes; Cancel discards this draft.": {
+    "es-ES": "Pulsa una asignación y una combinación. Escape cancela la captura. Aplicar guarda ambos ámbitos; Cancelar descarta el borrador.",
+    "ru-RU": "Выберите назначение и нажмите сочетание. Escape отменяет захват. Применить сохраняет оба режима; Отмена сбрасывает черновик.",
+    "uk-UA": "Виберіть призначення й натисніть поєднання. Escape скасовує захоплення. Застосувати зберігає обидва режими; Скасувати відкидає чернетку.",
+    "de-DE": "Zuweisung wählen und Tastenkombination drücken. Escape bricht ab. Anwenden speichert beide Bereiche; Abbrechen verwirft den Entwurf."
+  },
+  "Wait until global registrations are suspended before capturing a shortcut.": {
+    "es-ES": "Espera a que se suspendan los registros globales antes de capturar un atajo.",
+    "ru-RU": "Перед захватом сочетания дождитесь приостановки глобальных регистраций.",
+    "uk-UA": "Перед захопленням поєднання дочекайтеся призупинення глобальних реєстрацій.",
+    "de-DE": "Vor der Kürzelerfassung warten, bis globale Registrierungen ausgesetzt sind."
+  },
+  "Clear global shortcuts": {
+    "es-ES": "Borrar atajos globales",
+    "ru-RU": "Очистить глобальные клавиши",
+    "uk-UA": "Очистити глобальні клавіші",
+    "de-DE": "Globale Kürzel löschen"
+  },
+  "Restore defaults in this scope only; Apply saves the draft.": {
+    "es-ES": "Restablece los valores solo de este ámbito; Aplicar guarda el borrador.",
+    "ru-RU": "Восстановить значения только этого режима; Применить сохраняет черновик.",
+    "uk-UA": "Відновити значення лише цього режиму; Застосувати зберігає чернетку.",
+    "de-DE": "Nur diesen Bereich zurücksetzen; Anwenden speichert den Entwurf."
+  },
+  "Updating global shortcut registrations…": {
+    "es-ES": "Actualizando registros de atajos globales…",
+    "ru-RU": "Обновление регистраций глобальных клавиш…",
+    "uk-UA": "Оновлення реєстрацій глобальних клавіш…",
+    "de-DE": "Globale Kürzelregistrierungen werden aktualisiert…"
+  },
+  "Global shortcuts are inactive": {
+    "es-ES": "Los atajos globales están inactivos",
+    "ru-RU": "Глобальные клавиши неактивны",
+    "uk-UA": "Глобальні клавіші неактивні",
+    "de-DE": "Globale Kürzel sind inaktiv"
+  },
+  "Global shortcuts are suspended while editing or confirming a document action": {
+    "es-ES": "Atajos globales suspendidos durante la edición o confirmación de una acción del documento",
+    "ru-RU": "Глобальные клавиши приостановлены на время настройки или подтверждения действия с документом",
+    "uk-UA": "Глобальні клавіші призупинено на час налаштування або підтвердження дії з документом",
+    "de-DE": "Globale Kürzel sind während Bearbeitung oder Dokumentbestätigung ausgesetzt"
+  },
+  "Release the configured keys before global shortcuts are activated": {
+    "es-ES": "Suelta las teclas configuradas para activar los atajos globales",
+    "ru-RU": "Отпустите назначенные клавиши для активации глобальных сочетаний",
+    "uk-UA": "Відпустіть призначені клавіші для активації глобальних поєднань",
+    "de-DE": "Zum Aktivieren globaler Kürzel die zugewiesenen Tasten loslassen"
+  },
+  "Global output shortcuts are active": {
+    "es-ES": "Los atajos globales de salida están activos",
+    "ru-RU": "Глобальные клавиши выходов активны",
+    "uk-UA": "Глобальні клавіші виходів активні",
+    "de-DE": "Globale Ausgabekürzel sind aktiv"
+  },
+  "Waiting for Windows to unregister global shortcuts": {
+    "es-ES": "Esperando a que Windows anule los registros globales",
+    "ru-RU": "Ожидание снятия регистраций глобальных клавиш Windows",
+    "uk-UA": "Очікування зняття реєстрацій глобальних клавіш Windows",
+    "de-DE": "Windows hebt globale Kürzelregistrierungen auf"
+  },
+  "Global shortcuts could not be registered": {
+    "es-ES": "No se pudieron registrar los atajos globales",
+    "ru-RU": "Не удалось зарегистрировать глобальные клавиши",
+    "uk-UA": "Не вдалося зареєструвати глобальні клавіші",
+    "de-DE": "Globale Kürzel konnten nicht registriert werden"
+  },
+  "Global shortcuts are unavailable on this platform": {
+    "es-ES": "Los atajos globales no están disponibles en esta plataforma",
+    "ru-RU": "Глобальные клавиши недоступны на этой платформе",
+    "uk-UA": "Глобальні клавіші недоступні на цій платформі",
+    "de-DE": "Globale Kürzel sind auf dieser Plattform nicht verfügbar"
+  },
+  "Global shortcut owner is closed": {
+    "es-ES": "El gestor de atajos globales está cerrado",
+    "ru-RU": "Служба глобальных клавиш закрыта",
+    "uk-UA": "Службу глобальних клавіш закрито",
+    "de-DE": "Der globale Kürzeldienst ist geschlossen"
+  },
+  "Global shortcut queue overflow: {} events were not delivered.": {
+    "es-ES": "Desbordamiento de la cola global: no se entregaron {} eventos.",
+    "ru-RU": "Переполнение очереди глобальных клавиш: не доставлено событий — {}.",
+    "uk-UA": "Переповнення черги глобальних клавіш: не доставлено подій — {}.",
+    "de-DE": "Überlauf der globalen Kürzelwarteschlange: {} Ereignisse nicht zugestellt."
+  },
+  "Global output shortcuts admit at most 22 assignments.": {
+    "es-ES": "Los atajos globales de salida admiten hasta 22 asignaciones.",
+    "ru-RU": "Допускается не более 22 глобальных назначений для выходов.",
+    "uk-UA": "Дозволено не більше 22 глобальних призначень для виходів.",
+    "de-DE": "Globale Ausgabekürzel erlauben höchstens 22 Zuweisungen."
+  },
+  "Global shortcuts are available only for output actions.": {
+    "es-ES": "Los atajos globales solo están disponibles para acciones de salida.",
+    "ru-RU": "Глобальные клавиши доступны только для управления выходами.",
+    "uk-UA": "Глобальні клавіші доступні лише для керування виходами.",
+    "de-DE": "Globale Kürzel sind nur für Ausgabeaktionen verfügbar."
+  },
+  "Global shortcuts support letters, digits, navigation and function keys except reserved F12; punctuation is unavailable.": {
+    "es-ES": "Los atajos globales admiten letras, números, navegación y teclas de función salvo F12; no admiten puntuación.",
+    "ru-RU": "Глобальные сочетания поддерживают буквы, цифры, навигацию и функциональные клавиши, кроме F12; пунктуация недоступна.",
+    "uk-UA": "Глобальні поєднання підтримують літери, цифри, навігацію та функціональні клавіші, крім F12; пунктуація недоступна.",
+    "de-DE": "Globale Kürzel unterstützen Buchstaben, Ziffern, Navigation und Funktionstasten außer F12; keine Satzzeichen."
+  },
+  "A shortcut cannot be assigned in both local and global scopes.": {
+    "es-ES": "Un atajo no puede asignarse a los ámbitos local y global a la vez.",
+    "ru-RU": "Одно сочетание нельзя назначить одновременно в локальном и глобальном режимах.",
+    "uk-UA": "Одне поєднання не можна призначити одночасно в локальному та глобальному режимах.",
+    "de-DE": "Ein Kürzel kann nicht gleichzeitig lokal und global zugewiesen werden."
+  },
+  "Global shortcut owner is busy.": {
+    "es-ES": "El gestor de atajos globales está ocupado.",
+    "ru-RU": "Служба глобальных клавиш занята.",
+    "uk-UA": "Служба глобальних клавіш зайнята.",
+    "de-DE": "Der globale Kürzeldienst ist beschäftigt."
+  },
+  "Global shortcut owner is closed.": {
+    "es-ES": "El gestor de atajos globales está cerrado.",
+    "ru-RU": "Служба глобальных клавиш закрыта.",
+    "uk-UA": "Службу глобальних клавіш закрито.",
+    "de-DE": "Der globale Kürzeldienst ist geschlossen."
+  },
+  "Global shortcut identity exhausted. Restart SkyLive.": {
+    "es-ES": "Se agotaron los identificadores de atajos globales. Reinicia SkyLive.",
+    "ru-RU": "Исчерпаны идентификаторы глобальных клавиш. Перезапустите SkyLive.",
+    "uk-UA": "Вичерпано ідентифікатори глобальних клавіш. Перезапустіть SkyLive.",
+    "de-DE": "Die globalen Kürzelkennungen sind ausgeschöpft. SkyLive neu starten."
+  }
+}

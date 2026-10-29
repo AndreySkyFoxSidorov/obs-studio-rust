@@ -1,0 +1,68 @@
+{
+  "Windows prefers the system software H.264 decoder for admitted Main/High and multi-slice files. Rust playback remains available for other supported formats. Hardware decoding is not enabled.": {
+    "es-ES": "Windows prefiere el decodificador H.264 por software del sistema para archivos Main/High y con múltiples segmentos admitidos. La reproducción en Rust sigue disponible para los demás formatos compatibles. La decodificación por hardware no está activada.",
+    "ru-RU": "В Windows для подходящих файлов Main/High и многосрезовых кадров используется штатный программный декодер H.264. Для остальных поддерживаемых форматов сохраняется воспроизведение на Rust. Аппаратное декодирование не включено.",
+    "uk-UA": "У Windows для відповідних файлів Main/High і багатозрізових кадрів використовується штатний програмний декодер H.264. Для решти підтримуваних форматів зберігається відтворення на Rust. Апаратне декодування не ввімкнено.",
+    "de-DE": "Windows bevorzugt den systemeigenen H.264-Softwaredecoder für zugelassene Main-/High-Dateien mit mehreren Slices. Rust-Wiedergabe bleibt für andere unterstützte Formate verfügbar. Hardwaredecodierung ist nicht aktiviert."
+  },
+  "Playback speed is 100%. Network media and arbitrary codec/container formats are not supported.": {
+    "es-ES": "La velocidad de reproducción es del 100 %. No se admiten medios de red ni cualquier formato de códec o contenedor.",
+    "ru-RU": "Скорость воспроизведения — 100%. Сетевые медиаисточники и произвольные кодеки или контейнеры не поддерживаются.",
+    "uk-UA": "Швидкість відтворення — 100%. Мережеві медіаджерела та довільні кодеки або контейнери не підтримуються.",
+    "de-DE": "Die Wiedergabegeschwindigkeit beträgt 100 %. Netzwerkmedien und beliebige Codec-/Containerformate werden nicht unterstützt."
+  },
+  "Active decoder: {decoder}": {
+    "es-ES": "Decodificador activo: {decoder}",
+    "ru-RU": "Активный декодер: {decoder}",
+    "uk-UA": "Активний декодер: {decoder}",
+    "de-DE": "Aktiver Decoder: {decoder}"
+  },
+  "Rust H.264 decoder": {
+    "es-ES": "Decodificador H.264 en Rust",
+    "ru-RU": "Декодер H.264 на Rust",
+    "uk-UA": "Декодер H.264 на Rust",
+    "de-DE": "H.264-Decoder in Rust"
+  },
+  "Windows Media Foundation (software)": {
+    "es-ES": "Windows Media Foundation (por software)",
+    "ru-RU": "Windows Media Foundation (программный)",
+    "uk-UA": "Windows Media Foundation (програмний)",
+    "de-DE": "Windows Media Foundation (Software)"
+  },
+  "Other H.264 profile": {
+    "es-ES": "Otro perfil H.264",
+    "ru-RU": "Другой профиль H.264",
+    "uk-UA": "Інший профіль H.264",
+    "de-DE": "Anderes H.264-Profil"
+  },
+  "Video profile: {profile}, level_idc: {level}": {
+    "es-ES": "Perfil de vídeo: {profile}, level_idc: {level}",
+    "ru-RU": "Профиль видео: {profile}, level_idc: {level}",
+    "uk-UA": "Профіль відео: {profile}, level_idc: {level}",
+    "de-DE": "Videoprofil: {profile}, level_idc: {level}"
+  },
+  "H.264 Baseline": {
+    "es-ES": "H.264 Baseline (básico)",
+    "ru-RU": "H.264 Baseline (базовый)",
+    "uk-UA": "H.264 Baseline (базовий)",
+    "de-DE": "H.264 Baseline (Basisprofil)"
+  },
+  "H.264 Main": {
+    "es-ES": "H.264 Main (principal)",
+    "ru-RU": "H.264 Main (основной)",
+    "uk-UA": "H.264 Main (основний)",
+    "de-DE": "H.264 Main (Hauptprofil)"
+  },
+  "H.264 High": {
+    "es-ES": "H.264 High (alto)",
+    "ru-RU": "H.264 High (высокий)",
+    "uk-UA": "H.264 High (високий)",
+    "de-DE": "H.264 High (hohes Profil)"
+  },
+  "Partial equivalent: local MP4/MOV Media Source with Rust H.264 Main/High/CABAC/B and AAC-LC playback, source properties and transport. On Windows an admitted software Media Foundation H.264 alternative supports progressive 8-bit 4:2:0 BT709 limited video, ordered multi-slice access units, PTS/DTS reordering and bounded drain/seek. No FFmpeg binary/library, hardware decoding, arbitrary FFmpeg formats, network media, FFmpeg outputs or encoders.": {
+    "es-ES": "Equivalente parcial: fuente multimedia local MP4/MOV con reproducción H.264 Main/High/CABAC/B y AAC-LC en Rust, propiedades y controles de reproducción. En Windows, una alternativa admitida de H.264 por software de Media Foundation admite vídeo progresivo de 8 bits 4:2:0 BT709 limitado, unidades de acceso con múltiples segmentos ordenados, reordenación PTS/DTS y vaciado/búsqueda limitados. Sin binario ni biblioteca FFmpeg, decodificación por hardware, formatos FFmpeg arbitrarios, medios de red, salidas ni codificadores FFmpeg.",
+    "ru-RU": "Частичный аналог: локальный медиаисточник MP4/MOV с воспроизведением H.264 Main/High/CABAC/B и AAC-LC на Rust, свойствами и управлением воспроизведением. В Windows доступен подходящий программный декодер H.264 Media Foundation: прогрессивное 8-битное видео 4:2:0 BT709 ограниченного диапазона, упорядоченные многосрезовые единицы доступа, перестановка PTS/DTS, ограниченная выгрузка и перемотка. Бинарные файлы и библиотеки FFmpeg, аппаратное декодирование, произвольные форматы FFmpeg, сетевые медиа, выходы и кодеры FFmpeg не используются.",
+    "uk-UA": "Частковий аналог: локальне медіаджерело MP4/MOV із відтворенням H.264 Main/High/CABAC/B та AAC-LC на Rust, властивостями й керуванням відтворенням. У Windows доступний відповідний програмний декодер H.264 Media Foundation: прогресивне 8-бітне відео 4:2:0 BT709 обмеженого діапазону, впорядковані багатозрізові одиниці доступу, переставлення PTS/DTS, обмежене вивантаження й перемотування. Бінарні файли та бібліотеки FFmpeg, апаратне декодування, довільні формати FFmpeg, мережеві медіа, виходи й кодери FFmpeg не використовуються.",
+    "de-DE": "Teilweise Entsprechung: lokale MP4/MOV-Medienquelle mit H.264-Main-/High-/CABAC-/B- und AAC-LC-Wiedergabe in Rust, Quelleigenschaften und Wiedergabesteuerung. Unter Windows unterstützt eine zugelassene H.264-Softwarealternative von Media Foundation progressives 8-Bit-4:2:0-BT709-Video mit begrenztem Pegelbereich, geordnete Zugriffseinheiten mit mehreren Slices, PTS-/DTS-Umsortierung sowie begrenztes Leeren und Suchen. Keine FFmpeg-Binärdatei oder -Bibliothek, Hardwaredecodierung, beliebige FFmpeg-Formate, Netzwerkmedien, FFmpeg-Ausgaben oder -Encoder."
+  }
+}

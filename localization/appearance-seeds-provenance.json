@@ -1,0 +1,15 @@
+{
+  "policy": "Assistant-authored translations, not native-linguist-reviewed. Existing nonempty catalog cells remain authoritative. Yami is an unchanged theme brand. Native theme acceptance remains separate.",
+  "source_files": [
+    "apps/desktop/src/views/appearance.rs",
+    "apps/desktop/src/app.rs",
+    "crates/core/src/appearance.rs"
+  ],
+  "keys": 15,
+  "locales": [
+    "es-ES",
+    "ru-RU",
+    "uk-UA",
+    "de-DE"
+  ]
+}

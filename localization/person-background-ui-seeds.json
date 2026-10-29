@@ -1,0 +1,74 @@
+{
+  "AI Background Removal (Person)": {
+    "es-ES": "Eliminar fondo con IA (persona)",
+    "ru-RU": "ИИ: удаление фона (человек)",
+    "uk-UA": "ШІ: видалення тла (людина)",
+    "de-DE": "KI-Hintergrundentfernung (Person)"
+  },
+  "Neural filters · enabled": {
+    "es-ES": "Filtros neuronales · activados",
+    "ru-RU": "Нейросетевые фильтры · включены",
+    "uk-UA": "Нейромережеві фільтри · увімкнено",
+    "de-DE": "Neuronale Filter · aktiviert"
+  },
+  "Neural filters · disabled": {
+    "es-ES": "Filtros neuronales · desactivados",
+    "ru-RU": "Нейросетевые фильтры · отключены",
+    "uk-UA": "Нейромережеві фільтри · вимкнено",
+    "de-DE": "Neuronale Filter · deaktiviert"
+  },
+  "Remove the background using the fixed Selfie256 person model on the CPU. A green screen is not required.": {
+    "es-ES": "Elimina el fondo con el modelo fijo Selfie256 para personas en la CPU. No se necesita pantalla verde.",
+    "ru-RU": "Удалить фон с помощью фиксированной модели человека Selfie256 на CPU. Зелёный экран не требуется.",
+    "uk-UA": "Видалити тло за допомогою фіксованої моделі людини Selfie256 на CPU. Зелений екран не потрібен.",
+    "de-DE": "Entfernen Sie den Hintergrund mit dem festen Selfie256-Personenmodell auf der CPU. Ein Greenscreen ist nicht erforderlich."
+  },
+  "Enable Background Removal in Tools > Plugins before adding this neural filter.": {
+    "es-ES": "Activa Background Removal en Herramientas > Complementos antes de añadir este filtro neuronal.",
+    "ru-RU": "Включите Background Removal в меню Инструменты > Плагины перед добавлением этого нейросетевого фильтра.",
+    "uk-UA": "Увімкніть Background Removal у меню Інструменти > Плагіни перед додаванням цього нейромережевого фільтра.",
+    "de-DE": "Aktivieren Sie Background Removal unter Werkzeuge > Plugins, bevor Sie diesen neuronalen Filter hinzufügen."
+  },
+  "Fixed Selfie256 model · CPU · person foreground mask": {
+    "es-ES": "Modelo fijo Selfie256 · CPU · máscara de persona en primer plano",
+    "ru-RU": "Фиксированная модель Selfie256 · CPU · маска человека на переднем плане",
+    "uk-UA": "Фіксована модель Selfie256 · CPU · маска людини на передньому плані",
+    "de-DE": "Festes Selfie256-Modell · CPU · Personenmaske im Vordergrund"
+  },
+  "Defaults preserve the model probabilities. Threshold shifts the matte; softness controls its transition width.": {
+    "es-ES": "Los valores predeterminados conservan las probabilidades del modelo. El umbral desplaza la máscara y la suavidad controla el ancho de su transición.",
+    "ru-RU": "Значения по умолчанию сохраняют вероятности модели. Порог сдвигает маску, а мягкость регулирует ширину перехода.",
+    "uk-UA": "Типові значення зберігають імовірності моделі. Поріг зміщує маску, а м’якість регулює ширину переходу.",
+    "de-DE": "Die Standardwerte erhalten die Modellwahrscheinlichkeiten. Der Schwellenwert verschiebt die Maske; die Weichheit steuert ihre Übergangsbreite."
+  },
+  "Person Threshold": {
+    "es-ES": "Umbral de persona",
+    "ru-RU": "Порог человека",
+    "uk-UA": "Поріг людини",
+    "de-DE": "Personenschwelle"
+  },
+  "Mask Softness": {
+    "es-ES": "Suavidad de máscara",
+    "ru-RU": "Мягкость маски",
+    "uk-UA": "М’якість маски",
+    "de-DE": "Maskenweichheit"
+  },
+  "Set the foreground probability at the middle of the alpha transition.": {
+    "es-ES": "Define la probabilidad de primer plano en el centro de la transición alfa.",
+    "ru-RU": "Задать вероятность переднего плана в середине перехода прозрачности.",
+    "uk-UA": "Задати ймовірність переднього плану в середині переходу прозорості.",
+    "de-DE": "Legen Sie die Vordergrundwahrscheinlichkeit in der Mitte des Alphaübergangs fest."
+  },
+  "Set the probability transition width. Default 1.0 preserves raw probabilities at threshold 0.5.": {
+    "es-ES": "Define el ancho de transición de probabilidad. El valor 1,0 conserva las probabilidades originales con un umbral de 0,5.",
+    "ru-RU": "Задать ширину перехода вероятности. Значение 1,0 сохраняет исходные вероятности при пороге 0,5.",
+    "uk-UA": "Задати ширину переходу ймовірності. Значення 1,0 зберігає початкові ймовірності за порога 0,5.",
+    "de-DE": "Legen Sie die Breite des Wahrscheinlichkeitsübergangs fest. Der Standardwert 1,0 erhält die Rohwahrscheinlichkeiten bei Schwelle 0,5."
+  },
+  "Fixed Selfie256 CPU person foreground matte with threshold/softness controls, using an independently executed pure Rust model runtime. Limited single-model port; no GPU provider, recurrent matting, enhancement filters or OBS binary ABI.": {
+    "es-ES": "Máscara de persona con Selfie256 fijo en CPU, controles de umbral y suavidad y un entorno de modelos Rust puro ejecutado de forma independiente. Adaptación limitada a un modelo; sin GPU, matting recurrente, filtros de mejora ni ABI binaria de OBS.",
+    "ru-RU": "Маска человека Selfie256 на CPU с настройками порога и мягкости и независимо проверенным исполнением модели на чистом Rust. Ограниченный порт одной модели; без GPU, рекуррентного маттинга, фильтров улучшения и бинарного ABI OBS.",
+    "uk-UA": "Маска людини Selfie256 на CPU з налаштуваннями порога й м’якості та незалежно перевіреним виконанням моделі на чистому Rust. Обмежений порт однієї моделі; без GPU, рекурентного матингу, фільтрів поліпшення й бінарного ABI OBS.",
+    "de-DE": "Feste Selfie256-Personenmaske auf der CPU mit Schwellenwert/Weichheit und unabhängig ausgeführter reiner Rust-Modelllaufzeit. Begrenzte Portierung eines Modells; ohne GPU-Anbieter, rekurrentes Matting, Verbesserungsfilter oder binäre OBS-ABI."
+  }
+}

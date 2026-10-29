@@ -1,0 +1,56 @@
+{
+  "Audio Hotkeys…": {
+    "es-ES": "Atajos de audio…",
+    "ru-RU": "Горячие клавиши звука…",
+    "uk-UA": "Гарячі клавіші звуку…",
+    "de-DE": "Audio-Kurzbefehle…"
+  },
+  "Source Audio Shortcuts": {
+    "es-ES": "Atajos de audio de fuentes",
+    "ru-RU": "Горячие клавиши звука источников",
+    "uk-UA": "Гарячі клавіші звуку джерел",
+    "de-DE": "Audio-Kurzbefehle der Quellen"
+  },
+  "Configure mute and push-to-talk shortcuts for this audio source.": {
+    "es-ES": "Configura los atajos de silencio y pulsar para hablar de esta fuente de audio.",
+    "ru-RU": "Настроить клавиши выключения звука и Push-to-talk для этого источника.",
+    "uk-UA": "Налаштувати клавіші вимкнення звуку та Push-to-talk для цього джерела.",
+    "de-DE": "Kurzbefehle für Stummschaltung und Push-to-talk dieser Audioquelle konfigurieren."
+  },
+  "Apply or cancel changes on this settings page before opening a source editor.": {
+    "es-ES": "Aplica o cancela los cambios de esta página antes de abrir el editor de una fuente.",
+    "ru-RU": "Примените или отмените изменения на этой странице, прежде чем открывать настройки источника.",
+    "uk-UA": "Застосуйте або скасуйте зміни на цій сторінці, перш ніж відкривати налаштування джерела.",
+    "de-DE": "Änderungen auf dieser Einstellungsseite anwenden oder verwerfen, bevor der Quelleneditor geöffnet wird."
+  },
+  "Toggle Mute assigns the same shortcut to both original Mute and Unmute callbacks.": {
+    "es-ES": "Alternar silencio asigna el mismo atajo a las acciones originales Silenciar y Activar sonido.",
+    "ru-RU": "Переключение звука назначает одно сочетание исходным действиям выключения и включения звука.",
+    "uk-UA": "Перемикання звуку призначає одне сполучення початковим діям вимкнення та ввімкнення звуку.",
+    "de-DE": "Stummschaltung umschalten weist denselben Kurzbefehl den ursprünglichen Aktionen Stummschalten und Ton einschalten zu."
+  },
+  "Silence this source while a Push-to-mute shortcut is held.": {
+    "es-ES": "Silencia esta fuente mientras se mantiene pulsado un atajo de pulsar para silenciar.",
+    "ru-RU": "Выключать звук этого источника, пока удерживается клавиша Push-to-mute.",
+    "uk-UA": "Вимикати звук цього джерела, доки утримується клавіша Push-to-mute.",
+    "de-DE": "Diese Quelle stummschalten, solange ein Push-to-mute-Kurzbefehl gedrückt wird."
+  },
+  "Keep the source muted for this long after the last Push-to-mute shortcut is released.": {
+    "es-ES": "Mantiene la fuente silenciada durante este tiempo después de soltar el último atajo de pulsar para silenciar.",
+    "ru-RU": "Оставлять источник без звука в течение этого времени после отпускания последней клавиши Push-to-mute.",
+    "uk-UA": "Залишати джерело без звуку протягом цього часу після відпускання останньої клавіші Push-to-mute.",
+    "de-DE": "Die Quelle nach dem Loslassen des letzten Push-to-mute-Kurzbefehls für diese Zeit stumm halten."
+  },
+  "Silence this source unless a Push-to-talk shortcut is held. Without an assigned shortcut it stays silent.": {
+    "es-ES": "Silencia esta fuente salvo mientras se mantenga pulsado un atajo de pulsar para hablar. Sin un atajo asignado permanece silenciada.",
+    "ru-RU": "Выключать звук источника, пока не удерживается клавиша Push-to-talk. Без назначенной клавиши источник останется без звука.",
+    "uk-UA": "Вимикати звук джерела, доки не утримується клавіша Push-to-talk. Без призначеної клавіші джерело залишиться без звуку.",
+    "de-DE": "Diese Quelle stummschalten, solange kein Push-to-talk-Kurzbefehl gedrückt wird. Ohne zugewiesenen Kurzbefehl bleibt sie stumm."
+  },
+  "Keep the source open for this long after the last Push-to-talk shortcut is released.": {
+    "es-ES": "Mantiene la fuente abierta durante este tiempo después de soltar el último atajo de pulsar para hablar.",
+    "ru-RU": "Оставлять звук источника включённым в течение этого времени после отпускания последней клавиши Push-to-talk.",
+    "uk-UA": "Залишати звук джерела ввімкненим протягом цього часу після відпускання останньої клавіші Push-to-talk.",
+    "de-DE": "Die Quelle nach dem Loslassen des letzten Push-to-talk-Kurzbefehls für diese Zeit offen halten."
+  }
+}

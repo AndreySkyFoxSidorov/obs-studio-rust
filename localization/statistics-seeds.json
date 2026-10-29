@@ -1,0 +1,278 @@
+{
+  "CPU usage": {
+    "es-ES": "Uso de CPU",
+    "ru-RU": "Загрузка CPU",
+    "uk-UA": "Завантаження CPU",
+    "de-DE": "CPU-Auslastung"
+  },
+  "Memory usage": {
+    "es-ES": "Uso de memoria",
+    "ru-RU": "Использование памяти",
+    "uk-UA": "Використання пам’яті",
+    "de-DE": "Speicherauslastung"
+  },
+  "Canvas / target FPS": {
+    "es-ES": "Lienzo / FPS objetivo",
+    "ru-RU": "Холст / целевая частота кадров",
+    "uk-UA": "Полотно / цільова частота кадрів",
+    "de-DE": "Leinwand / Zielbildrate"
+  },
+  "Submitted preview jobs": {
+    "es-ES": "Tareas de vista previa admitidas",
+    "ru-RU": "Принятые задания предпросмотра",
+    "uk-UA": "Прийняті завдання попереднього перегляду",
+    "de-DE": "Angenommene Vorschauaufträge"
+  },
+  "Published preview images": {
+    "es-ES": "Imágenes de vista previa publicadas",
+    "ru-RU": "Показанные кадры предпросмотра",
+    "uk-UA": "Показані кадри попереднього перегляду",
+    "de-DE": "Veröffentlichte Vorschaubilder"
+  },
+  "Preview failures": {
+    "es-ES": "Errores de vista previa",
+    "ru-RU": "Ошибки предпросмотра",
+    "uk-UA": "Помилки попереднього перегляду",
+    "de-DE": "Vorschaufehler"
+  },
+  "Last preview latency": {
+    "es-ES": "Última latencia de vista previa",
+    "ru-RU": "Последняя задержка предпросмотра",
+    "uk-UA": "Остання затримка попереднього перегляду",
+    "de-DE": "Letzte Vorschaulatenz"
+  },
+  "Skipped video frames": {
+    "es-ES": "Fotogramas de vídeo omitidos",
+    "ru-RU": "Пропущенные видеокадры",
+    "uk-UA": "Пропущені відеокадри",
+    "de-DE": "Übersprungene Videobilder"
+  },
+  "Audio gap frames": {
+    "es-ES": "Fotogramas de audio ausentes",
+    "ru-RU": "Отсутствующие аудиокадры",
+    "uk-UA": "Відсутні аудіокадри",
+    "de-DE": "Fehlende Audioframes"
+  },
+  "Encoded bytes": {
+    "es-ES": "Bytes codificados",
+    "ru-RU": "Закодировано байтов",
+    "uk-UA": "Закодовано байтів",
+    "de-DE": "Kodierte Bytes"
+  },
+  "Encoded bitrate": {
+    "es-ES": "Tasa de bits codificada",
+    "ru-RU": "Битрейт закодированных данных",
+    "uk-UA": "Бітрейт закодованих даних",
+    "de-DE": "Kodierte Bitrate"
+  },
+  "Published packets": {
+    "es-ES": "Paquetes publicados",
+    "ru-RU": "Опубликованные пакеты",
+    "uk-UA": "Опубліковані пакети",
+    "de-DE": "Veröffentlichte Pakete"
+  },
+  "Reset the displayed counter baselines. Capture and outputs keep running.": {
+    "es-ES": "Restablece la referencia de los contadores mostrados. La captura y las salidas continúan.",
+    "ru-RU": "Сбросить точку отсчёта отображаемых счётчиков. Захват и выходы продолжают работать.",
+    "uk-UA": "Скинути точку відліку показаних лічильників. Захоплення та виходи продовжують працювати.",
+    "de-DE": "Setzt die Ausgangswerte der angezeigten Zähler zurück. Aufnahme und Ausgaben laufen weiter."
+  },
+  "Close the statistics window.": {
+    "es-ES": "Cierra la ventana de estadísticas.",
+    "ru-RU": "Закрыть окно статистики.",
+    "uk-UA": "Закрити вікно статистики.",
+    "de-DE": "Schließt das Statistikfenster."
+  },
+  "Process CPU time normalized across the available logical processors.": {
+    "es-ES": "Tiempo de CPU del proceso normalizado entre los procesadores lógicos disponibles.",
+    "ru-RU": "Процессорное время приложения с нормализацией по доступным логическим процессорам.",
+    "uk-UA": "Процесорний час застосунку з нормалізацією за доступними логічними процесорами.",
+    "de-DE": "CPU-Zeit des Prozesses, auf die verfügbaren logischen Prozessoren normiert."
+  },
+  "Current process working set, sampled on the statistics worker.": {
+    "es-ES": "Memoria residente actual del proceso, obtenida por el hilo de estadísticas.",
+    "ru-RU": "Текущий рабочий набор памяти процесса, измеряемый фоновым потоком статистики.",
+    "uk-UA": "Поточний робочий набір пам’яті процесу, вимірюваний фоновим потоком статистики.",
+    "de-DE": "Aktueller Arbeitssatz des Prozesses, vom Statistik-Worker erfasst."
+  },
+  "Configured canvas and exact target frame rate; this is not a measured rendering rate.": {
+    "es-ES": "Lienzo configurado y frecuencia objetivo exacta; no es una frecuencia de renderizado medida.",
+    "ru-RU": "Настроенный холст и точная целевая частота кадров; это не измеренная скорость отрисовки.",
+    "uk-UA": "Налаштоване полотно та точна цільова частота кадрів; це не виміряна швидкість відмальовування.",
+    "de-DE": "Konfigurierte Leinwand und exakte Zielbildrate; keine gemessene Rendergeschwindigkeit."
+  },
+  "Preview jobs actually admitted by the worker. Obsolete completions are not published.": {
+    "es-ES": "Tareas de vista previa realmente admitidas por el hilo. Los resultados obsoletos no se publican.",
+    "ru-RU": "Задания предпросмотра, действительно принятые обработчиком. Устаревшие результаты не показываются.",
+    "uk-UA": "Завдання попереднього перегляду, дійсно прийняті обробником. Застарілі результати не показуються.",
+    "de-DE": "Vom Worker tatsächlich angenommene Vorschauaufträge. Veraltete Ergebnisse werden nicht veröffentlicht."
+  },
+  "Images actually published to this pane. Static scenes do not need repeated image publication.": {
+    "es-ES": "Imágenes realmente publicadas en este panel. Las escenas estáticas no necesitan publicaciones repetidas.",
+    "ru-RU": "Кадры, действительно показанные в этой панели. Для статичных сцен повторная публикация не нужна.",
+    "uk-UA": "Кадри, дійсно показані в цій панелі. Для статичних сцен повторна публікація не потрібна.",
+    "de-DE": "In diesem Bereich tatsächlich veröffentlichte Bilder. Statische Szenen benötigen keine wiederholte Veröffentlichung."
+  },
+  "Actual reported preview worker failures since the displayed baseline.": {
+    "es-ES": "Errores reales notificados por el hilo de vista previa desde la referencia mostrada.",
+    "ru-RU": "Ошибки обработчика предпросмотра, зарегистрированные после текущей точки отсчёта.",
+    "uk-UA": "Помилки обробника попереднього перегляду, зареєстровані після поточної точки відліку.",
+    "de-DE": "Seit dem angezeigten Ausgangswert tatsächlich gemeldete Fehler des Vorschau-Workers."
+  },
+  "Time from preview admission until its completed image was received by the UI; includes queue and polling time.": {
+    "es-ES": "Tiempo desde la admisión de la vista previa hasta que la interfaz recibe la imagen terminada; incluye la cola y el sondeo.",
+    "ru-RU": "Время от принятия задания до получения готового кадра интерфейсом; включает ожидание в очереди и опрос результата.",
+    "uk-UA": "Час від прийняття завдання до отримання готового кадру інтерфейсом; включає очікування в черзі та опитування результату.",
+    "de-DE": "Zeit von der Annahme des Vorschauauftrags bis zum Empfang des fertigen Bildes durch die Oberfläche; einschließlich Warteschlange und Abfrage."
+  },
+  "Frames accepted by the recording encoder.": {
+    "es-ES": "Fotogramas aceptados por el codificador de grabación.",
+    "ru-RU": "Кадры, принятые кодировщиком записи.",
+    "uk-UA": "Кадри, прийняті кодувальником запису.",
+    "de-DE": "Vom Aufnahmekodierer angenommene Bilder."
+  },
+  "Recording frames skipped by its real pacing and admission policy.": {
+    "es-ES": "Fotogramas de grabación omitidos por la política real de temporización y admisión.",
+    "ru-RU": "Кадры записи, пропущенные действующей политикой синхронизации и приёма.",
+    "uk-UA": "Кадри запису, пропущені чинною політикою синхронізації та приймання.",
+    "de-DE": "Aufnahmebilder, die gemäß der tatsächlichen Taktungs- und Annahmerichtlinie übersprungen wurden."
+  },
+  "Missing recording audio frames filled by the output policy.": {
+    "es-ES": "Fotogramas de audio de grabación ausentes, completados por la política de salida.",
+    "ru-RU": "Отсутствующие аудиокадры записи, восполненные согласно политике выхода.",
+    "uk-UA": "Відсутні аудіокадри запису, заповнені згідно з політикою виходу.",
+    "de-DE": "Fehlende Audioframes der Aufnahme, die gemäß der Ausgaberichtlinie aufgefüllt wurden."
+  },
+  "Frames accepted by the streaming encoder.": {
+    "es-ES": "Fotogramas aceptados por el codificador de transmisión.",
+    "ru-RU": "Кадры, принятые кодировщиком стриминга.",
+    "uk-UA": "Кадри, прийняті кодувальником трансляції.",
+    "de-DE": "Vom Streamingkodierer angenommene Bilder."
+  },
+  "Streaming frames skipped by its real pacing and admission policy.": {
+    "es-ES": "Fotogramas de transmisión omitidos por la política real de temporización y admisión.",
+    "ru-RU": "Кадры стриминга, пропущенные действующей политикой синхронизации и приёма.",
+    "uk-UA": "Кадри трансляції, пропущені чинною політикою синхронізації та приймання.",
+    "de-DE": "Streamingbilder, die gemäß der tatsächlichen Taktungs- und Annahmerichtlinie übersprungen wurden."
+  },
+  "Actual encoded stream payload bytes; excludes transport overhead.": {
+    "es-ES": "Bytes reales de contenido codificado de la transmisión; no incluyen la sobrecarga de transporte.",
+    "ru-RU": "Фактический объём закодированных данных потока без транспортных накладных расходов.",
+    "uk-UA": "Фактичний обсяг закодованих даних потоку без транспортних накладних витрат.",
+    "de-DE": "Tatsächliche kodierte Nutzdatenbytes des Streams, ohne Transportaufwand."
+  },
+  "Encoded payload rate over the last statistics interval; this is not network throughput.": {
+    "es-ES": "Tasa del contenido codificado durante el último intervalo de estadísticas; no es el caudal de red.",
+    "ru-RU": "Скорость закодированных данных за последний интервал статистики; это не пропускная способность сети.",
+    "uk-UA": "Швидкість закодованих даних за останній інтервал статистики; це не пропускна здатність мережі.",
+    "de-DE": "Rate der kodierten Nutzdaten im letzten Statistikintervall; kein Netzwerkdurchsatz."
+  },
+  "Encoded packets successfully published by the streaming owner.": {
+    "es-ES": "Paquetes codificados publicados correctamente por el servicio de transmisión.",
+    "ru-RU": "Закодированные пакеты, успешно опубликованные службой стриминга.",
+    "uk-UA": "Закодовані пакети, успішно опубліковані службою трансляції.",
+    "de-DE": "Vom Streamingdienst erfolgreich veröffentlichte kodierte Pakete."
+  },
+  "Current virtual-camera producer state.": {
+    "es-ES": "Estado actual del productor de cámara virtual.",
+    "ru-RU": "Текущее состояние источника виртуальной камеры.",
+    "uk-UA": "Поточний стан джерела віртуальної камери.",
+    "de-DE": "Aktueller Zustand des Erzeugers der virtuellen Kamera."
+  },
+  "Program frames written to the virtual-camera producer. A receiving application is reported separately in camera settings.": {
+    "es-ES": "Fotogramas de Programa escritos en el productor de cámara virtual. La aplicación receptora se informa por separado en los ajustes de cámara.",
+    "ru-RU": "Кадры Program, переданные источнику виртуальной камеры. Подключение принимающего приложения отображается отдельно в настройках камеры.",
+    "uk-UA": "Кадри Program, передані джерелу віртуальної камери. Підключення застосунку-одержувача відображається окремо в налаштуваннях камери.",
+    "de-DE": "An den Erzeuger der virtuellen Kamera übergebene Programmbilder. Eine empfangende Anwendung wird separat in den Kameraeinstellungen angezeigt."
+  },
+  "Source filters": {
+    "es-ES": "Filtros de fuente",
+    "ru-RU": "Фильтры источников",
+    "uk-UA": "Фільтри джерел",
+    "de-DE": "Quellenfilter"
+  },
+  "Filter computations": {
+    "es-ES": "Cálculos de filtros",
+    "ru-RU": "Вычисления фильтров",
+    "uk-UA": "Обчислення фільтрів",
+    "de-DE": "Filterberechnungen"
+  },
+  "Shared filter hits": {
+    "es-ES": "Resultados de filtro reutilizados",
+    "ru-RU": "Повторно использованные результаты фильтров",
+    "uk-UA": "Повторно використані результати фільтрів",
+    "de-DE": "Wiederverwendete Filterergebnisse"
+  },
+  "Shared filter joins": {
+    "es-ES": "Cálculos de filtro compartidos",
+    "ru-RU": "Ожидания общего расчёта фильтров",
+    "uk-UA": "Очікування спільного обчислення фільтрів",
+    "de-DE": "Gemeinsame Filterberechnungen"
+  },
+  "Filter service memory": {
+    "es-ES": "Memoria del servicio de filtros",
+    "ru-RU": "Память службы фильтров",
+    "uk-UA": "Пам’ять служби фільтрів",
+    "de-DE": "Speicher des Filterdienstes"
+  },
+  "Source-filter computations performed by the shared service.": {
+    "es-ES": "Cálculos de filtros de fuente realizados por el servicio compartido.",
+    "ru-RU": "Вычисления фильтров источников, выполненные общей службой.",
+    "uk-UA": "Обчислення фільтрів джерел, виконані спільною службою.",
+    "de-DE": "Vom gemeinsamen Dienst ausgeführte Quellenfilterberechnungen."
+  },
+  "Completed filter results reused for the exact same input frame and settings.": {
+    "es-ES": "Resultados de filtros terminados reutilizados para exactamente el mismo fotograma y los mismos ajustes.",
+    "ru-RU": "Готовые результаты фильтров, повторно использованные для того же входного кадра и тех же настроек.",
+    "uk-UA": "Готові результати фільтрів, повторно використані для того самого вхідного кадру та тих самих налаштувань.",
+    "de-DE": "Fertige Filterergebnisse, die für exakt dasselbe Eingabebild und dieselben Einstellungen wiederverwendet wurden."
+  },
+  "Render callers waiting for the same in-progress filter computation instead of starting another one.": {
+    "es-ES": "Solicitudes de renderizado que esperan el mismo cálculo de filtros en curso en vez de iniciar otro.",
+    "ru-RU": "Запросы отрисовки, ожидающие уже выполняющийся общий расчёт фильтров вместо запуска ещё одного.",
+    "uk-UA": "Запити відмальовування, що очікують на вже виконуване спільне обчислення фільтрів замість запуску ще одного.",
+    "de-DE": "Renderaufrufe, die auf dieselbe laufende Filterberechnung warten, statt eine weitere zu starten."
+  },
+  "Memory credits held by active filter work, retained results and their render leases.": {
+    "es-ES": "Memoria reservada para cálculos de filtros activos, resultados retenidos y sus referencias de renderizado.",
+    "ru-RU": "Память, зарезервированная для выполняющихся фильтров, сохранённых результатов и их использования обработчиками отрисовки.",
+    "uk-UA": "Пам’ять, зарезервована для виконуваних фільтрів, збережених результатів та їх використання обробниками відмальовування.",
+    "de-DE": "Für aktive Filterarbeit, gespeicherte Ergebnisse und deren Renderreferenzen reservierter Speicher."
+  },
+  "Current Replay Buffer state reported by its owner.": {
+    "es-ES": "Estado actual del búfer de repetición notificado por su servicio.",
+    "ru-RU": "Текущее состояние буфера повтора, сообщённое его службой.",
+    "uk-UA": "Поточний стан буфера повтору, повідомлений його службою.",
+    "de-DE": "Vom Replay-Dienst gemeldeter aktueller Zustand."
+  },
+  "Retained duration": {
+    "es-ES": "Duración retenida",
+    "ru-RU": "Сохранённая длительность",
+    "uk-UA": "Збережена тривалість",
+    "de-DE": "Vorgehaltene Dauer"
+  },
+  "Encoded time span retained by Replay Buffer. Memory pressure can shorten it.": {
+    "es-ES": "Intervalo codificado retenido por el búfer de repetición. La presión de memoria puede acortarlo.",
+    "ru-RU": "Длительность закодированных данных в буфере повтора. При нехватке памяти она может сокращаться.",
+    "uk-UA": "Тривалість закодованих даних у буфері повтору. За нестачі пам’яті вона може скорочуватися.",
+    "de-DE": "Im Replay-Puffer vorgehaltener kodierter Zeitraum. Speicherdruck kann ihn verkürzen."
+  },
+  "Encoded payloads currently retained in the replay ring.": {
+    "es-ES": "Datos codificados retenidos actualmente en el búfer circular de repetición.",
+    "ru-RU": "Закодированные данные, находящиеся сейчас в кольце буфера повтора.",
+    "uk-UA": "Закодовані дані, що зараз містяться в кільці буфера повтору.",
+    "de-DE": "Aktuell im Replay-Ring vorgehaltene kodierte Nutzdaten."
+  },
+  "Replay memory": {
+    "es-ES": "Memoria de repetición",
+    "ru-RU": "Память буфера повтора",
+    "uk-UA": "Пам’ять буфера повтору",
+    "de-DE": "Replay-Speicher"
+  },
+  "Accounted replay memory, including payloads pinned by an in-progress save.": {
+    "es-ES": "Memoria contabilizada de repetición, incluidos los datos fijados por un guardado en curso.",
+    "ru-RU": "Учтённая память буфера повтора, включая данные, удерживаемые текущим сохранением.",
+    "uk-UA": "Врахована пам’ять буфера повтору, включно з даними, утримуваними поточним збереженням.",
+    "de-DE": "Angerechneter Replay-Speicher einschließlich der für eine laufende Speicherung gebundenen Nutzdaten."
+  }
+}

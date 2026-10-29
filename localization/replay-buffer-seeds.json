@@ -1,0 +1,176 @@
+{
+  "Replay Buffer": {
+    "es-ES": "Búfer de repetición",
+    "ru-RU": "Буфер повтора",
+    "uk-UA": "Буфер повтору",
+    "de-DE": "Wiederholungspuffer"
+  },
+  "Start Replay Buffer": {
+    "es-ES": "Iniciar búfer de repetición",
+    "ru-RU": "Запустить буфер повтора",
+    "uk-UA": "Запустити буфер повтору",
+    "de-DE": "Wiederholungspuffer starten"
+  },
+  "Stop Replay Buffer": {
+    "es-ES": "Detener búfer de repetición",
+    "ru-RU": "Остановить буфер повтора",
+    "uk-UA": "Зупинити буфер повтору",
+    "de-DE": "Wiederholungspuffer stoppen"
+  },
+  "Starting Replay Buffer…": {
+    "es-ES": "Iniciando búfer de repetición…",
+    "ru-RU": "Запуск буфера повтора…",
+    "uk-UA": "Запуск буфера повтору…",
+    "de-DE": "Wiederholungspuffer wird gestartet…"
+  },
+  "Stopping Replay Buffer…": {
+    "es-ES": "Deteniendo búfer de repetición…",
+    "ru-RU": "Остановка буфера повтора…",
+    "uk-UA": "Зупинення буфера повтору…",
+    "de-DE": "Wiederholungspuffer wird gestoppt…"
+  },
+  "Save Replay": {
+    "es-ES": "Guardar repetición",
+    "ru-RU": "Сохранить повтор",
+    "uk-UA": "Зберегти повтор",
+    "de-DE": "Wiederholung speichern"
+  },
+  "Saving Replay…": {
+    "es-ES": "Guardando repetición…",
+    "ru-RU": "Сохранение повтора…",
+    "uk-UA": "Збереження повтору…",
+    "de-DE": "Wiederholung wird gespeichert…"
+  },
+  "Cancel Replay Save": {
+    "es-ES": "Cancelar guardado de la repetición",
+    "ru-RU": "Отменить сохранение повтора",
+    "uk-UA": "Скасувати збереження повтору",
+    "de-DE": "Speichern der Wiederholung abbrechen"
+  },
+  "Replay duration (seconds)": {
+    "es-ES": "Duración de la repetición (segundos)",
+    "ru-RU": "Длительность повтора (секунды)",
+    "uk-UA": "Тривалість повтору (секунди)",
+    "de-DE": "Dauer der Wiederholung (Sekunden)"
+  },
+  "Encoded buffer memory (MiB)": {
+    "es-ES": "Memoria del búfer codificado (MiB)",
+    "ru-RU": "Память буфера сжатых данных (МиБ)",
+    "uk-UA": "Пам’ять буфера стиснених даних (МіБ)",
+    "de-DE": "Speicher für den codierten Puffer (MiB)"
+  },
+  "Keep a recent encoded clip. Whole keyframes can add one GOP; memory pressure can shorten the clip.": {
+    "es-ES": "Conservar un clip reciente codificado. Los fotogramas clave completos pueden añadir un GOP; la presión de memoria puede acortar el clip.",
+    "ru-RU": "Хранить недавний сжатый фрагмент. Из-за границ ключевых кадров может добавиться одна группа кадров; нехватка памяти может сократить фрагмент.",
+    "uk-UA": "Зберігати нещодавній стиснений фрагмент. Через межі ключових кадрів може додатися одна група кадрів; нестача пам’яті може скоротити фрагмент.",
+    "de-DE": "Einen aktuellen codierten Clip speichern. Vollständige Schlüsselbildgruppen können eine GOP hinzufügen; Speicherdruck kann den Clip verkürzen."
+  },
+  "Bound encoded packets including clips pinned by a save. Renderer and codec working memory are separate.": {
+    "es-ES": "Limitar los paquetes codificados, incluidos los clips retenidos durante un guardado. La memoria de trabajo del renderizador y los códecs se contabiliza por separado.",
+    "ru-RU": "Ограничить сжатые пакеты, включая фрагменты, удерживаемые при сохранении. Рабочая память рендера и кодеков учитывается отдельно.",
+    "uk-UA": "Обмежити стиснені пакети, зокрема фрагменти, утримувані під час збереження. Робоча пам’ять рендера й кодеків обліковується окремо.",
+    "de-DE": "Codierte Pakete einschließlich der beim Speichern festgehaltenen Clips begrenzen. Der Arbeitsspeicher für Renderer und Codecs wird getrennt erfasst."
+  },
+  "Replay Buffer uses Windows software H.264/AAC packet encoders and the recording folder and bitrates. Changes apply on the next start.": {
+    "es-ES": "El búfer de repetición utiliza codificadores de paquetes H.264/AAC por software de Windows y la carpeta y las tasas de bits de grabación. Los cambios se aplican en el próximo inicio.",
+    "ru-RU": "Буфер повтора использует программные кодировщики пакетов H.264/AAC в Windows, а также папку и битрейты записи. Изменения применяются при следующем запуске буфера.",
+    "uk-UA": "Буфер повтору використовує програмні кодувальники пакетів H.264/AAC у Windows, а також папку й бітрейти запису. Зміни застосовуються під час наступного запуску буфера.",
+    "de-DE": "Der Wiederholungspuffer verwendet die H.264/AAC-Softwareencoder von Windows sowie den Aufnahmeordner und die Aufnahmebitraten. Änderungen gelten beim nächsten Start."
+  },
+  "Keep recent encoded Program video and audio in memory without continuous disk recording.": {
+    "es-ES": "Conservar en memoria el vídeo y el audio codificados recientes del programa sin grabar continuamente en disco.",
+    "ru-RU": "Хранить недавние сжатые видео и звук программы в памяти без постоянной записи на диск.",
+    "uk-UA": "Зберігати нещодавні стиснені відео та звук програми в пам’яті без постійного запису на диск.",
+    "de-DE": "Aktuelles codiertes Programmvideo und -audio im Speicher halten, ohne fortlaufend auf den Datenträger aufzunehmen."
+  },
+  "Keep recent encoded Program output in memory and save an MP4 replay on demand.": {
+    "es-ES": "Conservar en memoria la salida reciente codificada del programa y guardar una repetición MP4 cuando se solicite.",
+    "ru-RU": "Хранить недавний сжатый выход программы в памяти и сохранять повтор в MP4 по запросу.",
+    "uk-UA": "Зберігати нещодавній стиснений вихід програми в пам’яті та зберігати повтор у MP4 за запитом.",
+    "de-DE": "Die aktuelle codierte Programmausgabe im Speicher halten und bei Bedarf eine MP4-Wiederholung speichern."
+  },
+  "Replay Buffer packet encoders are available on Windows.": {
+    "es-ES": "Los codificadores de paquetes del búfer de repetición están disponibles en Windows.",
+    "ru-RU": "Пакетные кодировщики буфера повтора доступны в Windows.",
+    "uk-UA": "Пакетні кодувальники буфера повтору доступні у Windows.",
+    "de-DE": "Die Paketencoder des Wiederholungspuffers sind unter Windows verfügbar."
+  },
+  "Wait for the replay owner to stop.": {
+    "es-ES": "Espere a que se detenga el proceso del búfer de repetición.",
+    "ru-RU": "Дождитесь завершения работы буфера повтора.",
+    "uk-UA": "Дочекайтеся завершення роботи буфера повтору.",
+    "de-DE": "Warten, bis der Wiederholungspuffer beendet ist."
+  },
+  "Save a complete keyframe-aligned MP4 to the recording folder without overwriting an existing file.": {
+    "es-ES": "Guardar un MP4 completo alineado con fotogramas clave en la carpeta de grabación sin sobrescribir archivos existentes.",
+    "ru-RU": "Сохранить полный MP4 с началом на ключевом кадре в папку записи, не перезаписывая существующие файлы.",
+    "uk-UA": "Зберегти повний MP4 із початком на ключовому кадрі до папки запису, не перезаписуючи наявні файли.",
+    "de-DE": "Eine vollständige, an Schlüsselbildern ausgerichtete MP4 im Aufnahmeordner speichern, ohne vorhandene Dateien zu überschreiben."
+  },
+  "Wait for a complete video keyframe and encoded audio, or for the current save to finish.": {
+    "es-ES": "Espere a disponer de un fotograma clave de vídeo completo y audio codificado, o a que termine el guardado actual.",
+    "ru-RU": "Дождитесь полного ключевого видеокадра и сжатого звука либо завершения текущего сохранения.",
+    "uk-UA": "Дочекайтеся повного ключового відеокадру й стисненого звуку або завершення поточного збереження.",
+    "de-DE": "Auf ein vollständiges Videoschlüsselbild und codiertes Audio oder das Ende des laufenden Speichervorgangs warten."
+  },
+  "Cancel the pending save while keeping the replay buffer running. An already published file is retained.": {
+    "es-ES": "Cancelar el guardado pendiente sin detener el búfer de repetición. Se conserva cualquier archivo ya publicado.",
+    "ru-RU": "Отменить ожидающее сохранение, оставив буфер повтора работающим. Уже опубликованный файл сохраняется.",
+    "uk-UA": "Скасувати очікуване збереження, залишивши буфер повтору працювати. Уже опублікований файл зберігається.",
+    "de-DE": "Den ausstehenden Speichervorgang abbrechen und den Wiederholungspuffer weiterlaufen lassen. Eine bereits veröffentlichte Datei bleibt erhalten."
+  },
+  "Replay: {seconds} s · {memory} MiB encoded": {
+    "es-ES": "Repetición: {seconds} s · {memory} MiB codificados",
+    "ru-RU": "Повтор: {seconds} с · {memory} МиБ сжатых данных",
+    "uk-UA": "Повтор: {seconds} с · {memory} МіБ стиснених даних",
+    "de-DE": "Wiederholung: {seconds} s · {memory} MiB codiert"
+  },
+  "Replay Buffer: {error}": {
+    "es-ES": "Búfer de repetición: {error}",
+    "ru-RU": "Буфер повтора: {error}",
+    "uk-UA": "Буфер повтору: {error}",
+    "de-DE": "Wiederholungspuffer: {error}"
+  },
+  "Replay saved: {path}": {
+    "es-ES": "Repetición guardada: {path}",
+    "ru-RU": "Повтор сохранён: {path}",
+    "uk-UA": "Повтор збережено: {path}",
+    "de-DE": "Wiederholung gespeichert: {path}"
+  },
+  "Replay Buffer started": {
+    "es-ES": "Búfer de repetición iniciado",
+    "ru-RU": "Буфер повтора запущен",
+    "uk-UA": "Буфер повтору запущено",
+    "de-DE": "Wiederholungspuffer gestartet"
+  },
+  "Replay Buffer stopped": {
+    "es-ES": "Búfer de repetición detenido",
+    "ru-RU": "Буфер повтора остановлен",
+    "uk-UA": "Буфер повтору зупинено",
+    "de-DE": "Wiederholungspuffer gestoppt"
+  },
+  "Finish the document operation before starting Replay Buffer": {
+    "es-ES": "Finalice la operación del documento antes de iniciar el búfer de repetición",
+    "ru-RU": "Завершите операцию с документом перед запуском буфера повтора",
+    "uk-UA": "Завершіть операцію з документом перед запуском буфера повтору",
+    "de-DE": "Den Dokumentvorgang vor dem Start des Wiederholungspuffers abschließen"
+  },
+  "Audio worker is busy; try Replay Buffer again": {
+    "es-ES": "El proceso de audio está ocupado; vuelva a intentar iniciar el búfer de repetición",
+    "ru-RU": "Обработчик звука занят; повторите запуск буфера повтора",
+    "uk-UA": "Обробник звуку зайнятий; повторіть запуск буфера повтору",
+    "de-DE": "Die Audioverarbeitung ist ausgelastet; den Wiederholungspuffer erneut starten"
+  },
+  "Stop Replay Buffer before changing the audio/video format or active profile": {
+    "es-ES": "Detenga el búfer de repetición antes de cambiar el formato de audio/vídeo o el perfil activo",
+    "ru-RU": "Остановите буфер повтора перед изменением формата звука или видео либо активного профиля",
+    "uk-UA": "Зупиніть буфер повтору перед зміною формату звуку чи відео або активного профілю",
+    "de-DE": "Vor dem Ändern des Audio-/Videoformats oder des aktiven Profils den Wiederholungspuffer stoppen"
+  },
+  "Replay duration was shortened by the encoded memory limit.": {
+    "es-ES": "La duración de la repetición se ha reducido por el límite de memoria codificada.",
+    "ru-RU": "Длительность повтора сокращена из-за ограничения памяти сжатых данных.",
+    "uk-UA": "Тривалість повтору скорочено через обмеження пам’яті стиснених даних.",
+    "de-DE": "Die Dauer der Wiederholung wurde durch die Speichergrenze für codierte Daten verkürzt."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "reference": "supplied local OBS Studio 32.2.2",
+  "peeled_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "license": "GPL-2.0-or-later",
+  "license_reference": "assets/licenses/projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": ["libobs/obs-source.c", "plugins/image-source/obs-slideshow.c", "plugins/image-source/obs-slideshow-mk2.c", "plugins/obs-ffmpeg/obs-ffmpeg-source.c"],
+  "scope": "source duplicate hotkey ownership and actual source showing/manual/paused playback hotkey semantics; native registry reuses the existing Rust Windows adapter",
+  "execution": "source-only; no build, native registration, playback, key or UI execution"
+}

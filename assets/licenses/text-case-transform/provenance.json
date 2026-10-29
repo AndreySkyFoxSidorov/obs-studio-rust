@@ -1,0 +1,9 @@
+{
+  "project": "OBS Studio",
+  "tag": "32.2.2",
+  "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "source": "plugins/obs-text/gdiplus/obs-text.cpp",
+  "license": "GPL-2.0-or-later",
+  "license_copy": "../obs-render-delay/OBS-GPL-2.0-or-later.txt",
+  "scope": "Text transform choices and Startcase whitespace/punctuation state machine; adapted to portable Unicode per-scalar mapping with bounded expansion; no GDI glyph or locale-specific equivalence claimed"
+}

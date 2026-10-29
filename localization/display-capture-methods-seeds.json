@@ -1,0 +1,50 @@
+{
+  "Windows Graphics Capture": {
+    "es-ES": "Windows Graphics Capture",
+    "ru-RU": "Windows Graphics Capture",
+    "uk-UA": "Windows Graphics Capture",
+    "de-DE": "Windows Graphics Capture"
+  },
+  "Prefer DXGI with optional cursor. Use GDI compatibility after a reported DXGI failure; waiting for a new frame never changes methods.": {
+    "es-ES": "Prioriza DXGI con cursor opcional. Usa la compatibilidad GDI tras un fallo de DXGI notificado; esperar un nuevo fotograma nunca cambia el método.",
+    "ru-RU": "Предпочитать DXGI с необязательным курсором. После ошибки DXGI с диагностикой использовать совместимый GDI; ожидание нового кадра не меняет метод.",
+    "uk-UA": "Надавати перевагу DXGI з необов’язковим курсором. Після помилки DXGI з діагностикою використовувати сумісний GDI; очікування нового кадру не змінює метод.",
+    "de-DE": "DXGI mit optionalem Mauszeiger bevorzugen. Nach einem gemeldeten DXGI-Fehler GDI-Kompatibilität nutzen; das Warten auf ein neues Bild ändert die Methode nicht."
+  },
+  "Use real DXGI Desktop Duplication with optional color, masked-color or monochrome cursor. An ordinary no-new-frame wait retains the last admitted image.": {
+    "es-ES": "Usa DXGI Desktop Duplication real con cursor opcional de color, color enmascarado o monocromo. La espera normal conserva la última imagen admitida.",
+    "ru-RU": "Использовать настоящий DXGI Desktop Duplication с необязательным цветным, маскированным или монохромным курсором. При обычном ожидании сохраняется последний принятый кадр.",
+    "uk-UA": "Використовувати справжній DXGI Desktop Duplication з необов’язковим кольоровим, маскованим або монохромним курсором. Під час звичайного очікування зберігається останній прийнятий кадр.",
+    "de-DE": "Echte DXGI Desktop Duplication mit optionalem farbigem, maskiertem oder monochromem Mauszeiger verwenden. Beim normalen Warten bleibt das zuletzt angenommene Bild erhalten."
+  },
+  "DXGI Desktop Duplication requires a Windows display target and a supported graphics adapter.": {
+    "es-ES": "DXGI Desktop Duplication requiere una pantalla de Windows y un adaptador gráfico compatible.",
+    "ru-RU": "Для DXGI Desktop Duplication нужен монитор Windows и поддерживаемый графический адаптер.",
+    "uk-UA": "Для DXGI Desktop Duplication потрібен монітор Windows і підтримуваний графічний адаптер.",
+    "de-DE": "DXGI Desktop Duplication benötigt einen Windows-Bildschirm und einen unterstützten Grafikadapter."
+  },
+  "Capture the full monitor with Windows Graphics Capture. Requires Windows 10 1903 or newer; disabling the cursor requires runtime cursor-toggle support.": {
+    "es-ES": "Captura el monitor completo con Windows Graphics Capture. Requiere Windows 10 1903 o posterior; ocultar el cursor requiere soporte para alternarlo en el sistema.",
+    "ru-RU": "Захватывать весь монитор через Windows Graphics Capture. Нужна Windows 10 1903 или новее; для отключения курсора система должна поддерживать его переключение.",
+    "uk-UA": "Захоплювати весь монітор через Windows Graphics Capture. Потрібна Windows 10 1903 або новіша; для вимкнення курсора система має підтримувати його перемикання.",
+    "de-DE": "Den gesamten Monitor mit Windows Graphics Capture erfassen. Benötigt Windows 10 1903 oder neuer; zum Ausblenden des Mauszeigers muss das System dessen Umschaltung unterstützen."
+  },
+  "Windows Graphics Capture requires a Windows display target and runtime support.": {
+    "es-ES": "Windows Graphics Capture requiere una pantalla de Windows y compatibilidad del sistema.",
+    "ru-RU": "Для Windows Graphics Capture нужен монитор Windows и поддержка со стороны системы.",
+    "uk-UA": "Для Windows Graphics Capture потрібен монітор Windows і підтримка з боку системи.",
+    "de-DE": "Windows Graphics Capture benötigt einen Windows-Bildschirm und Laufzeitunterstützung."
+  },
+  "Automatic prefers DXGI with optional cursor; reported DXGI failures can use GDI compatibility. Select WGC explicitly to use Windows Graphics Capture. Ordinary no-new-frame waits never switch methods.": {
+    "es-ES": "Automático prioriza DXGI con cursor opcional; tras errores notificados puede usar GDI. Selecciona WGC explícitamente para usar Windows Graphics Capture. La espera normal nunca cambia el método.",
+    "ru-RU": "Автоматический режим предпочитает DXGI с необязательным курсором; после ошибки с диагностикой может использовать GDI. Для Windows Graphics Capture выберите WGC явно. Обычное ожидание кадра не меняет метод.",
+    "uk-UA": "Автоматичний режим надає перевагу DXGI з необов’язковим курсором; після помилки з діагностикою може використовувати GDI. Для Windows Graphics Capture виберіть WGC явно. Звичайне очікування кадру не змінює метод.",
+    "de-DE": "Automatisch bevorzugt DXGI mit optionalem Mauszeiger; nach gemeldeten Fehlern kann GDI genutzt werden. Für Windows Graphics Capture WGC ausdrücklich wählen. Normales Warten ändert die Methode nicht."
+  },
+  "SDR Auto/DXGI Desktop Duplication with cursor, WGC monitor capture, or GDI compatibility. WGC requires Windows 10 1903 or newer; cursor toggling depends on runtime support. Auto reports DXGI failures before falling back to GDI; ordinary timeout never falls back.": {
+    "es-ES": "SDR con Auto/DXGI Desktop Duplication y cursor, captura WGC o compatibilidad GDI. WGC requiere Windows 10 1903 o posterior; alternar el cursor depende del sistema. Auto informa los errores de DXGI antes de recurrir a GDI; un tiempo de espera normal no cambia el método.",
+    "ru-RU": "SDR: Auto/DXGI Desktop Duplication с курсором, захват монитора WGC или совместимый GDI. Для WGC нужна Windows 10 1903 или новее; переключение курсора зависит от системы. Auto сообщает об ошибке DXGI перед переходом на GDI; обычное ожидание не вызывает переход.",
+    "uk-UA": "SDR: Auto/DXGI Desktop Duplication з курсором, захоплення монітора WGC або сумісний GDI. Для WGC потрібна Windows 10 1903 або новіша; перемикання курсора залежить від системи. Auto повідомляє про помилку DXGI перед переходом на GDI; звичайне очікування не викликає переходу.",
+    "de-DE": "SDR mit Auto/DXGI Desktop Duplication und Mauszeiger, WGC-Monitorerfassung oder GDI-Kompatibilität. WGC benötigt Windows 10 1903 oder neuer; die Zeigerumschaltung hängt vom System ab. Auto meldet DXGI-Fehler vor dem Wechsel zu GDI; normale Zeitüberschreitungen lösen keinen Wechsel aus."
+  }
+}

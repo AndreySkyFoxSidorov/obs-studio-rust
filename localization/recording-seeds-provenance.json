@@ -1,0 +1,12 @@
+{
+  "policy": "Assistant-authored ES/RU/UK/DE recording Settings captions/help and exact validation strings, reconstructed against current source after filename collision; no translation service or native-linguist review. Preserve existing nonempty CSV cells. Runtime recording messages are owned separately in recording-runtime-seeds.json.",
+  "source_files": [
+    "apps/desktop/src/views/recording_settings.rs",
+    "apps/desktop/src/app_recording.rs",
+    "apps/desktop/src/views/docks.rs",
+    "crates/core/src/recording.rs"
+  ],
+  "runtime_note": "Core validation strings are dynamic error values; include these reviewed keys explicitly when constructing the catalog, as for camera runtime notes.",
+  "csv_publication": "Not performed by this agent.",
+  "seed_file": "localization/recording-settings-seeds.json"
+}

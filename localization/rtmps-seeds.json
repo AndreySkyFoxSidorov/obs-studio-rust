@@ -1,0 +1,32 @@
+{
+  "Custom RTMP / RTMPS · H.264 · AAC": {
+    "es-ES": "RTMP / RTMPS personalizado · H.264 · AAC",
+    "ru-RU": "Свой сервер RTMP / RTMPS · H.264 · AAC",
+    "uk-UA": "Власний сервер RTMP / RTMPS · H.264 · AAC",
+    "de-DE": "Benutzerdefiniertes RTMP / RTMPS · H.264 · AAC"
+  },
+  "Configure an RTMP or RTMPS server. On Windows, RTMPS uses TLS 1.2 and validates the server certificate and hostname. Applying settings never starts a connection.": {
+    "es-ES": "Configura un servidor RTMP o RTMPS. En Windows, RTMPS usa TLS 1.2 y valida el certificado y el nombre del servidor. Aplicar los ajustes no inicia una conexión.",
+    "ru-RU": "Укажите сервер RTMP или RTMPS. В Windows RTMPS использует TLS 1.2 и проверяет сертификат и имя сервера. Применение настроек не запускает соединение.",
+    "uk-UA": "Укажіть сервер RTMP або RTMPS. У Windows RTMPS використовує TLS 1.2 і перевіряє сертифікат та ім’я сервера. Застосування налаштувань не запускає з’єднання.",
+    "de-DE": "Konfigurieren Sie einen RTMP- oder RTMPS-Server. Unter Windows verwendet RTMPS TLS 1.2 und prüft Zertifikat und Servernamen. Das Anwenden startet keine Verbindung."
+  },
+  "Enter rtmp://host[:port]/application or rtmps://host[:port]/application. Default ports are 1935 and 443. IPv6 uses brackets; editing does not connect.": {
+    "es-ES": "Introduce rtmp://host[:puerto]/aplicación o rtmps://host[:puerto]/aplicación. Los puertos predeterminados son 1935 y 443. IPv6 usa corchetes; editar no conecta.",
+    "ru-RU": "Введите rtmp://сервер[:порт]/приложение или rtmps://сервер[:порт]/приложение. Порты по умолчанию: 1935 и 443. IPv6 указывается в скобках; редактирование не открывает соединение.",
+    "uk-UA": "Введіть rtmp://сервер[:порт]/застосунок або rtmps://сервер[:порт]/застосунок. Типові порти: 1935 і 443. IPv6 вказується в дужках; редагування не відкриває з’єднання.",
+    "de-DE": "Geben Sie rtmp://Host[:Port]/Anwendung oder rtmps://Host[:Port]/Anwendung ein. Standardports: 1935 und 443. IPv6 steht in eckigen Klammern; beim Bearbeiten wird keine Verbindung geöffnet."
+  },
+  "Use an rtmp:// or rtmps:// server URL.": {
+    "es-ES": "Usa una URL de servidor rtmp:// o rtmps://.",
+    "ru-RU": "Используйте адрес сервера rtmp:// или rtmps://.",
+    "uk-UA": "Використовуйте адресу сервера rtmp:// або rtmps://.",
+    "de-DE": "Verwenden Sie eine Server-URL mit rtmp:// oder rtmps://."
+  },
+  "Streaming server URL exceeds 4096 UTF-8 bytes or contains controls.": {
+    "es-ES": "La URL del servidor supera 4096 bytes UTF-8 o contiene caracteres de control.",
+    "ru-RU": "Адрес сервера превышает 4096 байт UTF-8 или содержит управляющие символы.",
+    "uk-UA": "Адреса сервера перевищує 4096 байтів UTF-8 або містить керівні символи.",
+    "de-DE": "Die Server-URL überschreitet 4096 UTF-8-Bytes oder enthält Steuerzeichen."
+  }
+}

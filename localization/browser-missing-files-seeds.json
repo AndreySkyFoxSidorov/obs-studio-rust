@@ -1,0 +1,158 @@
+{
+  "HTML files": {
+    "es-ES": "Archivos HTML",
+    "ru-RU": "HTML-файлы",
+    "uk-UA": "HTML-файли",
+    "de-DE": "HTML-Dateien"
+  },
+  "Local Browser HTML can be relinked without changing its CSS, viewport, frame rate or audio settings. The page and its linked resources are not parsed or started during preparation.": {
+    "es-ES": "El HTML local del navegador se puede volver a vincular sin cambiar su CSS, tamaño, frecuencia de fotogramas ni audio. La preparación no analiza ni inicia la página ni sus recursos vinculados.",
+    "ru-RU": "Локальный HTML браузера можно заменить, сохранив CSS, размер, частоту кадров и настройки звука. При подготовке страница и связанные ресурсы не разбираются и не запускаются.",
+    "uk-UA": "Локальний HTML браузера можна замінити, зберігши CSS, розмір, частоту кадрів і налаштування звуку. Під час підготовки сторінка та пов’язані ресурси не аналізуються й не запускаються.",
+    "de-DE": "Lokales Browser-HTML lässt sich neu verknüpfen, ohne CSS, Ansichtsgröße, Bildrate oder Audioeinstellungen zu ändern. Seite und verknüpfte Ressourcen werden bei der Vorbereitung weder analysiert noch gestartet."
+  },
+  "Check that this local HTML path is a regular readable file. HTML content is not parsed, executed or loaded into a browser.": {
+    "es-ES": "Comprueba que esta ruta HTML local sea un archivo normal legible. Su contenido no se analiza, ejecuta ni carga en un navegador.",
+    "ru-RU": "Проверить, что локальный путь HTML указывает на обычный читаемый файл. HTML не разбирается, не выполняется и не загружается в браузер.",
+    "uk-UA": "Перевірити, що локальний шлях HTML указує на звичайний доступний для читання файл. HTML не аналізується, не виконується й не завантажується в браузер.",
+    "de-DE": "Prüfen, ob der lokale HTML-Pfad auf eine normale lesbare Datei verweist. HTML-Inhalte werden weder analysiert noch ausgeführt oder in einen Browser geladen."
+  },
+  "Browser HTML replacement must be a regular readable file": {
+    "es-ES": "El reemplazo HTML del navegador debe ser un archivo normal legible",
+    "ru-RU": "Замена HTML браузера должна быть обычным читаемым файлом",
+    "uk-UA": "Заміна HTML браузера має бути звичайним доступним для читання файлом",
+    "de-DE": "Der Browser-HTML-Ersatz muss eine normale lesbare Datei sein"
+  },
+  "browser relink requires an existing local HTML source": {
+    "es-ES": "volver a vincular el navegador requiere una fuente HTML local existente",
+    "ru-RU": "для замены пути браузера нужен существующий источник локального HTML",
+    "uk-UA": "для заміни шляху браузера потрібне наявне джерело локального HTML",
+    "de-DE": "zum Neuverknüpfen ist eine vorhandene lokale HTML-Quelle erforderlich"
+  },
+  "browser HTML relink cannot change a local source into a URL": {
+    "es-ES": "volver a vincular HTML no puede convertir una fuente local en una URL",
+    "ru-RU": "замена HTML не может превратить локальный источник в URL",
+    "uk-UA": "заміна HTML не може перетворити локальне джерело на URL",
+    "de-DE": "HTML-Neuverknüpfung darf keine lokale Quelle in eine URL umwandeln"
+  },
+  "browser HTML relink must retain every setting except its local file path": {
+    "es-ES": "volver a vincular HTML debe conservar todos los ajustes salvo la ruta del archivo local",
+    "ru-RU": "замена HTML должна сохранить все настройки, кроме пути локального файла",
+    "uk-UA": "заміна HTML має зберегти всі налаштування, крім шляху локального файлу",
+    "de-DE": "HTML-Neuverknüpfung muss alle Einstellungen außer dem lokalen Dateipfad beibehalten"
+  },
+  "Browser reload requires an existing Browser Source": {
+    "es-ES": "La recarga requiere una fuente Navegador existente",
+    "ru-RU": "Для перезагрузки нужен существующий источник «Браузер»",
+    "uk-UA": "Для перезавантаження потрібне наявне джерело «Браузер»",
+    "de-DE": "Zum Neuladen ist eine vorhandene Browserquelle erforderlich"
+  },
+  "Browser reload target exceeds its metadata bound": {
+    "es-ES": "El destino de recarga del navegador supera el límite de metadatos",
+    "ru-RU": "Цель перезагрузки браузера превышает лимит метаданных",
+    "uk-UA": "Ціль перезавантаження браузера перевищує ліміт метаданих",
+    "de-DE": "Das Browser-Neuladeziel überschreitet das Metadatenlimit"
+  },
+  "Dormant Browser Source invalidated; its page was not started.": {
+    "es-ES": "Se ha invalidado la fuente Navegador inactiva; su página no se ha iniciado.",
+    "ru-RU": "Данные неактивного источника «Браузер» сброшены; его страница не запускалась.",
+    "uk-UA": "Дані неактивного джерела «Браузер» скинуто; його сторінка не запускалася.",
+    "de-DE": "Die inaktive Browserquelle wurde invalidiert; ihre Seite wurde nicht gestartet."
+  },
+  "Browser reload admitted; native navigation and first paint remain pending.": {
+    "es-ES": "Recarga del navegador admitida; la navegación nativa y el primer fotograma siguen pendientes.",
+    "ru-RU": "Перезагрузка браузера принята; переход и первый кадр ещё ожидаются.",
+    "uk-UA": "Перезавантаження браузера прийнято; перехід і перший кадр ще очікуються.",
+    "de-DE": "Browser-Neuladen zugelassen; native Navigation und erstes Bild stehen noch aus."
+  },
+  "Linked files were applied, but Browser reload failed: {error}": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero falló la recarga del navegador: {error}",
+    "ru-RU": "Замены файлов применены, но перезагрузка браузера не удалась: {error}",
+    "uk-UA": "Заміни файлів застосовано, але перезавантаження браузера не вдалося: {error}",
+    "de-DE": "Dateiverknüpfungen wurden angewendet, aber das Browser-Neuladen schlug fehl: {error}"
+  },
+  "Linked files were applied, but the Browser reload queue exceeded its bound.": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero la cola de recarga del navegador superó su límite.",
+    "ru-RU": "Замены файлов применены, но очередь перезагрузки браузера превысила лимит.",
+    "uk-UA": "Заміни файлів застосовано, але черга перезавантаження браузера перевищила ліміт.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet, aber die Browser-Neuladewarteschlange überschritt ihr Limit."
+  },
+  "Linked files were applied; a changed source invalidated its pending Browser reload.": {
+    "es-ES": "Se aplicaron los archivos vinculados; un cambio en la fuente invalidó su recarga de navegador pendiente.",
+    "ru-RU": "Замены файлов применены; изменение источника сделало ожидающую перезагрузку браузера неактуальной.",
+    "uk-UA": "Заміни файлів застосовано; зміна джерела зробила очікуване перезавантаження браузера неактуальним.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet; eine Quellenänderung machte das ausstehende Browser-Neuladen ungültig."
+  },
+  "Linked files were applied; the dormant Browser Source was invalidated without starting its page.": {
+    "es-ES": "Se aplicaron los archivos vinculados; la fuente Navegador inactiva se invalidó sin iniciar su página.",
+    "ru-RU": "Замены файлов применены; данные неактивного источника «Браузер» сброшены без запуска его страницы.",
+    "uk-UA": "Заміни файлів застосовано; дані неактивного джерела «Браузер» скинуто без запуску його сторінки.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet; die inaktive Browserquelle wurde ohne Seitenstart invalidiert."
+  },
+  "Linked files were applied; Browser reload was admitted. Page readiness is reported separately.": {
+    "es-ES": "Se aplicaron los archivos vinculados; se admitió la recarga del navegador. La disponibilidad de la página se comunica por separado.",
+    "ru-RU": "Замены файлов применены; перезагрузка браузера принята. Готовность страницы сообщается отдельно.",
+    "uk-UA": "Заміни файлів застосовано; перезавантаження браузера прийнято. Готовність сторінки повідомляється окремо.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet; das Browser-Neuladen wurde zugelassen. Die Seitenbereitschaft wird separat gemeldet."
+  },
+  "Linked files were applied; the reloaded Browser Source produced its first paint.": {
+    "es-ES": "Se aplicaron los archivos vinculados; la fuente Navegador recargada produjo su primer fotograma.",
+    "ru-RU": "Замены файлов применены; перезагруженный источник «Браузер» передал первый кадр.",
+    "uk-UA": "Заміни файлів застосовано; перезавантажене джерело «Браузер» передало перший кадр.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet; die neu geladene Browserquelle lieferte ihr erstes Bild."
+  },
+  "Linked files were applied, but the Browser runtime did not admit its reload before the deadline.": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero el entorno del navegador no admitió la recarga dentro del plazo.",
+    "ru-RU": "Замены файлов применены, но среда браузера не приняла перезагрузку до истечения срока.",
+    "uk-UA": "Заміни файлів застосовано, але середовище браузера не прийняло перезавантаження до завершення строку.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet, aber die Browser-Laufzeit ließ das Neuladen nicht fristgerecht zu."
+  },
+  "Linked files were applied, but the reloaded Browser Source has not produced its first paint before the deadline.": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero la fuente Navegador recargada no produjo el primer fotograma dentro del plazo.",
+    "ru-RU": "Замены файлов применены, но перезагруженный источник «Браузер» не передал первый кадр до истечения срока.",
+    "uk-UA": "Заміни файлів застосовано, але перезавантажене джерело «Браузер» не передало перший кадр до завершення строку.",
+    "de-DE": "Dateiverknüpfungen wurden angewendet, aber die neu geladene Browserquelle lieferte ihr erstes Bild nicht fristgerecht."
+  },
+  "browser_invalid: Browser reload requires an existing Browser Source": {
+    "es-ES": "browser_invalid: La recarga requiere una fuente Navegador existente",
+    "ru-RU": "browser_invalid: Для перезагрузки нужен существующий источник «Браузер»",
+    "uk-UA": "browser_invalid: Для перезавантаження потрібне наявне джерело «Браузер»",
+    "de-DE": "browser_invalid: Zum Neuladen ist eine vorhandene Browserquelle erforderlich"
+  },
+  "browser_invalid: Browser reload target exceeds its metadata bound": {
+    "es-ES": "browser_invalid: El destino de recarga del navegador supera el límite de metadatos",
+    "ru-RU": "browser_invalid: Цель перезагрузки браузера превышает лимит метаданных",
+    "uk-UA": "browser_invalid: Ціль перезавантаження браузера перевищує ліміт метаданих",
+    "de-DE": "browser_invalid: Das Browser-Neuladeziel überschreitet das Metadatenlimit"
+  },
+  "Linked files were applied, but runtime reload preparation failed: {error}": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero falló la preparación de la recarga en ejecución: {error}",
+    "ru-RU": "Замены файлов применены, но подготовка обновления ресурсов не удалась: {error}",
+    "uk-UA": "Заміни файлів застосовано, але підготовка оновлення ресурсів не вдалася: {error}",
+    "de-DE": "Dateiverknüpfungen wurden angewendet, aber die Vorbereitung des Laufzeit-Neuladens schlug fehl: {error}"
+  },
+  "Runtime reload targets exceed the shared 64-source repair bound": {
+    "es-ES": "Los destinos de recarga superan el límite compartido de 64 fuentes para reparación",
+    "ru-RU": "Цели обновления ресурсов превышают общий лимит восстановления в 64 источника",
+    "uk-UA": "Цілі оновлення ресурсів перевищують спільний ліміт відновлення у 64 джерела",
+    "de-DE": "Laufzeit-Neuladeziele überschreiten das gemeinsame Reparaturlimit von 64 Quellen"
+  },
+  "The committed media reload source changed": {
+    "es-ES": "La fuente multimedia confirmada para recarga ha cambiado",
+    "ru-RU": "Подтверждённый источник медиа для обновления изменился",
+    "uk-UA": "Підтверджене джерело медіа для оновлення змінилося",
+    "de-DE": "Die bestätigte Medienquelle zum Neuladen wurde geändert"
+  },
+  "Media reload target metadata exceeds 2 MiB": {
+    "es-ES": "Los metadatos de recarga multimedia superan 2 MiB",
+    "ru-RU": "Метаданные обновления медиа превышают 2 МиБ",
+    "uk-UA": "Метадані оновлення медіа перевищують 2 МіБ",
+    "de-DE": "Metadaten der Medien-Neuladeziele überschreiten 2 MiB"
+  },
+  "Combined media and Browser reload target metadata exceeds 8 MiB": {
+    "es-ES": "Los metadatos combinados de recarga multimedia y del navegador superan 8 MiB",
+    "ru-RU": "Общие метаданные обновления медиа и браузера превышают 8 МиБ",
+    "uk-UA": "Спільні метадані оновлення медіа та браузера перевищують 8 МіБ",
+    "de-DE": "Gemeinsame Metadaten der Medien- und Browser-Neuladeziele überschreiten 8 MiB"
+  }
+}

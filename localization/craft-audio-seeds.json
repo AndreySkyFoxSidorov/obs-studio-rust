@@ -1,0 +1,242 @@
+{
+  "Add Gate": {
+    "es-ES": "Añadir puerta de ruido",
+    "ru-RU": "Добавить шумовой гейт",
+    "uk-UA": "Додати шумовий гейт",
+    "de-DE": "Noise Gate hinzufügen"
+  },
+  "Add Simple EQ": {
+    "es-ES": "Añadir ecualizador simple",
+    "ru-RU": "Добавить простой эквалайзер",
+    "uk-UA": "Додати простий еквалайзер",
+    "de-DE": "Einfachen EQ hinzufügen"
+  },
+  "Gate {}": {
+    "es-ES": "Puerta de ruido {}",
+    "ru-RU": "Шумовой гейт {}",
+    "uk-UA": "Шумовий гейт {}",
+    "de-DE": "Noise Gate {}"
+  },
+  "Simple EQ {}": {
+    "es-ES": "Ecualizador simple {}",
+    "ru-RU": "Простой эквалайзер {}",
+    "uk-UA": "Простий еквалайзер {}",
+    "de-DE": "Einfacher EQ {}"
+  },
+  "Attenuation Range": {
+    "es-ES": "Rango de atenuación",
+    "ru-RU": "Диапазон ослабления",
+    "uk-UA": "Діапазон послаблення",
+    "de-DE": "Absenkungsbereich"
+  },
+  "Hold": {
+    "es-ES": "Retención",
+    "ru-RU": "Удержание",
+    "uk-UA": "Утримання",
+    "de-DE": "Haltezeit"
+  },
+  "Low Gain": {
+    "es-ES": "Ganancia de graves",
+    "ru-RU": "Усиление низких частот",
+    "uk-UA": "Підсилення низьких частот",
+    "de-DE": "Tiefenverstärkung"
+  },
+  "Low Frequency": {
+    "es-ES": "Frecuencia de graves",
+    "ru-RU": "Низкая частота",
+    "uk-UA": "Низька частота",
+    "de-DE": "Tiefenfrequenz"
+  },
+  "Mid Gain": {
+    "es-ES": "Ganancia de medios",
+    "ru-RU": "Усиление средних частот",
+    "uk-UA": "Підсилення середніх частот",
+    "de-DE": "Mittenverstärkung"
+  },
+  "Mid Frequency": {
+    "es-ES": "Frecuencia de medios",
+    "ru-RU": "Средняя частота",
+    "uk-UA": "Середня частота",
+    "de-DE": "Mittenfrequenz"
+  },
+  "Mid Q": {
+    "es-ES": "Q de medios",
+    "ru-RU": "Добротность средних частот",
+    "uk-UA": "Добротність середніх частот",
+    "de-DE": "Mittengüte Q"
+  },
+  "High Gain": {
+    "es-ES": "Ganancia de agudos",
+    "ru-RU": "Усиление высоких частот",
+    "uk-UA": "Підсилення високих частот",
+    "de-DE": "Höhenverstärkung"
+  },
+  "High Frequency": {
+    "es-ES": "Frecuencia de agudos",
+    "ru-RU": "Высокая частота",
+    "uk-UA": "Висока частота",
+    "de-DE": "Höhenfrequenz"
+  },
+  "Output Gain": {
+    "es-ES": "Ganancia de salida",
+    "ru-RU": "Выходное усиление",
+    "uk-UA": "Вихідне підсилення",
+    "de-DE": "Ausgangsverstärkung"
+  },
+  "Bypass or enable this gate without removing its settings.": {
+    "es-ES": "Desactivar o activar esta puerta de ruido conservando sus ajustes.",
+    "ru-RU": "Выключить или включить гейт, сохранив его настройки.",
+    "uk-UA": "Вимкнути або увімкнути гейт, зберігши його налаштування.",
+    "de-DE": "Dieses Gate umgehen oder aktivieren, ohne seine Einstellungen zu entfernen."
+  },
+  "Bypass or enable this equalizer without removing its settings.": {
+    "es-ES": "Desactivar o activar este ecualizador conservando sus ajustes.",
+    "ru-RU": "Выключить или включить эквалайзер, сохранив его настройки.",
+    "uk-UA": "Вимкнути або увімкнути еквалайзер, зберігши його налаштування.",
+    "de-DE": "Diesen Equalizer umgehen oder aktivieren, ohne seine Einstellungen zu entfernen."
+  },
+  "Attenuate quiet sound below the threshold. This gate changes the signal level, not its playback timing.": {
+    "es-ES": "Atenuar el sonido suave por debajo del umbral. Esta puerta modifica el nivel de la señal, sin cambiar su tiempo de reproducción.",
+    "ru-RU": "Ослаблять тихий звук ниже порога. Гейт изменяет уровень сигнала, сохраняя время его воспроизведения.",
+    "uk-UA": "Послаблювати тихий звук нижче порога. Гейт змінює рівень сигналу, зберігаючи час його відтворення.",
+    "de-DE": "Leise Signale unterhalb des Schwellenwerts absenken. Dieses Gate ändert den Signalpegel, nicht die zeitliche Wiedergabe."
+  },
+  "Three bands: low shelf, mid peak and high shelf. Q controls the width of the mid band.": {
+    "es-ES": "Tres bandas: estantería de graves, pico de medios y estantería de agudos. Q controla la anchura de la banda media.",
+    "ru-RU": "Три полосы: полочная низкая, пиковая средняя и полочная высокая. Добротность Q задаёт ширину средней полосы.",
+    "uk-UA": "Три смуги: полична низька, пікова середня та полична висока. Добротність Q задає ширину середньої смуги.",
+    "de-DE": "Drei Bänder: Tiefen-Shelf, Mitten-Peak und Höhen-Shelf. Q bestimmt die Breite des Mittenbands."
+  },
+  "Set the level below which the gate attenuates quiet sound.": {
+    "es-ES": "Definir el nivel por debajo del cual la puerta atenúa los sonidos suaves.",
+    "ru-RU": "Задайте уровень, ниже которого гейт ослабляет тихий звук.",
+    "uk-UA": "Задайте рівень, нижче якого гейт послаблює тихий звук.",
+    "de-DE": "Den Pegel festlegen, unterhalb dessen das Gate leise Signale absenkt."
+  },
+  "Set how strongly sound below the threshold is attenuated.": {
+    "es-ES": "Definir cuánto se atenúa el sonido por debajo del umbral.",
+    "ru-RU": "Задайте степень ослабления звука ниже порога.",
+    "uk-UA": "Задайте ступінь послаблення звуку нижче порога.",
+    "de-DE": "Festlegen, wie stark Signale unterhalb des Schwellenwerts abgesenkt werden."
+  },
+  "Limit how much the gate can reduce the signal level.": {
+    "es-ES": "Limitar cuánto puede reducir la puerta el nivel de la señal.",
+    "ru-RU": "Ограничьте максимальное ослабление сигнала гейтом.",
+    "uk-UA": "Обмежте максимальне послаблення сигналу гейтом.",
+    "de-DE": "Die maximale Pegelabsenkung durch das Gate begrenzen."
+  },
+  "Set how quickly the gate opens when sound becomes louder.": {
+    "es-ES": "Definir la rapidez de apertura cuando el sonido aumenta.",
+    "ru-RU": "Задайте скорость открытия гейта при повышении громкости.",
+    "uk-UA": "Задайте швидкість відкривання гейта під час підвищення гучності.",
+    "de-DE": "Festlegen, wie schnell sich das Gate bei lauteren Signalen öffnet."
+  },
+  "Keep the gate open for this long before it begins closing.": {
+    "es-ES": "Mantener la puerta abierta durante este tiempo antes de cerrarla.",
+    "ru-RU": "Удерживать гейт открытым указанное время перед началом закрытия.",
+    "uk-UA": "Утримувати гейт відкритим зазначений час перед початком закривання.",
+    "de-DE": "Das Gate vor dem Schließen so lange offen halten."
+  },
+  "Set how quickly the gate closes after the hold time.": {
+    "es-ES": "Definir la rapidez de cierre tras el tiempo de retención.",
+    "ru-RU": "Задайте скорость закрытия гейта после времени удержания.",
+    "uk-UA": "Задайте швидкість закривання гейта після часу утримання.",
+    "de-DE": "Festlegen, wie schnell sich das Gate nach der Haltezeit schließt."
+  },
+  "Boost or cut the low-frequency shelf.": {
+    "es-ES": "Realzar o atenuar la estantería de graves.",
+    "ru-RU": "Усилить или ослабить низкочастотную полку.",
+    "uk-UA": "Підсилити або послабити низькочастотну полицю.",
+    "de-DE": "Den Tiefen-Shelf anheben oder absenken."
+  },
+  "Set the low-shelf frequency from 20 to 1000 Hz.": {
+    "es-ES": "Definir la frecuencia de graves entre 20 y 1000 Hz.",
+    "ru-RU": "Задайте частоту низкочастотной полки от 20 до 1000 Гц.",
+    "uk-UA": "Задайте частоту низькочастотної полиці від 20 до 1000 Гц.",
+    "de-DE": "Die Tiefen-Shelf-Frequenz von 20 bis 1000 Hz einstellen."
+  },
+  "Boost or cut the mid-frequency band.": {
+    "es-ES": "Realzar o atenuar la banda de medios.",
+    "ru-RU": "Усилить или ослабить среднечастотную полосу.",
+    "uk-UA": "Підсилити або послабити середньочастотну смугу.",
+    "de-DE": "Das Mittenband anheben oder absenken."
+  },
+  "Set the mid-band center frequency from 100 to 10000 Hz.": {
+    "es-ES": "Definir la frecuencia central de medios entre 100 y 10000 Hz.",
+    "ru-RU": "Задайте центральную частоту средней полосы от 100 до 10000 Гц.",
+    "uk-UA": "Задайте центральну частоту середньої смуги від 100 до 10000 Гц.",
+    "de-DE": "Die Mittenfrequenz von 100 bis 10000 Hz einstellen."
+  },
+  "Set the mid-band width. A higher Q makes the band narrower.": {
+    "es-ES": "Definir la anchura de medios. Un Q mayor estrecha la banda.",
+    "ru-RU": "Задайте ширину средней полосы. Чем выше добротность Q, тем уже полоса.",
+    "uk-UA": "Задайте ширину середньої смуги. Що вища добротність Q, то вужча смуга.",
+    "de-DE": "Die Breite des Mittenbands einstellen. Ein höherer Q-Wert macht das Band schmaler."
+  },
+  "Boost or cut the high-frequency shelf.": {
+    "es-ES": "Realzar o atenuar la estantería de agudos.",
+    "ru-RU": "Усилить или ослабить высокочастотную полку.",
+    "uk-UA": "Підсилити або послабити високочастотну полицю.",
+    "de-DE": "Den Höhen-Shelf anheben oder absenken."
+  },
+  "Set the high-shelf frequency from 1000 to 20000 Hz.": {
+    "es-ES": "Definir la frecuencia de agudos entre 1000 y 20000 Hz.",
+    "ru-RU": "Задайте частоту высокочастотной полки от 1000 до 20000 Гц.",
+    "uk-UA": "Задайте частоту високочастотної полиці від 1000 до 20000 Гц.",
+    "de-DE": "Die Höhen-Shelf-Frequenz von 1000 bis 20000 Hz einstellen."
+  },
+  "Adjust the equalizer's overall output level.": {
+    "es-ES": "Ajustar el nivel general de salida del ecualizador.",
+    "ru-RU": "Отрегулируйте общий выходной уровень эквалайзера.",
+    "uk-UA": "Відрегулюйте загальний вихідний рівень еквалайзера.",
+    "de-DE": "Den gesamten Ausgangspegel des Equalizers einstellen."
+  },
+  "Static gate response · input −90…0 dB · output −180…0 dB": {
+    "es-ES": "Respuesta estática de la puerta · entrada −90…0 dB · salida −180…0 dB",
+    "ru-RU": "Статическая характеристика гейта · вход −90…0 дБ · выход −180…0 дБ",
+    "uk-UA": "Статична характеристика гейта · вхід −90…0 дБ · вихід −180…0 дБ",
+    "de-DE": "Statische Gate-Kennlinie · Eingang −90…0 dB · Ausgang −180…0 dB"
+  },
+  "The curve shows the gate's target level. Attack, hold and release control how quickly the sound follows it.": {
+    "es-ES": "La curva muestra el nivel objetivo de la puerta. Ataque, retención y liberación controlan la rapidez con que lo sigue el sonido.",
+    "ru-RU": "Кривая показывает целевой уровень гейта. Атака, удержание и восстановление определяют скорость изменения звука.",
+    "uk-UA": "Крива показує цільовий рівень гейта. Атака, утримання та відновлення визначають швидкість зміни звуку.",
+    "de-DE": "Die Kurve zeigt den Zielpegel des Gates. Attack, Haltezeit und Release bestimmen, wie schnell das Signal diesem folgt."
+  },
+  "EQ response · 20…20000 Hz · view −36…36 dB": {
+    "es-ES": "Respuesta del ecualizador · 20…20000 Hz · vista −36…36 dB",
+    "ru-RU": "Характеристика эквалайзера · 20…20000 Гц · шкала −36…36 дБ",
+    "uk-UA": "Характеристика еквалайзера · 20…20000 Гц · шкала −36…36 дБ",
+    "de-DE": "EQ-Frequenzgang · 20…20000 Hz · Ansicht −36…36 dB"
+  },
+  "The curve shows the target frequency response at the project's sample rate. Responses beyond the displayed gain range are clipped to the plot.": {
+    "es-ES": "La curva muestra la respuesta objetivo con la frecuencia de muestreo del proyecto. Los valores fuera del rango de ganancia se recortan en el gráfico.",
+    "ru-RU": "Кривая показывает целевую частотную характеристику при частоте дискретизации проекта. Значения за пределами шкалы усиления обрезаются на графике.",
+    "uk-UA": "Крива показує цільову частотну характеристику за частоти дискретизації проєкту. Значення поза шкалою підсилення обрізаються на графіку.",
+    "de-DE": "Die Kurve zeigt den Ziel-Frequenzgang bei der Abtastrate des Projekts. Werte außerhalb des angezeigten Verstärkungsbereichs werden im Diagramm abgeschnitten."
+  },
+  "Correct the filter parameters to display its response.": {
+    "es-ES": "Corrija los parámetros del filtro para mostrar su respuesta.",
+    "ru-RU": "Исправьте параметры фильтра, чтобы показать его характеристику.",
+    "uk-UA": "Виправте параметри фільтра, щоб показати його характеристику.",
+    "de-DE": "Korrigieren Sie die Filterparameter, um die Kennlinie anzuzeigen."
+  },
+  "Add a noise gate to attenuate quiet sound below a threshold.": {
+    "es-ES": "Añadir una puerta de ruido para atenuar sonidos por debajo de un umbral.",
+    "ru-RU": "Добавить шумовой гейт для ослабления тихого звука ниже порога.",
+    "uk-UA": "Додати шумовий гейт для послаблення тихого звуку нижче порога.",
+    "de-DE": "Ein Noise Gate hinzufügen, um leise Signale unter einem Schwellenwert abzusenken."
+  },
+  "Add a three-band equalizer with low, mid and high controls.": {
+    "es-ES": "Añadir un ecualizador de tres bandas con controles de graves, medios y agudos.",
+    "ru-RU": "Добавить трёхполосный эквалайзер с управлением низкими, средними и высокими частотами.",
+    "uk-UA": "Додати трисмуговий еквалайзер із керуванням низькими, середніми й високими частотами.",
+    "de-DE": "Einen Dreiband-Equalizer mit Tiefen-, Mitten- und Höhenreglern hinzufügen."
+  },
+  "Sampled-peak/RMS compressor, linked noise gate and three-band RBJ EQ with persistent source state; no look-ahead limiting or complete Craft audio parity.": {
+    "es-ES": "Compresor de picos de muestra/RMS, puerta de ruido enlazada y ecualizador RBJ de tres bandas con estado persistente por fuente; sin limitación anticipada ni equivalencia completa con Craft Audio.",
+    "ru-RU": "Компрессор по пикам отсчётов/RMS, связанный шумовой гейт и трёхполосный эквалайзер RBJ с постоянным состоянием источника; без лимитирования с упреждением и полного соответствия Craft Audio.",
+    "uk-UA": "Компресор за піками відліків/RMS, зв’язаний шумовий гейт і трисмуговий еквалайзер RBJ із постійним станом джерела; без лімітування з випередженням і повної відповідності Craft Audio.",
+    "de-DE": "Sample-Peak/RMS-Kompressor, gekoppeltes Noise Gate und Dreiband-RBJ-EQ mit dauerhaftem Quellenzustand; kein Look-ahead-Limiting und keine vollständige Craft-Audio-Funktionsgleichheit."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "policy": "Assistant-authored ES/RU/UK/DE strings for the live Advanced Audio supported subset. No translation service or native-linguist review. Preserve existing nonempty CSV translations. Activity denotes source routing, not native-device success; no unsupported monitoring or track controls are simulated.",
+  "source_files": [
+    "apps/desktop/src/views/advanced_audio.rs",
+    "apps/desktop/src/app_advanced_audio.rs"
+  ],
+  "csv_publication": "Not performed by this agent."
+}

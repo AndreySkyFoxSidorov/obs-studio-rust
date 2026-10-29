@@ -1,0 +1,152 @@
+{
+  "Automatic slideshow": {
+    "es-ES": "Pase automático",
+    "ru-RU": "Автоматическое слайд-шоу",
+    "uk-UA": "Автоматичне слайд-шоу",
+    "de-DE": "Automatische Diashow"
+  },
+  "Manual slideshow": {
+    "es-ES": "Pase manual",
+    "ru-RU": "Ручное слайд-шоу",
+    "uk-UA": "Ручне слайд-шоу",
+    "de-DE": "Manuelle Diashow"
+  },
+  "Slideshow Playback Mode": {
+    "es-ES": "Modo de reproducción del pase",
+    "ru-RU": "Режим воспроизведения слайд-шоу",
+    "uk-UA": "Режим відтворення слайд-шоу",
+    "de-DE": "Diashow-Wiedergabemodus"
+  },
+  "Automatic advances at the configured interval. Manual holds the slide for Previous and Next. Play temporarily enables automatic playback; Pause enables manual playback.": {
+    "es-ES": "Automático avanza con el intervalo configurado. Manual mantiene la diapositiva para Anterior y Siguiente. Reproducir activa temporalmente el avance automático; Pausa activa el modo manual.",
+    "ru-RU": "Автоматический режим переключает слайды с заданным интервалом. Ручной удерживает слайд для команд «Назад» и «Далее». «Воспроизвести» временно включает автоматический режим, «Пауза» — ручной.",
+    "uk-UA": "Автоматичний режим перемикає слайди із заданим інтервалом. Ручний утримує слайд для команд «Назад» і «Далі». «Відтворити» тимчасово вмикає автоматичний режим, «Пауза» — ручний.",
+    "de-DE": "Automatisch wechselt im eingestellten Intervall. Manuell hält das Bild für Zurück und Weiter. Abspielen aktiviert vorübergehend die Automatik; Pause aktiviert den manuellen Modus."
+  },
+  "The saved mode sets the initial transport state. Playback buttons change runtime state without editing this draft or scene history.": {
+    "es-ES": "El modo guardado define el estado inicial. Los botones cambian el estado de ejecución sin editar el borrador ni el historial de escenas.",
+    "ru-RU": "Сохранённый режим задаёт начальное состояние воспроизведения. Кнопки меняют текущее состояние без изменения черновика и истории сцены.",
+    "uk-UA": "Збережений режим задає початковий стан відтворення. Кнопки змінюють поточний стан без зміни чернетки та історії сцени.",
+    "de-DE": "Der gespeicherte Modus legt den Anfangszustand fest. Wiedergabetasten ändern den Laufzeitzustand ohne diesen Entwurf oder den Szenenverlauf zu bearbeiten."
+  },
+  "Slideshow Playback": {
+    "es-ES": "Reproducción del pase",
+    "ru-RU": "Воспроизведение слайд-шоу",
+    "uk-UA": "Відтворення слайд-шоу",
+    "de-DE": "Diashow-Wiedergabe"
+  },
+  "Control the shared slideshow without changing scene history. The source must be visible in an active output.": {
+    "es-ES": "Controle el pase compartido sin cambiar el historial. La fuente debe estar visible en una salida activa.",
+    "ru-RU": "Управление общим слайд-шоу без изменения истории сцены. Источник должен быть виден на активном выходе.",
+    "uk-UA": "Керування спільним слайд-шоу без зміни історії сцени. Джерело має бути видиме на активному виході.",
+    "de-DE": "Die gemeinsame Diashow ohne Änderung des Szenenverlaufs steuern. Die Quelle muss in einer aktiven Ausgabe sichtbar sein."
+  },
+  "Show the previous slide, wrapping at the first. A running transition must finish first; the automatic interval is retained.": {
+    "es-ES": "Muestra la diapositiva anterior, pasando de la primera a la última. Debe terminar el cambio en curso; se conserva el intervalo automático.",
+    "ru-RU": "Показать предыдущий слайд; с первого перейти к последнему. Текущий переход должен завершиться; автоматический интервал сохраняется.",
+    "uk-UA": "Показати попередній слайд; з першого перейти до останнього. Поточний перехід має завершитися; автоматичний інтервал зберігається.",
+    "de-DE": "Das vorherige Bild anzeigen; vom ersten zum letzten wechseln. Ein laufender Übergang muss enden; das automatische Intervall bleibt erhalten."
+  },
+  "Play this slideshow automatically. Playing a stopped manual slideshow retains its manual mode, as in OBS.": {
+    "es-ES": "Reproduce el pase automáticamente. Reproducir un pase manual detenido conserva su modo manual, igual que OBS.",
+    "ru-RU": "Воспроизводить слайд-шоу автоматически. Запуск остановленного ручного слайд-шоу сохраняет ручной режим, как в OBS.",
+    "uk-UA": "Відтворювати слайд-шоу автоматично. Запуск зупиненого ручного слайд-шоу зберігає ручний режим, як в OBS.",
+    "de-DE": "Diese Diashow automatisch abspielen. Das Abspielen einer gestoppten manuellen Diashow behält wie OBS den manuellen Modus bei."
+  },
+  "Pause automatic slide changes and enable runtime manual mode. The current transition and GIF animation can continue.": {
+    "es-ES": "Pausa el avance automático y activa el modo manual de ejecución. El cambio actual y la animación GIF pueden continuar.",
+    "ru-RU": "Приостановить автоматическую смену и включить текущий ручной режим. Начатый переход и анимация GIF могут продолжаться.",
+    "uk-UA": "Призупинити автоматичну зміну та ввімкнути поточний ручний режим. Початий перехід та анімація GIF можуть продовжуватися.",
+    "de-DE": "Automatische Bildwechsel pausieren und den manuellen Laufzeitmodus aktivieren. Der aktuelle Übergang und GIF-Animationen können weiterlaufen."
+  },
+  "Return to the first slide and reset the interval. Restart retains the current runtime manual mode.": {
+    "es-ES": "Vuelve a la primera diapositiva y reinicia el intervalo. Reiniciar conserva el modo manual actual.",
+    "ru-RU": "Вернуться к первому слайду и сбросить интервал. Перезапуск сохраняет текущий ручной режим.",
+    "uk-UA": "Повернутися до першого слайда та скинути інтервал. Перезапуск зберігає поточний ручний режим.",
+    "de-DE": "Zum ersten Bild zurückkehren und das Intervall zurücksetzen. Neustart behält den aktuellen manuellen Laufzeitmodus bei."
+  },
+  "Reset the slideshow to the first index and transition its picture to transparency.": {
+    "es-ES": "Restablece el índice a la primera diapositiva y desvanece la imagen hasta la transparencia.",
+    "ru-RU": "Сбросить индекс к первому слайду и перейти от изображения к прозрачности.",
+    "uk-UA": "Скинути індекс до першого слайда та перейти від зображення до прозорості.",
+    "de-DE": "Den Diashow-Index auf das erste Bild zurücksetzen und das Bild in Transparenz überführen."
+  },
+  "Show the next slide, wrapping at the last. A running transition must finish first; the automatic interval is retained.": {
+    "es-ES": "Muestra la siguiente diapositiva, pasando de la última a la primera. Debe terminar el cambio en curso; se conserva el intervalo automático.",
+    "ru-RU": "Показать следующий слайд; с последнего перейти к первому. Текущий переход должен завершиться; автоматический интервал сохраняется.",
+    "uk-UA": "Показати наступний слайд; з останнього перейти до першого. Поточний перехід має завершитися; автоматичний інтервал зберігається.",
+    "de-DE": "Das nächste Bild anzeigen; vom letzten zum ersten wechseln. Ein laufender Übergang muss enden; das automatische Intervall bleibt erhalten."
+  },
+  "Slideshow Status": {
+    "es-ES": "Estado del pase",
+    "ru-RU": "Состояние слайд-шоу",
+    "uk-UA": "Стан слайд-шоу",
+    "de-DE": "Diashow-Status"
+  },
+  "Read the actual slideshow index, playback state and runtime manual mode.": {
+    "es-ES": "Consulta el índice real, el estado de reproducción y el modo manual actual.",
+    "ru-RU": "Прочитать текущий индекс, состояние воспроизведения и текущий ручной режим слайд-шоу.",
+    "uk-UA": "Прочитати поточний індекс, стан відтворення та поточний ручний режим слайд-шоу.",
+    "de-DE": "Den tatsächlichen Diashow-Index, Wiedergabezustand und manuellen Laufzeitmodus lesen."
+  },
+  "Slide {index} of {total}: {state}; manual: {manual}": {
+    "es-ES": "Diapositiva {index} de {total}: {state}; manual: {manual}",
+    "ru-RU": "Слайд {index} из {total}: {state}; ручной режим: {manual}",
+    "uk-UA": "Слайд {index} із {total}: {state}; ручний режим: {manual}",
+    "de-DE": "Bild {index} von {total}: {state}; manuell: {manual}"
+  },
+  "Transition still running; slide change ignored. {status}": {
+    "es-ES": "El cambio sigue en curso; se ignoró el avance. {status}",
+    "ru-RU": "Переход ещё идёт; переключение слайда проигнорировано. {status}",
+    "uk-UA": "Перехід ще триває; перемикання слайда проігноровано. {status}",
+    "de-DE": "Übergang läuft noch; Bildwechsel wurde ignoriert. {status}"
+  },
+  "Slideshow control is stale; refresh the current source.": {
+    "es-ES": "El control del pase está obsoleto; actualice la fuente actual.",
+    "ru-RU": "Команда слайд-шоу устарела; обновите текущий источник.",
+    "uk-UA": "Команда слайд-шоу застаріла; оновіть поточне джерело.",
+    "de-DE": "Diashow-Steuerung ist veraltet; aktuelle Quelle aktualisieren."
+  },
+  "Slideshow controls require forward media time.": {
+    "es-ES": "Los controles requieren tiempo de medios creciente.",
+    "ru-RU": "Управление слайд-шоу требует движения времени вперёд.",
+    "uk-UA": "Керування слайд-шоу потребує руху часу вперед.",
+    "de-DE": "Diashow-Steuerung erfordert vorwärts laufende Medienzeit."
+  },
+  "Slideshow controls require a source visible in an active output.": {
+    "es-ES": "Los controles requieren una fuente visible en una salida activa.",
+    "ru-RU": "Управление слайд-шоу требует видимого источника на активном выходе.",
+    "uk-UA": "Керування слайд-шоу потребує видимого джерела на активному виході.",
+    "de-DE": "Diashow-Steuerung erfordert eine in einer aktiven Ausgabe sichtbare Quelle."
+  },
+  "Slideshow source settings changed; refresh the current source.": {
+    "es-ES": "La configuración de la fuente cambió; actualice la fuente actual.",
+    "ru-RU": "Настройки источника слайд-шоу изменились; обновите текущий источник.",
+    "uk-UA": "Налаштування джерела слайд-шоу змінилися; оновіть поточне джерело.",
+    "de-DE": "Einstellungen der Diashow-Quelle wurden geändert; aktuelle Quelle aktualisieren."
+  },
+  "slideshow manual mode requires native schema9": {
+    "es-ES": "el modo manual requiere el esquema nativo9",
+    "ru-RU": "ручной режим слайд-шоу требует собственной схемы9",
+    "uk-UA": "ручний режим слайд-шоу потребує власної схеми9",
+    "de-DE": "Manueller Diashow-Modus erfordert das native Schema9"
+  },
+  "unknown slideshow automatic or manual mode is not representable": {
+    "es-ES": "el modo automático o manual desconocido no se puede representar",
+    "ru-RU": "неизвестный автоматический или ручной режим слайд-шоу невозможно представить",
+    "uk-UA": "невідомий автоматичний або ручний режим слайд-шоу неможливо подати",
+    "de-DE": "Unbekannter automatischer oder manueller Diashow-Modus ist nicht darstellbar"
+  },
+  "Images use centered aspect fit in the selected canvas. Playback follows the selected visibility behavior. Use the source playback controls to change slides or playback state. Folder playlists are not available.": {
+    "es-ES": "Las imágenes se centran sin deformarse en el lienzo elegido. La reproducción sigue la visibilidad seleccionada. Use los controles de la fuente para cambiar diapositivas o el estado. Las listas de carpetas no están disponibles.",
+    "ru-RU": "Изображения вписываются по центру выбранного холста с сохранением пропорций. Воспроизведение следует выбранному поведению видимости. Кнопки воспроизведения источника переключают слайды и состояние. Списки из папок недоступны.",
+    "uk-UA": "Зображення вписуються по центру вибраного полотна зі збереженням пропорцій. Відтворення відповідає вибраній поведінці видимості. Кнопки відтворення джерела перемикають слайди та стан. Списки з папок недоступні.",
+    "de-DE": "Bilder werden proportional zentriert in die gewählte Leinwand eingepasst. Die Wiedergabe folgt dem gewählten Sichtbarkeitsverhalten. Mit den Wiedergabetasten der Quelle Bilder oder Wiedergabezustand ändern. Ordnerlisten sind nicht verfügbar."
+  },
+  "Static PNG/JPEG/WebP and animated GIF images; timed slide shows with Cut, Fade, Swipe and Slide, automatic/custom/aspect canvas, all three visibility behaviors, authored automatic/manual mode, runtime Play/Pause/Restart/Stop/Previous/Next, loop, stable shuffle and transition to transparency. Strict supported OBS v1/v2 explicit-file settings interchange without random playback or localized size guesses. Folder expansion, OBS random playback and complete image-source parity are not implemented.": {
+    "es-ES": "Imágenes estáticas PNG/JPEG/WebP y GIF animados; pases con Corte, Fundido, Barrido y Deslizamiento, lienzo automático/personalizado/por proporción, tres comportamientos de visibilidad, modo automático/manual guardado, controles reales Reproducir/Pausa/Reiniciar/Detener/Anterior/Siguiente, bucle, orden estable y transición a transparencia. Intercambio estricto del subconjunto OBS v1/v2 con archivos explícitos, sin azar ni adivinar tamaños localizados. No se implementan carpetas, azar de OBS ni paridad completa de image-source.",
+    "ru-RU": "Статичные PNG/JPEG/WebP и анимированные GIF; слайд-шоу с Cut/Fade/Swipe/Slide, автоматическим/пользовательским холстом и соотношением сторон, тремя режимами видимости, сохраняемым автоматическим/ручным режимом, текущими командами воспроизведения/паузы/перезапуска/остановки/назад/далее, повтором, стабильным перемешиванием и переходом в прозрачность. Строгий обмен поддерживаемыми явными файлами OBS v1/v2 без случайного воспроизведения и угадывания локализованных размеров. Папки, случайное воспроизведение OBS и полное соответствие image-source не реализованы.",
+    "uk-UA": "Статичні PNG/JPEG/WebP та анімовані GIF; слайд-шоу з Cut/Fade/Swipe/Slide, автоматичним/власним полотном і співвідношенням сторін, трьома режимами видимості, збереженим автоматичним/ручним режимом, поточними командами відтворення/паузи/перезапуску/зупинки/назад/далі, повтором, сталим перемішуванням і переходом у прозорість. Суворий обмін підтримуваними явними файлами OBS v1/v2 без випадкового відтворення та вгадування локалізованих розмірів. Папки, випадкове відтворення OBS та повну відповідність image-source не реалізовано.",
+    "de-DE": "Statische PNG/JPEG/WebP und animierte GIFs; Diashows mit Schnitt/Überblenden/Wischen/Schieben, automatischer/benutzerdefinierter/Seitenverhältnis-Leinwand, drei Sichtbarkeitsmodi, gespeichertem automatischem/manuellem Modus, Laufzeitsteuerung Abspielen/Pause/Neustart/Stopp/Zurück/Weiter, Wiederholung, stabilem Mischen und Übergang zu Transparenz. Strikter Austausch unterstützter expliziter OBS-v1/v2-Dateieinstellungen ohne Zufallswiedergabe oder Raten lokalisierter Größen. Ordner, OBS-Zufallswiedergabe und vollständige image-source-Parität sind nicht implementiert."
+  }
+}

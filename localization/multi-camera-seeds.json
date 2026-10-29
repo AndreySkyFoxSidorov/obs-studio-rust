@@ -1,0 +1,104 @@
+{
+  "Start This Camera": {
+    "es-ES": "Iniciar esta cámara",
+    "ru-RU": "Запустить эту камеру",
+    "uk-UA": "Запустити цю камеру",
+    "de-DE": "Diese Kamera starten"
+  },
+  "Stop This Camera": {
+    "es-ES": "Detener esta cámara",
+    "ru-RU": "Остановить эту камеру",
+    "uk-UA": "Зупинити цю камеру",
+    "de-DE": "Diese Kamera stoppen"
+  },
+  "Stop All Cameras": {
+    "es-ES": "Detener todas las cámaras",
+    "ru-RU": "Остановить все камеры",
+    "uk-UA": "Зупинити всі камери",
+    "de-DE": "Alle Kameras stoppen"
+  },
+  "Camera Capture Resources": {
+    "es-ES": "Recursos de captura de cámara",
+    "ru-RU": "Ресурсы захвата камер",
+    "uk-UA": "Ресурси захоплення камер",
+    "de-DE": "Ressourcen der Kameraaufnahme"
+  },
+  "Only this source changes. Other camera sources keep capturing; identical device/mode bindings share one native stream.": {
+    "es-ES": "Solo cambia esta fuente. Las demás cámaras siguen capturando; las vinculaciones con el mismo dispositivo y modo comparten un flujo nativo.",
+    "ru-RU": "Изменяется только этот источник. Остальные камеры продолжают захват; одинаковые устройство и режим используют один нативный поток.",
+    "uk-UA": "Змінюється лише це джерело. Решта камер продовжують захоплення; однакові пристрій і режим використовують один нативний потік.",
+    "de-DE": "Nur diese Quelle ändert sich. Andere Kameraquellen nehmen weiter auf; identische Geräte- und Modusbindungen teilen einen nativen Datenstrom."
+  },
+  "Apply any camera binding changes first. Driver writes and discovery must finish before capture changes.": {
+    "es-ES": "Aplica primero los cambios de vinculación. La escritura del controlador y la detección deben finalizar antes de cambiar la captura.",
+    "ru-RU": "Сначала примените изменения привязки. Перед изменением захвата должны завершиться запись параметров драйвера и обнаружение устройств.",
+    "uk-UA": "Спочатку застосуйте зміни прив’язування. Перед зміною захоплення мають завершитися запис параметрів драйвера та виявлення пристроїв.",
+    "de-DE": "Zuerst Änderungen an der Kamerabindung anwenden. Treiberschreibvorgänge und Erkennung müssen vor Aufnahmeänderungen abgeschlossen sein."
+  },
+  "This camera source is enabled; actual device failures appear in capture diagnostics.": {
+    "es-ES": "Esta fuente de cámara está habilitada; los fallos reales del dispositivo aparecen en el diagnóstico de captura.",
+    "ru-RU": "Этот источник камеры включён; реальные ошибки устройства отображаются в диагностике захвата.",
+    "uk-UA": "Це джерело камери ввімкнено; фактичні помилки пристрою відображаються в діагностиці захоплення.",
+    "de-DE": "Diese Kameraquelle ist aktiviert; tatsächliche Gerätefehler erscheinen in der Aufnahmediagnose."
+  },
+  "This camera source is stopped. A shared device may remain open for another source.": {
+    "es-ES": "Esta fuente de cámara está detenida. Un dispositivo compartido puede permanecer abierto para otra fuente.",
+    "ru-RU": "Этот источник камеры остановлен. Общее устройство может оставаться открытым для другого источника.",
+    "uk-UA": "Це джерело камери зупинено. Спільний пристрій може залишатися відкритим для іншого джерела.",
+    "de-DE": "Diese Kameraquelle ist gestoppt. Ein gemeinsam genutztes Gerät kann für eine andere Quelle geöffnet bleiben."
+  },
+  "Up to four cameras share one capture owner. Closing devices keep their admission until shutdown is acknowledged. Conflicting modes on the same device are reported without stopping other cameras.": {
+    "es-ES": "Hasta cuatro cámaras comparten un propietario de captura. Los dispositivos que se cierran conservan su cupo hasta confirmar el cierre. Los modos incompatibles del mismo dispositivo se notifican sin detener las otras cámaras.",
+    "ru-RU": "До четырёх камер используют одного владельца захвата. Закрывающиеся устройства занимают свой лимит до подтверждения завершения. Конфликты режимов одного устройства отображаются без остановки остальных камер.",
+    "uk-UA": "До чотирьох камер використовують одного власника захоплення. Пристрої, що закриваються, займають свій ліміт до підтвердження завершення. Конфлікти режимів одного пристрою відображаються без зупинення решти камер.",
+    "de-DE": "Bis zu vier Kameras teilen einen Aufnahmebesitzer. Geräte in Schließung belegen ihren Platz bis zur bestätigten Freigabe. Moduskonflikte desselben Geräts werden gemeldet, ohne andere Kameras zu stoppen."
+  },
+  "Stop every camera stream; wait for actual device shutdown before reopening.": {
+    "es-ES": "Detén todos los flujos de cámara; espera al cierre real de los dispositivos antes de volver a abrirlos.",
+    "ru-RU": "Остановить все потоки камер; повторное открытие возможно после фактического завершения устройств.",
+    "uk-UA": "Зупинити всі потоки камер; повторне відкриття можливе після фактичного завершення пристроїв.",
+    "de-DE": "Alle Kameradatenströme stoppen; vor erneutem Öffnen auf die tatsächliche Gerätefreigabe warten."
+  },
+  "Camera source action is obsolete. Reopen properties.": {
+    "es-ES": "La acción de la fuente de cámara está obsoleta. Vuelve a abrir las propiedades.",
+    "ru-RU": "Действие источника камеры устарело. Откройте свойства заново.",
+    "uk-UA": "Дія джерела камери застаріла. Відкрийте властивості знову.",
+    "de-DE": "Die Aktion für die Kameraquelle ist veraltet. Eigenschaften erneut öffnen."
+  },
+  "Camera draft belongs to another document or dialog": {
+    "es-ES": "El borrador de cámara pertenece a otro documento o diálogo",
+    "ru-RU": "Черновик камеры относится к другому документу или окну",
+    "uk-UA": "Чернетка камери належить іншому документу або вікну",
+    "de-DE": "Der Kameraentwurf gehört zu einem anderen Dokument oder Dialog"
+  },
+  "start this camera source before reading driver controls": {
+    "es-ES": "inicia esta fuente de cámara antes de leer los controles del controlador",
+    "ru-RU": "перед чтением параметров драйвера запустите этот источник камеры",
+    "uk-UA": "перед читанням параметрів драйвера запустіть це джерело камери",
+    "de-DE": "diese Kameraquelle vor dem Lesen der Treibersteuerung starten"
+  },
+  "show this camera source in an active scene before starting capture": {
+    "es-ES": "muestra esta fuente en una escena activa antes de iniciar la captura",
+    "ru-RU": "перед запуском захвата покажите этот источник камеры в активной сцене",
+    "uk-UA": "перед запуском захоплення покажіть це джерело камери в активній сцені",
+    "de-DE": "diese Kameraquelle vor dem Start in einer aktiven Szene anzeigen"
+  },
+  "mode enumeration on the active camera is unavailable": {
+    "es-ES": "la enumeración de modos no está disponible en la cámara activa",
+    "ru-RU": "перечисление режимов активной камеры недоступно",
+    "uk-UA": "перелічення режимів активної камери недоступне",
+    "de-DE": "Modusauflistung auf der aktiven Kamera ist nicht verfügbar"
+  },
+  "conflicting frozen/live camera bindings for one source": {
+    "es-ES": "vinculaciones de cámara congelada y en vivo incompatibles para una fuente",
+    "ru-RU": "конфликт привязок сохранённой и текущей камеры одного источника",
+    "uk-UA": "конфлікт прив’язувань збереженої та поточної камери одного джерела",
+    "de-DE": "widersprüchliche eingefrorene und aktuelle Kamerabindungen für eine Quelle"
+  },
+  "camera_conflicting_modes": {
+    "es-ES": "Modos incompatibles para la misma cámara",
+    "ru-RU": "Несовместимые режимы одного устройства камеры",
+    "uk-UA": "Несумісні режими одного пристрою камери",
+    "de-DE": "Unvereinbare Modi für dieselbe Kamera"
+  }
+}

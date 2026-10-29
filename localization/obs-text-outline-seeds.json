@@ -1,0 +1,50 @@
+{
+  "Outline": {
+    "es-ES": "Contorno",
+    "ru-RU": "Обводка",
+    "uk-UA": "Обведення",
+    "de-DE": "Kontur"
+  },
+  "Outline Size": {
+    "es-ES": "Tamaño del contorno",
+    "ru-RU": "Толщина обводки",
+    "uk-UA": "Товщина обведення",
+    "de-DE": "Konturstärke"
+  },
+  "Outline Color": {
+    "es-ES": "Color del contorno",
+    "ru-RU": "Цвет обводки",
+    "uk-UA": "Колір обведення",
+    "de-DE": "Konturfarbe"
+  },
+  "Outline Opacity": {
+    "es-ES": "Opacidad del contorno",
+    "ru-RU": "Непрозрачность обводки",
+    "uk-UA": "Непрозорість обведення",
+    "de-DE": "Konturdeckkraft"
+  },
+  "Draw a round outline behind the text. Settings are retained when it is disabled.": {
+    "es-ES": "Dibuja un contorno redondeado detrás del texto. Los ajustes se conservan al desactivarlo.",
+    "ru-RU": "Нарисовать скруглённую обводку под текстом. При выключении настройки сохраняются.",
+    "uk-UA": "Намалювати заокруглене обведення під текстом. Після вимкнення налаштування зберігаються.",
+    "de-DE": "Eine runde Kontur hinter dem Text zeichnen. Die Einstellungen bleiben beim Deaktivieren erhalten."
+  },
+  "Set outline width in source pixels, from 1 to 20.": {
+    "es-ES": "Ajusta el ancho del contorno de 1 a 20 píxeles de origen.",
+    "ru-RU": "Задайте толщину обводки от 1 до 20 пикселей источника.",
+    "uk-UA": "Задайте товщину обведення від 1 до 20 пікселів джерела.",
+    "de-DE": "Konturstärke von 1 bis 20 Quellpixeln einstellen."
+  },
+  "Choose the outline color.": {
+    "es-ES": "Elige el color del contorno.",
+    "ru-RU": "Выберите цвет обводки.",
+    "uk-UA": "Оберіть колір обведення.",
+    "de-DE": "Konturfarbe auswählen."
+  },
+  "Set outline opacity from 0 to 100 percent.": {
+    "es-ES": "Ajusta la opacidad del contorno entre 0 y 100 por ciento.",
+    "ru-RU": "Задайте непрозрачность обводки от 0 до 100 процентов.",
+    "uk-UA": "Задайте непрозорість обведення від 0 до 100 відсотків.",
+    "de-DE": "Konturdeckkraft von 0 bis 100 Prozent einstellen."
+  }
+}

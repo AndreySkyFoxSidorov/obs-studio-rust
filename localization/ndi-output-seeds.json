@@ -1,0 +1,278 @@
+{
+  "NDI Output Settings": {
+    "es-ES": "Ajustes de salida NDI",
+    "ru-RU": "Настройки вывода NDI",
+    "uk-UA": "Налаштування виводу NDI",
+    "de-DE": "NDI-Ausgabeeinstellungen"
+  },
+  "NDI Outputs": {
+    "es-ES": "Salidas NDI",
+    "ru-RU": "Выводы NDI",
+    "uk-UA": "Виводи NDI",
+    "de-DE": "NDI-Ausgaben"
+  },
+  "Program sends the final output video and optional Program audio. Preview sends only its base-canvas scene, without Program transitions or output downscaling.": {
+    "es-ES": "Programa envía el vídeo de salida final y, opcionalmente, su audio. Vista previa envía solo su escena al tamaño base del lienzo, sin transiciones del programa ni reducción de salida.",
+    "ru-RU": "Program передаёт итоговое видео вывода и, при выборе, звук Program. Preview передаёт только свою сцену в базовом разрешении холста, без переходов Program и уменьшения вывода.",
+    "uk-UA": "Program передає підсумкове відео виводу та, за вибором, звук Program. Preview передає лише свою сцену в базовій роздільності полотна, без переходів Program і зменшення виводу.",
+    "de-DE": "Programm sendet das fertige Ausgabevideo und optional Programmaudio. Vorschau sendet nur ihre Szene in Basis-Leinwandauflösung, ohne Programmübergänge oder Ausgabeverkleinerung."
+  },
+  "Program NDI Name": {
+    "es-ES": "Nombre NDI del programa",
+    "ru-RU": "Имя NDI Program",
+    "uk-UA": "Назва NDI Program",
+    "de-DE": "NDI-Programmname"
+  },
+  "Preview NDI Name": {
+    "es-ES": "Nombre NDI de vista previa",
+    "ru-RU": "Имя NDI Preview",
+    "uk-UA": "Назва NDI Preview",
+    "de-DE": "NDI-Vorschauname"
+  },
+  "NDI Groups": {
+    "es-ES": "Grupos NDI",
+    "ru-RU": "Группы NDI",
+    "uk-UA": "Групи NDI",
+    "de-DE": "NDI-Gruppen"
+  },
+  "Names are sent exactly as entered. Groups use the installed NDI Runtime's comma-separated group syntax; empty means the default group.": {
+    "es-ES": "Los nombres se envían exactamente como se escriben. Los grupos se separan por comas según el entorno NDI instalado; vacío significa el grupo predeterminado.",
+    "ru-RU": "Имена передаются точно как введены. Группы задаются через запятую по правилам установленного NDI Runtime; пустое поле означает группу по умолчанию.",
+    "uk-UA": "Назви передаються точно як введені. Групи задаються через кому за правилами встановленого NDI Runtime; порожнє поле означає типову групу.",
+    "de-DE": "Namen werden unverändert übergeben. Gruppen sind nach der Syntax der installierten NDI-Laufzeit durch Kommas getrennt; leer bedeutet die Standardgruppe."
+  },
+  "Send Program Audio": {
+    "es-ES": "Enviar audio del programa",
+    "ru-RU": "Передавать звук Program",
+    "uk-UA": "Передавати звук Program",
+    "de-DE": "Programmaudio senden"
+  },
+  "Send the existing post-DSP Program mix as planar float PCM. Preview never sends audio.": {
+    "es-ES": "Enviar la mezcla actual del programa tras el DSP como PCM flotante planar. Vista previa nunca envía audio.",
+    "ru-RU": "Передавать готовый микс Program после DSP как планарный float PCM. Preview звук не передаёт.",
+    "uk-UA": "Передавати готовий мікс Program після DSP як планарний float PCM. Preview звук не передає.",
+    "de-DE": "Den vorhandenen Programmmix nach DSP als planares Float-PCM senden. Vorschau sendet kein Audio."
+  },
+  "Stop both NDI outputs before editing sender names, groups or audio settings.": {
+    "es-ES": "Detén ambas salidas NDI antes de editar nombres, grupos o ajustes de audio.",
+    "ru-RU": "Остановите оба вывода NDI перед изменением имён отправителей, групп или звука.",
+    "uk-UA": "Зупиніть обидва виводи NDI перед зміною назв відправників, груп або звуку.",
+    "de-DE": "Vor Änderungen an Sendernamen, Gruppen oder Audio beide NDI-Ausgaben stoppen."
+  },
+  "The document changed. Reopen NDI Output Settings before applying or starting.": {
+    "es-ES": "El documento cambió. Vuelve a abrir los ajustes de salida NDI antes de aplicar o iniciar.",
+    "ru-RU": "Документ изменился. Заново откройте настройки вывода NDI перед применением или запуском.",
+    "uk-UA": "Документ змінився. Знову відкрийте налаштування виводу NDI перед застосуванням або запуском.",
+    "de-DE": "Das Dokument wurde geändert. Die NDI-Ausgabeeinstellungen vor Anwenden oder Start erneut öffnen."
+  },
+  "Program NDI Output": {
+    "es-ES": "Salida NDI del programa",
+    "ru-RU": "Вывод Program в NDI",
+    "uk-UA": "Вивід Program у NDI",
+    "de-DE": "NDI-Programmausgabe"
+  },
+  "Preview NDI Output": {
+    "es-ES": "Salida NDI de vista previa",
+    "ru-RU": "Вывод Preview в NDI",
+    "uk-UA": "Вивід Preview у NDI",
+    "de-DE": "NDI-Vorschauausgabe"
+  },
+  "NDI format: {width}×{height} · {num}/{den} FPS": {
+    "es-ES": "Formato NDI: {width}×{height} · {num}/{den} FPS",
+    "ru-RU": "Формат NDI: {width}×{height} · {num}/{den} FPS",
+    "uk-UA": "Формат NDI: {width}×{height} · {num}/{den} FPS",
+    "de-DE": "NDI-Format: {width}×{height} · {num}/{den} FPS"
+  },
+  "NDI sender stopping…": {
+    "es-ES": "Deteniendo el emisor NDI…",
+    "ru-RU": "Остановка отправителя NDI…",
+    "uk-UA": "Зупинення відправника NDI…",
+    "de-DE": "NDI-Sender wird gestoppt…"
+  },
+  "NDI sender starting…": {
+    "es-ES": "Iniciando el emisor NDI…",
+    "ru-RU": "Запуск отправителя NDI…",
+    "uk-UA": "Запуск відправника NDI…",
+    "de-DE": "NDI-Sender wird gestartet…"
+  },
+  "NDI sender sending": {
+    "es-ES": "Emisor NDI transmitiendo",
+    "ru-RU": "Отправитель NDI передаёт данные",
+    "uk-UA": "Відправник NDI передає дані",
+    "de-DE": "NDI-Sender sendet"
+  },
+  "NDI sender ready; waiting for video": {
+    "es-ES": "Emisor NDI listo; esperando vídeo",
+    "ru-RU": "Отправитель NDI готов; ожидание видео",
+    "uk-UA": "Відправник NDI готовий; очікування відео",
+    "de-DE": "NDI-Sender bereit; wartet auf Video"
+  },
+  "NDI sender stopped": {
+    "es-ES": "Emisor NDI detenido",
+    "ru-RU": "Отправитель NDI остановлен",
+    "uk-UA": "Відправник NDI зупинений",
+    "de-DE": "NDI-Sender gestoppt"
+  },
+  "Advertised NDI source: {name}": {
+    "es-ES": "Fuente NDI anunciada: {name}",
+    "ru-RU": "Объявленный источник NDI: {name}",
+    "uk-UA": "Оголошене джерело NDI: {name}",
+    "de-DE": "Angekündigte NDI-Quelle: {name}"
+  },
+  "NDI: {video} video frames · {audio} audio frames · {connections} receivers": {
+    "es-ES": "NDI: {video} fotogramas de vídeo · {audio} muestras de audio · {connections} receptores",
+    "ru-RU": "NDI: {video} видеокадров · {audio} аудиофреймов · {connections} получателей",
+    "uk-UA": "NDI: {video} відеокадрів · {audio} аудіофреймів · {connections} отримувачів",
+    "de-DE": "NDI: {video} Videoframes · {audio} Audioframes · {connections} Empfänger"
+  },
+  "Start NDI Output": {
+    "es-ES": "Iniciar salida NDI",
+    "ru-RU": "Запустить вывод NDI",
+    "uk-UA": "Запустити вивід NDI",
+    "de-DE": "NDI-Ausgabe starten"
+  },
+  "Stop NDI Output": {
+    "es-ES": "Detener salida NDI",
+    "ru-RU": "Остановить вывод NDI",
+    "uk-UA": "Зупинити вивід NDI",
+    "de-DE": "NDI-Ausgabe stoppen"
+  },
+  "Apply current settings first. Start explicitly advertises this sender through the installed NDI6 Runtime.": {
+    "es-ES": "Aplica primero la configuración actual. Iniciar anuncia explícitamente este emisor mediante el entorno NDI6 instalado.",
+    "ru-RU": "Сначала примените текущие настройки. Запуск явно объявляет этого отправителя через установленный NDI6 Runtime.",
+    "uk-UA": "Спочатку застосуйте поточні налаштування. Запуск явно оголошує цього відправника через встановлений NDI6 Runtime.",
+    "de-DE": "Zuerst die aktuellen Einstellungen anwenden. Start kündigt diesen Sender ausdrücklich über die installierte NDI6-Laufzeit an."
+  },
+  "Stop this sender and release its retained video on its worker. Other outputs keep running.": {
+    "es-ES": "Detener este emisor y liberar el vídeo retenido en su hilo. Las demás salidas continúan.",
+    "ru-RU": "Остановить этого отправителя и освободить удерживаемое видео в его рабочем потоке. Остальные выводы продолжают работу.",
+    "uk-UA": "Зупинити цього відправника та звільнити утримуване відео в його робочому потоці. Інші виводи продовжують роботу.",
+    "de-DE": "Diesen Sender stoppen und sein gehaltenes Video im Arbeitsthread freigeben. Andere Ausgaben laufen weiter."
+  },
+  "Opening settings, enabling the module or loading a collection never starts NDI sending. Sender names remain advertised only while that output is owned; Stop can wait for an in-flight SDK call.": {
+    "es-ES": "Abrir ajustes, habilitar el módulo o cargar una colección nunca inicia el envío NDI. El nombre se anuncia mientras existe la salida; detener puede esperar a una llamada al SDK en curso.",
+    "ru-RU": "Открытие настроек, включение модуля или загрузка коллекции не запускают передачу NDI. Имя объявлено только пока существует этот вывод; остановка может ожидать уже выполняющийся вызов SDK.",
+    "uk-UA": "Відкриття налаштувань, увімкнення модуля або завантаження колекції не запускають передавання NDI. Назва оголошена лише поки існує цей вивід; зупинення може очікувати вже виконуваний виклик SDK.",
+    "de-DE": "Das Öffnen der Einstellungen, Aktivieren des Moduls oder Laden einer Sammlung startet keinen NDI-Versand. Der Sendername ist nur während des Besitzes dieser Ausgabe angekündigt; Stop kann auf einen laufenden SDK-Aufruf warten."
+  },
+  "Save NDI names, groups and Program audio preference. This does not start any sender.": {
+    "es-ES": "Guardar nombres, grupos y preferencia de audio del programa. No inicia ningún emisor.",
+    "ru-RU": "Сохранить имена NDI, группы и настройку звука Program. Отправители не запускаются.",
+    "uk-UA": "Зберегти назви NDI, групи та налаштування звуку Program. Відправники не запускаються.",
+    "de-DE": "NDI-Namen, Gruppen und Programmaudio-Einstellung speichern. Startet keinen Sender."
+  },
+  "Close this editor. Running NDI outputs continue until explicitly stopped.": {
+    "es-ES": "Cerrar este editor. Las salidas NDI activas continúan hasta detenerlas explícitamente.",
+    "ru-RU": "Закрыть редактор. Работающие выводы NDI продолжают передачу до явной остановки.",
+    "uk-UA": "Закрити редактор. Активні виводи NDI продовжують передавання до явного зупинення.",
+    "de-DE": "Diesen Editor schließen. Laufende NDI-Ausgaben senden bis zum ausdrücklichen Stop weiter."
+  },
+  "Enable the DistroAV module before starting NDI output": {
+    "es-ES": "Habilita el módulo DistroAV antes de iniciar una salida NDI",
+    "ru-RU": "Перед запуском вывода NDI включите модуль DistroAV",
+    "uk-UA": "Перед запуском виводу NDI увімкніть модуль DistroAV",
+    "de-DE": "Vor dem Start der NDI-Ausgabe das DistroAV-Modul aktivieren"
+  },
+  "NDI settings identity exhausted": {
+    "es-ES": "Se agotaron los identificadores de ajustes NDI",
+    "ru-RU": "Исчерпаны идентификаторы настроек NDI",
+    "uk-UA": "Вичерпано ідентифікатори налаштувань NDI",
+    "de-DE": "Identitäten der NDI-Einstellungen erschöpft"
+  },
+  "Stop NDI outputs and reopen current settings before applying": {
+    "es-ES": "Detén las salidas NDI y vuelve a abrir los ajustes actuales antes de aplicar",
+    "ru-RU": "Перед применением остановите выводы NDI и заново откройте текущие настройки",
+    "uk-UA": "Перед застосуванням зупиніть виводи NDI та знову відкрийте поточні налаштування",
+    "de-DE": "Vor Anwenden die NDI-Ausgaben stoppen und aktuelle Einstellungen erneut öffnen"
+  },
+  "Apply NDI output settings before starting": {
+    "es-ES": "Aplica los ajustes de salida NDI antes de iniciar",
+    "ru-RU": "Перед запуском примените настройки вывода NDI",
+    "uk-UA": "Перед запуском застосуйте налаштування виводу NDI",
+    "de-DE": "Vor dem Start die NDI-Ausgabeeinstellungen anwenden"
+  },
+  "Finish the document operation before starting NDI output": {
+    "es-ES": "Finaliza la operación del documento antes de iniciar una salida NDI",
+    "ru-RU": "Перед запуском вывода NDI завершите операцию с документом",
+    "uk-UA": "Перед запуском виводу NDI завершіть операцію з документом",
+    "de-DE": "Vor dem Start der NDI-Ausgabe den Dokumentvorgang abschließen"
+  },
+  "Audio worker is busy; try NDI output again": {
+    "es-ES": "El hilo de audio está ocupado; vuelve a intentar iniciar la salida NDI",
+    "ru-RU": "Аудиопоток занят; повторите запуск вывода NDI",
+    "uk-UA": "Аудіопотік зайнятий; повторіть запуск виводу NDI",
+    "de-DE": "Audiothread ist belegt; NDI-Ausgabe erneut versuchen"
+  },
+  "NDI output: {error}": {
+    "es-ES": "Salida NDI: {error}",
+    "ru-RU": "Вывод NDI: {error}",
+    "uk-UA": "Вивід NDI: {error}",
+    "de-DE": "NDI-Ausgabe: {error}"
+  },
+  "NDI sender submitted its first video frame": {
+    "es-ES": "El emisor NDI entregó su primer fotograma de vídeo",
+    "ru-RU": "Отправитель NDI передал первый видеокадр в SDK",
+    "uk-UA": "Відправник NDI передав перший відеокадр у SDK",
+    "de-DE": "NDI-Sender hat seinen ersten Videoframe übergeben"
+  },
+  "Stop NDI outputs before changing output settings, formats or the active profile": {
+    "es-ES": "Detén las salidas NDI antes de cambiar ajustes de salida, formatos o el perfil activo",
+    "ru-RU": "Перед изменением настроек вывода, форматов или активного профиля остановите выводы NDI",
+    "uk-UA": "Перед зміною налаштувань виводу, форматів або активного профілю зупиніть виводи NDI",
+    "de-DE": "Vor Änderungen an Ausgabeeinstellungen, Formaten oder aktivem Profil die NDI-Ausgaben stoppen"
+  },
+  "Stop NDI outputs before replacing the scene collection": {
+    "es-ES": "Detén las salidas NDI antes de sustituir la colección de escenas",
+    "ru-RU": "Перед заменой коллекции сцен остановите выводы NDI",
+    "uk-UA": "Перед заміною колекції сцен зупиніть виводи NDI",
+    "de-DE": "Vor dem Ersetzen der Szenensammlung die NDI-Ausgaben stoppen"
+  },
+  "Configure and explicitly start or stop Program and Preview NDI senders.": {
+    "es-ES": "Configurar e iniciar o detener explícitamente los emisores NDI de programa y vista previa.",
+    "ru-RU": "Настроить и явно запустить или остановить отправителей Program и Preview NDI.",
+    "uk-UA": "Налаштувати та явно запустити або зупинити відправників Program і Preview NDI.",
+    "de-DE": "NDI-Programm- und Vorschau-Sender konfigurieren und ausdrücklich starten oder stoppen."
+  },
+  "Program sends video and optional Program audio. Preview sends base-canvas video only. Enabling the module never starts a sender.": {
+    "es-ES": "Programa envía vídeo y, opcionalmente, su audio. Vista previa solo envía vídeo del lienzo base. Habilitar el módulo no inicia un emisor.",
+    "ru-RU": "Program передаёт видео и, при выборе, звук Program. Preview передаёт только видео базового холста. Включение модуля не запускает отправителя.",
+    "uk-UA": "Program передає відео та, за вибором, звук Program. Preview передає лише відео базового полотна. Увімкнення модуля не запускає відправника.",
+    "de-DE": "Programm sendet Video und optional Programmaudio. Vorschau sendet nur Video der Basisleinwand. Das Aktivieren des Moduls startet keinen Sender."
+  },
+  "Program NDI video and audio": {
+    "es-ES": "Vídeo y audio NDI del programa",
+    "ru-RU": "Видео и звук Program через NDI",
+    "uk-UA": "Відео та звук Program через NDI",
+    "de-DE": "NDI-Programmvideo und -audio"
+  },
+  "Preview NDI video (base canvas)": {
+    "es-ES": "Vídeo NDI de vista previa (lienzo base)",
+    "ru-RU": "Видео Preview через NDI (базовый холст)",
+    "uk-UA": "Відео Preview через NDI (базове полотно)",
+    "de-DE": "NDI-Vorschauvideo (Basisleinwand)"
+  },
+  "Windows x64 installed NDI6 Runtime receive and send: source RGB(A)/BGR(A), FLTp PCM and shared compositor/DSP/monitor; explicit Program output video/audio and base-canvas Preview video-only. No auto-start, HX codec installation, tally, PTZ, recording metadata or native OBS plugin ABI.": {
+    "es-ES": "NDI6 Runtime instalado en Windows x64, recepción y envío: fuentes RGB(A)/BGR(A), PCM FLTp y compositor/DSP/monitor compartidos; salida explícita de vídeo/audio del programa y solo vídeo de vista previa al tamaño base. Sin inicio automático, instalación de códecs HX, tally, PTZ, metadatos de grabación ni ABI de plugins OBS.",
+    "ru-RU": "Установленный NDI6 Runtime в Windows x64, приём и передача: источники RGB(A)/BGR(A), PCM FLTp и общие композитор/DSP/мониторинг; явный вывод видео/звука Program и только видео Preview в базовом разрешении холста. Без автозапуска, установки кодеков HX, tally, PTZ, метаданных записи и ABI плагинов OBS.",
+    "uk-UA": "Встановлений NDI6 Runtime у Windows x64, приймання й передавання: джерела RGB(A)/BGR(A), PCM FLTp і спільні композитор/DSP/моніторинг; явний вивід відео/звуку Program і лише відео Preview в базовій роздільності полотна. Без автозапуску, встановлення кодеків HX, tally, PTZ, метаданих запису й ABI плагінів OBS.",
+    "de-DE": "Installierte NDI6-Laufzeit unter Windows x64, Empfang und Versand: RGB(A)/BGR(A)-Quellen, FLTp-PCM und gemeinsamer Compositor/DSP/Monitor; ausdrücklich gestartete Programmvideo-/audioausgabe und reine Vorschauvideoausgabe in Basisauflösung. Kein Autostart, keine HX-Codecinstallation, Tally, PTZ, Aufnahmemetadaten oder native OBS-Plugin-ABI."
+  },
+  "NDI sender names must contain 1 to 256 UTF-8 bytes and no control characters.": {
+    "es-ES": "Los nombres de emisor NDI deben contener de 1 a 256 bytes UTF-8 y ningún carácter de control.",
+    "ru-RU": "Имена отправителей NDI должны содержать от 1 до 256 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Назви відправників NDI мають містити від 1 до 256 байтів UTF-8 без керівних символів.",
+    "de-DE": "NDI-Sendernamen müssen 1 bis 256 UTF-8-Bytes und keine Steuerzeichen enthalten."
+  },
+  "NDI Program and Preview names must be different.": {
+    "es-ES": "Los nombres NDI de programa y vista previa deben ser distintos.",
+    "ru-RU": "Имена NDI Program и Preview должны различаться.",
+    "uk-UA": "Назви NDI Program і Preview мають відрізнятися.",
+    "de-DE": "Die NDI-Namen für Programm und Vorschau müssen unterschiedlich sein."
+  },
+  "NDI groups must contain at most 512 UTF-8 bytes and no control characters.": {
+    "es-ES": "Los grupos NDI deben contener como máximo 512 bytes UTF-8 y ningún carácter de control.",
+    "ru-RU": "Группы NDI должны содержать не более 512 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Групи NDI мають містити не більше 512 байтів UTF-8 без керівних символів.",
+    "de-DE": "NDI-Gruppen dürfen höchstens 512 UTF-8-Bytes und keine Steuerzeichen enthalten."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "policy": "Assistant-authored ES/RU/UK/DE captions/help for adapted FilmCraft Gate and SimpleEq controls; no translation service or native-linguist review. Existing nonempty CSV cells remain authoritative. Scalar target-response plots do not claim native-device or complete OBS filter parity.",
+  "source_files": [
+    "apps/desktop/src/views/craft_audio_controls.rs",
+    "apps/desktop/src/views/source_audio_filters.rs"
+  ],
+  "csv_publication": "Not performed by this agent."
+}

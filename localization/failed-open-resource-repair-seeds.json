@@ -1,0 +1,464 @@
+{
+  "Replacements affect only the pending collection. Your current Program stays active until opening completes; Cancel discards every pending change.": {
+    "es-ES": "Los reemplazos solo afectan a la colección pendiente. El programa actual sigue activo hasta terminar la apertura; Cancelar descarta todos los cambios pendientes.",
+    "ru-RU": "Замены относятся только к открываемой коллекции. Текущая программа остаётся активной до завершения открытия; отмена отбросит все ожидающие изменения.",
+    "uk-UA": "Заміни стосуються лише колекції, що відкривається. Поточна програма залишається активною до завершення відкриття; скасування відкине всі очікувані зміни.",
+    "de-DE": "Ersetzungen betreffen nur die zu öffnende Sammlung. Das aktuelle Programm bleibt bis zum Abschluss aktiv; Abbrechen verwirft alle ausstehenden Änderungen."
+  },
+  "Continue opening": {
+    "es-ES": "Continuar la apertura",
+    "ru-RU": "Продолжить открытие",
+    "uk-UA": "Продовжити відкриття",
+    "de-DE": "Öffnen fortsetzen"
+  },
+  "Apply this batch only to the unpublished collection, check its remaining paths, and continue strict opening. The current project is retained.": {
+    "es-ES": "Aplica este lote solo a la colección pendiente, comprueba las rutas restantes y continúa la apertura validada. El proyecto actual se conserva.",
+    "ru-RU": "Применить этот пакет только к ещё не открытой коллекции, проверить оставшиеся пути и продолжить проверенное открытие. Текущий проект сохраняется.",
+    "uk-UA": "Застосувати цей пакет лише до ще не відкритої колекції, перевірити решту шляхів і продовжити перевірене відкриття. Поточний проєкт зберігається.",
+    "de-DE": "Diesen Stapel nur auf die noch nicht geöffnete Sammlung anwenden, übrige Pfade prüfen und das validierte Öffnen fortsetzen. Das aktuelle Projekt bleibt erhalten."
+  },
+  "Collection opened; finishing cleanup…": {
+    "es-ES": "Colección abierta; finalizando la limpieza…",
+    "ru-RU": "Коллекция открыта; завершается очистка…",
+    "uk-UA": "Колекцію відкрито; завершується очищення…",
+    "de-DE": "Sammlung geöffnet; Bereinigung wird abgeschlossen…"
+  },
+  "Canceling collection opening…": {
+    "es-ES": "Cancelando la apertura de la colección…",
+    "ru-RU": "Отмена открытия коллекции…",
+    "uk-UA": "Скасування відкриття колекції…",
+    "de-DE": "Öffnen der Sammlung wird abgebrochen…"
+  },
+  "Preparing the collection; the current Program remains active…": {
+    "es-ES": "Preparando la colección; el programa actual sigue activo…",
+    "ru-RU": "Подготовка коллекции; текущая программа остаётся активной…",
+    "uk-UA": "Підготовка колекції; поточна програма залишається активною…",
+    "de-DE": "Sammlung wird vorbereitet; das aktuelle Programm bleibt aktiv…"
+  },
+  "Cancel opening": {
+    "es-ES": "Cancelar la apertura",
+    "ru-RU": "Отменить открытие",
+    "uk-UA": "Скасувати відкриття",
+    "de-DE": "Öffnen abbrechen"
+  },
+  "Retry opening": {
+    "es-ES": "Reintentar la apertura",
+    "ru-RU": "Повторить открытие",
+    "uk-UA": "Повторити відкриття",
+    "de-DE": "Öffnen erneut versuchen"
+  },
+  "Finish or cancel the pending collection before editing the current project.": {
+    "es-ES": "Termina o cancela la colección pendiente antes de editar el proyecto actual.",
+    "ru-RU": "Завершите или отмените открытие коллекции перед изменением текущего проекта.",
+    "uk-UA": "Завершіть або скасуйте відкриття колекції перед зміною поточного проєкту.",
+    "de-DE": "Die ausstehende Sammlung zuerst fertigstellen oder abbrechen, bevor das aktuelle Projekt bearbeitet wird."
+  },
+  "The current document or pending collection changed. Cancel and reopen it.": {
+    "es-ES": "El documento actual o la colección pendiente cambió. Cancela y vuelve a abrirla.",
+    "ru-RU": "Текущий документ или открываемая коллекция изменились. Отмените действие и откройте её заново.",
+    "uk-UA": "Поточний документ або колекція, що відкривається, змінилися. Скасуйте дію та відкрийте її знову.",
+    "de-DE": "Das aktuelle Dokument oder die zu öffnende Sammlung wurde geändert. Abbrechen und erneut öffnen."
+  },
+  "Pending collection receipt belongs to another session.": {
+    "es-ES": "La respuesta de la colección pendiente pertenece a otra sesión.",
+    "ru-RU": "Результат открываемой коллекции относится к другой сессии.",
+    "uk-UA": "Результат колекції, що відкривається, належить іншій сесії.",
+    "de-DE": "Bestätigung der ausstehenden Sammlung gehört zu einer anderen Sitzung."
+  },
+  "Pending collection retirement returned an unexpected receipt.": {
+    "es-ES": "La retirada de la colección pendiente devolvió una respuesta inesperada.",
+    "ru-RU": "Освобождение открываемой коллекции вернуло неожиданный результат.",
+    "uk-UA": "Звільнення колекції, що відкривається, повернуло неочікуваний результат.",
+    "de-DE": "Freigabe der ausstehenden Sammlung lieferte eine unerwartete Bestätigung."
+  },
+  "Pending collection repair returned an unexpected receipt.": {
+    "es-ES": "La reparación de la colección pendiente devolvió una respuesta inesperada.",
+    "ru-RU": "Восстановление открываемой коллекции вернуло неожиданный результат.",
+    "uk-UA": "Відновлення колекції, що відкривається, повернуло неочікуваний результат.",
+    "de-DE": "Reparatur der ausstehenden Sammlung lieferte eine unerwartete Bestätigung."
+  },
+  "The newer document choice exceeds the bounded path contract.": {
+    "es-ES": "La nueva elección de documento supera el límite de la ruta.",
+    "ru-RU": "Путь нового выбранного документа превышает допустимый предел.",
+    "uk-UA": "Шлях нового вибраного документа перевищує допустиму межу.",
+    "de-DE": "Die neuere Dokumentauswahl überschreitet die Pfadgrenze."
+  },
+  "The receiver changed before pending collection publication.": {
+    "es-ES": "La sesión receptora cambió antes de abrir la colección pendiente.",
+    "ru-RU": "Принимающая сессия изменилась перед открытием подготовленной коллекции.",
+    "uk-UA": "Приймальна сесія змінилася перед відкриттям підготовленої колекції.",
+    "de-DE": "Die empfangende Sitzung wurde vor dem Öffnen der vorbereiteten Sammlung geändert."
+  },
+  "Stop active outputs before opening the pending collection.": {
+    "es-ES": "Detén las salidas activas antes de abrir la colección pendiente.",
+    "ru-RU": "Остановите активные выходы перед открытием подготовленной коллекции.",
+    "uk-UA": "Зупиніть активні виходи перед відкриттям підготовленої колекції.",
+    "de-DE": "Aktive Ausgaben stoppen, bevor die vorbereitete Sammlung geöffnet wird."
+  },
+  "Pending collection repair has no matching request.": {
+    "es-ES": "La reparación de la colección pendiente no tiene una solicitud correspondiente.",
+    "ru-RU": "Для восстановления открываемой коллекции нет соответствующего запроса.",
+    "uk-UA": "Для відновлення колекції, що відкривається, немає відповідного запиту.",
+    "de-DE": "Keine passende Anfrage zur Reparatur der ausstehenden Sammlung vorhanden."
+  },
+  "The native collection changed while its resources were being repaired. Cancel and reopen it.": {
+    "es-ES": "La colección nativa cambió mientras se reparaban sus recursos. Cancela y vuelve a abrirla.",
+    "ru-RU": "Файл коллекции изменился во время восстановления ресурсов. Отмените действие и откройте его заново.",
+    "uk-UA": "Файл колекції змінився під час відновлення ресурсів. Скасуйте дію та відкрийте його знову.",
+    "de-DE": "Die native Sammlung wurde während der Ressourcenreparatur geändert. Abbrechen und erneut öffnen."
+  },
+  "repair_stale: The native collection changed while its resources were being repaired. Cancel and reopen it.": {
+    "es-ES": "repair_stale: La colección nativa cambió mientras se reparaban sus recursos. Cancela y vuelve a abrirla.",
+    "ru-RU": "repair_stale: Файл коллекции изменился во время восстановления ресурсов. Отмените действие и откройте его заново.",
+    "uk-UA": "repair_stale: Файл колекції змінився під час відновлення ресурсів. Скасуйте дію та відкрийте його знову.",
+    "de-DE": "repair_stale: Die native Sammlung wurde während der Ressourcenreparatur geändert. Abbrechen und erneut öffnen."
+  },
+  "repair_failed: The native collection changed while its resources were being repaired. Cancel and reopen it.": {
+    "es-ES": "repair_failed: La colección nativa cambió mientras se reparaban sus recursos. Cancela y vuelve a abrirla.",
+    "ru-RU": "repair_failed: Файл коллекции изменился во время восстановления ресурсов. Отмените действие и откройте его заново.",
+    "uk-UA": "repair_failed: Файл колекції змінився під час відновлення ресурсів. Скасуйте дію та відкрийте його знову.",
+    "de-DE": "repair_failed: Die native Sammlung wurde während der Ressourcenreparatur geändert. Abbrechen und erneut öffnen."
+  },
+  "repair_metadata_limit: The native collection changed while its resources were being repaired. Cancel and reopen it.": {
+    "es-ES": "repair_metadata_limit: La colección nativa cambió mientras se reparaban sus recursos. Cancela y vuelve a abrirla.",
+    "ru-RU": "repair_metadata_limit: Файл коллекции изменился во время восстановления ресурсов. Отмените действие и откройте его заново.",
+    "uk-UA": "repair_metadata_limit: Файл колекції змінився під час відновлення ресурсів. Скасуйте дію та відкрийте його знову.",
+    "de-DE": "repair_metadata_limit: Die native Sammlung wurde während der Ressourcenreparatur geändert. Abbrechen und erneut öffnen."
+  },
+  "The pending collection or its resource generation changed": {
+    "es-ES": "La colección pendiente o su generación de recursos cambió",
+    "ru-RU": "Открываемая коллекция или версия её ресурсов изменилась",
+    "uk-UA": "Колекція, що відкривається, або версія її ресурсів змінилася",
+    "de-DE": "Die ausstehende Sammlung oder ihre Ressourcengeneration wurde geändert"
+  },
+  "repair_stale: The pending collection or its resource generation changed": {
+    "es-ES": "repair_stale: La colección pendiente o su generación de recursos cambió",
+    "ru-RU": "repair_stale: Открываемая коллекция или версия её ресурсов изменилась",
+    "uk-UA": "repair_stale: Колекція, що відкривається, або версія її ресурсів змінилася",
+    "de-DE": "repair_stale: Die ausstehende Sammlung oder ihre Ressourcengeneration wurde geändert"
+  },
+  "repair_failed: The pending collection or its resource generation changed": {
+    "es-ES": "repair_failed: La colección pendiente o su generación de recursos cambió",
+    "ru-RU": "repair_failed: Открываемая коллекция или версия её ресурсов изменилась",
+    "uk-UA": "repair_failed: Колекція, що відкривається, або версія її ресурсів змінилася",
+    "de-DE": "repair_failed: Die ausstehende Sammlung oder ihre Ressourcengeneration wurde geändert"
+  },
+  "repair_metadata_limit: The pending collection or its resource generation changed": {
+    "es-ES": "repair_metadata_limit: La colección pendiente o su generación de recursos cambió",
+    "ru-RU": "repair_metadata_limit: Открываемая коллекция или версия её ресурсов изменилась",
+    "uk-UA": "repair_metadata_limit: Колекція, що відкривається, або версія її ресурсів змінилася",
+    "de-DE": "repair_metadata_limit: Die ausstehende Sammlung oder ihre Ressourcengeneration wurde geändert"
+  },
+  "A publication projection is still owned or retiring": {
+    "es-ES": "La copia preparada para abrir todavía está en uso o se está liberando",
+    "ru-RU": "Подготовленная копия ещё используется или освобождается",
+    "uk-UA": "Підготовлена копія ще використовується або звільняється",
+    "de-DE": "Eine vorbereitete Veröffentlichungskopie wird noch verwendet oder freigegeben"
+  },
+  "repair_stale: A publication projection is still owned or retiring": {
+    "es-ES": "repair_stale: La copia preparada para abrir todavía está en uso o se está liberando",
+    "ru-RU": "repair_stale: Подготовленная копия ещё используется или освобождается",
+    "uk-UA": "repair_stale: Підготовлена копія ще використовується або звільняється",
+    "de-DE": "repair_stale: Eine vorbereitete Veröffentlichungskopie wird noch verwendet oder freigegeben"
+  },
+  "repair_failed: A publication projection is still owned or retiring": {
+    "es-ES": "repair_failed: La copia preparada para abrir todavía está en uso o se está liberando",
+    "ru-RU": "repair_failed: Подготовленная копия ещё используется или освобождается",
+    "uk-UA": "repair_failed: Підготовлена копія ще використовується або звільняється",
+    "de-DE": "repair_failed: Eine vorbereitete Veröffentlichungskopie wird noch verwendet oder freigegeben"
+  },
+  "repair_metadata_limit: A publication projection is still owned or retiring": {
+    "es-ES": "repair_metadata_limit: La copia preparada para abrir todavía está en uso o se está liberando",
+    "ru-RU": "repair_metadata_limit: Подготовленная копия ещё используется или освобождается",
+    "uk-UA": "repair_metadata_limit: Підготовлена копія ще використовується або звільняється",
+    "de-DE": "repair_metadata_limit: Eine vorbereitete Veröffentlichungskopie wird noch verwendet oder freigegeben"
+  },
+  "Pending collection inspection cursor changed": {
+    "es-ES": "El cursor de revisión de la colección pendiente cambió",
+    "ru-RU": "Указатель проверки открываемой коллекции изменился",
+    "uk-UA": "Вказівник перевірки колекції, що відкривається, змінився",
+    "de-DE": "Prüfcursor der ausstehenden Sammlung wurde geändert"
+  },
+  "repair_stale: Pending collection inspection cursor changed": {
+    "es-ES": "repair_stale: El cursor de revisión de la colección pendiente cambió",
+    "ru-RU": "repair_stale: Указатель проверки открываемой коллекции изменился",
+    "uk-UA": "repair_stale: Вказівник перевірки колекції, що відкривається, змінився",
+    "de-DE": "repair_stale: Prüfcursor der ausstehenden Sammlung wurde geändert"
+  },
+  "repair_failed: Pending collection inspection cursor changed": {
+    "es-ES": "repair_failed: El cursor de revisión de la colección pendiente cambió",
+    "ru-RU": "repair_failed: Указатель проверки открываемой коллекции изменился",
+    "uk-UA": "repair_failed: Вказівник перевірки колекції, що відкривається, змінився",
+    "de-DE": "repair_failed: Prüfcursor der ausstehenden Sammlung wurde geändert"
+  },
+  "repair_metadata_limit: Pending collection inspection cursor changed": {
+    "es-ES": "repair_metadata_limit: El cursor de revisión de la colección pendiente cambió",
+    "ru-RU": "repair_metadata_limit: Указатель проверки открываемой коллекции изменился",
+    "uk-UA": "repair_metadata_limit: Вказівник перевірки колекції, що відкривається, змінився",
+    "de-DE": "repair_metadata_limit: Prüfcursor der ausstehenden Sammlung wurde geändert"
+  },
+  "Pending collection is not fully prepared for acceptance": {
+    "es-ES": "La colección pendiente no está completamente preparada para abrirse",
+    "ru-RU": "Открываемая коллекция ещё не подготовлена полностью",
+    "uk-UA": "Колекцію, що відкривається, ще не підготовлено повністю",
+    "de-DE": "Die ausstehende Sammlung ist noch nicht vollständig vorbereitet"
+  },
+  "repair_stale: Pending collection is not fully prepared for acceptance": {
+    "es-ES": "repair_stale: La colección pendiente no está completamente preparada para abrirse",
+    "ru-RU": "repair_stale: Открываемая коллекция ещё не подготовлена полностью",
+    "uk-UA": "repair_stale: Колекцію, що відкривається, ще не підготовлено повністю",
+    "de-DE": "repair_stale: Die ausstehende Sammlung ist noch nicht vollständig vorbereitet"
+  },
+  "repair_failed: Pending collection is not fully prepared for acceptance": {
+    "es-ES": "repair_failed: La colección pendiente no está completamente preparada para abrirse",
+    "ru-RU": "repair_failed: Открываемая коллекция ещё не подготовлена полностью",
+    "uk-UA": "repair_failed: Колекцію, що відкривається, ще не підготовлено повністю",
+    "de-DE": "repair_failed: Die ausstehende Sammlung ist noch nicht vollständig vorbereitet"
+  },
+  "repair_metadata_limit: Pending collection is not fully prepared for acceptance": {
+    "es-ES": "repair_metadata_limit: La colección pendiente no está completamente preparada para abrirse",
+    "ru-RU": "repair_metadata_limit: Открываемая коллекция ещё не подготовлена полностью",
+    "uk-UA": "repair_metadata_limit: Колекцію, що відкривається, ще не підготовлено повністю",
+    "de-DE": "repair_metadata_limit: Die ausstehende Sammlung ist noch nicht vollständig vorbereitet"
+  },
+  "Pending receiver preferences are unavailable": {
+    "es-ES": "La configuración de la sesión receptora no está disponible",
+    "ru-RU": "Настройки принимающей сессии недоступны",
+    "uk-UA": "Налаштування приймальної сесії недоступні",
+    "de-DE": "Einstellungen der empfangenden Sitzung sind nicht verfügbar"
+  },
+  "repair_stale: Pending receiver preferences are unavailable": {
+    "es-ES": "repair_stale: La configuración de la sesión receptora no está disponible",
+    "ru-RU": "repair_stale: Настройки принимающей сессии недоступны",
+    "uk-UA": "repair_stale: Налаштування приймальної сесії недоступні",
+    "de-DE": "repair_stale: Einstellungen der empfangenden Sitzung sind nicht verfügbar"
+  },
+  "repair_failed: Pending receiver preferences are unavailable": {
+    "es-ES": "repair_failed: La configuración de la sesión receptora no está disponible",
+    "ru-RU": "repair_failed: Настройки принимающей сессии недоступны",
+    "uk-UA": "repair_failed: Налаштування приймальної сесії недоступні",
+    "de-DE": "repair_failed: Einstellungen der empfangenden Sitzung sind nicht verfügbar"
+  },
+  "repair_metadata_limit: Pending receiver preferences are unavailable": {
+    "es-ES": "repair_metadata_limit: La configuración de la sesión receptora no está disponible",
+    "ru-RU": "repair_metadata_limit: Настройки принимающей сессии недоступны",
+    "uk-UA": "repair_metadata_limit: Налаштування приймальної сесії недоступні",
+    "de-DE": "repair_metadata_limit: Einstellungen der empfangenden Sitzung sind nicht verfügbar"
+  },
+  "Publication projection retirement scope changed": {
+    "es-ES": "Cambió el ámbito de liberación de la copia preparada",
+    "ru-RU": "Область освобождения подготовленной копии изменилась",
+    "uk-UA": "Область звільнення підготовленої копії змінилася",
+    "de-DE": "Freigabebereich der vorbereiteten Kopie wurde geändert"
+  },
+  "repair_stale: Publication projection retirement scope changed": {
+    "es-ES": "repair_stale: Cambió el ámbito de liberación de la copia preparada",
+    "ru-RU": "repair_stale: Область освобождения подготовленной копии изменилась",
+    "uk-UA": "repair_stale: Область звільнення підготовленої копії змінилася",
+    "de-DE": "repair_stale: Freigabebereich der vorbereiteten Kopie wurde geändert"
+  },
+  "repair_failed: Publication projection retirement scope changed": {
+    "es-ES": "repair_failed: Cambió el ámbito de liberación de la copia preparada",
+    "ru-RU": "repair_failed: Область освобождения подготовленной копии изменилась",
+    "uk-UA": "repair_failed: Область звільнення підготовленої копії змінилася",
+    "de-DE": "repair_failed: Freigabebereich der vorbereiteten Kopie wurde geändert"
+  },
+  "repair_metadata_limit: Publication projection retirement scope changed": {
+    "es-ES": "repair_metadata_limit: Cambió el ámbito de liberación de la copia preparada",
+    "ru-RU": "repair_metadata_limit: Область освобождения подготовленной копии изменилась",
+    "uk-UA": "repair_metadata_limit: Область звільнення підготовленої копії змінилася",
+    "de-DE": "repair_metadata_limit: Freigabebereich der vorbereiteten Kopie wurde geändert"
+  },
+  "Published projection retirement scope changed": {
+    "es-ES": "Cambió el ámbito de liberación de la copia abierta",
+    "ru-RU": "Область освобождения открытой копии изменилась",
+    "uk-UA": "Область звільнення відкритої копії змінилася",
+    "de-DE": "Freigabebereich der geöffneten Kopie wurde geändert"
+  },
+  "repair_stale: Published projection retirement scope changed": {
+    "es-ES": "repair_stale: Cambió el ámbito de liberación de la copia abierta",
+    "ru-RU": "repair_stale: Область освобождения открытой копии изменилась",
+    "uk-UA": "repair_stale: Область звільнення відкритої копії змінилася",
+    "de-DE": "repair_stale: Freigabebereich der geöffneten Kopie wurde geändert"
+  },
+  "repair_failed: Published projection retirement scope changed": {
+    "es-ES": "repair_failed: Cambió el ámbito de liberación de la copia abierta",
+    "ru-RU": "repair_failed: Область освобождения открытой копии изменилась",
+    "uk-UA": "repair_failed: Область звільнення відкритої копії змінилася",
+    "de-DE": "repair_failed: Freigabebereich der geöffneten Kopie wurde geändert"
+  },
+  "repair_metadata_limit: Published projection retirement scope changed": {
+    "es-ES": "repair_metadata_limit: Cambió el ámbito de liberación de la copia abierta",
+    "ru-RU": "repair_metadata_limit: Область освобождения открытой копии изменилась",
+    "uk-UA": "repair_metadata_limit: Область звільнення відкритої копії змінилася",
+    "de-DE": "repair_metadata_limit: Freigabebereich der geöffneten Kopie wurde geändert"
+  },
+  "Another pending collection still owns the repair actor": {
+    "es-ES": "Otra colección pendiente todavía ocupa el controlador de reparación",
+    "ru-RU": "Обработчик восстановления ещё занят другой открываемой коллекцией",
+    "uk-UA": "Обробник відновлення ще зайнятий іншою колекцією, що відкривається",
+    "de-DE": "Der Reparaturarbeiter ist noch mit einer anderen ausstehenden Sammlung belegt"
+  },
+  "repair_stale: Another pending collection still owns the repair actor": {
+    "es-ES": "repair_stale: Otra colección pendiente todavía ocupa el controlador de reparación",
+    "ru-RU": "repair_stale: Обработчик восстановления ещё занят другой открываемой коллекцией",
+    "uk-UA": "repair_stale: Обробник відновлення ще зайнятий іншою колекцією, що відкривається",
+    "de-DE": "repair_stale: Der Reparaturarbeiter ist noch mit einer anderen ausstehenden Sammlung belegt"
+  },
+  "repair_failed: Another pending collection still owns the repair actor": {
+    "es-ES": "repair_failed: Otra colección pendiente todavía ocupa el controlador de reparación",
+    "ru-RU": "repair_failed: Обработчик восстановления ещё занят другой открываемой коллекцией",
+    "uk-UA": "repair_failed: Обробник відновлення ще зайнятий іншою колекцією, що відкривається",
+    "de-DE": "repair_failed: Der Reparaturarbeiter ist noch mit einer anderen ausstehenden Sammlung belegt"
+  },
+  "repair_metadata_limit: Another pending collection still owns the repair actor": {
+    "es-ES": "repair_metadata_limit: Otra colección pendiente todavía ocupa el controlador de reparación",
+    "ru-RU": "repair_metadata_limit: Обработчик восстановления ещё занят другой открываемой коллекцией",
+    "uk-UA": "repair_metadata_limit: Обробник відновлення ще зайнятий іншою колекцією, що відкривається",
+    "de-DE": "repair_metadata_limit: Der Reparaturarbeiter ist noch mit einer anderen ausstehenden Sammlung belegt"
+  },
+  "Return the outstanding publication projection before discarding its raw candidate": {
+    "es-ES": "Devuelve la copia preparada antes de descartar su colección original pendiente",
+    "ru-RU": "Освободите подготовленную копию перед удалением её исходного кандидата",
+    "uk-UA": "Звільніть підготовлену копію перед видаленням її початкового кандидата",
+    "de-DE": "Die vorbereitete Kopie vor dem Verwerfen ihres ursprünglichen Kandidaten zurückgeben"
+  },
+  "repair_stale: Return the outstanding publication projection before discarding its raw candidate": {
+    "es-ES": "repair_stale: Devuelve la copia preparada antes de descartar su colección original pendiente",
+    "ru-RU": "repair_stale: Освободите подготовленную копию перед удалением её исходного кандидата",
+    "uk-UA": "repair_stale: Звільніть підготовлену копію перед видаленням її початкового кандидата",
+    "de-DE": "repair_stale: Die vorbereitete Kopie vor dem Verwerfen ihres ursprünglichen Kandidaten zurückgeben"
+  },
+  "repair_failed: Return the outstanding publication projection before discarding its raw candidate": {
+    "es-ES": "repair_failed: Devuelve la copia preparada antes de descartar su colección original pendiente",
+    "ru-RU": "repair_failed: Освободите подготовленную копию перед удалением её исходного кандидата",
+    "uk-UA": "repair_failed: Звільніть підготовлену копію перед видаленням її початкового кандидата",
+    "de-DE": "repair_failed: Die vorbereitete Kopie vor dem Verwerfen ihres ursprünglichen Kandidaten zurückgeben"
+  },
+  "repair_metadata_limit: Return the outstanding publication projection before discarding its raw candidate": {
+    "es-ES": "repair_metadata_limit: Devuelve la copia preparada antes de descartar su colección original pendiente",
+    "ru-RU": "repair_metadata_limit: Освободите подготовленную копию перед удалением её исходного кандидата",
+    "uk-UA": "repair_metadata_limit: Звільніть підготовлену копію перед видаленням її початкового кандидата",
+    "de-DE": "repair_metadata_limit: Die vorbereitete Kopie vor dem Verwerfen ihres ursprünglichen Kandidaten zurückgeben"
+  },
+  "The 192 MiB pending-open metadata credit is still owned or retiring": {
+    "es-ES": "La reserva de 192 MiB de metadatos de apertura todavía está ocupada o se está liberando",
+    "ru-RU": "Резерв метаданных открытия в 192 МиБ ещё занят или освобождается",
+    "uk-UA": "Резерв метаданих відкриття у 192 МіБ ще зайнятий або звільняється",
+    "de-DE": "Das 192-MiB-Metadatenbudget für das Öffnen ist noch belegt oder wird freigegeben"
+  },
+  "repair_stale: The 192 MiB pending-open metadata credit is still owned or retiring": {
+    "es-ES": "repair_stale: La reserva de 192 MiB de metadatos de apertura todavía está ocupada o se está liberando",
+    "ru-RU": "repair_stale: Резерв метаданных открытия в 192 МиБ ещё занят или освобождается",
+    "uk-UA": "repair_stale: Резерв метаданих відкриття у 192 МіБ ще зайнятий або звільняється",
+    "de-DE": "repair_stale: Das 192-MiB-Metadatenbudget für das Öffnen ist noch belegt oder wird freigegeben"
+  },
+  "repair_failed: The 192 MiB pending-open metadata credit is still owned or retiring": {
+    "es-ES": "repair_failed: La reserva de 192 MiB de metadatos de apertura todavía está ocupada o se está liberando",
+    "ru-RU": "repair_failed: Резерв метаданных открытия в 192 МиБ ещё занят или освобождается",
+    "uk-UA": "repair_failed: Резерв метаданих відкриття у 192 МіБ ще зайнятий або звільняється",
+    "de-DE": "repair_failed: Das 192-MiB-Metadatenbudget für das Öffnen ist noch belegt oder wird freigegeben"
+  },
+  "repair_metadata_limit: The 192 MiB pending-open metadata credit is still owned or retiring": {
+    "es-ES": "repair_metadata_limit: La reserva de 192 MiB de metadatos de apertura todavía está ocupada o se está liberando",
+    "ru-RU": "repair_metadata_limit: Резерв метаданных открытия в 192 МиБ ещё занят или освобождается",
+    "uk-UA": "repair_metadata_limit: Резерв метаданих відкриття у 192 МіБ ще зайнятий або звільняється",
+    "de-DE": "repair_metadata_limit: Das 192-MiB-Metadatenbudget für das Öffnen ist noch belegt oder wird freigegeben"
+  },
+  "Pending-open serialized metadata exceeds 12 MiB": {
+    "es-ES": "Los metadatos serializados de apertura superan 12 MiB",
+    "ru-RU": "Сериализованные метаданные открытия превышают 12 МиБ",
+    "uk-UA": "Серіалізовані метадані відкриття перевищують 12 МіБ",
+    "de-DE": "Serialisierte Öffnungsmetadaten überschreiten 12 MiB"
+  },
+  "repair_stale: Pending-open serialized metadata exceeds 12 MiB": {
+    "es-ES": "repair_stale: Los metadatos serializados de apertura superan 12 MiB",
+    "ru-RU": "repair_stale: Сериализованные метаданные открытия превышают 12 МиБ",
+    "uk-UA": "repair_stale: Серіалізовані метадані відкриття перевищують 12 МіБ",
+    "de-DE": "repair_stale: Serialisierte Öffnungsmetadaten überschreiten 12 MiB"
+  },
+  "repair_failed: Pending-open serialized metadata exceeds 12 MiB": {
+    "es-ES": "repair_failed: Los metadatos serializados de apertura superan 12 MiB",
+    "ru-RU": "repair_failed: Сериализованные метаданные открытия превышают 12 МиБ",
+    "uk-UA": "repair_failed: Серіалізовані метадані відкриття перевищують 12 МіБ",
+    "de-DE": "repair_failed: Serialisierte Öffnungsmetadaten überschreiten 12 MiB"
+  },
+  "repair_metadata_limit: Pending-open serialized metadata exceeds 12 MiB": {
+    "es-ES": "repair_metadata_limit: Los metadatos serializados de apertura superan 12 MiB",
+    "ru-RU": "repair_metadata_limit: Сериализованные метаданные открытия превышают 12 МиБ",
+    "uk-UA": "repair_metadata_limit: Серіалізовані метадані відкриття перевищують 12 МіБ",
+    "de-DE": "repair_metadata_limit: Serialisierte Öffnungsmetadaten überschreiten 12 MiB"
+  },
+  "Old and provisional pending-open metadata exceed 192 MiB": {
+    "es-ES": "Los metadatos originales y provisionales de apertura superan 192 MiB",
+    "ru-RU": "Исходные и временные метаданные открытия превышают 192 МиБ",
+    "uk-UA": "Початкові й тимчасові метадані відкриття перевищують 192 МіБ",
+    "de-DE": "Ursprüngliche und vorläufige Öffnungsmetadaten überschreiten 192 MiB"
+  },
+  "repair_stale: Old and provisional pending-open metadata exceed 192 MiB": {
+    "es-ES": "repair_stale: Los metadatos originales y provisionales de apertura superan 192 MiB",
+    "ru-RU": "repair_stale: Исходные и временные метаданные открытия превышают 192 МиБ",
+    "uk-UA": "repair_stale: Початкові й тимчасові метадані відкриття перевищують 192 МіБ",
+    "de-DE": "repair_stale: Ursprüngliche und vorläufige Öffnungsmetadaten überschreiten 192 MiB"
+  },
+  "repair_failed: Old and provisional pending-open metadata exceed 192 MiB": {
+    "es-ES": "repair_failed: Los metadatos originales y provisionales de apertura superan 192 MiB",
+    "ru-RU": "repair_failed: Исходные и временные метаданные открытия превышают 192 МиБ",
+    "uk-UA": "repair_failed: Початкові й тимчасові метадані відкриття перевищують 192 МіБ",
+    "de-DE": "repair_failed: Ursprüngliche und vorläufige Öffnungsmetadaten überschreiten 192 MiB"
+  },
+  "repair_metadata_limit: Old and provisional pending-open metadata exceed 192 MiB": {
+    "es-ES": "repair_metadata_limit: Los metadatos originales y provisionales de apertura superan 192 MiB",
+    "ru-RU": "repair_metadata_limit: Исходные и временные метаданные открытия превышают 192 МиБ",
+    "uk-UA": "repair_metadata_limit: Початкові й тимчасові метадані відкриття перевищують 192 МіБ",
+    "de-DE": "repair_metadata_limit: Ursprüngliche und vorläufige Öffnungsmetadaten überschreiten 192 MiB"
+  },
+  "Pending native path exceeds 16 KiB or contains controls": {
+    "es-ES": "La ruta nativa pendiente supera 16 KiB o contiene caracteres de control",
+    "ru-RU": "Путь открываемого файла превышает 16 КиБ или содержит управляющие символы",
+    "uk-UA": "Шлях файлу, що відкривається, перевищує 16 КіБ або містить керівні символи",
+    "de-DE": "Ausstehender nativer Pfad überschreitet 16 KiB oder enthält Steuerzeichen"
+  },
+  "repair_stale: Pending native path exceeds 16 KiB or contains controls": {
+    "es-ES": "repair_stale: La ruta nativa pendiente supera 16 KiB o contiene caracteres de control",
+    "ru-RU": "repair_stale: Путь открываемого файла превышает 16 КиБ или содержит управляющие символы",
+    "uk-UA": "repair_stale: Шлях файлу, що відкривається, перевищує 16 КіБ або містить керівні символи",
+    "de-DE": "repair_stale: Ausstehender nativer Pfad überschreitet 16 KiB oder enthält Steuerzeichen"
+  },
+  "repair_failed: Pending native path exceeds 16 KiB or contains controls": {
+    "es-ES": "repair_failed: La ruta nativa pendiente supera 16 KiB o contiene caracteres de control",
+    "ru-RU": "repair_failed: Путь открываемого файла превышает 16 КиБ или содержит управляющие символы",
+    "uk-UA": "repair_failed: Шлях файлу, що відкривається, перевищує 16 КіБ або містить керівні символи",
+    "de-DE": "repair_failed: Ausstehender nativer Pfad überschreitet 16 KiB oder enthält Steuerzeichen"
+  },
+  "repair_metadata_limit: Pending native path exceeds 16 KiB or contains controls": {
+    "es-ES": "repair_metadata_limit: La ruta nativa pendiente supera 16 KiB o contiene caracteres de control",
+    "ru-RU": "repair_metadata_limit: Путь открываемого файла превышает 16 КиБ или содержит управляющие символы",
+    "uk-UA": "repair_metadata_limit: Шлях файлу, що відкривається, перевищує 16 КіБ або містить керівні символи",
+    "de-DE": "repair_metadata_limit: Ausstehender nativer Pfad überschreitet 16 KiB oder enthält Steuerzeichen"
+  },
+  "Pending native path is not exact UTF-8": {
+    "es-ES": "La ruta nativa pendiente no es UTF-8 exacto",
+    "ru-RU": "Путь открываемого файла не является точным UTF-8",
+    "uk-UA": "Шлях файлу, що відкривається, не є точним UTF-8",
+    "de-DE": "Ausstehender nativer Pfad ist kein exaktes UTF-8"
+  },
+  "repair_stale: Pending native path is not exact UTF-8": {
+    "es-ES": "repair_stale: La ruta nativa pendiente no es UTF-8 exacto",
+    "ru-RU": "repair_stale: Путь открываемого файла не является точным UTF-8",
+    "uk-UA": "repair_stale: Шлях файлу, що відкривається, не є точним UTF-8",
+    "de-DE": "repair_stale: Ausstehender nativer Pfad ist kein exaktes UTF-8"
+  },
+  "repair_failed: Pending native path is not exact UTF-8": {
+    "es-ES": "repair_failed: La ruta nativa pendiente no es UTF-8 exacto",
+    "ru-RU": "repair_failed: Путь открываемого файла не является точным UTF-8",
+    "uk-UA": "repair_failed: Шлях файлу, що відкривається, не є точним UTF-8",
+    "de-DE": "repair_failed: Ausstehender nativer Pfad ist kein exaktes UTF-8"
+  },
+  "repair_metadata_limit: Pending native path is not exact UTF-8": {
+    "es-ES": "repair_metadata_limit: La ruta nativa pendiente no es UTF-8 exacto",
+    "ru-RU": "repair_metadata_limit: Путь открываемого файла не является точным UTF-8",
+    "uk-UA": "repair_metadata_limit: Шлях файлу, що відкривається, не є точним UTF-8",
+    "de-DE": "repair_metadata_limit: Ausstehender nativer Pfad ist kein exaktes UTF-8"
+  }
+}

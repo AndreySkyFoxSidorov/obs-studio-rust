@@ -1,0 +1,25 @@
+{
+  "kind": "test-only numeric portrait/oracle fixtures; no production image/Python/ONNX runtime dependency",
+  "source_image": "doc/plugins/royshil--obs-backgroundremoval/tests/Scenarios/0000-portrait-umireon.jpg",
+  "source_license": "Apache-2.0; copyright2026 Kaito Udagawa",
+  "input": "little-endian float32 RGB NHWC1x256x256x3, normalized0..1; Root probe preprocessing",
+  "expected": "little-endian float32 ONNX independent ReferenceEvaluator original Selfie graph output, shape1x256x256x1; NOT prior RTen output",
+  "reference_source_sha256": "1511ab5564cb0ae179cba9bcad6ad931003ccc71656f11fd270967023678c6a5",
+  "files": [
+    {
+      "file": "portrait-input.f32",
+      "bytes": 786432,
+      "sha256": "1a915a5073d37cb9cadf853b69b3946d884afb5770fee7387bf09177aae13089"
+    },
+    {
+      "file": "portrait-onnx-reference-mask.f32",
+      "bytes": 262144,
+      "sha256": "be587ab06614f2a7d3f7206c16c9629daf6672c77840cd2e31e692a9477f841c"
+    },
+    {
+      "file": "portrait.LICENSE",
+      "bytes": 105,
+      "sha256": "710791f8c4441ec8141a720d67b8205d5ae23ece7ed814b7e3d23fd858b044e6"
+    }
+  ]
+}

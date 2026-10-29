@@ -1,0 +1,128 @@
+{
+  "Projectors": {
+    "es-ES": "Proyectores",
+    "ru-RU": "Проекторы",
+    "uk-UA": "Проєктори",
+    "de-DE": "Projektoren"
+  },
+  "Settings — Projectors": {
+    "es-ES": "Ajustes — Proyectores",
+    "ru-RU": "Настройки — Проекторы",
+    "uk-UA": "Налаштування — Проєктори",
+    "de-DE": "Einstellungen — Projektoren"
+  },
+  "Projector defaults": {
+    "es-ES": "Valores predeterminados de los proyectores",
+    "ru-RU": "Настройки проекторов по умолчанию",
+    "uk-UA": "Типові налаштування проєкторів",
+    "de-DE": "Projektorvorgaben"
+  },
+  "Multiview defaults": {
+    "es-ES": "Valores predeterminados de Multiview",
+    "ru-RU": "Настройки Multiview по умолчанию",
+    "uk-UA": "Типові налаштування Multiview",
+    "de-DE": "Multiview-Vorgaben"
+  },
+  "Make projectors always on top": {
+    "es-ES": "Mantener los proyectores siempre encima",
+    "ru-RU": "Всегда показывать проекторы поверх окон",
+    "uk-UA": "Завжди показувати проєктори поверх вікон",
+    "de-DE": "Projektoren immer im Vordergrund"
+  },
+  "Hide cursor over fullscreen projectors": {
+    "es-ES": "Ocultar el cursor en los proyectores a pantalla completa",
+    "ru-RU": "Скрывать курсор над полноэкранными проекторами",
+    "uk-UA": "Приховувати курсор над повноекранними проєкторами",
+    "de-DE": "Mauszeiger über Vollbildprojektoren ausblenden"
+  },
+  "Limit one fullscreen projector per monitor": {
+    "es-ES": "Limitar a un proyector a pantalla completa por monitor",
+    "ru-RU": "Один полноэкранный проектор на монитор",
+    "uk-UA": "Один повноекранний проєктор на монітор",
+    "de-DE": "Nur ein Vollbildprojektor pro Monitor"
+  },
+  "Multiview layout": {
+    "es-ES": "Distribución de Multiview",
+    "ru-RU": "Компоновка Multiview",
+    "uk-UA": "Компонування Multiview",
+    "de-DE": "Multiview-Anordnung"
+  },
+  "Show in Multiview": {
+    "es-ES": "Mostrar en Multiview",
+    "ru-RU": "Показывать в Multiview",
+    "uk-UA": "Показувати в Multiview",
+    "de-DE": "In Multiview anzeigen"
+  },
+  "Apply this window level to open projectors and use it for newly opened projectors.": {
+    "es-ES": "Aplicar este nivel de ventana a los proyectores abiertos y usarlo para los nuevos.",
+    "ru-RU": "Применить этот порядок окон к открытым проекторам и использовать его для новых.",
+    "uk-UA": "Застосувати цей порядок вікон до відкритих проєкторів і використовувати його для нових.",
+    "de-DE": "Diese Fensterebene auf offene und künftig geöffnete Projektoren anwenden."
+  },
+  "Hide the pointer in fullscreen single-view projectors; Multiview and context menus keep it visible.": {
+    "es-ES": "Ocultar el puntero en proyectores individuales a pantalla completa; Multiview y los menús contextuales lo mantienen visible.",
+    "ru-RU": "Скрывать указатель в полноэкранных проекторах одного вида; в Multiview и контекстных меню он остаётся видимым.",
+    "uk-UA": "Приховувати вказівник у повноекранних проєкторах одного виду; у Multiview і контекстних меню він залишається видимим.",
+    "de-DE": "Mauszeiger in einzelnen Vollbildprojektoren ausblenden; in Multiview und Kontextmenüs bleibt er sichtbar."
+  },
+  "When a fullscreen projector is explicitly opened or moved to a monitor, close other projectors using that monitor. Enabling this setting alone closes nothing.": {
+    "es-ES": "Al abrir o mover explícitamente un proyector a pantalla completa, cerrar otros proyectores de ese monitor. Activar esta opción por sí sola no cierra nada.",
+    "ru-RU": "При явном открытии или переносе полноэкранного проектора закрывать другие проекторы на этом мониторе. Само включение настройки ничего не закрывает.",
+    "uk-UA": "Під час явного відкриття або перенесення повноекранного проєктора закривати інші проєктори на цьому моніторі. Саме ввімкнення налаштування нічого не закриває.",
+    "de-DE": "Beim ausdrücklichen Öffnen oder Verschieben eines Vollbildprojektors andere Projektoren auf demselben Monitor schließen. Das Aktivieren dieser Option allein schließt nichts."
+  },
+  "Choose the scene grid used by open and future Multiview windows.": {
+    "es-ES": "Elegir la cuadrícula de escenas de las ventanas Multiview abiertas y futuras.",
+    "ru-RU": "Выбрать сетку сцен для открытых и будущих окон Multiview.",
+    "uk-UA": "Вибрати сітку сцен для відкритих і майбутніх вікон Multiview.",
+    "de-DE": "Szenenraster für offene und künftig geöffnete Multiview-Fenster wählen."
+  },
+  "Draw the original OBS safe-area guides on Preview tiles when the layout includes Preview.": {
+    "es-ES": "Dibujar las guías originales de áreas seguras de OBS en las celdas de vista previa cuando la distribución las incluya.",
+    "ru-RU": "Показывать исходные безопасные зоны OBS в ячейках предпросмотра, если они есть в компоновке.",
+    "uk-UA": "Показувати оригінальні безпечні зони OBS у комірках попереднього перегляду, якщо вони є в компонуванні.",
+    "de-DE": "Die ursprünglichen OBS-Sicherheitslinien in Vorschaukacheln anzeigen, sofern die Anordnung eine Vorschau enthält."
+  },
+  "Apply updates the changed defaults on open projectors. Local window choices survive changes to unrelated defaults. No external window opens from this page.": {
+    "es-ES": "Aplicar actualiza los valores predeterminados modificados en los proyectores abiertos. Los ajustes locales se conservan al cambiar otros valores. Esta página no abre ventanas externas.",
+    "ru-RU": "Применение обновляет изменённые настройки в открытых проекторах. Локальные настройки сохраняются при изменении других параметров. Эта страница не открывает внешние окна.",
+    "uk-UA": "Застосування оновлює змінені налаштування у відкритих проєкторах. Локальні налаштування зберігаються під час зміни інших параметрів. Ця сторінка не відкриває зовнішні вікна.",
+    "de-DE": "Anwenden aktualisiert geänderte Vorgaben in offenen Projektoren. Lokale Einstellungen bleiben bei Änderungen anderer Vorgaben erhalten. Diese Seite öffnet keine externen Fenster."
+  },
+  "Scene visibility is configured with Show in Multiview in each scene context menu.": {
+    "es-ES": "La visibilidad se configura con Mostrar en Multiview en el menú contextual de cada escena.",
+    "ru-RU": "Видимость сцены настраивается пунктом «Показывать в Multiview» в её контекстном меню.",
+    "uk-UA": "Видимість сцени налаштовується пунктом «Показувати в Multiview» у її контекстному меню.",
+    "de-DE": "Die Sichtbarkeit wird über In Multiview anzeigen im Kontextmenü jeder Szene festgelegt."
+  },
+  "Include this scene in Multiview scene tiles without changing Program, Preview or its sources.": {
+    "es-ES": "Incluir esta escena en las celdas de Multiview sin cambiar Programa, Vista previa ni sus fuentes.",
+    "ru-RU": "Показывать сцену в сетке Multiview без изменения Program, Preview и её источников.",
+    "uk-UA": "Показувати сцену в сітці Multiview без зміни Program, Preview та її джерел.",
+    "de-DE": "Diese Szene in Multiview aufnehmen, ohne Programm, Vorschau oder ihre Quellen zu ändern."
+  },
+  "Restore OBS projector defaults": {
+    "es-ES": "Restaurar los valores de los proyectores de OBS",
+    "ru-RU": "Восстановить настройки проекторов OBS",
+    "uk-UA": "Відновити налаштування проєкторів OBS",
+    "de-DE": "OBS-Projektorvorgaben wiederherstellen"
+  },
+  "Restore the OBS 32.2.2 projector and Multiview defaults in this draft.": {
+    "es-ES": "Restaurar los valores predeterminados de proyectores y Multiview de OBS 32.2.2 en este borrador.",
+    "ru-RU": "Вернуть в этом черновике настройки проекторов и Multiview по умолчанию из OBS 32.2.2.",
+    "uk-UA": "Повернути в цій чернетці типові налаштування проєкторів і Multiview з OBS 32.2.2.",
+    "de-DE": "Die Projektor- und Multiview-Vorgaben von OBS 32.2.2 in diesem Entwurf wiederherstellen."
+  },
+  "Projector defaults changed. Reopen this page before applying.": {
+    "es-ES": "Los valores de los proyectores han cambiado. Vuelva a abrir esta página antes de aplicar.",
+    "ru-RU": "Настройки проекторов изменились. Перед применением откройте страницу заново.",
+    "uk-UA": "Налаштування проєкторів змінилися. Перед застосуванням відкрийте сторінку знову.",
+    "de-DE": "Die Projektorvorgaben haben sich geändert. Diese Seite vor dem Anwenden erneut öffnen."
+  },
+  "The Multiview scene changed. Open its menu again.": {
+    "es-ES": "La escena de Multiview ha cambiado. Vuelva a abrir su menú.",
+    "ru-RU": "Сцена Multiview изменилась. Откройте её меню заново.",
+    "uk-UA": "Сцена Multiview змінилася. Відкрийте її меню знову.",
+    "de-DE": "Die Multiview-Szene hat sich geändert. Ihr Menü erneut öffnen."
+  }
+}

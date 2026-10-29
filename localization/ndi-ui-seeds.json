@@ -1,0 +1,218 @@
+{
+  "This sender was not found in the latest search.": {
+    "es-ES": "Este emisor no se encontró en la última búsqueda.",
+    "ru-RU": "Этот отправитель не найден при последнем поиске.",
+    "uk-UA": "Цей передавач не знайдено під час останнього пошуку.",
+    "de-DE": "Dieser Sender wurde bei der letzten Suche nicht gefunden."
+  },
+  "A new or changed sender requires an actual progressive RGB video frame. Existing sender settings can be applied offline; video resumes when the sender is available.": {
+    "es-ES": "Un emisor nuevo o cambiado requiere un fotograma RGB progresivo real. La configuración del emisor existente se puede aplicar sin conexión; el vídeo se reanuda cuando está disponible.",
+    "ru-RU": "Для нового или изменённого отправителя требуется реальный прогрессивный RGB-кадр. Настройки существующего отправителя можно применить без подключения; видео возобновится, когда он станет доступен.",
+    "uk-UA": "Для нового або зміненого передавача потрібен справжній прогресивний RGB-кадр. Налаштування наявного передавача можна застосувати без з’єднання; відео відновиться, коли він стане доступним.",
+    "de-DE": "Ein neuer oder geänderter Sender erfordert ein tatsächliches progressives RGB-Videobild. Einstellungen eines vorhandenen Senders lassen sich offline anwenden; das Video wird fortgesetzt, sobald der Sender verfügbar ist."
+  },
+  "NDI Source": {
+    "es-ES": "Fuente NDI",
+    "ru-RU": "Источник NDI",
+    "uk-UA": "Джерело NDI",
+    "de-DE": "NDI-Quelle"
+  },
+  "Add NDI Source": {
+    "es-ES": "Añadir fuente NDI",
+    "ru-RU": "Добавить источник NDI",
+    "uk-UA": "Додати джерело NDI",
+    "de-DE": "NDI-Quelle hinzufügen"
+  },
+  "Properties: NDI Source": {
+    "es-ES": "Propiedades: fuente NDI",
+    "ru-RU": "Свойства: источник NDI",
+    "uk-UA": "Властивості: джерело NDI",
+    "de-DE": "Eigenschaften: NDI-Quelle"
+  },
+  "NDI Source (installed NDI6 Runtime)": {
+    "es-ES": "Fuente NDI (NDI6 Runtime instalado)",
+    "ru-RU": "Источник NDI (установленная среда NDI6 Runtime)",
+    "uk-UA": "Джерело NDI (установлене середовище NDI6 Runtime)",
+    "de-DE": "NDI-Quelle (installierte NDI6 Runtime)"
+  },
+  "Receive video and audio from an NDI sender using an installed NDI6 Runtime.": {
+    "es-ES": "Recibir vídeo y audio de un emisor NDI mediante NDI6 Runtime instalado.",
+    "ru-RU": "Принимать видео и звук от отправителя NDI через установленную среду NDI6 Runtime.",
+    "uk-UA": "Приймати відео та звук від передавача NDI через установлене середовище NDI6 Runtime.",
+    "de-DE": "Video und Audio von einem NDI-Sender über eine installierte NDI6 Runtime empfangen."
+  },
+  "NDI receive uses the separately installed official NDI6 Runtime (Windows x64).": {
+    "es-ES": "La recepción NDI utiliza el entorno oficial NDI6 Runtime instalado por separado (Windows x64).",
+    "ru-RU": "Для приёма NDI используется официальная среда NDI6 Runtime, установленная отдельно (Windows x64).",
+    "uk-UA": "Для приймання NDI використовується офіційне середовище NDI6 Runtime, установлене окремо (Windows x64).",
+    "de-DE": "Für den NDI-Empfang wird die separat installierte offizielle NDI6 Runtime verwendet (Windows x64)."
+  },
+  "Name this NDI source in the scene.": {
+    "es-ES": "Asigne un nombre a esta fuente NDI en la escena.",
+    "ru-RU": "Задайте имя этого источника NDI в сцене.",
+    "uk-UA": "Задайте назву цього джерела NDI у сцені.",
+    "de-DE": "Dieser NDI-Quelle in der Szene einen Namen geben."
+  },
+  "Include local senders": {
+    "es-ES": "Incluir emisores locales",
+    "ru-RU": "Показывать локальных отправителей",
+    "uk-UA": "Показувати локальні передавачі",
+    "de-DE": "Lokale Sender einschließen"
+  },
+  "Include NDI senders on this computer in the next search.": {
+    "es-ES": "Incluir los emisores NDI de este equipo en la próxima búsqueda.",
+    "ru-RU": "При следующем поиске показывать отправителей NDI с этого компьютера.",
+    "uk-UA": "Під час наступного пошуку показувати передавачі NDI із цього комп’ютера.",
+    "de-DE": "Bei der nächsten Suche auch NDI-Sender auf diesem Computer berücksichtigen."
+  },
+  "Search NDI senders": {
+    "es-ES": "Buscar emisores NDI",
+    "ru-RU": "Найти отправителей NDI",
+    "uk-UA": "Знайти передавачі NDI",
+    "de-DE": "NDI-Sender suchen"
+  },
+  "Search the local NDI discovery network for up to one second. Nothing is installed or downloaded.": {
+    "es-ES": "Buscar emisores en la red local de descubrimiento NDI durante hasta un segundo. No se instala ni descarga nada.",
+    "ru-RU": "Искать отправителей в локальной сети обнаружения NDI в течение одной секунды. Ничего не устанавливается и не скачивается.",
+    "uk-UA": "Шукати передавачі в локальній мережі виявлення NDI протягом однієї секунди. Нічого не встановлюється й не завантажується.",
+    "de-DE": "Das lokale NDI-Erkennungsnetz bis zu einer Sekunde durchsuchen. Es wird nichts installiert oder heruntergeladen."
+  },
+  "NDI sender": {
+    "es-ES": "Emisor NDI",
+    "ru-RU": "Отправитель NDI",
+    "uk-UA": "Передавач NDI",
+    "de-DE": "NDI-Sender"
+  },
+  "Choose a sender": {
+    "es-ES": "Elegir un emisor",
+    "ru-RU": "Выберите отправителя",
+    "uk-UA": "Виберіть передавач",
+    "de-DE": "Sender auswählen"
+  },
+  "Select a discovered sender. The saved sender remains selected while disconnected.": {
+    "es-ES": "Seleccione un emisor detectado. El emisor guardado sigue seleccionado mientras esté desconectado.",
+    "ru-RU": "Выберите найденного отправителя. Сохранённый отправитель остаётся выбранным, даже если соединение потеряно.",
+    "uk-UA": "Виберіть знайдений передавач. Збережений передавач залишається вибраним, навіть якщо з’єднання втрачено.",
+    "de-DE": "Einen gefundenen Sender auswählen. Der gespeicherte Sender bleibt auch ohne Verbindung ausgewählt."
+  },
+  "Saved sender has not been discovered in this search. Apply still requires an actual video frame.": {
+    "es-ES": "No se ha detectado el emisor guardado en esta búsqueda. Para aplicar se sigue necesitando un fotograma de vídeo real.",
+    "ru-RU": "Сохранённый отправитель не найден при этом поиске. Для применения всё равно требуется получить реальный видеокадр.",
+    "uk-UA": "Збережений передавач не знайдено під час цього пошуку. Для застосування однаково потрібно отримати справжній відеокадр.",
+    "de-DE": "Der gespeicherte Sender wurde bei dieser Suche nicht gefunden. Zum Anwenden wird weiterhin ein tatsächlich empfangenes Videobild benötigt."
+  },
+  "No senders listed. Search again after starting an NDI sender and checking the network.": {
+    "es-ES": "No hay emisores en la lista. Inicie un emisor NDI, compruebe la red y vuelva a buscar.",
+    "ru-RU": "Список отправителей пуст. Запустите отправитель NDI, проверьте сеть и повторите поиск.",
+    "uk-UA": "Список передавачів порожній. Запустіть передавач NDI, перевірте мережу та повторіть пошук.",
+    "de-DE": "Die Senderliste ist leer. Einen NDI-Sender starten, die Netzwerkverbindung prüfen und erneut suchen."
+  },
+  "Bandwidth": {
+    "es-ES": "Ancho de banda",
+    "ru-RU": "Пропускная способность",
+    "uk-UA": "Пропускна здатність",
+    "de-DE": "Bandbreite"
+  },
+  "Highest (full resolution)": {
+    "es-ES": "Máximo (resolución completa)",
+    "ru-RU": "Максимальная (полное разрешение)",
+    "uk-UA": "Максимальна (повна роздільність)",
+    "de-DE": "Höchste (volle Auflösung)"
+  },
+  "Lowest (sender low bandwidth stream)": {
+    "es-ES": "Mínimo (flujo de bajo ancho de banda del emisor)",
+    "ru-RU": "Минимальная (поток отправителя с низкой пропускной способностью)",
+    "uk-UA": "Мінімальна (потік передавача з низькою пропускною здатністю)",
+    "de-DE": "Niedrigste (Senderstream mit geringer Bandbreite)"
+  },
+  "Requests the SDK's actual high or low bandwidth stream; resolution and frame rate come from the sender.": {
+    "es-ES": "Solicita al SDK el flujo real de ancho de banda alto o bajo; la resolución y la frecuencia de fotogramas las proporciona el emisor.",
+    "ru-RU": "Запрашивает у SDK реальный поток с высокой или низкой пропускной способностью; разрешение и частоту кадров определяет отправитель.",
+    "uk-UA": "Запитує в SDK справжній потік із високою або низькою пропускною здатністю; роздільність і частоту кадрів визначає передавач.",
+    "de-DE": "Fordert vom SDK den tatsächlichen Stream mit hoher oder niedriger Bandbreite an; Auflösung und Bildrate werden vom Sender vorgegeben."
+  },
+  "Receive audio": {
+    "es-ES": "Recibir audio",
+    "ru-RU": "Принимать звук",
+    "uk-UA": "Приймати звук",
+    "de-DE": "Audio empfangen"
+  },
+  "Route received PCM through this source's mixer, filters and explicitly selected monitoring mode.": {
+    "es-ES": "Enviar el PCM recibido al mezclador y los filtros de esta fuente y al modo de monitorización elegido explícitamente.",
+    "ru-RU": "Передавать полученный PCM в микшер и фильтры этого источника, используя явно выбранный режим мониторинга.",
+    "uk-UA": "Передавати отриманий PCM до мікшера й фільтрів цього джерела, використовуючи явно вибраний режим моніторингу.",
+    "de-DE": "Empfangenes PCM durch den Mixer und die Filter dieser Quelle sowie den ausdrücklich gewählten Abhörmodus leiten."
+  },
+  "Received NDI video: {width} × {height}, {fps_num}/{fps_den} fps": {
+    "es-ES": "Vídeo NDI recibido: {width} × {height}, {fps_num}/{fps_den} fps",
+    "ru-RU": "Полученное видео NDI: {width} × {height}, {fps_num}/{fps_den} кадр/с",
+    "uk-UA": "Отримане відео NDI: {width} × {height}, {fps_num}/{fps_den} кадр/с",
+    "de-DE": "Empfangenes NDI-Video: {width} × {height}, {fps_num}/{fps_den} Bilder/s"
+  },
+  "Last prepared NDI video size: {width} × {height}": {
+    "es-ES": "Último tamaño de vídeo NDI preparado: {width} × {height}",
+    "ru-RU": "Размер видео NDI при последней подготовке: {width} × {height}",
+    "uk-UA": "Розмір відео NDI під час останньої підготовки: {width} × {height}",
+    "de-DE": "Zuletzt vorbereitete NDI-Videogröße: {width} × {height}"
+  },
+  "Apply waits for an actual progressive RGB video frame. Sender timing and dynamic dimensions are retained; no resolution preset is invented.": {
+    "es-ES": "Aplicar espera un fotograma RGB progresivo real. Se conservan los tiempos y las dimensiones dinámicas del emisor; no se inventa un preajuste de resolución.",
+    "ru-RU": "При применении ожидается реальный прогрессивный RGB-видеокадр. Сохраняются временные метки и динамические размеры отправителя; фиктивные предустановки разрешения не создаются.",
+    "uk-UA": "Під час застосування очікується справжній прогресивний RGB-відеокадр. Зберігаються часові позначки й динамічні розміри передавача; вигадані набори параметрів роздільності не створюються.",
+    "de-DE": "Beim Anwenden wird auf ein tatsächliches progressives RGB-Videobild gewartet. Zeitinformationen und dynamische Abmessungen des Senders bleiben erhalten; es wird keine Auflösungsvorgabe erfunden."
+  },
+  "Waiting for NDI discovery or video…": {
+    "es-ES": "Esperando la detección NDI o el vídeo…",
+    "ru-RU": "Ожидание поиска NDI или видео…",
+    "uk-UA": "Очікування пошуку NDI або відео…",
+    "de-DE": "Warten auf NDI-Erkennung oder Video…"
+  },
+  "Wait for NDI discovery or source preparation to finish.": {
+    "es-ES": "Espere a que termine la detección NDI o la preparación de la fuente.",
+    "ru-RU": "Дождитесь завершения поиска NDI или подготовки источника.",
+    "uk-UA": "Дочекайтеся завершення пошуку NDI або підготовки джерела.",
+    "de-DE": "Warten, bis die NDI-Erkennung oder die Vorbereitung der Quelle abgeschlossen ist."
+  },
+  "Wait for NDI discovery or video preparation to finish.": {
+    "es-ES": "Espere a que termine la detección NDI o la preparación del vídeo.",
+    "ru-RU": "Дождитесь завершения поиска NDI или подготовки видео.",
+    "uk-UA": "Дочекайтеся завершення пошуку NDI або підготовки відео.",
+    "de-DE": "Warten, bis die NDI-Erkennung oder die Videovorbereitung abgeschlossen ist."
+  },
+  "Source name requires 1..256 UTF-8 bytes without controls.": {
+    "es-ES": "El nombre de la fuente debe tener de 1 a 256 bytes UTF-8 y no contener caracteres de control.",
+    "ru-RU": "Имя источника должно содержать от 1 до 256 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Назва джерела має містити від 1 до 256 байтів UTF-8 без керувальних символів.",
+    "de-DE": "Der Quellenname muss 1 bis 256 UTF-8-Bytes ohne Steuerzeichen enthalten."
+  },
+  "Search and choose an actual NDI sender first.": {
+    "es-ES": "Primero busque y seleccione un emisor NDI real.",
+    "ru-RU": "Сначала найдите и выберите реального отправителя NDI.",
+    "uk-UA": "Спочатку знайдіть і виберіть справжній передавач NDI.",
+    "de-DE": "Zuerst einen tatsächlich vorhandenen NDI-Sender suchen und auswählen."
+  },
+  "The NDI source draft changed. Reopen its properties.": {
+    "es-ES": "El borrador de la fuente NDI ha cambiado. Vuelva a abrir sus propiedades.",
+    "ru-RU": "Черновик источника NDI изменился. Откройте его свойства заново.",
+    "uk-UA": "Чернетка джерела NDI змінилася. Відкрийте його властивості знову.",
+    "de-DE": "Der Entwurf der NDI-Quelle wurde geändert. Die Eigenschaften erneut öffnen."
+  },
+  "Enable the NDI receive module on Windows x64 first.": {
+    "es-ES": "Primero active el módulo de recepción NDI en Windows x64.",
+    "ru-RU": "Сначала включите модуль приёма NDI в Windows x64.",
+    "uk-UA": "Спочатку ввімкніть модуль приймання NDI у Windows x64.",
+    "de-DE": "Zuerst das NDI-Empfangsmodul unter Windows x64 aktivieren."
+  },
+  "NDI dialog identity exhausted": {
+    "es-ES": "Se han agotado los identificadores del diálogo NDI",
+    "ru-RU": "Исчерпаны идентификаторы диалога NDI",
+    "uk-UA": "Вичерпано ідентифікатори діалогу NDI",
+    "de-DE": "Die Kennungen des NDI-Dialogs sind ausgeschöpft"
+  },
+  "NDI receive error: {error}": {
+    "es-ES": "Error de recepción NDI: {error}",
+    "ru-RU": "Ошибка приёма NDI: {error}",
+    "uk-UA": "Помилка приймання NDI: {error}",
+    "de-DE": "NDI-Empfangsfehler: {error}"
+  }
+}

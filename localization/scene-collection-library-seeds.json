@@ -1,0 +1,284 @@
+{
+  "Managed collections": {
+    "es-ES": "Colecciones administradas",
+    "ru-RU": "Управляемые коллекции",
+    "uk-UA": "Керовані колекції",
+    "de-DE": "Verwaltete Sammlungen"
+  },
+  "Refresh to load the managed collection library.": {
+    "es-ES": "Actualiza para cargar la biblioteca de colecciones administradas.",
+    "ru-RU": "Обновите список, чтобы загрузить библиотеку управляемых коллекций.",
+    "uk-UA": "Оновіть список, щоб завантажити бібліотеку керованих колекцій.",
+    "de-DE": "Zum Laden der verwalteten Sammlungen aktualisieren."
+  },
+  "The managed library is empty. Use New or Duplicate to create an owned collection.": {
+    "es-ES": "La biblioteca está vacía. Usa Nueva o Duplicar para crear una colección administrada.",
+    "ru-RU": "Библиотека пуста. Создайте новую коллекцию или дубликат.",
+    "uk-UA": "Бібліотека порожня. Створіть нову колекцію або дублікат.",
+    "de-DE": "Die Bibliothek ist leer. Mit Neu oder Duplizieren eine verwaltete Sammlung erstellen."
+  },
+  "Search collections…": {
+    "es-ES": "Buscar colecciones…",
+    "ru-RU": "Поиск коллекций…",
+    "uk-UA": "Пошук колекцій…",
+    "de-DE": "Sammlungen suchen…"
+  },
+  "Search managed collections by their saved names.": {
+    "es-ES": "Buscar colecciones administradas por sus nombres guardados.",
+    "ru-RU": "Искать управляемые коллекции по сохранённым именам.",
+    "uk-UA": "Шукати керовані колекції за збереженими назвами.",
+    "de-DE": "Verwaltete Sammlungen nach ihren gespeicherten Namen durchsuchen."
+  },
+  "Load this managed collection after resolving unsaved changes. Sources retain their document-local identities.": {
+    "es-ES": "Cargar esta colección tras resolver los cambios sin guardar. Las fuentes conservan sus identidades dentro del documento.",
+    "ru-RU": "Загрузить коллекцию после обработки несохранённых изменений. Источники сохранят свои идентификаторы внутри документа.",
+    "uk-UA": "Завантажити колекцію після обробки незбережених змін. Джерела збережуть свої ідентифікатори в межах документа.",
+    "de-DE": "Diese Sammlung nach Klärung ungespeicherter Änderungen laden. Quellen behalten ihre dokumentlokalen Kennungen."
+  },
+  "Managed collection writes are available on Windows; this host can inspect and open existing entries.": {
+    "es-ES": "La escritura de colecciones administradas está disponible en Windows; este sistema puede consultar y abrir entradas existentes.",
+    "ru-RU": "Запись управляемых коллекций доступна в Windows; эта система может просматривать и открывать существующие записи.",
+    "uk-UA": "Запис керованих колекцій доступний у Windows; ця система може переглядати й відкривати наявні записи.",
+    "de-DE": "Verwaltete Sammlungen können unter Windows geschrieben werden; dieses System kann vorhandene Einträge anzeigen und öffnen."
+  },
+  "Refresh collections": {
+    "es-ES": "Actualizar colecciones",
+    "ru-RU": "Обновить коллекции",
+    "uk-UA": "Оновити колекції",
+    "de-DE": "Sammlungen aktualisieren"
+  },
+  "Read the actual managed library index on the I/O worker. External files are not adopted.": {
+    "es-ES": "Leer el índice real de la biblioteca en el proceso de E/S. Los archivos externos no se incorporan.",
+    "ru-RU": "Прочитать индекс библиотеки в фоновом обработчике ввода-вывода. Внешние файлы не присваиваются библиотеке.",
+    "uk-UA": "Прочитати індекс бібліотеки у фоновому обробнику вводу-виводу. Зовнішні файли не додаються до бібліотеки.",
+    "de-DE": "Den tatsächlichen Bibliotheksindex im E/A-Worker lesen. Externe Dateien werden nicht übernommen."
+  },
+  "Remove managed collection": {
+    "es-ES": "Eliminar colección administrada",
+    "ru-RU": "Удалить управляемую коллекцию",
+    "uk-UA": "Видалити керовану колекцію",
+    "de-DE": "Verwaltete Sammlung entfernen"
+  },
+  "Duplicate scene collection": {
+    "es-ES": "Duplicar colección de escenas",
+    "ru-RU": "Дублировать коллекцию сцен",
+    "uk-UA": "Дублювати колекцію сцен",
+    "de-DE": "Szenensammlung duplizieren"
+  },
+  "New managed collection": {
+    "es-ES": "Nueva colección administrada",
+    "ru-RU": "Новая управляемая коллекция",
+    "uk-UA": "Нова керована колекція",
+    "de-DE": "Neue verwaltete Sammlung"
+  },
+  "Switch and remove": {
+    "es-ES": "Cambiar y eliminar",
+    "ru-RU": "Переключить и удалить",
+    "uk-UA": "Перемкнути й видалити",
+    "de-DE": "Wechseln und entfernen"
+  },
+  "Create and switch": {
+    "es-ES": "Crear y cambiar",
+    "ru-RU": "Создать и переключить",
+    "uk-UA": "Створити й перемкнути",
+    "de-DE": "Erstellen und wechseln"
+  },
+  "Resolve dirty-document choices before publishing any managed file operation.": {
+    "es-ES": "Resolver los cambios sin guardar antes de realizar operaciones con archivos administrados.",
+    "ru-RU": "Обработать несохранённые изменения перед выполнением операций с файлами библиотеки.",
+    "uk-UA": "Обробити незбережені зміни перед виконанням операцій із файлами бібліотеки.",
+    "de-DE": "Ungespeicherte Änderungen vor jeder verwalteten Dateioperation klären."
+  },
+  "Keep the current collection and create no new artifact.": {
+    "es-ES": "Conservar la colección actual sin crear ningún archivo nuevo.",
+    "ru-RU": "Оставить текущую коллекцию и не создавать новые файлы.",
+    "uk-UA": "Залишити поточну колекцію й не створювати нових файлів.",
+    "de-DE": "Die aktuelle Sammlung beibehalten und keine neue Datei erstellen."
+  },
+  "Another saved managed collection opens first. The current owned file is removed from the library only after successful switching and is retained in the recovery folder.": {
+    "es-ES": "Primero se abre otra colección administrada guardada. El archivo actual se retira de la biblioteca solo tras cambiar correctamente y se conserva en la carpeta de recuperación.",
+    "ru-RU": "Сначала откроется другая сохранённая коллекция библиотеки. Текущий файл будет удалён из библиотеки только после успешного переключения и сохранится в папке восстановления.",
+    "uk-UA": "Спочатку відкриється інша збережена колекція бібліотеки. Поточний файл буде вилучено з бібліотеки лише після успішного перемикання та залишиться в папці відновлення.",
+    "de-DE": "Zuerst wird eine andere gespeicherte Sammlung geöffnet. Die aktuelle Datei wird erst nach erfolgreichem Wechsel aus der Bibliothek entfernt und im Wiederherstellungsordner behalten."
+  },
+  "External Open files are never deleted. The last managed collection cannot be removed.": {
+    "es-ES": "Los archivos abiertos externos nunca se eliminan. No se puede quitar la última colección administrada.",
+    "ru-RU": "Внешние открытые файлы никогда не удаляются. Последнюю управляемую коллекцию удалить нельзя.",
+    "uk-UA": "Зовнішні відкриті файли ніколи не видаляються. Останню керовану колекцію видалити не можна.",
+    "de-DE": "Extern geöffnete Dateien werden nie gelöscht. Die letzte verwaltete Sammlung kann nicht entfernt werden."
+  },
+  "Collection name": {
+    "es-ES": "Nombre de la colección",
+    "ru-RU": "Имя коллекции",
+    "uk-UA": "Назва колекції",
+    "de-DE": "Sammlungsname"
+  },
+  "Choose a unique name of 1–256 UTF-8 bytes without control characters.": {
+    "es-ES": "Elige un nombre único de 1–256 bytes UTF-8 sin caracteres de control.",
+    "ru-RU": "Укажите уникальное имя длиной 1–256 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Укажіть унікальну назву завдовжки 1–256 байтів UTF-8 без керівних символів.",
+    "de-DE": "Einen eindeutigen Namen mit 1–256 UTF-8-Bytes ohne Steuerzeichen wählen."
+  },
+  "Create an independent native copy of the reviewed current snapshot. Source shortcuts and saved projector targets keep their document-local IDs in a new session.": {
+    "es-ES": "Crear una copia nativa independiente de la instantánea actual revisada. Los atajos de fuentes y los proyectores guardados conservan sus identificadores locales en una sesión nueva.",
+    "ru-RU": "Создать независимую копию просмотренного текущего состояния в формате SkyLive. Сочетания клавиш источников и сохранённые проекторы сохранят идентификаторы внутри документа в новой сессии.",
+    "uk-UA": "Створити незалежну копію переглянутого поточного стану у форматі SkyLive. Скорочення джерел і збережені проєктори збережуть ідентифікатори в межах документа в новій сесії.",
+    "de-DE": "Eine unabhängige native Kopie des geprüften aktuellen Stands erstellen. Quellenkürzel und gespeicherte Projektorziele behalten ihre dokumentlokalen Kennungen in einer neuen Sitzung."
+  },
+  "Create a new managed native collection using the current profiles and installed preferences.": {
+    "es-ES": "Crear una colección nativa administrada con los perfiles y las preferencias actuales.",
+    "ru-RU": "Создать новую коллекцию библиотеки в формате SkyLive с текущими профилями и настройками приложения.",
+    "uk-UA": "Створити нову колекцію бібліотеки у форматі SkyLive з поточними профілями та налаштуваннями застосунку.",
+    "de-DE": "Eine neue verwaltete native Sammlung mit den aktuellen Profilen und Anwendungseinstellungen erstellen."
+  },
+  "Existing dirty-document Save, Discard and Cancel choices run before a new file is created. Cancel creates no artifact.": {
+    "es-ES": "Las opciones Guardar, Descartar y Cancelar se resuelven antes de crear un archivo nuevo. Cancelar no crea archivos.",
+    "ru-RU": "Выбор Сохранить, Отменить изменения или Отмена обрабатывается до создания нового файла. Отмена не создаёт файл.",
+    "uk-UA": "Вибір Зберегти, Відкинути зміни або Скасувати обробляється до створення нового файла. Скасування не створює файл.",
+    "de-DE": "Speichern, Verwerfen und Abbrechen werden vor dem Erstellen einer neuen Datei geklärt. Abbrechen erstellt keine Datei."
+  },
+  "The collection draft is obsolete. Cancel and reopen it.": {
+    "es-ES": "El borrador de la colección quedó desactualizado. Cancélalo y vuelve a abrirlo.",
+    "ru-RU": "Черновик коллекции устарел. Отмените и откройте его заново.",
+    "uk-UA": "Чернетка колекції застаріла. Скасуйте та відкрийте її знову.",
+    "de-DE": "Der Sammlungsentwurf ist veraltet. Abbrechen und erneut öffnen."
+  },
+  "Library information": {
+    "es-ES": "Información de la biblioteca",
+    "ru-RU": "Сведения о библиотеке",
+    "uk-UA": "Відомості про бібліотеку",
+    "de-DE": "Bibliotheksinformationen"
+  },
+  "Switch between saved app-managed collections; arbitrary Open files stay external.": {
+    "es-ES": "Cambiar entre colecciones guardadas administradas por la aplicación; los archivos abiertos externos siguen siendo externos.",
+    "ru-RU": "Переключаться между сохранёнными коллекциями библиотеки; произвольно открытые файлы остаются внешними.",
+    "uk-UA": "Перемикатися між збереженими колекціями бібліотеки; довільно відкриті файли залишаються зовнішніми.",
+    "de-DE": "Zwischen gespeicherten Anwendungssammlungen wechseln; beliebig geöffnete Dateien bleiben extern."
+  },
+  "Refresh the library and open an indexed managed collection. Removal requires another managed collection and Windows write support.": {
+    "es-ES": "Actualiza la biblioteca y abre una colección registrada. Para eliminarla debe existir otra colección y estar disponible la escritura de Windows.",
+    "ru-RU": "Обновите библиотеку и откройте зарегистрированную коллекцию. Для удаления нужна другая коллекция библиотеки и поддержка записи в Windows.",
+    "uk-UA": "Оновіть бібліотеку й відкрийте зареєстровану колекцію. Для видалення потрібні інша колекція бібліотеки та підтримка запису у Windows.",
+    "de-DE": "Die Bibliothek aktualisieren und eine registrierte Sammlung öffnen. Zum Entfernen sind eine weitere Sammlung und Windows-Schreibunterstützung erforderlich."
+  },
+  "Managed collection writes are available only on Windows.": {
+    "es-ES": "La escritura de colecciones administradas solo está disponible en Windows.",
+    "ru-RU": "Запись управляемых коллекций доступна только в Windows.",
+    "uk-UA": "Запис керованих колекцій доступний лише у Windows.",
+    "de-DE": "Verwaltete Sammlungen können nur unter Windows geschrieben werden."
+  },
+  "Apply changes the current document name. The managed library name updates only after a successful native Save; external files are not adopted or deleted.": {
+    "es-ES": "Aplicar cambia el nombre del documento actual. El nombre de la biblioteca se actualiza solo tras guardar correctamente el documento nativo; no se incorporan ni eliminan archivos externos.",
+    "ru-RU": "Применить меняет имя текущего документа. Имя в библиотеке обновится только после успешного сохранения в формате SkyLive; внешние файлы не присваиваются библиотеке и не удаляются.",
+    "uk-UA": "Застосувати змінює назву поточного документа. Назва в бібліотеці оновиться лише після успішного збереження у форматі SkyLive; зовнішні файли не додаються до бібліотеки й не видаляються.",
+    "de-DE": "Anwenden ändert den Namen des aktuellen Dokuments. Der Bibliotheksname wird erst nach erfolgreichem nativem Speichern aktualisiert; externe Dateien werden weder übernommen noch gelöscht."
+  },
+  "Installed settings are not available; finish startup before using managed collections.": {
+    "es-ES": "La configuración no está disponible; espera a que termine el inicio para usar las colecciones administradas.",
+    "ru-RU": "Настройки приложения ещё недоступны; дождитесь окончания запуска перед работой с библиотекой коллекций.",
+    "uk-UA": "Налаштування застосунку ще недоступні; дочекайтеся завершення запуску перед роботою з бібліотекою колекцій.",
+    "de-DE": "Anwendungseinstellungen sind noch nicht verfügbar; vor der Sammlungsverwaltung den Start abschließen lassen."
+  },
+  "Stop active outputs before changing managed collections.": {
+    "es-ES": "Detén las salidas activas antes de cambiar colecciones administradas.",
+    "ru-RU": "Остановите активные выходы перед изменением коллекций библиотеки.",
+    "uk-UA": "Зупиніть активні виходи перед зміною колекцій бібліотеки.",
+    "de-DE": "Aktive Ausgaben vor dem Wechsel verwalteter Sammlungen stoppen."
+  },
+  "Finish the current document operation before refreshing collections.": {
+    "es-ES": "Termina la operación actual del documento antes de actualizar las colecciones.",
+    "ru-RU": "Завершите текущую операцию с документом перед обновлением коллекций.",
+    "uk-UA": "Завершіть поточну операцію з документом перед оновленням колекцій.",
+    "de-DE": "Den aktuellen Dokumentvorgang vor dem Aktualisieren der Sammlungen abschließen."
+  },
+  "Collection draft identity exhausted.": {
+    "es-ES": "Se agotaron los identificadores de borrador de colección.",
+    "ru-RU": "Исчерпаны идентификаторы черновиков коллекций.",
+    "uk-UA": "Вичерпано ідентифікатори чернеток колекцій.",
+    "de-DE": "Kennungen für Sammlungsentwürfe sind erschöpft."
+  },
+  "The collection menu changed. Reopen it.": {
+    "es-ES": "El menú de colecciones cambió. Vuelve a abrirlo.",
+    "ru-RU": "Меню коллекций изменилось. Откройте его заново.",
+    "uk-UA": "Меню колекцій змінилося. Відкрийте його знову.",
+    "de-DE": "Das Sammlungsmenü hat sich geändert. Erneut öffnen."
+  },
+  "External or unsaved collections cannot be removed from the managed library.": {
+    "es-ES": "Las colecciones externas o sin guardar no se pueden eliminar de la biblioteca administrada.",
+    "ru-RU": "Внешние или несохранённые коллекции нельзя удалить из управляемой библиотеки.",
+    "uk-UA": "Зовнішні або незбережені колекції не можна видалити з керованої бібліотеки.",
+    "de-DE": "Externe oder ungespeicherte Sammlungen können nicht aus der verwalteten Bibliothek entfernt werden."
+  },
+  "The last managed collection cannot be removed; managed writes require Windows.": {
+    "es-ES": "No se puede eliminar la última colección administrada; la escritura requiere Windows.",
+    "ru-RU": "Последнюю коллекцию библиотеки удалить нельзя; для записи требуется Windows.",
+    "uk-UA": "Останню колекцію бібліотеки видалити не можна; для запису потрібна Windows.",
+    "de-DE": "Die letzte verwaltete Sammlung kann nicht entfernt werden; Schreibvorgänge erfordern Windows."
+  },
+  "Finish or cancel the current dialog before managing collections.": {
+    "es-ES": "Termina o cancela el diálogo actual antes de administrar colecciones.",
+    "ru-RU": "Завершите или отмените текущий диалог перед управлением коллекциями.",
+    "uk-UA": "Завершіть або скасуйте поточний діалог перед керуванням колекціями.",
+    "de-DE": "Den aktuellen Dialog vor der Sammlungsverwaltung abschließen oder abbrechen."
+  },
+  "Collection library returned an unexpected receipt.": {
+    "es-ES": "La biblioteca de colecciones devolvió una respuesta inesperada.",
+    "ru-RU": "Библиотека коллекций вернула неожиданный ответ.",
+    "uk-UA": "Бібліотека колекцій повернула неочікувану відповідь.",
+    "de-DE": "Die Sammlungsbibliothek lieferte eine unerwartete Bestätigung."
+  },
+  "Managed removal has no accepted replacement file.": {
+    "es-ES": "La eliminación administrada no tiene un archivo de reemplazo aceptado.",
+    "ru-RU": "Для удаления не подтверждён файл другой коллекции.",
+    "uk-UA": "Для видалення не підтверджено файл іншої колекції.",
+    "de-DE": "Für das Entfernen liegt keine akzeptierte Ersatzdatei vor."
+  },
+  "The replacement collection changed; the old managed file was not removed.": {
+    "es-ES": "La colección de reemplazo cambió; el archivo administrado anterior no se eliminó.",
+    "ru-RU": "Коллекция для переключения изменилась; прежний файл библиотеки не удалён.",
+    "uk-UA": "Колекція для перемикання змінилася; попередній файл бібліотеки не видалено.",
+    "de-DE": "Die Ersatzsammlung hat sich geändert; die alte verwaltete Datei wurde nicht entfernt."
+  },
+  "Finish or cancel the managed collection operation first.": {
+    "es-ES": "Primero termina o cancela la operación de la colección administrada.",
+    "ru-RU": "Сначала завершите или отмените операцию с коллекцией библиотеки.",
+    "uk-UA": "Спочатку завершіть або скасуйте операцію з колекцією бібліотеки.",
+    "de-DE": "Zuerst den Vorgang für die verwaltete Sammlung abschließen oder abbrechen."
+  },
+  "Use the typed managed collection workflow.": {
+    "es-ES": "Usa el flujo de trabajo de colecciones administradas.",
+    "ru-RU": "Используйте штатную операцию управления коллекциями библиотеки.",
+    "uk-UA": "Скористайтеся штатною операцією керування колекціями бібліотеки.",
+    "de-DE": "Den vorgesehenen Ablauf für verwaltete Sammlungen verwenden."
+  },
+  "Preparing the managed collection operation…": {
+    "es-ES": "Preparando la operación de la colección administrada…",
+    "ru-RU": "Подготовка операции с коллекцией библиотеки…",
+    "uk-UA": "Підготовка операції з колекцією бібліотеки…",
+    "de-DE": "Vorgang für verwaltete Sammlung wird vorbereitet…"
+  },
+  "The managed collection no longer exists. Refresh the list.": {
+    "es-ES": "La colección administrada ya no existe. Actualiza la lista.",
+    "ru-RU": "Коллекция библиотеки больше не существует. Обновите список.",
+    "uk-UA": "Колекція бібліотеки більше не існує. Оновіть список.",
+    "de-DE": "Die verwaltete Sammlung existiert nicht mehr. Liste aktualisieren."
+  },
+  "Switch before removing the managed collection": {
+    "es-ES": "Cambiar antes de eliminar la colección administrada",
+    "ru-RU": "Переключиться перед удалением коллекции библиотеки",
+    "uk-UA": "Перемкнутися перед видаленням колекції бібліотеки",
+    "de-DE": "Vor dem Entfernen der verwalteten Sammlung wechseln"
+  },
+  "Managed candidate has an unexpected publication phase.": {
+    "es-ES": "La colección preparada tiene una fase de publicación inesperada.",
+    "ru-RU": "У подготовленной коллекции неожиданная фаза публикации.",
+    "uk-UA": "Підготовлена колекція має неочікувану фазу публікації.",
+    "de-DE": "Die vorbereitete Sammlung hat einen unerwarteten Veröffentlichungsstatus."
+  },
+  "Collection removed from the library; recovery file: {path}": {
+    "es-ES": "Colección eliminada de la biblioteca; archivo de recuperación: {path}",
+    "ru-RU": "Коллекция удалена из библиотеки; файл восстановления: {path}",
+    "uk-UA": "Колекцію видалено з бібліотеки; файл відновлення: {path}",
+    "de-DE": "Sammlung aus der Bibliothek entfernt; Wiederherstellungsdatei: {path}"
+  }
+}

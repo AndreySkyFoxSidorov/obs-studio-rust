@@ -1,0 +1,44 @@
+{
+  "Bicubic": {
+    "es-ES": "Bicúbico",
+    "ru-RU": "Бикубическая",
+    "uk-UA": "Бікубічна",
+    "de-DE": "Bikubisch"
+  },
+  "Lanczos": {
+    "es-ES": "Lanczos",
+    "ru-RU": "Ланцош",
+    "uk-UA": "Ланцош",
+    "de-DE": "Lanczos"
+  },
+  "Area": {
+    "es-ES": "Área",
+    "ru-RU": "По площади",
+    "uk-UA": "За площею",
+    "de-DE": "Fläche"
+  },
+  "Sharpened bicubic scaling. Uses OBS low-resolution sampling below half size.": {
+    "es-ES": "Escalado bicúbico más nítido. Usa el muestreo de baja resolución de OBS por debajo de la mitad del tamaño.",
+    "ru-RU": "Бикубическое масштабирование с повышением резкости. При уменьшении ниже половины используется алгоритм OBS для низкого разрешения.",
+    "uk-UA": "Бікубічне масштабування з підвищенням різкості. При зменшенні нижче половини використовується алгоритм OBS для низької роздільності.",
+    "de-DE": "Schärfere bikubische Skalierung. Unter halber Größe wird die OBS-Abtastung für niedrige Auflösungen verwendet."
+  },
+  "Sharp six-tap Lanczos scaling. Uses OBS low-resolution sampling below half size.": {
+    "es-ES": "Escalado Lanczos nítido con seis muestras por eje. Usa el muestreo de baja resolución de OBS por debajo de la mitad del tamaño.",
+    "ru-RU": "Чёткое масштабирование Ланцоша с шестью отсчётами по каждой оси. При уменьшении ниже половины используется алгоритм OBS для низкого разрешения.",
+    "uk-UA": "Чітке масштабування Ланцоша з шістьма відліками кожної осі. При зменшенні нижче половини використовується алгоритм OBS для низької роздільності.",
+    "de-DE": "Scharfe Lanczos-Skalierung mit sechs Abtastwerten je Achse. Unter halber Größe wird die OBS-Abtastung für niedrige Auflösungen verwendet."
+  },
+  "Average the source coverage of each output pixel, including rotated and reflected footprints. Strong downscales use OBS low-resolution sampling.": {
+    "es-ES": "Promedia la cobertura de la fuente en cada píxel de salida, incluidas rotaciones y reflejos. Las reducciones fuertes usan el muestreo de baja resolución de OBS.",
+    "ru-RU": "Усреднить покрытие источника каждым выходным пикселем с учётом поворотов и отражений. Сильное уменьшение использует алгоритм OBS для низкого разрешения.",
+    "uk-UA": "Усереднити покриття джерела кожним вихідним пікселем з урахуванням поворотів і віддзеркалень. Сильне зменшення використовує алгоритм OBS для низької роздільності.",
+    "de-DE": "Quellabdeckung jedes Ausgabepixels mitteln, einschließlich gedrehter und gespiegelter Flächen. Starke Verkleinerungen verwenden die OBS-Abtastung für niedrige Auflösungen."
+  },
+  "Choose how this scene item is resampled. Bicubic, Lanczos and Area use bounded CPU processing.": {
+    "es-ES": "Elige cómo se remuestrea este elemento. Bicúbico, Lanczos y Área usan procesamiento de CPU con límites de trabajo.",
+    "ru-RU": "Выберите способ масштабирования элемента сцены. Бикубическая, Ланцош и По площади используют CPU с ограничением объёма работы.",
+    "uk-UA": "Виберіть спосіб масштабування елемента сцени. Бікубічна, Ланцош і За площею використовують CPU з обмеженням обсягу роботи.",
+    "de-DE": "Abtastverfahren für dieses Szenenelement wählen. Bikubisch, Lanczos und Fläche verwenden begrenzte CPU-Verarbeitung."
+  }
+}

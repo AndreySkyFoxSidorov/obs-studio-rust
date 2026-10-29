@@ -1,0 +1,50 @@
+{
+  "Add OBS Upward Compressor": {
+    "es-ES": "Añadir compresor ascendente OBS",
+    "ru-RU": "Добавить повышающий компрессор OBS",
+    "uk-UA": "Додати підвищувальний компресор OBS",
+    "de-DE": "OBS-Aufwärtskompressor hinzufügen"
+  },
+  "OBS Upward Compressor {}": {
+    "es-ES": "Compresor ascendente OBS {}",
+    "ru-RU": "Повышающий компрессор OBS {}",
+    "uk-UA": "Підвищувальний компресор OBS {}",
+    "de-DE": "OBS-Aufwärtskompressor {}"
+  },
+  "Raise quiet audio with the OBS upward compressor, its noise-floor rule and adjustable knee.": {
+    "es-ES": "Amplifica el audio bajo con el compresor ascendente OBS, su regla de ruido de fondo y rodilla ajustable.",
+    "ru-RU": "Усилить тихий звук повышающим компрессором OBS с ограничением по уровню шума и настраиваемым коленом.",
+    "uk-UA": "Підсилити тихий звук підвищувальним компресором OBS з обмеженням за рівнем шуму та регульованим коліном.",
+    "de-DE": "Leise Audiosignale mit dem OBS-Aufwärtskompressor, seiner Rauschgrenzenregel und einstellbarem Knee anheben."
+  },
+  "OBS Upward Compressor raises quiet audio near the threshold, with a soft knee and the original -60 dB noise-floor rule.": {
+    "es-ES": "El compresor ascendente OBS amplifica el audio bajo cerca del umbral, con rodilla suave y la regla original de ruido de fondo de -60 dB.",
+    "ru-RU": "Повышающий компрессор OBS усиливает тихий звук вблизи порога с мягким коленом и исходным правилом шумового порога -60 дБ.",
+    "uk-UA": "Підвищувальний компресор OBS підсилює тихий звук поблизу порога з м’яким коліном та оригінальним правилом шумового порога -60 дБ.",
+    "de-DE": "Der OBS-Aufwärtskompressor hebt leise Signale nahe der Schwelle mit weichem Knee und der originalen Rauschgrenzenregel von -60 dB an."
+  },
+  "Ratio (0:1 to 1:1)": {
+    "es-ES": "Relación (0:1 a 1:1)",
+    "ru-RU": "Соотношение (от 0:1 до 1:1)",
+    "uk-UA": "Співвідношення (від 0:1 до 1:1)",
+    "de-DE": "Verhältnis (0:1 bis 1:1)"
+  },
+  "Knee (0 to 20 dB)": {
+    "es-ES": "Rodilla (0 a 20 dB)",
+    "ru-RU": "Колено (от 0 до 20 дБ)",
+    "uk-UA": "Коліно (від 0 до 20 дБ)",
+    "de-DE": "Knee (0 bis 20 dB)"
+  },
+  "Set the integer soft-knee width. Zero selects a hard threshold.": {
+    "es-ES": "Establece el ancho entero de la rodilla suave. Cero selecciona un umbral duro.",
+    "ru-RU": "Укажите целую ширину мягкого колена. Ноль задаёт жёсткий порог.",
+    "uk-UA": "Укажіть цілу ширину м’якого коліна. Нуль задає жорсткий поріг.",
+    "de-DE": "Ganzzahlige Breite des weichen Knees festlegen. Null wählt eine harte Schwelle."
+  },
+  "OBS Upward Compressor parameter outside finite source range": {
+    "es-ES": "Un parámetro del compresor ascendente OBS está fuera de su rango finito.",
+    "ru-RU": "Параметр повышающего компрессора OBS выходит за допустимый конечный диапазон.",
+    "uk-UA": "Параметр підвищувального компресора OBS виходить за допустимий скінченний діапазон.",
+    "de-DE": "Ein Parameter des OBS-Aufwärtskompressors liegt außerhalb des endlichen zulässigen Bereichs."
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "Mute": {
+    "es-ES": "Silenciar",
+    "ru-RU": "Выключить звук",
+    "uk-UA": "Вимкнути звук",
+    "de-DE": "Stummschalten"
+  },
+  "Unmute": {
+    "es-ES": "Activar sonido",
+    "ru-RU": "Включить звук",
+    "uk-UA": "Увімкнути звук",
+    "de-DE": "Stummschaltung aufheben"
+  },
+  "Source Mute Shortcuts": {
+    "es-ES": "Atajos de silencio por fuente",
+    "ru-RU": "Горячие клавиши звука источника",
+    "uk-UA": "Гарячі клавіші звуку джерела",
+    "de-DE": "Stummschaltungs-Kurzbefehle der Quelle"
+  },
+  "Mute Hotkeys…": {
+    "es-ES": "Atajos de silencio…",
+    "ru-RU": "Горячие клавиши звука…",
+    "uk-UA": "Гарячі клавіші звуку…",
+    "de-DE": "Stummschaltungs-Kurzbefehle…"
+  },
+  "Toggle Mute": {
+    "es-ES": "Alternar silencio",
+    "ru-RU": "Переключить звук",
+    "uk-UA": "Перемкнути звук",
+    "de-DE": "Stummschaltung umschalten"
+  },
+  "Assign Windows global mute and unmute shortcuts to this exact audio source.": {
+    "es-ES": "Asigne atajos globales de Windows para silenciar y activar esta fuente de audio.",
+    "ru-RU": "Назначить глобальные клавиши Windows для выключения и включения звука именно этого источника.",
+    "uk-UA": "Призначити глобальні клавіші Windows для вимкнення та ввімкнення звуку саме цього джерела.",
+    "de-DE": "Globale Windows-Kurzbefehle zum Stummschalten und Aktivieren genau dieser Audioquelle zuweisen."
+  },
+  "Choose an audio-capable source for mute shortcuts.": {
+    "es-ES": "Seleccione una fuente con audio para configurar sus atajos de silencio.",
+    "ru-RU": "Выберите источник с поддержкой звука для настройки горячих клавиш.",
+    "uk-UA": "Виберіть джерело з підтримкою звуку для налаштування гарячих клавіш.",
+    "de-DE": "Eine audiofähige Quelle für Stummschaltungs-Kurzbefehle auswählen."
+  },
+  "Add an audio-capable source to configure mute shortcuts.": {
+    "es-ES": "Añada una fuente con audio para configurar sus atajos de silencio.",
+    "ru-RU": "Добавьте источник с поддержкой звука, чтобы настроить горячие клавиши.",
+    "uk-UA": "Додайте джерело з підтримкою звуку, щоб налаштувати гарячі клавіші.",
+    "de-DE": "Eine audiofähige Quelle hinzufügen, um Stummschaltungs-Kurzbefehle festzulegen."
+  },
+  "Apply or Cancel the current draft before opening source mute shortcuts.": {
+    "es-ES": "Aplique o cancele los cambios actuales antes de abrir los atajos de silencio.",
+    "ru-RU": "Примените или отмените текущие изменения перед открытием клавиш звука источника.",
+    "uk-UA": "Застосуйте або скасуйте поточні зміни перед відкриттям клавіш звуку джерела.",
+    "de-DE": "Den aktuellen Entwurf anwenden oder abbrechen, bevor die Quellen-Kurzbefehle geöffnet werden."
+  },
+  "Save mute shortcuts for this exact source.": {
+    "es-ES": "Guarde los atajos de silencio de esta fuente.",
+    "ru-RU": "Сохранить клавиши звука именно этого источника.",
+    "uk-UA": "Зберегти клавіші звуку саме цього джерела.",
+    "de-DE": "Stummschaltungs-Kurzbefehle genau dieser Quelle speichern."
+  },
+  "Apply saves these source mute bindings; Cancel leaves them unchanged. These controls do not mute the Windows device.": {
+    "es-ES": "Aplicar guarda los atajos de esta fuente; Cancelar los deja sin cambios. Estos controles no silencian el dispositivo de Windows.",
+    "ru-RU": "«Применить» сохраняет клавиши источника, «Отмена» оставляет их без изменений. Эти команды не отключают звук устройства Windows.",
+    "uk-UA": "«Застосувати» зберігає клавіші джерела, «Скасувати» залишає їх без змін. Ці команди не вимикають звук пристрою Windows.",
+    "de-DE": "Anwenden speichert diese Quellen-Kurzbefehle; Abbrechen lässt sie unverändert. Diese Befehle schalten das Windows-Gerät nicht stumm."
+  },
+  "Toggle Mute assigns the same shortcut to both original Mute and Unmute callbacks. Push-to-talk and push-to-mute are not implemented here.": {
+    "es-ES": "Alternar silencio asigna el mismo atajo a los controles originales Silenciar y Activar sonido. Pulsar para hablar o silenciar aún no está implementado.",
+    "ru-RU": "Переключение звука назначает одну комбинацию исходной паре Mute/Unmute. Режимы удержания для разговора или отключения звука здесь ещё не реализованы.",
+    "uk-UA": "Перемикання звуку призначає одну комбінацію початковій парі Mute/Unmute. Режими утримання для розмови або вимкнення звуку тут ще не реалізовані.",
+    "de-DE": "Umschalten weist Mute und Unmute dieselbe Tastenkombination zu. Gedrückthalten zum Sprechen oder Stummschalten ist hier noch nicht implementiert."
+  },
+  "Source mute controls admit at most two shortcuts per control.": {
+    "es-ES": "Cada control de silencio admite hasta dos atajos.",
+    "ru-RU": "Каждая команда звука допускает не более двух сочетаний клавиш.",
+    "uk-UA": "Кожна команда звуку допускає не більше двох сполучень клавіш.",
+    "de-DE": "Jeder Stummschaltungsbefehl erlaubt höchstens zwei Kurzbefehle."
+  },
+  "A source mute shortcut is assigned more than once. Use Toggle Mute for the common pair.": {
+    "es-ES": "Un atajo de silencio está asignado más de una vez. Use Alternar silencio para la pareja común.",
+    "ru-RU": "Сочетание для звука назначено повторно. Для общей пары используйте переключение звука.",
+    "uk-UA": "Сполучення для звуку призначене повторно. Для спільної пари використовуйте перемикання звуку.",
+    "de-DE": "Ein Stummschaltungs-Kurzbefehl ist mehrfach zugewiesen. Für das gemeinsame Paar die Umschaltfunktion verwenden."
+  },
+  "Source mute shortcuts use the supported Windows global keys; punctuation and F12 are unavailable.": {
+    "es-ES": "Los atajos de silencio usan las teclas globales compatibles de Windows; los signos y F12 no están disponibles.",
+    "ru-RU": "Клавиши звука используют поддерживаемые глобальные сочетания Windows; знаки пунктуации и F12 недоступны.",
+    "uk-UA": "Клавіші звуку використовують підтримувані глобальні сполучення Windows; розділові знаки та F12 недоступні.",
+    "de-DE": "Stummschaltungs-Kurzbefehle verwenden unterstützte globale Windows-Tasten; Satzzeichen und F12 sind nicht verfügbar."
+  },
+  "Mute shortcuts require an audio-capable input source.": {
+    "es-ES": "Los atajos de silencio requieren una fuente de entrada con audio.",
+    "ru-RU": "Клавишам звука нужен входной источник с поддержкой аудио.",
+    "uk-UA": "Клавішам звуку потрібне вхідне джерело з підтримкою аудіо.",
+    "de-DE": "Stummschaltungs-Kurzbefehle benötigen eine audiofähige Eingabequelle."
+  },
+  "This input source has no supported mute control.": {
+    "es-ES": "Esta fuente no tiene un control de silencio compatible.",
+    "ru-RU": "Этот входной источник не поддерживает управление звуком.",
+    "uk-UA": "Це вхідне джерело не підтримує керування звуком.",
+    "de-DE": "Diese Eingabequelle hat keinen unterstützten Stummschaltungsbefehl."
+  },
+  "Source audio shortcuts belong to their source, not the frontend shortcut list.": {
+    "es-ES": "Los atajos de audio pertenecen a su fuente, no a la lista general de la aplicación.",
+    "ru-RU": "Клавиши звука относятся к источнику и не добавляются в общий список приложения.",
+    "uk-UA": "Клавіші звуку належать джерелу й не додаються до загального списку програми.",
+    "de-DE": "Quellen-Audiokurzbefehle gehören zur Quelle und nicht in die allgemeine Anwendungsliste."
+  },
+  "The collection admits at most 106 source shortcuts across all controls.": {
+    "es-ES": "La colección admite hasta 106 atajos de fuente entre todos los controles.",
+    "ru-RU": "Коллекция допускает суммарно не более 106 клавиш управления источниками.",
+    "uk-UA": "Колекція допускає сумарно не більше 106 клавіш керування джерелами.",
+    "de-DE": "Die Sammlung erlaubt insgesamt höchstens 106 Quellen-Kurzbefehle für alle Steuerelemente."
+  },
+  "Cannot allocate bounded source shortcut metadata.": {
+    "es-ES": "No se pueden reservar los metadatos limitados de los atajos de fuente.",
+    "ru-RU": "Не удалось выделить ограниченную память для клавиш источников.",
+    "uk-UA": "Не вдалося виділити обмежену пам’ять для клавіш джерел.",
+    "de-DE": "Der begrenzte Speicher für Quellen-Kurzbefehle kann nicht reserviert werden."
+  },
+  "Source shortcut replacement does not match current bindings.": {
+    "es-ES": "La sustitución no coincide con los atajos actuales de la fuente.",
+    "ru-RU": "Замена сочетаний не соответствует текущим клавишам источника.",
+    "uk-UA": "Заміна сполучень не відповідає поточним клавішам джерела.",
+    "de-DE": "Die Ersetzung stimmt nicht mit den aktuellen Quellen-Kurzbefehlen überein."
+  },
+  "Some source shortcut routes are unavailable in this build.": {
+    "es-ES": "Algunas rutas de atajos de fuente no están disponibles en esta versión.",
+    "ru-RU": "Некоторые команды клавиш источников недоступны в этой сборке.",
+    "uk-UA": "Деякі команди клавіш джерел недоступні в цій збірці.",
+    "de-DE": "Einige Quellen-Kurzbefehle sind in diesem Build nicht verfügbar."
+  },
+  "Source mute shortcuts require native schema9.": {
+    "es-ES": "Los atajos de silencio requieren el esquema nativo9.",
+    "ru-RU": "Клавиши звука источника требуют native schema9.",
+    "uk-UA": "Клавіші звуку джерела потребують native schema9.",
+    "de-DE": "Quellen-Stummschaltungskurzbefehle benötigen das native Schema9."
+  },
+  "Held push-to-mute and push-to-talk source hotkeys are not implemented": {
+    "es-ES": "Los atajos de mantener pulsado para silenciar o hablar no están implementados",
+    "ru-RU": "Клавиши удержания для отключения звука и разговора ещё не реализованы",
+    "uk-UA": "Клавіші утримання для вимкнення звуку та розмови ще не реалізовані",
+    "de-DE": "Gedrückthalten zum Stummschalten oder Sprechen ist noch nicht implementiert"
+  },
+  "OBS Mute/Unmute arrays admit at most four shortcuts each": {
+    "es-ES": "Las listas Silenciar/Activar sonido de OBS admiten hasta cuatro atajos cada una",
+    "ru-RU": "Списки OBS Mute/Unmute допускают не более четырёх сочетаний каждый",
+    "uk-UA": "Списки OBS Mute/Unmute допускають не більше чотирьох сполучень кожен",
+    "de-DE": "Die OBS-Listen Mute/Unmute erlauben jeweils höchstens vier Kurzbefehle"
+  },
+  "OBS source controls exceed the shared limit of 106 bindings": {
+    "es-ES": "Los controles de fuente superan el límite común de 106 atajos",
+    "ru-RU": "Команды источников OBS превышают общий предел 106 сочетаний",
+    "uk-UA": "Команди джерел OBS перевищують спільну межу 106 сполучень",
+    "de-DE": "Die OBS-Quellensteuerung überschreitet die gemeinsame Grenze von 106 Kurzbefehlen"
+  },
+  "OBS media audio filters, sync offsets, mute shortcuts and nondefault track routing require an actual decoded audio track": {
+    "es-ES": "Los filtros de audio, desfases, atajos de silencio y rutas de pistas de OBS requieren una pista de audio decodificada real",
+    "ru-RU": "Для аудиофильтров OBS, смещения, клавиш звука и маршрутов дорожек нужна реально декодированная аудиодорожка",
+    "uk-UA": "Для аудіофільтрів OBS, зміщення, клавіш звуку й маршрутів доріжок потрібна реально декодована аудіодоріжка",
+    "de-DE": "OBS-Audiofilter, Zeitversatz, Stummschaltungskurzbefehle und abweichende Spurrouten benötigen eine tatsächlich dekodierte Audiospur"
+  },
+  "Command publication was declined.": {
+    "es-ES": "Se rechazó la publicación del comando.",
+    "ru-RU": "Публикация команды отклонена.",
+    "uk-UA": "Публікацію команди відхилено.",
+    "de-DE": "Die Übernahme des Befehls wurde abgelehnt."
+  },
+  "Cannot allocate bounded scene history.": {
+    "es-ES": "No se puede reservar el historial limitado de escenas.",
+    "ru-RU": "Не удалось выделить ограниченную память истории сцен.",
+    "uk-UA": "Не вдалося виділити обмежену пам’ять історії сцен.",
+    "de-DE": "Der begrenzte Szenenverlauf kann nicht reserviert werden."
+  }
+}

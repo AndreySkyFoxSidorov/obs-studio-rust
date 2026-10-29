@@ -1,0 +1,62 @@
+{
+  "Crop/Pad": {
+    "es-ES": "Recortar/Rellenar",
+    "ru-RU": "Обрезка/поля",
+    "uk-UA": "Обрізання/поля",
+    "de-DE": "Zuschneiden/Auffüllen"
+  },
+  "Relative": {
+    "es-ES": "Relativo",
+    "ru-RU": "Относительно",
+    "uk-UA": "Відносно",
+    "de-DE": "Relativ"
+  },
+  "Crop source edges or add transparent padding; filters below receive the new image size.": {
+    "es-ES": "Recorta los bordes o añade relleno transparente; los filtros siguientes reciben el nuevo tamaño.",
+    "ru-RU": "Обрезать края или добавить прозрачные поля; следующие фильтры получают новый размер изображения.",
+    "uk-UA": "Обрізати краї або додати прозорі поля; наступні фільтри отримують новий розмір зображення.",
+    "de-DE": "Bildränder zuschneiden oder transparente Ränder ergänzen; nachfolgende Filter erhalten die neue Bildgröße."
+  },
+  "Use signed edge offsets; disable to set X, Y and an absolute output size.": {
+    "es-ES": "Usa márgenes con signo; desactívalo para definir X, Y y un tamaño de salida absoluto.",
+    "ru-RU": "Использовать отступы со знаком; отключите для задания X, Y и абсолютного размера.",
+    "uk-UA": "Використовувати відступи зі знаком; вимкніть для задання X, Y та абсолютного розміру.",
+    "de-DE": "Vorzeichenbehaftete Randwerte verwenden; deaktivieren, um X, Y und absolute Ausgabegröße festzulegen."
+  },
+  "Positive offsets crop pixels; negative offsets add transparent padding. Output axes are at least one pixel.": {
+    "es-ES": "Los valores positivos recortan; los negativos añaden transparencia. Cada dimensión tiene al menos un píxel.",
+    "ru-RU": "Положительные отступы обрезают пиксели, отрицательные добавляют прозрачные поля. Минимальный размер по каждой оси — один пиксель.",
+    "uk-UA": "Додатні відступи обрізають пікселі, від’ємні додають прозорі поля. Мінімальний розмір кожної осі — один піксель.",
+    "de-DE": "Positive Werte schneiden Pixel ab; negative ergänzen transparente Ränder. Jede Achse ist mindestens ein Pixel groß."
+  },
+  "Move the source sampling origin in whole pixels; negative values add transparent padding.": {
+    "es-ES": "Mueve el origen de muestreo en píxeles enteros; los valores negativos añaden transparencia.",
+    "ru-RU": "Сместить начало выборки на целое число пикселей; отрицательные значения добавляют прозрачные поля.",
+    "uk-UA": "Змістити початок вибірки на ціле число пікселів; від’ємні значення додають прозорі поля.",
+    "de-DE": "Abtastursprung um ganze Pixel verschieben; negative Werte ergänzen transparente Ränder."
+  },
+  "Remove pixels from this edge, or use a negative value to add transparent padding.": {
+    "es-ES": "Elimina píxeles de este borde o usa un valor negativo para añadir transparencia.",
+    "ru-RU": "Удалить пиксели с этого края; отрицательное значение добавляет прозрачное поле.",
+    "uk-UA": "Видалити пікселі з цього краю; від’ємне значення додає прозоре поле.",
+    "de-DE": "Pixel an diesem Rand entfernen oder mit einem negativen Wert transparent auffüllen."
+  },
+  "Set the absolute output dimension; zero produces one pixel, matching OBS.": {
+    "es-ES": "Define la dimensión absoluta; cero produce un píxel, como en OBS.",
+    "ru-RU": "Задать абсолютный размер; ноль даёт один пиксель, как в OBS.",
+    "uk-UA": "Задати абсолютний розмір; нуль дає один піксель, як в OBS.",
+    "de-DE": "Absolute Ausgabegröße festlegen; Null ergibt wie in OBS ein Pixel."
+  },
+  "Crop/Pad changes displayed source dimensions without changing camera or capture settings. CPU processing; 8192 pixels per axis and 32 million pixels maximum.": {
+    "es-ES": "Recortar/Rellenar cambia el tamaño mostrado sin modificar la cámara ni la captura. Procesamiento por CPU; máximo 8192 píxeles por eje y 32 millones de píxeles.",
+    "ru-RU": "Обрезка/поля меняет отображаемый размер источника без изменения настроек камеры или захвата. Обработка на CPU; до 8192 пикселей по каждой оси и 32 млн пикселей.",
+    "uk-UA": "Обрізання/поля змінює відображуваний розмір джерела без зміни параметрів камери чи захоплення. Обробка на CPU; до 8192 пікселів кожної осі та 32 млн пікселів.",
+    "de-DE": "Zuschneiden/Auffüllen ändert die angezeigte Quellgröße ohne Kamera- oder Aufnahmeänderung. CPU-Verarbeitung; höchstens 8192 Pixel je Achse und 32 Millionen Pixel."
+  },
+  "Width and height are the full filtered-source extents in canvas pixels. If source dimensions or filters change, reopen this dialog before applying.": {
+    "es-ES": "La anchura y altura son las dimensiones completas de la fuente filtrada en píxeles del lienzo. Si cambia el tamaño o los filtros, vuelve a abrir este diálogo antes de aplicar.",
+    "ru-RU": "Ширина и высота — полный размер источника после фильтров в пикселях холста. Если размеры или фильтры изменились, откройте диалог заново перед применением.",
+    "uk-UA": "Ширина й висота — повний розмір джерела після фільтрів у пікселях полотна. Якщо розміри чи фільтри змінилися, відкрийте діалог знову перед застосуванням.",
+    "de-DE": "Breite und Höhe sind die vollständigen Ausmaße der gefilterten Quelle in Leinwandpixeln. Bei Änderungen an Quellgröße oder Filtern den Dialog vor dem Anwenden erneut öffnen."
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "Stop when hidden; restart when visible": {
+    "es-ES": "Detener al ocultar; reiniciar al mostrar",
+    "ru-RU": "Останавливать при скрытии; запускать заново при показе",
+    "uk-UA": "Зупиняти при приховуванні; запускати знову при показі",
+    "de-DE": "Beim Ausblenden stoppen; beim Einblenden neu starten"
+  },
+  "Pause when hidden; resume when visible": {
+    "es-ES": "Pausar al ocultar; continuar al mostrar",
+    "ru-RU": "Приостанавливать при скрытии; продолжать при показе",
+    "uk-UA": "Призупиняти при приховуванні; продовжувати при показі",
+    "de-DE": "Beim Ausblenden pausieren; beim Einblenden fortsetzen"
+  },
+  "Always play, even when hidden": {
+    "es-ES": "Reproducir siempre, incluso al estar oculto",
+    "ru-RU": "Воспроизводить всегда, включая скрытое состояние",
+    "uk-UA": "Відтворювати завжди, включно з прихованим станом",
+    "de-DE": "Immer abspielen, auch wenn ausgeblendet"
+  },
+  "Enter whole slideshow canvas or aspect values from 1 to 8192.": {
+    "es-ES": "Introduzca valores enteros de lienzo o proporción de 1 a 8192.",
+    "ru-RU": "Введите целые значения холста или соотношения сторон от 1 до 8192.",
+    "uk-UA": "Введіть цілі значення полотна або співвідношення сторін від 1 до 8192.",
+    "de-DE": "Ganze Werte für Leinwand oder Seitenverhältnis von 1 bis 8192 eingeben."
+  },
+  "Automatic image canvas": {
+    "es-ES": "Lienzo automático de imágenes",
+    "ru-RU": "Автоматический холст изображений",
+    "uk-UA": "Автоматичне полотно зображень",
+    "de-DE": "Automatische Bildleinwand"
+  },
+  "Custom resolution": {
+    "es-ES": "Resolución personalizada",
+    "ru-RU": "Пользовательское разрешение",
+    "uk-UA": "Власна роздільність",
+    "de-DE": "Benutzerdefinierte Auflösung"
+  },
+  "Custom aspect ratio": {
+    "es-ES": "Proporción personalizada",
+    "ru-RU": "Пользовательское соотношение сторон",
+    "uk-UA": "Власне співвідношення сторін",
+    "de-DE": "Benutzerdefiniertes Seitenverhältnis"
+  },
+  "Slideshow Canvas": {
+    "es-ES": "Lienzo del pase de diapositivas",
+    "ru-RU": "Холст слайд-шоу",
+    "uk-UA": "Полотно слайд-шоу",
+    "de-DE": "Diashow-Leinwand"
+  },
+  "Automatic uses the largest image dimensions. Resolution sets the output canvas. Aspect expands that canvas without stretching images.": {
+    "es-ES": "Automático usa las mayores dimensiones de las imágenes. Resolución fija el lienzo de salida. Proporción amplía ese lienzo sin deformar las imágenes.",
+    "ru-RU": "Автоматический режим использует наибольшие размеры изображений. Разрешение задаёт выходной холст. Соотношение сторон расширяет холст без растягивания изображений.",
+    "uk-UA": "Автоматичний режим використовує найбільші розміри зображень. Роздільність задає вихідне полотно. Співвідношення сторін розширює полотно без розтягування зображень.",
+    "de-DE": "Automatisch verwendet die größten Bildabmessungen. Auflösung legt die Ausgabeleinwand fest. Seitenverhältnis erweitert die Leinwand, ohne Bilder zu verzerren."
+  },
+  "Canvas Preset": {
+    "es-ES": "Preajuste del lienzo",
+    "ru-RU": "Предустановка холста",
+    "uk-UA": "Передналаштування полотна",
+    "de-DE": "Leinwandvorlage"
+  },
+  "Choose a preset or edit values": {
+    "es-ES": "Elija un preajuste o edite los valores",
+    "ru-RU": "Выберите предустановку или измените значения",
+    "uk-UA": "Виберіть передналаштування або змініть значення",
+    "de-DE": "Vorlage wählen oder Werte bearbeiten"
+  },
+  "Set these values in the draft. Apply is still required.": {
+    "es-ES": "Establece estos valores en el borrador. Aún debe pulsar Aplicar.",
+    "ru-RU": "Установить эти значения в черновике. Для сохранения нажмите «Применить».",
+    "uk-UA": "Установити ці значення в чернетці. Для збереження натисніть «Застосувати».",
+    "de-DE": "Diese Werte im Entwurf setzen. Anwenden ist weiterhin erforderlich."
+  },
+  "Width / aspect numerator": {
+    "es-ES": "Anchura / numerador de proporción",
+    "ru-RU": "Ширина / числитель соотношения",
+    "uk-UA": "Ширина / чисельник співвідношення",
+    "de-DE": "Breite / Zähler des Seitenverhältnisses"
+  },
+  "Height / aspect denominator": {
+    "es-ES": "Altura / denominador de proporción",
+    "ru-RU": "Высота / знаменатель соотношения",
+    "uk-UA": "Висота / знаменник співвідношення",
+    "de-DE": "Höhe / Nenner des Seitenverhältnisses"
+  },
+  "Use whole values from 1 to 8192. The resolved canvas must stay within the existing 16M-pixel image budget.": {
+    "es-ES": "Use enteros de 1 a 8192. El lienzo resultante debe respetar el límite existente de 16 millones de píxeles.",
+    "ru-RU": "Используйте целые значения от 1 до 8192. Итоговый холст должен укладываться в действующий лимит изображения — 16 млн пикселей.",
+    "uk-UA": "Використовуйте цілі значення від 1 до 8192. Підсумкове полотно має вкладатися в чинний ліміт зображення — 16 млн пікселів.",
+    "de-DE": "Ganze Werte von 1 bis 8192 verwenden. Die resultierende Leinwand muss das vorhandene Bildlimit von 16 Millionen Pixeln einhalten."
+  },
+  "Slideshow output: {width} × {height}": {
+    "es-ES": "Salida del pase: {width} × {height}",
+    "ru-RU": "Выход слайд-шоу: {width} × {height}",
+    "uk-UA": "Вихід слайд-шоу: {width} × {height}",
+    "de-DE": "Diashow-Ausgabe: {width} × {height}"
+  },
+  "Automatic and aspect output dimensions are resolved after the image files are prepared.": {
+    "es-ES": "Las dimensiones automáticas y por proporción se calculan al preparar los archivos de imagen.",
+    "ru-RU": "Автоматические размеры и размеры по соотношению сторон рассчитываются после подготовки файлов изображений.",
+    "uk-UA": "Автоматичні розміри та розміри за співвідношенням сторін обчислюються після підготовки файлів зображень.",
+    "de-DE": "Automatische und vom Seitenverhältnis abhängige Abmessungen werden nach dem Vorbereiten der Bilddateien ermittelt."
+  },
+  "Slideshow Visibility": {
+    "es-ES": "Visibilidad del pase de diapositivas",
+    "ru-RU": "Видимость слайд-шоу",
+    "uk-UA": "Видимість слайд-шоу",
+    "de-DE": "Diashow-Sichtbarkeit"
+  },
+  "Stop the playlist when absent from every output. Showing it again restarts the first slide immediately.": {
+    "es-ES": "Detenga la lista cuando no aparezca en ninguna salida. Al mostrarla de nuevo, la primera diapositiva empieza de inmediato.",
+    "ru-RU": "Остановить список, когда его нет ни на одном выходе. При повторном показе первый слайд запускается сразу.",
+    "uk-UA": "Зупинити список, коли його немає на жодному виході. При повторному показі перший слайд запускається одразу.",
+    "de-DE": "Die Wiedergabeliste stoppen, wenn sie in keiner Ausgabe sichtbar ist. Erneutes Einblenden startet sofort das erste Bild."
+  },
+  "Pause the playlist position while hidden and resume it when shown. An already-started transition can finish while hidden; GIF animation restarts when shown.": {
+    "es-ES": "Pause la posición al ocultar y continúe al mostrar. Un cambio ya iniciado puede terminar oculto; la animación GIF se reinicia al mostrar.",
+    "ru-RU": "При скрытии приостановить позицию списка, при показе продолжить. Начатый переход может завершиться в скрытом состоянии; анимация GIF при показе запускается заново.",
+    "uk-UA": "При приховуванні призупинити позицію списку, при показі продовжити. Початий перехід може завершитися у прихованому стані; анімація GIF при показі запускається знову.",
+    "de-DE": "Die Wiedergabeposition beim Ausblenden pausieren und beim Einblenden fortsetzen. Ein laufender Übergang kann im Hintergrund enden; GIF-Animationen starten beim Einblenden neu."
+  },
+  "Advance the playlist while hidden without loading or rendering hidden images. Showing it reveals the current slide; GIF animation restarts.": {
+    "es-ES": "Avance la lista oculta sin cargar ni renderizar imágenes ocultas. Al mostrarla, aparece la diapositiva actual y la animación GIF se reinicia.",
+    "ru-RU": "Продолжать список в скрытом состоянии без загрузки и отрисовки скрытых изображений. При показе появляется текущий слайд, а анимация GIF запускается заново.",
+    "uk-UA": "Продовжувати список у прихованому стані без завантаження та відмальовування прихованих зображень. При показі з’являється поточний слайд, а анімація GIF запускається знову.",
+    "de-DE": "Die Wiedergabeliste im Hintergrund weiterlaufen lassen, ohne versteckte Bilder zu laden oder zu rendern. Beim Einblenden erscheint das aktuelle Bild; GIF-Animationen starten neu."
+  },
+  "Visibility is shared across all views using this source. Hidden playback retains timing metadata only.": {
+    "es-ES": "La visibilidad se comparte entre todas las vistas de esta fuente. La reproducción oculta conserva solo metadatos de tiempo.",
+    "ru-RU": "Видимость общая для всех представлений этого источника. Скрытое воспроизведение хранит только метаданные времени.",
+    "uk-UA": "Видимість спільна для всіх представлень цього джерела. Приховане відтворення зберігає лише метадані часу.",
+    "de-DE": "Die Sichtbarkeit gilt gemeinsam für alle Ansichten dieser Quelle. Versteckte Wiedergabe speichert nur Zeitmetadaten."
+  },
+  "Images use centered aspect fit in the selected canvas. Playback follows the selected visibility behavior. Manual controls and folder playlists are not available.": {
+    "es-ES": "Las imágenes se centran sin deformarse en el lienzo elegido. La reproducción sigue el comportamiento de visibilidad seleccionado. No hay controles manuales ni listas de carpetas.",
+    "ru-RU": "Изображения вписываются по центру выбранного холста с сохранением пропорций. Воспроизведение следует выбранному поведению видимости. Ручное управление и списки из папок недоступны.",
+    "uk-UA": "Зображення вписуються по центру вибраного полотна зі збереженням пропорцій. Відтворення відповідає вибраній поведінці видимості. Ручне керування та списки з папок недоступні.",
+    "de-DE": "Bilder werden proportional zentriert in die gewählte Leinwand eingepasst. Die Wiedergabe folgt dem gewählten Sichtbarkeitsverhalten. Manuelle Steuerung und Ordnerlisten sind nicht verfügbar."
+  },
+  "slideshow canvas dimensions or aspect terms must be 1..=8192": {
+    "es-ES": "las dimensiones del lienzo o términos de proporción deben ser 1..=8192",
+    "ru-RU": "размеры холста или члены соотношения сторон слайд-шоу должны быть 1..=8192",
+    "uk-UA": "розміри полотна або члени співвідношення сторін слайд-шоу мають бути 1..=8192",
+    "de-DE": "Leinwandabmessungen oder Verhältniswerte der Diashow müssen 1..=8192 sein"
+  },
+  "slideshow canvas exceeds the 16M-pixel image budget": {
+    "es-ES": "el lienzo del pase supera el límite de 16 millones de píxeles",
+    "ru-RU": "холст слайд-шоу превышает лимит изображения в 16 млн пикселей",
+    "uk-UA": "полотно слайд-шоу перевищує ліміт зображення в 16 млн пікселів",
+    "de-DE": "Diashow-Leinwand überschreitet das Bildlimit von 16 Millionen Pixeln"
+  },
+  "slideshow image dimensions are empty": {
+    "es-ES": "las dimensiones de imagen del pase están vacías",
+    "ru-RU": "размеры изображения слайд-шоу пусты",
+    "uk-UA": "розміри зображення слайд-шоу порожні",
+    "de-DE": "Bildabmessungen der Diashow sind leer"
+  },
+  "slideshow canvas exceeds 8192-edge/16M-pixel image limits": {
+    "es-ES": "el lienzo supera los límites de 8192 por lado o 16 millones de píxeles",
+    "ru-RU": "холст слайд-шоу превышает лимиты изображения: 8192 по стороне или 16 млн пикселей",
+    "uk-UA": "полотно слайд-шоу перевищує ліміти зображення: 8192 на сторону або 16 млн пікселів",
+    "de-DE": "Diashow-Leinwand überschreitet 8192 Pixel Kantenlänge oder 16 Millionen Pixel"
+  },
+  "slideshow canvas and visibility settings require native schema9": {
+    "es-ES": "las opciones de lienzo y visibilidad requieren el esquema nativo9",
+    "ru-RU": "настройки холста и видимости слайд-шоу требуют собственной схемы9",
+    "uk-UA": "налаштування полотна та видимості слайд-шоу потребують власної схеми9",
+    "de-DE": "Leinwand- und Sichtbarkeitseinstellungen der Diashow erfordern das native Schema9"
+  },
+  "unknown slideshow visibility behavior is not representable": {
+    "es-ES": "el comportamiento de visibilidad desconocido no se puede representar",
+    "ru-RU": "неизвестное поведение видимости слайд-шоу невозможно представить",
+    "uk-UA": "невідому поведінку видимості слайд-шоу неможливо подати",
+    "de-DE": "Unbekanntes Sichtbarkeitsverhalten der Diashow ist nicht darstellbar"
+  },
+  "OBS random playback cannot be represented by deterministic native shuffle": {
+    "es-ES": "la reproducción aleatoria de OBS no equivale al orden determinista nativo",
+    "ru-RU": "случайное воспроизведение OBS не представимо детерминированным собственным перемешиванием",
+    "uk-UA": "випадкове відтворення OBS не можна подати детермінованим власним перемішуванням",
+    "de-DE": "OBS-Zufallswiedergabe ist durch deterministisches natives Mischen nicht darstellbar"
+  },
+  "unknown slideshow playback mode is not representable": {
+    "es-ES": "el modo de reproducción desconocido no se puede representar",
+    "ru-RU": "неизвестный режим воспроизведения слайд-шоу невозможно представить",
+    "uk-UA": "невідомий режим відтворення слайд-шоу неможливо подати",
+    "de-DE": "Unbekannter Diashow-Wiedergabemodus ist nicht darstellbar"
+  },
+  "conflicting modern and legacy slideshow loop choices are not represented": {
+    "es-ES": "las opciones de bucle modernas y heredadas en conflicto no se pueden representar",
+    "ru-RU": "противоречащие современные и устаревшие настройки повтора слайд-шоу не представимы",
+    "uk-UA": "суперечливі сучасні та застарілі налаштування повтору слайд-шоу неможливо подати",
+    "de-DE": "Widersprüchliche moderne und ältere Diashow-Wiederholungsoptionen werden nicht dargestellt"
+  },
+  "playback_mode belongs to slideshow_v2, not the legacy source": {
+    "es-ES": "playback_mode pertenece a slideshow_v2, no a la fuente heredada",
+    "ru-RU": "playback_mode относится к slideshow_v2, а не к устаревшему источнику",
+    "uk-UA": "playback_mode належить до slideshow_v2, а не до застарілого джерела",
+    "de-DE": "playback_mode gehört zu slideshow_v2 und nicht zur älteren Quelle"
+  },
+  "slideshow size must be canonical pixels or a legacy aspect ratio; localized Auto and empty v2 canvases are not guessed": {
+    "es-ES": "el tamaño debe ser píxeles canónicos o proporción heredada; no se adivinan Auto traducido ni lienzos v2 vacíos",
+    "ru-RU": "размер слайд-шоу должен быть каноническим разрешением или устаревшим соотношением сторон; локализованный Auto и пустой холст v2 не угадываются",
+    "uk-UA": "розмір слайд-шоу має бути канонічною роздільністю або застарілим співвідношенням сторін; локалізований Auto та порожнє полотно v2 не вгадуються",
+    "de-DE": "Die Diashow-Größe muss eine kanonische Pixelgröße oder ein älteres Seitenverhältnis sein; lokalisiertes Auto und leere v2-Leinwände werden nicht geraten"
+  },
+  "slideshow dimensions must be unsigned decimal integers": {
+    "es-ES": "las dimensiones deben ser enteros decimales sin signo",
+    "ru-RU": "размеры слайд-шоу должны быть десятичными целыми без знака",
+    "uk-UA": "розміри слайд-шоу мають бути десятковими цілими без знака",
+    "de-DE": "Diashow-Abmessungen müssen vorzeichenlose dezimale Ganzzahlen sein"
+  },
+  "slideshow width exceeds the supported integer range": {
+    "es-ES": "la anchura supera el intervalo entero admitido",
+    "ru-RU": "ширина слайд-шоу превышает поддерживаемый диапазон целых чисел",
+    "uk-UA": "ширина слайд-шоу перевищує підтримуваний діапазон цілих чисел",
+    "de-DE": "Diashow-Breite überschreitet den unterstützten Ganzzahlbereich"
+  },
+  "slideshow height exceeds the supported integer range": {
+    "es-ES": "la altura supera el intervalo entero admitido",
+    "ru-RU": "высота слайд-шоу превышает поддерживаемый диапазон целых чисел",
+    "uk-UA": "висота слайд-шоу перевищує підтримуваний діапазон цілих чисел",
+    "de-DE": "Diashow-Höhe überschreitet den unterstützten Ganzzahlbereich"
+  },
+  "Static PNG/JPEG/WebP and animated GIF images; timed slide shows with Cut, Fade, Swipe and Slide, automatic/custom/aspect canvas, all three visibility behaviors, loop, stable shuffle and transition to transparency. Strict supported OBS v1/v2 explicit-file settings interchange without random playback or localized size guesses. Manual slideshow controls, folder expansion, OBS random playback and complete image-source parity are not implemented.": {
+    "es-ES": "Imágenes estáticas PNG/JPEG/WebP y GIF animados; pases temporizados con Corte, Fundido, Barrido y Deslizamiento, lienzo automático/personalizado/por proporción, los tres comportamientos de visibilidad, bucle, orden determinista y transición a transparencia. Intercambio estricto del subconjunto OBS v1/v2 con archivos explícitos, sin reproducción aleatoria ni adivinar tamaños localizados. No se implementan controles manuales, carpetas, reproducción aleatoria de OBS ni paridad completa de image-source.",
+    "ru-RU": "Статичные PNG/JPEG/WebP и анимированные GIF; слайд-шоу с Cut, Fade, Swipe и Slide, автоматическим/пользовательским холстом и соотношением сторон, всеми тремя режимами видимости, повтором, стабильным перемешиванием и переходом в прозрачность. Строгий обмен поддерживаемым подмножеством настроек OBS v1/v2 с явными файлами, без случайного воспроизведения и угадывания локализованных размеров. Ручное управление, папки, случайное воспроизведение OBS и полное соответствие image-source не реализованы.",
+    "uk-UA": "Статичні PNG/JPEG/WebP та анімовані GIF; слайд-шоу з Cut, Fade, Swipe та Slide, автоматичним/власним полотном і співвідношенням сторін, усіма трьома режимами видимості, повтором, сталим перемішуванням і переходом у прозорість. Суворий обмін підтримуваною підмножиною налаштувань OBS v1/v2 з явними файлами, без випадкового відтворення та вгадування локалізованих розмірів. Ручне керування, папки, випадкове відтворення OBS та повну відповідність image-source не реалізовано.",
+    "de-DE": "Statische PNG/JPEG/WebP und animierte GIFs; zeitgesteuerte Diashows mit Schnitt, Überblenden, Wischen und Schieben, automatischer/benutzerdefinierter/Seitenverhältnis-Leinwand, allen drei Sichtbarkeitsmodi, Wiederholung, stabilem Mischen und Übergang zu Transparenz. Strikter Austausch unterstützter OBS-v1/v2-Einstellungen mit expliziten Dateien, ohne Zufallswiedergabe oder Raten lokalisierter Größen. Manuelle Steuerung, Ordner, OBS-Zufallswiedergabe und vollständige image-source-Parität sind nicht implementiert."
+  }
+}

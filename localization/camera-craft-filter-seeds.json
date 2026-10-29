@@ -1,0 +1,26 @@
+{
+  "OBS video filters": {
+    "es-ES": "Filtros de vídeo OBS",
+    "ru-RU": "Видеофильтры OBS",
+    "uk-UA": "Відеофільтри OBS",
+    "de-DE": "OBS-Videofilter"
+  },
+  "Craft video effects · enabled": {
+    "es-ES": "Efectos de vídeo Craft · activados",
+    "ru-RU": "Видеоэффекты Craft · включены",
+    "uk-UA": "Відеоефекти Craft · увімкнено",
+    "de-DE": "Craft-Videoeffekte · aktiviert"
+  },
+  "Craft video effects · disabled": {
+    "es-ES": "Efectos de vídeo Craft · desactivados",
+    "ru-RU": "Видеоэффекты Craft · отключены",
+    "uk-UA": "Відеоефекти Craft · вимкнено",
+    "de-DE": "Craft-Videoeffekte · deaktiviert"
+  },
+  "Enable Craft video effects in Tools > Plugins before adding this filter.": {
+    "es-ES": "Activa los efectos de vídeo Craft en Herramientas > Complementos antes de añadir este filtro.",
+    "ru-RU": "Включите видеоэффекты Craft в меню Инструменты > Плагины перед добавлением этого фильтра.",
+    "uk-UA": "Увімкніть відеоефекти Craft у меню Інструменти > Плагіни перед додаванням цього фільтра.",
+    "de-DE": "Aktivieren Sie Craft-Videoeffekte unter Werkzeuge > Plugins, bevor Sie diesen Filter hinzufügen."
+  }
+}

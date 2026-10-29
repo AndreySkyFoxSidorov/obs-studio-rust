@@ -1,0 +1,206 @@
+{
+  "Remux Recordings": {
+    "es-ES": "Remultiplexar grabaciones",
+    "ru-RU": "Ремультиплексирование записей",
+    "uk-UA": "Ремультиплексування записів",
+    "de-DE": "Aufnahmen remuxen"
+  },
+  "Convert finalized SkyLive MKV recordings to MP4 without re-encoding. Supported: progressive SDR H.264 without B-frames and optional AAC-LC. Source files stay unchanged; destinations are never overwritten.": {
+    "es-ES": "Convierte grabaciones MKV finalizadas de SkyLive a MP4 sin recodificar. Compatible: H.264 SDR progresivo sin fotogramas B y AAC-LC opcional. Los originales no cambian y los destinos nunca se sobrescriben.",
+    "ru-RU": "Преобразование завершённых MKV-записей SkyLive в MP4 без перекодирования. Поддерживаются прогрессивное SDR-видео H.264 без B-кадров и необязательный звук AAC-LC. Исходники не изменяются, существующие файлы не перезаписываются.",
+    "uk-UA": "Перетворення завершених MKV-записів SkyLive на MP4 без перекодування. Підтримуються прогресивне SDR-відео H.264 без B-кадрів і необов’язковий звук AAC-LC. Оригінали не змінюються, наявні файли не перезаписуються.",
+    "de-DE": "Finalisierte SkyLive-MKV-Aufnahmen ohne erneutes Kodieren in MP4 umwandeln. Unterstützt: progressives SDR-H.264 ohne B-Frames und optionales AAC-LC. Quelldateien bleiben unverändert; Ziele werden niemals überschrieben."
+  },
+  "Source recording": {
+    "es-ES": "Grabación original",
+    "ru-RU": "Исходная запись",
+    "uk-UA": "Початковий запис",
+    "de-DE": "Quellaufnahme"
+  },
+  "Target file": {
+    "es-ES": "Archivo de destino",
+    "ru-RU": "Файл назначения",
+    "uk-UA": "Файл призначення",
+    "de-DE": "Zieldatei"
+  },
+  "Order": {
+    "es-ES": "Orden",
+    "ru-RU": "Порядок",
+    "uk-UA": "Порядок",
+    "de-DE": "Reihenfolge"
+  },
+  "Path to a finalized supported .mkv recording.": {
+    "es-ES": "Ruta a una grabación .mkv finalizada y compatible.",
+    "ru-RU": "Путь к завершённой поддерживаемой записи .mkv.",
+    "uk-UA": "Шлях до завершеного підтримуваного запису .mkv.",
+    "de-DE": "Pfad zu einer finalisierten unterstützten .mkv-Aufnahme."
+  },
+  "Choose a new .mp4 path. Existing files are retained and reported as a collision.": {
+    "es-ES": "Elige una ruta .mp4 nueva. Los archivos existentes se conservan y se informa del conflicto.",
+    "ru-RU": "Укажите новый путь .mp4. Существующие файлы сохраняются; совпадение пути будет показано как ошибка.",
+    "uk-UA": "Укажіть новий шлях .mp4. Наявні файли зберігаються; збіг шляху буде показано як помилку.",
+    "de-DE": "Neuen .mp4-Pfad wählen. Vorhandene Dateien bleiben erhalten und werden als Namenskollision gemeldet."
+  },
+  "Remove this remux job.": {
+    "es-ES": "Quita esta tarea de remultiplexado.",
+    "ru-RU": "Удалить эту задачу из очереди remux.",
+    "uk-UA": "Вилучити це завдання з черги remux.",
+    "de-DE": "Diesen Remux-Auftrag aus der Liste entfernen."
+  },
+  "Private recovery file": {
+    "es-ES": "Archivo privado de recuperación",
+    "ru-RU": "Приватный файл восстановления",
+    "uk-UA": "Приватний файл відновлення",
+    "de-DE": "Private Wiederherstellungsdatei"
+  },
+  "Add recordings…": {
+    "es-ES": "Añadir grabaciones…",
+    "ru-RU": "Добавить записи…",
+    "uk-UA": "Додати записи…",
+    "de-DE": "Aufnahmen hinzufügen…"
+  },
+  "Matroska recordings": {
+    "es-ES": "Grabaciones Matroska",
+    "ru-RU": "Записи Matroska",
+    "uk-UA": "Записи Matroska",
+    "de-DE": "Matroska-Aufnahmen"
+  },
+  "Add path": {
+    "es-ES": "Añadir ruta",
+    "ru-RU": "Добавить путь",
+    "uk-UA": "Додати шлях",
+    "de-DE": "Pfad hinzufügen"
+  },
+  "Add one editable source and target row.": {
+    "es-ES": "Añade una fila editable con origen y destino.",
+    "ru-RU": "Добавить строку с редактируемыми путями исходника и назначения.",
+    "uk-UA": "Додати рядок із редагованими шляхами джерела та призначення.",
+    "de-DE": "Eine bearbeitbare Zeile mit Quelle und Ziel hinzufügen."
+  },
+  "Clear finished": {
+    "es-ES": "Quitar completadas",
+    "ru-RU": "Убрать завершённые",
+    "uk-UA": "Прибрати завершені",
+    "de-DE": "Abgeschlossene entfernen"
+  },
+  "Clear all": {
+    "es-ES": "Vaciar lista",
+    "ru-RU": "Очистить список",
+    "uk-UA": "Очистити список",
+    "de-DE": "Liste leeren"
+  },
+  "Remove only successfully published jobs from the queue.": {
+    "es-ES": "Quita de la cola solo las tareas publicadas correctamente.",
+    "ru-RU": "Убрать из очереди только задачи с успешно опубликованными файлами.",
+    "uk-UA": "Прибрати з черги лише завдання з успішно опублікованими файлами.",
+    "de-DE": "Nur Aufträge mit erfolgreich veröffentlichten Dateien aus der Warteschlange entfernen."
+  },
+  "Clear the idle remux queue without deleting any file.": {
+    "es-ES": "Vacía la cola de remultiplexado inactiva sin borrar archivos.",
+    "ru-RU": "Очистить неработающую очередь remux без удаления файлов.",
+    "uk-UA": "Очистити неактивну чергу remux без видалення файлів.",
+    "de-DE": "Die inaktive Remux-Warteschlange leeren, ohne Dateien zu löschen."
+  },
+  "Input-copy progress. Final MP4 table scans and publication still run after 100%.": {
+    "es-ES": "Progreso de copia de entrada. El análisis final de las tablas MP4 y la publicación continúan después del 100%.",
+    "ru-RU": "Прогресс копирования исходника. После 100% ещё выполняются финальная обработка таблиц MP4 и публикация файла.",
+    "uk-UA": "Прогрес копіювання оригіналу. Після 100% ще виконуються завершальна обробка таблиць MP4 та публікація файлу.",
+    "de-DE": "Fortschritt der Eingabekopie. Abschließende MP4-Tabellendurchläufe und Veröffentlichung erfolgen noch nach 100 %."
+  },
+  "Start the ordered remux queue, or request cancellation and wait for actual file-worker retirement.": {
+    "es-ES": "Inicia la cola ordenada o solicita cancelar y espera a que el trabajador de archivos termine de verdad.",
+    "ru-RU": "Запустить очередь по порядку либо запросить отмену и дождаться фактического завершения файлового worker.",
+    "uk-UA": "Запустити чергу за порядком або запитати скасування й дочекатися фактичного завершення файлового worker.",
+    "de-DE": "Geordnete Remux-Warteschlange starten oder Abbruch anfordern und auf das tatsächliche Ende des Datei-Workers warten."
+  },
+  "Close the remux window; active work is canceled and retired first.": {
+    "es-ES": "Cierra la ventana de remultiplexado; primero se cancela y termina el trabajo activo.",
+    "ru-RU": "Закрыть окно remux; активная обработка сначала отменяется и завершается.",
+    "uk-UA": "Закрити вікно remux; активна обробка спочатку скасовується й завершується.",
+    "de-DE": "Remux-Fenster schließen; aktive Arbeit wird zuvor abgebrochen und beendet."
+  },
+  "Cancel remux": {
+    "es-ES": "Cancelar remultiplexado",
+    "ru-RU": "Отменить remux",
+    "uk-UA": "Скасувати remux",
+    "de-DE": "Remux abbrechen"
+  },
+  "Cancel requested; waiting for the file worker to retire. A publication already committed may finish.": {
+    "es-ES": "Cancelación solicitada; esperando que termine el trabajador de archivos. Una publicación ya confirmada puede completarse.",
+    "ru-RU": "Отмена запрошена; ожидается завершение файлового worker. Уже начатая публикация может завершиться.",
+    "uk-UA": "Скасування запитано; очікується завершення файлового worker. Уже розпочата публікація може завершитися.",
+    "de-DE": "Abbruch angefordert; der Datei-Worker wird beendet. Eine bereits verbindlich begonnene Veröffentlichung kann noch abgeschlossen werden."
+  },
+  "Opening recording…": {
+    "es-ES": "Abriendo grabación…",
+    "ru-RU": "Открытие записи…",
+    "uk-UA": "Відкриття запису…",
+    "de-DE": "Aufnahme wird geöffnet…"
+  },
+  "Remuxing…": {
+    "es-ES": "Remultiplexando…",
+    "ru-RU": "Ремультиплексирование…",
+    "uk-UA": "Ремультиплексування…",
+    "de-DE": "Remux läuft…"
+  },
+  "Finalizing MP4 tables…": {
+    "es-ES": "Finalizando tablas MP4…",
+    "ru-RU": "Завершение таблиц MP4…",
+    "uk-UA": "Завершення таблиць MP4…",
+    "de-DE": "MP4-Tabellen werden finalisiert…"
+  },
+  "Publishing MP4…": {
+    "es-ES": "Publicando MP4…",
+    "ru-RU": "Публикация MP4…",
+    "uk-UA": "Публікація MP4…",
+    "de-DE": "MP4 wird veröffentlicht…"
+  },
+  "Not started": {
+    "es-ES": "Sin iniciar",
+    "ru-RU": "Не запущено",
+    "uk-UA": "Не запущено",
+    "de-DE": "Nicht gestartet"
+  },
+  "Convert supported finalized SkyLive MKV recordings to MP4 without re-encoding or overwriting files.": {
+    "es-ES": "Convierte grabaciones MKV finalizadas y compatibles de SkyLive a MP4 sin recodificar ni sobrescribir archivos.",
+    "ru-RU": "Преобразовать поддерживаемые завершённые MKV-записи SkyLive в MP4 без перекодирования и перезаписи файлов.",
+    "uk-UA": "Перетворити підтримувані завершені MKV-записи SkyLive на MP4 без перекодування та перезапису файлів.",
+    "de-DE": "Unterstützte finalisierte SkyLive-MKV-Aufnahmen ohne Neukodierung oder Überschreiben in MP4 umwandeln."
+  },
+  "Move up": {
+    "es-ES": "Mover arriba",
+    "ru-RU": "Переместить вверх",
+    "uk-UA": "Перемістити вгору",
+    "de-DE": "Nach oben"
+  },
+  "Move down": {
+    "es-ES": "Mover abajo",
+    "ru-RU": "Переместить вниз",
+    "uk-UA": "Перемістити вниз",
+    "de-DE": "Nach unten"
+  },
+  "Remux draft generation exhausted": {
+    "es-ES": "Se agotó el identificador del borrador de remultiplexado.",
+    "ru-RU": "Исчерпан идентификатор черновика ремультиплексирования.",
+    "uk-UA": "Вичерпано ідентифікатор чернетки ремультиплексування.",
+    "de-DE": "Die Entwurfskennung für das Remuxen ist ausgeschöpft."
+  },
+  "Remux path exceeds4096bytes": {
+    "es-ES": "La ruta de remultiplexado supera los 4096 bytes.",
+    "ru-RU": "Путь для ремультиплексирования превышает 4096 байт.",
+    "uk-UA": "Шлях для ремультиплексування перевищує 4096 байтів.",
+    "de-DE": "Der Remux-Pfad überschreitet 4096 Bytes."
+  },
+  "Remux queue is active or exceeds32jobs": {
+    "es-ES": "La cola está activa o contiene más de 32 archivos.",
+    "ru-RU": "Очередь ремультиплексирования активна или содержит больше 32 файлов.",
+    "uk-UA": "Черга ремультиплексування активна або містить понад 32 файли.",
+    "de-DE": "Die Remux-Warteschlange ist aktiv oder enthält mehr als 32 Dateien."
+  },
+  "Remux row identity exhausted": {
+    "es-ES": "Se agotó el identificador de fila de remultiplexado.",
+    "ru-RU": "Исчерпан идентификатор строки ремультиплексирования.",
+    "uk-UA": "Вичерпано ідентифікатор рядка ремультиплексування.",
+    "de-DE": "Die Zeilenkennung für das Remuxen ist ausgeschöpft."
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "Add OBS Limiter": {
+    "es-ES": "Añadir limitador OBS",
+    "ru-RU": "Добавить лимитер OBS",
+    "uk-UA": "Додати лімітер OBS",
+    "de-DE": "OBS-Limiter hinzufügen"
+  },
+  "Add OBS Compressor": {
+    "es-ES": "Añadir compresor OBS",
+    "ru-RU": "Добавить компрессор OBS",
+    "uk-UA": "Додати компресор OBS",
+    "de-DE": "OBS-Kompressor hinzufügen"
+  },
+  "Add OBS Expander": {
+    "es-ES": "Añadir expansor OBS",
+    "ru-RU": "Добавить экспандер OBS",
+    "uk-UA": "Додати експандер OBS",
+    "de-DE": "OBS-Expander hinzufügen"
+  },
+  "OBS Limiter {}": {
+    "es-ES": "Limitador OBS {}",
+    "ru-RU": "Лимитер OBS {}",
+    "uk-UA": "Лімітер OBS {}",
+    "de-DE": "OBS-Limiter {}"
+  },
+  "OBS Compressor {}": {
+    "es-ES": "Compresor OBS {}",
+    "ru-RU": "Компрессор OBS {}",
+    "uk-UA": "Компресор OBS {}",
+    "de-DE": "OBS-Kompressor {}"
+  },
+  "OBS Expander {}": {
+    "es-ES": "Expansor OBS {}",
+    "ru-RU": "Экспандер OBS {}",
+    "uk-UA": "Експандер OBS {}",
+    "de-DE": "OBS-Expander {}"
+  },
+  "Expander preset: Expander": {
+    "es-ES": "Preajuste del expansor: expansor",
+    "ru-RU": "Режим экспандера: экспандер",
+    "uk-UA": "Режим експандера: експандер",
+    "de-DE": "Expander-Vorgabe: Expander"
+  },
+  "Expander preset: Gate": {
+    "es-ES": "Preajuste del expansor: puerta de ruido",
+    "ru-RU": "Режим экспандера: гейт",
+    "uk-UA": "Режим експандера: гейт",
+    "de-DE": "Expander-Vorgabe: Gate"
+  },
+  "RMS detector": {
+    "es-ES": "Detector RMS",
+    "ru-RU": "Детектор RMS",
+    "uk-UA": "Детектор RMS",
+    "de-DE": "RMS-Detektor"
+  },
+  "Peak detector": {
+    "es-ES": "Detector de picos",
+    "ru-RU": "Пиковый детектор",
+    "uk-UA": "Піковий детектор",
+    "de-DE": "Spitzendetektor"
+  },
+  "Adjust this OBS filter parameter; Apply validates its displayed range.": {
+    "es-ES": "Ajusta este parámetro del filtro OBS; Aplicar valida el intervalo indicado.",
+    "ru-RU": "Измените параметр фильтра OBS; «Применить» проверяет указанный диапазон.",
+    "uk-UA": "Змініть параметр фільтра OBS; «Застосувати» перевіряє зазначений діапазон.",
+    "de-DE": "Diesen OBS-Filterparameter anpassen; Anwenden prüft den angezeigten Bereich."
+  },
+  "Type an exact value. Invalid drafts remain editable until Apply.": {
+    "es-ES": "Escribe un valor exacto. Los valores no válidos se pueden corregir antes de Aplicar.",
+    "ru-RU": "Введите точное значение. Недопустимые значения можно исправить до применения.",
+    "uk-UA": "Введіть точне значення. Неприпустимі значення можна виправити до застосування.",
+    "de-DE": "Einen genauen Wert eingeben. Ungültige Entwürfe bleiben bis zum Anwenden bearbeitbar."
+  },
+  "Set a whole number of milliseconds within the displayed range.": {
+    "es-ES": "Introduce un número entero de milisegundos dentro del intervalo indicado.",
+    "ru-RU": "Задайте целое число миллисекунд в указанном диапазоне.",
+    "uk-UA": "Задайте ціле число мілісекунд у зазначеному діапазоні.",
+    "de-DE": "Eine ganze Anzahl Millisekunden im angezeigten Bereich eingeben."
+  },
+  "Bypass this OBS dynamics filter without removing its settings or detector history.": {
+    "es-ES": "Omite este filtro de dinámica OBS sin eliminar sus ajustes ni el historial del detector.",
+    "ru-RU": "Обходить этот динамический фильтр OBS, сохраняя его настройки и историю детектора.",
+    "uk-UA": "Обходити цей динамічний фільтр OBS, зберігаючи його налаштування та історію детектора.",
+    "de-DE": "Diesen OBS-Dynamikfilter umgehen, ohne Einstellungen oder Detektorverlauf zu löschen."
+  },
+  "Choosing a preset replaces this draft's expander controls. Apply commits them together.": {
+    "es-ES": "Al elegir un preajuste se sustituyen los controles de este borrador del expansor. Aplicar los guarda juntos.",
+    "ru-RU": "Выбор режима заменяет параметры экспандера в черновике. «Применить» сохраняет их вместе.",
+    "uk-UA": "Вибір режиму замінює параметри експандера в чернетці. «Застосувати» зберігає їх разом.",
+    "de-DE": "Eine Vorgabe ersetzt die Expanderwerte dieses Entwurfs. Anwenden übernimmt sie gemeinsam."
+  },
+  "OBS Limiter uses a linked peak detector with a fixed 0.001 ms attack. It does not provide lookahead or true-peak limiting.": {
+    "es-ES": "El limitador OBS utiliza un detector de picos enlazado con un ataque fijo de 0.001 ms. No ofrece anticipación ni limitación de pico real.",
+    "ru-RU": "Лимитер OBS использует связанный пиковый детектор с фиксированной атакой 0.001 ms. Упреждение и ограничение истинных пиков не поддерживаются.",
+    "uk-UA": "Лімітер OBS використовує зв’язаний піковий детектор із фіксованою атакою 0.001 ms. Випередження й обмеження справжніх піків не підтримуються.",
+    "de-DE": "Der OBS-Limiter verwendet einen gekoppelten Spitzendetektor mit fester Ansprechzeit von 0.001 ms. Er bietet weder Vorschau noch True-Peak-Begrenzung."
+  },
+  "OBS Compressor links the channels through a peak detector. Sidechain: own source only; external sidechain capture is not available.": {
+    "es-ES": "El compresor OBS enlaza los canales mediante un detector de picos. Cadena lateral: solo la propia fuente; no se admite captura externa.",
+    "ru-RU": "Компрессор OBS связывает каналы пиковым детектором. Сайдчейн: только собственный источник; внешний захват сайдчейна недоступен.",
+    "uk-UA": "Компресор OBS зв’язує канали піковим детектором. Сайдчейн: лише власне джерело; зовнішнє захоплення сайдчейна недоступне.",
+    "de-DE": "Der OBS-Kompressor koppelt die Kanäle über einen Spitzendetektor. Sidechain: nur die eigene Quelle; externe Sidechain-Aufnahme ist nicht verfügbar."
+  },
+  "OBS Expander detects each channel independently and attenuates quiet audio by up to 60 dB. The Gate preset uses the same expander algorithm.": {
+    "es-ES": "El expansor OBS detecta cada canal de forma independiente y atenúa el audio bajo hasta 60 dB. El preajuste Puerta usa el mismo algoritmo de expansión.",
+    "ru-RU": "Экспандер OBS обрабатывает детектор каждого канала отдельно и ослабляет тихий звук до 60 dB. Режим «Гейт» использует тот же алгоритм экспандера.",
+    "uk-UA": "Експандер OBS обробляє детектор кожного каналу окремо й послаблює тихий звук до 60 dB. Режим «Гейт» використовує той самий алгоритм експандера.",
+    "de-DE": "Der OBS-Expander erkennt jeden Kanal unabhängig und senkt leises Audio um bis zu 60 dB ab. Die Gate-Vorgabe nutzt denselben Expanderalgorithmus."
+  },
+  "RMS follows the smoothed signal power; Peak follows its absolute sample level.": {
+    "es-ES": "RMS sigue la potencia suavizada de la señal; Pico sigue el nivel absoluto de cada muestra.",
+    "ru-RU": "RMS отслеживает сглаженную мощность сигнала, а пиковый детектор — абсолютный уровень отсчёта.",
+    "uk-UA": "RMS відстежує згладжену потужність сигналу, а піковий детектор — абсолютний рівень відліку.",
+    "de-DE": "RMS folgt der geglätteten Signalleistung; Peak folgt dem absoluten Abtastwertpegel."
+  },
+  "Static input/output curve. Attack and release determine the actual signal's response over time.": {
+    "es-ES": "Curva estática de entrada y salida. El ataque y la liberación determinan la respuesta real de la señal a lo largo del tiempo.",
+    "ru-RU": "Статическая входная/выходная характеристика. Атака и отпускание определяют фактическое изменение сигнала во времени.",
+    "uk-UA": "Статична вхідна/вихідна характеристика. Атака й відпускання визначають фактичну зміну сигналу з часом.",
+    "de-DE": "Statische Ein-/Ausgangskennlinie. Ansprech- und Rücklaufzeit bestimmen den tatsächlichen zeitlichen Signalverlauf."
+  },
+  "Threshold (-60 to 0 dB)": {
+    "es-ES": "Umbral (-60 a 0 dB)",
+    "ru-RU": "Порог (от -60 до 0 dB)",
+    "uk-UA": "Поріг (від -60 до 0 dB)",
+    "de-DE": "Schwelle (-60 bis 0 dB)"
+  },
+  "Ratio (1:1 to 32:1)": {
+    "es-ES": "Relación (1:1 a 32:1)",
+    "ru-RU": "Соотношение (от 1:1 до 32:1)",
+    "uk-UA": "Співвідношення (від 1:1 до 32:1)",
+    "de-DE": "Verhältnis (1:1 bis 32:1)"
+  },
+  "Ratio (1:1 to 20:1)": {
+    "es-ES": "Relación (1:1 a 20:1)",
+    "ru-RU": "Соотношение (от 1:1 до 20:1)",
+    "uk-UA": "Співвідношення (від 1:1 до 20:1)",
+    "de-DE": "Verhältnis (1:1 bis 20:1)"
+  },
+  "Attack (1 to {} ms)": {
+    "es-ES": "Ataque (1 a {} ms)",
+    "ru-RU": "Атака (от 1 до {} ms)",
+    "uk-UA": "Атака (від 1 до {} ms)",
+    "de-DE": "Ansprechzeit (1 bis {} ms)"
+  },
+  "Release (1 to {} ms)": {
+    "es-ES": "Liberación (1 a {} ms)",
+    "ru-RU": "Отпускание (от 1 до {} ms)",
+    "uk-UA": "Відпускання (від 1 до {} ms)",
+    "de-DE": "Rücklaufzeit (1 bis {} ms)"
+  },
+  "Output gain (-32 to 32 dB)": {
+    "es-ES": "Ganancia de salida (-32 a 32 dB)",
+    "ru-RU": "Выходное усиление (от -32 до 32 dB)",
+    "uk-UA": "Вихідне підсилення (від -32 до 32 dB)",
+    "de-DE": "Ausgangsverstärkung (-32 bis 32 dB)"
+  },
+  "Add the OBS linked-peak limiter to this draft. Apply publishes the chain; no filter is inserted automatically.": {
+    "es-ES": "Añade el limitador de picos enlazados OBS a este borrador. Aplicar guarda la cadena; no se inserta ningún filtro automáticamente.",
+    "ru-RU": "Добавьте лимитер OBS со связанным пиковым детектором в черновик. «Применить» сохраняет цепочку; фильтры не добавляются автоматически.",
+    "uk-UA": "Додайте лімітер OBS зі зв’язаним піковим детектором до чернетки. «Застосувати» зберігає ланцюжок; фільтри не додаються автоматично.",
+    "de-DE": "Den OBS-Limiter mit gekoppeltem Spitzendetektor zum Entwurf hinzufügen. Anwenden übernimmt die Kette; kein Filter wird automatisch eingefügt."
+  },
+  "Add the OBS hard-knee peak compressor to this draft. It is separate from the Craft Compressor.": {
+    "es-ES": "Añade el compresor de picos de codo duro OBS a este borrador. Es distinto del compresor Craft.",
+    "ru-RU": "Добавьте пиковый компрессор OBS с жёстким коленом в черновик. Это отдельный фильтр, отличный от компрессора Craft.",
+    "uk-UA": "Додайте піковий компресор OBS із жорстким коліном до чернетки. Це окремий фільтр, відмінний від компресора Craft.",
+    "de-DE": "Den OBS-Spitzenkompressor mit harter Kennlinie zum Entwurf hinzufügen. Er ist vom Craft-Kompressor getrennt."
+  },
+  "Add the OBS per-channel RMS/peak expander to this draft. Its Gate preset does not replace the Craft Gate.": {
+    "es-ES": "Añade el expansor OBS con detector RMS o de picos por canal a este borrador. Su preajuste Puerta no sustituye a Craft Gate.",
+    "ru-RU": "Добавьте экспандер OBS с поканальным RMS/пиковым детектором в черновик. Его режим «Гейт» не заменяет Craft Gate.",
+    "uk-UA": "Додайте експандер OBS із поканальним RMS/піковим детектором до чернетки. Його режим «Гейт» не замінює Craft Gate.",
+    "de-DE": "Den OBS-Expander mit kanalweisem RMS-/Spitzendetektor zum Entwurf hinzufügen. Seine Gate-Vorgabe ersetzt das Craft Gate nicht."
+  },
+  "Load the Expander preset: 2:1 ratio, 10 ms attack and 50 ms release.": {
+    "es-ES": "Cargar el preajuste Expansor: relación 2:1, ataque de 10 ms y liberación de 50 ms.",
+    "ru-RU": "Загрузить режим экспандера: соотношение 2:1, атака 10 мс и восстановление 50 мс.",
+    "uk-UA": "Завантажити режим експандера: співвідношення 2:1, атака 10 мс і відновлення 50 мс.",
+    "de-DE": "Expander-Vorgabe laden: Verhältnis 2:1, Ansprechzeit 10 ms und Rücklaufzeit 50 ms."
+  },
+  "Load the Gate preset: 10:1 ratio, 10 ms attack and 125 ms release.": {
+    "es-ES": "Cargar el preajuste Puerta: relación 10:1, ataque de 10 ms y liberación de 125 ms.",
+    "ru-RU": "Загрузить режим гейта: соотношение 10:1, атака 10 мс и восстановление 125 мс.",
+    "uk-UA": "Завантажити режим гейта: співвідношення 10:1, атака 10 мс і відновлення 125 мс.",
+    "de-DE": "Gate-Vorgabe laden: Verhältnis 10:1, Ansprechzeit 10 ms und Rücklaufzeit 125 ms."
+  },
+  "Detect average signal power independently for each channel.": {
+    "es-ES": "Detectar la potencia media de la señal de forma independiente en cada canal.",
+    "ru-RU": "Измерять среднюю мощность сигнала отдельно в каждом канале.",
+    "uk-UA": "Вимірювати середню потужність сигналу окремо в кожному каналі.",
+    "de-DE": "Die mittlere Signalleistung für jeden Kanal unabhängig erfassen."
+  },
+  "Detect instantaneous peaks independently for each channel.": {
+    "es-ES": "Detectar los picos instantáneos de forma independiente en cada canal.",
+    "ru-RU": "Измерять мгновенные пики отдельно в каждом канале.",
+    "uk-UA": "Вимірювати миттєві піки окремо в кожному каналі.",
+    "de-DE": "Momentane Spitzen für jeden Kanal unabhängig erfassen."
+  }
+}

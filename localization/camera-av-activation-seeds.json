@@ -1,0 +1,284 @@
+{
+  "Activate Camera (Video + Audio)": {
+    "es-ES": "Activar cámara (vídeo y audio)",
+    "ru-RU": "Активировать камеру (видео и звук)",
+    "uk-UA": "Активувати камеру (відео та звук)",
+    "de-DE": "Kamera aktivieren (Video + Audio)"
+  },
+  "Deactivate Camera (Video + Audio)": {
+    "es-ES": "Desactivar cámara (vídeo y audio)",
+    "ru-RU": "Деактивировать камеру (видео и звук)",
+    "uk-UA": "Деактивувати камеру (відео та звук)",
+    "de-DE": "Kamera deaktivieren (Video + Audio)"
+  },
+  "Deactivate All Camera Sources": {
+    "es-ES": "Desactivar todas las fuentes de cámara",
+    "ru-RU": "Деактивировать все источники камер",
+    "uk-UA": "Деактивувати всі джерела камер",
+    "de-DE": "Alle Kameraquellen deaktivieren"
+  },
+  "Controls this source's camera video and optional custom audio together. Shared devices used by other sources remain active.": {
+    "es-ES": "Controla conjuntamente el vídeo de cámara y el audio personalizado opcional de esta fuente. Los dispositivos compartidos por otras fuentes siguen activos.",
+    "ru-RU": "Управляет видео камеры и её необязательным отдельным звуком вместе. Общие устройства, используемые другими источниками, остаются активны.",
+    "uk-UA": "Керує відео камери та її необов’язковим окремим звуком разом. Спільні пристрої, які використовують інші джерела, залишаються активними.",
+    "de-DE": "Steuert Kameravideo und optionales separates Audio dieser Quelle gemeinsam. Von anderen Quellen verwendete Geräte bleiben aktiv."
+  },
+  "Apply binding changes before activation. Deactivation waits actual native retirement and remains available during a pending start.": {
+    "es-ES": "Aplique los cambios de dispositivos antes de activar. La desactivación espera a la liberación nativa real y sigue disponible durante un inicio pendiente.",
+    "ru-RU": "Перед активацией примените изменения привязки. Деактивация ждёт фактического освобождения нативных ресурсов и доступна во время запуска.",
+    "uk-UA": "Перед активацією застосуйте зміни прив’язки. Деактивація чекає фактичного звільнення нативних ресурсів і доступна під час запуску.",
+    "de-DE": "Geräteänderungen vor der Aktivierung anwenden. Die Deaktivierung wartet auf die tatsächliche native Freigabe und bleibt während eines ausstehenden Starts verfügbar."
+  },
+  "Deactivate camera video and custom audio for every camera source. Independent audio input sources keep working, including shared endpoints.": {
+    "es-ES": "Desactiva el vídeo y el audio personalizado de todas las cámaras. Las fuentes de entrada de audio independientes siguen funcionando, incluso con dispositivos compartidos.",
+    "ru-RU": "Отключить видео и отдельный звук всех источников камер. Независимые аудиовходы продолжают работать, в том числе на общих устройствах.",
+    "uk-UA": "Вимкнути відео й окремий звук усіх джерел камер. Незалежні аудіовходи продовжують працювати, зокрема на спільних пристроях.",
+    "de-DE": "Kameravideo und separates Audio aller Kameraquellen deaktivieren. Unabhängige Audioeingangsquellen arbeiten weiter, auch an gemeinsam genutzten Geräten."
+  },
+  "Activate/Deactivate controls both camera video and custom audio. This checkbox configures whether the source has a custom audio input.": {
+    "es-ES": "Activar/Desactivar controla tanto el vídeo como el audio personalizado. Esta casilla configura si la fuente tiene una entrada de audio personalizada.",
+    "ru-RU": "Активация и деактивация управляют видео камеры и её отдельным звуком. Этот флажок задаёт наличие отдельного аудиовхода у источника.",
+    "uk-UA": "Активація й деактивація керують відео камери та її окремим звуком. Цей прапорець задає наявність окремого аудіовходу в джерела.",
+    "de-DE": "Aktivieren/Deaktivieren steuert Kameravideo und separates Audio. Dieses Kontrollkästchen legt fest, ob die Quelle einen separaten Audioeingang hat."
+  },
+  "Camera AV activation requested": {
+    "es-ES": "Activación AV de cámara solicitada",
+    "ru-RU": "Запрошена активация видео и звука камеры",
+    "uk-UA": "Надіслано запит активації відео та звуку камери",
+    "de-DE": "AV-Aktivierung der Kamera angefordert"
+  },
+  "Camera AV deactivation requested; waiting for both legs": {
+    "es-ES": "Desactivación AV de cámara solicitada; esperando ambos componentes",
+    "ru-RU": "Запрошена деактивация камеры; ожидается остановка видео и звука",
+    "uk-UA": "Надіслано запит деактивації камери; очікується зупинка відео та звуку",
+    "de-DE": "AV-Deaktivierung der Kamera angefordert; auf beide Komponenten warten"
+  },
+  "Camera AV activation acknowledged": {
+    "es-ES": "Activación AV de cámara confirmada",
+    "ru-RU": "Активация видео и звука камеры подтверждена",
+    "uk-UA": "Активацію відео та звуку камери підтверджено",
+    "de-DE": "AV-Aktivierung der Kamera bestätigt"
+  },
+  "Camera AV deactivation acknowledged": {
+    "es-ES": "Desactivación AV de cámara confirmada",
+    "ru-RU": "Деактивация видео и звука камеры подтверждена",
+    "uk-UA": "Деактивацію відео та звуку камери підтверджено",
+    "de-DE": "AV-Deaktivierung der Kamera bestätigt"
+  },
+  "Camera AV operation has a partial failure; inspect both leg statuses": {
+    "es-ES": "La operación AV de cámara ha fallado parcialmente; revise el estado de ambos componentes",
+    "ru-RU": "Операция камеры завершилась частичной ошибкой; проверьте состояние видео и звука",
+    "uk-UA": "Операція камери завершилася частковою помилкою; перевірте стан відео та звуку",
+    "de-DE": "Die Kamera-AV-Operation ist teilweise fehlgeschlagen; beide Komponentenstatus prüfen"
+  },
+  "Idle": {
+    "es-ES": "Inactivo",
+    "ru-RU": "Ожидание",
+    "uk-UA": "Очікування",
+    "de-DE": "Inaktiv"
+  },
+  "Queued": {
+    "es-ES": "En cola",
+    "ru-RU": "В очереди",
+    "uk-UA": "У черзі",
+    "de-DE": "In Warteschlange"
+  },
+  "Working": {
+    "es-ES": "En curso",
+    "ru-RU": "Выполняется",
+    "uk-UA": "Виконується",
+    "de-DE": "In Bearbeitung"
+  },
+  "Retiring": {
+    "es-ES": "Liberando recursos",
+    "ru-RU": "Освобождение ресурсов",
+    "uk-UA": "Звільнення ресурсів",
+    "de-DE": "Ressourcenfreigabe"
+  },
+  "Acknowledged": {
+    "es-ES": "Confirmado",
+    "ru-RU": "Подтверждено",
+    "uk-UA": "Підтверджено",
+    "de-DE": "Bestätigt"
+  },
+  "Failed": {
+    "es-ES": "Error",
+    "ru-RU": "Ошибка",
+    "uk-UA": "Помилка",
+    "de-DE": "Fehlgeschlagen"
+  },
+  "Video: {video} · Audio: {audio}": {
+    "es-ES": "Vídeo: {video} · Audio: {audio}",
+    "ru-RU": "Видео: {video} · Звук: {audio}",
+    "uk-UA": "Відео: {video} · Звук: {audio}",
+    "de-DE": "Video: {video} · Audio: {audio}"
+  },
+  "Camera source AV is eligible by default. Headless Program audio does not require camera video to be armed.": {
+    "es-ES": "El AV de la cámara está habilitado de forma predeterminada. El audio de Programa sin interfaz no requiere que el vídeo esté iniciado.",
+    "ru-RU": "Видео и звук источника камеры разрешены по умолчанию. Для звука Program без интерфейса не нужен запуск видеозахвата.",
+    "uk-UA": "Відео та звук джерела камери дозволені за замовчуванням. Для звуку Program без інтерфейсу не потрібен запуск відеозахоплення.",
+    "de-DE": "Kamera-AV ist standardmäßig freigegeben. Programmaudio ohne Oberfläche erfordert keinen gestarteten Kameravideo-Eigentümer."
+  },
+  "Stop queued; waiting for noncancelable native work": {
+    "es-ES": "Parada en cola; esperando el trabajo nativo no cancelable",
+    "ru-RU": "Остановка в очереди; ожидается завершение неотменяемой нативной операции",
+    "uk-UA": "Зупинка в черзі; очікується завершення нативної операції, яку не можна скасувати",
+    "de-DE": "Stopp vorgemerkt; auf nicht abbrechbare native Arbeit warten"
+  },
+  "Waiting for camera video and audio acknowledgements": {
+    "es-ES": "Esperando confirmaciones de vídeo y audio de cámara",
+    "ru-RU": "Ожидание подтверждений видео и звука камеры",
+    "uk-UA": "Очікування підтверджень відео та звуку камери",
+    "de-DE": "Auf Bestätigungen für Kameravideo und Audio warten"
+  },
+  "Audio cut: frame {frame} at {rate} Hz. Already committed mixed blocks cannot be recalled.": {
+    "es-ES": "Corte de audio: fotograma {frame} a {rate} Hz. Los bloques mezclados ya enviados no se pueden retirar.",
+    "ru-RU": "Граница звука: отсчёт {frame} при {rate} Гц. Уже переданные смешанные блоки нельзя отозвать.",
+    "uk-UA": "Межа звуку: відлік {frame} за {rate} Гц. Уже передані змішані блоки не можна відкликати.",
+    "de-DE": "Audio-Grenze: Sample {frame} bei {rate} Hz. Bereits übergebene gemischte Blöcke können nicht zurückgerufen werden."
+  },
+  "Program buffer: {blocks}/{maximum} blocks · monitor padding: {padding} ns": {
+    "es-ES": "Búfer de Programa: {blocks}/{maximum} bloques · audio pendiente de monitorización: {padding} ns",
+    "ru-RU": "Буфер Program: {blocks}/{maximum} блоков · очередь мониторинга: {padding} нс",
+    "uk-UA": "Буфер Program: {blocks}/{maximum} блоків · черга моніторингу: {padding} нс",
+    "de-DE": "Programmpuffer: {blocks}/{maximum} Blöcke · ausstehendes Monitoring-Audio: {padding} ns"
+  },
+  "Acknowledgement confirms source eligibility or retirement. An unused source does not open hidden devices; actual frame availability remains separate.": {
+    "es-ES": "La confirmación indica la habilitación o liberación de la fuente. Una fuente sin uso no abre dispositivos ocultos; la disponibilidad real de fotogramas se indica por separado.",
+    "ru-RU": "Подтверждение означает разрешение источника или освобождение ресурсов. Неиспользуемый источник не открывает устройства скрыто; доступность реальных кадров определяется отдельно.",
+    "uk-UA": "Підтвердження означає дозвіл джерела або звільнення ресурсів. Невикористовуване джерело не відкриває пристрої приховано; доступність справжніх кадрів визначається окремо.",
+    "de-DE": "Die Bestätigung betrifft Quellenfreigabe oder Ressourcenfreigabe. Eine ungenutzte Quelle öffnet keine versteckten Geräte; tatsächliche Frameverfügbarkeit wird separat erfasst."
+  },
+  "A camera AV activation is still pending": {
+    "es-ES": "Todavía hay una activación AV de cámara pendiente",
+    "ru-RU": "Ещё выполняется операция видео и звука камеры",
+    "uk-UA": "Ще виконується операція відео та звуку камери",
+    "de-DE": "Eine Kamera-AV-Operation steht noch aus"
+  },
+  "The camera source changed while AV activation was pending": {
+    "es-ES": "La fuente de cámara cambió durante la activación AV pendiente",
+    "ru-RU": "Источник камеры изменился во время операции видео и звука",
+    "uk-UA": "Джерело камери змінилося під час операції відео та звуку",
+    "de-DE": "Die Kameraquelle wurde während der AV-Operation geändert"
+  },
+  "camera activation belongs to another session": {
+    "es-ES": "la activación de cámara pertenece a otra sesión",
+    "ru-RU": "активация камеры относится к другому сеансу",
+    "uk-UA": "активація камери належить іншому сеансу",
+    "de-DE": "Kameraaktivierung gehört zu einer anderen Sitzung"
+  },
+  "camera activation session is closed": {
+    "es-ES": "la sesión de activación de cámara está cerrada",
+    "ru-RU": "сеанс активации камеры закрыт",
+    "uk-UA": "сеанс активації камери закрито",
+    "de-DE": "Sitzung der Kameraaktivierung ist geschlossen"
+  },
+  "camera activation source is unavailable": {
+    "es-ES": "la fuente de activación de cámara no está disponible",
+    "ru-RU": "источник для активации камеры недоступен",
+    "uk-UA": "джерело для активації камери недоступне",
+    "de-DE": "Kameraquelle für Aktivierung nicht verfügbar"
+  },
+  "camera activation identity exhausted": {
+    "es-ES": "se agotaron los identificadores de activación de cámara",
+    "ru-RU": "исчерпаны идентификаторы активации камеры",
+    "uk-UA": "вичерпано ідентифікатори активації камери",
+    "de-DE": "Kennungen für Kameraaktivierung erschöpft"
+  },
+  "camera activation source count exceeds bound": {
+    "es-ES": "el número de fuentes de activación de cámara supera el límite",
+    "ru-RU": "число источников активации камеры превышает предел",
+    "uk-UA": "кількість джерел активації камери перевищує межу",
+    "de-DE": "Anzahl der Kameraaktivierungsquellen überschreitet die Grenze"
+  },
+  "camera activation source identity changed": {
+    "es-ES": "cambió la identidad de la fuente de activación de cámara",
+    "ru-RU": "изменился идентификатор источника активации камеры",
+    "uk-UA": "змінився ідентифікатор джерела активації камери",
+    "de-DE": "Identität der Kameraaktivierungsquelle geändert"
+  },
+  "camera activation metadata byte bound": {
+    "es-ES": "límite de bytes de metadatos de activación de cámara",
+    "ru-RU": "предел объёма метаданных активации камеры",
+    "uk-UA": "межа обсягу метаданих активації камери",
+    "de-DE": "Bytegrenze für Kameraaktivierungsmetadaten"
+  },
+  "camera activation Program closure unavailable": {
+    "es-ES": "el grafo de Programa para activación de cámara no está disponible",
+    "ru-RU": "граф Program для активации камеры недоступен",
+    "uk-UA": "граф Program для активації камери недоступний",
+    "de-DE": "Programmgraph für Kameraaktivierung nicht verfügbar"
+  },
+  "camera AV source binding changed": {
+    "es-ES": "cambió la vinculación AV de la cámara",
+    "ru-RU": "изменилась привязка видео и звука камеры",
+    "uk-UA": "змінилася прив’язка відео та звуку камери",
+    "de-DE": "AV-Gerätebindung der Kamera geändert"
+  },
+  "camera activation superseded by stop": {
+    "es-ES": "la parada sustituyó la activación de cámara",
+    "ru-RU": "активация камеры отменена запросом остановки",
+    "uk-UA": "активацію камери скасовано запитом зупинки",
+    "de-DE": "Kameraaktivierung durch Stopp abgelöst"
+  },
+  "Camera activation was superseded by Stop; its native leg retired": {
+    "es-ES": "La parada sustituyó la activación de cámara; se liberó su componente nativo",
+    "ru-RU": "Активация камеры отменена остановкой; нативная часть освобождена",
+    "uk-UA": "Активацію камери скасовано зупинкою; нативну частину звільнено",
+    "de-DE": "Kameraaktivierung durch Stopp abgelöst; native Komponente freigegeben"
+  },
+  "Camera activation was superseded by Stop; its audio leg retired": {
+    "es-ES": "La parada sustituyó la activación de cámara; se liberó su componente de audio",
+    "ru-RU": "Активация камеры отменена остановкой; звуковая часть освобождена",
+    "uk-UA": "Активацію камери скасовано зупинкою; звукову частину звільнено",
+    "de-DE": "Kameraaktivierung durch Stopp abgelöst; Audiokomponente freigegeben"
+  },
+  "Camera owner stopped before AV operation completed": {
+    "es-ES": "El propietario de cámara se detuvo antes de terminar la operación AV",
+    "ru-RU": "Владелец камеры остановлен до завершения операции видео и звука",
+    "uk-UA": "Власника камери зупинено до завершення операції відео та звуку",
+    "de-DE": "Kamera-Eigentümer vor Abschluss der AV-Operation gestoppt"
+  },
+  "Audio owner closed before camera AV retirement acknowledged": {
+    "es-ES": "El propietario de audio se cerró antes de confirmar la liberación AV de la cámara",
+    "ru-RU": "Владелец звука закрыт до подтверждения освобождения видео и звука камеры",
+    "uk-UA": "Власника звуку закрито до підтвердження звільнення відео та звуку камери",
+    "de-DE": "Audio-Eigentümer vor Bestätigung der Kamera-AV-Freigabe geschlossen"
+  },
+  "Old-session camera activation cannot affect the replacement session": {
+    "es-ES": "La activación de cámara de la sesión anterior no puede afectar a la nueva sesión",
+    "ru-RU": "Активация камеры старого сеанса не может влиять на новый сеанс",
+    "uk-UA": "Активація камери старого сеансу не може впливати на новий сеанс",
+    "de-DE": "Kameraaktivierung der alten Sitzung darf die neue Sitzung nicht beeinflussen"
+  },
+  "Old-session audio activation cannot affect the replacement session": {
+    "es-ES": "La activación de audio de la sesión anterior no puede afectar a la nueva sesión",
+    "ru-RU": "Активация звука старого сеанса не может влиять на новый сеанс",
+    "uk-UA": "Активація звуку старого сеансу не може впливати на новий сеанс",
+    "de-DE": "Audioaktivierung der alten Sitzung darf die neue Sitzung nicht beeinflussen"
+  },
+  "Previous camera audio retirement is still pending": {
+    "es-ES": "Sigue pendiente la liberación anterior del audio de cámara",
+    "ru-RU": "Ещё не завершено предыдущее освобождение звука камеры",
+    "uk-UA": "Ще не завершено попереднє звільнення звуку камери",
+    "de-DE": "Vorherige Freigabe von Kamera-Audio steht noch aus"
+  },
+  "foreign camera activation route": {
+    "es-ES": "ruta de activación de cámara de otra sesión",
+    "ru-RU": "маршрут активации камеры из другого сеанса",
+    "uk-UA": "маршрут активації камери з іншого сеансу",
+    "de-DE": "Kameraaktivierungsroute aus fremder Sitzung"
+  },
+  "camera activation audio grid changed": {
+    "es-ES": "cambió la rejilla de audio de activación de cámara",
+    "ru-RU": "изменилась временная сетка звука активации камеры",
+    "uk-UA": "змінилася часова сітка звуку активації камери",
+    "de-DE": "Audioraster der Kameraaktivierung geändert"
+  },
+  "Another camera AV operation is pending. Deactivate All Camera Sources can stop a pending start.": {
+    "es-ES": "Hay otra operación AV de cámara pendiente. Desactivar todas las fuentes de cámara puede detener un inicio pendiente.",
+    "ru-RU": "Выполняется другая операция видео и звука камеры. Деактивация всех источников камер может остановить ожидающий запуск.",
+    "uk-UA": "Виконується інша операція відео та звуку камери. Деактивація всіх джерел камер може зупинити запуск, що очікує завершення.",
+    "de-DE": "Eine andere Kamera-AV-Operation steht aus. Alle Kameraquellen deaktivieren kann einen ausstehenden Start stoppen."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "Recording continues with unavailable sources": {
+    "es-ES": "La grabación continúa con fuentes no disponibles",
+    "ru-RU": "Запись продолжается с недоступными источниками",
+    "uk-UA": "Запис триває з недоступними джерелами",
+    "de-DE": "Die Aufnahme läuft mit nicht verfügbaren Quellen weiter"
+  },
+  "Recording source warnings": {
+    "es-ES": "Avisos de las fuentes de grabación",
+    "ru-RU": "Предупреждения об источниках записи",
+    "uk-UA": "Попередження про джерела запису",
+    "de-DE": "Warnungen zu Aufnahmequellen"
+  },
+  "{} additional source warnings": {
+    "es-ES": "{} avisos adicionales de fuentes",
+    "ru-RU": "Дополнительных предупреждений об источниках: {}",
+    "uk-UA": "Додаткових попереджень про джерела: {}",
+    "de-DE": "{} weitere Quellenwarnungen"
+  },
+  "Frames with unavailable sources: {}": {
+    "es-ES": "Fotogramas con fuentes no disponibles: {}",
+    "ru-RU": "Кадров с недоступными источниками: {}",
+    "uk-UA": "Кадрів із недоступними джерелами: {}",
+    "de-DE": "Bilder mit nicht verfügbaren Quellen: {}"
+  },
+  "Source unavailable; other layers are still being recorded.": {
+    "es-ES": "La fuente no está disponible; las demás capas siguen grabándose.",
+    "ru-RU": "Источник недоступен; остальные слои продолжают записываться.",
+    "uk-UA": "Джерело недоступне; інші шари продовжують записуватися.",
+    "de-DE": "Die Quelle ist nicht verfügbar; die anderen Ebenen werden weiter aufgenommen."
+  },
+  "Show source warnings and the number of affected video frames.": {
+    "es-ES": "Mostrar las advertencias de las fuentes y el número de fotogramas afectados.",
+    "ru-RU": "Показать предупреждения источников и число затронутых видеокадров.",
+    "uk-UA": "Показати попередження джерел і кількість відеокадрів, яких вони торкнулися.",
+    "de-DE": "Quellenwarnungen und die Anzahl betroffener Videoframes anzeigen."
+  }
+}

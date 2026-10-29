@@ -1,0 +1,56 @@
+{
+  "Text Transform": {
+    "es-ES": "Transformación del texto",
+    "ru-RU": "Регистр текста",
+    "uk-UA": "Регістр тексту",
+    "de-DE": "Textumwandlung"
+  },
+  "Uppercase": {
+    "es-ES": "Mayúsculas",
+    "ru-RU": "ПРОПИСНЫЕ",
+    "uk-UA": "ВЕЛИКІ ЛІТЕРИ",
+    "de-DE": "GROSSBUCHSTABEN"
+  },
+  "Lowercase": {
+    "es-ES": "Minúsculas",
+    "ru-RU": "строчные",
+    "uk-UA": "малі літери",
+    "de-DE": "kleinbuchstaben"
+  },
+  "Start Case": {
+    "es-ES": "Iniciales en mayúsculas",
+    "ru-RU": "Начальные Заглавные",
+    "uk-UA": "Початкові Великі",
+    "de-DE": "Wortanfänge groß"
+  },
+  "Transformed text size overflow.": {
+    "es-ES": "Desbordamiento del tamaño del texto transformado.",
+    "ru-RU": "Переполнение размера преобразованного текста.",
+    "uk-UA": "Переповнення розміру перетвореного тексту.",
+    "de-DE": "Größenüberlauf beim umgewandelten Text."
+  },
+  "Transformed text exceeds 16 KiB or 4096 characters.": {
+    "es-ES": "El texto transformado supera los 16 KiB o los 4096 caracteres.",
+    "ru-RU": "Преобразованный текст превышает 16 КиБ или 4096 символов.",
+    "uk-UA": "Перетворений текст перевищує 16 КіБ або 4096 символів.",
+    "de-DE": "Der umgewandelte Text überschreitet 16 KiB oder 4096 Zeichen."
+  },
+  "Cannot allocate transformed text.": {
+    "es-ES": "No se pudo reservar memoria para el texto transformado.",
+    "ru-RU": "Не удалось выделить память для преобразованного текста.",
+    "uk-UA": "Не вдалося виділити пам’ять для перетвореного тексту.",
+    "de-DE": "Der Speicher für den umgewandelten Text konnte nicht reserviert werden."
+  },
+  "Text case transform requires native schema9": {
+    "es-ES": "La transformación de mayúsculas y minúsculas requiere el esquema nativo 9",
+    "ru-RU": "Преобразование регистра текста требует нативную схему 9",
+    "uk-UA": "Перетворення регістру тексту потребує нативної схеми 9",
+    "de-DE": "Die Textumwandlung erfordert das native Schema 9"
+  },
+  "Change the displayed letter case without changing the original text. Start Case follows whitespace; punctuation does not start a new word.": {
+    "es-ES": "Cambia las mayúsculas y minúsculas mostradas sin modificar el texto original. Las iniciales en mayúsculas siguen los espacios; la puntuación no inicia una palabra nueva.",
+    "ru-RU": "Менять регистр отображаемых букв, сохраняя исходный текст. Начальные заглавные следуют за пробелами; знаки препинания не начинают новое слово.",
+    "uk-UA": "Змінювати регістр відображуваних літер, зберігаючи вихідний текст. Початкові великі йдуть за пробілами; розділові знаки не починають нового слова.",
+    "de-DE": "Ändert die angezeigte Groß- und Kleinschreibung, ohne den Originaltext zu ändern. Wortanfänge folgen auf Leerraum; Satzzeichen beginnen kein neues Wort."
+  }
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/keying.rs",
+    "sha256": "acc4fb4c7e692ac7985207295523d6642881b6eeeb5627591d27d16151a1932e",
+    "bytes": 39149,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/keying.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed reference; only explicitly attributed adapted kernels are bundled"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/keylight.rs",
+    "sha256": "f38b16d5a40192eec25f65553bd3c8ff0de075019f4f73d5538b5fc6f59749ce",
+    "bytes": 34141,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/keylight.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed reference; only explicitly attributed adapted kernels are bundled"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/color_fx.rs",
+    "sha256": "bfd45314b47c643fdab6307e80c01397bb4f2acf9e8e93c076b89eae44a3956a",
+    "bytes": 86034,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/color_fx.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed reference; only explicitly attributed adapted kernels are bundled"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/color/src/lib.rs",
+    "sha256": "6e755cf5ee363ff688fa2d23eac1c80e030cdc8c10b4b2483e1c023e9e30030c",
+    "bytes": 10110,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/color/src/lib.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed reference; only explicitly attributed adapted kernels are bundled"
+  },
+  {
+    "project": "photocraft",
+    "revision": "14a4ab9b3f38f0b68fde6add97384919710374c8",
+    "path": "crates/color/src/blend.rs",
+    "sha256": "035b3149ef6d94685e1e7beca2c484a533677a133a8402bb4d16b5eee00ff72a",
+    "bytes": 38848,
+    "url": "https://github.com/storytold/photocraft/blob/14a4ab9b3f38f0b68fde6add97384919710374c8/crates/color/src/blend.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed reference; only explicitly attributed adapted kernels are bundled"
+  },
+  {
+    "project": "photocraft",
+    "revision": "14a4ab9b3f38f0b68fde6add97384919710374c8",
+    "path": "crates/compose/src/adjust.rs",
+    "sha256": "b534a9bf90c7261f789bb90788a7a487e932a24b2a80c7c71cc72fdd091a4e5a",
+    "bytes": 131136,
+    "url": "https://github.com/storytold/photocraft/blob/14a4ab9b3f38f0b68fde6add97384919710374c8/crates/compose/src/adjust.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "adapted bounded SDR point formulas; not the complete reference effect engine"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/color3.rs",
+    "sha256": "6e9464ef7523391072a3a44a16269eeac17b89ed8584e2675aedb93663fb07f4",
+    "bytes": 53944,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/color3.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "adapted bounded SDR point formulas; not the complete reference effect engine"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/stylize2.rs",
+    "sha256": "3258edf1f1c581aadf5c73c2dcd4090b88510a26c743aa748c14d880ed4e3015",
+    "bytes": 46848,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/stylize2.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "adapted CC Vignette lens falloff and highlight protection into one bounded SDR in-place source stage; not the full donor engine"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/util.rs",
+    "sha256": "e650dd62c3e718cfddb25ba36a8e352e2f64411bd0fbb550dbcf1c8a3d79fec4",
+    "bytes": 30108,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/util.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed CC Vignette premultiplication semantics; target uses existing SDR ingress helpers"
+  },
+  {
+    "project": "effectcraft",
+    "revision": "991904888a20b7da72b2a4880b21c7d912154736",
+    "path": "crates/effects/src/lib.rs",
+    "sha256": "ef191ed348a62b92ad5c8e44211ac16ee01dc287bec12ba1f95a63e90d346317",
+    "bytes": 61278,
+    "url": "https://github.com/storytold/effectcraft/blob/991904888a20b7da72b2a4880b21c7d912154736/crates/effects/src/lib.rs",
+    "license": "MIT (selected from MIT OR Apache-2.0)",
+    "use": "reviewed default point-to-layer coordinate resolution; target uses explicit bounded percent-center controls"
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "project": "FilmCraft",
+  "source_url": "https://github.com/storytold/filmcraft",
+  "commit": "bfc23840b603e69c782302c6ed04d4a9f6ec26a8",
+  "license_selected": "MIT",
+  "copyright": "Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors",
+  "source_files": [
+    {
+      "path": "crates/audio-dsp/src/effects/dynamics.rs",
+      "sha256": "2720a825f8e1f7946b603d8748be297722e136841fbac097d88ba0981f5cd71f"
+    },
+    {
+      "path": "crates/audio-dsp/src/smooth.rs",
+      "sha256": "82b05103213c6ddb16a469313b1a564a2c6fa8dca15f83e3572b6d1f9d6b645d"
+    },
+    {
+      "path": "crates/audio-dsp/src/lib.rs",
+      "sha256": "9e4ed3a3ef60a7171591bb1e3d04fde2852f9a81c7adc562b8792860ec5910e7"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "sha256": "5fda8da5bfefc9ccc258624027b65f1335a272f7e1262a222e41509e6928b9cc"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "c5d409c6dd41fbc3beb6c8293987084b850955963433e23e7b46aec185cfd55d"
+    },
+    {
+      "path": "crates/audio-dsp/src/effects/eq.rs",
+      "sha256": "745cd7cbab0b9b45548d29a14fc17012172ee7baa452595aa98b6bc7434e3cc8"
+    },
+    {
+      "path": "crates/audio-dsp/src/biquad.rs",
+      "sha256": "538f60868763164b29cb470c063e53bf51d13f3d75e0eb8d01934af9415e0bed"
+    }
+  ],
+  "adapted_functions": [
+    "Compressor linked peak/RMS detector, soft-knee curve, gain envelope and reset",
+    "Smoothed make-up linear ramp",
+    "dB conversions and coefficient calculation",
+    "Gate linked peak/downward expander curve, attack/hold/release and reset",
+    "SimpleEq fixed three-band RBJ shelves/peak, TDF-II sections, 30ms smoothing and target response"
+  ],
+  "changes": [
+    "Typed finite/range validation replaces dynamic parameter Vec/clamping",
+    "Constant-size scalar processor state; no dependency or OS/UI imports",
+    "Strict 1..8 channels, 8000..192000 Hz, <=4096 equal-length frames/block",
+    "Reject invalid/nonfinite/unsafe-amplitude blocks before output/state mutation",
+    "Equivalent interleaved entry point without deinterleave allocation",
+    "Gate and EQ use inline fixed-size state with no heap construction or processing",
+    "EQ transactionally preflights representability on an inline cloned state before its bounded output pass",
+    "Gate and SimpleEq integrate through validated authored settings and persistent host Program source state; boxed worker EQ and exact retained-state admission preserve the 512KiB bank budget"
+  ],
+  "status": "Compressor, Gate and SimpleEq are integrated into the default-enabled bundled Craft Audio module through typed core filters and persistent host Program DSP. Isolated kernel and no-allocation tests passed; new backend/UI integration and platform end-to-end acceptance are tracked separately in evidence."
+}

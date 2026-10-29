@@ -1,0 +1,32 @@
+{
+  "Select a source to show its properties, filters and playback controls.": {
+    "es-ES": "Selecciona una fuente para ver sus propiedades, filtros y controles de reproducción.",
+    "ru-RU": "Выберите источник, чтобы открыть его свойства, фильтры и управление воспроизведением.",
+    "uk-UA": "Виберіть джерело, щоб відкрити його властивості, фільтри та керування відтворенням.",
+    "de-DE": "Wähle eine Quelle, um ihre Eigenschaften, Filter und Wiedergabesteuerung anzuzeigen."
+  },
+  "Right-click the dock heading for Add and other scene actions.": {
+    "es-ES": "Haz clic derecho en el encabezado del panel para añadir escenas y acceder a sus acciones.",
+    "ru-RU": "Нажмите правой кнопкой по заголовку панели, чтобы добавить сцену или открыть её действия.",
+    "uk-UA": "Натисніть правою кнопкою на заголовку панелі, щоб додати сцену або відкрити її дії.",
+    "de-DE": "Rechtsklick auf den Docktitel öffnet Hinzufügen und weitere Szenenaktionen."
+  },
+  "Right-click the dock heading for Add and other source actions.": {
+    "es-ES": "Haz clic derecho en el encabezado del panel para añadir fuentes y acceder a sus acciones.",
+    "ru-RU": "Нажмите правой кнопкой по заголовку панели, чтобы добавить источник или открыть его действия.",
+    "uk-UA": "Натисніть правою кнопкою на заголовку панелі, щоб додати джерело або відкрити його дії.",
+    "de-DE": "Rechtsklick auf den Docktitel öffnet Hinzufügen und weitere Quellenaktionen."
+  },
+  "Show or hide the Scenes and Sources dock toolbars. Right-click a dock heading or item to keep using its actions.": {
+    "es-ES": "Muestra u oculta las barras de los paneles Escenas y Fuentes. Sus acciones siguen disponibles al hacer clic derecho en el encabezado o en un elemento.",
+    "ru-RU": "Показать или скрыть панели инструментов сцен и источников. Действия остаются доступны через правую кнопку мыши на заголовке или элементе.",
+    "uk-UA": "Показати або приховати панелі інструментів сцен і джерел. Дії залишаються доступними через праву кнопку миші на заголовку або елементі.",
+    "de-DE": "Zeigt oder verbirgt die Werkzeugleisten der Szenen- und Quellen-Docks. Aktionen bleiben per Rechtsklick auf Titel oder Eintrag erreichbar."
+  },
+  "Show or hide the selected source toolbar with properties, filters and media playback controls.": {
+    "es-ES": "Muestra u oculta la barra de la fuente seleccionada con propiedades, filtros y controles de reproducción.",
+    "ru-RU": "Показать или скрыть панель выбранного источника со свойствами, фильтрами и управлением воспроизведением.",
+    "uk-UA": "Показати або приховати панель вибраного джерела з властивостями, фільтрами та керуванням відтворенням.",
+    "de-DE": "Zeigt oder verbirgt die Werkzeugleiste der ausgewählten Quelle mit Eigenschaften, Filtern und Wiedergabesteuerung."
+  }
+}

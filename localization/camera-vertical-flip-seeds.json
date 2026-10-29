@@ -1,0 +1,26 @@
+{
+  "Flip Vertically": {
+    "es-ES": "Voltear verticalmente",
+    "ru-RU": "Отразить по вертикали",
+    "uk-UA": "Віддзеркалити по вертикалі",
+    "de-DE": "Vertikal spiegeln"
+  },
+  "Flip this camera source before filters, without changing scene item transforms or restarting the device.": {
+    "es-ES": "Voltea esta fuente de cámara antes de los filtros, sin cambiar las transformaciones de los elementos de escena ni reiniciar el dispositivo.",
+    "ru-RU": "Отражает источник камеры до применения фильтров, не меняя трансформации элементов сцены и не перезапуская устройство.",
+    "uk-UA": "Віддзеркалює джерело камери до застосування фільтрів, не змінюючи трансформації елементів сцени й не перезапускаючи пристрій.",
+    "de-DE": "Spiegelt diese Kameraquelle vor den Filtern, ohne Szenenelement-Transformationen zu ändern oder das Gerät neu zu starten."
+  },
+  "camera vertical flip requires native schema9": {
+    "es-ES": "El volteo vertical de la cámara requiere el esquema nativo 9.",
+    "ru-RU": "Для вертикального отражения камеры требуется нативная схема 9.",
+    "uk-UA": "Для вертикального віддзеркалення камери потрібна нативна схема 9.",
+    "de-DE": "Die vertikale Kameraspiegelung erfordert das native Schema 9."
+  },
+  "camera orientation image allocation": {
+    "es-ES": "No se pudo reservar la imagen de orientación de la cámara.",
+    "ru-RU": "Не удалось выделить память для ориентации кадра камеры.",
+    "uk-UA": "Не вдалося виділити пам’ять для орієнтації кадру камери.",
+    "de-DE": "Der Speicher für das Kamera-Orientierungsbild konnte nicht reserviert werden."
+  }
+}

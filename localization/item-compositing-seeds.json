@@ -1,0 +1,176 @@
+{
+  "Blending Mode": {
+    "es-ES": "Modo de fusión",
+    "ru-RU": "Режим смешивания",
+    "uk-UA": "Режим змішування",
+    "de-DE": "Mischmodus"
+  },
+  "Blending Method": {
+    "es-ES": "Método de fusión",
+    "ru-RU": "Метод смешивания",
+    "uk-UA": "Метод змішування",
+    "de-DE": "Mischmethode"
+  },
+  "Scale Filtering": {
+    "es-ES": "Filtrado de escala",
+    "ru-RU": "Фильтрация масштабирования",
+    "uk-UA": "Фільтрація масштабування",
+    "de-DE": "Skalierungsfilter"
+  },
+  "Normal": {
+    "es-ES": "Normal",
+    "ru-RU": "Обычный",
+    "uk-UA": "Звичайний",
+    "de-DE": "Normal"
+  },
+  "Additive": {
+    "es-ES": "Aditivo",
+    "ru-RU": "Сложение",
+    "uk-UA": "Додавання",
+    "de-DE": "Additiv"
+  },
+  "Subtract": {
+    "es-ES": "Restar",
+    "ru-RU": "Вычитание",
+    "uk-UA": "Віднімання",
+    "de-DE": "Subtrahieren"
+  },
+  "Screen": {
+    "es-ES": "Trama",
+    "ru-RU": "Экран",
+    "uk-UA": "Екран",
+    "de-DE": "Negativ multiplizieren"
+  },
+  "Multiply": {
+    "es-ES": "Multiplicar",
+    "ru-RU": "Умножение",
+    "uk-UA": "Множення",
+    "de-DE": "Multiplizieren"
+  },
+  "Lighten": {
+    "es-ES": "Aclarar",
+    "ru-RU": "Замена светлым",
+    "uk-UA": "Заміна світлим",
+    "de-DE": "Aufhellen"
+  },
+  "Darken": {
+    "es-ES": "Oscurecer",
+    "ru-RU": "Замена тёмным",
+    "uk-UA": "Заміна темним",
+    "de-DE": "Abdunkeln"
+  },
+  "SRGB Off": {
+    "es-ES": "SRGB desactivado",
+    "ru-RU": "SRGB выключено",
+    "uk-UA": "SRGB вимкнено",
+    "de-DE": "SRGB aus"
+  },
+  "Point": {
+    "es-ES": "Vecino más cercano",
+    "ru-RU": "Ближайший пиксель",
+    "uk-UA": "Найближчий піксель",
+    "de-DE": "Nächster Nachbar"
+  },
+  "Bilinear": {
+    "es-ES": "Bilineal",
+    "ru-RU": "Билинейная",
+    "uk-UA": "Білінійна",
+    "de-DE": "Bilinear"
+  },
+  "Disable": {
+    "es-ES": "Desactivar",
+    "ru-RU": "Отключить",
+    "uk-UA": "Вимкнути",
+    "de-DE": "Deaktivieren"
+  },
+  "Audio-only items have no video compositing settings.": {
+    "es-ES": "Los elementos de solo audio no tienen ajustes de composición de vídeo.",
+    "ru-RU": "У элементов только со звуком нет настроек видеокомпозиции.",
+    "uk-UA": "Елементи лише зі звуком не мають налаштувань відеокомпозиції.",
+    "de-DE": "Reine Audioelemente haben keine Einstellungen für Videokomposition."
+  },
+  "Select this source before changing its item compositing.": {
+    "es-ES": "Selecciona esta fuente antes de cambiar su composición en la escena.",
+    "ru-RU": "Выберите этот источник перед изменением его смешивания в сцене.",
+    "uk-UA": "Виберіть це джерело перед зміною його змішування у сцені.",
+    "de-DE": "Diese Quelle auswählen, bevor ihre Elementkomposition geändert wird."
+  },
+  "Blend this scene item with the layers below it. Other references to the source keep their own settings.": {
+    "es-ES": "Fusionar este elemento con las capas inferiores. Las demás referencias a la fuente conservan sus propios ajustes.",
+    "ru-RU": "Смешать этот элемент сцены с нижними слоями. Другие ссылки на источник сохраняют собственные настройки.",
+    "uk-UA": "Змішати цей елемент сцени з нижніми шарами. Інші посилання на джерело зберігають власні налаштування.",
+    "de-DE": "Dieses Szenenelement mit den darunterliegenden Ebenen mischen. Andere Referenzen der Quelle behalten ihre eigenen Einstellungen."
+  },
+  "Color and alpha use OBS blend factors; Subtract, Lighten and Darken also affect alpha.": {
+    "es-ES": "El color y el alfa usan los factores de fusión de OBS; Restar, Aclarar y Oscurecer también afectan al alfa.",
+    "ru-RU": "Цвет и альфа используют коэффициенты смешивания OBS; вычитание, замена светлым и тёмным также меняют альфу.",
+    "uk-UA": "Колір та альфа використовують коефіцієнти змішування OBS; віднімання, заміна світлим і темним також змінюють альфу.",
+    "de-DE": "Farbe und Alpha verwenden die OBS-Mischfaktoren; Subtrahieren, Aufhellen und Abdunkeln beeinflussen auch Alpha."
+  },
+  "Use source-aware linear-light SDR blending.": {
+    "es-ES": "Usar fusión SDR en luz lineal según el formato de la fuente.",
+    "ru-RU": "Использовать смешивание SDR в линейном свете с учётом формата источника.",
+    "uk-UA": "Використовувати змішування SDR у лінійному світлі з урахуванням формату джерела.",
+    "de-DE": "SDR in linearem Licht unter Beachtung des Quellenformats mischen."
+  },
+  "Blend encoded SDR values instead of linear-light values for this item.": {
+    "es-ES": "Fusionar valores SDR codificados en lugar de valores de luz lineal para este elemento.",
+    "ru-RU": "Для этого элемента смешивать кодированные значения SDR вместо значений линейного света.",
+    "uk-UA": "Для цього елемента змішувати кодовані значення SDR замість значень лінійного світла.",
+    "de-DE": "Für dieses Element kodierte SDR-Werte statt linearer Lichtwerte mischen."
+  },
+  "Choose the color space used for this item's blend arithmetic.": {
+    "es-ES": "Elegir el espacio de color para las operaciones de fusión de este elemento.",
+    "ru-RU": "Выбрать цветовое пространство для вычисления смешивания этого элемента.",
+    "uk-UA": "Вибрати колірний простір для обчислення змішування цього елемента.",
+    "de-DE": "Den Farbraum für die Mischberechnung dieses Elements wählen."
+  },
+  "Keep the current nearest-neighbor default.": {
+    "es-ES": "Conservar el muestreo predeterminado actual de vecino más cercano.",
+    "ru-RU": "Сохранить текущее стандартное сэмплирование ближайшего пикселя.",
+    "uk-UA": "Зберегти поточне типове семплювання найближчого пікселя.",
+    "de-DE": "Den aktuellen Standard mit nächstem Nachbarn beibehalten."
+  },
+  "Sample the nearest source pixel without interpolation.": {
+    "es-ES": "Tomar el píxel de fuente más cercano sin interpolación.",
+    "ru-RU": "Брать ближайший пиксель источника без интерполяции.",
+    "uk-UA": "Брати найближчий піксель джерела без інтерполяції.",
+    "de-DE": "Den nächsten Quellenpixel ohne Interpolation abtasten."
+  },
+  "Interpolate four premultiplied source pixels without sampling outside the crop.": {
+    "es-ES": "Interpolar cuatro píxeles premultiplicados de fuente sin salir del recorte.",
+    "ru-RU": "Интерполировать четыре предумноженных пикселя источника, не выходя за обрезку.",
+    "uk-UA": "Інтерполювати чотири попередньо помножені пікселі джерела, не виходячи за обрізання.",
+    "de-DE": "Vier vormultiplizierte Quellenpixel interpolieren, ohne außerhalb des Zuschnitts abzutasten."
+  },
+  "Disable, Point and Bilinear are implemented. Bicubic, Lanczos and Area are not available.": {
+    "es-ES": "Se implementan Desactivar, Vecino más cercano y Bilineal. Bicúbico, Lanczos y Área no están disponibles.",
+    "ru-RU": "Реализованы отключение, ближайший пиксель и билинейная фильтрация. Бикубическая, Lanczos и Area недоступны.",
+    "uk-UA": "Реалізовано вимкнення, найближчий піксель і білінійну фільтрацію. Бікубічна, Lanczos та Area недоступні.",
+    "de-DE": "Deaktivieren, nächster Nachbar und Bilinear sind implementiert. Bikubisch, Lanczos und Fläche sind nicht verfügbar."
+  },
+  "The selected item changed. Open the compositing menu again.": {
+    "es-ES": "El elemento seleccionado cambió. Abre de nuevo el menú de composición.",
+    "ru-RU": "Выбранный элемент изменился. Откройте меню смешивания заново.",
+    "uk-UA": "Вибраний елемент змінився. Відкрийте меню змішування знову.",
+    "de-DE": "Das ausgewählte Element wurde geändert. Das Kompositionsmenü erneut öffnen."
+  },
+  "audio-only items do not support video compositing": {
+    "es-ES": "los elementos de solo audio no admiten composición de vídeo",
+    "ru-RU": "элементы только со звуком не поддерживают видеокомпозицию",
+    "uk-UA": "елементи лише зі звуком не підтримують відеокомпозицію",
+    "de-DE": "reine Audioelemente unterstützen keine Videokomposition"
+  },
+  "Reset the group's blending and scale filtering before ungrouping; its isolated appearance cannot be distributed to child items": {
+    "es-ES": "Restablece la fusión y el filtrado de escala del grupo antes de desagrupar; su apariencia aislada no puede distribuirse entre los elementos hijos",
+    "ru-RU": "Сбросьте смешивание и фильтрацию масштаба группы перед разгруппировкой; её отдельный вид нельзя распределить между дочерними элементами",
+    "uk-UA": "Скиньте змішування та фільтрацію масштабу групи перед розгрупуванням; її окремий вигляд не можна розподілити між дочірніми елементами",
+    "de-DE": "Mischung und Skalierungsfilter der Gruppe vor dem Auflösen zurücksetzen; ihre isolierte Darstellung kann nicht auf die Kindelemente verteilt werden"
+  },
+  "scene item compositing requires native schema9": {
+    "es-ES": "la composición de elementos de escena requiere el esquema nativo9",
+    "ru-RU": "смешивание элементов сцены требует нативной схемы9",
+    "uk-UA": "змішування елементів сцени потребує нативної схеми9",
+    "de-DE": "Szenenelement-Komposition erfordert das native Schema9"
+  }
+}

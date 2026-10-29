@@ -1,0 +1,14 @@
+Selfie Segmentation model, Apache-2.0
+
+The exact upstream SPDX copyright and license notice is retained in
+selfie-segmentation.LICENSE. The complete Apache-2.0 terms are in Apache-2.0.txt.
+The original447596-byte ONNX weights have not been retrained or modified.
+RTen converter0.21.0 serializes the same graph/weights into the embedded
+selfie-segmentation.rten; manifest.json records both hashes and the I/O contract.
+The C++ OBS wrapper and ONNXRuntime/OpenCV libraries are not included.
+
+RTen0.21.0 and its rten-base/gemm/simd/tensor/vecmath crates are authored by
+Robert Knight and contributors, under MIT OR Apache-2.0. See the runtime's
+retained Cargo metadata and accompanying license terms. SkyLive's sole vendor
+source change makes the fallback global pool lazy when a caller supplies its
+owned bounded pool; SKYLIVE-PATCH.json records the original and changed line.

@@ -1,0 +1,65 @@
+[
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "es-ES",
+    "previous_value": "%CCAA-%MM-%DD %hh-%mm-%ss\n%AA-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "previous_sha256": "7ec6c309af7179725c412a19ffc9b27d159bf1eb6b7f0b00f22914dc03fe686f",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "ru-RU",
+    "previous_value": "%CCYY-%MM-%DD %чч-%мм-%сс\n%ГГ-%ММ-%ДД %чч-%мм-%сс\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n% кадров в секунду\n%CRES\n% ОРЕС\n%ВФ",
+    "previous_sha256": "0cc0562397df8dea30f7596730fd537d71343e3c3b8cb497187e924d2d48b339",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "uk-UA",
+    "previous_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n% РУД\n%VF",
+    "previous_sha256": "8f305871ed2b1874d3d127f8febaffa43366d66ca1a9d947f7afac3f7d2823d8",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "af-ZA",
+    "previous_value": "%CCYY-%MM-%DD %uh-%mm-%ss\n%JJ-%MM-%DD %uu-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORE\n%VF",
+    "previous_sha256": "2dfcb9d57af6b82ec9fbb901ba4c555526db3a1353a6fda6ab211c8409da67ec",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "ar-SA",
+    "previous_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n% كريس\n% الخامات\n%VF",
+    "previous_sha256": "abea5e25d79c3a6220febfade2b839208a3c61c1c9e1f0d860709efe8df751a3",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "ba-RU",
+    "previous_value": "%CCYY-%ММ-%ДД %чх-%мм-%сс\n%ЙЫ-%ММ-%ДД %һ-%мм-%сс\n%Й-%м-%d %Н-%М-%С\n%у-%м-%d %Н-%М-%С\n%a %Й-%м-%d %Н-%М-%С\n%A %Й-%м-%d %Н-%М-%С\n%Й-%б-%d %Н-%М-%С\n%Й-%В-%d %Н-%М-%С\n%Й-%м-%d %Мин-%М-%С-%p\n%Й-%м-%d %Н-%М-%С-%з\n%Й-%м-%d %Н-%М-%С-%З\n%ФПС\n%КРЕС\n%МУДАНА\n%ВФ",
+    "previous_sha256": "12ca163acd8b6d058ef015154670470b687cc57c7b273faf2ff4eeafcdaa8592",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  },
+  {
+    "key": "FilenameFormatting.completer",
+    "language": "be-BY",
+    "previous_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%ГГ-%ММ-%ДД %чч-%мм-%сс\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%РУД\n%VF",
+    "previous_sha256": "4b15662712db382a97bb8d2fce6d3d4176f30ac704c63506966200a356ef2dce",
+    "corrected_value": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "corrected_sha256": "870a1da6ac81f13dfcc0c41e2410568ea16be0761c7a6226d10e444dbf1942c7",
+    "method": "invariant_not_translated"
+  }
+]

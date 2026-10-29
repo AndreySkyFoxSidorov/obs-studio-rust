@@ -1,0 +1,146 @@
+{
+  "Settings — Advanced": {
+    "es-ES": "Ajustes — Avanzado",
+    "ru-RU": "Настройки — Дополнительно",
+    "uk-UA": "Налаштування — Додатково",
+    "de-DE": "Einstellungen — Erweitert"
+  },
+  "Realtime (external)": {
+    "es-ES": "Tiempo real (externo)",
+    "ru-RU": "Реального времени (внешний)",
+    "uk-UA": "Реального часу (зовнішній)",
+    "de-DE": "Echtzeit (extern)"
+  },
+  "Choose the Windows scheduling priority for this SkyLive process. Apply requests a real change and readback; opening this page changes nothing.": {
+    "es-ES": "Elige la prioridad de planificación de Windows para este proceso de SkyLive. Aplicar solicita un cambio real y su lectura de confirmación; abrir esta página no cambia nada.",
+    "ru-RU": "Выберите приоритет планирования Windows для этого процесса SkyLive. Применение запрашивает реальное изменение и проверку результата; открытие страницы ничего не меняет.",
+    "uk-UA": "Виберіть пріоритет планування Windows для цього процесу SkyLive. Застосування запитує реальну зміну та перевірку результату; відкриття сторінки нічого не змінює.",
+    "de-DE": "Windows-Planungspriorität für diesen SkyLive-Prozess wählen. Anwenden fordert eine echte Änderung mit anschließender Rücklesung an; das Öffnen der Seite ändert nichts."
+  },
+  "Wait for the process priority result.": {
+    "es-ES": "Espera el resultado de la prioridad del proceso.",
+    "ru-RU": "Дождитесь результата изменения приоритета процесса.",
+    "uk-UA": "Дочекайтеся результату зміни пріоритету процесу.",
+    "de-DE": "Auf das Ergebnis der Prozesspriorität warten."
+  },
+  "Process priority control is available only on Windows.": {
+    "es-ES": "El control de prioridad del proceso solo está disponible en Windows.",
+    "ru-RU": "Управление приоритетом процесса доступно только в Windows.",
+    "uk-UA": "Керування пріоритетом процесу доступне лише у Windows.",
+    "de-DE": "Die Prozesspriorität kann nur unter Windows gesteuert werden."
+  },
+  "Normal is the default. A saved nondefault priority is applied once after preferences load on the next normal startup.": {
+    "es-ES": "Normal es el valor predeterminado. Una prioridad distinta guardada se aplica una vez después de cargar las preferencias en el siguiente inicio normal.",
+    "ru-RU": "По умолчанию используется обычный приоритет. Сохранённый нестандартный приоритет применяется один раз после загрузки настроек при следующем штатном запуске.",
+    "uk-UA": "За замовчуванням використовується звичайний пріоритет. Збережений нестандартний пріоритет застосовується один раз після завантаження налаштувань під час наступного звичайного запуску.",
+    "de-DE": "Normal ist die Vorgabe. Eine gespeicherte abweichende Priorität wird beim nächsten regulären Start einmal nach dem Laden der Einstellungen angewendet."
+  },
+  "Applying process priority…": {
+    "es-ES": "Aplicando la prioridad del proceso…",
+    "ru-RU": "Применение приоритета процесса…",
+    "uk-UA": "Застосування пріоритету процесу…",
+    "de-DE": "Prozesspriorität wird angewendet…"
+  },
+  "Last priority readback: {priority} (class {class})": {
+    "es-ES": "Última prioridad confirmada: {priority} (clase {class})",
+    "ru-RU": "Последний подтверждённый приоритет: {priority} (класс {class})",
+    "uk-UA": "Останній підтверджений пріоритет: {priority} (клас {class})",
+    "de-DE": "Zuletzt zurückgelesene Priorität: {priority} (Klasse {class})"
+  },
+  "This is the last confirmed Windows readback, not a continuous query. Another program may change the priority later.": {
+    "es-ES": "Es la última lectura confirmada de Windows, no una consulta continua. Otro programa puede cambiar la prioridad después.",
+    "ru-RU": "Это последний подтверждённый ответ Windows, а не непрерывный опрос. Другая программа может изменить приоритет позже.",
+    "uk-UA": "Це остання підтверджена відповідь Windows, а не безперервне опитування. Інша програма може змінити пріоритет пізніше.",
+    "de-DE": "Dies ist die letzte bestätigte Windows-Rücklesung, keine laufende Abfrage. Ein anderes Programm kann die Priorität später ändern."
+  },
+  "No priority request has completed in this session.": {
+    "es-ES": "No se ha completado ninguna solicitud de prioridad en esta sesión.",
+    "ru-RU": "В этой сессии ещё нет завершённых запросов приоритета.",
+    "uk-UA": "У цій сесії ще немає завершених запитів пріоритету.",
+    "de-DE": "In dieser Sitzung wurde noch keine Prioritätsanforderung abgeschlossen."
+  },
+  "Closing restores the captured original priority only while our applied class is still present. An external change is kept. Process priority is separate from scene Undo.": {
+    "es-ES": "Al cerrar se restaura la prioridad original capturada solo si nuestra clase aplicada sigue presente. Se conserva cualquier cambio externo. La prioridad del proceso es independiente de Deshacer de la escena.",
+    "ru-RU": "При закрытии исходный приоритет восстанавливается только если ещё установлен применённый нами класс. Внешнее изменение сохраняется. Приоритет процесса не связан с отменой изменений сцены.",
+    "uk-UA": "Під час закриття початковий пріоритет відновлюється лише якщо ще встановлено застосований нами клас. Зовнішня зміна зберігається. Пріоритет процесу не пов’язаний зі скасуванням змін сцени.",
+    "de-DE": "Beim Schließen wird die erfasste ursprüngliche Priorität nur wiederhergestellt, wenn unsere angewendete Klasse noch vorliegt. Externe Änderungen bleiben erhalten. Die Prozesspriorität ist unabhängig vom Rückgängigmachen der Szene."
+  },
+  "Additional Advanced settings": {
+    "es-ES": "Otros ajustes avanzados",
+    "ru-RU": "Другие дополнительные настройки",
+    "uk-UA": "Інші додаткові налаштування",
+    "de-DE": "Weitere erweiterte Einstellungen"
+  },
+  "Other Advanced sections have not been ported. No inactive options are applied by this page.": {
+    "es-ES": "Las demás secciones avanzadas aún no se han trasladado. Esta página no aplica opciones inactivas.",
+    "ru-RU": "Остальные дополнительные разделы ещё не перенесены. Эта страница не применяет неработающие параметры.",
+    "uk-UA": "Решту додаткових розділів ще не перенесено. Ця сторінка не застосовує непрацюючі параметри.",
+    "de-DE": "Die übrigen erweiterten Bereiche sind noch nicht portiert. Diese Seite wendet keine inaktiven Optionen an."
+  },
+  "Apply the selected Windows process priority and close Settings after its confirmed readback.": {
+    "es-ES": "Aplica la prioridad de proceso de Windows seleccionada y cierra Ajustes tras confirmar su lectura.",
+    "ru-RU": "Применить выбранный приоритет процесса Windows и закрыть настройки после подтверждения результата.",
+    "uk-UA": "Застосувати вибраний пріоритет процесу Windows та закрити налаштування після підтвердження результату.",
+    "de-DE": "Gewählte Windows-Prozesspriorität anwenden und die Einstellungen nach bestätigter Rücklesung schließen."
+  },
+  "Apply the selected Windows process priority, including an unchanged saved choice.": {
+    "es-ES": "Aplica la prioridad de proceso de Windows seleccionada, aunque coincida con la guardada.",
+    "ru-RU": "Применить выбранный приоритет процесса Windows, даже если он совпадает с сохранённым.",
+    "uk-UA": "Застосувати вибраний пріоритет процесу Windows, навіть якщо він збігається зі збереженим.",
+    "de-DE": "Gewählte Windows-Prozesspriorität anwenden, auch wenn sie der gespeicherten Auswahl entspricht."
+  },
+  "Discard the draft and close Settings. A completed native change is not rolled back.": {
+    "es-ES": "Descarta el borrador y cierra Ajustes. Un cambio nativo ya completado no se revierte.",
+    "ru-RU": "Отбросить черновик и закрыть настройки. Уже выполненное системное изменение не откатывается.",
+    "uk-UA": "Відкинути чернетку й закрити налаштування. Уже виконана системна зміна не відкочується.",
+    "de-DE": "Entwurf verwerfen und Einstellungen schließen. Eine bereits ausgeführte native Änderung wird nicht zurückgesetzt."
+  },
+  "Windows confirmed process priority class {class}.": {
+    "es-ES": "Windows confirmó la clase de prioridad del proceso {class}.",
+    "ru-RU": "Windows подтвердила класс приоритета процесса {class}.",
+    "uk-UA": "Windows підтвердила клас пріоритету процесу {class}.",
+    "de-DE": "Windows hat die Prozessprioritätsklasse {class} bestätigt."
+  },
+  "Windows confirmed priority, but settings could not be published: {detail}": {
+    "es-ES": "Windows confirmó la prioridad, pero no se pudieron guardar los ajustes: {detail}",
+    "ru-RU": "Windows подтвердила приоритет, но настройки не удалось сохранить: {detail}",
+    "uk-UA": "Windows підтвердила пріоритет, але налаштування не вдалося зберегти: {detail}",
+    "de-DE": "Windows hat die Priorität bestätigt, die Einstellungen konnten jedoch nicht übernommen werden: {detail}"
+  },
+  "Process priority changed, but its result could not be published: {detail}": {
+    "es-ES": "La prioridad del proceso cambió, pero no se pudo publicar el resultado: {detail}",
+    "ru-RU": "Приоритет процесса изменён, но результат не удалось сохранить: {detail}",
+    "uk-UA": "Пріоритет процесу змінено, але результат не вдалося зберегти: {detail}",
+    "de-DE": "Die Prozesspriorität wurde geändert, das Ergebnis konnte jedoch nicht übernommen werden: {detail}"
+  },
+  "Process priority request failed: {detail}": {
+    "es-ES": "Falló la solicitud de prioridad del proceso: {detail}",
+    "ru-RU": "Не удалось выполнить запрос приоритета процесса: {detail}",
+    "uk-UA": "Не вдалося виконати запит пріоритету процесу: {detail}",
+    "de-DE": "Die Prozessprioritätsanforderung ist fehlgeschlagen: {detail}"
+  },
+  "Process priority restoration failed: {detail}": {
+    "es-ES": "No se pudo restaurar la prioridad del proceso: {detail}",
+    "ru-RU": "Не удалось восстановить приоритет процесса: {detail}",
+    "uk-UA": "Не вдалося відновити пріоритет процесу: {detail}",
+    "de-DE": "Die Prozesspriorität konnte nicht wiederhergestellt werden: {detail}"
+  },
+  "Process priority owner closed before publication.": {
+    "es-ES": "El gestor de prioridad se cerró antes de guardar el resultado.",
+    "ru-RU": "Владелец приоритета процесса закрылся до публикации результата.",
+    "uk-UA": "Власник пріоритету процесу закрився до публікації результату.",
+    "de-DE": "Die Prioritätsverwaltung wurde vor der Veröffentlichung des Ergebnisses geschlossen."
+  },
+  "Settings changed. Reopen Advanced settings.": {
+    "es-ES": "La configuración cambió. Vuelve a abrir la sección Avanzado.",
+    "ru-RU": "Настройки изменились. Откройте раздел «Расширенные» заново.",
+    "uk-UA": "Налаштування змінилися. Відкрийте розділ «Розширені» знову.",
+    "de-DE": "Die Einstellungen wurden geändert. Erweiterte Einstellungen erneut öffnen."
+  },
+  "process priority owner missing": {
+    "es-ES": "Falta el gestor de prioridad del proceso.",
+    "ru-RU": "Владелец приоритета процесса отсутствует.",
+    "uk-UA": "Власник пріоритету процесу відсутній.",
+    "de-DE": "Die Verwaltung der Prozesspriorität fehlt."
+  }
+}

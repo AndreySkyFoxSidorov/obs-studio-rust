@@ -1,0 +1,254 @@
+{
+  "Photo Filter": {
+    "es-ES": "Filtro fotográfico",
+    "ru-RU": "Фотофильтр",
+    "uk-UA": "Фотофільтр",
+    "de-DE": "Fotofilter"
+  },
+  "Photo Filter Preset": {
+    "es-ES": "Preajuste del filtro fotográfico",
+    "ru-RU": "Пресет фотофильтра",
+    "uk-UA": "Пресет фотофільтра",
+    "de-DE": "Fotofilter-Vorgabe"
+  },
+  "EffectCraft Photo Filter · CPU · SDR · alpha unchanged": {
+    "es-ES": "Filtro fotográfico de EffectCraft · CPU · SDR · alfa sin cambios",
+    "ru-RU": "Фотофильтр EffectCraft · CPU · SDR · альфа без изменений",
+    "uk-UA": "Фотофільтр EffectCraft · CPU · SDR · альфа без змін",
+    "de-DE": "EffectCraft-Fotofilter · CPU · SDR · Alpha unverändert"
+  },
+  "Tint the source with EffectCraft’s 20 fixed photographic filters or a Custom color, with density and luminosity controls. CPU processing; alpha is unchanged.": {
+    "es-ES": "Tiñe la fuente con los 20 filtros fotográficos fijos de EffectCraft o un color personalizado, con controles de densidad y luminosidad. Procesamiento por CPU; alfa no cambia.",
+    "ru-RU": "Окрасить источник одним из 20 фиксированных фотофильтров EffectCraft или пользовательским цветом, с настройками плотности и яркости. Обработка на CPU; альфа не меняется.",
+    "uk-UA": "Забарвити джерело одним із 20 фіксованих фотофільтрів EffectCraft або власним кольором із налаштуваннями щільності та яскравості. Обробка на CPU; альфа не змінюється.",
+    "de-DE": "Die Quelle mit einem der 20 festen EffectCraft-Fotofilter oder einer eigenen Farbe tönen, mit Dichte- und Helligkeitsregelung. CPU-Verarbeitung; Alpha bleibt unverändert."
+  },
+  "Choose an exact EffectCraft photographic tint, or Custom to edit the retained color.": {
+    "es-ES": "Elige un tono fotográfico exacto de EffectCraft, o Personalizado para editar el color conservado.",
+    "ru-RU": "Выбрать точный оттенок фотофильтра EffectCraft или пользовательский режим для изменения сохранённого цвета.",
+    "uk-UA": "Вибрати точний відтінок фотофільтра EffectCraft або власний режим для зміни збереженого кольору.",
+    "de-DE": "Einen exakten EffectCraft-Fotofilterfarbton wählen oder mit Benutzerdefiniert die beibehaltene Farbe bearbeiten."
+  },
+  "Custom Color": {
+    "es-ES": "Color personalizado",
+    "ru-RU": "Пользовательский цвет",
+    "uk-UA": "Власний колір",
+    "de-DE": "Benutzerdefinierte Farbe"
+  },
+  "Preset Color": {
+    "es-ES": "Color del preajuste",
+    "ru-RU": "Цвет пресета",
+    "uk-UA": "Колір пресета",
+    "de-DE": "Vorgabenfarbe"
+  },
+  "Custom Red": {
+    "es-ES": "Rojo personalizado",
+    "ru-RU": "Красный: пользовательский",
+    "uk-UA": "Червоний: власний",
+    "de-DE": "Rot (benutzerdefiniert)"
+  },
+  "Custom Green": {
+    "es-ES": "Verde personalizado",
+    "ru-RU": "Зелёный: пользовательский",
+    "uk-UA": "Зелений: власний",
+    "de-DE": "Grün (benutzerdefiniert)"
+  },
+  "Custom Blue": {
+    "es-ES": "Azul personalizado",
+    "ru-RU": "Синий: пользовательский",
+    "uk-UA": "Синій: власний",
+    "de-DE": "Blau (benutzerdefiniert)"
+  },
+  "The swatch edits an 8-bit encoded color. Use the RGB number fields for fractional channel precision.": {
+    "es-ES": "La muestra edita un color codificado de 8 bits. Usa los campos numéricos RGB para ajustar fracciones de canal.",
+    "ru-RU": "Образец изменяет 8-битный цвет в кодированном пространстве. Для дробной точности каналов используйте числовые поля RGB.",
+    "uk-UA": "Зразок змінює 8-бітний колір у кодованому просторі. Для дробової точності каналів використовуйте числові поля RGB.",
+    "de-DE": "Das Farbfeld bearbeitet eine kodierte 8-Bit-Farbe. Für feinere Kanalpräzision die RGB-Zahlenfelder verwenden."
+  },
+  "Edit the custom encoded-sRGB channel from 0 to 1. It is used only when Custom is selected.": {
+    "es-ES": "Edita el canal sRGB codificado personalizado de 0 a 1. Solo se usa al seleccionar Personalizado.",
+    "ru-RU": "Изменить пользовательский канал кодированного sRGB от 0 до 1. Он используется только в пользовательском режиме.",
+    "uk-UA": "Змінити власний канал кодованого sRGB від 0 до 1. Він використовується лише у власному режимі.",
+    "de-DE": "Den benutzerdefinierten kodierten sRGB-Kanal von 0 bis 1 bearbeiten. Er wird nur bei Benutzerdefiniert verwendet."
+  },
+  "This preset fixes the tint. Select Custom to edit a color; the previous custom value is retained.": {
+    "es-ES": "Este preajuste fija el tono. Selecciona Personalizado para editar el color; se conserva el valor personalizado anterior.",
+    "ru-RU": "Этот пресет фиксирует оттенок. Выберите пользовательский режим для изменения цвета; прежнее пользовательское значение сохраняется.",
+    "uk-UA": "Цей пресет фіксує відтінок. Виберіть власний режим для зміни кольору; попереднє власне значення зберігається.",
+    "de-DE": "Diese Vorgabe legt den Farbton fest. Zum Bearbeiten Benutzerdefiniert wählen; der vorherige eigene Wert bleibt erhalten."
+  },
+  "Preset colors ignore but retain the custom color. Switching to Custom restores that value.": {
+    "es-ES": "Los preajustes ignoran, pero conservan, el color personalizado. Al cambiar a Personalizado se recupera ese valor.",
+    "ru-RU": "Пресеты не используют, но сохраняют пользовательский цвет. Переключение в пользовательский режим возвращает это значение.",
+    "uk-UA": "Пресети не використовують, але зберігають власний колір. Перемикання у власний режим повертає це значення.",
+    "de-DE": "Vorgaben verwenden die eigene Farbe nicht, behalten sie aber bei. Benutzerdefiniert stellt diesen Wert wieder her."
+  },
+  "Blend the selected photo-filter color into the original RGB. Zero leaves the source unchanged.": {
+    "es-ES": "Mezcla el color del filtro fotográfico seleccionado con el RGB original. Cero deja la fuente sin cambios.",
+    "ru-RU": "Смешать выбранный цвет фотофильтра с исходным RGB. При нуле источник не меняется.",
+    "uk-UA": "Змішати вибраний колір фотофільтра з початковим RGB. За нульового значення джерело не змінюється.",
+    "de-DE": "Die gewählte Fotofilterfarbe mit dem ursprünglichen RGB mischen. Null lässt die Quelle unverändert."
+  },
+  "Photo Filter uses the CPU worker; no GPU kernel is registered": {
+    "es-ES": "El filtro fotográfico usa el trabajador CPU; no hay ningún núcleo GPU registrado",
+    "ru-RU": "Фотофильтр обрабатывается на CPU; ядро GPU не зарегистрировано",
+    "uk-UA": "Фотофільтр обробляється на CPU; ядро GPU не зареєстровано",
+    "de-DE": "Der Fotofilter verwendet den CPU-Worker; kein GPU-Kernel ist registriert"
+  },
+  "Craft Photo Filter requires native schema9": {
+    "es-ES": "El filtro fotográfico de Craft requiere el esquema nativo9",
+    "ru-RU": "Фотофильтр Craft требует нативную схему9",
+    "uk-UA": "Фотофільтр Craft потребує нативної схеми9",
+    "de-DE": "Der Craft-Fotofilter erfordert das native Schema9"
+  },
+  "Warming Filter (85)": {
+    "es-ES": "Filtro cálido (85)",
+    "ru-RU": "Тёплый фильтр (85)",
+    "uk-UA": "Теплий фільтр (85)",
+    "de-DE": "Warmfilter (85)"
+  },
+  "Warming Filter (LBA)": {
+    "es-ES": "Filtro cálido (LBA)",
+    "ru-RU": "Тёплый фильтр (LBA)",
+    "uk-UA": "Теплий фільтр (LBA)",
+    "de-DE": "Warmfilter (LBA)"
+  },
+  "Warming Filter (81)": {
+    "es-ES": "Filtro cálido (81)",
+    "ru-RU": "Тёплый фильтр (81)",
+    "uk-UA": "Теплий фільтр (81)",
+    "de-DE": "Warmfilter (81)"
+  },
+  "Cooling Filter (80)": {
+    "es-ES": "Filtro frío (80)",
+    "ru-RU": "Холодный фильтр (80)",
+    "uk-UA": "Холодний фільтр (80)",
+    "de-DE": "Kühlfilter (80)"
+  },
+  "Cooling Filter (LBB)": {
+    "es-ES": "Filtro frío (LBB)",
+    "ru-RU": "Холодный фильтр (LBB)",
+    "uk-UA": "Холодний фільтр (LBB)",
+    "de-DE": "Kühlfilter (LBB)"
+  },
+  "Cooling Filter (82)": {
+    "es-ES": "Filtro frío (82)",
+    "ru-RU": "Холодный фильтр (82)",
+    "uk-UA": "Холодний фільтр (82)",
+    "de-DE": "Kühlfilter (82)"
+  },
+  "Red": {
+    "es-ES": "Rojo",
+    "ru-RU": "Красный",
+    "uk-UA": "Червоний",
+    "de-DE": "Rot"
+  },
+  "Orange": {
+    "es-ES": "Naranja",
+    "ru-RU": "Оранжевый",
+    "uk-UA": "Помаранчевий",
+    "de-DE": "Orange"
+  },
+  "Yellow": {
+    "es-ES": "Amarillo",
+    "ru-RU": "Жёлтый",
+    "uk-UA": "Жовтий",
+    "de-DE": "Gelb"
+  },
+  "Green": {
+    "es-ES": "Verde",
+    "ru-RU": "Зелёный",
+    "uk-UA": "Зелений",
+    "de-DE": "Grün"
+  },
+  "Cyan": {
+    "es-ES": "Cian",
+    "ru-RU": "Голубой",
+    "uk-UA": "Блакитний",
+    "de-DE": "Cyan"
+  },
+  "Blue": {
+    "es-ES": "Azul",
+    "ru-RU": "Синий",
+    "uk-UA": "Синій",
+    "de-DE": "Blau"
+  },
+  "Violet": {
+    "es-ES": "Violeta",
+    "ru-RU": "Фиолетовый",
+    "uk-UA": "Фіолетовий",
+    "de-DE": "Violett"
+  },
+  "Magenta": {
+    "es-ES": "Magenta",
+    "ru-RU": "Пурпурный",
+    "uk-UA": "Пурпуровий",
+    "de-DE": "Magenta"
+  },
+  "Sepia": {
+    "es-ES": "Sepia",
+    "ru-RU": "Сепия",
+    "uk-UA": "Сепія",
+    "de-DE": "Sepia"
+  },
+  "Deep Red": {
+    "es-ES": "Rojo intenso",
+    "ru-RU": "Насыщенный красный",
+    "uk-UA": "Насичений червоний",
+    "de-DE": "Tiefrot"
+  },
+  "Deep Blue": {
+    "es-ES": "Azul intenso",
+    "ru-RU": "Насыщенный синий",
+    "uk-UA": "Насичений синій",
+    "de-DE": "Tiefblau"
+  },
+  "Deep Emerald": {
+    "es-ES": "Esmeralda intenso",
+    "ru-RU": "Насыщенный изумрудный",
+    "uk-UA": "Насичений смарагдовий",
+    "de-DE": "Tiefes Smaragdgrün"
+  },
+  "Deep Yellow": {
+    "es-ES": "Amarillo intenso",
+    "ru-RU": "Насыщенный жёлтый",
+    "uk-UA": "Насичений жовтий",
+    "de-DE": "Tiefgelb"
+  },
+  "Underwater": {
+    "es-ES": "Subacuático",
+    "ru-RU": "Подводный",
+    "uk-UA": "Підводний",
+    "de-DE": "Unterwasser"
+  },
+  "Custom": {
+    "es-ES": "Personalizado",
+    "ru-RU": "Пользовательский",
+    "uk-UA": "Власний",
+    "de-DE": "Benutzerdefiniert"
+  },
+  "Density": {
+    "es-ES": "Densidad",
+    "ru-RU": "Плотность",
+    "uk-UA": "Щільність",
+    "de-DE": "Dichte"
+  },
+  "Preserve Luminosity": {
+    "es-ES": "Conservar luminosidad",
+    "ru-RU": "Сохранять яркость",
+    "uk-UA": "Зберігати яскравість",
+    "de-DE": "Helligkeit erhalten"
+  },
+  "Preserve Rec.709 working-space luminance using EffectCraft’s original photo-filter normalization. SDR clipping still applies.": {
+    "es-ES": "Conserva la luminancia Rec.709 del espacio de trabajo mediante la normalización original del filtro fotográfico de EffectCraft. Se mantiene el recorte SDR.",
+    "ru-RU": "Сохранять яркость рабочего пространства по Rec.709 с исходной нормализацией фотофильтра EffectCraft. Ограничение диапазоном SDR сохраняется.",
+    "uk-UA": "Зберігати яскравість робочого простору за Rec.709 з початковою нормалізацією фотофільтра EffectCraft. Обмеження діапазоном SDR залишається.",
+    "de-DE": "Die Rec.709-Helligkeit im Arbeitsfarbraum mit der ursprünglichen EffectCraft-Fotofilternormalisierung erhalten. SDR-Begrenzung gilt weiterhin."
+  },
+  "Eleven SDR point filters: Linear Color Key, Brightness/Contrast, Spill Suppression, Invert Colors, Grayscale, Posterize, Exposure, Temperature/Tint, Threshold, Sepia and Photo Filter (20 fixed tints and Custom); plus spatial CPU Vignette adapted from EffectCraft with amount, angle of view, percentage center and highlight protection. Photo Filter and Sepia share the original density and luminosity kernel. No HDR, ICC, native OBS ABI, Photo Filter/Sepia/Vignette GPU kernels or complete Craft effect suite.": {
+    "es-ES": "Once filtros puntuales SDR: clave de color lineal, brillo/contraste, supresión de derrame, invertir colores, escala de grises, posterizar, exposición, temperatura/tinte, umbral, Sepia y Filtro fotográfico (20 tonos fijos y Personalizado); además de Viñeta espacial por CPU adaptada de EffectCraft con cantidad, ángulo de visión, centro porcentual y protección de luces. Filtro fotográfico y Sepia comparten el núcleo original de densidad y luminosidad. Sin HDR, ICC, ABI nativa de OBS, núcleos GPU para Filtro fotográfico/Sepia/Viñeta ni la biblioteca completa de efectos Craft.",
+    "ru-RU": "Одиннадцать точечных SDR-фильтров: линейный цветовой ключ, яркость/контраст, подавление цветового засвета, инверсия цветов, оттенки серого, постеризация, экспозиция, температура/оттенок, порог, «Сепия» и «Фотофильтр» (20 фиксированных оттенков и пользовательский цвет); дополнительно пространственная CPU-виньетка из EffectCraft с интенсивностью, углом обзора, центром в процентах и защитой светов. «Фотофильтр» и «Сепия» используют общее исходное ядро плотности и яркости. Без HDR, ICC, нативного ABI OBS, GPU-ядер фотофильтра/«Сепии»/виньетки и полной библиотеки эффектов Craft.",
+    "uk-UA": "Одинадцять точкових SDR-фільтрів: лінійний колірний ключ, яскравість/контраст, пригнічення колірного засвічення, інверсія кольорів, відтінки сірого, постеризація, експозиція, температура/відтінок, поріг, «Сепія» та «Фотофільтр» (20 фіксованих відтінків і власний колір); додатково просторова CPU-віньєтка з EffectCraft з інтенсивністю, кутом огляду, центром у відсотках і захистом світлих ділянок. «Фотофільтр» і «Сепія» використовують спільне початкове ядро щільності та яскравості. Без HDR, ICC, нативного ABI OBS, GPU-ядер фотофільтра/«Сепії»/віньєтки та повної бібліотеки ефектів Craft.",
+    "de-DE": "Elf SDR-Punktfilter: Linear Color Key, Helligkeit/Kontrast, Farbsaumunterdrückung, Farbumkehrung, Graustufen, Tontrennung, Belichtung, Temperatur/Farbton, Schwellenwert, Sepia und Fotofilter (20 feste Farbtöne und Benutzerdefiniert); zusätzlich eine räumliche CPU-Vignette aus EffectCraft mit Stärke, Blickwinkel, prozentualem Mittelpunkt und Spitzlichtschutz. Fotofilter und Sepia nutzen denselben ursprünglichen Dichte- und Helligkeitskernel. Kein HDR, ICC, natives OBS-ABI, Fotofilter-/Sepia-/Vignetten-GPU-Kernel oder vollständige Craft-Effektbibliothek."
+  }
+}

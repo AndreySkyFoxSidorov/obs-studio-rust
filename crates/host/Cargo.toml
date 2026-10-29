@@ -1,0 +1,68 @@
+[package]
+name = "skylive-host"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+skylive-browser-protocol = {path = "../browser-protocol"}
+wgpu = { version = "=24.0.5", default-features = false, features = ["wgsl", "dx12", "metal"], optional = true }
+skylive-core.workspace = true
+skylive-game-capture-protocol = { path = "../game-capture-protocol" }
+skylive-media.workspace = true
+skylive-virtual-camera-protocol = { path = "../virtual-camera-protocol" }
+skylive-person-matte = { path = "../person-matte" }
+skylive-codec-bits = { path = "../codec-bits" }
+skylive-h264 = { path = "../h264" }
+skylive-aac = { path = "../aac" }
+skylive-mp4 = { path = "../mp4" }
+serde.workspace = true
+serde_json.workspace = true
+image = { version = "=0.25.10", default-features = false, features = ["png", "jpeg", "bmp", "tga", "webp"] }
+png = "=0.18.1"
+gif = { version = "=0.14.2", default-features = false, features = ["std"] }
+sha2 = "=0.10.9"
+cosmic-text = { version = "=0.14.2", default-features = false, features = ["std", "swash"] }
+# Already locked cosmic-text raster backend; custom outline admission before bitmap allocation.
+swash = "=0.2.10"
+# Already locked cosmic metadata segmentation; pre-shape allocation/work admission.
+unicode-bidi = "=0.3.18"
+unicode-linebreak = "=0.1.5"
+unicode-script = "=0.5.8"
+rtrb = "=0.3.5"
+url = "=2.5.8"
+
+# Platform TLS performs certificate and hostname validation for finite HTTPS
+# media. Other targets report HTTPS as unsupported until their adapter exists.
+[target.'cfg(any(target_os = "windows", target_os = "macos"))'.dependencies]
+native-tls = "=0.2.18"
+
+# OS capture bindings stay in this host adapter; core/media remain OS independent.
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-core = "=0.58.0"
+windows = { version = "=0.58.0", features = ["Win32_Foundation", "Win32_Storage_FileSystem", "Win32_Graphics_Gdi", "Win32_Graphics_DirectWrite", "Foundation", "Foundation_Metadata", "Graphics_Capture", "Graphics_DirectX_Direct3D11", "Win32_System_WinRT", "Win32_System_WinRT_Direct3D11", "Win32_System_WinRT_Graphics_Capture", "Win32_Graphics_Dwm", "Win32_Graphics_Direct3D", "Win32_Graphics_Direct3D11", "Win32_Graphics_Dxgi", "Win32_Graphics_Dxgi_Common", "Win32_UI_WindowsAndMessaging", "Win32_UI_Input_KeyboardAndMouse", "Win32_UI_HiDpi", "Win32_Media_Audio", "Win32_Media_Multimedia", "Win32_System_Com", "Win32_System_Com_Marshal", "Win32_Security", "Win32_Security_Authentication_Identity", "Win32_Security_Credentials", "Win32_Security_Cryptography", "Win32_System_Com_StructuredStorage", "Win32_UI_Shell_PropertiesSystem", "Win32_UI_Shell_Common", "Win32_Devices_FunctionDiscovery", "Win32_System_Performance", "Win32_System_ProcessStatus", "Win32_System_Registry", "Win32_System_Threading", "Win32_System_LibraryLoader", "Win32_System_JobObjects", "Win32_Media_MediaFoundation", "Win32_Media_DirectShow", "Win32_Media_KernelStreaming", "implement"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "=0.6.5"
+block2 = "=0.6.2"
+objc2-foundation = { version = "=0.3.2", default-features = false, features = ["std", "NSArray", "NSError", "NSString", "NSProcessInfo", "NSObject", "NSBundle", "NSDictionary", "NSValue", "NSURL"] }
+objc2-core-foundation = { version = "=0.3.2", default-features = false, features = ["std", "CFUUID", "CFString", "CFCGTypes", "CFRunLoop"] }
+objc2-core-graphics = { version = "=0.3.2", default-features = false, features = ["std", "CGDirectDisplay", "CGColorSpace", "CGContext", "CGBitmapContext", "CGImage", "CGWindow", "objc2"] }
+objc2-screen-capture-kit = { version = "=0.3.2", default-features = false, features = ["std", "SCShareableContent", "SCStream", "SCScreenshotManager", "SCError", "block2", "objc2-core-foundation", "objc2-core-graphics", "objc2-core-media", "dispatch2"] }
+objc2-core-audio = { version = "=0.3.2", default-features = false, features = ["std", "AudioHardware", "HostTime", "objc2-core-audio-types"] }
+objc2-core-audio-types = { version = "=0.3.2", default-features = false, features = ["std", "CoreAudioBaseTypes"] }
+objc2-audio-toolbox = { version = "=0.3.2", default-features = false, features = ["std", "AudioQueue", "objc2-core-audio-types", "objc2-core-foundation", "block2", "dispatch2"] }
+objc2-core-media = { version = "=0.3.2", default-features = false, features = ["std", "CMBase", "CMSampleBuffer", "CMBlockBuffer", "CMFormatDescription", "CMTime", "CMSync", "objc2-core-audio-types", "objc2", "objc2-core-video"] }
+objc2-av-foundation = { version = "=0.3.2", default-features = false, features = ["std", "AVCaptureDevice", "AVCaptureInput", "AVCaptureOutputBase", "AVCaptureSession", "AVCaptureVideoDataOutput", "AVMediaFormat", "AVAssetWriter", "AVAssetWriterInput", "AVAudioSettings", "AVVideoSettings", "block2", "objc2-core-media", "objc2-core-video", "dispatch2"] }
+objc2-avf-audio = { version = "=0.3.2", default-features = false, features = ["std", "AVAudioSettings"] }
+objc2-core-video = { version = "=0.3.2", default-features = false, features = ["std", "CVBase", "CVBuffer", "CVImageBuffer", "CVPixelBuffer", "CVPixelBufferPool", "CVReturn"] }
+dispatch2 = "=0.3.1"
+
+[dev-dependencies]
+# Fixture encoding only; production GIF decoding uses our OBS canvas policy.
+image = { version = "=0.25.10", default-features = false, features = ["gif"] }
+
+[features]
+gpu-filters = ["dep:wgpu"]

@@ -1,0 +1,122 @@
+{
+  "Collapse Group": {
+    "es-ES": "Contraer grupo",
+    "ru-RU": "Свернуть группу",
+    "uk-UA": "Згорнути групу",
+    "de-DE": "Gruppe einklappen"
+  },
+  "Expand Group": {
+    "es-ES": "Expandir grupo",
+    "ru-RU": "Развернуть группу",
+    "uk-UA": "Розгорнути групу",
+    "de-DE": "Gruppe ausklappen"
+  },
+  "Ungroup": {
+    "es-ES": "Desagrupar",
+    "ru-RU": "Разгруппировать",
+    "uk-UA": "Розгрупувати",
+    "de-DE": "Gruppierung aufheben"
+  },
+  "Move the group's children into its parent and remove the group.": {
+    "es-ES": "Mover los elementos del grupo al contenedor superior y eliminar el grupo.",
+    "ru-RU": "Переместить элементы группы в родительский контейнер и удалить группу.",
+    "uk-UA": "Перемістити елементи групи до батьківського контейнера й видалити групу.",
+    "de-DE": "Die Elemente der Gruppe in den übergeordneten Container verschieben und die Gruppe entfernen."
+  },
+  "Group Selected Items": {
+    "es-ES": "Agrupar elementos seleccionados",
+    "ru-RU": "Сгруппировать выбранные элементы",
+    "uk-UA": "Згрупувати вибрані елементи",
+    "de-DE": "Ausgewählte Elemente gruppieren"
+  },
+  "Group selected source rows. Ctrl-click or Command-click rows to select more than one.": {
+    "es-ES": "Agrupar las filas de fuentes seleccionadas. Haz clic con Ctrl o Comando para seleccionar varias.",
+    "ru-RU": "Сгруппировать выбранные строки источников. Для выбора нескольких строк нажимайте их с Ctrl или Command.",
+    "uk-UA": "Згрупувати вибрані рядки джерел. Щоб вибрати кілька рядків, натискайте їх із Ctrl або Command.",
+    "de-DE": "Ausgewählte Quellenzeilen gruppieren. Mit Strg-Klick oder Befehl-Klick mehrere Zeilen auswählen."
+  },
+  "Move into Group": {
+    "es-ES": "Mover a un grupo",
+    "ru-RU": "Переместить в группу",
+    "uk-UA": "Перемістити до групи",
+    "de-DE": "In Gruppe verschieben"
+  },
+  "Move this item into an existing sibling group.": {
+    "es-ES": "Mover este elemento a un grupo existente del mismo nivel.",
+    "ru-RU": "Переместить этот элемент в существующую группу того же уровня.",
+    "uk-UA": "Перемістити цей елемент до наявної групи того самого рівня.",
+    "de-DE": "Dieses Element in eine vorhandene Gruppe derselben Ebene verschieben."
+  },
+  "Move out of Group": {
+    "es-ES": "Sacar del grupo",
+    "ru-RU": "Переместить из группы",
+    "uk-UA": "Перемістити з групи",
+    "de-DE": "Aus Gruppe verschieben"
+  },
+  "Move this item to the top of its parent group's scene.": {
+    "es-ES": "Mover este elemento por encima de los demás en la escena que contiene el grupo.",
+    "ru-RU": "Переместить этот элемент на передний план сцены, содержащей группу.",
+    "uk-UA": "Перемістити цей елемент на передній план сцени, що містить групу.",
+    "de-DE": "Dieses Element in der Szene der übergeordneten Gruppe ganz nach vorne verschieben."
+  },
+  "Select between one and 4096 source items to group.": {
+    "es-ES": "Selecciona entre uno y 4096 elementos de fuente para agrupar.",
+    "ru-RU": "Выберите от одного до 4096 элементов источников для группировки.",
+    "uk-UA": "Виберіть від одного до 4096 елементів джерел для групування.",
+    "de-DE": "Zum Gruppieren zwischen einem und 4096 Quellelementen auswählen."
+  },
+  "Name this group so you can find it in Sources.": {
+    "es-ES": "Asigna un nombre al grupo para encontrarlo en Fuentes.",
+    "ru-RU": "Назовите группу, чтобы находить её в списке источников.",
+    "uk-UA": "Назвіть групу, щоб знаходити її у списку джерел.",
+    "de-DE": "Die Gruppe benennen, damit sie unter Quellen wiederzufinden ist."
+  },
+  "A group keeps its own item order and local transforms. Its child sources remain shared with their other scene references.": {
+    "es-ES": "Un grupo conserva su propio orden de elementos y sus transformaciones locales. Sus fuentes siguen siendo compartidas con sus otras referencias de escena.",
+    "ru-RU": "Группа хранит свой порядок элементов и локальные преобразования. Вложенные источники остаются общими с другими ссылками на них в сценах.",
+    "uk-UA": "Група зберігає власний порядок елементів і локальні перетворення. Вкладені джерела залишаються спільними з іншими посиланнями на них у сценах.",
+    "de-DE": "Eine Gruppe behält ihre eigene Elementreihenfolge und lokalen Transformationen. Ihre Quellen werden weiterhin mit den anderen Szenenverweisen gemeinsam verwendet."
+  },
+  "Selected source items: {}": {
+    "es-ES": "Elementos de fuente seleccionados: {}",
+    "ru-RU": "Выбрано элементов источников: {}",
+    "uk-UA": "Вибрано елементів джерел: {}",
+    "de-DE": "Ausgewählte Quellelemente: {}"
+  },
+  "Add an empty group, then move source items into it.": {
+    "es-ES": "Añadir un grupo vacío y después mover elementos de fuente a él.",
+    "ru-RU": "Добавить пустую группу, а затем переместить в неё элементы источников.",
+    "uk-UA": "Додати порожню групу, а потім перемістити до неї елементи джерел.",
+    "de-DE": "Eine leere Gruppe hinzufügen und anschließend Quellelemente hineinverschieben."
+  },
+  "These positions and extents are local to the parent group.": {
+    "es-ES": "Estas posiciones y dimensiones son locales al grupo contenedor.",
+    "ru-RU": "Эти координаты и размеры заданы относительно родительской группы.",
+    "uk-UA": "Ці координати й розміри задано відносно батьківської групи.",
+    "de-DE": "Diese Positionen und Abmessungen beziehen sich auf die übergeordnete Gruppe."
+  },
+  "Unable to choose a unique group name. Rename an existing scene or source and try again.": {
+    "es-ES": "No se puede elegir un nombre de grupo único. Cambie el nombre de una escena o fuente existente e inténtelo de nuevo.",
+    "ru-RU": "Не удалось подобрать уникальное имя группы. Переименуйте существующую сцену или источник и повторите попытку.",
+    "uk-UA": "Не вдалося підібрати унікальну назву групи. Перейменуйте наявну сцену або джерело та повторіть спробу.",
+    "de-DE": "Es konnte kein eindeutiger Gruppenname gewählt werden. Benennen Sie eine vorhandene Szene oder Quelle um und versuchen Sie es erneut."
+  },
+  "Include this audio source in the selected scene.": {
+    "es-ES": "Incluir esta fuente de audio en la escena seleccionada.",
+    "ru-RU": "Включить этот источник звука в выбранную сцену.",
+    "uk-UA": "Додати це джерело звуку до вибраної сцени.",
+    "de-DE": "Diese Audioquelle in die ausgewählte Szene einbeziehen."
+  },
+  "Hide this group's child rows in Sources. Its sources keep their current visibility.": {
+    "es-ES": "Ocultar las filas de este grupo en Fuentes. Sus fuentes conservan su visibilidad actual.",
+    "ru-RU": "Скрыть строки внутри группы в списке источников. Видимость самих источников сохранится.",
+    "uk-UA": "Приховати рядки всередині групи у списку джерел. Видимість самих джерел збережеться.",
+    "de-DE": "Die untergeordneten Zeilen dieser Gruppe in Quellen ausblenden. Die Quellen behalten ihre aktuelle Sichtbarkeit."
+  },
+  "Show this group's child rows in Sources.": {
+    "es-ES": "Mostrar las filas de este grupo en Fuentes.",
+    "ru-RU": "Показать строки внутри группы в списке источников.",
+    "uk-UA": "Показати рядки всередині групи у списку джерел.",
+    "de-DE": "Die untergeordneten Zeilen dieser Gruppe in Quellen anzeigen."
+  }
+}

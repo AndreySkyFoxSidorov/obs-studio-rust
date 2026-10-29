@@ -1,0 +1,6 @@
+{"request":"command","command":{"op":"add_color_source","scene":1,"name":"Red","rgba":[255,0,0,255]}}
+{"request":"command","command":{"op":"set_color_size","source":2,"width":640,"height":480}}
+{"request":"command","command":{"op":"transform_item","scene":1,"item":3,"action":"fit_to_canvas"}}
+{"request":"save","path":"example.skylive.json"}
+{"request":"snapshot"}
+{"request":"close"}

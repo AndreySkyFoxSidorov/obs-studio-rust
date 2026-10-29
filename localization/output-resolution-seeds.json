@@ -1,0 +1,104 @@
+{
+  "Match Canvas": {
+    "es-ES": "Igual que el lienzo",
+    "ru-RU": "Как у холста",
+    "uk-UA": "Як у полотна",
+    "de-DE": "Wie Leinwand"
+  },
+  "Base (Canvas) Resolution": {
+    "es-ES": "Resolución base (lienzo)",
+    "ru-RU": "Базовое разрешение (холст)",
+    "uk-UA": "Базова роздільність (полотно)",
+    "de-DE": "Basisauflösung (Leinwand)"
+  },
+  "Output (Scaled) Resolution": {
+    "es-ES": "Resolución de salida (escalada)",
+    "ru-RU": "Выходное разрешение (масштабированное)",
+    "uk-UA": "Вихідна роздільність (масштабована)",
+    "de-DE": "Ausgabeauflösung (skaliert)"
+  },
+  "Downscale Filter": {
+    "es-ES": "Filtro de reducción",
+    "ru-RU": "Фильтр масштабирования",
+    "uk-UA": "Фільтр масштабування",
+    "de-DE": "Skalierungsfilter"
+  },
+  "Set the authored canvas size. Source positions and capture-device formats remain in their existing spaces.": {
+    "es-ES": "Define el tamaño del lienzo. Las posiciones de fuentes y los formatos de captura conservan sus espacios actuales.",
+    "ru-RU": "Задайте размер холста. Позиции источников и форматы устройств захвата остаются в своих пространствах.",
+    "uk-UA": "Задайте розмір полотна. Позиції джерел і формати пристроїв захоплення залишаються у своїх просторах.",
+    "de-DE": "Größe der Leinwand festlegen. Quellpositionen und Aufnahmeformate behalten ihre jeweiligen Koordinatenräume."
+  },
+  "Use the canvas dimensions for encoded output without a final resize.": {
+    "es-ES": "Usa las dimensiones del lienzo para codificar sin un escalado final.",
+    "ru-RU": "Кодировать в размере холста без итогового масштабирования.",
+    "uk-UA": "Кодувати в розмірі полотна без кінцевого масштабування.",
+    "de-DE": "Leinwandgröße ohne abschließende Skalierung für die Kodierung verwenden."
+  },
+  "Set the actual recording, streaming and replay frame size. The complete canvas is resampled after compositing.": {
+    "es-ES": "Define el tamaño real de los fotogramas de grabación, transmisión y repetición. El lienzo completo se escala después de componerlo.",
+    "ru-RU": "Задайте реальный размер кадров записи, трансляции и повтора. Весь холст масштабируется после композиции.",
+    "uk-UA": "Задайте фактичний розмір кадрів запису, трансляції та повтору. Усе полотно масштабується після композиції.",
+    "de-DE": "Tatsächliche Bildgröße für Aufnahme, Stream und Replay festlegen. Die gesamte Leinwand wird nach dem Zusammensetzen skaliert."
+  },
+  "Apply this CPU reconstruction filter once to the complete Program frame, after sources, filters and transitions.": {
+    "es-ES": "Aplica este filtro de CPU una vez al fotograma completo de Programa, después de las fuentes, filtros y transiciones.",
+    "ru-RU": "Применить этот CPU-фильтр один раз к готовому кадру Program после источников, фильтров и переходов.",
+    "uk-UA": "Застосувати цей CPU-фільтр один раз до готового кадру Program після джерел, фільтрів і переходів.",
+    "de-DE": "Diesen CPU-Filter einmal auf das fertige Programmbild nach Quellen, Filtern und Übergängen anwenden."
+  },
+  "Matching dimensions bypass the scaler and preserve the original frame pixels.": {
+    "es-ES": "Si las dimensiones coinciden, se omite el escalado y se conservan los píxeles originales.",
+    "ru-RU": "При совпадении размеров масштабирование пропускается, исходные пиксели кадра сохраняются.",
+    "uk-UA": "Коли розміри збігаються, масштабування пропускається, початкові пікселі кадру зберігаються.",
+    "de-DE": "Bei identischen Größen wird die Skalierung umgangen und die ursprünglichen Pixel bleiben erhalten."
+  },
+  "Set the exact frame-rate numerator. Canvas and output share the same frame rate.": {
+    "es-ES": "Define el numerador exacto de la frecuencia de fotogramas. El lienzo y la salida usan la misma frecuencia.",
+    "ru-RU": "Задайте точный числитель частоты кадров. Холст и выход используют одинаковую частоту.",
+    "uk-UA": "Задайте точний чисельник частоти кадрів. Полотно й вихід використовують однакову частоту.",
+    "de-DE": "Exakten Zähler der Bildrate festlegen. Leinwand und Ausgabe verwenden dieselbe Bildrate."
+  },
+  "Set 1001 for rates such as 30000/1001; no automatic FPS reduction is applied.": {
+    "es-ES": "Usa 1001 para frecuencias como 30000/1001; no se reduce automáticamente la frecuencia.",
+    "ru-RU": "Укажите 1001 для частот вроде 30000/1001; автоматического снижения FPS нет.",
+    "uk-UA": "Укажіть 1001 для частот на кшталт 30000/1001; автоматичного зниження FPS немає.",
+    "de-DE": "1001 für Bildraten wie 30000/1001 verwenden; die Bildrate wird nicht automatisch reduziert."
+  },
+  "Video settings apply atomically to the selected profile. Stop active outputs before applying format changes.": {
+    "es-ES": "La configuración de vídeo se aplica de forma atómica al perfil seleccionado. Detén las salidas activas antes de cambiar el formato.",
+    "ru-RU": "Настройки видео применяются к выбранному профилю атомарно. Остановите активные выходы перед изменением формата.",
+    "uk-UA": "Налаштування відео застосовуються до вибраного профілю атомарно. Зупиніть активні виходи перед зміною формату.",
+    "de-DE": "Videoeinstellungen werden gemeinsam auf das gewählte Profil angewendet. Aktive Ausgaben vor Formatänderungen stoppen."
+  },
+  "Recording and streaming require encoder-supported output dimensions, including even sizes for NV12. Unsupported formats report an error instead of reducing resolution or FPS.": {
+    "es-ES": "La grabación y transmisión requieren dimensiones compatibles con el codificador, incluidos tamaños pares para NV12. Los formatos no compatibles dan un error en vez de reducir la resolución o los FPS.",
+    "ru-RU": "Запись и трансляция требуют поддерживаемого кодировщиком размера, включая чётные размеры для NV12. Неподдерживаемый формат вызывает ошибку, а не снижение разрешения или FPS.",
+    "uk-UA": "Запис і трансляція потребують підтримуваного кодером розміру, зокрема парних розмірів для NV12. Непідтримуваний формат спричиняє помилку, а не зниження роздільності чи FPS.",
+    "de-DE": "Aufnahme und Stream benötigen unterstützte Ausgabegrößen, einschließlich gerader Größen für NV12. Nicht unterstützte Formate melden Fehler, statt Auflösung oder Bildrate zu senken."
+  },
+  "Preview remains adaptive. Virtual camera applies the global output scale before fitting its separately selected camera format.": {
+    "es-ES": "La vista previa sigue siendo adaptativa. La cámara virtual aplica el escalado global antes de ajustar su formato elegido por separado.",
+    "ru-RU": "Предпросмотр остаётся адаптивным. Виртуальная камера применяет общее выходное масштабирование, затем вписывает кадр в отдельно выбранный формат камеры.",
+    "uk-UA": "Попередній перегляд залишається адаптивним. Віртуальна камера застосовує загальне вихідне масштабування, потім вписує кадр в окремо вибраний формат камери.",
+    "de-DE": "Die Vorschau bleibt adaptiv. Die virtuelle Kamera wendet die globale Ausgabeskalierung an und passt das Bild dann in ihr separat gewähltes Kameraformat ein."
+  },
+  "Presets": {
+    "es-ES": "Preajustes",
+    "ru-RU": "Пресеты",
+    "uk-UA": "Пресети",
+    "de-DE": "Voreinstellungen"
+  },
+  "Common FPS Values": {
+    "es-ES": "Valores comunes de FPS",
+    "ru-RU": "Общие значения FPS",
+    "uk-UA": "Загальні значення FPS",
+    "de-DE": "Übliche FPS-Werte"
+  },
+  "Choose a common exact frame rate, or edit the rational numerator and denominator below.": {
+    "es-ES": "Elige una frecuencia exacta habitual o edita el numerador y denominador de abajo.",
+    "ru-RU": "Выберите стандартную точную частоту кадров или задайте числитель и знаменатель ниже.",
+    "uk-UA": "Виберіть стандартну точну частоту кадрів або задайте чисельник і знаменник нижче.",
+    "de-DE": "Übliche exakte Bildrate wählen oder unten Zähler und Nenner bearbeiten."
+  }
+}

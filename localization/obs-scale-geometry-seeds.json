@@ -1,0 +1,38 @@
+{
+  "Affine Preview editing is unavailable while the scene uses nonlinear scaling or animated Scroll. Edit individual source properties or disable that scene filter.": {
+    "es-ES": "La edición afín en Vista previa no está disponible mientras la escena use escalado no lineal o desplazamiento animado. Edite las propiedades de cada fuente o desactive ese filtro de escena.",
+    "ru-RU": "Редактирование рамкой в предпросмотре недоступно, пока сцена использует нелинейное масштабирование или анимированную прокрутку. Измените свойства отдельного источника либо отключите этот фильтр сцены.",
+    "uk-UA": "Редагування рамкою в попередньому перегляді недоступне, поки сцена використовує нелінійне масштабування або анімоване прокручування. Змініть властивості окремого джерела або вимкніть цей фільтр сцени.",
+    "de-DE": "Affine Vorschaubearbeitung ist nicht verfügbar, solange die Szene nichtlineare Skalierung oder animiertes Scrollen verwendet. Einzelne Quelleigenschaften bearbeiten oder diesen Szenenfilter deaktivieren."
+  },
+  "Root nonlinear scaling or animated Scroll cannot be edited with affine Preview handles": {
+    "es-ES": "El escalado no lineal o el desplazamiento animado de la escena no se puede editar con tiradores afines de Vista previa",
+    "ru-RU": "Нелинейное масштабирование или анимированную прокрутку сцены нельзя редактировать аффинной рамкой предпросмотра",
+    "uk-UA": "Нелінійне масштабування або анімоване прокручування сцени не можна редагувати афінною рамкою попереднього перегляду",
+    "de-DE": "Nichtlineare Szenenskalierung oder animiertes Scrollen lässt sich nicht mit affinen Vorschaugriffen bearbeiten"
+  },
+  "Reset the group item crop before reparenting or flattening its children": {
+    "es-ES": "Restablezca el recorte del elemento de grupo antes de mover o desagrupar sus elementos",
+    "ru-RU": "Сбросьте обрезку элемента группы перед переносом или разгруппировкой её элементов",
+    "uk-UA": "Скиньте обрізання елемента групи перед перенесенням або розгрупуванням її елементів",
+    "de-DE": "Vor dem Verschieben oder Auflösen der Gruppenelemente den Zuschnitt des Gruppeneintrags zurücksetzen"
+  },
+  "A group's filtered clipping cannot be distributed to arbitrary child transforms; reset its clipping filter before ungrouping": {
+    "es-ES": "El recorte del filtro de grupo no se puede distribuir entre transformaciones arbitrarias de sus elementos; restablezca el filtro de recorte antes de desagrupar",
+    "ru-RU": "Обрезку фильтром группы нельзя перенести на произвольные трансформации её элементов; сбросьте фильтр обрезки перед разгруппировкой",
+    "uk-UA": "Обрізання фільтром групи неможливо перенести на довільні трансформації її елементів; скиньте фільтр обрізання перед розгрупуванням",
+    "de-DE": "Der Filterzuschnitt einer Gruppe lässt sich nicht auf beliebige Transformationen ihrer Elemente verteilen; vor dem Auflösen den Zuschneidefilter zurücksetzen"
+  },
+  "singular scaled group transform": {
+    "es-ES": "transformación de grupo escalada no invertible",
+    "ru-RU": "необратимая трансформация масштабированной группы",
+    "uk-UA": "необоротна трансформація масштабованої групи",
+    "de-DE": "nicht invertierbare Transformation der skalierten Gruppe"
+  },
+  "This scaled and rotated group would require a shear that scene item transforms cannot represent": {
+    "es-ES": "Este grupo escalado y girado necesitaría una deformación de cizalla que las transformaciones de los elementos no pueden representar",
+    "ru-RU": "Эта масштабированная и повёрнутая группа требует сдвиговой деформации, которую трансформации элементов сцены не поддерживают",
+    "uk-UA": "Ця масштабована й повернута група потребує зсувної деформації, яку трансформації елементів сцени не підтримують",
+    "de-DE": "Diese skalierte und gedrehte Gruppe würde eine Scherung erfordern, die Szenenelement-Transformationen nicht darstellen können"
+  }
+}

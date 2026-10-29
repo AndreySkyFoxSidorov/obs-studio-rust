@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "signals": "original synthetic testsrc2 and1kHz sine; no devices/user content",
+  "ffmpeg_sha256": "106d42d38466afa31b603458784f6db3020a46af39745ff4d3a7e954e8759312",
+  "ffmpeg_version": "ffmpeg version n8.1-11-g75d37c499d-20260501 Copyright (c) 2000-2026 the FFmpeg developers",
+  "production_dependency": false,
+  "aac_rmse_tolerance": 2e-05,
+  "aac_peak_tolerance": 0.0002,
+  "h264_comparison": "exact cropped planar Y,U,V bytes",
+  "cases": [
+    {
+      "name": "cavlc",
+      "command": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y",
+        "-nostdin",
+        "-f",
+        "lavfi",
+        "-i",
+        "testsrc2=size=64x48:rate=10:duration=0.6",
+        "-f",
+        "lavfi",
+        "-i",
+        "sine=frequency=1000:sample_rate=48000:duration=0.6",
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
+        "-c:v",
+        "libx264",
+        "-threads:v",
+        "1",
+        "-profile:v",
+        "baseline",
+        "-pix_fmt",
+        "yuv420p",
+        "-qp",
+        "20",
+        "-x264-params",
+        "cabac=0:bframes=0:ref=1:threads=1:keyint=10:min-keyint=10:scenecut=0",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-c:a",
+        "aac",
+        "-profile:a",
+        "aac_low",
+        "-threads:a",
+        "1",
+        "-b:a",
+        "96000",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-movflags",
+        "+faststart",
+        "-t",
+        "0.6",
+        "crates\\host\\tests\\fixtures\\media\\cavlc.mp4"
+      ],
+      "files": {
+        "cavlc.mp4": {
+          "bytes": 11598,
+          "sha256": "0ad39f20f36e44db87a03f1d5e27e66e7a6263191e4e27a5853ad61e105d3368"
+        },
+        "cavlc.yuv": {
+          "bytes": 27648,
+          "sha256": "e9351931d4a33eef5d86fb366e7061281adc40e685d65d9d6538aee6524d3588"
+        },
+        "cavlc.f32le": {
+          "bytes": 118784,
+          "sha256": "3c625aafdcfae1e65732e72883aab842388797e6061832e326bd86479d30b22a"
+        },
+        "cavlc.probe.json": {
+          "bytes": 14311,
+          "sha256": "eacbbbe5f60aa00d7e31a96fb344f58fe5c7b4b0a089bba4cf91ca62a6a9ce6c"
+        }
+      }
+    },
+    {
+      "name": "cabac_b",
+      "command": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-y",
+        "-nostdin",
+        "-f",
+        "lavfi",
+        "-i",
+        "testsrc2=size=64x48:rate=10:duration=0.6",
+        "-f",
+        "lavfi",
+        "-i",
+        "sine=frequency=1000:sample_rate=48000:duration=0.6",
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
+        "-c:v",
+        "libx264",
+        "-threads:v",
+        "1",
+        "-profile:v",
+        "high",
+        "-pix_fmt",
+        "yuv420p",
+        "-qp",
+        "20",
+        "-x264-params",
+        "cabac=1:bframes=2:ref=2:threads=1:keyint=10:min-keyint=10:scenecut=0",
+        "-colorspace",
+        "bt709",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-c:a",
+        "aac",
+        "-profile:a",
+        "aac_low",
+        "-threads:a",
+        "1",
+        "-b:a",
+        "96000",
+        "-ac",
+        "1",
+        "-ar",
+        "48000",
+        "-movflags",
+        "+faststart",
+        "-t",
+        "0.6",
+        "crates\\host\\tests\\fixtures\\media\\cabac_b.mp4"
+      ],
+      "files": {
+        "cabac_b.mp4": {
+          "bytes": 11547,
+          "sha256": "db902bff110a8c128c731f0d25e3d8c841b3cd0d5876c23dba3d44b1a3608ca6"
+        },
+        "cabac_b.yuv": {
+          "bytes": 27648,
+          "sha256": "6b2ceea7b4bc2cca54b0d60d8271c3fc024799f83910d8485ffa84d054059f9a"
+        },
+        "cabac_b.f32le": {
+          "bytes": 118784,
+          "sha256": "3c625aafdcfae1e65732e72883aab842388797e6061832e326bd86479d30b22a"
+        },
+        "cabac_b.probe.json": {
+          "bytes": 14298,
+          "sha256": "c1c5613dcad4258800f94c1450705be706375ceb3d9b2cccdc5bed66cfe36092"
+        }
+      }
+    }
+  ]
+}

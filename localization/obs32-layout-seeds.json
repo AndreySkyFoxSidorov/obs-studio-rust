@@ -1,0 +1,89 @@
+{
+  "Unlock docks to resize them.": {
+    "es-ES": "Desbloquea los paneles para cambiar su tamaño.",
+    "ru-RU": "Разблокируйте панели, чтобы изменить их размер.",
+    "uk-UA": "Розблокуйте панелі, щоб змінити їхній розмір.",
+    "de-DE": "Docks entsperren, um ihre Größe zu ändern."
+  },
+  "Layout": {
+    "es-ES": "Disposición", "ru-RU": "Расположение", "uk-UA": "Розташування", "de-DE": "Anordnung"
+  },
+  "OBS 32 default": {
+    "es-ES": "Predeterminada de OBS 32", "ru-RU": "По умолчанию в OBS 32", "uk-UA": "Стандартне в OBS 32", "de-DE": "OBS-32-Standard"
+  },
+  "Bottom row": {
+    "es-ES": "Fila inferior", "ru-RU": "Нижний ряд", "uk-UA": "Нижній ряд", "de-DE": "Untere Reihe"
+  },
+  "Scenes and Sources at the left; Mixer, Transitions and Controls below Preview.": {
+    "es-ES": "Escenas y Fuentes a la izquierda; Mezclador, Transiciones y Controles debajo de la vista previa.",
+    "ru-RU": "Сцены и Источники слева; Микшер, Переходы и Управление под предпросмотром.",
+    "uk-UA": "Сцени та Джерела ліворуч; Мікшер, Переходи й Керування під попереднім переглядом.",
+    "de-DE": "Szenen und Quellen links; Mixer, Übergänge und Steuerung unter der Vorschau."
+  },
+  "Place all five docks below Preview. This is a SkyLive convenience layout.": {
+    "es-ES": "Coloca los cinco paneles debajo de la vista previa. Es una disposición adicional de SkyLive.",
+    "ru-RU": "Разместить все пять панелей под предпросмотром. Это дополнительный вариант расположения SkyLive.",
+    "uk-UA": "Розмістити всі п’ять панелей під попереднім переглядом. Це додатковий варіант розташування SkyLive.",
+    "de-DE": "Alle fünf Docks unter der Vorschau anordnen. Dies ist eine zusätzliche SkyLive-Anordnung."
+  },
+  "Choose a dock arrangement for this window.": {
+    "es-ES": "Elige la disposición de los paneles para esta ventana.",
+    "ru-RU": "Выбрать расположение панелей для этого окна.",
+    "uk-UA": "Вибрати розташування панелей для цього вікна.",
+    "de-DE": "Eine Dockanordnung für dieses Fenster wählen."
+  },
+  "Prevent dock resizing while keeping source, mixer and output controls usable.": {
+    "es-ES": "Impide cambiar el tamaño de los paneles sin bloquear los controles de fuentes, mezclador y salidas.",
+    "ru-RU": "Запретить изменение размеров панелей, сохранив доступ к источникам, микшеру и управлению выходами.",
+    "uk-UA": "Заборонити зміну розмірів панелей, зберігши доступ до джерел, мікшера й керування виходами.",
+    "de-DE": "Dockgrößen sperren; Quellen, Mixer und Ausgabesteuerung bleiben bedienbar."
+  },
+  "Let the left docks extend beside the bottom docks.": {
+    "es-ES": "Extiende los paneles izquierdos hasta el borde de los paneles inferiores.",
+    "ru-RU": "Растянуть левые панели по высоте рядом с нижними панелями.",
+    "uk-UA": "Розтягнути ліві панелі по висоті поряд із нижніми панелями.",
+    "de-DE": "Die linken Docks neben den unteren Docks bis nach unten erweitern."
+  },
+  "This option applies to the OBS 32 default layout.": {
+    "es-ES": "Esta opción se aplica a la disposición predeterminada de OBS 32.",
+    "ru-RU": "Этот параметр относится к стандартному расположению OBS 32.",
+    "uk-UA": "Цей параметр стосується стандартного розташування OBS 32.",
+    "de-DE": "Diese Option gilt für die OBS-32-Standardanordnung."
+  },
+  "Dock sizes": {
+    "es-ES": "Tamaños de paneles", "ru-RU": "Размеры панелей", "uk-UA": "Розміри панелей", "de-DE": "Dockgrößen"
+  },
+  "Side dock width": {
+    "es-ES": "Anchura de los paneles laterales", "ru-RU": "Ширина боковых панелей", "uk-UA": "Ширина бічних панелей", "de-DE": "Breite der seitlichen Docks"
+  },
+  "Scenes dock height": {
+    "es-ES": "Altura del panel Escenas", "ru-RU": "Высота панели сцен", "uk-UA": "Висота панелі сцен", "de-DE": "Höhe des Szenen-Docks"
+  },
+  "Bottom dock height": {
+    "es-ES": "Altura de los paneles inferiores", "ru-RU": "Высота нижних панелей", "uk-UA": "Висота нижніх панелей", "de-DE": "Höhe der unteren Docks"
+  },
+  "Set the dock size in interface points. The available window space limits the result.": {
+    "es-ES": "Establece el tamaño del panel en puntos de interfaz. El espacio disponible en la ventana limita el resultado.",
+    "ru-RU": "Установить размер панели в единицах интерфейса. Итоговый размер ограничен доступным местом в окне.",
+    "uk-UA": "Установити розмір панелі в одиницях інтерфейсу. Підсумковий розмір обмежено доступним місцем у вікні.",
+    "de-DE": "Die Dockgröße in Oberflächenpunkten festlegen. Der verfügbare Fensterplatz begrenzt das Ergebnis."
+  },
+  "Unlock docks and choose a layout with this dock to change its size.": {
+    "es-ES": "Desbloquea los paneles y elige una disposición que incluya este panel para cambiar su tamaño.",
+    "ru-RU": "Разблокируйте панели и выберите расположение с этой панелью, чтобы изменить её размер.",
+    "uk-UA": "Розблокуйте панелі та виберіть розташування з цією панеллю, щоб змінити її розмір.",
+    "de-DE": "Docks entsperren und eine Anordnung mit diesem Dock wählen, um seine Größe zu ändern."
+  },
+  "Adjust dock dimensions using the keyboard or pointer.": {
+    "es-ES": "Ajusta el tamaño de los paneles con el teclado o el puntero.",
+    "ru-RU": "Изменить размеры панелей с помощью клавиатуры или мыши.",
+    "uk-UA": "Змінити розміри панелей за допомогою клавіатури або миші.",
+    "de-DE": "Dockabmessungen mit Tastatur oder Zeiger anpassen."
+  },
+  "Show this dock in the compact side panel.": {
+    "es-ES": "Muestra este panel en la zona lateral compacta.",
+    "ru-RU": "Показать эту панель в компактной боковой области.",
+    "uk-UA": "Показати цю панель у компактній бічній області.",
+    "de-DE": "Dieses Dock im kompakten Seitenbereich anzeigen."
+  }
+}

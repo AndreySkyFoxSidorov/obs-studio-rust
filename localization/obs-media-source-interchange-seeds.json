@@ -1,0 +1,110 @@
+{
+  "OBS Media Source interchange supports local files only; network inputs are not opened": {
+    "es-ES": "El intercambio de Media Source de OBS solo admite archivos locales; no se abren entradas de red",
+    "ru-RU": "Обмен Media Source с OBS поддерживает только локальные файлы; сетевые источники не открываются",
+    "uk-UA": "Обмін Media Source з OBS підтримує лише локальні файли; мережеві джерела не відкриваються",
+    "de-DE": "Der OBS-Medienquellenaustausch unterstützt nur lokale Dateien; Netzwerkeingaben werden nicht geöffnet"
+  },
+  "OBS local Media Source requires a nonempty filesystem path without a URL scheme or control characters": {
+    "es-ES": "La fuente multimedia local de OBS requiere una ruta de archivo no vacía, sin esquema URL ni caracteres de control",
+    "ru-RU": "Локальному Media Source OBS нужен непустой путь к файлу без схемы URL и управляющих символов",
+    "uk-UA": "Локальному Media Source OBS потрібен непорожній шлях до файлу без схеми URL та керівних символів",
+    "de-DE": "Eine lokale OBS-Medienquelle benötigt einen nicht leeren Dateipfad ohne URL-Schema oder Steuerzeichen"
+  },
+  "Relative OBS media paths require an explicit absolute import directory": {
+    "es-ES": "Las rutas multimedia relativas de OBS requieren un directorio de importación absoluto explícito",
+    "ru-RU": "Для относительных путей медиа OBS нужно явно задать абсолютный каталог импорта",
+    "uk-UA": "Для відносних шляхів медіа OBS потрібно явно задати абсолютний каталог імпорту",
+    "de-DE": "Relative OBS-Medienpfade erfordern ein ausdrücklich angegebenes absolutes Importverzeichnis"
+  },
+  "OBS Media Source import does not discard enabled non-audio/video tracks": {
+    "es-ES": "La importación de Media Source de OBS no descarta pistas habilitadas que no sean de audio o vídeo",
+    "ru-RU": "Импорт Media Source OBS не отбрасывает включённые дорожки, не относящиеся к аудио или видео",
+    "uk-UA": "Імпорт Media Source OBS не відкидає увімкнені доріжки, які не є аудіо чи відео",
+    "de-DE": "Der OBS-Medienquellenimport verwirft keine aktivierten Spuren, die weder Audio noch Video sind"
+  },
+  "OBS Media Source export requires an absolute local filesystem path on this host": {
+    "es-ES": "La exportación de Media Source a OBS requiere una ruta de archivo local absoluta en este equipo",
+    "ru-RU": "Для экспорта Media Source в OBS нужен абсолютный локальный путь к файлу на этом компьютере",
+    "uk-UA": "Для експорту Media Source до OBS потрібен абсолютний локальний шлях до файлу на цьому комп’ютері",
+    "de-DE": "Der OBS-Medienquellenexport benötigt einen absoluten lokalen Dateipfad auf diesem Rechner"
+  },
+  "OBS import exceeds eight local Media Sources": {
+    "es-ES": "La importación de OBS supera ocho fuentes multimedia locales",
+    "ru-RU": "Импорт OBS превышает ограничение в восемь локальных Media Source",
+    "uk-UA": "Імпорт OBS перевищує обмеження у вісім локальних Media Source",
+    "de-DE": "Der OBS-Import überschreitet acht lokale Medienquellen"
+  },
+  "OBS media audio filters, sync offsets and nondefault track routing require an actual decoded audio track": {
+    "es-ES": "Los filtros de audio, desfases y rutas de pistas no predeterminadas requieren una pista de audio realmente decodificada",
+    "ru-RU": "Аудиофильтрам, смещению синхронизации и нестандартной маршрутизации OBS нужна реально декодированная аудиодорожка",
+    "uk-UA": "Аудіофільтрам, зміщенню синхронізації та нестандартній маршрутизації OBS потрібна реально декодована аудіодоріжка",
+    "de-DE": "OBS-Audiofilter, Synchronversatz und abweichende Spurzuordnung benötigen eine tatsächlich decodierte Audiospur"
+  },
+  "Audio-only Media Sources cannot carry video filters or nonneutral video geometry": {
+    "es-ES": "Las fuentes multimedia de solo audio no pueden tener filtros de vídeo ni geometría de vídeo no neutra",
+    "ru-RU": "Media Source только с аудио не поддерживает видеофильтры и изменённую геометрию видео",
+    "uk-UA": "Media Source лише з аудіо не підтримує відеофільтри та змінену геометрію відео",
+    "de-DE": "Reine Audio-Medienquellen unterstützen keine Videofilter oder abweichende Videogeometrie"
+  },
+  "Media Source was not prepared": {
+    "es-ES": "La fuente multimedia no se preparó",
+    "ru-RU": "Медиаисточник не был подготовлен",
+    "uk-UA": "Медіаджерело не було підготовлено",
+    "de-DE": "Die Medienquelle wurde nicht vorbereitet"
+  },
+  "Playback hotkey owner was not retained by the imported scene graph": {
+    "es-ES": "El propietario del atajo de reproducción no se conservó en el grafo de escenas importado",
+    "ru-RU": "Владелец горячих клавиш воспроизведения отсутствует в импортированном графе сцен",
+    "uk-UA": "Власник гарячих клавіш відтворення відсутній в імпортованому графі сцен",
+    "de-DE": "Der Eigentümer des Wiedergabekürzels blieb im importierten Szenengraphen nicht erhalten"
+  },
+  "Unknown OBS source hotkey action for this provider; frontend bindings and toggle aliases are not converted": {
+    "es-ES": "Acción de atajo de fuente OBS desconocida para este proveedor; no se convierten atajos de interfaz ni alias de alternancia",
+    "ru-RU": "Неизвестная команда горячих клавиш OBS для этого источника; команды интерфейса и псевдонимы переключения не преобразуются",
+    "uk-UA": "Невідома команда гарячих клавіш OBS для цього джерела; команди інтерфейсу та псевдоніми перемикання не перетворюються",
+    "de-DE": "Unbekannte OBS-Quellenaktion für diesen Anbieter; Oberflächenkürzel und Umschaltaliase werden nicht konvertiert"
+  },
+  "An OBS playback control can contain at most two represented shortcuts": {
+    "es-ES": "Un control de reproducción de OBS admite como máximo dos atajos representados",
+    "ru-RU": "Одна команда воспроизведения OBS может содержать не более двух поддерживаемых сочетаний",
+    "uk-UA": "Одна команда відтворення OBS може містити не більше двох підтримуваних сполучень",
+    "de-DE": "Ein OBS-Wiedergabebefehl kann höchstens zwei unterstützte Tastenkürzel enthalten"
+  },
+  "OBS MediaSource.Play and MediaSource.Pause share a shortcut; the native unique-chord policy cannot preserve this pair without changing its semantics": {
+    "es-ES": "OBS MediaSource.Play y MediaSource.Pause comparten un atajo; la política nativa de combinaciones únicas no puede conservar este par sin cambiar su comportamiento",
+    "ru-RU": "OBS MediaSource.Play и MediaSource.Pause используют одно сочетание; требование уникальности горячих клавиш не позволяет сохранить эту пару без изменения её поведения",
+    "uk-UA": "OBS MediaSource.Play і MediaSource.Pause використовують одне сполучення; вимога унікальності гарячих клавіш не дозволяє зберегти цю пару без зміни її поведінки",
+    "de-DE": "OBS MediaSource.Play und MediaSource.Pause verwenden dasselbe Kürzel; die native Eindeutigkeitsregel kann dieses Paar nicht ohne Verhaltensänderung erhalten"
+  },
+  "This source provider has no exact OBS playback hotkey representation": {
+    "es-ES": "Este proveedor de fuente no tiene una representación exacta de atajos de reproducción en OBS",
+    "ru-RU": "У этого типа источника нет точного представления горячих клавиш воспроизведения в OBS",
+    "uk-UA": "Цей тип джерела не має точного подання гарячих клавіш відтворення в OBS",
+    "de-DE": "Für diesen Quellenanbieter gibt es keine exakte OBS-Darstellung der Wiedergabekürzel"
+  },
+  "The native Media Source Play/Pause toggle has no OBS MediaSource.PlayPause key; use distinct Play and Pause shortcuts for OBS export": {
+    "es-ES": "La alternancia nativa Reproducir/Pausar no tiene una clave OBS MediaSource.PlayPause; use atajos separados de reproducir y pausar para exportar a OBS",
+    "ru-RU": "У переключателя воспроизведения и паузы Media Source нет ключа OBS MediaSource.PlayPause; для экспорта в OBS задайте отдельные сочетания Play и Pause",
+    "uk-UA": "Перемикач відтворення й паузи Media Source не має ключа OBS MediaSource.PlayPause; для експорту до OBS задайте окремі сполучення Play та Pause",
+    "de-DE": "Der native Wiedergabe/Pause-Umschalter besitzt keinen OBS-Schlüssel MediaSource.PlayPause; für den OBS-Export getrennte Play- und Pause-Kürzel verwenden"
+  },
+  "audio filter import requires a supported audio-capable source": {
+    "es-ES": "La importación de filtros de audio requiere una fuente de audio admitida",
+    "ru-RU": "Для импорта аудиофильтров нужен поддерживаемый источник с аудио",
+    "uk-UA": "Для імпорту аудіофільтрів потрібне підтримуване джерело з аудіо",
+    "de-DE": "Der Audiofilterimport benötigt eine unterstützte Quelle mit Audio"
+  },
+  "cumulative media read budget exhausted": {
+    "es-ES": "Se agotó el límite acumulado de lectura multimedia",
+    "ru-RU": "Исчерпан общий лимит чтения медиафайлов",
+    "uk-UA": "Вичерпано загальний ліміт читання медіафайлів",
+    "de-DE": "Das gemeinsame Lesebudget für Medien ist erschöpft"
+  },
+  "Partial equivalent: local MP4/MOV Media Source with Rust H.264 Main/High/CABAC/B and AAC-LC playback, source properties and transport. On Windows an admitted software Media Foundation H.264 alternative supports progressive 8-bit 4:2:0 BT709 limited video, ordered multi-slice access units, PTS/DTS reordering and bounded drain/seek. No FFmpeg binary/library, hardware decoding, arbitrary FFmpeg formats, network media, FFmpeg outputs or encoders. Strict OBS32 local ffmpeg_source import/export uses actual worker-prepared video/audio metadata and preserves loop/restart/close/clear settings plus distinct Play/Pause/Restart/Stop source shortcuts; network settings, decoder overrides, overlapping Play/Pause chords and native toggle export reject explicitly.": {
+    "es-ES": "Equivalente parcial: Media Source local MP4/MOV con reproducción Rust H.264 Main/High/CABAC/B y AAC-LC, propiedades y controles. En Windows, una alternativa admitida de software Media Foundation admite H.264 progresivo de8 bits4:2:0 BT709 limitado, unidades de acceso de múltiples cortes, reordenación PTS/DTS y vaciado/búsqueda limitados. Sin binarios ni bibliotecas FFmpeg, decodificación por hardware, formatos FFmpeg arbitrarios, medios de red ni salidas o codificadores FFmpeg. El intercambio estricto de ffmpeg_source local OBS32 usa metadatos reales preparados en el trabajador, conserva bucle/reinicio/cierre/fin y atajos separados Reproducir/Pausar/Reiniciar/Detener; rechaza opciones de red o decodificador, pares Play/Pause solapados y la exportación de alternancia nativa.",
+    "ru-RU": "Частичный аналог: локальный Media Source MP4/MOV с воспроизведением Rust H.264 Main/High/CABAC/B и AAC-LC, свойствами и управлением. На Windows допускается программный декодер Media Foundation для прогрессивного8-битного4:2:0 BT709 limited, упорядоченных многослайсовых кадров, перестановки PTS/DTS и ограниченных завершения/поиска. Без бинарника или библиотеки FFmpeg, аппаратного декодирования, произвольных форматов и сетевого медиа, выходов или кодировщиков FFmpeg. Строгий обмен локальным ffmpeg_source OBS32 использует реальные метаданные видео/аудио, подготовленные рабочим потоком, сохраняет цикл/перезапуск/закрытие/очистку и отдельные клавиши Play/Pause/Restart/Stop; сетевые настройки, переопределение декодера, пересекающиеся Play/Pause и экспорт переключателя явно отклоняются.",
+    "uk-UA": "Частковий аналог: локальний Media Source MP4/MOV з відтворенням Rust H.264 Main/High/CABAC/B і AAC-LC, властивостями та керуванням. На Windows допускається програмний декодер Media Foundation для прогресивного8-бітного4:2:0 BT709 limited, упорядкованих багатослайсових кадрів, перестановки PTS/DTS та обмежених завершення/пошуку. Без бінарника чи бібліотеки FFmpeg, апаратного декодування, довільних форматів і мережевого медіа, виходів чи кодерів FFmpeg. Строгий обмін локальним ffmpeg_source OBS32 використовує реальні метадані відео/аудіо, підготовлені робочим потоком, зберігає цикл/перезапуск/закриття/очищення та окремі клавіші Play/Pause/Restart/Stop; мережеві параметри, перевизначення декодера, перетини Play/Pause та експорт перемикача явно відхиляються.",
+    "de-DE": "Teilweises Äquivalent: lokale MP4/MOV-Medienquelle mit Rust-Wiedergabe von H.264 Main/High/CABAC/B und AAC-LC, Eigenschaften und Steuerung. Unter Windows unterstützt eine zugelassene Softwarealternative von Media Foundation progressives8-Bit4:2:0 BT709 limited, geordnete Mehrfach-Slice-Zugriffseinheiten, PTS/DTS-Umsortierung und begrenztes Leeren/Suchen. Keine FFmpeg-Binärdatei oder -Bibliothek, Hardwaredecodierung, beliebigen FFmpeg-Formate, Netzwerkmedien, FFmpeg-Ausgaben oder -Encoder. Der strikte lokale OBS32-ffmpeg_source-Austausch verwendet echte im Worker vorbereitete Video-/Audiometadaten und erhält Schleife/Neustart/Schließen/Ende sowie getrennte Play/Pause/Restart/Stop-Kürzel; Netzwerkoptionen, Decoderüberschreibungen, überlappende Play/Pause-Paare und der native Umschalterexport werden ausdrücklich abgelehnt."
+  }
+}

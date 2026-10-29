@@ -1,0 +1,25 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "frontend/widgets/OBSBasic_SceneItems.cpp",
+      "sha256": "f1c5097df62fbd2fc8d6d7d3552aff8a2fb1927c2f07679eef352db476449626"
+    },
+    {
+      "path": "frontend/widgets/OBSBasic_Preview.cpp",
+      "sha256": "548020187d021a2e3e55420e5229701e337c6597fa0f2bbc23a5a4afab3a550f"
+    },
+    {
+      "path": "frontend/components/SourceTreeItem.cpp",
+      "sha256": "316bc36d9d59f7fa567ee4db33399a415b431d88e619c52c933342d0b3d4eee3"
+    },
+    {
+      "path": "frontend/data/locale/en-US.ini",
+      "sha256": "9b46c45b224cf7e047e7618e1cb3199a35bdfecf9e9d89acd8809d0bbf6fe782"
+    }
+  ],
+  "scope": "Rust Sources-list scene-item background color metadata, palette and custom preview/apply/cancel. No source pixel/audio processing. Native/GUI/persistence acceptance unexecuted."
+}

@@ -1,0 +1,170 @@
+{
+  "Updating configured shortcut input…": {
+    "es-ES": "Actualizando la entrada de atajos configurados…",
+    "ru-RU": "Обновление обработки заданных сочетаний…",
+    "uk-UA": "Оновлення обробки заданих сполучень…",
+    "de-DE": "Konfigurierte Tastenkürzeleingabe wird aktualisiert…"
+  },
+  "Configured shortcuts are active with press/release arbitration": {
+    "es-ES": "Atajos activos con arbitraje de pulsación y liberación",
+    "ru-RU": "Заданные сочетания активны с учётом нажатий и отпусканий",
+    "uk-UA": "Задані сполучення активні з урахуванням натискань і відпускань",
+    "de-DE": "Konfigurierte Kürzel sind mit Druck-/Loslass-Arbitrierung aktiv"
+  },
+  "Retiring shortcut press state and pending callbacks": {
+    "es-ES": "Retirando el estado de teclas y las llamadas pendientes",
+    "ru-RU": "Завершение состояния клавиш и ожидающих обработчиков",
+    "uk-UA": "Завершення стану клавіш і обробників, що очікують",
+    "de-DE": "Tastendruckzustand und ausstehende Rückmeldungen werden beendet"
+  },
+  "Configured shortcut input stopped": {
+    "es-ES": "La entrada de atajos configurados se detuvo",
+    "ru-RU": "Обработка заданных сочетаний остановлена",
+    "uk-UA": "Обробку заданих сполучень зупинено",
+    "de-DE": "Konfigurierte Tastenkürzeleingabe wurde gestoppt"
+  },
+  "Waiting for shortcut callback acceptance": {
+    "es-ES": "Esperando la aceptación del manejador del atajo",
+    "ru-RU": "Ожидание принятия команды обработчиком сочетания",
+    "uk-UA": "Очікування прийняття команди обробником сполучення",
+    "de-DE": "Warten auf die Annahme durch den Kürzelhandler"
+  },
+  "Global shortcuts sample only configured keys and modifiers on Windows, including while another app has focus. They do not reserve shortcuts from other apps.": {
+    "es-ES": "Los atajos globales consultan solo las teclas y modificadores configurados en Windows, incluso con otra aplicación enfocada. No reservan combinaciones frente a otras aplicaciones.",
+    "ru-RU": "Глобальные сочетания проверяют только заданные клавиши и модификаторы Windows, в том числе при фокусе в другом приложении. Они не резервируют сочетания у других программ.",
+    "uk-UA": "Глобальні сполучення перевіряють лише задані клавіші та модифікатори Windows, зокрема коли фокус має інша програма. Вони не резервують сполучення в інших програм.",
+    "de-DE": "Globale Kürzel fragen nur konfigurierte Tasten und Modifikatoren unter Windows ab, auch bei Fokus einer anderen App. Sie reservieren keine Kombinationen gegenüber anderen Apps."
+  },
+  "Waiting for configured shortcut input to suspend before capture.": {
+    "es-ES": "Esperando la suspensión de atajos configurados antes de capturar.",
+    "ru-RU": "Ожидание приостановки заданных сочетаний перед захватом клавиш.",
+    "uk-UA": "Очікування призупинення заданих сполучень перед захопленням клавіш.",
+    "de-DE": "Vor der Erfassung wird auf die Aussetzung der konfigurierten Kürzel gewartet."
+  },
+  "Wait until configured shortcut input is suspended before capturing a shortcut.": {
+    "es-ES": "Espere a que se suspendan los atajos configurados antes de capturar uno.",
+    "ru-RU": "Дождитесь приостановки заданных сочетаний перед записью новой комбинации.",
+    "uk-UA": "Дочекайтеся призупинення заданих сполучень перед записом нової комбінації.",
+    "de-DE": "Vor dem Erfassen eines Kürzels auf die Aussetzung der konfigurierten Eingabe warten."
+  },
+  "Source definition epoch table exceeds source capacity.": {
+    "es-ES": "La tabla de versiones de fuentes supera su capacidad.",
+    "ru-RU": "Таблица версий определений источников превышает допустимый размер.",
+    "uk-UA": "Таблиця версій визначень джерел перевищує допустимий розмір.",
+    "de-DE": "Die Tabelle der Quellendefinitionsversionen überschreitet die Kapazität."
+  },
+  "Cannot allocate bounded source definition epochs.": {
+    "es-ES": "No se puede reservar la tabla limitada de versiones de fuentes.",
+    "ru-RU": "Не удалось выделить ограниченную таблицу версий источников.",
+    "uk-UA": "Не вдалося виділити обмежену таблицю версій джерел.",
+    "de-DE": "Die begrenzte Tabelle der Quellendefinitionsversionen kann nicht angelegt werden."
+  },
+  "Source definition epoch is absent.": {
+    "es-ES": "Falta la versión de definición de la fuente.",
+    "ru-RU": "Отсутствует версия определения источника.",
+    "uk-UA": "Відсутня версія визначення джерела.",
+    "de-DE": "Die Quellendefinitionsversion fehlt."
+  },
+  "Combined configured shortcut limit exceeded.": {
+    "es-ES": "Se superó el límite total de atajos configurados.",
+    "ru-RU": "Превышен общий лимит заданных сочетаний.",
+    "uk-UA": "Перевищено загальний ліміт заданих сполучень.",
+    "de-DE": "Das gemeinsame Limit konfigurierter Kürzel wurde überschritten."
+  },
+  "Shortcut arbitration route limit exceeded.": {
+    "es-ES": "Se superó el límite de rutas del arbitraje de atajos.",
+    "ru-RU": "Превышен лимит маршрутов обработки сочетаний.",
+    "uk-UA": "Перевищено ліміт маршрутів обробки сполучень.",
+    "de-DE": "Das Routenlimit der Kürzelarbitrierung wurde überschritten."
+  },
+  "Shortcut sample has an invalid binding identity.": {
+    "es-ES": "La muestra del atajo tiene una identidad de asignación no válida.",
+    "ru-RU": "Проверка клавиши содержит недопустимую идентичность назначения.",
+    "uk-UA": "Перевірка клавіші містить неприпустиму ідентичність призначення.",
+    "de-DE": "Die Kürzelabfrage enthält eine ungültige Zuordnungsidentität."
+  },
+  "Shortcut press/release buffer is full; input stopped. Release the configured keys and reopen shortcut settings.": {
+    "es-ES": "El búfer de pulsación/liberación está lleno; se detuvo la entrada. Suelte las teclas configuradas y vuelva a abrir los ajustes de atajos.",
+    "ru-RU": "Буфер нажатий и отпусканий заполнен; обработка остановлена. Отпустите заданные клавиши и заново откройте настройки сочетаний.",
+    "uk-UA": "Буфер натискань і відпускань заповнений; обробку зупинено. Відпустіть задані клавіші та знову відкрийте налаштування сполучень.",
+    "de-DE": "Der Druck-/Loslasspuffer ist voll; die Eingabe wurde gestoppt. Konfigurierte Tasten loslassen und die Kürzeleinstellungen erneut öffnen."
+  },
+  "Shortcut press identity exhausted. Restart SkyLive.": {
+    "es-ES": "Se agotó la identidad de pulsaciones. Reinicie SkyLive.",
+    "ru-RU": "Исчерпаны идентификаторы нажатий. Перезапустите SkyLive.",
+    "uk-UA": "Вичерпано ідентифікатори натискань. Перезапустіть SkyLive.",
+    "de-DE": "Die Tastendruckidentitäten sind erschöpft. SkyLive neu starten."
+  },
+  "Shortcut callback did not acknowledge within five seconds; input stopped. Release the configured keys and reopen shortcut settings.": {
+    "es-ES": "El manejador no confirmó el atajo en cinco segundos; se detuvo la entrada. Suelte las teclas y vuelva a abrir los ajustes.",
+    "ru-RU": "Обработчик не подтвердил команду за пять секунд; обработка остановлена. Отпустите заданные клавиши и заново откройте настройки сочетаний.",
+    "uk-UA": "Обробник не підтвердив команду за п’ять секунд; обробку зупинено. Відпустіть задані клавіші та знову відкрийте налаштування сполучень.",
+    "de-DE": "Der Kürzelhandler hat fünf Sekunden lang nicht bestätigt; die Eingabe wurde gestoppt. Tasten loslassen und die Kürzeleinstellungen erneut öffnen."
+  },
+  "Shortcut pair identity is absent.": {
+    "es-ES": "Falta la identidad del par de atajos.",
+    "ru-RU": "Отсутствует идентичность пары сочетаний.",
+    "uk-UA": "Відсутня ідентичність пари сполучень.",
+    "de-DE": "Die Kürzelpaaridentität fehlt."
+  },
+  "Shortcut action release count underflow.": {
+    "es-ES": "El contador de liberaciones de la acción bajó del mínimo.",
+    "ru-RU": "Счётчик отпусканий команды вышел за нижнюю границу.",
+    "uk-UA": "Лічильник відпускань команди вийшов за нижню межу.",
+    "de-DE": "Der Loslasszähler des Kürzelbefehls unterschreitet die Untergrenze."
+  },
+  "Shortcut action press count overflow.": {
+    "es-ES": "Se desbordó el contador de pulsaciones de la acción.",
+    "ru-RU": "Переполнен счётчик нажатий команды.",
+    "uk-UA": "Переповнений лічильник натискань команди.",
+    "de-DE": "Der Druckzähler des Kürzelbefehls läuft über."
+  },
+  "Shortcut callback queue is full; input stopped instead of dropping actions.": {
+    "es-ES": "La cola de manejadores de atajos está llena; se detuvo la entrada sin descartar acciones.",
+    "ru-RU": "Очередь обработчиков сочетаний заполнена; ввод остановлен без скрытого пропуска команд.",
+    "uk-UA": "Черга обробників сполучень заповнена; введення зупинено без прихованого пропуску команд.",
+    "de-DE": "Die Kürzelhandler-Warteschlange ist voll; die Eingabe wurde gestoppt, statt Befehle still zu verwerfen."
+  },
+  "Shortcut callback receiver is closed.": {
+    "es-ES": "El receptor de manejadores de atajos está cerrado.",
+    "ru-RU": "Получатель команд сочетаний закрыт.",
+    "uk-UA": "Отримувач команд сполучень закритий.",
+    "de-DE": "Der Empfänger für Kürzelrückmeldungen ist geschlossen."
+  },
+  "Shortcut input is still retiring.": {
+    "es-ES": "La entrada de atajos aún se está cerrando.",
+    "ru-RU": "Обработка сочетаний ещё завершается.",
+    "uk-UA": "Обробка сполучень ще завершується.",
+    "de-DE": "Die Tastenkürzeleingabe wird noch beendet."
+  },
+  "Configured shortcut has no supported Windows virtual key.": {
+    "es-ES": "El atajo configurado no tiene una tecla virtual de Windows admitida.",
+    "ru-RU": "У заданного сочетания нет поддерживаемой виртуальной клавиши Windows.",
+    "uk-UA": "Задане сполучення не має підтримуваної віртуальної клавіші Windows.",
+    "de-DE": "Das konfigurierte Kürzel besitzt keine unterstützte virtuelle Windows-Taste."
+  },
+  "Shortcut input timeline is absent.": {
+    "es-ES": "Falta la secuencia temporal de entrada de atajos.",
+    "ru-RU": "Отсутствует временная последовательность обработки сочетаний.",
+    "uk-UA": "Відсутня часова послідовність обробки сполучень.",
+    "de-DE": "Die Zeitfolge der Tastenkürzeleingabe fehlt."
+  },
+  "Cannot allocate bounded shortcut arbitration state.": {
+    "es-ES": "No se puede reservar el estado limitado de arbitraje de atajos.",
+    "ru-RU": "Не удалось выделить ограниченное состояние обработки сочетаний.",
+    "uk-UA": "Не вдалося виділити обмежений стан обробки сполучень.",
+    "de-DE": "Der begrenzte Kürzelarbitrierungszustand kann nicht angelegt werden."
+  },
+  "shortcut callback was retired before media admission": {
+    "es-ES": "el manejador del atajo se retiró antes de admitir la operación multimedia",
+    "ru-RU": "обработчик сочетания был отозван до принятия операции медиа",
+    "uk-UA": "обробник сполучення був відкликаний до прийняття операції медіа",
+    "de-DE": "die Kürzelrückmeldung wurde vor der Medienzulassung zurückgezogen"
+  },
+  "Partial equivalent: local MP4/MOV Media Source with Rust H.264 Main/High/CABAC/B and AAC-LC playback, source properties and transport. On Windows an admitted software Media Foundation H.264 alternative supports progressive 8-bit 4:2:0 BT709 limited video, ordered multi-slice access units, PTS/DTS reordering and bounded drain/seek. No FFmpeg binary/library, hardware decoding, arbitrary FFmpeg formats, network media, FFmpeg outputs or encoders. Strict OBS32 local ffmpeg_source import/export uses actual worker-prepared video/audio metadata and preserves loop/restart/close/clear settings plus exact Play/Pause/Restart/Stop source shortcuts. Common Play/Pause chords reversibly map to native toggle bindings and export to both original arrays under the current pressed-event Host policy; configured Windows polling tracks per-action held counts and accepted pair latches; physical timing and OS key delivery remain unverified. Network settings and decoder overrides reject explicitly.": {
+    "es-ES": "Equivalente parcial: Media Source local MP4/MOV con Rust H.264 Main/High/CABAC/B y AAC-LC, propiedades y controles. En Windows se admite además la alternativa de software Media Foundation H.264 progresivo8 bits4:2:0 BT709 limitado, accesos multicorte ordenados, reordenación PTS/DTS y vaciado/búsqueda limitados. Sin FFmpeg binario/biblioteca, decodificación por hardware, formatos arbitrarios, medios de red ni salidas/codificadores FFmpeg. El intercambio estricto de ffmpeg_source local OBS32 usa metadatos reales del trabajador y conserva bucle/reinicio/cierre/fin y atajos exactos Play/Pause/Restart/Stop. Los atajos comunes Play/Pause se convierten reversiblemente en alternancia y se exportan a ambas listas originales. La consulta configurada de Windows mantiene contadores de teclas por acción y bloqueos de pares aceptados; el tiempo físico y la entrega real del sistema siguen sin verificar. Las opciones de red y de decodificador no representadas se rechazan explícitamente.",
+    "ru-RU": "Частичный аналог: локальный Media Source MP4/MOV с Rust H.264 Main/High/CABAC/B и AAC-LC, свойствами и управлением. На Windows допускается также программный Media Foundation H.264: прогрессивное8-битное4:2:0 BT709 limited, упорядоченные многослайсовые кадры, перестановка PTS/DTS и ограниченные завершение/поиск. Без бинарника или библиотеки FFmpeg, аппаратного декодирования, произвольных форматов, сетевого медиа, выходов или кодировщиков FFmpeg. Строгий обмен локальным ffmpeg_source OBS32 использует реальные метаданные рабочего потока и сохраняет цикл/перезапуск/закрытие/очистку и точные клавиши Play/Pause/Restart/Stop. Общие сочетания Play/Pause обратимо превращаются в переключатель и экспортируются в обе исходные таблицы. Проверка заданных клавиш Windows учитывает счётчики удержания команд и принятые стороны пар; физические задержки и реальная доставка клавиш ОС не проверены. Сетевые настройки и переопределения декодера явно отклоняются.",
+    "uk-UA": "Частковий аналог: локальний Media Source MP4/MOV з Rust H.264 Main/High/CABAC/B і AAC-LC, властивостями та керуванням. На Windows допускається також програмний Media Foundation H.264: прогресивне8-бітне4:2:0 BT709 limited, упорядковані багатослайсові кадри, перестановка PTS/DTS та обмежені завершення/пошук. Без бінарника чи бібліотеки FFmpeg, апаратного декодування, довільних форматів, мережевого медіа, виходів чи кодерів FFmpeg. Строгий обмін локальним ffmpeg_source OBS32 використовує реальні метадані робочого потоку та зберігає цикл/перезапуск/закриття/очищення й точні клавіші Play/Pause/Restart/Stop. Спільні сполучення Play/Pause зворотно стають перемикачем та експортуються в обидві початкові таблиці. Перевірка заданих клавіш Windows враховує лічильники утримання команд і прийняті сторони пар; фізичні затримки й реальна доставка клавіш ОС не перевірені. Мережеві параметри та перевизначення декодера явно відхиляються.",
+    "de-DE": "Teilweises Äquivalent: lokale MP4/MOV-Medienquelle mit Rust H.264 Main/High/CABAC/B und AAC-LC, Eigenschaften und Steuerung. Unter Windows ist zusätzlich die Softwarealternative Media Foundation H.264 für progressives8-Bit4:2:0 BT709 limited, geordnete Mehrfach-Slices, PTS/DTS-Umsortierung und begrenztes Leeren/Suchen zugelassen. Keine FFmpeg-Binärdatei/-Bibliothek, Hardwaredecodierung, beliebigen Formate, Netzwerkmedien oder FFmpeg-Ausgaben/-Encoder. Der strikte lokale OBS32-ffmpeg_source-Austausch nutzt echte Worker-Metadaten und erhält Schleife/Neustart/Schließen/Ende sowie exakte Play/Pause/Restart/Stop-Kürzel. Gemeinsame Play/Pause-Kombinationen werden reversibel zu Umschaltern und in beide ursprünglichen Listen exportiert. Die konfigurierte Windows-Abfrage führt pro Befehl Haltezähler und angenommene Paarseiten; physisches Timing und tatsächliche OS-Tastenzustellung sind ungeprüft. Netzwerkoptionen und Decoderüberschreibungen werden ausdrücklich abgelehnt."
+  }
+}

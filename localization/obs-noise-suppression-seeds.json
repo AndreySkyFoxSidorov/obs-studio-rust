@@ -1,0 +1,56 @@
+{
+  "Add OBS Noise Suppression (RNNoise)": {
+    "es-ES": "Añadir supresión de ruido OBS (RNNoise)",
+    "ru-RU": "Добавить шумоподавление OBS (RNNoise)",
+    "uk-UA": "Додати шумозаглушення OBS (RNNoise)",
+    "de-DE": "OBS-Rauschunterdrückung (RNNoise) hinzufügen"
+  },
+  "OBS Noise Suppression (RNNoise) {}": {
+    "es-ES": "Supresión de ruido OBS (RNNoise) {}",
+    "ru-RU": "Шумоподавление OBS (RNNoise) {}",
+    "uk-UA": "Шумозаглушення OBS (RNNoise) {}",
+    "de-DE": "OBS-Rauschunterdrückung (RNNoise) {}"
+  },
+  "Suppress background noise with the original RNNoise model. Processing uses the audio worker and adds latency; CPU use grows with channel count.": {
+    "es-ES": "Suprime el ruido de fondo con el modelo RNNoise original. Se procesa en el hilo de audio y añade latencia; el uso de CPU aumenta con el número de canales.",
+    "ru-RU": "Подавляет фоновый шум исходной моделью RNNoise. Обработка выполняется в аудиопотоке и добавляет задержку; нагрузка на CPU растёт с числом каналов.",
+    "uk-UA": "Пригнічує фоновий шум оригінальною моделлю RNNoise. Обробка відбувається в аудіопотоці й додає затримку; навантаження на CPU зростає з кількістю каналів.",
+    "de-DE": "Unterdrückt Hintergrundrauschen mit dem ursprünglichen RNNoise-Modell. Die Verarbeitung läuft im Audio-Worker und erhöht die Latenz; die CPU-Last steigt mit der Kanalzahl."
+  },
+  "Enable or bypass RNNoise without removing this filter. Bypass retires its queued processing state.": {
+    "es-ES": "Activa o desactiva RNNoise sin eliminar el filtro. Al desactivarlo se descarta su estado de procesamiento pendiente.",
+    "ru-RU": "Включает или обходит RNNoise без удаления фильтра. При обходе его ожидающее состояние обработки освобождается.",
+    "uk-UA": "Вмикає або обходить RNNoise без видалення фільтра. Під час обходу його очікуваний стан обробки звільняється.",
+    "de-DE": "Aktiviert oder umgeht RNNoise, ohne den Filter zu entfernen. Beim Umgehen wird sein wartender Verarbeitungszustand verworfen."
+  },
+  "RNNoise (original model)": {
+    "es-ES": "RNNoise (modelo original)",
+    "ru-RU": "RNNoise (исходная модель)",
+    "uk-UA": "RNNoise (оригінальна модель)",
+    "de-DE": "RNNoise (ursprüngliches Modell)"
+  },
+  "RNNoise is the available noise-suppression method. Speex is not implemented in this build.": {
+    "es-ES": "RNNoise es el método de supresión de ruido disponible. Speex no está implementado en esta versión.",
+    "ru-RU": "Доступный метод шумоподавления — RNNoise. Speex в этой сборке не реализован.",
+    "uk-UA": "Доступний метод шумозаглушення — RNNoise. Speex у цій збірці не реалізовано.",
+    "de-DE": "RNNoise ist das verfügbare Verfahren zur Rauschunterdrückung. Speex ist in dieser Version nicht implementiert."
+  },
+  "Suppresses background noise using independent audio-channel processing. RNNoise adds 10 ms per stage; packet conversion and buffering add latency. Output admission keeps the total within the supported two-second profile.": {
+    "es-ES": "Suprime el ruido de fondo procesando cada canal de forma independiente. RNNoise añade 10 ms por etapa; la conversión de paquetes y el búfer añaden latencia. La admisión de salida mantiene el total dentro del perfil compatible de dos segundos.",
+    "ru-RU": "Подавляет фоновый шум с независимой обработкой аудиоканалов. RNNoise добавляет 10 мс на этап; преобразование пакетов и буферизация добавляют задержку. При запуске вывода общая задержка проверяется на соответствие поддерживаемому профилю в две секунды.",
+    "uk-UA": "Пригнічує фоновий шум із незалежною обробкою аудіоканалів. RNNoise додає 10 мс на етап; перетворення пакетів і буферизація додають затримку. Під час запуску виводу загальна затримка перевіряється на відповідність підтримуваному профілю у дві секунди.",
+    "de-DE": "Unterdrückt Hintergrundrauschen durch unabhängige Verarbeitung der Audiokanäle. RNNoise fügt pro Stufe 10 ms hinzu; Paketkonvertierung und Pufferung erhöhen die Latenz. Die Ausgabezulassung hält die Gesamtlatenz im unterstützten Zwei-Sekunden-Profil."
+  },
+  "SDR OBS video: Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2, Sharpen v2, Crop/Pad, Image Mask/Blend v2, Apply LUT, Scroll and Scaling/Aspect Ratio. CPU spatial stages; admitted GPU point/LUT stages where available. Audio: Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, RNNoise Noise Suppression, Limiter, Compressor with external sidechain, Upward Compressor and Expander. Original-model RNNoise runs once per source on the CPU, with real delayed history shared by sidechain, monitoring and six tracks at project 44.1/48 kHz. Active RNNoise requires the source-owner pipeline; single-snapshot audio evaluation is explicitly unsupported. Speex, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Vídeo SDR de OBS: corrección de color v2, clave de color v2, clave cromática v2, clave de luminancia v2, enfoque v2, recorte/relleno, máscara/mezcla de imagen v2, LUT, desplazamiento y escalado/relación de aspecto. Etapas espaciales en CPU y etapas puntuales/LUT en GPU cuando estén disponibles. Audio: ganancia, inversión de polaridad, puerta de ruido, ecualizador de 3 bandas, supresión RNNoise, limitador, compresor con cadena lateral externa, compresor ascendente y expansor. El RNNoise original se ejecuta una vez por fuente en CPU; la cadena lateral, monitorización y seis pistas comparten el audio realmente retrasado a 44,1/48 kHz. RNNoise activo requiere la canalización propietaria de la fuente; la evaluación de una sola instantánea no es compatible. Speex, VST, HDR, filtros v1 y los demás filtros estándar no están implementados.",
+    "ru-RU": "Видео OBS SDR: цветокоррекция v2, цветовой ключ v2, хромакей v2, ключ яркости v2, резкость v2, обрезка/поля, маска/смешивание v2, LUT, прокрутка и масштабирование/пропорции. Пространственные этапы работают на CPU; допустимые точечные этапы и LUT — на GPU, когда он доступен. Аудио: усиление, инверсия полярности, шумовой гейт, трёхполосный эквалайзер, RNNoise, лимитер, компрессор с внешним сайдчейном, повышающий компрессор и экспандер. Исходная модель RNNoise выполняется на CPU один раз для источника; сайдчейн, мониторинг и шесть дорожек используют общую историю реально задержанного звука при 44,1/48 кГц. Активный RNNoise требует обработки владельцем источника; расчёт единственного снимка не поддерживается. Speex, VST, HDR, фильтры v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Відео OBS SDR: корекція кольору v2, колірний ключ v2, хромакей v2, ключ яскравості v2, різкість v2, обрізання/поля, маска/змішування v2, LUT, прокручування та масштабування/пропорції. Просторові етапи працюють на CPU; допустимі точкові етапи та LUT — на GPU, коли він доступний. Аудіо: підсилення, інверсія полярності, шумовий гейт, трисмуговий еквалайзер, RNNoise, лімітер, компресор із зовнішнім сайдчейном, підвищувальний компресор та експандер. Оригінальна модель RNNoise виконується на CPU один раз для джерела; сайдчейн, моніторинг і шість доріжок використовують спільну історію реально затриманого звуку за 44,1/48 кГц. Активний RNNoise потребує обробки власником джерела; обчислення єдиного знімка не підтримується. Speex, VST, HDR, фільтри v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-SDR-Video: Farbkorrektur v2, Color Key v2, Chroma Key v2, Luma Key v2, Schärfen v2, Zuschneiden/Auffüllen, Bildmaske/Mischen v2, LUT, Scrollen und Skalierung/Seitenverhältnis. Räumliche Stufen auf CPU; zugelassene Punkt-/LUT-Stufen bei Verfügbarkeit auf GPU. Audio: Verstärkung, Polaritätsumkehr, Noise-Gate, Dreiband-EQ, RNNoise, Limiter, Kompressor mit externer Sidechain, Aufwärtskompressor und Expander. Das ursprüngliche RNNoise läuft einmal je Quelle auf CPU; Sidechain, Monitoring und sechs Spuren teilen den tatsächlich verzögerten Audioverlauf bei 44,1/48 kHz. Aktives RNNoise benötigt die Quellverarbeitung; die Auswertung einer einzelnen Momentaufnahme wird ausdrücklich abgelehnt. Speex, VST, HDR, alte v1-Filter und weitere Standardfilter sind nicht implementiert."
+  },
+  "Method": {
+    "es-ES": "Método",
+    "ru-RU": "Метод",
+    "uk-UA": "Метод",
+    "de-DE": "Methode"
+  }
+}

@@ -1,0 +1,30 @@
+[workspace]
+members = ["crates/game-capture-protocol", "crates/game-hook", "crates/browser-protocol", "apps/browser-helper", "crates/core", "crates/media", "crates/host", "crates/person-matte", "crates/virtual-camera-protocol", "crates/virtual-camera-source", "apps/virtual-camera-install", "crates/codec-bits", "crates/h264", "crates/aac", "crates/mp4", "apps/cli", "apps/desktop", "xtask"]
+exclude = ["vendor/rten-0.21.0"]
+resolver = "3"
+
+# Pinned pure Rust runtime: lazy global fallback and an explicitly owned
+# joining constructor for the neural service two-thread pool.
+[patch.crates-io]
+rten = { path = "vendor/rten-0.21.0" }
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+license = "GPL-2.0-or-later"
+publish = false
+
+[workspace.dependencies]
+skylive-core = { path = "crates/core" }
+skylive-media = { path = "crates/media" }
+skylive-host = { path = "crates/host" }
+serde = { version = "=1.0.228", features = ["derive", "rc"] }
+serde_json = { version = "=1.0.145", features = ["float_roundtrip"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[profile.dev]
+debug = 1

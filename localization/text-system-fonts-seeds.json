@@ -1,0 +1,56 @@
+{
+  "Find Installed Fonts": {
+    "es-ES": "Buscar fuentes instaladas",
+    "ru-RU": "Найти установленные шрифты",
+    "uk-UA": "Знайти встановлені шрифти",
+    "de-DE": "Installierte Schriften suchen"
+  },
+  "Search installed families": {
+    "es-ES": "Buscar familias instaladas",
+    "ru-RU": "Поиск установленных семейств",
+    "uk-UA": "Пошук встановлених сімейств",
+    "de-DE": "Installierte Schriftfamilien suchen"
+  },
+  "Discover supported installed Windows font faces on the background file worker. The selected exact face is saved; unavailable fonts never fall back automatically.": {
+    "es-ES": "Busca estilos compatibles instalados en Windows en segundo plano. Se guarda el estilo exacto; no se sustituye automáticamente.",
+    "ru-RU": "Найти поддерживаемые установленные шрифты Windows в фоновом потоке. Сохраняется точное начертание; недоступный шрифт не подменяется.",
+    "uk-UA": "Знайти підтримувані встановлені шрифти Windows у фоновому потоці. Зберігається точне накреслення; недоступний шрифт не підміняється.",
+    "de-DE": "Unterstützte installierte Windows-Schriftarten im Hintergrund suchen. Der genaue Schriftschnitt wird gespeichert; es erfolgt kein automatischer Ersatz."
+  },
+  "Installed fonts: {faces} faces; {skipped} entries unavailable or unsupported.": {
+    "es-ES": "Fuentes instaladas: {faces} estilos; {skipped} entradas no disponibles o incompatibles.",
+    "ru-RU": "Установленные шрифты: {faces} начертаний; записей недоступно или не поддерживается: {skipped}.",
+    "uk-UA": "Встановлені шрифти: {faces} накреслень; записів недоступно або не підтримується: {skipped}.",
+    "de-DE": "Installierte Schriften: {faces} Schriftschnitte; {skipped} Einträge nicht verfügbar oder nicht unterstützt."
+  },
+  "Installed font list is incomplete: {faces} faces; {skipped} entries unavailable or unsupported.": {
+    "es-ES": "Lista incompleta: {faces} estilos; {skipped} entradas no disponibles o incompatibles.",
+    "ru-RU": "Список шрифтов неполный: {faces} начертаний; записей недоступно или не поддерживается: {skipped}.",
+    "uk-UA": "Список шрифтів неповний: {faces} накреслень; записів недоступно або не підтримується: {skipped}.",
+    "de-DE": "Schriftliste unvollständig: {faces} Schriftschnitte; {skipped} Einträge nicht verfügbar oder nicht unterstützt."
+  },
+  "Selected fonts use static unhinted TrueType outlines only. CFF OpenType and variable/color/bitmap fonts are not supported.": {
+    "es-ES": "Las fuentes seleccionadas usan contornos TrueType estáticos sin hinting. No se admiten fuentes CFF OpenType, variables, de color o de mapa de bits.",
+    "ru-RU": "Выбранные шрифты используют только статические контуры TrueType без хинтинга. CFF OpenType, вариативные, цветные и растровые шрифты не поддерживаются.",
+    "uk-UA": "Обрані шрифти використовують лише статичні контури TrueType без хінтингу. CFF OpenType, варіативні, кольорові та растрові шрифти не підтримуються.",
+    "de-DE": "Ausgewählte Schriften verwenden nur statische TrueType-Konturen ohne Hinting. CFF OpenType sowie variable, Farb- und Bitmap-Schriften werden nicht unterstützt."
+  },
+  "Embedded Noto font. Choose an installed font explicitly to use it instead.": {
+    "es-ES": "Fuente Noto integrada. Selecciona una fuente instalada para usarla.",
+    "ru-RU": "Встроенный шрифт Noto. Для использования установленного шрифта выберите его явно.",
+    "uk-UA": "Вбудований шрифт Noto. Щоб використати встановлений шрифт, оберіть його явно.",
+    "de-DE": "Eingebettete Noto-Schrift. Wähle eine installierte Schrift ausdrücklich aus."
+  },
+  "The text or font draft changed; discover installed fonts again.": {
+    "es-ES": "El borrador cambió; busca de nuevo las fuentes instaladas.",
+    "ru-RU": "Текст или настройки шрифта изменились; найдите установленные шрифты снова.",
+    "uk-UA": "Текст або налаштування шрифту змінилися; знайдіть встановлені шрифти знову.",
+    "de-DE": "Text oder Schriftentwurf wurde geändert; installierte Schriften erneut suchen."
+  },
+  "Choose a prepared installed font face.": {
+    "es-ES": "Selecciona un estilo instalado preparado.",
+    "ru-RU": "Выберите подготовленное установленное начертание.",
+    "uk-UA": "Оберіть підготовлене встановлене накреслення.",
+    "de-DE": "Einen vorbereiteten installierten Schriftschnitt auswählen."
+  }
+}

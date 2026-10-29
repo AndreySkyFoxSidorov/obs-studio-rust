@@ -1,0 +1,104 @@
+{
+  "Add Gain": {
+    "es-ES": "Añadir ganancia",
+    "ru-RU": "Добавить усиление",
+    "uk-UA": "Додати підсилення",
+    "de-DE": "Verstärkung hinzufügen"
+  },
+  "Add Invert Polarity": {
+    "es-ES": "Añadir inversión de polaridad",
+    "ru-RU": "Добавить инверсию полярности",
+    "uk-UA": "Додати інверсію полярності",
+    "de-DE": "Polaritätsumkehr hinzufügen"
+  },
+  "Gain {}": {
+    "es-ES": "Ganancia {}",
+    "ru-RU": "Усиление {}",
+    "uk-UA": "Підсилення {}",
+    "de-DE": "Verstärkung {}"
+  },
+  "Invert Polarity {}": {
+    "es-ES": "Invertir polaridad {}",
+    "ru-RU": "Инверсия полярности {}",
+    "uk-UA": "Інверсія полярності {}",
+    "de-DE": "Polarität umkehren {}"
+  },
+  "Gain (dB)": {
+    "es-ES": "Ganancia (dB)",
+    "ru-RU": "Усиление (dB)",
+    "uk-UA": "Підсилення (dB)",
+    "de-DE": "Verstärkung (dB)"
+  },
+  "Enable or bypass this OBS Gain filter without removing its settings.": {
+    "es-ES": "Activa u omite este filtro de ganancia de OBS sin eliminar sus ajustes.",
+    "ru-RU": "Включить или обойти фильтр усиления OBS, сохранив его настройки.",
+    "uk-UA": "Увімкнути або обійти фільтр підсилення OBS, зберігши його налаштування.",
+    "de-DE": "Diesen OBS-Verstärkungsfilter aktivieren oder umgehen, ohne seine Einstellungen zu löschen."
+  },
+  "Adjust every audio channel by the same gain. The filter does not clip peaks before the source volume control.": {
+    "es-ES": "Ajusta todos los canales de audio con la misma ganancia. El filtro no recorta los picos antes del control de volumen de la fuente.",
+    "ru-RU": "Применить одинаковое усиление ко всем аудиоканалам. Фильтр не обрезает пики до регулятора громкости источника.",
+    "uk-UA": "Застосувати однакове підсилення до всіх аудіоканалів. Фільтр не обрізає піки до регулятора гучності джерела.",
+    "de-DE": "Alle Audiokanäle gleich verstärken. Der Filter begrenzt Spitzen vor dem Lautstärkeregler der Quelle nicht."
+  },
+  "Set the OBS Gain filter from -30 to +30 dB in 0.1 dB steps.": {
+    "es-ES": "Ajusta la ganancia de OBS de -30 a +30 dB en pasos de 0.1 dB.",
+    "ru-RU": "Настроить усиление OBS от -30 до +30 dB с шагом 0.1 dB.",
+    "uk-UA": "Налаштувати підсилення OBS від -30 до +30 dB із кроком 0.1 dB.",
+    "de-DE": "Die OBS-Verstärkung von -30 bis +30 dB in Schritten von 0.1 dB einstellen."
+  },
+  "Enable or bypass polarity inversion without removing the filter.": {
+    "es-ES": "Activa u omite la inversión de polaridad sin eliminar el filtro.",
+    "ru-RU": "Включить или обойти инверсию полярности, не удаляя фильтр.",
+    "uk-UA": "Увімкнути або обійти інверсію полярності, не видаляючи фільтр.",
+    "de-DE": "Die Polaritätsumkehr aktivieren oder umgehen, ohne den Filter zu entfernen."
+  },
+  "Invert the polarity of every audio channel. Signal level and playback timing remain unchanged.": {
+    "es-ES": "Invierte la polaridad de todos los canales de audio. El nivel de la señal y los tiempos de reproducción no cambian.",
+    "ru-RU": "Инвертировать полярность всех аудиоканалов. Уровень сигнала и время воспроизведения сохраняются.",
+    "uk-UA": "Інвертувати полярність усіх аудіоканалів. Рівень сигналу та час відтворення зберігаються.",
+    "de-DE": "Die Polarität aller Audiokanäle umkehren. Signalpegel und Wiedergabezeit bleiben unverändert."
+  },
+  "Add the built-in OBS Gain filter. It applies the same dB gain to every channel without early clipping.": {
+    "es-ES": "Añade el filtro de ganancia integrado de OBS. Aplica la misma ganancia en dB a todos los canales sin recortar la señal anticipadamente.",
+    "ru-RU": "Добавить встроенный фильтр усиления OBS. Он применяет одинаковое усиление в dB ко всем каналам без преждевременного обрезания сигнала.",
+    "uk-UA": "Додати вбудований фільтр підсилення OBS. Він застосовує однакове підсилення в dB до всіх каналів без передчасного обрізання сигналу.",
+    "de-DE": "Den integrierten OBS-Verstärkungsfilter hinzufügen. Er verstärkt alle Kanäle um denselben dB-Wert ohne vorzeitige Begrenzung."
+  },
+  "Add the built-in OBS Invert Polarity filter. It reverses every channel's sign without changing timing.": {
+    "es-ES": "Añade el filtro integrado de inversión de polaridad de OBS. Invierte el signo de todos los canales sin cambiar los tiempos.",
+    "ru-RU": "Добавить встроенный фильтр инверсии полярности OBS. Он меняет знак всех каналов, сохраняя время воспроизведения.",
+    "uk-UA": "Додати вбудований фільтр інверсії полярності OBS. Він змінює знак усіх каналів, зберігаючи час відтворення.",
+    "de-DE": "Den integrierten OBS-Filter zur Polaritätsumkehr hinzufügen. Er kehrt das Vorzeichen aller Kanäle um, ohne das Timing zu verändern."
+  },
+  "Filters execute from top to bottom, following OBS. This source's settings are shared by every scene reference. Apply commits the complete chain; Cancel discards this draft.": {
+    "es-ES": "Los filtros se ejecutan de arriba abajo, como en OBS. Todas las referencias de escenas comparten los ajustes de esta fuente. Aplicar guarda toda la cadena; Cancelar descarta este borrador.",
+    "ru-RU": "Фильтры выполняются сверху вниз, как в OBS. Все ссылки на источник в сценах используют общие настройки. «Применить» сохраняет всю цепочку, «Отмена» отклоняет черновик.",
+    "uk-UA": "Фільтри виконуються згори вниз, як в OBS. Усі посилання на джерело в сценах використовують спільні налаштування. «Застосувати» зберігає весь ланцюжок, «Скасувати» відхиляє чернетку.",
+    "de-DE": "Filter werden wie in OBS von oben nach unten ausgeführt. Alle Szenenverweise dieser Quelle verwenden dieselben Einstellungen. Anwenden übernimmt die gesamte Kette; Abbrechen verwirft diesen Entwurf."
+  },
+  "Edit this source’s audio filters. Filters run from top to bottom.": {
+    "es-ES": "Edita los filtros de audio de esta fuente. Se ejecutan de arriba abajo.",
+    "ru-RU": "Настроить аудиофильтры этого источника. Фильтры выполняются сверху вниз.",
+    "uk-UA": "Налаштувати аудіофільтри цього джерела. Фільтри виконуються згори вниз.",
+    "de-DE": "Die Audiofilter dieser Quelle bearbeiten. Filter werden von oben nach unten ausgeführt."
+  },
+  "Move this filter up in the list. Filters run from top to bottom.": {
+    "es-ES": "Mueve este filtro hacia arriba en la lista. Los filtros se ejecutan de arriba abajo.",
+    "ru-RU": "Переместить фильтр вверх в списке. Фильтры выполняются сверху вниз.",
+    "uk-UA": "Перемістити фільтр угору в списку. Фільтри виконуються згори вниз.",
+    "de-DE": "Diesen Filter in der Liste nach oben verschieben. Filter werden von oben nach unten ausgeführt."
+  },
+  "Move this filter down in the list. Filters run from top to bottom.": {
+    "es-ES": "Mueve este filtro hacia abajo en la lista. Los filtros se ejecutan de arriba abajo.",
+    "ru-RU": "Переместить фильтр вниз в списке. Фильтры выполняются сверху вниз.",
+    "uk-UA": "Перемістити фільтр униз у списку. Фільтри виконуються згори вниз.",
+    "de-DE": "Diesen Filter in der Liste nach unten verschieben. Filter werden von oben nach unten ausgeführt."
+  },
+  "Enable an audio filter provider in Tools > Plugins.": {
+    "es-ES": "Activa un proveedor de filtros de audio en Herramientas > Complementos.",
+    "ru-RU": "Включите модуль аудиофильтров в меню «Инструменты > Плагины».",
+    "uk-UA": "Увімкніть модуль аудіофільтрів у меню «Інструменти > Плагіни».",
+    "de-DE": "Aktivieren Sie einen Audiofilter-Anbieter unter Werkzeuge > Plugins."
+  }
+}

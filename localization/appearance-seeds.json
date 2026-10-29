@@ -1,0 +1,92 @@
+{
+  "Settings — Appearance": {
+    "es-ES": "Ajustes — Apariencia",
+    "ru-RU": "Настройки — Оформление",
+    "uk-UA": "Налаштування — Вигляд",
+    "de-DE": "Einstellungen — Erscheinungsbild"
+  },
+  "Yami": {
+    "es-ES": "Yami",
+    "ru-RU": "Yami",
+    "uk-UA": "Yami",
+    "de-DE": "Yami"
+  },
+  "Dark": {
+    "es-ES": "Oscuro",
+    "ru-RU": "Тёмная",
+    "uk-UA": "Темна",
+    "de-DE": "Dunkel"
+  },
+  "Light": {
+    "es-ES": "Claro",
+    "ru-RU": "Светлая",
+    "uk-UA": "Світла",
+    "de-DE": "Hell"
+  },
+  "System": {
+    "es-ES": "Sistema",
+    "ru-RU": "Системная",
+    "uk-UA": "Системна",
+    "de-DE": "System"
+  },
+  "Interface scale": {
+    "es-ES": "Escala de la interfaz",
+    "ru-RU": "Масштаб интерфейса",
+    "uk-UA": "Масштаб інтерфейсу",
+    "de-DE": "Oberflächenskalierung"
+  },
+  "Choose the colors used by the interface.": {
+    "es-ES": "Elija los colores de la interfaz.",
+    "ru-RU": "Выберите цвета интерфейса.",
+    "uk-UA": "Виберіть кольори інтерфейсу.",
+    "de-DE": "Farben der Oberfläche wählen."
+  },
+  "Scale interface text and controls from 75% to 200%. Video resolution stays unchanged.": {
+    "es-ES": "Cambie la escala del texto y los controles de la interfaz entre el 75 % y el 200 %. La resolución de vídeo no cambia.",
+    "ru-RU": "Измените масштаб текста и элементов интерфейса от 75% до 200%. Разрешение видео не изменится.",
+    "uk-UA": "Змініть масштаб тексту й елементів інтерфейсу від 75% до 200%. Роздільність відео не зміниться.",
+    "de-DE": "Text und Bedienelemente der Oberfläche auf 75 % bis 200 % skalieren. Die Videoauflösung bleibt unverändert."
+  },
+  "System follows the operating system's light or dark appearance.": {
+    "es-ES": "Sistema sigue la apariencia clara u oscura del sistema operativo.",
+    "ru-RU": "Системная тема следует светлому или тёмному оформлению операционной системы.",
+    "uk-UA": "Системна тема відповідає світлому або темному вигляду операційної системи.",
+    "de-DE": "System folgt dem hellen oder dunklen Erscheinungsbild des Betriebssystems."
+  },
+  "Apply changes the interface theme and scale. Cancel keeps your current appearance. These preferences are separate from scene Undo.": {
+    "es-ES": "Aplicar cambia el tema y la escala de la interfaz. Cancelar conserva la apariencia actual. Estas preferencias son independientes de Deshacer de las escenas.",
+    "ru-RU": "«Применить» изменяет тему и масштаб интерфейса. «Отмена» сохраняет текущее оформление. Эти настройки не входят в историю отмены сцен.",
+    "uk-UA": "«Застосувати» змінює тему та масштаб інтерфейсу. «Скасувати» зберігає поточний вигляд. Ці налаштування не входять до історії скасування сцен.",
+    "de-DE": "Übernehmen ändert Thema und Skalierung der Oberfläche. Abbrechen behält das aktuelle Erscheinungsbild bei. Diese Einstellungen sind vom Rückgängigmachen der Szenen getrennt."
+  },
+  "Restore default appearance": {
+    "es-ES": "Restaurar la apariencia predeterminada",
+    "ru-RU": "Восстановить оформление по умолчанию",
+    "uk-UA": "Відновити типовий вигляд",
+    "de-DE": "Standarderscheinungsbild wiederherstellen"
+  },
+  "Choose Yami and 100% scale in this draft.": {
+    "es-ES": "Seleccione Yami y una escala del 100 % en estos cambios pendientes.",
+    "ru-RU": "Выберите Yami и масштаб 100% в текущем черновике настроек.",
+    "uk-UA": "Виберіть Yami та масштаб 100% у поточній чернетці налаштувань.",
+    "de-DE": "Yami und 100 % Skalierung für diese noch nicht übernommenen Einstellungen wählen."
+  },
+  "Appearance settings changed. Reopen this page before applying.": {
+    "es-ES": "Los ajustes de apariencia han cambiado. Vuelva a abrir esta página antes de aplicar.",
+    "ru-RU": "Настройки оформления изменились. Перед применением откройте эту страницу заново.",
+    "uk-UA": "Налаштування вигляду змінилися. Перед застосуванням відкрийте цю сторінку знову.",
+    "de-DE": "Die Erscheinungsbildeinstellungen wurden geändert. Diese Seite vor dem Übernehmen erneut öffnen."
+  },
+  "Interface scale must be between 75% and 200%.": {
+    "es-ES": "La escala de la interfaz debe estar entre el 75 % y el 200 %.",
+    "ru-RU": "Масштаб интерфейса должен быть от 75% до 200%.",
+    "uk-UA": "Масштаб інтерфейсу має бути від 75% до 200%.",
+    "de-DE": "Die Oberflächenskalierung muss zwischen 75 % und 200 % liegen."
+  },
+  "Development build — local scene composition, capture and MP4 recording. Streaming and virtual-camera output are pending.": {
+    "es-ES": "Versión en desarrollo: composición local de escenas, captura y grabación MP4. La transmisión y la salida de cámara virtual están pendientes.",
+    "ru-RU": "Версия в разработке: локальная композиция сцен, захват и запись MP4. Трансляция и вывод виртуальной камеры ещё не реализованы.",
+    "uk-UA": "Версія в розробці: локальна композиція сцен, захоплення та запис MP4. Трансляція й виведення віртуальної камери ще не реалізовані.",
+    "de-DE": "Entwicklungsversion: lokale Szenenkomposition, Aufnahme und MP4-Aufzeichnung. Streaming und virtuelle Kameraausgabe stehen noch aus."
+  }
+}

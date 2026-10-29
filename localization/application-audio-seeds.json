@@ -1,0 +1,158 @@
+{
+  "Application Audio Capture": {
+    "es-ES": "Captura de audio de aplicación",
+    "ru-RU": "Захват звука приложения",
+    "uk-UA": "Захоплення звуку застосунку",
+    "de-DE": "Anwendungsaudioaufnahme"
+  },
+  "Properties: Application Audio Capture": {
+    "es-ES": "Propiedades: captura de audio de aplicación",
+    "ru-RU": "Свойства: захват звука приложения",
+    "uk-UA": "Властивості: захоплення звуку застосунку",
+    "de-DE": "Eigenschaften: Anwendungsaudioaufnahme"
+  },
+  "Application process": {
+    "es-ES": "Proceso de aplicación",
+    "ru-RU": "Процесс приложения",
+    "uk-UA": "Процес застосунку",
+    "de-DE": "Anwendungsprozess"
+  },
+  "Application": {
+    "es-ES": "Aplicación",
+    "ru-RU": "Приложение",
+    "uk-UA": "Застосунок",
+    "de-DE": "Anwendung"
+  },
+  "Choose a running application": {
+    "es-ES": "Elige una aplicación en ejecución",
+    "ru-RU": "Выберите запущенное приложение",
+    "uk-UA": "Виберіть запущений застосунок",
+    "de-DE": "Laufende Anwendung auswählen"
+  },
+  "Choose a running application before applying": {
+    "es-ES": "Elige una aplicación en ejecución antes de aplicar",
+    "ru-RU": "Перед применением выберите запущенное приложение",
+    "uk-UA": "Перед застосуванням виберіть запущений застосунок",
+    "de-DE": "Vor dem Anwenden eine laufende Anwendung auswählen"
+  },
+  "Capture the selected application's process tree, including its child processes.": {
+    "es-ES": "Captura el árbol de procesos de la aplicación seleccionada, incluidos sus procesos secundarios.",
+    "ru-RU": "Захватывать дерево процессов выбранного приложения, включая дочерние процессы.",
+    "uk-UA": "Захоплювати дерево процесів вибраного застосунку, включно з дочірніми процесами.",
+    "de-DE": "Den Prozessbaum der gewählten Anwendung einschließlich ihrer untergeordneten Prozesse aufnehmen."
+  },
+  "Listing running applications…": {
+    "es-ES": "Buscando aplicaciones en ejecución…",
+    "ru-RU": "Получение списка запущенных приложений…",
+    "uk-UA": "Отримання списку запущених застосунків…",
+    "de-DE": "Laufende Anwendungen werden aufgelistet…"
+  },
+  "No accessible application windows were found.": {
+    "es-ES": "No se encontraron ventanas de aplicaciones accesibles.",
+    "ru-RU": "Доступные окна приложений не найдены.",
+    "uk-UA": "Доступних вікон застосунків не знайдено.",
+    "de-DE": "Keine zugänglichen Anwendungsfenster gefunden."
+  },
+  "Refresh Applications": {
+    "es-ES": "Actualizar aplicaciones",
+    "ru-RU": "Обновить приложения",
+    "uk-UA": "Оновити застосунки",
+    "de-DE": "Anwendungen aktualisieren"
+  },
+  "Refresh actual application windows and process identities without starting capture.": {
+    "es-ES": "Actualiza las ventanas y las identidades de los procesos sin iniciar la captura.",
+    "ru-RU": "Обновить список окон и точные идентификаторы процессов без запуска захвата.",
+    "uk-UA": "Оновити список вікон і точні ідентифікатори процесів без запуску захоплення.",
+    "de-DE": "Anwendungsfenster und Prozessidentitäten aktualisieren, ohne die Aufnahme zu starten."
+  },
+  "Windows build 20348 or later. Captures the chosen process tree as 48 kHz stereo float PCM; the mixer converts it to the active audio format.": {
+    "es-ES": "Windows compilación 20348 o posterior. Captura el árbol de procesos elegido en PCM flotante estéreo a 48 kHz; el mezclador lo convierte al formato de audio activo.",
+    "ru-RU": "Windows сборки 20348 или новее. Дерево процессов записывается в стерео PCM с плавающей точкой, 48 кГц; микшер преобразует звук в активный аудиоформат.",
+    "uk-UA": "Windows збірки 20348 або новішої. Дерево процесів записується у стерео PCM із рухомою комою, 48 кГц; мікшер перетворює звук на активний аудіоформат.",
+    "de-DE": "Windows ab Build 20348. Der gewählte Prozessbaum wird als Stereo-Float-PCM mit 48 kHz erfasst; der Mixer wandelt ihn in das aktive Audioformat um."
+  },
+  "Capture stops when this process exits. Restarted applications must be selected again; system audio is never substituted.": {
+    "es-ES": "La captura se detiene al finalizar este proceso. Debes volver a seleccionar las aplicaciones reiniciadas; nunca se sustituye por el audio del sistema.",
+    "ru-RU": "Захват прекращается при завершении процесса. После перезапуска приложение нужно выбрать заново; системный звук никогда не подставляется.",
+    "uk-UA": "Захоплення припиняється після завершення процесу. Після перезапуску застосунок потрібно вибрати знову; системний звук ніколи не підставляється.",
+    "de-DE": "Die Aufnahme endet mit diesem Prozess. Neu gestartete Anwendungen müssen erneut gewählt werden; Systemaudio wird niemals als Ersatz verwendet."
+  },
+  "The selected application is unavailable. Refresh and choose a running application.": {
+    "es-ES": "La aplicación seleccionada no está disponible. Actualiza y elige una aplicación en ejecución.",
+    "ru-RU": "Выбранное приложение недоступно. Обновите список и выберите запущенное приложение.",
+    "uk-UA": "Вибраний застосунок недоступний. Оновіть список і виберіть запущений застосунок.",
+    "de-DE": "Die gewählte Anwendung ist nicht verfügbar. Liste aktualisieren und eine laufende Anwendung auswählen."
+  },
+  "Refresh the application list successfully before applying": {
+    "es-ES": "Actualiza correctamente la lista de aplicaciones antes de aplicar",
+    "ru-RU": "Перед применением успешно обновите список приложений",
+    "uk-UA": "Перед застосуванням успішно оновіть список застосунків",
+    "de-DE": "Vor dem Anwenden die Anwendungsliste erfolgreich aktualisieren"
+  },
+  "Application audio draft is obsolete. Reopen source properties.": {
+    "es-ES": "El borrador de audio de aplicación está obsoleto. Vuelve a abrir las propiedades de la fuente.",
+    "ru-RU": "Черновик захвата звука приложения устарел. Откройте свойства источника заново.",
+    "uk-UA": "Чернетка захоплення звуку застосунку застаріла. Відкрийте властивості джерела знову.",
+    "de-DE": "Der Entwurf für Anwendungsaudio ist veraltet. Quelleigenschaften erneut öffnen."
+  },
+  "Windows application audio requires Windows build 20348 or later": {
+    "es-ES": "El audio de aplicación requiere Windows compilación 20348 o posterior",
+    "ru-RU": "Для захвата звука приложения нужна Windows сборки 20348 или новее",
+    "uk-UA": "Для захоплення звуку застосунку потрібна Windows збірки 20348 або новіша",
+    "de-DE": "Anwendungsaudio erfordert Windows ab Build 20348"
+  },
+  "The selected application restarted or its identity changed. Refresh and select it again.": {
+    "es-ES": "La aplicación seleccionada se reinició o cambió de identidad. Actualiza y vuelve a seleccionarla.",
+    "ru-RU": "Выбранное приложение перезапустилось или изменило идентификатор. Обновите список и выберите его заново.",
+    "uk-UA": "Вибраний застосунок перезапустився або змінив ідентифікатор. Оновіть список і виберіть його знову.",
+    "de-DE": "Die gewählte Anwendung wurde neu gestartet oder ihre Identität hat sich geändert. Liste aktualisieren und erneut auswählen."
+  },
+  "The selected application exited. Refresh and select the running application again.": {
+    "es-ES": "La aplicación seleccionada finalizó. Actualiza y vuelve a seleccionar la aplicación en ejecución.",
+    "ru-RU": "Выбранное приложение завершилось. Обновите список и снова выберите запущенное приложение.",
+    "uk-UA": "Вибраний застосунок завершився. Оновіть список і знову виберіть запущений застосунок.",
+    "de-DE": "Die gewählte Anwendung wurde beendet. Liste aktualisieren und die laufende Anwendung erneut auswählen."
+  },
+  "Application audio activation timed out; pending native completion is still retiring.": {
+    "es-ES": "Se agotó el tiempo de activación de audio; la operación nativa pendiente aún se está liberando.",
+    "ru-RU": "Истекло время активации захвата звука; ожидающая нативная операция ещё освобождается.",
+    "uk-UA": "Минув час активації захоплення звуку; очікувана нативна операція ще вивільняється.",
+    "de-DE": "Zeitüberschreitung beim Aktivieren von Anwendungsaudio; der ausstehende native Vorgang wird noch freigegeben."
+  },
+  "select a different application process": {
+    "es-ES": "selecciona otro proceso de aplicación",
+    "ru-RU": "выберите другой процесс приложения",
+    "uk-UA": "виберіть інший процес застосунку",
+    "de-DE": "einen anderen Anwendungsprozess auswählen"
+  },
+  "process audio requires output flow without own-output exclusion": {
+    "es-ES": "el audio de proceso requiere un flujo de salida sin excluir el audio propio",
+    "ru-RU": "для звука процесса нужен выходной поток без исключения собственного звука",
+    "uk-UA": "для звуку процесу потрібен вихідний потік без виключення власного звуку",
+    "de-DE": "Prozessaudio erfordert einen Ausgabedatenstrom ohne Ausschluss des eigenen Audios"
+  },
+  "process audio captures the selected process tree; own-output exclusion is unsupported": {
+    "es-ES": "el audio de proceso captura el árbol seleccionado; no admite excluir el audio propio",
+    "ru-RU": "захватывается выбранное дерево процессов; исключение собственного звука не поддерживается",
+    "uk-UA": "захоплюється вибране дерево процесів; виключення власного звуку не підтримується",
+    "de-DE": "Prozessaudio erfasst den gewählten Prozessbaum; der Ausschluss des eigenen Audios wird nicht unterstützt"
+  },
+  "process audio activation callbacks": {
+    "es-ES": "retrollamadas de activación de audio de proceso",
+    "ru-RU": "обратные вызовы активации звука процесса",
+    "uk-UA": "зворотні виклики активації звуку процесу",
+    "de-DE": "Aktivierungsrückrufe für Prozessaudio"
+  },
+  "Partial equivalent: Windows WASAPI endpoint capture and application process-tree loopback on build 20348 or later, with exact PID/creation-time/executable selection and 48 kHz stereo float PCM converted by the mixer. No process exclusion, automatic application rebinding or complete OBS WASAPI parity.": {
+    "es-ES": "Equivalencia parcial: captura de endpoints WASAPI y audio del árbol de procesos en Windows compilación 20348 o posterior, con selección exacta por PID, hora de creación y ejecutable; PCM flotante estéreo a 48 kHz convertido por el mezclador. Sin exclusión de procesos, revinculación automática ni compatibilidad WASAPI completa con OBS.",
+    "ru-RU": "Частичный перенос: захват конечных устройств WASAPI и звука дерева процессов в Windows сборки 20348 или новее с точным выбором по PID, времени создания и исполняемому файлу; стерео PCM с плавающей точкой 48 кГц преобразуется микшером. Нет исключения процессов, автоматической повторной привязки и полного соответствия WASAPI в OBS.",
+    "uk-UA": "Часткове перенесення: захоплення кінцевих пристроїв WASAPI та звуку дерева процесів у Windows збірки 20348 або новішої з точним вибором за PID, часом створення й виконуваним файлом; стерео PCM із рухомою комою 48 кГц перетворюється мікшером. Немає виключення процесів, автоматичного повторного прив’язування та повної відповідності WASAPI в OBS.",
+    "de-DE": "Teilweise Umsetzung: WASAPI-Endpunktaufnahme und Prozessbaum-Loopback ab Windows-Build 20348 mit genauer Auswahl nach PID, Erstellungszeit und ausführbarer Datei; der Mixer wandelt Stereo-Float-PCM mit 48 kHz um. Kein Prozessausschluss, keine automatische Neuzuordnung und keine vollständige OBS-WASAPI-Parität."
+  },
+  "Shared-mode microphone/endpoint loopback; separate Windows build 20348+ application process-tree capture, explicit 48 kHz stereo float with mixer conversion; no process exclusion or automatic application rebinding": {
+    "es-ES": "Loopback compartido de micrófono/endpoints; captura separada del árbol de procesos a partir de Windows 20348, estéreo flotante explícito a 48 kHz convertido por el mezclador; sin exclusión de procesos ni revinculación automática",
+    "ru-RU": "Общий режим микрофона и конечных устройств; отдельный захват дерева процессов в Windows 20348+, явный стерео float 48 кГц с преобразованием микшером; без исключения процессов и автоматической повторной привязки",
+    "uk-UA": "Спільний режим мікрофона й кінцевих пристроїв; окреме захоплення дерева процесів у Windows 20348+, явне стерео float 48 кГц із перетворенням мікшером; без виключення процесів і автоматичного повторного прив’язування",
+    "de-DE": "Gemeinsamer Mikrofon-/Endpunkt-Loopback; separate Prozessbaumaufnahme ab Windows 20348 mit explizitem Stereo-Float bei 48 kHz und Mixer-Konvertierung; kein Prozessausschluss und keine automatische Neuzuordnung"
+  }
+}

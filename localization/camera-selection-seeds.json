@@ -1,0 +1,47 @@
+{
+  "Use recommended mode": {"es-ES":"Usar modo recomendado","ru-RU":"Рекомендуемый режим","uk-UA":"Рекомендований режим","de-DE":"Empfohlenen Modus verwenden"},
+  "Use Full HD": {"es-ES":"Usar Full HD","ru-RU":"Использовать Full HD","uk-UA":"Використати Full HD","de-DE":"Full HD verwenden"},
+  "Choose a reported Full HD mode near 30 FPS when available; otherwise use the best supported streaming resolution. This changes the draft only.": {
+    "es-ES":"Elige un modo Full HD anunciado cercano a 30 FPS si está disponible; si no, usa la mejor resolución de transmisión compatible. Solo cambia el borrador.",
+    "ru-RU":"Выбрать заявленный режим Full HD с частотой около 30 кадр/с, если он доступен; иначе — лучшее поддерживаемое разрешение для трансляции. Меняется только черновик.",
+    "uk-UA":"Вибрати заявлений режим Full HD із частотою близько 30 кадр/с, якщо він доступний; інакше — найкращу підтримувану роздільність для трансляції. Змінюється лише чернетка.",
+    "de-DE":"Wenn verfügbar einen gemeldeten Full-HD-Modus nahe 30 FPS wählen, sonst die beste unterstützte Streamingauflösung. Nur der Entwurf wird geändert."
+  },
+  "Select an actual reported 1920 × 1080 mode with its exact frame rate and format. No resolution or frame rate is invented.": {
+    "es-ES":"Selecciona un modo 1920 × 1080 realmente anunciado, con su frecuencia y formato exactos. No se inventa ninguna resolución ni frecuencia.",
+    "ru-RU":"Выбрать реально заявленный режим 1920 × 1080 с его точной частотой кадров и форматом. Разрешение и частота кадров не выдумываются.",
+    "uk-UA":"Вибрати реально заявлений режим 1920 × 1080 із його точною частотою кадрів і форматом. Роздільність і частота кадрів не вигадуються.",
+    "de-DE":"Einen tatsächlich gemeldeten Modus mit 1920 × 1080 und seiner genauen Bildrate und seinem Format wählen. Auflösung und Bildrate werden nicht erfunden."
+  },
+  "Full HD available: {mode}": {"es-ES":"Full HD disponible: {mode}","ru-RU":"Доступен Full HD: {mode}","uk-UA":"Доступний Full HD: {mode}","de-DE":"Full HD verfügbar: {mode}"},
+  "No supported 1920 × 1080 mode was reported. Unsupported compressed modes remain visible in the full list.": {
+    "es-ES":"No se anunció ningún modo 1920 × 1080 compatible. Los modos comprimidos no compatibles siguen visibles en la lista completa.",
+    "ru-RU":"Поддерживаемый режим 1920 × 1080 не заявлен. Неподдерживаемые сжатые режимы остаются видны в полном списке.",
+    "uk-UA":"Підтримуваний режим 1920 × 1080 не заявлено. Непідтримувані стиснені режими залишаються видимими в повному списку.",
+    "de-DE":"Es wurde kein unterstützter Modus mit 1920 × 1080 gemeldet. Nicht unterstützte komprimierte Modi bleiben in der vollständigen Liste sichtbar."
+  },
+  "All reported native modes": {"es-ES":"Todos los modos nativos anunciados","ru-RU":"Все заявленные нативные режимы","uk-UA":"Усі заявлені нативні режими","de-DE":"Alle gemeldeten nativen Modi"},
+  "The selected camera mode is not reported by this device. Choose an available mode; the saved selection has not been downgraded.": {
+    "es-ES":"Este dispositivo no anuncia el modo seleccionado. Elige un modo disponible; la selección guardada no se ha reducido.",
+    "ru-RU":"Это устройство не заявляет выбранный режим камеры. Выберите доступный режим; сохранённый вариант не был понижен.",
+    "uk-UA":"Цей пристрій не заявляє вибраний режим камери. Виберіть доступний режим; збережений варіант не було понижено.",
+    "de-DE":"Das Gerät meldet den ausgewählten Kameramodus nicht. Einen verfügbaren Modus wählen; die gespeicherte Auswahl wurde nicht herabgesetzt."
+  },
+  "Select resolution": {"es-ES":"Seleccionar resolución","ru-RU":"Выберите разрешение","uk-UA":"Виберіть роздільність","de-DE":"Auflösung wählen"},
+  "Select a resolution actually reported by this camera. The best available rate for it is selected.": {
+    "es-ES":"Selecciona una resolución realmente anunciada por esta cámara. Se elige su mejor frecuencia disponible.",
+    "ru-RU":"Выбрать разрешение, реально заявленное этой камерой. Для него будет выбрана лучшая доступная частота кадров.",
+    "uk-UA":"Вибрати роздільність, реально заявлену цією камерою. Для неї буде вибрано найкращу доступну частоту кадрів.",
+    "de-DE":"Eine von dieser Kamera tatsächlich gemeldete Auflösung wählen. Die beste verfügbare Bildrate dafür wird ausgewählt."
+  },
+  "Choose an actual supported native capture resolution.": {"es-ES":"Elige una resolución nativa de captura realmente compatible.","ru-RU":"Выбрать реально поддерживаемое нативное разрешение захвата.","uk-UA":"Вибрати реально підтримувану нативну роздільність захоплення.","de-DE":"Eine tatsächlich unterstützte native Aufnahmeauflösung wählen."},
+  "Query camera modes before choosing a capture format.": {"es-ES":"Consulta los modos de la cámara antes de elegir el formato de captura.","ru-RU":"Запросите режимы камеры перед выбором формата захвата.","uk-UA":"Запитайте режими камери перед вибором формату захоплення.","de-DE":"Vor dem Wählen eines Aufnahmeformats die Kameramodi abfragen."},
+  "Frame rate": {"es-ES":"Frecuencia de imagen","ru-RU":"Частота кадров","uk-UA":"Частота кадрів","de-DE":"Bildrate"},
+  "Select frame rate": {"es-ES":"Seleccionar frecuencia de imagen","ru-RU":"Выберите частоту кадров","uk-UA":"Виберіть частоту кадрів","de-DE":"Bildrate wählen"},
+  "Choose an exact reported frame rate for the selected resolution.": {"es-ES":"Elige una frecuencia de imagen exacta anunciada para la resolución seleccionada.","ru-RU":"Выбрать точную заявленную частоту кадров для выбранного разрешения.","uk-UA":"Вибрати точну заявлену частоту кадрів для вибраної роздільності.","de-DE":"Eine genau gemeldete Bildrate für die ausgewählte Auflösung wählen."},
+  "Video format": {"es-ES":"Formato de vídeo","ru-RU":"Формат видео","uk-UA":"Формат відео","de-DE":"Videoformat"},
+  "Select an actual native pixel format and its reported color metadata.": {"es-ES":"Selecciona un formato de píxel nativo real y sus metadatos de color anunciados.","ru-RU":"Выбрать реальный нативный формат пикселей и заявленные данные о цвете.","uk-UA":"Вибрати реальний нативний формат пікселів і заявлені дані про колір.","de-DE":"Ein tatsächliches natives Pixelformat mit seinen gemeldeten Farbmetadaten wählen."},
+  "{num}/{den} FPS": {"es-ES":"{num}/{den} FPS","ru-RU":"{num}/{den} кадр/с","uk-UA":"{num}/{den} кадр/с","de-DE":"{num}/{den} FPS"},
+  "{w} × {h}": {"es-ES":"{w} × {h}","ru-RU":"{w} × {h}","uk-UA":"{w} × {h}","de-DE":"{w} × {h}"},
+  "{width} × {height}": {"es-ES":"{width} × {height}","ru-RU":"{width} × {height}","uk-UA":"{width} × {height}","de-DE":"{width} × {height}"}
+}

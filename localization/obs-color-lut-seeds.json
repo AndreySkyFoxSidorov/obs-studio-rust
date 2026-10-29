@@ -1,0 +1,254 @@
+{
+  "Apply LUT": {
+    "es-ES": "Aplicar LUT",
+    "ru-RU": "Применить LUT",
+    "uk-UA": "Застосувати LUT",
+    "de-DE": "LUT anwenden"
+  },
+  "Passthrough Alpha": {
+    "es-ES": "Conservar alfa",
+    "ru-RU": "Сквозной альфа-канал",
+    "uk-UA": "Наскрізний альфа-канал",
+    "de-DE": "Alpha durchreichen"
+  },
+  "LUT file": {
+    "es-ES": "Archivo LUT",
+    "ru-RU": "Файл LUT",
+    "uk-UA": "Файл LUT",
+    "de-DE": "LUT-Datei"
+  },
+  "PNG / CUBE LUT files": {
+    "es-ES": "Archivos LUT PNG / CUBE",
+    "ru-RU": "Файлы LUT PNG / CUBE",
+    "uk-UA": "Файли LUT PNG / CUBE",
+    "de-DE": "PNG-/CUBE-LUT-Dateien"
+  },
+  "Load / Refresh LUT": {
+    "es-ES": "Cargar / Actualizar LUT",
+    "ru-RU": "Загрузить / обновить LUT",
+    "uk-UA": "Завантажити / оновити LUT",
+    "de-DE": "LUT laden / aktualisieren"
+  },
+  "Prepared LUT: {size} · {format}": {
+    "es-ES": "LUT preparada: {size} · {format}",
+    "ru-RU": "LUT подготовлена: {size} · {format}",
+    "uk-UA": "LUT підготовлено: {size} · {format}",
+    "de-DE": "LUT vorbereitet: {size} · {format}"
+  },
+  "LUT error: {detail}": {
+    "es-ES": "Error de LUT: {detail}",
+    "ru-RU": "Ошибка LUT: {detail}",
+    "uk-UA": "Помилка LUT: {detail}",
+    "de-DE": "LUT-Fehler: {detail}"
+  },
+  "Apply LUT · CPU · SDR · linear 1D / trilinear 3D": {
+    "es-ES": "Aplicar LUT · CPU · SDR · lineal1D / trilineal3D",
+    "ru-RU": "Применить LUT · CPU · SDR · линейная1D / трилинейная3D",
+    "uk-UA": "Застосувати LUT · CPU · SDR · лінійна1D / трилінійна3D",
+    "de-DE": "LUT anwenden · CPU · SDR · linear1D / trilinear3D"
+  },
+  "Map source colors through an OBS PNG or CUBE lookup table with the original SDR interpolation and alpha options (CPU).": {
+    "es-ES": "Transforme los colores de la fuente mediante una LUT PNG de OBS o CUBE, con la interpolación SDR y las opciones alfa originales (CPU).",
+    "ru-RU": "Преобразовать цвета источника через LUT PNG OBS или CUBE с исходной SDR-интерполяцией и настройками альфа-канала (CPU).",
+    "uk-UA": "Перетворити кольори джерела через LUT PNG OBS або CUBE з оригінальною SDR-інтерполяцією та налаштуваннями альфа-каналу (CPU).",
+    "de-DE": "Quellenfarben über eine OBS-PNG- oder CUBE-LUT mit originaler SDR-Interpolation und Alphaoptionen abbilden (CPU)."
+  },
+  "Blend original and LUT colors in linear light using the OBS amount control.": {
+    "es-ES": "Mezclar los colores originales y de la LUT en luz lineal con el control de intensidad de OBS.",
+    "ru-RU": "Смешивать исходные цвета и LUT в линейном свете регулятором интенсивности OBS.",
+    "uk-UA": "Змішувати початкові кольори та LUT у лінійному світлі регулятором інтенсивності OBS.",
+    "de-DE": "Original- und LUT-Farben mit dem OBS-Stärkeregler im linearen Licht mischen."
+  },
+  "At full strength and full domain, map premultiplied RGB directly. Other OBS branches restore straight RGB first; source alpha remains unchanged.": {
+    "es-ES": "Con intensidad y dominio completos, transformar directamente RGB premultiplicado. Las otras variantes de OBS recuperan primero RGB recto; el alfa de origen no cambia.",
+    "ru-RU": "При полной интенсивности и полном диапазоне преобразовывать предумноженный RGB напрямую. В других режимах OBS сначала восстанавливается прямой RGB; альфа-канал источника не меняется.",
+    "uk-UA": "За повної інтенсивності й повного діапазону перетворювати попередньо помножений RGB напряму. В інших режимах OBS спочатку відновлюється прямий RGB; альфа-канал джерела не змінюється.",
+    "de-DE": "Bei voller Stärke und vollem Bereich vormultipliziertes RGB direkt abbilden. Andere OBS-Zweige stellen zuerst gerades RGB wieder her; Quellenalpha bleibt unverändert."
+  },
+  "Absolute .cube or static 512×512 PNG path. Empty path bypasses Apply LUT. Combined shaper/3D and HDR/animated images are unsupported.": {
+    "es-ES": "Ruta absoluta a .cube o PNG estático512x512. Una ruta vacía omite la LUT. No se admiten combinaciones shaper/3D ni imágenes HDR o animadas.",
+    "ru-RU": "Абсолютный путь к .cube или статическому PNG512x512. Пустой путь отключает обработку LUT. Комбинированные shaper/3D, HDR и анимация не поддерживаются.",
+    "uk-UA": "Абсолютний шлях до .cube або статичного PNG512x512. Порожній шлях вимикає обробку LUT. Комбіновані shaper/3D, HDR та анімація не підтримуються.",
+    "de-DE": "Absoluter Pfad zu .cube oder statischem PNG512x512. Ein leerer Pfad umgeht die LUT. Kombinierte Shaper/3D-, HDR- und animierte Bilder werden nicht unterstützt."
+  },
+  "CUBE 1D: 2..65536 entries; CUBE 3D: 2..128 per axis. Image LUT: OBS 64³ in a 512×512 PNG atlas. Reload and Apply after editing the file.": {
+    "es-ES": "CUBE1D:2..65536 entradas; CUBE3D:2..128 por eje. LUT de imagen: OBS64³ en un atlas PNG512x512. Recargue y aplique después de editar el archivo.",
+    "ru-RU": "CUBE1D:2..65536 элементов; CUBE3D:2..128 на ось. LUT-изображение: OBS64³ в атласе PNG512x512. После правки файла загрузите его заново и примените.",
+    "uk-UA": "CUBE1D:2..65536 елементів; CUBE3D:2..128 на вісь. LUT-зображення: OBS64³ в атласі PNG512x512. Після редагування файлу завантажте його знову та застосуйте.",
+    "de-DE": "CUBE1D:2..65536 Einträge; CUBE3D:2..128 je Achse. Bild-LUT: OBS64³ in einem PNG512x512-Atlas. Nach Dateibearbeitung erneut laden und anwenden."
+  },
+  "Validate the current LUT on the I/O worker and prepare its exact content hash and dimensions. Apply accepts this resource; Cancel discards the draft.": {
+    "es-ES": "Validar la LUT actual en el trabajador de E/S y preparar su hash y dimensiones exactos. Aplicar acepta el recurso; Cancelar descarta el borrador.",
+    "ru-RU": "Проверить текущую LUT в I/O worker и подготовить точный хеш содержимого и размер. «Применить» принимает ресурс, «Отмена» отбрасывает черновик.",
+    "uk-UA": "Перевірити поточну LUT в I/O worker і підготувати точний хеш вмісту та розмір. «Застосувати» приймає ресурс, «Скасувати» відкидає чернетку.",
+    "de-DE": "Aktuelle LUT im E/A-Worker validieren und exakten Inhaltshash sowie Abmessungen vorbereiten. Anwenden übernimmt die Ressource; Abbrechen verwirft den Entwurf."
+  },
+  "Load or refresh the LUT before applying this filter.": {
+    "es-ES": "Cargue o actualice la LUT antes de aplicar este filtro.",
+    "ru-RU": "Перед применением фильтра загрузите или обновите LUT.",
+    "uk-UA": "Перед застосуванням фільтра завантажте або оновіть LUT.",
+    "de-DE": "LUT vor dem Anwenden dieses Filters laden oder aktualisieren."
+  },
+  "LUT target changed; load the current draft again.": {
+    "es-ES": "El destino de LUT cambió; vuelva a cargar el borrador actual.",
+    "ru-RU": "Цель LUT изменилась; загрузите текущий черновик заново.",
+    "uk-UA": "Ціль LUT змінилася; завантажте поточну чернетку знову.",
+    "de-DE": "LUT-Ziel wurde geändert; aktuellen Entwurf erneut laden."
+  },
+  "LUT preparation returned an unexpected receipt.": {
+    "es-ES": "La preparación de LUT devolvió una confirmación inesperada.",
+    "ru-RU": "Подготовка LUT вернула неожиданное подтверждение.",
+    "uk-UA": "Підготовка LUT повернула неочікуване підтвердження.",
+    "de-DE": "LUT-Vorbereitung hat eine unerwartete Bestätigung geliefert."
+  },
+  "Wait for linked filter resource preparation before resetting this filter.": {
+    "es-ES": "Espere a la preparación del recurso vinculado antes de restablecer este filtro.",
+    "ru-RU": "Перед сбросом фильтра дождитесь подготовки связанного ресурса.",
+    "uk-UA": "Перед скиданням фільтра дочекайтеся підготовки пов’язаного ресурсу.",
+    "de-DE": "Vor dem Zurücksetzen dieses Filters auf die Vorbereitung der verknüpften Ressource warten."
+  },
+  "Apply LUT currently requires CPU processing": {
+    "es-ES": "Aplicar LUT requiere actualmente procesamiento por CPU",
+    "ru-RU": "Обработка LUT пока выполняется на CPU",
+    "uk-UA": "Обробка LUT наразі виконується на CPU",
+    "de-DE": "LUT-Anwendung erfordert derzeit CPU-Verarbeitung"
+  },
+  "Apply LUT requires native schema9": {
+    "es-ES": "Aplicar LUT requiere el esquema nativo9",
+    "ru-RU": "Для LUT требуется собственная схема9",
+    "uk-UA": "Для LUT потрібна власна схема9",
+    "de-DE": "LUT-Anwendung erfordert natives Schema9"
+  },
+  "LUT path must be absolute": {
+    "es-ES": "La ruta de LUT debe ser absoluta",
+    "ru-RU": "Путь к LUT должен быть абсолютным",
+    "uk-UA": "Шлях до LUT має бути абсолютним",
+    "de-DE": "LUT-Pfad muss absolut sein"
+  },
+  "Apply LUT supports .cube and static 512×512 PNG only": {
+    "es-ES": "Aplicar LUT solo admite .cube y PNG estático512x512",
+    "ru-RU": "LUT поддерживает только .cube и статический PNG512x512",
+    "uk-UA": "LUT підтримує лише .cube та статичний PNG512x512",
+    "de-DE": "LUT-Anwendung unterstützt nur .cube und statisches PNG512x512"
+  },
+  "LUT path exceeds4096 UTF-8 bytes or contains controls": {
+    "es-ES": "La ruta de LUT supera4096 bytes UTF-8 o contiene caracteres de control",
+    "ru-RU": "Путь к LUT превышает4096 байт UTF-8 или содержит управляющие символы",
+    "uk-UA": "Шлях до LUT перевищує4096 байтів UTF-8 або містить керівні символи",
+    "de-DE": "LUT-Pfad überschreitet4096 UTF-8-Bytes oder enthält Steuerzeichen"
+  },
+  "LUT changed while reading its byte snapshot": {
+    "es-ES": "La LUT cambió al leer su instantánea de bytes",
+    "ru-RU": "LUT изменилась во время чтения снимка байтов",
+    "uk-UA": "LUT змінилася під час читання знімка байтів",
+    "de-DE": "LUT wurde beim Lesen des Byteschnappschusses geändert"
+  },
+  "CUBE file must be UTF-8 text": {
+    "es-ES": "El archivo CUBE debe ser texto UTF-8",
+    "ru-RU": "Файл CUBE должен быть текстом UTF-8",
+    "uk-UA": "Файл CUBE має бути текстом UTF-8",
+    "de-DE": "CUBE-Datei muss UTF-8-Text sein"
+  },
+  "CUBE row requires three finite numbers": {
+    "es-ES": "La fila CUBE requiere tres números finitos",
+    "ru-RU": "Строка CUBE требует трёх конечных чисел",
+    "uk-UA": "Рядок CUBE потребує трьох скінченних чисел",
+    "de-DE": "CUBE-Zeile erfordert drei endliche Zahlen"
+  },
+  "CUBE row has unsupported extra fields": {
+    "es-ES": "La fila CUBE contiene campos adicionales no admitidos",
+    "ru-RU": "В строке CUBE есть неподдерживаемые дополнительные поля",
+    "uk-UA": "У рядку CUBE є непідтримувані додаткові поля",
+    "de-DE": "CUBE-Zeile enthält nicht unterstützte Zusatzfelder"
+  },
+  "Invalid CUBE size directive": {
+    "es-ES": "Directiva de tamaño CUBE no válida",
+    "ru-RU": "Некорректная директива размера CUBE",
+    "uk-UA": "Некоректна директива розміру CUBE",
+    "de-DE": "Ungültige CUBE-Größenangabe"
+  },
+  "Duplicate CUBE size directive": {
+    "es-ES": "Directiva de tamaño CUBE duplicada",
+    "ru-RU": "Повторная директива размера CUBE",
+    "uk-UA": "Повторна директива розміру CUBE",
+    "de-DE": "Doppelte CUBE-Größenangabe"
+  },
+  "Duplicate CUBE domain directive": {
+    "es-ES": "Directiva de dominio CUBE duplicada",
+    "ru-RU": "Повторная директива диапазона CUBE",
+    "uk-UA": "Повторна директива діапазону CUBE",
+    "de-DE": "Doppelte CUBE-Bereichsangabe"
+  },
+  "Unsupported CUBE directive or combined format": {
+    "es-ES": "Directiva CUBE o formato combinado no admitido",
+    "ru-RU": "Неподдерживаемая директива CUBE или комбинированный формат",
+    "uk-UA": "Непідтримувана директива CUBE або комбінований формат",
+    "de-DE": "Nicht unterstützte CUBE-Anweisung oder kombiniertes Format"
+  },
+  "CUBE values must produce finite binary16 linear colors": {
+    "es-ES": "Los valores CUBE deben producir colores lineales binary16 finitos",
+    "ru-RU": "Значения CUBE должны давать конечные линейные цвета binary16",
+    "uk-UA": "Значення CUBE мають давати скінченні лінійні кольори binary16",
+    "de-DE": "CUBE-Werte müssen endliche lineare binary16-Farben ergeben"
+  },
+  "CUBE requires one supported 1D or 3D size, not a combined shaper": {
+    "es-ES": "CUBE requiere un único tamaño1D o3D admitido, sin shaper combinado",
+    "ru-RU": "CUBE требует один поддерживаемый размер1D или3D, без комбинированного shaper",
+    "uk-UA": "CUBE потребує одного підтримуваного розміру1D або3D, без комбінованого shaper",
+    "de-DE": "CUBE erfordert eine unterstützte1D- oder3D-Größe, keinen kombinierten Shaper"
+  },
+  "CUBE domain must be finite, increasing and representable": {
+    "es-ES": "El dominio CUBE debe ser finito, creciente y representable",
+    "ru-RU": "Диапазон CUBE должен быть конечным, возрастающим и представимым",
+    "uk-UA": "Діапазон CUBE має бути скінченним, висхідним і придатним до подання",
+    "de-DE": "CUBE-Bereich muss endlich, aufsteigend und darstellbar sein"
+  },
+  "Image LUT requires static 512×512 PNG with 8-bit SDR channels": {
+    "es-ES": "La LUT de imagen requiere PNG estático512x512 con canales SDR de8 bits",
+    "ru-RU": "LUT-изображение требует статический PNG512x512 с 8-битными SDR-каналами",
+    "uk-UA": "LUT-зображення потребує статичного PNG512x512 з 8-бітними SDR-каналами",
+    "de-DE": "Bild-LUT erfordert statisches PNG512x512 mit8-Bit-SDR-Kanälen"
+  },
+  "LUT dimensions disagree with the recorded resource": {
+    "es-ES": "Las dimensiones LUT no coinciden con el recurso registrado",
+    "ru-RU": "Размеры LUT не совпадают с записанным ресурсом",
+    "uk-UA": "Розміри LUT не збігаються із записаним ресурсом",
+    "de-DE": "LUT-Abmessungen stimmen nicht mit der gespeicherten Ressource überein"
+  },
+  "LUT table budget includes active and retiring readers": {
+    "es-ES": "El presupuesto de tablas LUT incluye lectores activos y en liberación",
+    "ru-RU": "Лимит таблиц LUT включает активных и освобождаемых читателей",
+    "uk-UA": "Ліміт таблиць LUT охоплює активних читачів і тих, що звільняються",
+    "de-DE": "LUT-Tabellenbudget umfasst aktive und auslaufende Leser"
+  },
+  "ordered LUT chain exceeds shared bytes/work budget": {
+    "es-ES": "la cadena LUT ordenada supera el presupuesto compartido de bytes/trabajo",
+    "ru-RU": "упорядоченная цепочка LUT превышает общий лимит памяти или работы",
+    "uk-UA": "впорядкований ланцюжок LUT перевищує спільний ліміт пам’яті або роботи",
+    "de-DE": "geordnete LUT-Kette überschreitet gemeinsames Speicher-/Arbeitsbudget"
+  },
+  "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 and Sharpen v2 (SDR; Luma/Sharpen on CPU), Crop/Pad (signed relative crop or absolute dimensions with transparent padding), Image Mask/Blend v2 (five SDR methods, static PNG/JPEG/BMP/TGA/WebP, CPU; animated masks unsupported), Apply LUT (CPU SDR, independent CUBE 1D 2..65536/CUBE 3D 2..128 with finite domains, static 512×512 OBS 64-cube PNG, original amount/alpha branches; no combined shaper/HDR/animation/GPU LUT), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor and Expander. Dynamics use admitted source-block callback boundaries; external sidechain, RNNoise/Speex noise suppression, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Corrección de color v2, clave de color v2, clave cromática v2, clave de luminancia v2 y nitidez v2 de OBS (SDR; luminancia/nitidez en CPU), recorte/relleno (recorte relativo con signo o dimensiones absolutas con relleno transparente), máscara/mezcla de imagen v2 (cinco métodos SDR, PNG/JPEG/BMP/TGA/WebP estáticos, CPU; sin máscaras animadas), Aplicar LUT (CPU SDR, CUBE 1D 2..65536/CUBE 3D 2..128 independientes con dominios finitos, PNG OBS de cubo 64 en atlas estático 512×512, variantes originales de intensidad/alfa; sin shaper combinado, HDR, animación ni LUT en GPU), ganancia, inversión de polaridad, puerta de ruido, ecualizador de tres bandas, limitador, compresor, compresor ascendente y expansor. La dinámica usa los límites de devolución de llamada de bloques de fuente admitidos; no se implementan cadena lateral externa, supresión RNNoise/Speex, alojamiento VST, HDR, v1 heredado ni los demás filtros estándar.",
+    "ru-RU": "Цветокоррекция v2, цветовой ключ v2, хромакей v2, яркостный ключ v2 и резкость v2 OBS (SDR; яркостный ключ/резкость на CPU), обрезка/поля (относительная обрезка со знаком или абсолютный размер с прозрачными полями), маска/смешивание изображения v2 (пять SDR-режимов, статические PNG/JPEG/BMP/TGA/WebP, CPU; без анимированных масок), применение LUT (CPU SDR, отдельные CUBE 1D 2..65536/CUBE 3D 2..128 с конечными диапазонами, статический PNG-атлас OBS 512×512 для куба 64, исходные режимы интенсивности/альфа-канала; без комбинированного shaper, HDR, анимации и LUT на GPU), усиление, инверсия полярности, шумовой гейт, трёхполосный эквалайзер, лимитер, компрессор, повышающий компрессор и экспандер. Динамическая обработка использует границы допущенных блоков источника; внешний сайдчейн, подавление шума RNNoise/Speex, VST, HDR, устаревшие v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Корекція кольору v2, колірний ключ v2, хромакей v2, яскравісний ключ v2 і різкість v2 OBS (SDR; яскравісний ключ/різкість на CPU), обрізання/поля (відносне обрізання зі знаком або абсолютний розмір із прозорими полями), маска/змішування зображення v2 (п’ять SDR-режимів, статичні PNG/JPEG/BMP/TGA/WebP, CPU; без анімованих масок), застосування LUT (CPU SDR, окремі CUBE 1D 2..65536/CUBE 3D 2..128 зі скінченними діапазонами, статичний PNG-атлас OBS 512×512 для куба 64, оригінальні режими інтенсивності/альфа-каналу; без комбінованого shaper, HDR, анімації та LUT на GPU), підсилення, інверсія полярності, шумовий гейт, трисмуговий еквалайзер, лімітер, компресор, підвищувальний компресор і експандер. Динамічна обробка використовує межі допущених блоків джерела; зовнішній сайдчейн, приглушення шуму RNNoise/Speex, VST, HDR, застарілі v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-Farbkorrektur v2, Color-Key v2, Chroma-Key v2, Luma-Key v2 und Schärfe v2 (SDR; Luma/Schärfe auf CPU), Zuschneiden/Auffüllen (relative Werte mit Vorzeichen oder absolute Abmessungen mit transparentem Rand), Bildmaske/-mischung v2 (fünf SDR-Verfahren, statische PNG/JPEG/BMP/TGA/WebP, CPU; keine animierten Masken), LUT anwenden (CPU SDR, getrennte CUBE 1D 2..65536/CUBE 3D 2..128 mit endlichen Bereichen, statischer OBS-PNG-Atlas 512×512 für 64er-Würfel, originale Stärke-/Alphazweige; kein kombinierter Shaper, HDR, Animation oder GPU-LUT), Verstärkung, Polaritätsumkehr, Noise Gate, Dreiband-Equalizer, Limiter, Kompressor, Aufwärtskompressor und Expander. Dynamik nutzt die zugelassenen Quellblock-Callbackgrenzen; externe Sidechain, RNNoise-/Speex-Rauschunterdrückung, VST-Hosting, HDR, ältere v1 und übrige Standardfilter sind nicht implementiert."
+  },
+  "Apply LUT · SDR · linear 1D / trilinear 3D": {
+    "es-ES": "Aplicar LUT · SDR · lineal1D / trilineal3D",
+    "ru-RU": "Применить LUT · SDR · линейная1D / трилинейная3D",
+    "uk-UA": "Застосувати LUT · SDR · лінійна1D / трилінійна3D",
+    "de-DE": "LUT anwenden · SDR · linear1D / trilinear3D"
+  },
+  "Map source colors through an OBS PNG or CUBE lookup table with the original SDR interpolation and alpha options.": {
+    "es-ES": "Transforme los colores de la fuente mediante una LUT PNG de OBS o CUBE, con la interpolación SDR y las opciones alfa originales.",
+    "ru-RU": "Преобразовать цвета источника через LUT PNG OBS или CUBE с исходной SDR-интерполяцией и настройками альфа-канала.",
+    "uk-UA": "Перетворити кольори джерела через LUT PNG OBS або CUBE з оригінальною SDR-інтерполяцією та налаштуваннями альфа-каналу.",
+    "de-DE": "Quellenfarben über eine OBS-PNG- oder CUBE-LUT mit originaler SDR-Interpolation und Alphaoptionen abbilden."
+  },
+  "Scaling/Aspect Ratio, Scroll and Image Mask/Blend currently require CPU processing": {
+    "es-ES": "Escalado/Relación de aspecto, Desplazamiento y Máscara de imagen/Mezcla requieren actualmente procesamiento en CPU",
+    "ru-RU": "Масштабирование/Соотношение сторон, прокрутка и маска изображения/смешивание сейчас обрабатываются на CPU",
+    "uk-UA": "Масштабування/Співвідношення сторін, прокручування та маска зображення/змішування наразі обробляються на CPU",
+    "de-DE": "Skalierung/Seitenverhältnis, Scrollen und Bildmaske/-mischung erfordern derzeit CPU-Verarbeitung"
+  }
+}

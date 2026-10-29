@@ -1,0 +1,56 @@
+{
+  "Waiting for media playback state…": {
+    "es-ES": "Esperando el estado de reproducción…",
+    "ru-RU": "Ожидание состояния воспроизведения…",
+    "uk-UA": "Очікування стану відтворення…",
+    "de-DE": "Warten auf den Wiedergabestatus…"
+  },
+  "Play or pause this shared Media Source without changing the scene history.": {
+    "es-ES": "Reproduce o pausa esta fuente multimedia compartida sin cambiar el historial de la escena.",
+    "ru-RU": "Воспроизвести или приостановить общий медиаисточник без изменения истории сцены.",
+    "uk-UA": "Відтворити або призупинити спільне медіаджерело без зміни історії сцени.",
+    "de-DE": "Diese gemeinsam verwendete Medienquelle abspielen oder pausieren, ohne den Szenenverlauf zu ändern."
+  },
+  "Restart only this Media Source from the beginning.": {
+    "es-ES": "Reinicia desde el principio solo esta fuente multimedia.",
+    "ru-RU": "Запустить с начала только этот медиаисточник.",
+    "uk-UA": "Запустити з початку лише це медіаджерело.",
+    "de-DE": "Nur diese Medienquelle von vorn starten."
+  },
+  "Stop this Media Source, clear its picture and silence its future audio.": {
+    "es-ES": "Detén esta fuente multimedia, borra su imagen y silencia su audio futuro.",
+    "ru-RU": "Остановить этот медиаисточник, убрать его изображение и отключить его будущий звук.",
+    "uk-UA": "Зупинити це медіаджерело, прибрати його зображення та вимкнути його майбутній звук.",
+    "de-DE": "Diese Medienquelle stoppen, ihr Bild entfernen und ihr zukünftiges Audio stummschalten."
+  },
+  "Wait for the active media operation.": {
+    "es-ES": "Espera a que termine la operación multimedia en curso.",
+    "ru-RU": "Дождитесь завершения текущей операции с медиа.",
+    "uk-UA": "Дочекайтеся завершення поточної операції з медіа.",
+    "de-DE": "Warte, bis der laufende Medienvorgang abgeschlossen ist."
+  },
+  "Media playback state is not available for this source.": {
+    "es-ES": "El estado de reproducción no está disponible para esta fuente.",
+    "ru-RU": "Состояние воспроизведения этого источника недоступно.",
+    "uk-UA": "Стан відтворення цього джерела недоступний.",
+    "de-DE": "Der Wiedergabestatus dieser Quelle ist nicht verfügbar."
+  },
+  "Transport does not edit source filters.": {
+    "es-ES": "Los controles de reproducción no modifican los filtros de la fuente.",
+    "ru-RU": "Управление воспроизведением не изменяет фильтры источника.",
+    "uk-UA": "Керування відтворенням не змінює фільтри джерела.",
+    "de-DE": "Die Wiedergabesteuerung verändert die Quellenfilter nicht."
+  },
+  "Pause and Play keep filter settings. Play currently resumes with fresh resampler and audio-filter history.": {
+    "es-ES": "Pausar y reproducir conservan los ajustes de los filtros. Actualmente, al reanudar se reinicia el historial del remuestreador y de los filtros de audio.",
+    "ru-RU": "Пауза и воспроизведение сохраняют настройки фильтров. Сейчас при возобновлении история ресэмплера и аудиофильтров начинается заново.",
+    "uk-UA": "Пауза та відтворення зберігають налаштування фільтрів. Наразі після відновлення історія ресемплера й аудіофільтрів починається заново.",
+    "de-DE": "Pause und Wiedergabe behalten die Filtereinstellungen bei. Beim Fortsetzen wird der Verlauf von Resampler und Audiofiltern derzeit neu begonnen."
+  },
+  "Media control applied": {
+    "es-ES": "Control de reproducción aplicado",
+    "ru-RU": "Команда воспроизведения применена",
+    "uk-UA": "Команду відтворення застосовано",
+    "de-DE": "Wiedergabesteuerung angewendet"
+  }
+}

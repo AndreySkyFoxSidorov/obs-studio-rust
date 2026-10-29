@@ -1,0 +1,8 @@
+{
+  "OBS Color Correction v2, Color Key v2 and Chroma Key v2 (SDR), Gain, Invert Polarity, Limiter, Compressor and Expander. Dynamics use admitted source-block callback boundaries; external sidechain, Upward Compressor, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Corrección de color v2, clave de color v2 y clave cromática v2 de OBS (SDR), ganancia, inversión de polaridad, limitador, compresor y expansor. La dinámica usa los límites de los bloques de fuente admitidos; no se admiten cadena lateral externa, compresor ascendente, HDR, efectos v1 ni los demás filtros estándar.",
+    "ru-RU": "Цветокоррекция v2, цветовой ключ v2 и хромакей v2 OBS (SDR), усиление, инверсия полярности, лимитер, компрессор и экспандер. Динамические фильтры используют границы принятых блоков источника; внешний сайдчейн, повышающий компрессор, HDR, эффекты v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Корекція кольору v2, колірний ключ v2 і хромакей v2 OBS (SDR), підсилення, інверсія полярності, лімітер, компресор і експандер. Динамічні фільтри використовують межі прийнятих блоків джерела; зовнішній сайдчейн, підвищувальний компресор, HDR, ефекти v1 і решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-Farbkorrektur v2, Color Key v2 und Chroma Key v2 (SDR), Verstärkung, Polaritätsumkehr, Limiter, Kompressor und Expander. Die Dynamik nutzt zugelassene Quellblockgrenzen; externe Sidechains, Aufwärtskompressor, HDR, alte v1-Effekte und weitere Standardfilter sind nicht implementiert."
+  }
+}

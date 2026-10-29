@@ -1,0 +1,176 @@
+{
+  "Set Color": {
+    "es-ES": "Establecer color",
+    "ru-RU": "Задать цвет",
+    "uk-UA": "Задати колір",
+    "de-DE": "Farbe festlegen"
+  },
+  "Clear": {
+    "es-ES": "Borrar",
+    "ru-RU": "Сбросить",
+    "uk-UA": "Скинути",
+    "de-DE": "Zurücksetzen"
+  },
+  "Custom Color": {
+    "es-ES": "Color personalizado",
+    "ru-RU": "Произвольный цвет",
+    "uk-UA": "Власний колір",
+    "de-DE": "Benutzerdefinierte Farbe"
+  },
+  "Red": {
+    "es-ES": "Rojo",
+    "ru-RU": "Красный",
+    "uk-UA": "Червоний",
+    "de-DE": "Rot"
+  },
+  "Yellow": {
+    "es-ES": "Amarillo",
+    "ru-RU": "Жёлтый",
+    "uk-UA": "Жовтий",
+    "de-DE": "Gelb"
+  },
+  "Green": {
+    "es-ES": "Verde",
+    "ru-RU": "Зелёный",
+    "uk-UA": "Зелений",
+    "de-DE": "Grün"
+  },
+  "Cyan": {
+    "es-ES": "Cian",
+    "ru-RU": "Голубой",
+    "uk-UA": "Блакитний",
+    "de-DE": "Cyan"
+  },
+  "Blue": {
+    "es-ES": "Azul",
+    "ru-RU": "Синий",
+    "uk-UA": "Синій",
+    "de-DE": "Blau"
+  },
+  "Magenta": {
+    "es-ES": "Magenta",
+    "ru-RU": "Пурпурный",
+    "uk-UA": "Пурпуровий",
+    "de-DE": "Magenta"
+  },
+  "Gray": {
+    "es-ES": "Gris",
+    "ru-RU": "Серый",
+    "uk-UA": "Сірий",
+    "de-DE": "Grau"
+  },
+  "White": {
+    "es-ES": "Blanco",
+    "ru-RU": "Белый",
+    "uk-UA": "Білий",
+    "de-DE": "Weiß"
+  },
+  "Alpha": {
+    "es-ES": "Alfa",
+    "ru-RU": "Альфа",
+    "uk-UA": "Альфа",
+    "de-DE": "Alpha"
+  },
+  "Color applies only to this selected source item row.": {
+    "es-ES": "El color se aplica solo a esta fila del elemento de fuente seleccionado.",
+    "ru-RU": "Цвет применяется только к строке выбранного элемента источника.",
+    "uk-UA": "Колір застосовується лише до рядка вибраного елемента джерела.",
+    "de-DE": "Die Farbe gilt nur für diese Zeile des ausgewählten Quellelements."
+  },
+  "Remove the row color without changing source pixels or audio.": {
+    "es-ES": "Quitar el color de la fila sin cambiar los píxeles ni el audio de la fuente.",
+    "ru-RU": "Сбросить цвет строки без изменения изображения или звука источника.",
+    "uk-UA": "Скинути колір рядка без зміни зображення чи звуку джерела.",
+    "de-DE": "Die Zeilenfarbe entfernen, ohne Bild oder Ton der Quelle zu ändern."
+  },
+  "Preview a custom RGBA row color. Apply commits it; Cancel restores the previous row color.": {
+    "es-ES": "Previsualizar un color RGBA de fila. Aplicar lo confirma; Cancelar restaura el color anterior.",
+    "ru-RU": "Предпросмотр произвольного RGBA-цвета строки. Применить подтверждает его; Отмена возвращает прежний цвет.",
+    "uk-UA": "Попередній перегляд власного RGBA-кольору рядка. Застосувати підтверджує його; Скасувати повертає попередній колір.",
+    "de-DE": "Eine RGBA-Zeilenfarbe voranzeigen. Anwenden übernimmt sie; Abbrechen stellt die vorherige Farbe wieder her."
+  },
+  "Use this OBS row-color preset at 33% opacity.": {
+    "es-ES": "Usar este color de fila predefinido de OBS con un 33% de opacidad.",
+    "ru-RU": "Использовать этот цвет строки OBS с непрозрачностью 33%.",
+    "uk-UA": "Використати цей колір рядка OBS з непрозорістю 33%.",
+    "de-DE": "Diese OBS-Zeilenfarbvorgabe mit 33% Deckkraft verwenden."
+  },
+  "Set a Sources-list color for this item, independently of other references to the same source.": {
+    "es-ES": "Establecer el color de este elemento en Fuentes, independiente de otras referencias a la misma fuente.",
+    "ru-RU": "Задать цвет этого элемента в списке источников независимо от других ссылок на тот же источник.",
+    "uk-UA": "Задати колір цього елемента у списку джерел незалежно від інших посилань на те саме джерело.",
+    "de-DE": "Die Farbe dieses Elements in der Quellenliste unabhängig von anderen Verweisen auf dieselbe Quelle festlegen."
+  },
+  "Select this source item before changing its row color.": {
+    "es-ES": "Seleccione este elemento de fuente antes de cambiar el color de su fila.",
+    "ru-RU": "Выберите этот элемент источника перед изменением цвета его строки.",
+    "uk-UA": "Виберіть цей елемент джерела перед зміною кольору його рядка.",
+    "de-DE": "Dieses Quellelement auswählen, bevor seine Zeilenfarbe geändert wird."
+  },
+  "This source color draft is obsolete. Cancel and reopen Set Color.": {
+    "es-ES": "Este borrador de color está desactualizado. Cancele y vuelva a abrir Establecer color.",
+    "ru-RU": "Этот черновик цвета устарел. Нажмите Отмена и снова откройте «Задать цвет».",
+    "uk-UA": "Ця чернетка кольору застаріла. Натисніть Скасувати та знову відкрийте «Задати колір».",
+    "de-DE": "Dieser Farbentwurf ist veraltet. Abbrechen und Farbe festlegen erneut öffnen."
+  },
+  "Selected item: {name}": {
+    "es-ES": "Elemento seleccionado: {name}",
+    "ru-RU": "Выбранный элемент: {name}",
+    "uk-UA": "Вибраний елемент: {name}",
+    "de-DE": "Ausgewähltes Element: {name}"
+  },
+  "This previews the current Sources row only. Source pixels, filters and audio are unchanged.": {
+    "es-ES": "La vista previa afecta solo a la fila actual de Fuentes. La imagen, los filtros y el audio no cambian.",
+    "ru-RU": "Это предпросмотр только текущей строки источников. Изображение, фильтры и звук не меняются.",
+    "uk-UA": "Це попередній перегляд лише поточного рядка джерел. Зображення, фільтри та звук не змінюються.",
+    "de-DE": "Die Vorschau betrifft nur die aktuelle Quellenzeile. Bild, Filter und Ton bleiben unverändert."
+  },
+  "Choose red, green, blue and alpha for the row background.": {
+    "es-ES": "Elegir rojo, verde, azul y alfa para el fondo de la fila.",
+    "ru-RU": "Выбрать красный, зелёный, синий и альфа-канал фона строки.",
+    "uk-UA": "Вибрати червоний, зелений, синій та альфа-канал фону рядка.",
+    "de-DE": "Rot, Grün, Blau und Alpha für den Zeilenhintergrund wählen."
+  },
+  "Channel value from 0 to 255; alpha controls row-color opacity.": {
+    "es-ES": "Valor de canal de 0 a 255; alfa controla la opacidad del color de la fila.",
+    "ru-RU": "Значение канала от 0 до 255; альфа управляет непрозрачностью цвета строки.",
+    "uk-UA": "Значення каналу від 0 до 255; альфа керує непрозорістю кольору рядка.",
+    "de-DE": "Kanalwert von 0 bis 255; Alpha bestimmt die Deckkraft der Zeilenfarbe."
+  },
+  "Use default custom color": {
+    "es-ES": "Usar el color personalizado predeterminado",
+    "ru-RU": "Использовать исходный произвольный цвет",
+    "uk-UA": "Використати початковий власний колір",
+    "de-DE": "Vorgabefarbe verwenden"
+  },
+  "Use the OBS custom picker fallback #55FF0000 in this draft.": {
+    "es-ES": "Usar el color inicial #55FF0000 del selector de OBS en este borrador.",
+    "ru-RU": "Использовать в этом черновике исходный цвет палитры OBS #55FF0000.",
+    "uk-UA": "Використати в цій чернетці початковий колір палітри OBS #55FF0000.",
+    "de-DE": "Die OBS-Farbdialogvorgabe #55FF0000 in diesem Entwurf verwenden."
+  },
+  "{name}\nRow color: {color}": {
+    "es-ES": "{name}\nColor de fila: {color}",
+    "ru-RU": "{name}\nЦвет строки: {color}",
+    "uk-UA": "{name}\nКолір рядка: {color}",
+    "de-DE": "{name}\nZeilenfarbe: {color}"
+  },
+  "Commit this selected item row color. Source pixels and audio are unchanged.": {
+    "es-ES": "Confirmar el color de la fila seleccionada. La imagen y el audio no cambian.",
+    "ru-RU": "Подтвердить цвет строки выбранного элемента. Изображение и звук не меняются.",
+    "uk-UA": "Підтвердити колір рядка вибраного елемента. Зображення та звук не змінюються.",
+    "de-DE": "Diese Farbe der ausgewählten Zeile übernehmen. Bild und Ton bleiben unverändert."
+  },
+  "The source row selection changed. Open Set Color again.": {
+    "es-ES": "La selección de la fila ha cambiado. Vuelva a abrir Establecer color.",
+    "ru-RU": "Выбор строки источника изменился. Снова откройте «Задать цвет».",
+    "uk-UA": "Вибір рядка джерела змінився. Знову відкрийте «Задати колір».",
+    "de-DE": "Die Auswahl der Quellenzeile hat sich geändert. Farbe festlegen erneut öffnen."
+  },
+  "Source color draft identity exhausted.": {
+    "es-ES": "Se agotaron los identificadores de los borradores de color.",
+    "ru-RU": "Идентификаторы черновиков цвета исчерпаны.",
+    "uk-UA": "Ідентифікатори чернеток кольору вичерпано.",
+    "de-DE": "Die Kennungen für Farbentwürfe sind erschöpft."
+  }
+}

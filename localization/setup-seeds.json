@@ -1,0 +1,266 @@
+{
+  "Setup wizard": {
+    "es-ES": "Asistente de configuración",
+    "ru-RU": "Мастер настройки",
+    "uk-UA": "Майстер налаштування",
+    "de-DE": "Einrichtungsassistent"
+  },
+  "Usage": {
+    "es-ES": "Uso",
+    "ru-RU": "Назначение",
+    "uk-UA": "Призначення",
+    "de-DE": "Verwendung"
+  },
+  "Review": {
+    "es-ES": "Revisión",
+    "ru-RU": "Проверка",
+    "uk-UA": "Перевірка",
+    "de-DE": "Prüfen"
+  },
+  "Back": {
+    "es-ES": "Atrás",
+    "ru-RU": "Назад",
+    "uk-UA": "Назад",
+    "de-DE": "Zurück"
+  },
+  "Next": {
+    "es-ES": "Siguiente",
+    "ru-RU": "Далее",
+    "uk-UA": "Далі",
+    "de-DE": "Weiter"
+  },
+  "Skip setup": {
+    "es-ES": "Omitir configuración",
+    "ru-RU": "Пропустить настройку",
+    "uk-UA": "Пропустити налаштування",
+    "de-DE": "Einrichtung überspringen"
+  },
+  "Choose settings for the selected profile. These are manual presets; no bandwidth or optimization tests have run.": {
+    "es-ES": "Elige los ajustes del perfil seleccionado. Son preajustes manuales; no se han ejecutado pruebas de ancho de banda ni de optimización.",
+    "ru-RU": "Выберите настройки выбранного профиля. Это ручные пресеты; тесты пропускной способности и оптимизации не выполнялись.",
+    "uk-UA": "Виберіть налаштування вибраного профілю. Це ручні пресети; тести пропускної здатності й оптимізації не виконувалися.",
+    "de-DE": "Einstellungen für das ausgewählte Profil wählen. Dies sind manuelle Vorgaben; Bandbreiten- und Optimierungstests wurden nicht ausgeführt."
+  },
+  "Return to the previous setup page without applying changes.": {
+    "es-ES": "Vuelve a la página anterior sin aplicar cambios.",
+    "ru-RU": "Вернуться на предыдущую страницу без применения изменений.",
+    "uk-UA": "Повернутися на попередню сторінку без застосування змін.",
+    "de-DE": "Ohne Übernehmen der Änderungen zur vorherigen Seite zurückkehren."
+  },
+  "Apply all reviewed profile settings together. Recording and streaming stay stopped.": {
+    "es-ES": "Aplica todos los ajustes revisados del perfil a la vez. La grabación y la transmisión permanecen detenidas.",
+    "ru-RU": "Применить все проверенные настройки профиля одновременно. Запись и трансляция останутся остановленными.",
+    "uk-UA": "Застосувати всі перевірені налаштування профілю одночасно. Запис і трансляція залишаться зупиненими.",
+    "de-DE": "Alle geprüften Profileinstellungen gemeinsam übernehmen. Aufnahme und Stream bleiben gestoppt."
+  },
+  "Validate this page and continue without applying changes.": {
+    "es-ES": "Valida esta página y continúa sin aplicar cambios.",
+    "ru-RU": "Проверить эту страницу и продолжить без применения изменений.",
+    "uk-UA": "Перевірити цю сторінку й продовжити без застосування змін.",
+    "de-DE": "Diese Seite prüfen und ohne Übernehmen der Änderungen fortfahren."
+  },
+  "Keep current settings and remember that first-run setup was skipped.": {
+    "es-ES": "Conserva los ajustes actuales y recuerda que se omitió la configuración inicial.",
+    "ru-RU": "Сохранить текущие настройки и запомнить, что первоначальная настройка пропущена.",
+    "uk-UA": "Зберегти поточні налаштування й запам’ятати, що початкове налаштування пропущено.",
+    "de-DE": "Aktuelle Einstellungen behalten und die Ersteinrichtung als übersprungen merken."
+  },
+  "Close setup without changing settings or completion state.": {
+    "es-ES": "Cierra el asistente sin cambiar los ajustes ni el estado de finalización.",
+    "ru-RU": "Закрыть мастер без изменения настроек и состояния завершения.",
+    "uk-UA": "Закрити майстер без зміни налаштувань і стану завершення.",
+    "de-DE": "Den Assistenten schließen, ohne Einstellungen oder Abschlussstatus zu ändern."
+  },
+  "Recording · MP4 · H.264/AAC": {
+    "es-ES": "Grabación · MP4 · H.264/AAC",
+    "ru-RU": "Запись · MP4 · H.264/AAC",
+    "uk-UA": "Запис · MP4 · H.264/AAC",
+    "de-DE": "Aufnahme · MP4 · H.264/AAC"
+  },
+  "Streaming · custom RTMP": {
+    "es-ES": "Transmisión · RTMP personalizado",
+    "ru-RU": "Трансляция · собственный RTMP",
+    "uk-UA": "Трансляція · власний RTMP",
+    "de-DE": "Stream · eigener RTMP-Server"
+  },
+  "Configure the real native recording profile without starting a recording.": {
+    "es-ES": "Configura el perfil de grabación nativo sin iniciar una grabación.",
+    "ru-RU": "Настроить профиль нативной записи, не начиная запись.",
+    "uk-UA": "Налаштувати профіль нативного запису, не починаючи запис.",
+    "de-DE": "Das native Aufnahmeprofil konfigurieren, ohne eine Aufnahme zu starten."
+  },
+  "Configure a custom RTMP profile without making a connection.": {
+    "es-ES": "Configura un perfil RTMP personalizado sin establecer conexión.",
+    "ru-RU": "Настроить профиль собственного RTMP без подключения.",
+    "uk-UA": "Налаштувати профіль власного RTMP без підключення.",
+    "de-DE": "Ein eigenes RTMP-Profil konfigurieren, ohne eine Verbindung herzustellen."
+  },
+  "The selected output is unavailable on this platform.": {
+    "es-ES": "La salida seleccionada no está disponible en esta plataforma.",
+    "ru-RU": "Выбранный выход недоступен на этой платформе.",
+    "uk-UA": "Вибраний вихід недоступний на цій платформі.",
+    "de-DE": "Die ausgewählte Ausgabe ist auf dieser Plattform nicht verfügbar."
+  },
+  "Use current video settings": {
+    "es-ES": "Usar los ajustes de vídeo actuales",
+    "ru-RU": "Использовать текущие настройки видео",
+    "uk-UA": "Використовувати поточні налаштування відео",
+    "de-DE": "Aktuelle Videoeinstellungen verwenden"
+  },
+  "1280 × 720 · 30 FPS": {
+    "es-ES": "1280 × 720 · 30 FPS",
+    "ru-RU": "1280 × 720 · 30 кадр/с",
+    "uk-UA": "1280 × 720 · 30 кадр/с",
+    "de-DE": "1280 × 720 · 30 FPS"
+  },
+  "1920 × 1080 · 30 FPS": {
+    "es-ES": "1920 × 1080 · 30 FPS",
+    "ru-RU": "1920 × 1080 · 30 кадр/с",
+    "uk-UA": "1920 × 1080 · 30 кадр/с",
+    "de-DE": "1920 × 1080 · 30 FPS"
+  },
+  "1920 × 1080 · 60 FPS": {
+    "es-ES": "1920 × 1080 · 60 FPS",
+    "ru-RU": "1920 × 1080 · 60 кадр/с",
+    "uk-UA": "1920 × 1080 · 60 кадр/с",
+    "de-DE": "1920 × 1080 · 60 FPS"
+  },
+  "Choose a manual canvas and frame rate. This does not measure encoding performance.": {
+    "es-ES": "Elige manualmente el lienzo y la frecuencia de imagen. Esto no mide el rendimiento de codificación.",
+    "ru-RU": "Выбрать размер холста и частоту кадров вручную. Это не измеряет производительность кодирования.",
+    "uk-UA": "Вибрати розмір полотна й частоту кадрів вручну. Це не вимірює продуктивність кодування.",
+    "de-DE": "Leinwand und Bildrate manuell wählen. Dabei wird keine Kodierleistung gemessen."
+  },
+  "Audio format, source bindings, scenes and filters are preserved.": {
+    "es-ES": "Se conservan el formato de audio, las vinculaciones de fuentes, las escenas y los filtros.",
+    "ru-RU": "Формат звука, привязки источников, сцены и фильтры сохраняются.",
+    "uk-UA": "Формат звуку, прив’язки джерел, сцени й фільтри зберігаються.",
+    "de-DE": "Audioformat, Quellenbindungen, Szenen und Filter bleiben erhalten."
+  },
+  "Video: {width} × {height}, {num}/{den} FPS": {
+    "es-ES": "Vídeo: {width} × {height}, {num}/{den} FPS",
+    "ru-RU": "Видео: {width} × {height}, {num}/{den} кадр/с",
+    "uk-UA": "Відео: {width} × {height}, {num}/{den} кадр/с",
+    "de-DE": "Video: {width} × {height}, {num}/{den} FPS"
+  },
+  "Video bitrate: {rate} kbit/s": {
+    "es-ES": "Tasa de bits de vídeo: {rate} kbit/s",
+    "ru-RU": "Битрейт видео: {rate} кбит/с",
+    "uk-UA": "Бітрейт відео: {rate} кбіт/с",
+    "de-DE": "Videobitrate: {rate} kbit/s"
+  },
+  "Program audio: {state}": {
+    "es-ES": "Audio del programa: {state}",
+    "ru-RU": "Звук программы: {state}",
+    "uk-UA": "Звук програми: {state}",
+    "de-DE": "Programmton: {state}"
+  },
+  "Audio bitrate: {rate} kbit/s": {
+    "es-ES": "Tasa de bits de audio: {rate} kbit/s",
+    "ru-RU": "Битрейт звука: {rate} кбит/с",
+    "uk-UA": "Бітрейт звуку: {rate} кбіт/с",
+    "de-DE": "Audiobitrate: {rate} kbit/s"
+  },
+  "Output directory: {path}": {
+    "es-ES": "Carpeta de salida: {path}",
+    "ru-RU": "Каталог вывода: {path}",
+    "uk-UA": "Каталог виводу: {path}",
+    "de-DE": "Ausgabeverzeichnis: {path}"
+  },
+  "Hardware preference: {state}": {
+    "es-ES": "Preferencia de hardware: {state}",
+    "ru-RU": "Предпочтение аппаратного кодирования: {state}",
+    "uk-UA": "Перевага апаратного кодування: {state}",
+    "de-DE": "Hardwarebevorzugung: {state}"
+  },
+  "Server: {url}": {
+    "es-ES": "Servidor: {url}",
+    "ru-RU": "Сервер: {url}",
+    "uk-UA": "Сервер: {url}",
+    "de-DE": "Server: {url}"
+  },
+  "Apply updates this profile and setup completion together. Installed preferences save separately; save the collection to keep its profile changes.": {
+    "es-ES": "Aplicar actualiza este perfil y la finalización del asistente a la vez. Las preferencias instaladas se guardan por separado; guarda la colección para conservar los cambios del perfil.",
+    "ru-RU": "Применение одновременно обновляет этот профиль и завершение настройки. Установленные предпочтения сохраняются отдельно; сохраните коллекцию, чтобы сохранить изменения профиля.",
+    "uk-UA": "Застосування одночасно оновлює цей профіль і завершення налаштування. Установлені вподобання зберігаються окремо; збережіть колекцію, щоб зберегти зміни профілю.",
+    "de-DE": "Übernehmen aktualisiert dieses Profil und den Einrichtungsabschluss gemeinsam. Installierte Voreinstellungen werden getrennt gespeichert; die Sammlung speichern, um ihre Profiländerungen zu behalten."
+  },
+  "No recording, stream, hardware test or network test starts when you apply.": {
+    "es-ES": "Aplicar no inicia ninguna grabación, transmisión ni prueba de hardware o de red.",
+    "ru-RU": "Применение не запускает запись, трансляцию, тест оборудования или сети.",
+    "uk-UA": "Застосування не запускає запис, трансляцію, тест обладнання чи мережі.",
+    "de-DE": "Übernehmen startet weder Aufnahme oder Stream noch Hardware- oder Netzwerktests."
+  },
+  "Open guided setup for this new profile after creating it.": {
+    "es-ES": "Abre el asistente para este nuevo perfil después de crearlo.",
+    "ru-RU": "Открыть мастер настройки для нового профиля после его создания.",
+    "uk-UA": "Відкрити майстер налаштування для нового профілю після його створення.",
+    "de-DE": "Nach dem Erstellen den Einrichtungsassistenten für dieses neue Profil öffnen."
+  },
+  "Stop active outputs and finish the current dialog before opening setup.": {
+    "es-ES": "Detén las salidas activas y termina el diálogo actual antes de abrir el asistente.",
+    "ru-RU": "Остановите активные выходы и завершите текущее диалоговое окно перед открытием мастера.",
+    "uk-UA": "Зупиніть активні виходи й завершіть поточне діалогове вікно перед відкриттям майстра.",
+    "de-DE": "Aktive Ausgaben stoppen und den aktuellen Dialog beenden, bevor die Einrichtung geöffnet wird."
+  },
+  "Stop active outputs before applying setup.": {
+    "es-ES": "Detén las salidas activas antes de aplicar la configuración.",
+    "ru-RU": "Остановите активные выходы перед применением настройки.",
+    "uk-UA": "Зупиніть активні виходи перед застосуванням налаштування.",
+    "de-DE": "Aktive Ausgaben vor dem Übernehmen der Einrichtung stoppen."
+  },
+  "Setup requires an open document.": {
+    "es-ES": "La configuración requiere un documento abierto.",
+    "ru-RU": "Для настройки требуется открытый документ.",
+    "uk-UA": "Для налаштування потрібен відкритий документ.",
+    "de-DE": "Die Einrichtung erfordert ein geöffnetes Dokument."
+  },
+  "Finish or cancel the current setup first.": {
+    "es-ES": "Primero termina o cancela la configuración actual.",
+    "ru-RU": "Сначала завершите или отмените текущую настройку.",
+    "uk-UA": "Спочатку завершіть або скасуйте поточне налаштування.",
+    "de-DE": "Zuerst die aktuelle Einrichtung abschließen oder abbrechen."
+  },
+  "Setup generation is exhausted.": {
+    "es-ES": "Se agotó el contador de sesiones de configuración.",
+    "ru-RU": "Исчерпан счётчик поколений настройки.",
+    "uk-UA": "Вичерпано лічильник поколінь налаштування.",
+    "de-DE": "Der Generationszähler der Einrichtung ist erschöpft."
+  },
+  "Setup is no longer open.": {
+    "es-ES": "El asistente ya no está abierto.",
+    "ru-RU": "Мастер настройки уже закрыт.",
+    "uk-UA": "Майстер налаштування вже закрито.",
+    "de-DE": "Die Einrichtung ist nicht mehr geöffnet."
+  },
+  "The setup target changed. Cancel and reopen setup before applying.": {
+    "es-ES": "Cambió el destino de la configuración. Cancela y vuelve a abrir el asistente antes de aplicar.",
+    "ru-RU": "Объект настройки изменился. Отмените и заново откройте мастер перед применением.",
+    "uk-UA": "Об’єкт налаштування змінився. Скасуйте й знову відкрийте майстер перед застосуванням.",
+    "de-DE": "Das Einrichtungsziel wurde geändert. Vor dem Übernehmen abbrechen und neu öffnen."
+  },
+  "Setup is already on its first page.": {
+    "es-ES": "El asistente ya está en su primera página.",
+    "ru-RU": "Мастер уже находится на первой странице.",
+    "uk-UA": "Майстер уже перебуває на першій сторінці.",
+    "de-DE": "Die Einrichtung befindet sich bereits auf der ersten Seite."
+  },
+  "Review the settings before applying.": {
+    "es-ES": "Revisa los ajustes antes de aplicarlos.",
+    "ru-RU": "Проверьте настройки перед применением.",
+    "uk-UA": "Перевірте налаштування перед застосуванням.",
+    "de-DE": "Die Einstellungen vor dem Übernehmen prüfen."
+  },
+  "Skip is only available during first-run setup.": {
+    "es-ES": "Omitir solo está disponible durante la configuración inicial.",
+    "ru-RU": "Пропуск доступен только при первоначальной настройке.",
+    "uk-UA": "Пропуск доступний лише під час початкового налаштування.",
+    "de-DE": "Überspringen ist nur bei der Ersteinrichtung verfügbar."
+  },
+  "Open supported manual setup. Automatic optimization tests are not implemented.": {
+    "es-ES": "Abre la configuración manual compatible. Las pruebas de optimización automática no están implementadas.",
+    "ru-RU": "Открыть поддерживаемую ручную настройку. Автоматические тесты оптимизации не реализованы.",
+    "uk-UA": "Відкрити підтримуване ручне налаштування. Автоматичні тести оптимізації не реалізовані.",
+    "de-DE": "Die unterstützte manuelle Einrichtung öffnen. Automatische Optimierungstests sind nicht implementiert."
+  }
+}

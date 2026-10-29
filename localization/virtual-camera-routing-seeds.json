@@ -1,0 +1,116 @@
+{
+  "Send the selected video output to the installed SkyLive virtual camera. Audio stays separate.": {
+    "es-ES": "Envía la salida de vídeo seleccionada a la cámara virtual SkyLive instalada. El audio permanece separado.",
+    "ru-RU": "Передавать выбранное видео в установленную виртуальную камеру SkyLive. Звук передаётся отдельно.",
+    "uk-UA": "Передавати вибране відео у встановлену віртуальну камеру SkyLive. Звук передається окремо.",
+    "de-DE": "Die gewählte Videoausgabe an die installierte virtuelle SkyLive-Kamera senden. Audio bleibt getrennt."
+  },
+  "Use this output route and camera profile on the next start.": {
+    "es-ES": "Usar esta salida y este perfil de cámara en el próximo inicio.",
+    "ru-RU": "Использовать выбранный видеовыход и профиль камеры при следующем запуске.",
+    "uk-UA": "Використовувати вибраний відеовихід і профіль камери під час наступного запуску.",
+    "de-DE": "Diese Ausgabe und dieses Kameraprofil beim nächsten Start verwenden."
+  },
+  "The selected video uses the global Video output settings, then fits the camera format with black borders when needed.": {
+    "es-ES": "El vídeo seleccionado usa los ajustes globales de salida de Vídeo y después se adapta al formato de cámara, con bordes negros si son necesarios.",
+    "ru-RU": "Выбранное видео использует общие настройки видеовыхода, затем вписывается в формат камеры с чёрными полями при необходимости.",
+    "uk-UA": "Вибране відео використовує загальні налаштування відеовиходу, а потім вписується у формат камери з чорними полями за потреби.",
+    "de-DE": "Das gewählte Video verwendet die globalen Videoausgabeeinstellungen und wird anschließend bei Bedarf mit schwarzen Rändern in das Kameraformat eingepasst."
+  },
+  "An individual source is fitted into the canvas after its filters. Scene and group sources retain their own filters.": {
+    "es-ES": "Una fuente individual se ajusta al lienzo después de aplicar sus filtros. Las fuentes de escena y grupo conservan sus propios filtros.",
+    "ru-RU": "Отдельный источник вписывается в холст после применения фильтров. Источники сцен и групп сохраняют свои фильтры.",
+    "uk-UA": "Окреме джерело вписується в полотно після застосування фільтрів. Джерела сцен і груп зберігають власні фільтри.",
+    "de-DE": "Eine einzelne Quelle wird nach ihren Filtern in die Leinwand eingepasst. Szenen- und Gruppenquellen behalten ihre eigenen Filter."
+  },
+  "Stop the virtual camera before changing its output or format.": {
+    "es-ES": "Detén la cámara virtual antes de cambiar su salida o formato.",
+    "ru-RU": "Остановите виртуальную камеру перед изменением видеовыхода или формата.",
+    "uk-UA": "Зупиніть віртуальну камеру перед зміною відеовиходу або формату.",
+    "de-DE": "Die virtuelle Kamera vor dem Ändern ihrer Ausgabe oder ihres Formats stoppen."
+  },
+  "Use this landscape resolution at 30 frames per second for the virtual camera. Other frame rates are not supported by this camera component.": {
+    "es-ES": "Usar esta resolución horizontal a 30 fotogramas por segundo para la cámara virtual. Este componente de cámara no admite otras frecuencias.",
+    "ru-RU": "Использовать это горизонтальное разрешение с частотой 30 кадров/с. Этот компонент виртуальной камеры не поддерживает другие частоты кадров.",
+    "uk-UA": "Використовувати цю горизонтальну роздільність із частотою 30 кадрів/с. Цей компонент віртуальної камери не підтримує інші частоти кадрів.",
+    "de-DE": "Diese Auflösung im Querformat mit 30 Bildern pro Sekunde verwenden. Andere Bildraten werden von dieser Kamerakomponente nicht unterstützt."
+  },
+  "Waiting for a frame from the selected video output.": {
+    "es-ES": "Esperando un fotograma de la salida de vídeo seleccionada.",
+    "ru-RU": "Ожидание кадра от выбранного видеовыхода.",
+    "uk-UA": "Очікування кадру від вибраного відеовиходу.",
+    "de-DE": "Warten auf ein Bild der gewählten Videoausgabe."
+  },
+  "Video output": {
+    "es-ES": "Salida de vídeo",
+    "ru-RU": "Видеовыход",
+    "uk-UA": "Відеовихід",
+    "de-DE": "Videoausgabe"
+  },
+  "Send the actual Program output, including current scene transitions.": {
+    "es-ES": "Enviar la salida real de Programa, incluidas las transiciones de escena actuales.",
+    "ru-RU": "Передавать текущий выход Program вместе с переходами между сценами.",
+    "uk-UA": "Передавати поточний вихід Program разом із переходами між сценами.",
+    "de-DE": "Die tatsächliche Programmausgabe einschließlich aktueller Szenenübergänge senden."
+  },
+  "Send the current Preview scene without Program transitions or uncommitted transform drafts.": {
+    "es-ES": "Enviar la escena actual de Vista previa sin las transiciones de Programa ni los cambios de transformación sin aplicar.",
+    "ru-RU": "Передавать текущую сцену Preview без переходов Program и неприменённых изменений трансформации.",
+    "uk-UA": "Передавати поточну сцену Preview без переходів Program і незастосованих змін трансформації.",
+    "de-DE": "Die aktuelle Vorschauszene ohne Programmübergänge oder unbestätigte Transformationsentwürfe senden."
+  },
+  "Send one selected scene even while Program and Preview show other scenes.": {
+    "es-ES": "Enviar una escena seleccionada aunque Programa y Vista previa muestren otras escenas.",
+    "ru-RU": "Передавать выбранную сцену, даже когда Program и Preview показывают другие сцены.",
+    "uk-UA": "Передавати вибрану сцену, навіть коли Program і Preview показують інші сцени.",
+    "de-DE": "Eine gewählte Szene senden, auch wenn Programm und Vorschau andere Szenen zeigen."
+  },
+  "Send one selected video source or group, fitted to the canvas after its filters.": {
+    "es-ES": "Enviar una fuente de vídeo o un grupo seleccionados, ajustados al lienzo después de sus filtros.",
+    "ru-RU": "Передавать выбранный видеоисточник или группу, вписанные в холст после применения фильтров.",
+    "uk-UA": "Передавати вибране відеоджерело або групу, вписані в полотно після застосування фільтрів.",
+    "de-DE": "Eine gewählte Videoquelle oder Gruppe senden, die nach ihren Filtern in die Leinwand eingepasst wird."
+  },
+  "No video target is available in this scene collection.": {
+    "es-ES": "No hay ningún destino de vídeo disponible en esta colección de escenas.",
+    "ru-RU": "В этой коллекции сцен нет доступного видеоисточника.",
+    "uk-UA": "У цій колекції сцен немає доступного відеоджерела.",
+    "de-DE": "In dieser Szenensammlung ist kein Videoziel verfügbar."
+  },
+  "Selected target is unavailable": {
+    "es-ES": "El destino seleccionado no está disponible",
+    "ru-RU": "Выбранный источник недоступен",
+    "uk-UA": "Вибране джерело недоступне",
+    "de-DE": "Gewähltes Ziel ist nicht verfügbar"
+  },
+  "Use this existing target for the virtual-camera video output.": {
+    "es-ES": "Usar este destino existente para la salida de vídeo de la cámara virtual.",
+    "ru-RU": "Использовать этот существующий источник для видеовыхода виртуальной камеры.",
+    "uk-UA": "Використовувати це наявне джерело для відеовиходу віртуальної камери.",
+    "de-DE": "Dieses vorhandene Ziel für die Videoausgabe der virtuellen Kamera verwenden."
+  },
+  "Choose a virtual-camera output for the current scene collection.": {
+    "es-ES": "Elige una salida de cámara virtual para la colección de escenas actual.",
+    "ru-RU": "Выберите видеовыход виртуальной камеры для текущей коллекции сцен.",
+    "uk-UA": "Виберіть відеовихід віртуальної камери для поточної колекції сцен.",
+    "de-DE": "Eine virtuelle Kameraausgabe für die aktuelle Szenensammlung wählen."
+  },
+  "Virtual-camera output and profile updated for the next start.": {
+    "es-ES": "La salida y el perfil de la cámara virtual se han actualizado para el próximo inicio.",
+    "ru-RU": "Видеовыход и профиль виртуальной камеры обновлены для следующего запуска.",
+    "uk-UA": "Відеовихід і профіль віртуальної камери оновлено для наступного запуску.",
+    "de-DE": "Ausgabe und Profil der virtuellen Kamera wurden für den nächsten Start aktualisiert."
+  },
+  "Virtual-camera output is unavailable; output was stopped.": {
+    "es-ES": "La salida de cámara virtual no está disponible; se ha detenido la salida.",
+    "ru-RU": "Видеовыход виртуальной камеры недоступен; передача остановлена.",
+    "uk-UA": "Відеовихід віртуальної камери недоступний; передавання зупинено.",
+    "de-DE": "Die virtuelle Kameraausgabe ist nicht verfügbar; die Ausgabe wurde gestoppt."
+  },
+  "Stop the virtual camera before changing the video format or active profile.": {
+    "es-ES": "Detén la cámara virtual antes de cambiar el formato de vídeo o el perfil activo.",
+    "ru-RU": "Остановите виртуальную камеру перед изменением видеоформата или активного профиля.",
+    "uk-UA": "Зупиніть віртуальну камеру перед зміною відеоформату або активного профілю.",
+    "de-DE": "Die virtuelle Kamera vor dem Ändern des Videoformats oder des aktiven Profils stoppen."
+  }
+}

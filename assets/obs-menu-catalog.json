@@ -1,0 +1,981 @@
+{
+  "menu_order": [
+    "menu_File",
+    "menuBasic_MainMenu_Edit",
+    "viewMenu",
+    "menuDocks",
+    "profileMenu",
+    "sceneCollectionMenu",
+    "menuTools",
+    "menuBasic_MainMenu_Help"
+  ],
+  "menus": [
+    {
+      "id": "menu_File",
+      "label": "&File",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionShow_Recordings"
+        },
+        {
+          "kind": "action",
+          "id": "actionRemux"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "action_Settings"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowSettingsFolder"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowProfileFolder"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionE_xit"
+        }
+      ]
+    },
+    {
+      "id": "menuBasic_MainMenu_Help",
+      "label": "&Help",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionHelpPortal"
+        },
+        {
+          "kind": "action",
+          "id": "actionWebsite"
+        },
+        {
+          "kind": "action",
+          "id": "actionDiscord"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "menu",
+          "id": "menuLogFiles"
+        },
+        {
+          "kind": "menu",
+          "id": "menuCrashLogs"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionRepair"
+        },
+        {
+          "kind": "action",
+          "id": "actionCheckForUpdates"
+        },
+        {
+          "kind": "action",
+          "id": "actionRestartSafe"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowMacPermissions"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowWhatsNew"
+        },
+        {
+          "kind": "action",
+          "id": "actionReleaseNotes"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowAbout"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    },
+    {
+      "id": "menuLogFiles",
+      "label": "&Log Files",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionShowLogs"
+        },
+        {
+          "kind": "action",
+          "id": "actionUploadCurrentLog"
+        },
+        {
+          "kind": "action",
+          "id": "actionUploadLastLog"
+        },
+        {
+          "kind": "action",
+          "id": "actionViewCurrentLog"
+        }
+      ]
+    },
+    {
+      "id": "menuCrashLogs",
+      "label": "Crash &Reports",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionShowCrashLogs"
+        },
+        {
+          "kind": "action",
+          "id": "actionUploadLastCrashLog"
+        }
+      ]
+    },
+    {
+      "id": "menuBasic_MainMenu_Edit",
+      "label": "&Edit",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionMainUndo"
+        },
+        {
+          "kind": "action",
+          "id": "actionMainRedo"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionCopySource"
+        },
+        {
+          "kind": "action",
+          "id": "actionPasteRef"
+        },
+        {
+          "kind": "action",
+          "id": "actionPasteDup"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionCopyFilters"
+        },
+        {
+          "kind": "action",
+          "id": "actionPasteFilters"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "menu",
+          "id": "transformMenu"
+        },
+        {
+          "kind": "menu",
+          "id": "orderMenu"
+        },
+        {
+          "kind": "menu",
+          "id": "scalingMenu"
+        },
+        {
+          "kind": "action",
+          "id": "actionLockPreview"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionAdvAudioProperties"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    },
+    {
+      "id": "transformMenu",
+      "label": "&Transform",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionEditTransform"
+        },
+        {
+          "kind": "action",
+          "id": "actionCopyTransform"
+        },
+        {
+          "kind": "action",
+          "id": "actionPasteTransform"
+        },
+        {
+          "kind": "action",
+          "id": "actionResetTransform"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionRotate90CW"
+        },
+        {
+          "kind": "action",
+          "id": "actionRotate90CCW"
+        },
+        {
+          "kind": "action",
+          "id": "actionRotate180"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionFlipHorizontal"
+        },
+        {
+          "kind": "action",
+          "id": "actionFlipVertical"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionFitToScreen"
+        },
+        {
+          "kind": "action",
+          "id": "actionStretchToScreen"
+        },
+        {
+          "kind": "action",
+          "id": "actionCenterToScreen"
+        },
+        {
+          "kind": "action",
+          "id": "actionVerticalCenter"
+        },
+        {
+          "kind": "action",
+          "id": "actionHorizontalCenter"
+        }
+      ]
+    },
+    {
+      "id": "orderMenu",
+      "label": "&Order",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionMoveUp"
+        },
+        {
+          "kind": "action",
+          "id": "actionMoveDown"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionMoveToTop"
+        },
+        {
+          "kind": "action",
+          "id": "actionMoveToBottom"
+        }
+      ]
+    },
+    {
+      "id": "scalingMenu",
+      "label": "Preview &Scaling",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionScaleWindow"
+        },
+        {
+          "kind": "action",
+          "id": "actionScaleCanvas"
+        },
+        {
+          "kind": "action",
+          "id": "actionScaleOutput"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionPreviewZoomIn"
+        },
+        {
+          "kind": "action",
+          "id": "actionPreviewZoomOut"
+        },
+        {
+          "kind": "action",
+          "id": "actionPreviewResetZoom"
+        }
+      ]
+    },
+    {
+      "id": "profileMenu",
+      "label": "&Profile",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionNewProfile"
+        },
+        {
+          "kind": "action",
+          "id": "actionDupProfile"
+        },
+        {
+          "kind": "action",
+          "id": "actionRenameProfile"
+        },
+        {
+          "kind": "action",
+          "id": "actionRemoveProfile"
+        },
+        {
+          "kind": "action",
+          "id": "actionImportProfile"
+        },
+        {
+          "kind": "action",
+          "id": "actionExportProfile"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    },
+    {
+      "id": "sceneCollectionMenu",
+      "label": "&Scene Collection",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionNewSceneCollection"
+        },
+        {
+          "kind": "action",
+          "id": "actionDupSceneCollection"
+        },
+        {
+          "kind": "action",
+          "id": "actionRenameSceneCollection"
+        },
+        {
+          "kind": "action",
+          "id": "actionRemoveSceneCollection"
+        },
+        {
+          "kind": "action",
+          "id": "actionImportSceneCollection"
+        },
+        {
+          "kind": "action",
+          "id": "actionExportSceneCollection"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionShowMissingFiles"
+        },
+        {
+          "kind": "action",
+          "id": "actionRemigrateSceneCollection"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    },
+    {
+      "id": "viewMenu",
+      "label": "&View",
+      "items": [
+        {
+          "kind": "action",
+          "id": "resetUI"
+        },
+        {
+          "kind": "action",
+          "id": "actionFullscreenInterface"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "menu",
+          "id": "sceneListModeMenu"
+        },
+        {
+          "kind": "action",
+          "id": "toggleListboxToolbars"
+        },
+        {
+          "kind": "action",
+          "id": "toggleContextBar"
+        },
+        {
+          "kind": "action",
+          "id": "toggleSourceIcons"
+        },
+        {
+          "kind": "action",
+          "id": "toggleStatusBar"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "stats"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "menu",
+          "id": "multiviewProjectorMenu"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        },
+        {
+          "kind": "action",
+          "id": "actionAlwaysOnTop"
+        }
+      ]
+    },
+    {
+      "id": "sceneListModeMenu",
+      "label": "Scene List Mode",
+      "items": [
+        {
+          "kind": "action",
+          "id": "actionSceneListMode"
+        },
+        {
+          "kind": "action",
+          "id": "actionSceneGridMode"
+        }
+      ]
+    },
+    {
+      "id": "multiviewProjectorMenu",
+      "label": "Open Multiview",
+      "items": []
+    },
+    {
+      "id": "menuTools",
+      "label": "&Tools",
+      "items": [
+        {
+          "kind": "action",
+          "id": "autoConfigure"
+        },
+        {
+          "kind": "action",
+          "id": "idianPlayground"
+        },
+        {
+          "kind": "action",
+          "id": "actionOpenPluginManager"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    },
+    {
+      "id": "menuDocks",
+      "label": "&Docks",
+      "items": [
+        {
+          "kind": "action",
+          "id": "lockDocks"
+        },
+        {
+          "kind": "action",
+          "id": "sideDocks"
+        },
+        {
+          "kind": "action",
+          "id": "resetDocks"
+        },
+        {
+          "kind": "separator",
+          "id": "separator"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "actionCopySource",
+      "label": "Copy"
+    },
+    {
+      "id": "actionPasteRef",
+      "label": "Paste (Reference)"
+    },
+    {
+      "id": "actionCopyFilters",
+      "label": "Copy Filters"
+    },
+    {
+      "id": "actionPasteFilters",
+      "label": "Paste Filters"
+    },
+    {
+      "id": "resetUI",
+      "label": "&Reset UI"
+    },
+    {
+      "id": "actionFullscreenInterface",
+      "label": "Fullscreen Interface"
+    },
+    {
+      "id": "actionAddScene",
+      "label": "Add"
+    },
+    {
+      "id": "actionAddSource",
+      "label": "Add"
+    },
+    {
+      "id": "actionRemoveScene",
+      "label": "Remove"
+    },
+    {
+      "id": "actionRemoveSource",
+      "label": "Remove"
+    },
+    {
+      "id": "actionSourceProperties",
+      "label": "Properties"
+    },
+    {
+      "id": "actionSceneUp",
+      "label": "Move Up"
+    },
+    {
+      "id": "actionSourceUp",
+      "label": "Move Up"
+    },
+    {
+      "id": "actionSceneDown",
+      "label": "Move Down"
+    },
+    {
+      "id": "actionSourceDown",
+      "label": "Move Down"
+    },
+    {
+      "id": "actionShow_Recordings",
+      "label": "Show &Recordings"
+    },
+    {
+      "id": "actionRemux",
+      "label": "Re&mux Recordings"
+    },
+    {
+      "id": "action_Settings",
+      "label": "&Settings"
+    },
+    {
+      "id": "actionE_xit",
+      "label": "E&xit"
+    },
+    {
+      "id": "actionShowLogs",
+      "label": "&Show Log Files"
+    },
+    {
+      "id": "actionUploadLastLog",
+      "label": "Upload &Previous Log File"
+    },
+    {
+      "id": "actionUploadCurrentLog",
+      "label": "Upload &Current Log File"
+    },
+    {
+      "id": "actionViewCurrentLog",
+      "label": "&View Current Log"
+    },
+    {
+      "id": "actionUndo",
+      "label": "&Undo"
+    },
+    {
+      "id": "actionRedo",
+      "label": "&Redo"
+    },
+    {
+      "id": "actionEditTransform",
+      "label": "&Edit Transform"
+    },
+    {
+      "id": "actionCopyTransform",
+      "label": "Copy Transform"
+    },
+    {
+      "id": "actionPasteTransform",
+      "label": "Paste Transform"
+    },
+    {
+      "id": "actionRotate90CW",
+      "label": "Rotate 90 degrees CW"
+    },
+    {
+      "id": "actionRotate90CCW",
+      "label": "Rotate 90 degrees CCW"
+    },
+    {
+      "id": "actionRotate180",
+      "label": "Rotate 180 degrees"
+    },
+    {
+      "id": "actionFitToScreen",
+      "label": "&Fit to screen"
+    },
+    {
+      "id": "actionStretchToScreen",
+      "label": "&Stretch to screen"
+    },
+    {
+      "id": "actionResetTransform",
+      "label": "&Reset Transform"
+    },
+    {
+      "id": "actionCenterToScreen",
+      "label": "&Center to screen"
+    },
+    {
+      "id": "actionVerticalCenter",
+      "label": "Center Vertically"
+    },
+    {
+      "id": "actionHorizontalCenter",
+      "label": "Center Horizontally"
+    },
+    {
+      "id": "actionFlipHorizontal",
+      "label": "Flip &Horizontal"
+    },
+    {
+      "id": "actionFlipVertical",
+      "label": "Flip &Vertical"
+    },
+    {
+      "id": "actionMoveUp",
+      "label": "Move &Up"
+    },
+    {
+      "id": "actionMoveDown",
+      "label": "Move &Down"
+    },
+    {
+      "id": "actionMoveToTop",
+      "label": "Move to &Top"
+    },
+    {
+      "id": "actionMoveToBottom",
+      "label": "Move to &Bottom"
+    },
+    {
+      "id": "actionCheckForUpdates",
+      "label": "Check For Updates"
+    },
+    {
+      "id": "actionShowMacPermissions",
+      "label": "Review App Permissions..."
+    },
+    {
+      "id": "actionRepair",
+      "label": "Check File Integrity"
+    },
+    {
+      "id": "actionRestartSafe",
+      "label": "Restart in Safe Mode"
+    },
+    {
+      "id": "actionReleaseNotes",
+      "label": "Release Notes"
+    },
+    {
+      "id": "actionInteract",
+      "label": "Interact"
+    },
+    {
+      "id": "actionAdvAudioProperties",
+      "label": "&Advanced Audio Properties"
+    },
+    {
+      "id": "actionWebsite",
+      "label": "Visit &Website"
+    },
+    {
+      "id": "actionNewSceneCollection",
+      "label": "New..."
+    },
+    {
+      "id": "actionDupSceneCollection",
+      "label": "Duplicate..."
+    },
+    {
+      "id": "actionRenameSceneCollection",
+      "label": "Rename..."
+    },
+    {
+      "id": "actionRemoveSceneCollection",
+      "label": "Remove"
+    },
+    {
+      "id": "actionImportSceneCollection",
+      "label": "Import..."
+    },
+    {
+      "id": "actionExportSceneCollection",
+      "label": "Export..."
+    },
+    {
+      "id": "actionShowMissingFiles",
+      "label": "Check for Missing Files"
+    },
+    {
+      "id": "actionRemigrateSceneCollection",
+      "label": "Reset Base Resolution"
+    },
+    {
+      "id": "actionNewProfile",
+      "label": "New..."
+    },
+    {
+      "id": "actionDupProfile",
+      "label": "Duplicate..."
+    },
+    {
+      "id": "actionRenameProfile",
+      "label": "Rename..."
+    },
+    {
+      "id": "actionRemoveProfile",
+      "label": "Remove"
+    },
+    {
+      "id": "actionImportProfile",
+      "label": "Import..."
+    },
+    {
+      "id": "actionExportProfile",
+      "label": "Export..."
+    },
+    {
+      "id": "actionShowSettingsFolder",
+      "label": "Show Settings Folder"
+    },
+    {
+      "id": "actionShowProfileFolder",
+      "label": "Show Profile Folder"
+    },
+    {
+      "id": "actionAlwaysOnTop",
+      "label": "&Always On Top"
+    },
+    {
+      "id": "toggleListboxToolbars",
+      "label": "Dock Toolbars"
+    },
+    {
+      "id": "toggleStatusBar",
+      "label": "&Status Bar"
+    },
+    {
+      "id": "actionLockPreview",
+      "label": "&Lock Preview"
+    },
+    {
+      "id": "actionScaleWindow",
+      "label": "Scale to Window"
+    },
+    {
+      "id": "actionScaleCanvas",
+      "label": "Canvas (%1x%2)"
+    },
+    {
+      "id": "actionScaleOutput",
+      "label": "Output (%1x%2)"
+    },
+    {
+      "id": "actionPasteDup",
+      "label": "Paste (Duplicate)"
+    },
+    {
+      "id": "idianPlayground",
+      "label": "Idian Playground"
+    },
+    {
+      "id": "autoConfigure2",
+      "label": "Auto-Configuration Wizard"
+    },
+    {
+      "id": "autoConfigure",
+      "label": "Auto-Configuration Wizard"
+    },
+    {
+      "id": "actionOpenPluginManager",
+      "label": "Plugin Manager"
+    },
+    {
+      "id": "stats",
+      "label": "Stats"
+    },
+    {
+      "id": "resetDocks",
+      "label": "&Reset Docks"
+    },
+    {
+      "id": "lockDocks",
+      "label": "&Lock Docks"
+    },
+    {
+      "id": "sideDocks",
+      "label": "&Full-Height Docks"
+    },
+    {
+      "id": "actionHelpPortal",
+      "label": "Help &Portal"
+    },
+    {
+      "id": "actionShowCrashLogs",
+      "label": "&Show Crash Reports"
+    },
+    {
+      "id": "actionUploadLastCrashLog",
+      "label": "Upload &Previous Crash Report"
+    },
+    {
+      "id": "actionDiscord",
+      "label": "Join &Discord Server"
+    },
+    {
+      "id": "actionShowWhatsNew",
+      "label": "What's New"
+    },
+    {
+      "id": "actionShowAbout",
+      "label": "&About"
+    },
+    {
+      "id": "toggleSourceIcons",
+      "label": "Source &Icons"
+    },
+    {
+      "id": "toggleContextToolbars",
+      "label": "Basic.MainMenu.View.Toolbars.Context"
+    },
+    {
+      "id": "toggleContextBar",
+      "label": "Source Toolbar"
+    },
+    {
+      "id": "actionMainUndo",
+      "label": "Undo"
+    },
+    {
+      "id": "actionMainRedo",
+      "label": "Redo"
+    },
+    {
+      "id": "actionMixerToolbarAdvAudio",
+      "label": "AdvAudioProps"
+    },
+    {
+      "id": "actionSceneFilters",
+      "label": "Open Scene Filters"
+    },
+    {
+      "id": "actionSceneGridMode",
+      "label": "Grid"
+    },
+    {
+      "id": "actionSceneListMode",
+      "label": "List"
+    },
+    {
+      "id": "actionPreview",
+      "label": "Preview"
+    },
+    {
+      "id": "actionPreviewZoomIn",
+      "label": "Zoom In"
+    },
+    {
+      "id": "actionPreviewZoomOut",
+      "label": "Zoom Out"
+    },
+    {
+      "id": "actionPreviewResetZoom",
+      "label": "Reset Zoom"
+    }
+  ]
+}

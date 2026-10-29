@@ -1,0 +1,110 @@
+{
+  "Import supports represented OBS v1 absolute and v2 relative coordinates at the selected base canvas, including private Groups. Export uses v1 absolute coordinates. Custom canvases, bounds modes and unsupported providers or filters are rejected.": {
+    "es-ES": "La importación admite las coordenadas absolutas v1 y relativas v2 representadas de OBS en el lienzo base seleccionado, incluidos los grupos privados. La exportación usa coordenadas absolutas v1. Se rechazan lienzos personalizados, modos de límites y proveedores o filtros no compatibles.",
+    "ru-RU": "Импорт поддерживает представимые абсолютные координаты OBS v1 и относительные v2 на выбранном базовом холсте, включая приватные группы. Экспорт использует абсолютные координаты v1. Другие холсты, режимы границ и неподдерживаемые источники или фильтры отклоняются.",
+    "uk-UA": "Імпорт підтримує відтворювані абсолютні координати OBS v1 і відносні v2 на вибраному базовому полотні, включно з приватними групами. Експорт використовує абсолютні координати v1. Інші полотна, режими меж і непідтримувані джерела або фільтри відхиляються.",
+    "de-DE": "Der Import unterstützt abbildbare absolute OBS-v1- und relative v2-Koordinaten auf der ausgewählten Basisleinwand, einschließlich privater Gruppen. Der Export verwendet absolute v1-Koordinaten. Eigene Leinwände, Begrenzungsmodi sowie nicht unterstützte Quellen und Filter werden abgewiesen."
+  },
+  "Empty Group dimensions must both be zero.": {
+    "es-ES": "Las dos dimensiones de un grupo vacío deben ser cero.",
+    "ru-RU": "Оба размера пустой группы должны быть равны нулю.",
+    "uk-UA": "Обидва розміри порожньої групи мають дорівнювати нулю.",
+    "de-DE": "Beide Abmessungen einer leeren Gruppe müssen null sein."
+  },
+  "Private Group sources cannot be reused as aliases.": {
+    "es-ES": "Las fuentes de grupo privadas no se pueden reutilizar como referencias compartidas.",
+    "ru-RU": "Приватную группу нельзя использовать как общий источник в нескольких местах.",
+    "uk-UA": "Приватну групу не можна використовувати як спільне джерело в кількох місцях.",
+    "de-DE": "Private Gruppenquellen können nicht als gemeinsame Referenzen wiederverwendet werden."
+  },
+  "Cannot allocate bounded Group import metadata.": {
+    "es-ES": "No se pueden reservar los metadatos limitados de importación de grupos.",
+    "ru-RU": "Не удалось выделить ограниченную память для метаданных импорта групп.",
+    "uk-UA": "Не вдалося виділити обмежену пам’ять для метаданих імпорту груп.",
+    "de-DE": "Der begrenzte Speicher für Gruppen-Importmetadaten kann nicht reserviert werden."
+  },
+  "Declared Group dimensions disagree with its derived raster.": {
+    "es-ES": "Las dimensiones declaradas del grupo no coinciden con su contenido calculado.",
+    "ru-RU": "Заданные размеры группы не совпадают с размером её содержимого.",
+    "uk-UA": "Задані розміри групи не збігаються з розміром її вмісту.",
+    "de-DE": "Die angegebenen Gruppenabmessungen stimmen nicht mit dem berechneten Raster überein."
+  },
+  "Only the OBS32 main canvas is represented by this importer": {
+    "es-ES": "Solo se admite el lienzo principal de OBS32",
+    "ru-RU": "Импортёр поддерживает только основной холст OBS32",
+    "uk-UA": "Імпортер підтримує лише основне полотно OBS32",
+    "de-DE": "Dieser Import unterstützt nur die Hauptleinwand von OBS32"
+  },
+  "Canvas UUID must be a string": {
+    "es-ES": "El UUID del lienzo debe ser una cadena",
+    "ru-RU": "UUID холста должен быть строкой",
+    "uk-UA": "UUID полотна має бути рядком",
+    "de-DE": "Die Leinwand-UUID muss eine Zeichenfolge sein"
+  },
+  "Group sources must be in the OBS groups array; ordinary sources belong in sources.": {
+    "es-ES": "Las fuentes de grupo deben estar en el arreglo groups de OBS; las demás, en sources.",
+    "ru-RU": "Группы должны находиться в массиве OBS groups, остальные источники — в sources.",
+    "uk-UA": "Групи мають бути в масиві OBS groups, решта джерел — у sources.",
+    "de-DE": "Gruppenquellen müssen im OBS-Array groups stehen; andere Quellen gehören in sources."
+  },
+  "Group collapsed state must be a boolean": {
+    "es-ES": "El estado contraído del grupo debe ser un booleano",
+    "ru-RU": "Состояние сворачивания группы должно быть логическим значением",
+    "uk-UA": "Стан згортання групи має бути логічним значенням",
+    "de-DE": "Der eingeklappte Gruppenstatus muss ein boolescher Wert sein"
+  },
+  "Group id_counter must be nonnegative": {
+    "es-ES": "El contador de identificadores del grupo no puede ser negativo",
+    "ru-RU": "Счётчик идентификаторов группы не может быть отрицательным",
+    "uk-UA": "Лічильник ідентифікаторів групи не може бути від’ємним",
+    "de-DE": "Der Gruppen-ID-Zähler darf nicht negativ sein"
+  },
+  "Group raster dimensions must be unsigned 32-bit integers": {
+    "es-ES": "Las dimensiones del grupo deben ser enteros de32bits sin signo",
+    "ru-RU": "Размеры группы должны быть беззнаковыми 32-битными целыми числами",
+    "uk-UA": "Розміри групи мають бути беззнаковими 32-бітними цілими числами",
+    "de-DE": "Gruppenraster-Abmessungen müssen vorzeichenlose 32-Bit-Ganzzahlen sein"
+  },
+  "Group raster dimensions exceed the represented source bounds": {
+    "es-ES": "Las dimensiones del grupo superan los límites admitidos",
+    "ru-RU": "Размеры группы превышают поддерживаемые пределы источника",
+    "uk-UA": "Розміри групи перевищують підтримувані межі джерела",
+    "de-DE": "Die Gruppenraster-Abmessungen überschreiten die unterstützten Quellgrenzen"
+  },
+  "Active and backup OBS items exceed the 4096 wire-row budget": {
+    "es-ES": "Los elementos activos y de respaldo de OBS superan el límite de4096filas",
+    "ru-RU": "Активные и резервные элементы OBS превышают предел 4096 строк",
+    "uk-UA": "Активні й резервні елементи OBS перевищують межу 4096 рядків",
+    "de-DE": "Aktive OBS-Elemente und Sicherungseinträge überschreiten die Grenze von4096Zeilen"
+  },
+  "OBS interchange admits at most 512 active items": {
+    "es-ES": "El intercambio con OBS admite hasta512elementos activos",
+    "ru-RU": "Обмен с OBS допускает не более 512 активных элементов",
+    "uk-UA": "Обмін з OBS допускає не більше 512 активних елементів",
+    "de-DE": "Der OBS-Austausch erlaubt höchstens512aktive Elemente"
+  },
+  "A private Group must have exactly one owning item": {
+    "es-ES": "Cada grupo privado debe tener exactamente un elemento propietario",
+    "ru-RU": "У приватной группы должен быть ровно один элемент-владелец",
+    "uk-UA": "Приватна група має мати рівно один елемент-власник",
+    "de-DE": "Eine private Gruppe muss genau ein besitzendes Element haben"
+  },
+  "Group ownership contains a cycle or exceeds depth 16": {
+    "es-ES": "La jerarquía de grupos contiene un ciclo o supera16niveles",
+    "ru-RU": "В иерархии групп есть цикл либо глубина больше 16",
+    "uk-UA": "В ієрархії груп є цикл або глибина перевищує 16",
+    "de-DE": "Die Gruppenhierarchie enthält einen Zyklus oder überschreitet16Ebenen"
+  },
+  "OBS import temporary and active items exceed the Core item budget": {
+    "es-ES": "Los elementos temporales y activos de la importación superan el límite del modelo",
+    "ru-RU": "Временные и активные элементы импорта превышают предел модели",
+    "uk-UA": "Тимчасові й активні елементи імпорту перевищують межу моделі",
+    "de-DE": "Temporäre und aktive Importelemente überschreiten die Modellgrenze"
+  },
+  "Private Group transition overrides are outside the represented OBS subset": {
+    "es-ES": "Las transiciones privadas de grupos no se pueden intercambiar con OBS",
+    "ru-RU": "Переопределения переходов приватных групп не входят в поддерживаемую часть обмена OBS",
+    "uk-UA": "Перевизначення переходів приватних груп не входять до підтримуваної частини обміну OBS",
+    "de-DE": "Private Gruppen-Übergangsüberschreibungen gehören nicht zum unterstützten OBS-Austauschumfang"
+  }
+}

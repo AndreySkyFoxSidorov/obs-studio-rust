@@ -1,0 +1,3560 @@
+{
+  " · Default": {
+    "de-DE": " · Standard",
+    "es-ES": " · Predeterminado",
+    "ru-RU": " · По умолчанию",
+    "uk-UA": " · Типовий"
+  },
+  " · Minimized": {
+    "de-DE": " · Minimiert",
+    "es-ES": " · Minimizada",
+    "ru-RU": " · Свёрнуто",
+    "uk-UA": " · Згорнуто"
+  },
+  " · Primary": {
+    "de-DE": " · Primär",
+    "es-ES": " · Principal",
+    "ru-RU": " · Основной",
+    "uk-UA": " · Основний"
+  },
+  " · finishing": {
+    "de-DE": " · wird abgeschlossen",
+    "es-ES": " · finalizando",
+    "ru-RU": " · завершение",
+    "uk-UA": " · завершення"
+  },
+  "A document operation is already active": {
+    "de-DE": "Ein Dokumentvorgang ist bereits aktiv",
+    "es-ES": "Ya hay una operación de documento activa",
+    "ru-RU": "Уже выполняется операция с документом",
+    "uk-UA": "Уже виконується операція з документом"
+  },
+  "A scene cannot contain itself.": {
+    "de-DE": "Eine Szene kann sich nicht selbst enthalten.",
+    "es-ES": "Una escena no puede contenerse a sí misma.",
+    "ru-RU": "Сцена не может содержать саму себя.",
+    "uk-UA": "Сцена не може містити саму себе."
+  },
+  "A source audio format could not be converted. Check its settings.": {
+    "de-DE": "Das Audioformat einer Quelle konnte nicht konvertiert werden. Prüfen Sie deren Einstellungen.",
+    "es-ES": "No se pudo convertir el formato de audio de una fuente. Revise sus ajustes.",
+    "ru-RU": "Не удалось преобразовать аудиоформат источника. Проверьте его настройки.",
+    "uk-UA": "Не вдалося перетворити аудіоформат джерела. Перевірте його налаштування."
+  },
+  "A source supports at most eight video filters.": {
+    "de-DE": "Eine Quelle unterstützt höchstens acht Videofilter.",
+    "es-ES": "Una fuente admite como máximo ocho filtros de vídeo.",
+    "ru-RU": "Источник поддерживает не более восьми видеофильтров.",
+    "uk-UA": "Джерело підтримує не більше восьми відеофільтрів."
+  },
+  "About SkyLive": {
+    "de-DE": "Über SkyLive",
+    "es-ES": "Acerca de SkyLive",
+    "ru-RU": "О программе SkyLive",
+    "uk-UA": "Про SkyLive"
+  },
+  "Activate this source in the selected scene": {
+    "de-DE": "Diese Quelle in der ausgewählten Szene aktivieren",
+    "es-ES": "Activar esta fuente en la escena seleccionada",
+    "ru-RU": "Активировать этот источник в выбранной сцене",
+    "uk-UA": "Активувати це джерело у вибраній сцені"
+  },
+  "Actual {:.1}% · Target {:.1}%{}": {
+    "de-DE": "Aktuell {:.1}% · Ziel {:.1}%{}",
+    "es-ES": "Actual {:.1}% · Objetivo {:.1}%{}",
+    "ru-RU": "Текущее {:.1}% · Целевое {:.1}%{}",
+    "uk-UA": "Поточне {:.1}% · Цільове {:.1}%{}"
+  },
+  "Add Audio Input Capture": {
+    "de-DE": "Audioeingabeaufnahme hinzufügen",
+    "es-ES": "Añadir captura de entrada de audio",
+    "ru-RU": "Добавить захват входного аудиопотока",
+    "uk-UA": "Додати захоплення вхідного аудіопотоку"
+  },
+  "Add Audio Output Capture": {
+    "de-DE": "Audioausgabeaufnahme hinzufügen",
+    "es-ES": "Añadir captura de salida de audio",
+    "ru-RU": "Добавить захват выходного аудиопотока",
+    "uk-UA": "Додати захоплення вихідного аудіопотоку"
+  },
+  "Add Audio Pan Filter": {
+    "de-DE": "Audiopanorama-Filter hinzufügen",
+    "es-ES": "Añadir filtro de panorama de audio",
+    "ru-RU": "Добавить фильтр панорамирования",
+    "uk-UA": "Додати фільтр панорамування"
+  },
+  "Add Color Source": {
+    "de-DE": "Farbquelle hinzufügen",
+    "es-ES": "Añadir fuente de color",
+    "ru-RU": "Добавить источник цвета",
+    "uk-UA": "Додати джерело кольору"
+  },
+  "Add Compressor": {
+    "de-DE": "Kompressor hinzufügen",
+    "es-ES": "Añadir compresor",
+    "ru-RU": "Добавить компрессор",
+    "uk-UA": "Додати компресор"
+  },
+  "Add Display Capture": {
+    "de-DE": "Bildschirmaufnahme hinzufügen",
+    "es-ES": "Añadir captura de pantalla",
+    "ru-RU": "Добавить захват экрана",
+    "uk-UA": "Додати захоплення екрана"
+  },
+  "Add Existing": {
+    "de-DE": "Vorhandene hinzufügen",
+    "es-ES": "Añadir existente",
+    "ru-RU": "Добавить существующий",
+    "uk-UA": "Додати наявний"
+  },
+  "Add Filter": {
+    "de-DE": "Filter hinzufügen",
+    "es-ES": "Añadir filtro",
+    "ru-RU": "Добавить фильтр",
+    "uk-UA": "Додати фільтр"
+  },
+  "Add Image Source": {
+    "de-DE": "Bildquelle hinzufügen",
+    "es-ES": "Añadir fuente de imagen",
+    "ru-RU": "Добавить изображение",
+    "uk-UA": "Додати зображення"
+  },
+  "Add New Audio Source": {
+    "de-DE": "Neue Audioquelle hinzufügen",
+    "es-ES": "Añadir nueva fuente de audio",
+    "ru-RU": "Добавить новый аудиоисточник",
+    "uk-UA": "Додати нове аудіоджерело"
+  },
+  "Add Quick Transition": {
+    "de-DE": "Schnellübergang hinzufügen",
+    "es-ES": "Añadir transición rápida",
+    "ru-RU": "Добавить быстрый переход",
+    "uk-UA": "Додати швидкий перехід"
+  },
+  "Add Text Source": {
+    "de-DE": "Textquelle hinzufügen",
+    "es-ES": "Añadir fuente de texto",
+    "ru-RU": "Добавить текстовый источник",
+    "uk-UA": "Додати текстове джерело"
+  },
+  "Add Transition Preset": {
+    "de-DE": "Übergangsvorgabe hinzufügen",
+    "es-ES": "Añadir preajuste de transición",
+    "ru-RU": "Добавить предустановку перехода",
+    "uk-UA": "Додати набір параметрів переходу"
+  },
+  "Add Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät hinzufügen",
+    "es-ES": "Añadir dispositivo de captura de vídeo",
+    "ru-RU": "Добавить устройство видеозахвата",
+    "uk-UA": "Додати пристрій відеозахоплення"
+  },
+  "Add Window Capture": {
+    "de-DE": "Fensteraufnahme hinzufügen",
+    "es-ES": "Añadir captura de ventana",
+    "ru-RU": "Добавить захват окна",
+    "uk-UA": "Додати захоплення вікна"
+  },
+  "Add a camera video source to the selected scene.": {
+    "de-DE": "Der ausgewählten Szene eine Kameravideoquelle hinzufügen.",
+    "es-ES": "Añadir una fuente de vídeo de cámara a la escena seleccionada.",
+    "ru-RU": "Добавить источник видео с камеры в выбранную сцену.",
+    "uk-UA": "Додати джерело відео з камери до вибраної сцени."
+  },
+  "Add a video effect to this source. A stack supports at most eight filters.": {
+    "de-DE": "Dieser Quelle einen Videoeffekt hinzufügen. Ein Stapel unterstützt höchstens acht Filter.",
+    "es-ES": "Añadir un efecto de vídeo a esta fuente. La pila admite como máximo ocho filtros.",
+    "ru-RU": "Добавить видеоэффект к источнику. В цепочке может быть не более восьми фильтров.",
+    "uk-UA": "Додати відеоефект до джерела. У ланцюжку може бути не більше восьми фільтрів."
+  },
+  "Add an editable text source to the selected scene.": {
+    "de-DE": "Füge der ausgewählten Szene eine bearbeitbare Textquelle hinzu.",
+    "es-ES": "Añade una fuente de texto editable a la escena seleccionada.",
+    "ru-RU": "Добавить редактируемый текстовый источник в выбранную сцену.",
+    "uk-UA": "Додати редаговане текстове джерело до вибраної сцени."
+  },
+  "Add or select a filter to edit its properties.": {
+    "de-DE": "Einen Filter hinzufügen oder auswählen, um seine Eigenschaften zu bearbeiten.",
+    "es-ES": "Añadir o seleccionar un filtro para editar sus propiedades.",
+    "ru-RU": "Добавьте или выберите фильтр для изменения его свойств.",
+    "uk-UA": "Додайте або виберіть фільтр для зміни його властивостей."
+  },
+  "Add the bundled compressor to this source's filter chain.": {
+    "de-DE": "Den mitgelieferten Kompressor zur Filterkette dieser Quelle hinzufügen.",
+    "es-ES": "Añadir el compresor incluido a la cadena de filtros de esta fuente.",
+    "ru-RU": "Добавить встроенный компрессор в цепочку фильтров источника.",
+    "uk-UA": "Додати вбудований компресор до ланцюжка фільтрів джерела."
+  },
+  "Additional transition providers are pending implementation.": {
+    "de-DE": "Weitere Übergangsanbieter sind noch nicht implementiert.",
+    "es-ES": "Los proveedores de transiciones adicionales aún no están implementados.",
+    "ru-RU": "Дополнительные модули переходов ещё не реализованы.",
+    "uk-UA": "Додаткові модулі переходів ще не реалізовані."
+  },
+  "Adjust source brightness and contrast.": {
+    "de-DE": "Helligkeit und Kontrast der Quelle einstellen.",
+    "es-ES": "Ajustar el brillo y el contraste de la fuente.",
+    "ru-RU": "Настроить яркость и контраст источника.",
+    "uk-UA": "Налаштувати яскравість і контраст джерела."
+  },
+  "Adjust the balance used to identify color spill.": {
+    "de-DE": "Die Balance zur Erkennung von Farbsäumen einstellen.",
+    "es-ES": "Ajustar el equilibrio para identificar el reflejo de color.",
+    "ru-RU": "Настроить баланс определения цветового рефлекса.",
+    "uk-UA": "Налаштувати баланс визначення колірного рефлексу."
+  },
+  "Adjust the brightness of this source.": {
+    "de-DE": "Die Helligkeit dieser Quelle einstellen.",
+    "es-ES": "Ajustar el brillo de esta fuente.",
+    "ru-RU": "Настроить яркость источника.",
+    "uk-UA": "Налаштувати яскравість джерела."
+  },
+  "Adjust the compressor output gain. Changes ramp smoothly over 20 ms.": {
+    "de-DE": "Die Ausgangsverstärkung des Kompressors einstellen. Änderungen werden über 20 ms geglättet.",
+    "es-ES": "Ajustar la ganancia de salida del compresor. Los cambios son graduales durante 20 ms.",
+    "ru-RU": "Настройте выходное усиление компрессора. Изменения плавно применяются за 20 мс.",
+    "uk-UA": "Налаштуйте вихідне підсилення компресора. Зміни плавно застосовуються за 20 мс."
+  },
+  "Adjust the contrast of this source.": {
+    "de-DE": "Den Kontrast dieser Quelle einstellen.",
+    "es-ES": "Ajustar el contraste de esta fuente.",
+    "ru-RU": "Настроить контраст источника.",
+    "uk-UA": "Налаштувати контраст джерела."
+  },
+  "Advanced routing controls and playback/monitoring sinks are pending.": {
+    "de-DE": "Erweiterte Routing-Einstellungen sowie Wiedergabe- und Monitoring-Ausgänge sind noch nicht implementiert.",
+    "es-ES": "Los controles avanzados de enrutamiento y las salidas de reproducción y monitorización aún no están implementados.",
+    "ru-RU": "Расширенные настройки маршрутизации, воспроизведение и мониторинг ещё не реализованы.",
+    "uk-UA": "Розширені налаштування маршрутизації, відтворення та моніторинг ще не реалізовані."
+  },
+  "Align text to the bottom of its box.": {
+    "de-DE": "Richte den Text am unteren Rand des Felds aus.",
+    "es-ES": "Alinea el texto a la parte inferior de su cuadro.",
+    "ru-RU": "Выровнять текст по нижнему краю области.",
+    "uk-UA": "Вирівняти текст за нижнім краєм області."
+  },
+  "Align text to the left of its box.": {
+    "de-DE": "Richte den Text am linken Rand des Felds aus.",
+    "es-ES": "Alinea el texto a la izquierda de su cuadro.",
+    "ru-RU": "Выровнять текст по левому краю области.",
+    "uk-UA": "Вирівняти текст за лівим краєм області."
+  },
+  "Align text to the right of its box.": {
+    "de-DE": "Richte den Text am rechten Rand des Felds aus.",
+    "es-ES": "Alinea el texto a la derecha de su cuadro.",
+    "ru-RU": "Выровнять текст по правому краю области.",
+    "uk-UA": "Вирівняти текст за правим краєм області."
+  },
+  "Align text to the top of its box.": {
+    "de-DE": "Richte den Text am oberen Rand des Felds aus.",
+    "es-ES": "Alinea el texto a la parte superior de su cuadro.",
+    "ru-RU": "Выровнять текст по верхнему краю области.",
+    "uk-UA": "Вирівняти текст за верхнім краєм області."
+  },
+  "Animation deadline exceeds supported nanoseconds": {
+    "de-DE": "Der Animationszeitpunkt überschreitet den unterstützten Nanosekundenbereich",
+    "es-ES": "El plazo de animación supera el intervalo de nanosegundos admitido",
+    "ru-RU": "Время анимации превышает поддерживаемый диапазон наносекунд",
+    "uk-UA": "Час анімації перевищує підтримуваний діапазон наносекунд"
+  },
+  "Another profile will become selected. Scene collection content, source bindings and user preferences are preserved. Profile deletion is separate from scene Undo.": {
+    "de-DE": "Ein anderes Profil wird ausgewählt. Szenensammlung, Quellenzuordnungen und Benutzereinstellungen bleiben erhalten. Das Löschen von Profilen ist vom Rückgängigmachen von Szenen getrennt.",
+    "es-ES": "Se seleccionará otro perfil. Se conservan el contenido de la colección de escenas, las vinculaciones de fuentes y las preferencias del usuario. Eliminar perfiles es independiente de Deshacer en las escenas.",
+    "ru-RU": "Будет выбран другой профиль. Содержимое коллекции сцен, привязки источников и пользовательские настройки сохраняются. Удаление профиля не входит в историю отмены сцен.",
+    "uk-UA": "Буде вибрано інший профіль. Вміст колекції сцен, прив’язки джерел і налаштування користувача зберігаються. Видалення профілю не входить до історії скасування сцен."
+  },
+  "Apply Duration": {
+    "de-DE": "Dauer anwenden",
+    "es-ES": "Aplicar duración",
+    "ru-RU": "Применить длительность",
+    "uk-UA": "Застосувати тривалість"
+  },
+  "Apply activates the selected source. Speaker playback and monitoring are not connected. Cancel keeps its existing binding.": {
+    "de-DE": "Anwenden aktiviert die ausgewählte Quelle. Lautsprecherwiedergabe und Monitoring sind nicht verbunden. Abbrechen behält die bisherige Zuordnung bei.",
+    "es-ES": "Aplicar activa la fuente seleccionada. La reproducción por altavoces y la monitorización no están conectadas. Cancelar conserva su vinculación actual.",
+    "ru-RU": "«Применить» активирует выбранный источник. Вывод на динамики и мониторинг не подключены. «Отмена» сохраняет текущую привязку.",
+    "uk-UA": "«Застосувати» активує вибране джерело. Виведення на динаміки та моніторинг не підключені. «Скасувати» зберігає поточну прив’язку."
+  },
+  "Apply binds and starts camera video. Audio, compressed formats and vendor configuration dialogs are not connected. Cancel changes no source.": {
+    "de-DE": "Anwenden bindet die Kamera ein und startet das Kameravideo. Audio, komprimierte Formate und Hersteller-Konfigurationsdialoge sind nicht angebunden. Abbrechen ändert keine Quelle.",
+    "es-ES": "Aplicar vincula e inicia el vídeo de la cámara. El audio, los formatos comprimidos y los diálogos de configuración del fabricante no están conectados. Cancelar no modifica ninguna fuente.",
+    "ru-RU": "Применение привязывает камеру и запускает видеозахват. Звук, сжатые форматы и диалоги настройки производителя не подключены. Отмена не изменяет источники.",
+    "uk-UA": "Застосування прив’язує камеру й запускає відеозахоплення. Звук, стиснені формати та діалоги налаштування виробника не підключені. Скасування не змінює джерела."
+  },
+  "Apply binds this source after validation. Cancel changes no source. Game capture and full-window WGC are separate providers.": {
+    "de-DE": "Anwenden bindet diese Quelle nach der Prüfung der Einstellungen. Abbrechen ändert keine Quelle. Spielaufnahme und vollständige Fensteraufnahme über WGC sind separate Verfahren.",
+    "es-ES": "Aplicar vincula esta fuente tras validar los ajustes. Cancelar no cambia ninguna fuente. La captura de juegos y WGC de ventana completa son métodos independientes.",
+    "ru-RU": "«Применить» привязывает источник после проверки настроек. «Отмена» не меняет источники. Захват игр и захват всего окна через WGC — отдельные методы.",
+    "uk-UA": "«Застосувати» прив’язує джерело після перевірки налаштувань. «Скасувати» не змінює джерела. Захоплення ігор і захоплення всього вікна через WGC — окремі методи."
+  },
+  "Apply binds this source after validation. Display enumeration and frame acquisition run on a bounded worker; Cancel changes no source.": {
+    "de-DE": "Anwenden ordnet die Quelle nach der Prüfung zu. Bildschirmliste und Bilderfassung laufen in einem Worker mit festen Grenzen; Abbrechen ändert keine Quelle.",
+    "es-ES": "Aplicar vincula esta fuente tras validarla. La enumeración de pantallas y la captura se ejecutan en un trabajador con límites; Cancelar no modifica ninguna fuente.",
+    "ru-RU": "«Применить» привязывает источник после проверки. Получение списка экранов и кадров выполняется рабочим потоком с заданными лимитами; «Отмена» не изменяет источники.",
+    "uk-UA": "«Застосувати» прив’язує джерело після перевірки. Отримання списку екранів і кадрів виконує робочий потік із заданими лімітами; «Скасувати» не змінює джерела."
+  },
+  "Apply commits this scene's note; Cancel discards the draft.": {
+    "de-DE": "Anwenden speichert die Szenennotiz; Abbrechen verwirft den Entwurf.",
+    "es-ES": "Aplicar guarda la nota de esta escena; Cancelar descarta el borrador.",
+    "ru-RU": "«Применить» сохраняет заметку сцены; «Отмена» удаляет черновик.",
+    "uk-UA": "«Застосувати» зберігає нотатку сцени; «Скасувати» відкидає чернетку."
+  },
+  "Apply or Cancel the current draft before changing Settings pages.": {
+    "de-DE": "Wenden Sie den aktuellen Entwurf an oder verwerfen Sie ihn, bevor Sie die Einstellungsseite wechseln.",
+    "es-ES": "Aplique o cancele el borrador actual antes de cambiar de página de ajustes.",
+    "ru-RU": "Примените или отмените текущий черновик перед сменой страницы настроек.",
+    "uk-UA": "Застосуйте або скасуйте поточну чернетку перед зміною сторінки налаштувань."
+  },
+  "Apply or Cancel this draft before changing Settings pages.": {
+    "de-DE": "Wenden Sie diesen Entwurf an oder verwerfen Sie ihn, bevor Sie die Einstellungsseite wechseln.",
+    "es-ES": "Aplique o cancele este borrador antes de cambiar de página de ajustes.",
+    "ru-RU": "Примените или отмените этот черновик перед сменой страницы настроек.",
+    "uk-UA": "Застосуйте або скасуйте цю чернетку перед зміною сторінки налаштувань."
+  },
+  "Apply reloads file content even when the path is unchanged. All scene references update together after validation.": {
+    "de-DE": "Anwenden lädt die Datei auch bei unverändertem Pfad neu. Nach der Prüfung werden alle Szenenverweise gemeinsam aktualisiert.",
+    "es-ES": "Aplicar recarga el archivo aunque la ruta no cambie. Todas las referencias de escena se actualizan juntas tras la validación.",
+    "ru-RU": "«Применить» перезагружает файл, даже если путь не изменился. После проверки все ссылки на источник в сценах обновляются вместе.",
+    "uk-UA": "«Застосувати» перезавантажує файл, навіть якщо шлях не змінився. Після перевірки всі посилання на джерело у сценах оновлюються разом."
+  },
+  "Apply updates the selected profile's audio format and user buffering preference together. These settings are separate from scene Undo. Source bindings, gain and mute stay unchanged.": {
+    "de-DE": "Anwenden aktualisiert das Audioformat des ausgewählten Profils und die Pufferpräferenz gemeinsam. Diese Einstellungen sind vom Rückgängigmachen von Szenen getrennt. Quellenzuordnungen, Verstärkung und Stummschaltung bleiben erhalten.",
+    "es-ES": "Aplicar actualiza a la vez el formato de audio del perfil seleccionado y la preferencia de búfer del usuario. Estos ajustes son independientes de Deshacer en las escenas. Las vinculaciones, la ganancia y el silencio de las fuentes no cambian.",
+    "ru-RU": "«Применить» одновременно обновляет аудиоформат выбранного профиля и пользовательскую настройку буферизации. Эти настройки не входят в историю отмены сцен. Привязки, усиление и отключение звука источников сохраняются.",
+    "uk-UA": "«Застосувати» одночасно оновлює аудіоформат вибраного профілю та налаштування буферизації користувача. Ці налаштування не входять до історії скасування сцен. Прив’язки, підсилення й вимкнення звуку джерел зберігаються."
+  },
+  "Apply validates and commits all fields as one edit. Cancel discards the draft.": {
+    "de-DE": "Anwenden prüft und speichert alle Felder als eine Änderung. Abbrechen verwirft den Entwurf.",
+    "es-ES": "Aplicar valida y guarda todos los campos como una sola edición. Cancelar descarta el borrador.",
+    "ru-RU": "«Применить» проверяет и сохраняет все поля одним изменением. «Отмена» удаляет черновик.",
+    "uk-UA": "«Застосувати» перевіряє та зберігає всі поля однією зміною. «Скасувати» відкидає чернетку."
+  },
+  "At least one profile is required.": {
+    "de-DE": "Mindestens ein Profil ist erforderlich.",
+    "es-ES": "Se requiere al menos un perfil.",
+    "ru-RU": "Необходим хотя бы один профиль.",
+    "uk-UA": "Потрібен хоча б один профіль."
+  },
+  "Audio Capture: {error}": {
+    "de-DE": "Audioaufnahme: {error}",
+    "es-ES": "Captura de audio: {error}",
+    "ru-RU": "Захват звука: {error}",
+    "uk-UA": "Захоплення звуку: {error}"
+  },
+  "Audio Filters": {
+    "de-DE": "Audiofilter",
+    "es-ES": "Filtros de audio",
+    "ru-RU": "Аудиофильтры",
+    "uk-UA": "Аудіофільтри"
+  },
+  "Audio Pan Filter": {
+    "de-DE": "Audiopanorama-Filter",
+    "es-ES": "Filtro de panorama de audio",
+    "ru-RU": "Фильтр панорамирования звука",
+    "uk-UA": "Фільтр панорамування звуку"
+  },
+  "Audio Pan Filter {}": {
+    "de-DE": "Audiopanorama-Filter {}",
+    "es-ES": "Filtro de panorama de audio {}",
+    "ru-RU": "Фильтр панорамирования звука {}",
+    "uk-UA": "Фільтр панорамування звуку {}"
+  },
+  "Audio binding draft belongs to another document": {
+    "de-DE": "Der Entwurf der Audiozuordnung gehört zu einem anderen Dokument",
+    "es-ES": "El borrador de vinculación de audio pertenece a otro documento",
+    "ru-RU": "Черновик привязки аудио относится к другому документу",
+    "uk-UA": "Чернетка прив’язки аудіо належить іншому документу"
+  },
+  "Audio buffering could not keep up.": {
+    "de-DE": "Die Audiopufferung konnte nicht Schritt halten.",
+    "es-ES": "El búfer de audio no pudo mantener el ritmo.",
+    "ru-RU": "Буферизация звука не справилась с потоком.",
+    "uk-UA": "Буферизація звуку не впоралася з потоком."
+  },
+  "Audio device": {
+    "de-DE": "Audiogerät",
+    "es-ES": "Dispositivo de audio",
+    "ru-RU": "Аудиоустройство",
+    "uk-UA": "Аудіопристрій"
+  },
+  "Audio picker identity exhausted": {
+    "de-DE": "Die Kennungen der Audioauswahl sind ausgeschöpft",
+    "es-ES": "Se agotaron los identificadores del selector de audio",
+    "ru-RU": "Исчерпаны идентификаторы выбора аудиоустройства",
+    "uk-UA": "Вичерпано ідентифікатори вибору аудіопристрою"
+  },
+  "Audio processing active": {
+    "de-DE": "Audioverarbeitung aktiv",
+    "es-ES": "Procesamiento de audio activo",
+    "ru-RU": "Обработка звука активна",
+    "uk-UA": "Обробка звуку активна"
+  },
+  "Audio processing reported an error. Check the source settings.": {
+    "de-DE": "Die Audioverarbeitung hat einen Fehler gemeldet. Prüfen Sie die Quelleneinstellungen.",
+    "es-ES": "El procesamiento de audio notificó un error. Revise los ajustes de la fuente.",
+    "ru-RU": "При обработке звука произошла ошибка. Проверьте настройки источника.",
+    "uk-UA": "Під час обробки звуку сталася помилка. Перевірте налаштування джерела."
+  },
+  "Audio processing stopped": {
+    "de-DE": "Audioverarbeitung angehalten",
+    "es-ES": "Procesamiento de audio detenido",
+    "ru-RU": "Обработка звука остановлена",
+    "uk-UA": "Обробку звуку зупинено"
+  },
+  "Audio-only sources have no video filters.": {
+    "de-DE": "Reine Audioquellen haben keine Videofilter.",
+    "es-ES": "Las fuentes solo de audio no tienen filtros de vídeo.",
+    "ru-RU": "У источников только со звуком нет видеофильтров.",
+    "uk-UA": "Джерела лише зі звуком не мають відеофільтрів."
+  },
+  "Audio-only sources have no video transform": {
+    "de-DE": "Reine Audioquellen haben keine Videotransformation",
+    "es-ES": "Las fuentes de solo audio no tienen transformación de vídeo",
+    "ru-RU": "У аудиоисточников нет видеопреобразований",
+    "uk-UA": "Аудіоджерела не мають відеоперетворень"
+  },
+  "Audio-only sources have no video transform; locked items cannot be transformed.": {
+    "de-DE": "Reine Audioquellen haben keine Videotransformation; gesperrte Elemente können nicht transformiert werden.",
+    "es-ES": "Las fuentes de solo audio no tienen transformación de vídeo; los elementos bloqueados no se pueden transformar.",
+    "ru-RU": "У аудиоисточников нет видеопреобразований; заблокированные элементы нельзя преобразовывать.",
+    "uk-UA": "Аудіоджерела не мають відеоперетворень; заблоковані елементи не можна перетворювати."
+  },
+  "Automatic Transition uses the destination scene override. Quick buttons keep their own configuration. Cancel discards all draft fields.": {
+    "de-DE": "Der automatische Übergang verwendet die Vorgabe der Zielszene. Schnelltasten behalten ihre eigene Konfiguration. Abbrechen verwirft alle Entwurfsfelder.",
+    "es-ES": "La transición automática usa la configuración específica de la escena de destino. Los botones rápidos conservan su propia configuración. Cancelar descarta todos los campos del borrador.",
+    "ru-RU": "Автоматический переход использует настройки целевой сцены. Быстрые кнопки сохраняют собственные настройки. «Отмена» удаляет все поля черновика.",
+    "uk-UA": "Автоматичний перехід використовує налаштування цільової сцени. Швидкі кнопки зберігають власні налаштування. «Скасувати» відкидає всі поля чернетки."
+  },
+  "Automatic prefers DXGI without cursor; unsupported DXGI capture can use GDI compatibility. Ordinary no-new-frame waits never switch methods.": {
+    "de-DE": "Automatisch bevorzugt DXGI ohne Cursor; wenn DXGI nicht unterstützt wird, kann GDI verwendet werden. Das Warten auf ein neues Bild ändert die Methode nicht.",
+    "es-ES": "Automático prefiere DXGI sin cursor; si no se admite DXGI, puede usar compatibilidad GDI. Esperar un nuevo fotograma no cambia el método.",
+    "ru-RU": "Автоматический режим предпочитает DXGI без курсора; при недоступности DXGI возможен переход на GDI. Ожидание нового кадра не меняет метод.",
+    "uk-UA": "Автоматичний режим надає перевагу DXGI без курсора; за недоступності DXGI можливий перехід на GDI. Очікування нового кадру не змінює метод."
+  },
+  "Available Rust modules: {}": {
+    "de-DE": "Verfügbare Rust-Module: {}",
+    "es-ES": "Módulos disponibles en Rust: {}",
+    "ru-RU": "Доступных модулей на Rust: {}",
+    "uk-UA": "Доступних модулів на Rust: {}"
+  },
+  "Available languages": {
+    "de-DE": "Verfügbare Sprachen",
+    "es-ES": "Idiomas disponibles",
+    "ru-RU": "Доступные языки",
+    "uk-UA": "Доступні мови"
+  },
+  "Backend: {} · SDR": {
+    "de-DE": "Backend: {} · SDR",
+    "es-ES": "Motor: {} · SDR",
+    "ru-RU": "Модуль: {} · SDR",
+    "uk-UA": "Модуль: {} · SDR"
+  },
+  "Base (Canvas) Height": {
+    "de-DE": "Basis-Höhe (Leinwand)",
+    "es-ES": "Altura base (lienzo)",
+    "ru-RU": "Базовая высота холста",
+    "uk-UA": "Базова висота полотна"
+  },
+  "Base (Canvas) Width": {
+    "de-DE": "Basis-Breite (Leinwand)",
+    "es-ES": "Anchura base (lienzo)",
+    "ru-RU": "Базовая ширина холста",
+    "uk-UA": "Базова ширина полотна"
+  },
+  "Bold": {
+    "de-DE": "Fett",
+    "es-ES": "Negrita",
+    "ru-RU": "Полужирный",
+    "uk-UA": "Напівжирний"
+  },
+  "Buffering pauses: {} · buffer increases: {}": {
+    "de-DE": "Pufferpausen: {} · Puffervergrößerungen: {}",
+    "es-ES": "Pausas de búfer: {} · aumentos del búfer: {}",
+    "ru-RU": "Паузы буферизации: {} · увеличения буфера: {}",
+    "uk-UA": "Паузи буферизації: {} · збільшення буфера: {}"
+  },
+  "Buffering waits remaining: {} · pending sources: {}": {
+    "de-DE": "Verbleibende Pufferwartezeiten: {} · ausstehende Quellen: {}",
+    "es-ES": "Esperas de búfer restantes: {} · fuentes pendientes: {}",
+    "ru-RU": "Осталось ожиданий буфера: {} · ожидающих источников: {}",
+    "uk-UA": "Залишилося очікувань буфера: {} · джерел, що очікують: {}"
+  },
+  "Built-in modules are managed by the application.": {
+    "de-DE": "Integrierte Module werden von der Anwendung verwaltet.",
+    "es-ES": "La aplicación administra los módulos integrados.",
+    "ru-RU": "Встроенными модулями управляет приложение.",
+    "uk-UA": "Вбудованими модулями керує програма."
+  },
+  "Built-in reference · not yet implemented": {
+    "de-DE": "Integrierte Referenz · noch nicht implementiert",
+    "es-ES": "Referencia integrada · aún sin implementar",
+    "ru-RU": "Встроенный модуль для справки · ещё не реализован",
+    "uk-UA": "Вбудований модуль для довідки · ще не реалізований"
+  },
+  "Built-in · available": {
+    "de-DE": "Integriert · verfügbar",
+    "es-ES": "Integrado · disponible",
+    "ru-RU": "Встроенный · доступен",
+    "uk-UA": "Вбудований · доступний"
+  },
+  "Bundled modules: {}": {
+    "de-DE": "Mitgelieferte Module: {}",
+    "es-ES": "Módulos incluidos: {}",
+    "ru-RU": "Встроенных модулей в комплекте: {}",
+    "uk-UA": "Вбудованих модулів у комплекті: {}"
+  },
+  "Bundled video effects are disabled. Existing settings are retained; filters can still be removed.": {
+    "de-DE": "Mitgelieferte Videoeffekte sind deaktiviert. Einstellungen bleiben erhalten; Filter können weiterhin entfernt werden.",
+    "es-ES": "Los efectos de vídeo incluidos están desactivados. Se conservan los ajustes; los filtros se pueden eliminar.",
+    "ru-RU": "Встроенные видеоэффекты отключены. Настройки сохраняются; фильтры можно удалять.",
+    "uk-UA": "Вбудовані відеоефекти вимкнені. Налаштування зберігаються; фільтри можна видаляти."
+  },
+  "Bypass or enable this compressor without removing its settings.": {
+    "de-DE": "Diesen Kompressor umgehen oder aktivieren, ohne seine Einstellungen zu entfernen.",
+    "es-ES": "Omitir o activar este compresor sin borrar sus ajustes.",
+    "ru-RU": "Отключить или включить компрессор, сохранив его настройки.",
+    "uk-UA": "Вимкнути або ввімкнути компресор, зберігши його налаштування."
+  },
+  "CSV columns are key followed by locale codes.": {
+    "de-DE": "Die CSV-Spalten beginnen mit key, gefolgt von den Sprachcodes.",
+    "es-ES": "Las columnas del CSV son key y, después, los códigos de idioma.",
+    "ru-RU": "Столбцы CSV: key, затем коды языков.",
+    "uk-UA": "Стовпці CSV: key, потім коди мов."
+  },
+  "Camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "La captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "Захват камеры недоступен на этой платформе",
+    "uk-UA": "Захоплення камери недоступне на цій платформі"
+  },
+  "Camera draft belongs to another document": {
+    "de-DE": "Der Kameraentwurf gehört zu einem anderen Dokument",
+    "es-ES": "El borrador de la cámara pertenece a otro documento",
+    "ru-RU": "Черновик настройки камеры относится к другому документу",
+    "uk-UA": "Чернетка налаштування камери належить іншому документу"
+  },
+  "Camera picker identity exhausted": {
+    "de-DE": "Die Kennungen der Kameraauswahl sind ausgeschöpft",
+    "es-ES": "Se han agotado los identificadores del selector de cámaras",
+    "ru-RU": "Исчерпаны идентификаторы диалога выбора камеры",
+    "uk-UA": "Вичерпано ідентифікатори діалогу вибору камери"
+  },
+  "Camera streams stopped": {
+    "de-DE": "Kamerastreams gestoppt",
+    "es-ES": "Flujos de cámara detenidos",
+    "ru-RU": "Потоки камер остановлены",
+    "uk-UA": "Потоки камер зупинено"
+  },
+  "Camera: {error}": {
+    "de-DE": "Kamera: {error}",
+    "es-ES": "Cámara: {error}",
+    "ru-RU": "Камера: {error}",
+    "uk-UA": "Камера: {error}"
+  },
+  "Capture Cursor": {
+    "de-DE": "Mauszeiger aufnehmen",
+    "es-ES": "Capturar cursor",
+    "ru-RU": "Захватывать курсор",
+    "uk-UA": "Захоплювати курсор"
+  },
+  "Capture a Windows display using DXGI Desktop Duplication. Cursor capture is not supported by this method.": {
+    "de-DE": "Einen Windows-Bildschirm mit DXGI-Desktopduplizierung aufnehmen. Diese Methode unterstützt keine Cursoraufnahme.",
+    "es-ES": "Capturar una pantalla de Windows con duplicación de escritorio DXGI. Este método no admite capturar el cursor.",
+    "ru-RU": "Захватывать дисплей Windows через дублирование рабочего стола DXGI. Этот метод не поддерживает захват курсора.",
+    "uk-UA": "Захоплювати дисплей Windows через дублювання робочого столу DXGI. Цей метод не підтримує захоплення курсора."
+  },
+  "Capture a Windows display using GDI compatibility, including the cursor when enabled.": {
+    "de-DE": "Einen Windows-Bildschirm mit GDI-Kompatibilität aufnehmen, einschließlich des Cursors, wenn aktiviert.",
+    "es-ES": "Capturar una pantalla de Windows mediante compatibilidad GDI, incluido el cursor si está activado.",
+    "ru-RU": "Захватывать дисплей Windows в режиме совместимости GDI, включая курсор, если он включён.",
+    "uk-UA": "Захоплювати дисплей Windows у режимі сумісності GDI, включно з курсором, якщо його ввімкнено."
+  },
+  "Capture an application window in the selected scene.": {
+    "de-DE": "Erfasse ein Anwendungsfenster in der ausgewählten Szene.",
+    "es-ES": "Captura una ventana de aplicación en la escena seleccionada.",
+    "ru-RU": "Захватывать окно приложения в выбранной сцене.",
+    "uk-UA": "Захоплювати вікно програми у вибраній сцені."
+  },
+  "Capture cursor": {
+    "de-DE": "Mauszeiger aufnehmen",
+    "es-ES": "Capturar cursor",
+    "ru-RU": "Захватывать курсор",
+    "uk-UA": "Захоплювати курсор"
+  },
+  "Capture the window contents without its border or title bar when the backend supports it.": {
+    "de-DE": "Erfasse den Fensterinhalt ohne Rahmen und Titelleiste, sofern das Aufnahmeverfahren dies unterstützt.",
+    "es-ES": "Captura el contenido de la ventana sin bordes ni barra de título cuando el método de captura lo permita.",
+    "ru-RU": "Захватывать содержимое окна без рамки и заголовка, если метод захвата это поддерживает.",
+    "uk-UA": "Захоплювати вміст вікна без рамки та заголовка, якщо метод захоплення це підтримує."
+  },
+  "Capture this display through GDI, including the optional cursor. Protected content and hardware overlays may be unavailable.": {
+    "de-DE": "Diesen Bildschirm über GDI aufnehmen, optional mit Cursor. Geschützte Inhalte und Hardware-Overlays sind möglicherweise nicht verfügbar.",
+    "es-ES": "Capturar esta pantalla mediante GDI, incluido el cursor opcional. El contenido protegido y las superposiciones de hardware pueden no estar disponibles.",
+    "ru-RU": "Захватывать дисплей через GDI с возможностью включения курсора. Защищённое содержимое и аппаратные наложения могут быть недоступны.",
+    "uk-UA": "Захоплювати дисплей через GDI з можливістю додавання курсора. Захищений вміст і апаратні накладання можуть бути недоступними."
+  },
+  "Captured packet {} · {} Hz · {} channels": {
+    "de-DE": "Erfasstes Paket {} · {} Hz · {} Kanäle",
+    "es-ES": "Paquete capturado {} · {} Hz · {} canales",
+    "ru-RU": "Получен пакет {} · {} Гц · {} каналов",
+    "uk-UA": "Отримано пакет {} · {} Гц · {} каналів"
+  },
+  "Center text horizontally in its box.": {
+    "de-DE": "Zentriere den Text horizontal im Feld.",
+    "es-ES": "Centra el texto horizontalmente en su cuadro.",
+    "ru-RU": "Выровнять текст по центру области по горизонтали.",
+    "uk-UA": "Вирівняти текст по центру області за горизонталлю."
+  },
+  "Center text vertically in its box.": {
+    "de-DE": "Zentriere den Text vertikal im Feld.",
+    "es-ES": "Centra el texto verticalmente en su cuadro.",
+    "ru-RU": "Выровнять текст по центру области по вертикали.",
+    "uk-UA": "Вирівняти текст по центру області за вертикаллю."
+  },
+  "Ch {} peak {:.3} · RMS {:.3}": {
+    "de-DE": "Kanal {} Spitze {:.3} · RMS {:.3}",
+    "es-ES": "Canal {} pico {:.3} · RMS {:.3}",
+    "ru-RU": "Канал {}: пик {:.3} · RMS {:.3}",
+    "uk-UA": "Канал {}: пік {:.3} · RMS {:.3}"
+  },
+  "Ch {} · peak {:.1} dB · RMS {:.1} dB": {
+    "de-DE": "Kanal {} · Spitze {:.1} dB · RMS {:.1} dB",
+    "es-ES": "Canal {} · pico {:.1} dB · RMS {:.1} dB",
+    "ru-RU": "Канал {} · пик {:.1} dB · RMS {:.1} dB",
+    "uk-UA": "Канал {} · пік {:.1} dB · RMS {:.1} dB"
+  },
+  "Changes to the nested scene are shared. Cycles and excessive nesting are rejected.": {
+    "de-DE": "Änderungen an der verschachtelten Szene gelten für alle Verweise. Zyklen und zu tiefe Verschachtelungen werden abgewiesen.",
+    "es-ES": "Los cambios en la escena anidada se comparten. Se rechazan los ciclos y la anidación excesiva.",
+    "ru-RU": "Изменения вложенной сцены действуют во всех её ссылках. Циклы и слишком глубокая вложенность не допускаются.",
+    "uk-UA": "Зміни вкладеної сцени діють у всіх її посиланнях. Цикли й надмірна вкладеність не допускаються."
+  },
+  "Changing this option replaces the custom buffering preference.": {
+    "de-DE": "Diese Option ersetzt die benutzerdefinierte Pufferpräferenz.",
+    "es-ES": "Cambiar esta opción reemplaza la preferencia de búfer personalizada.",
+    "ru-RU": "Изменение этого параметра заменит пользовательскую настройку буферизации.",
+    "uk-UA": "Зміна цього параметра замінить власне налаштування буферизації."
+  },
+  "Choose a camera and query its actual supported native modes": {
+    "de-DE": "Eine Kamera auswählen und ihre tatsächlich unterstützten nativen Modi abfragen",
+    "es-ES": "Elige una cámara y consulta los modos nativos que realmente admite",
+    "ru-RU": "Выберите камеру и запросите реально поддерживаемые ею собственные режимы",
+    "uk-UA": "Виберіть камеру й запитайте власні режими, які вона насправді підтримує"
+  },
+  "Choose an available audio device, or follow the system default.": {
+    "de-DE": "Ein verfügbares Audiogerät wählen oder dem Systemstandard folgen.",
+    "es-ES": "Elige un dispositivo de audio disponible o sigue el predeterminado del sistema.",
+    "ru-RU": "Выберите доступное аудиоустройство или системное устройство по умолчанию.",
+    "uk-UA": "Виберіть доступний аудіопристрій або типовий системний пристрій."
+  },
+  "Choose exact native resolution, frame rate and pixel format": {
+    "de-DE": "Die genaue native Auflösung, Bildrate und das Pixelformat auswählen",
+    "es-ES": "Elige la resolución nativa, la frecuencia de fotogramas y el formato de píxel exactos",
+    "ru-RU": "Выберите точные собственные разрешение, частоту кадров и формат пикселей",
+    "uk-UA": "Виберіть точні власні роздільність, частоту кадрів і формат пікселів"
+  },
+  "Choose listed device": {
+    "de-DE": "Gerät aus der Liste auswählen",
+    "es-ES": "Elegir dispositivo de la lista",
+    "ru-RU": "Выберите устройство из списка",
+    "uk-UA": "Виберіть пристрій зі списку"
+  },
+  "Choose the actual display capture provider. Automatic reports its effective backend and any compatibility fallback.": {
+    "de-DE": "Den Anbieter für die Bildschirmaufnahme wählen. Automatisch zeigt die wirksame Methode und mögliche Kompatibilitätswechsel an.",
+    "es-ES": "Elegir el proveedor de captura de pantalla. Automático muestra el método efectivo y cualquier cambio por compatibilidad.",
+    "ru-RU": "Выберите механизм захвата дисплея. Автоматический режим показывает действующий механизм и переходы в режим совместимости.",
+    "uk-UA": "Виберіть механізм захоплення дисплея. Автоматичний режим показує фактичний механізм і переходи в режим сумісності."
+  },
+  "Choose the application window to capture": {
+    "de-DE": "Wähle das aufzunehmende Anwendungsfenster aus",
+    "es-ES": "Elige la ventana de aplicación que quieres capturar",
+    "ru-RU": "Выберите окно приложения для захвата",
+    "uk-UA": "Виберіть вікно програми для захоплення"
+  },
+  "Choose the background color reflected onto foreground edges.": {
+    "de-DE": "Die Hintergrundfarbe wählen, die auf die Vordergrundkanten abstrahlt.",
+    "es-ES": "Elegir el color de fondo reflejado en los bordes del primer plano.",
+    "ru-RU": "Выберите цвет фона, отражённый на краях переднего плана.",
+    "uk-UA": "Виберіть колір тла, відбитий на краях переднього плану."
+  },
+  "Choose the background color to remove or keep.": {
+    "de-DE": "Die zu entfernende oder beizubehaltende Hintergrundfarbe wählen.",
+    "es-ES": "Elegir el color de fondo que se eliminará o conservará.",
+    "ru-RU": "Выберите цвет фона для удаления или сохранения.",
+    "uk-UA": "Виберіть колір тла для видалення або збереження."
+  },
+  "Choose the display capture method automatically. Compatibility fallbacks are reported.": {
+    "de-DE": "Die Bildschirmaufnahmemethode automatisch wählen. Kompatibilitätswechsel werden angezeigt.",
+    "es-ES": "Elegir automáticamente el método de captura de pantalla. Se indican los cambios por compatibilidad.",
+    "ru-RU": "Выбрать метод захвата дисплея автоматически. Переходы в режим совместимости отображаются.",
+    "uk-UA": "Вибрати метод захоплення дисплея автоматично. Переходи в режим сумісності відображаються."
+  },
+  "Choose the platform for an exact saved device identifier.": {
+    "de-DE": "Die Plattform für die genaue gespeicherte Gerätekennung wählen.",
+    "es-ES": "Elegir la plataforma del identificador exacto del dispositivo guardado.",
+    "ru-RU": "Выберите платформу для точного сохранённого идентификатора устройства.",
+    "uk-UA": "Виберіть платформу для точного збереженого ідентифікатора пристрою."
+  },
+  "Choose the text box background color and opacity.": {
+    "de-DE": "Wähle Hintergrundfarbe und Deckkraft des Textfelds.",
+    "es-ES": "Elige el color y la opacidad del fondo del cuadro de texto.",
+    "ru-RU": "Выберите цвет и непрозрачность фона текстовой области.",
+    "uk-UA": "Виберіть колір і непрозорість тла текстової області."
+  },
+  "Choose the text color and opacity.": {
+    "de-DE": "Wähle Textfarbe und Deckkraft.",
+    "es-ES": "Elige el color y la opacidad del texto.",
+    "ru-RU": "Выберите цвет и непрозрачность текста.",
+    "uk-UA": "Виберіть колір і непрозорість тексту."
+  },
+  "Choose the video capture device": {
+    "de-DE": "Das Videoaufnahmegerät auswählen",
+    "es-ES": "Elige el dispositivo de captura de vídeo",
+    "ru-RU": "Выберите устройство видеозахвата",
+    "uk-UA": "Виберіть пристрій відеозахоплення"
+  },
+  "Choose this scene for Preview. Drag to change its order.": {
+    "de-DE": "Diese Szene für die Vorschau auswählen. Zum Ändern der Reihenfolge ziehen.",
+    "es-ES": "Elige esta escena para la vista previa. Arrástrala para cambiar su orden.",
+    "ru-RU": "Выберите эту сцену для предпросмотра. Перетащите её, чтобы изменить порядок.",
+    "uk-UA": "Виберіть цю сцену для попереднього перегляду. Перетягніть її, щоб змінити порядок."
+  },
+  "Choose which color components are compared with the key color.": {
+    "de-DE": "Die Farbkomponenten für den Vergleich mit der Schlüsselfarbe wählen.",
+    "es-ES": "Elegir los componentes que se comparan con el color clave.",
+    "ru-RU": "Выберите компоненты цвета для сравнения с ключевым цветом.",
+    "uk-UA": "Виберіть компоненти кольору для порівняння з ключовим кольором."
+  },
+  "Chosen Program format: {} · {} · {} channels": {
+    "de-DE": "Gewähltes Programmformat: {} · {} · {} Kanäle",
+    "es-ES": "Formato del programa elegido: {} · {} · {} canales",
+    "ru-RU": "Выбранный формат программы: {} · {} · {} каналов",
+    "uk-UA": "Вибраний формат програми: {} · {} · {} каналів"
+  },
+  "Chroma centered": {
+    "de-DE": "Chroma zentriert",
+    "es-ES": "Croma centrado",
+    "ru-RU": "Цветность по центру",
+    "uk-UA": "Колірність по центру"
+  },
+  "Chroma left": {
+    "de-DE": "Chroma links",
+    "es-ES": "Croma a la izquierda",
+    "ru-RU": "Цветность слева",
+    "uk-UA": "Колірність зліва"
+  },
+  "Clipping": {
+    "de-DE": "Übersteuerung",
+    "es-ES": "Saturación",
+    "ru-RU": "Перегрузка",
+    "uk-UA": "Перевантаження"
+  },
+  "Close SkyLive": {
+    "de-DE": "SkyLive schließen",
+    "es-ES": "Cerrar SkyLive",
+    "ru-RU": "Закрыть SkyLive",
+    "uk-UA": "Закрити SkyLive"
+  },
+  "Close this dialog.": {
+    "de-DE": "Schließe diesen Dialog.",
+    "es-ES": "Cierra este diálogo.",
+    "ru-RU": "Закрыть этот диалог.",
+    "uk-UA": "Закрити цей діалог."
+  },
+  "Codec and muxer implementations are pending.": {
+    "de-DE": "Codecs und Multiplexer sind noch nicht implementiert.",
+    "es-ES": "Los códecs y multiplexores aún no están implementados.",
+    "ru-RU": "Кодеки и мультиплексоры ещё не реализованы.",
+    "uk-UA": "Кодеки та мультиплексори ще не реалізовані."
+  },
+  "Color (RGBA)": {
+    "de-DE": "Farbe (RGBA)",
+    "es-ES": "Color (RGBA)",
+    "ru-RU": "Цвет (RGBA)",
+    "uk-UA": "Колір (RGBA)"
+  },
+  "Color Source": {
+    "de-DE": "Farbquelle",
+    "es-ES": "Fuente de color",
+    "ru-RU": "Источник цвета",
+    "uk-UA": "Джерело кольору"
+  },
+  "Compressor {}": {
+    "de-DE": "Kompressor {}",
+    "es-ES": "Compresor {}",
+    "ru-RU": "Компрессор {}",
+    "uk-UA": "Компресор {}"
+  },
+  "Correct the compressor parameters to display its curve.": {
+    "de-DE": "Die Kompressorparameter korrigieren, um die Kennlinie anzuzeigen.",
+    "es-ES": "Corregir los parámetros del compresor para mostrar su curva.",
+    "ru-RU": "Исправьте параметры компрессора для отображения кривой.",
+    "uk-UA": "Виправте параметри компресора для відображення кривої."
+  },
+  "Craft kernels: MIT. Bundled Noto fonts: SIL Open Font License. Third-party notices accompany this application.": {
+    "de-DE": "Craft-Algorithmen: MIT. Mitgelieferte Noto-Schriften: SIL Open Font License. Hinweise zu Drittanbietern liegen der Anwendung bei.",
+    "es-ES": "Algoritmos Craft: MIT. Fuentes Noto incluidas: SIL Open Font License. La aplicación incluye los avisos de terceros.",
+    "ru-RU": "Алгоритмы Craft: MIT. Встроенные шрифты Noto: SIL Open Font License. Уведомления о сторонних компонентах поставляются с приложением.",
+    "uk-UA": "Алгоритми Craft: MIT. Вбудовані шрифти Noto: SIL Open Font License. Повідомлення про сторонні компоненти постачаються із застосунком."
+  },
+  "Crop (native source pixels)": {
+    "de-DE": "Zuschnitt (native Quellpixel)",
+    "es-ES": "Recorte (píxeles originales de la fuente)",
+    "ru-RU": "Обрезка (в исходных пикселях источника)",
+    "uk-UA": "Обрізання (у початкових пікселях джерела)"
+  },
+  "Custom buffering uses the default maximum and is preserved.": {
+    "de-DE": "Die benutzerdefinierte Pufferung verwendet den Standardhöchstwert und bleibt erhalten.",
+    "es-ES": "El búfer personalizado usa el máximo predeterminado y se conserva.",
+    "ru-RU": "Пользовательская буферизация использует стандартный максимум и сохраняется.",
+    "uk-UA": "Власна буферизація використовує типовий максимум і зберігається."
+  },
+  "Custom {} buffering, maximum {} ms, is preserved.": {
+    "de-DE": "Benutzerdefinierte Pufferung {}, maximal {} ms, bleibt erhalten.",
+    "es-ES": "Se conserva el búfer {}, con un máximo de {} ms.",
+    "ru-RU": "Сохраняется буферизация «{}», максимум {} мс.",
+    "uk-UA": "Зберігається буферизація «{}», максимум {} мс."
+  },
+  "Cut applied": {
+    "de-DE": "Harter Schnitt angewendet",
+    "es-ES": "Corte aplicado",
+    "ru-RU": "Резкая смена применена",
+    "uk-UA": "Різку зміну застосовано"
+  },
+  "DXGI Desktop Duplication": {
+    "de-DE": "DXGI-Desktopduplizierung",
+    "es-ES": "Duplicación de escritorio DXGI",
+    "ru-RU": "Дублирование рабочего стола DXGI",
+    "uk-UA": "Дублювання робочого столу DXGI"
+  },
+  "DXGI Desktop Duplication requires a Windows display target; cursor composition is not implemented.": {
+    "de-DE": "DXGI-Desktopduplizierung erfordert einen Windows-Bildschirm; Cursor-Komposition ist nicht implementiert.",
+    "es-ES": "La duplicación de escritorio DXGI requiere una pantalla de Windows; la composición del cursor no está implementada.",
+    "ru-RU": "Для дублирования рабочего стола DXGI требуется дисплей Windows; наложение курсора не реализовано.",
+    "uk-UA": "Для дублювання робочого столу DXGI потрібен дисплей Windows; накладання курсора не реалізоване."
+  },
+  "DXGI cursor composition is unavailable. Uncheck Capture cursor or choose GDI compatibility.": {
+    "de-DE": "DXGI-Cursor-Komposition ist nicht verfügbar. Cursoraufnahme deaktivieren oder GDI-Kompatibilität wählen.",
+    "es-ES": "La composición del cursor DXGI no está disponible. Desmarca Capturar cursor o elige compatibilidad GDI.",
+    "ru-RU": "Наложение курсора DXGI недоступно. Выключите захват курсора или выберите совместимость GDI.",
+    "uk-UA": "Накладання курсора DXGI недоступне. Вимкніть захоплення курсора або виберіть сумісність GDI."
+  },
+  "Deactivate when not showing": {
+    "de-DE": "Deaktivieren, wenn nicht sichtbar",
+    "es-ES": "Desactivar cuando no se muestre",
+    "ru-RU": "Деактивировать, когда не отображается",
+    "uk-UA": "Деактивувати, коли не відображається"
+  },
+  "Default device": {
+    "de-DE": "Standardgerät",
+    "es-ES": "Dispositivo predeterminado",
+    "ru-RU": "Устройство по умолчанию",
+    "uk-UA": "Типовий пристрій"
+  },
+  "Delete commits the preset and all affected references as one undoable edit. Cancel keeps them unchanged.": {
+    "de-DE": "Löschen übernimmt die Vorgabe und alle betroffenen Verweise als eine rückgängig machbare Änderung. Abbrechen lässt sie unverändert.",
+    "es-ES": "Eliminar confirma el preajuste y todas las referencias afectadas como una sola edición reversible. Cancelar los conserva sin cambios.",
+    "ru-RU": "Удаление предустановки и всех затронутых ссылок выполняется одним отменяемым изменением. «Отмена» сохраняет их без изменений.",
+    "uk-UA": "Видалення набору параметрів і всіх пов’язаних посилань виконується однією скасовуваною зміною. «Скасувати» зберігає їх без змін."
+  },
+  "Desktop Audio 1": {
+    "de-DE": "Desktop-Audio 1",
+    "es-ES": "Audio del escritorio 1",
+    "ru-RU": "Звук рабочего стола 1",
+    "uk-UA": "Звук робочого столу 1"
+  },
+  "Detect the loudest channel's sample peak; this is not true-peak limiting.": {
+    "de-DE": "Die Abtastspitze des lautesten Kanals erkennen; dies ist keine True-Peak-Begrenzung.",
+    "es-ES": "Detectar el pico de muestra del canal más fuerte; no es una limitación de pico real.",
+    "ru-RU": "Определять пиковый отсчёт самого громкого канала; это не ограничение межсэмпловых пиков.",
+    "uk-UA": "Визначати піковий відлік найгучнішого каналу; це не обмеження міжсемплових піків."
+  },
+  "Detect the loudest channel's smoothed mean-square level.": {
+    "de-DE": "Den geglätteten quadratischen Mittelwert des lautesten Kanals erkennen.",
+    "es-ES": "Detectar el nivel cuadrático medio suavizado del canal más fuerte.",
+    "ru-RU": "Определять сглаженный среднеквадратичный уровень самого громкого канала.",
+    "uk-UA": "Визначати згладжений середньоквадратичний рівень найгучнішого каналу."
+  },
+  "Detector": {
+    "de-DE": "Detektor",
+    "es-ES": "Detector",
+    "ru-RU": "Детектор",
+    "uk-UA": "Детектор"
+  },
+  "Development build — scene editing, SDR composition and Display Capture. Media outputs pending.": {
+    "de-DE": "Entwicklungsversion — Szenenbearbeitung, SDR-Komposition und Bildschirmaufnahme. Medienausgaben sind noch nicht implementiert.",
+    "es-ES": "Versión de desarrollo: edición de escenas, composición SDR y captura de pantalla. Las salidas multimedia están pendientes.",
+    "ru-RU": "Версия для разработки: редактирование сцен, композиция SDR и захват экрана. Вывод мультимедиа ещё не реализован.",
+    "uk-UA": "Версія для розробки: редагування сцен, композиція SDR і захоплення екрана. Виведення мультимедіа ще не реалізовано."
+  },
+  "Device listing is unavailable or already in progress.": {
+    "de-DE": "Die Geräteliste ist nicht verfügbar oder wird bereits aktualisiert.",
+    "es-ES": "La lista de dispositivos no está disponible o ya se está actualizando.",
+    "ru-RU": "Список устройств недоступен или уже обновляется.",
+    "uk-UA": "Список пристроїв недоступний або вже оновлюється."
+  },
+  "Device: {name}": {
+    "de-DE": "Gerät: {name}",
+    "es-ES": "Dispositivo: {name}",
+    "ru-RU": "Устройство: {name}",
+    "uk-UA": "Пристрій: {name}"
+  },
+  "Devices can use a different input format; audio is converted to these project settings. Speaker playback and monitoring are not connected.": {
+    "de-DE": "Geräte können ein anderes Eingabeformat verwenden; Audio wird in das Projektformat konvertiert. Lautsprecherwiedergabe und Monitoring sind nicht verbunden.",
+    "es-ES": "Los dispositivos pueden usar otro formato de entrada; el audio se convierte a estos ajustes del proyecto. La reproducción por altavoces y la monitorización no están conectadas.",
+    "ru-RU": "Устройства могут использовать другой входной формат; звук преобразуется в формат проекта. Вывод на динамики и мониторинг не подключены.",
+    "uk-UA": "Пристрої можуть використовувати інший вхідний формат; звук перетворюється на формат проєкту. Виведення на динаміки та моніторинг не підключені."
+  },
+  "Disabled": {
+    "de-DE": "Deaktiviert",
+    "es-ES": "Desactivado",
+    "ru-RU": "Отключено",
+    "uk-UA": "Вимкнено"
+  },
+  "Discard and close": {
+    "de-DE": "Verwerfen und schließen",
+    "es-ES": "Descartar y cerrar",
+    "ru-RU": "Не сохранять и закрыть",
+    "uk-UA": "Не зберігати й закрити"
+  },
+  "Discard these changes and close the dialog.": {
+    "de-DE": "Verwirf diese Änderungen und schließe den Dialog.",
+    "es-ES": "Descarta estos cambios y cierra el diálogo.",
+    "ru-RU": "Отменить эти изменения и закрыть диалог.",
+    "uk-UA": "Скасувати ці зміни й закрити діалог."
+  },
+  "Display Capture width and height are full live-source extents in canvas pixels. If its binding or live dimensions change, reopen this dialog before applying.": {
+    "de-DE": "Breite und Höhe der Bildschirmaufnahme sind die vollständigen Live-Quellmaße in Leinwandpixeln. Öffnen Sie bei geänderter Zuordnung oder Größe diesen Dialog vor dem Anwenden erneut.",
+    "es-ES": "La anchura y la altura de la captura de pantalla son las dimensiones completas de la fuente en píxeles del lienzo. Si cambian su vinculación o sus dimensiones reales, vuelva a abrir este diálogo antes de aplicar.",
+    "ru-RU": "Ширина и высота захвата экрана — полные размеры текущего источника в пикселях холста. Если привязка или размеры изменятся, повторно откройте диалог перед применением.",
+    "uk-UA": "Ширина й висота захоплення екрана — повні розміри поточного джерела в пікселях полотна. Якщо прив’язка або розміри зміняться, повторно відкрийте діалог перед застосуванням."
+  },
+  "Display Capture: {error}": {
+    "de-DE": "Bildschirmaufnahme: {error}",
+    "es-ES": "Captura de pantalla: {error}",
+    "ru-RU": "Захват экрана: {error}",
+    "uk-UA": "Захоплення екрана: {error}"
+  },
+  "Display capture is unavailable on this platform.": {
+    "de-DE": "Bildschirmaufnahme ist auf dieser Plattform nicht verfügbar.",
+    "es-ES": "La captura de pantalla no está disponible en esta plataforma.",
+    "ru-RU": "Захват дисплея недоступен на этой платформе.",
+    "uk-UA": "Захоплення дисплея недоступне на цій платформі."
+  },
+  "Display draft belongs to another document": {
+    "de-DE": "Der Bildschirmentwurf gehört zu einem anderen Dokument",
+    "es-ES": "El borrador de pantalla pertenece a otro documento",
+    "ru-RU": "Черновик захвата экрана относится к другому документу",
+    "uk-UA": "Чернетка захоплення екрана належить іншому документу"
+  },
+  "Display picker identity exhausted": {
+    "de-DE": "Die Kennungen der Bildschirmauswahl sind ausgeschöpft",
+    "es-ES": "Se agotaron los identificadores del selector de pantalla",
+    "ru-RU": "Исчерпаны идентификаторы выбора экрана",
+    "uk-UA": "Вичерпано ідентифікатори вибору екрана"
+  },
+  "Display the filtered result, original source, or alpha matte.": {
+    "de-DE": "Das gefilterte Ergebnis, die Originalquelle oder die Alphamaske anzeigen.",
+    "es-ES": "Mostrar el resultado filtrado, la fuente original o la máscara alfa.",
+    "ru-RU": "Показать результат фильтрации, исходный источник или альфа-маску.",
+    "uk-UA": "Показати результат фільтрації, початкове джерело або альфа-маску."
+  },
+  "Document operation in progress…": {
+    "de-DE": "Dokumentvorgang läuft…",
+    "es-ES": "Operación de documento en curso…",
+    "ru-RU": "Выполняется операция с документом…",
+    "uk-UA": "Виконується операція з документом…"
+  },
+  "Document saved": {
+    "de-DE": "Dokument gespeichert",
+    "es-ES": "Documento guardado",
+    "ru-RU": "Документ сохранён",
+    "uk-UA": "Документ збережено"
+  },
+  "Document worker disconnected": {
+    "de-DE": "Dokument-Worker getrennt",
+    "es-ES": "El trabajador de documentos se desconectó",
+    "ru-RU": "Рабочий поток документов отключился",
+    "uk-UA": "Робочий потік документів від’єднався"
+  },
+  "Document worker is closed": {
+    "de-DE": "Dokument-Worker ist geschlossen",
+    "es-ES": "El trabajador de documentos está cerrado",
+    "ru-RU": "Рабочий поток документов закрыт",
+    "uk-UA": "Робочий потік документів закритий"
+  },
+  "Duplicate": {
+    "de-DE": "Duplizieren",
+    "es-ES": "Duplicar",
+    "ru-RU": "Дублировать",
+    "uk-UA": "Дублювати"
+  },
+  "Duplicate Profile": {
+    "de-DE": "Profil duplizieren",
+    "es-ES": "Duplicar perfil",
+    "ru-RU": "Дублировать профиль",
+    "uk-UA": "Дублювати профіль"
+  },
+  "Duration (ms)": {
+    "de-DE": "Dauer (ms)",
+    "es-ES": "Duración (ms)",
+    "ru-RU": "Длительность (мс)",
+    "uk-UA": "Тривалість (мс)"
+  },
+  "Dynamic OBS provider entries are pending implementation.": {
+    "de-DE": "Dynamische OBS-Anbietereinträge sind noch nicht implementiert.",
+    "es-ES": "Las entradas dinámicas de proveedores de OBS aún no están implementadas.",
+    "ru-RU": "Динамические пункты модулей OBS ещё не реализованы.",
+    "uk-UA": "Динамічні пункти модулів OBS ще не реалізовані."
+  },
+  "Edit Quick Transition": {
+    "de-DE": "Schnellübergang bearbeiten",
+    "es-ES": "Editar transición rápida",
+    "ru-RU": "Изменить быстрый переход",
+    "uk-UA": "Змінити швидкий перехід"
+  },
+  "Edit a device binding for this or another computer.": {
+    "de-DE": "Eine Gerätezuordnung für diesen oder einen anderen Computer bearbeiten.",
+    "es-ES": "Editar la asignación de un dispositivo de este u otro equipo.",
+    "ru-RU": "Изменить привязку устройства для этого или другого компьютера.",
+    "uk-UA": "Змінити прив’язування пристрою для цього чи іншого комп’ютера."
+  },
+  "Edit the selected source's video filters.": {
+    "de-DE": "Die Videofilter der ausgewählten Quelle bearbeiten.",
+    "es-ES": "Editar los filtros de vídeo de la fuente seleccionada.",
+    "ru-RU": "Изменить видеофильтры выбранного источника.",
+    "uk-UA": "Змінити відеофільтри вибраного джерела."
+  },
+  "Edit this source's color key, brightness, contrast and spill suppression.": {
+    "de-DE": "Farbschlüssel, Helligkeit, Kontrast und Farbsaumunterdrückung dieser Quelle bearbeiten.",
+    "es-ES": "Editar la clave de color, el brillo, el contraste y la supresión de reflejos de esta fuente.",
+    "ru-RU": "Изменить цветовой ключ, яркость, контраст и подавление цветового рефлекса источника.",
+    "uk-UA": "Змінити колірний ключ, яскравість, контраст і пригнічення колірного рефлексу джерела."
+  },
+  "Editable Preview": {
+    "de-DE": "Bearbeitbare Vorschau",
+    "es-ES": "Vista previa editable",
+    "ru-RU": "Редактируемый предпросмотр",
+    "uk-UA": "Редагований попередній перегляд"
+  },
+  "Embedded Noto font. System fonts, font files and reading text from a file are not available yet.": {
+    "de-DE": "Eingebettete Noto-Schrift. Systemschriften, Schriftdateien und das Einlesen von Textdateien sind noch nicht verfügbar.",
+    "es-ES": "Fuente Noto integrada. Las fuentes del sistema, los archivos de fuentes y la lectura de texto desde archivos aún no están disponibles.",
+    "ru-RU": "Встроенный шрифт Noto. Системные шрифты, файлы шрифтов и чтение текста из файла пока недоступны.",
+    "uk-UA": "Вбудований шрифт Noto. Системні шрифти, файли шрифтів і читання тексту з файлу поки недоступні."
+  },
+  "Empty translations fall back to English.": {
+    "de-DE": "Bei leeren Übersetzungen wird der englische Text verwendet.",
+    "es-ES": "Las traducciones vacías usan el texto en inglés.",
+    "ru-RU": "Для пустых переводов используется английский текст.",
+    "uk-UA": "Для порожніх перекладів використовується англійський текст."
+  },
+  "Enable Audio Pan Filter in Tools > Plugins.": {
+    "de-DE": "Aktivieren Sie Audio Pan Filter unter Werkzeuge > Erweiterungen.",
+    "es-ES": "Active Audio Pan Filter en Herramientas > Complementos.",
+    "ru-RU": "Включите Audio Pan Filter в меню «Инструменты > Плагины».",
+    "uk-UA": "Увімкніть Audio Pan Filter у меню «Інструменти > Плагіни»."
+  },
+  "Enable Audio Pan Filter in Tools > Plugins. A source supports at most eight filters.": {
+    "de-DE": "Aktivieren Sie Audio Pan Filter unter Werkzeuge > Erweiterungen. Eine Quelle unterstützt höchstens acht Filter.",
+    "es-ES": "Active Audio Pan Filter en Herramientas > Complementos. Cada fuente admite como máximo ocho filtros.",
+    "ru-RU": "Включите Audio Pan Filter в меню «Инструменты > Плагины». Для источника доступно не более восьми фильтров.",
+    "uk-UA": "Увімкніть Audio Pan Filter у меню «Інструменти > Плагіни». Для джерела доступно не більше восьми фільтрів."
+  },
+  "Enable Scene Notes Dock in Tools > Plugins.": {
+    "de-DE": "Aktivieren Sie Scene Notes Dock unter Werkzeuge > Erweiterungen.",
+    "es-ES": "Active Scene Notes Dock en Herramientas > Complementos.",
+    "ru-RU": "Включите Scene Notes Dock в меню «Инструменты > Плагины».",
+    "uk-UA": "Увімкніть Scene Notes Dock у меню «Інструменти > Плагіни»."
+  },
+  "Enable bundled video effects and keep fewer than eight filters to add another.": {
+    "de-DE": "Mitgelieferte Videoeffekte aktivieren und weniger als acht Filter verwenden, um einen hinzuzufügen.",
+    "es-ES": "Activar los efectos de vídeo incluidos y mantener menos de ocho filtros para añadir otro.",
+    "ru-RU": "Для добавления включите встроенные видеоэффекты; в цепочке должно быть менее восьми фильтров.",
+    "uk-UA": "Для додавання ввімкніть вбудовані відеоефекти; у ланцюжку має бути менше восьми фільтрів."
+  },
+  "Enable bundled video effects in Tools > Plugins.": {
+    "de-DE": "Mitgelieferte Videoeffekte unter Werkzeuge > Erweiterungen aktivieren.",
+    "es-ES": "Activar los efectos de vídeo incluidos en Herramientas > Complementos.",
+    "ru-RU": "Включите встроенные видеоэффекты в меню «Инструменты» > «Плагины».",
+    "uk-UA": "Увімкніть вбудовані відеоефекти в меню «Інструменти» > «Плагіни»."
+  },
+  "Enable docks from the Docks menu.": {
+    "de-DE": "Aktivieren Sie die Docks im Menü Docks.",
+    "es-ES": "Active los paneles desde el menú Paneles.",
+    "ru-RU": "Включите панели в меню «Панели».",
+    "uk-UA": "Увімкніть панелі в меню «Панелі»."
+  },
+  "Enable or bypass this video filter without losing its settings.": {
+    "de-DE": "Diesen Videofilter aktivieren oder umgehen, ohne seine Einstellungen zu verlieren.",
+    "es-ES": "Activar u omitir este filtro de vídeo sin perder sus ajustes.",
+    "ru-RU": "Включить или отключить видеофильтр, сохранив его настройки.",
+    "uk-UA": "Увімкнути або вимкнути відеофільтр, зберігши його налаштування."
+  },
+  "Enable to reduce the buffer limit; this can be less reliable on busy devices. Turning this option off restores automatic buffering.": {
+    "de-DE": "Aktivieren verkleinert die Puffergrenze; bei ausgelasteten Geräten kann die Zuverlässigkeit sinken. Deaktivieren stellt die automatische Pufferung wieder her.",
+    "es-ES": "Active esta opción para reducir el límite del búfer; puede ser menos fiable con dispositivos ocupados. Al desactivarla se restablece el búfer automático.",
+    "ru-RU": "Включите для уменьшения предельного размера буфера; при высокой нагрузке это может снизить надёжность. Отключение возвращает автоматическую буферизацию.",
+    "uk-UA": "Увімкніть для зменшення граничного розміру буфера; за високого навантаження це може знизити надійність. Вимкнення повертає автоматичну буферизацію."
+  },
+  "Enabled": {
+    "de-DE": "Aktiviert",
+    "es-ES": "Activado",
+    "ru-RU": "Включено",
+    "uk-UA": "Увімкнено"
+  },
+  "Encoded replay buffers are pending implementation.": {
+    "de-DE": "Kodierte Wiederholungspuffer sind noch nicht implementiert.",
+    "es-ES": "Los búferes de repetición codificada aún no están implementados.",
+    "ru-RU": "Кодированные буферы повтора ещё не реализованы.",
+    "uk-UA": "Кодовані буфери повтору ще не реалізовані."
+  },
+  "Enter a document path": {
+    "de-DE": "Dokumentpfad eingeben",
+    "es-ES": "Introduzca una ruta de documento",
+    "ru-RU": "Укажите путь к документу",
+    "uk-UA": "Укажіть шлях до документа"
+  },
+  "Enter an OBS collection path": {
+    "de-DE": "Pfad einer OBS-Sammlung eingeben",
+    "es-ES": "Introduzca una ruta de colección de OBS",
+    "ru-RU": "Укажите путь к коллекции OBS",
+    "uk-UA": "Укажіть шлях до колекції OBS"
+  },
+  "Enter an image file path": {
+    "de-DE": "Bilddateipfad eingeben",
+    "es-ES": "Introduzca una ruta de archivo de imagen",
+    "ru-RU": "Укажите путь к изображению",
+    "uk-UA": "Укажіть шлях до зображення"
+  },
+  "Enter up to 4096 characters of text. Line breaks are preserved.": {
+    "de-DE": "Gib bis zu 4096 Zeichen ein. Zeilenumbrüche bleiben erhalten.",
+    "es-ES": "Introduce hasta 4096 caracteres. Se conservan los saltos de línea.",
+    "ru-RU": "Введите до 4096 символов текста. Переносы строк сохраняются.",
+    "uk-UA": "Введіть до 4096 символів тексту. Переноси рядків зберігаються."
+  },
+  "Enumerating audio devices…": {
+    "de-DE": "Audiogeräte werden ermittelt…",
+    "es-ES": "Buscando dispositivos de audio…",
+    "ru-RU": "Получение списка аудиоустройств…",
+    "uk-UA": "Отримання списку аудіопристроїв…"
+  },
+  "Enumerating displays…": {
+    "de-DE": "Bildschirme werden ermittelt…",
+    "es-ES": "Buscando pantallas…",
+    "ru-RU": "Получение списка экранов…",
+    "uk-UA": "Отримання списку екранів…"
+  },
+  "Enumerating windows…": {
+    "de-DE": "Fenster werden gesucht…",
+    "es-ES": "Buscando ventanas…",
+    "ru-RU": "Поиск окон…",
+    "uk-UA": "Пошук вікон…"
+  },
+  "Exact identifiers are retained when a device is unavailable. Choosing a listed device replaces its binding.": {
+    "de-DE": "Genaue Kennungen bleiben erhalten, wenn ein Gerät nicht verfügbar ist. Die Auswahl eines aufgelisteten Geräts ersetzt seine Zuordnung.",
+    "es-ES": "Los identificadores exactos se conservan si el dispositivo no está disponible. Elegir un dispositivo de la lista reemplaza su asignación.",
+    "ru-RU": "Точные идентификаторы сохраняются, если устройство недоступно. Выбор устройства из списка заменяет его привязку.",
+    "uk-UA": "Точні ідентифікатори зберігаються, якщо пристрій недоступний. Вибір пристрою зі списку замінює його прив’язування."
+  },
+  "Exact native RGB24/RGB32/ARGB32, YUY2 and NV12 modes; compressed formats and unsupported color metadata are reported explicitly": {
+    "de-DE": "Exakte native RGB24/RGB32/ARGB32-, YUY2- und NV12-Modi; komprimierte Formate und nicht unterstützte Farbmetadaten werden ausdrücklich angezeigt",
+    "es-ES": "Modos nativos exactos RGB24/RGB32/ARGB32, YUY2 y NV12; los formatos comprimidos y los metadatos de color no admitidos se indican explícitamente",
+    "ru-RU": "Точные нативные режимы RGB24/RGB32/ARGB32, YUY2 и NV12; сжатые форматы и неподдерживаемые метаданные цвета явно отмечаются",
+    "uk-UA": "Точні нативні режими RGB24/RGB32/ARGB32, YUY2 та NV12; стиснені формати й непідтримувані метадані кольору явно позначаються"
+  },
+  "Exact native RGB32/ARGB32 modes only; uncompressed YUV and compressed formats require additional conversion support": {
+    "de-DE": "Nur exakte native RGB32/ARGB32-Modi; unkomprimiertes YUV und komprimierte Formate benötigen zusätzliche Konvertierungsunterstützung",
+    "es-ES": "Solo modos nativos RGB32/ARGB32 exactos; YUV sin comprimir y los formatos comprimidos requieren conversión adicional",
+    "ru-RU": "Только точные собственные режимы RGB32/ARGB32; для несжатого YUV и сжатых форматов нужна дополнительная поддержка преобразования",
+    "uk-UA": "Лише точні власні режими RGB32/ARGB32; для нестисненого YUV і стиснених форматів потрібна додаткова підтримка перетворення"
+  },
+  "Exclude Own Audio": {
+    "de-DE": "Eigenes Audio ausschließen",
+    "es-ES": "Excluir el audio propio",
+    "ru-RU": "Исключить собственный звук",
+    "uk-UA": "Виключити власний звук"
+  },
+  "Exclude this application's audio": {
+    "de-DE": "Audio dieser Anwendung ausschließen",
+    "es-ES": "Excluir el audio de esta aplicación",
+    "ru-RU": "Исключить звук этого приложения",
+    "uk-UA": "Виключити звук цієї програми"
+  },
+  "Existing scene": {
+    "de-DE": "Vorhandene Szene",
+    "es-ES": "Escena existente",
+    "ru-RU": "Существующая сцена",
+    "uk-UA": "Наявна сцена"
+  },
+  "Export OBS": {
+    "de-DE": "OBS exportieren",
+    "es-ES": "Exportar OBS",
+    "ru-RU": "Экспорт OBS",
+    "uk-UA": "Експорт OBS"
+  },
+  "Export OBS Scene Collection": {
+    "de-DE": "OBS-Szenensammlung exportieren",
+    "es-ES": "Exportar colección de escenas de OBS",
+    "ru-RU": "Экспорт коллекции сцен OBS",
+    "uk-UA": "Експорт колекції сцен OBS"
+  },
+  "External CSV unavailable; embedded translations are in use.": {
+    "de-DE": "Externe CSV nicht verfügbar; integrierte Übersetzungen werden verwendet.",
+    "es-ES": "El CSV externo no está disponible; se usan las traducciones integradas.",
+    "ru-RU": "Внешний CSV недоступен; используются встроенные переводы.",
+    "uk-UA": "Зовнішній CSV недоступний; використовуються вбудовані переклади."
+  },
+  "External CSV unavailable; embedded translations are in use. {error}": {
+    "de-DE": "Externe CSV nicht verfügbar; integrierte Übersetzungen werden verwendet. {error}",
+    "es-ES": "El CSV externo no está disponible; se usan las traducciones integradas. {error}",
+    "ru-RU": "Внешний CSV недоступен; используются встроенные переводы. {error}",
+    "uk-UA": "Зовнішній CSV недоступний; використовуються вбудовані переклади. {error}"
+  },
+  "FPS Denominator": {
+    "de-DE": "FPS-Nenner",
+    "es-ES": "Denominador de FPS",
+    "ru-RU": "Знаменатель частоты кадров",
+    "uk-UA": "Знаменник частоти кадрів"
+  },
+  "FPS Numerator": {
+    "de-DE": "FPS-Zähler",
+    "es-ES": "Numerador de FPS",
+    "ru-RU": "Числитель частоты кадров",
+    "uk-UA": "Чисельник частоти кадрів"
+  },
+  "Fade To Black": {
+    "de-DE": "Zu Schwarz überblenden",
+    "es-ES": "Fundido a negro",
+    "ru-RU": "Плавный переход в чёрный",
+    "uk-UA": "Плавний перехід у чорний"
+  },
+  "Fade To Color": {
+    "de-DE": "Über Farbe überblenden",
+    "es-ES": "Fundido a color",
+    "ru-RU": "Переход через цвет",
+    "uk-UA": "Перехід через колір"
+  },
+  "File path": {
+    "de-DE": "Dateipfad",
+    "es-ES": "Ruta del archivo",
+    "ru-RU": "Путь к файлу",
+    "uk-UA": "Шлях до файлу"
+  },
+  "Filters execute from bottom to top, following OBS. This source's settings are shared by every scene reference. Apply commits the complete chain; Cancel discards this draft.": {
+    "de-DE": "Filter werden wie in OBS von unten nach oben ausgeführt. Die Quelleneinstellungen gelten für alle Szenenverweise. Anwenden übernimmt die gesamte Kette; Abbrechen verwirft den Entwurf.",
+    "es-ES": "Los filtros se ejecutan de abajo arriba, como en OBS. Los ajustes de esta fuente se comparten entre todas las escenas. Aplicar confirma toda la cadena; Cancelar descarta el borrador.",
+    "ru-RU": "Фильтры выполняются снизу вверх, как в OBS. Настройки источника общие для всех сцен. «Применить» сохраняет всю цепочку; «Отмена» удаляет черновик.",
+    "uk-UA": "Фільтри виконуються знизу вгору, як в OBS. Налаштування джерела спільні для всіх сцен. «Застосувати» зберігає весь ланцюжок; «Скасувати» відкидає чернетку."
+  },
+  "Filters run from bottom to top. Changes affect every scene reference to this source. Apply saves the stack; Cancel discards the draft.": {
+    "de-DE": "Filter werden von unten nach oben angewendet. Änderungen betreffen alle Szenenverweise dieser Quelle. Anwenden speichert den Stapel; Abbrechen verwirft die Änderungen.",
+    "es-ES": "Los filtros se ejecutan de abajo arriba. Los cambios afectan a todas las referencias de esta fuente. Aplicar guarda la pila; Cancelar descarta los cambios.",
+    "ru-RU": "Фильтры применяются снизу вверх. Изменения затрагивают все ссылки на источник в сценах. «Применить» сохраняет цепочку; «Отмена» отменяет изменения.",
+    "uk-UA": "Фільтри застосовуються знизу вгору. Зміни впливають на всі посилання на джерело у сценах. «Застосувати» зберігає ланцюжок; «Скасувати» скасовує зміни."
+  },
+  "Final Output": {
+    "de-DE": "Endausgabe",
+    "es-ES": "Salida final",
+    "ru-RU": "Итоговое изображение",
+    "uk-UA": "Підсумкове зображення"
+  },
+  "Flip Horizontally": {
+    "de-DE": "Horizontal spiegeln",
+    "es-ES": "Voltear horizontalmente",
+    "ru-RU": "Отразить по горизонтали",
+    "uk-UA": "Віддзеркалити по горизонталі"
+  },
+  "Flow: Audio Input": {
+    "de-DE": "Datenfluss: Audioeingabe",
+    "es-ES": "Flujo: entrada de audio",
+    "ru-RU": "Поток: аудиовход",
+    "uk-UA": "Потік: аудіовхід"
+  },
+  "Flow: Audio Output": {
+    "de-DE": "Datenfluss: Audioausgabe",
+    "es-ES": "Flujo: salida de audio",
+    "ru-RU": "Поток: аудиовыход",
+    "uk-UA": "Потік: аудіовихід"
+  },
+  "Follow the system's default audio device.": {
+    "de-DE": "Dem Standard-Audiogerät des Systems folgen.",
+    "es-ES": "Seguir el dispositivo de audio predeterminado del sistema.",
+    "ru-RU": "Использовать аудиоустройство системы по умолчанию.",
+    "uk-UA": "Використовувати типовий аудіопристрій системи."
+  },
+  "Font size (px)": {
+    "de-DE": "Schriftgröße (px)",
+    "es-ES": "Tamaño de fuente (px)",
+    "ru-RU": "Размер шрифта (пикс.)",
+    "uk-UA": "Розмір шрифту (пікс.)"
+  },
+  "Full Height (canvas px)": {
+    "de-DE": "Volle Höhe (Leinwandpixel)",
+    "es-ES": "Altura completa (px del lienzo)",
+    "ru-RU": "Полная высота (пикс. холста)",
+    "uk-UA": "Повна висота (пікс. полотна)"
+  },
+  "Full Width (canvas px)": {
+    "de-DE": "Volle Breite (Leinwandpixel)",
+    "es-ES": "Anchura completa (px del lienzo)",
+    "ru-RU": "Полная ширина (пикс. холста)",
+    "uk-UA": "Повна ширина (пікс. полотна)"
+  },
+  "Full range": {
+    "de-DE": "Voller Bereich",
+    "es-ES": "Rango completo",
+    "ru-RU": "Полный диапазон",
+    "uk-UA": "Повний діапазон"
+  },
+  "GDI captures the client area only; full-window WGC is unavailable": {
+    "de-DE": "GDI erfasst nur den Clientbereich; vollständige Fensteraufnahme über WGC ist nicht verfügbar",
+    "es-ES": "GDI solo captura el área de cliente; la captura de ventana completa con WGC no está disponible",
+    "ru-RU": "GDI захватывает только клиентскую область; захват всего окна через WGC недоступен",
+    "uk-UA": "GDI захоплює лише клієнтську область; захоплення всього вікна через WGC недоступне"
+  },
+  "GDI compatibility": {
+    "de-DE": "GDI-Kompatibilität",
+    "es-ES": "Compatibilidad GDI",
+    "ru-RU": "Совместимость GDI",
+    "uk-UA": "Сумісність GDI"
+  },
+  "GDI compatibility requires a Windows display target.": {
+    "de-DE": "GDI-Kompatibilität erfordert einen Windows-Bildschirm.",
+    "es-ES": "La compatibilidad GDI requiere una pantalla de Windows.",
+    "ru-RU": "Для режима совместимости GDI требуется дисплей Windows.",
+    "uk-UA": "Для режиму сумісності GDI потрібен дисплей Windows."
+  },
+  "GPL-2.0-or-later. OBS source and licenses are retained in doc/obs-studio.": {
+    "de-DE": "GPL-2.0-or-later. OBS-Quellcode und Lizenzen sind unter doc/obs-studio erhalten.",
+    "es-ES": "GPL-2.0-or-later. El código fuente y las licencias de OBS se conservan en doc/obs-studio.",
+    "ru-RU": "GPL-2.0-or-later. Исходники OBS и лицензии сохранены в doc/obs-studio.",
+    "uk-UA": "GPL-2.0-or-later. Вихідний код OBS і ліцензії збережено в doc/obs-studio."
+  },
+  "Gain (Left)": {
+    "de-DE": "Verstärkung (links)",
+    "es-ES": "Ganancia (izquierda)",
+    "ru-RU": "Усиление (левый)",
+    "uk-UA": "Підсилення (лівий)"
+  },
+  "Gain (Left), -80 to 30 dB": {
+    "de-DE": "Verstärkung (links), -80 bis 30 dB",
+    "es-ES": "Ganancia (izquierda), de -80 a 30 dB",
+    "ru-RU": "Усиление (левый), от -80 до 30 дБ",
+    "uk-UA": "Підсилення (лівий), від -80 до 30 дБ"
+  },
+  "Gain (Right)": {
+    "de-DE": "Verstärkung (rechts)",
+    "es-ES": "Ganancia (derecha)",
+    "ru-RU": "Усиление (правый)",
+    "uk-UA": "Підсилення (правий)"
+  },
+  "Gain (Right), -80 to 30 dB": {
+    "de-DE": "Verstärkung (rechts), -80 bis 30 dB",
+    "es-ES": "Ganancia (derecha), de -80 a 30 dB",
+    "ru-RU": "Усиление (правый), от -80 до 30 дБ",
+    "uk-UA": "Підсилення (правий), від -80 до 30 дБ"
+  },
+  "Global Audio Slots": {
+    "de-DE": "Globale Audiozuordnungen",
+    "es-ES": "Ranuras de audio globales",
+    "ru-RU": "Глобальные аудиоканалы",
+    "uk-UA": "Глобальні аудіоканали"
+  },
+  "Global transition after removal: {fallback}": {
+    "de-DE": "Globaler Übergang nach dem Entfernen: {fallback}",
+    "es-ES": "Transición global tras eliminar: {fallback}",
+    "ru-RU": "Глобальный переход после удаления: {fallback}",
+    "uk-UA": "Глобальний перехід після видалення: {fallback}"
+  },
+  "Groups have no independent source properties.": {
+    "de-DE": "Gruppen haben keine eigenständigen Quelleigenschaften.",
+    "es-ES": "Los grupos no tienen propiedades de fuente independientes.",
+    "ru-RU": "У групп нет отдельных свойств источника.",
+    "uk-UA": "Групи не мають окремих властивостей джерела."
+  },
+  "Guide architecture: independent engine, shared commands, bounded workers.": {
+    "de-DE": "Architektur des Leitfadens: unabhängige Engine, gemeinsame Befehle und Worker mit festen Grenzen.",
+    "es-ES": "Arquitectura de la guía: motor independiente, comandos compartidos y trabajadores con límites.",
+    "ru-RU": "Архитектура руководства: независимый движок, общие команды и рабочие потоки с заданными лимитами.",
+    "uk-UA": "Архітектура посібника: незалежний рушій, спільні команди й робочі потоки із заданими лімітами."
+  },
+  "Height (px)": {
+    "de-DE": "Höhe (px)",
+    "es-ES": "Alto (px)",
+    "ru-RU": "Высота (пикс.)",
+    "uk-UA": "Висота (пікс.)"
+  },
+  "Horizontal Alignment": {
+    "de-DE": "Horizontale Ausrichtung",
+    "es-ES": "Alineación horizontal",
+    "ru-RU": "Горизонтальное выравнивание",
+    "uk-UA": "Горизонтальне вирівнювання"
+  },
+  "Image file": {
+    "de-DE": "Bilddatei",
+    "es-ES": "Archivo de imagen",
+    "ru-RU": "Файл изображения",
+    "uk-UA": "Файл зображення"
+  },
+  "Import OBS": {
+    "de-DE": "OBS importieren",
+    "es-ES": "Importar OBS",
+    "ru-RU": "Импорт OBS",
+    "uk-UA": "Імпорт OBS"
+  },
+  "Import OBS Scene Collection": {
+    "de-DE": "OBS-Szenensammlung importieren",
+    "es-ES": "Importar colección de escenas de OBS",
+    "ru-RU": "Импорт коллекции сцен OBS",
+    "uk-UA": "Імпорт колекції сцен OBS"
+  },
+  "Import canvas comes from current profile: {canvas}. Adjust Video settings before import if required.": {
+    "de-DE": "Die Importleinwand stammt aus dem aktuellen Profil: {canvas}. Passen Sie bei Bedarf vor dem Import die Videoeinstellungen an.",
+    "es-ES": "El lienzo de importación procede del perfil actual: {canvas}. Ajuste Vídeo antes de importar si es necesario.",
+    "ru-RU": "Холст импорта берётся из текущего профиля: {canvas}. При необходимости измените настройки видео перед импортом.",
+    "uk-UA": "Полотно імпорту береться з поточного профілю: {canvas}. За потреби змініть налаштування відео перед імпортом."
+  },
+  "Imported OBS UUIDs and item IDs are retained only in this session. Native save/reopen does not retain this interchange sidecar.": {
+    "de-DE": "Importierte OBS-UUIDs und Elementkennungen bleiben nur in dieser Sitzung erhalten. Speichern und erneutes Öffnen des nativen Formats erhält diese Austauschmetadaten nicht.",
+    "es-ES": "Los UUID de OBS y los ID de elementos importados se conservan solo durante esta sesión. Guardar y volver a abrir el archivo nativo no conserva estos metadatos de intercambio.",
+    "ru-RU": "Импортированные UUID OBS и идентификаторы элементов сохраняются только в текущем сеансе. Сохранение и повторное открытие собственного формата не сохраняет эти метаданные обмена.",
+    "uk-UA": "Імпортовані UUID OBS та ідентифікатори елементів зберігаються лише в поточному сеансі. Збереження й повторне відкриття власного формату не зберігає ці метадані обміну."
+  },
+  "Input errors: {} · undelivered audio frames: {}": {
+    "de-DE": "Eingabefehler: {} · nicht zugestellte Audioframes: {}",
+    "es-ES": "Errores de entrada: {} · fotogramas de audio no entregados: {}",
+    "ru-RU": "Ошибки входа: {} · недоставленных аудиокадров: {}",
+    "uk-UA": "Помилки входу: {} · недоставлених аудіокадрів: {}"
+  },
+  "Invalid video filter command.": {
+    "de-DE": "Ungültiger Videofilterbefehl.",
+    "es-ES": "Comando de filtro de vídeo no válido.",
+    "ru-RU": "Недопустимая команда видеофильтра.",
+    "uk-UA": "Неприпустима команда відеофільтра."
+  },
+  "Invert (Left)": {
+    "de-DE": "Invertieren (links)",
+    "es-ES": "Invertir (izquierda)",
+    "ru-RU": "Инвертировать (левый)",
+    "uk-UA": "Інвертувати (лівий)"
+  },
+  "Invert (Right)": {
+    "de-DE": "Invertieren (rechts)",
+    "es-ES": "Invertir (derecha)",
+    "ru-RU": "Инвертировать (правый)",
+    "uk-UA": "Інвертувати (правий)"
+  },
+  "Italic": {
+    "de-DE": "Kursiv",
+    "es-ES": "Cursiva",
+    "ru-RU": "Курсив",
+    "uk-UA": "Курсив"
+  },
+  "Item": {
+    "de-DE": "Element",
+    "es-ES": "Elemento",
+    "ru-RU": "Элемент",
+    "uk-UA": "Елемент"
+  },
+  "Keep Keyed Colors": {
+    "de-DE": "Schlüsselfarben beibehalten",
+    "es-ES": "Conservar colores clave",
+    "ru-RU": "Сохранять ключевые цвета",
+    "uk-UA": "Зберігати ключові кольори"
+  },
+  "Keep matching colors instead of removing them.": {
+    "de-DE": "Übereinstimmende Farben beibehalten, statt sie zu entfernen.",
+    "es-ES": "Conservar los colores coincidentes en lugar de eliminarlos.",
+    "ru-RU": "Сохранять совпадающие цвета вместо их удаления.",
+    "uk-UA": "Зберігати кольори, що збігаються, замість їх видалення."
+  },
+  "Keep recovery and close": {
+    "de-DE": "Wiederherstellung behalten und schließen",
+    "es-ES": "Conservar recuperación y cerrar",
+    "ru-RU": "Сохранить данные восстановления и закрыть",
+    "uk-UA": "Зберегти дані відновлення й закрити"
+  },
+  "Language": {
+    "de-DE": "Sprache",
+    "es-ES": "Idioma",
+    "ru-RU": "Язык",
+    "uk-UA": "Мова"
+  },
+  "Late audio frames: {} · skipped after a pause: {}": {
+    "de-DE": "Verspätete Audioframes: {} · nach einer Pause übersprungen: {}",
+    "es-ES": "Fotogramas de audio tardíos: {} · omitidos tras una pausa: {}",
+    "ru-RU": "Опоздавших аудиокадров: {} · пропущено после паузы: {}",
+    "uk-UA": "Запізнілих аудіокадрів: {} · пропущено після паузи: {}"
+  },
+  "Limited range": {
+    "de-DE": "Begrenzter Bereich",
+    "es-ES": "Rango limitado",
+    "ru-RU": "Ограниченный диапазон",
+    "uk-UA": "Обмежений діапазон"
+  },
+  "List Native Devices": {
+    "de-DE": "Systemgeräte auflisten",
+    "es-ES": "Mostrar dispositivos del sistema",
+    "ru-RU": "Показать системные устройства",
+    "uk-UA": "Показати системні пристрої"
+  },
+  "Listing devices does not start capture. Apply activates this source; permission or device errors are shown explicitly. Speaker playback and monitoring are not connected.": {
+    "de-DE": "Das Auflisten startet keine Aufnahme. Anwenden aktiviert die Quelle; Berechtigungs- oder Gerätefehler werden angezeigt. Lautsprecherwiedergabe und Monitoring sind nicht verbunden.",
+    "es-ES": "Mostrar los dispositivos no inicia la captura. Aplicar activa esta fuente; los errores de permisos o del dispositivo se muestran. La reproducción y la monitorización no están conectadas.",
+    "ru-RU": "Просмотр списка устройств не запускает захват. «Применить» активирует источник; ошибки разрешений или устройства отображаются явно. Воспроизведение через динамики и мониторинг не подключены.",
+    "uk-UA": "Перегляд списку пристроїв не запускає захоплення. «Застосувати» активує джерело; помилки дозволів або пристрою відображаються явно. Відтворення через динаміки та моніторинг не підключені."
+  },
+  "Localization CSV": {
+    "de-DE": "Übersetzungs-CSV",
+    "es-ES": "CSV de traducciones",
+    "ru-RU": "CSV с переводами",
+    "uk-UA": "CSV із перекладами"
+  },
+  "Localization changes are separate from scene Undo.": {
+    "de-DE": "Sprachänderungen sind von der Rückgängig-Funktion für Szenen getrennt.",
+    "es-ES": "Los cambios de idioma son independientes de Deshacer en las escenas.",
+    "ru-RU": "Изменение языка не входит в историю отмены сцен.",
+    "uk-UA": "Зміна мови не входить до історії скасування сцен."
+  },
+  "Localization loaded: {} · {} missing translations use English": {
+    "de-DE": "Übersetzungen geladen: {} · {} fehlende Übersetzungen verwenden Englisch",
+    "es-ES": "Traducciones cargadas: {} · {} traducciones pendientes usan inglés",
+    "ru-RU": "Переводы загружены: {} · для {} отсутствующих переводов используется английский",
+    "uk-UA": "Переклади завантажено: {} · для {} відсутніх перекладів використовується англійська"
+  },
+  "Localization result is obsolete; previous translations were retained": {
+    "de-DE": "Das Übersetzungsergebnis ist veraltet; die bisherigen Übersetzungen bleiben erhalten",
+    "es-ES": "El resultado de traducción está obsoleto; se conservaron las traducciones anteriores",
+    "ru-RU": "Результат загрузки переводов устарел; предыдущие переводы сохранены",
+    "uk-UA": "Результат завантаження перекладів застарів; попередні переклади збережено"
+  },
+  "Low Latency Audio Buffering": {
+    "de-DE": "Audiopufferung mit niedriger Latenz",
+    "es-ES": "Búfer de audio de baja latencia",
+    "ru-RU": "Буферизация звука с низкой задержкой",
+    "uk-UA": "Буферизація звуку з низькою затримкою"
+  },
+  "Make-up Gain": {
+    "de-DE": "Aufholverstärkung",
+    "es-ES": "Ganancia de compensación",
+    "ru-RU": "Компенсирующее усиление",
+    "uk-UA": "Компенсаційне підсилення"
+  },
+  "Manual cross-platform identities remain editable. A listed device does not guarantee permission or that its stream can open; failures are shown explicitly.": {
+    "de-DE": "Plattformübergreifende Kennungen bleiben manuell bearbeitbar. Ein aufgelistetes Gerät garantiert weder Berechtigungen noch einen nutzbaren Stream; Fehler werden ausdrücklich angezeigt.",
+    "es-ES": "Las identidades multiplataforma siguen siendo editables manualmente. Que un dispositivo figure en la lista no garantiza permisos ni que su flujo pueda abrirse; los errores se muestran explícitamente.",
+    "ru-RU": "Межплатформенные идентификаторы можно редактировать вручную. Наличие устройства в списке не гарантирует разрешение или открытие потока; ошибки показываются явно.",
+    "uk-UA": "Міжплатформні ідентифікатори можна редагувати вручну. Наявність пристрою у списку не гарантує дозволу або відкриття потоку; помилки показуються явно."
+  },
+  "Manual device binding": {
+    "de-DE": "Manuelle Gerätezuordnung",
+    "es-ES": "Asignación manual del dispositivo",
+    "ru-RU": "Привязка устройства вручную",
+    "uk-UA": "Прив’язування пристрою вручну"
+  },
+  "Manual transition position updated": {
+    "de-DE": "Position des manuellen Übergangs aktualisiert",
+    "es-ES": "Posición de transición manual actualizada",
+    "ru-RU": "Положение ручного перехода обновлено",
+    "uk-UA": "Положення ручного переходу оновлено"
+  },
+  "Matching": {
+    "de-DE": "Farbvergleich",
+    "es-ES": "Comparación",
+    "ru-RU": "Сопоставление",
+    "uk-UA": "Зіставлення"
+  },
+  "Media Source": {
+    "de-DE": "Medienquelle",
+    "es-ES": "Fuente multimedia",
+    "ru-RU": "Медиаисточник",
+    "uk-UA": "Медіаджерело"
+  },
+  "Mic/Aux 1": {
+    "de-DE": "Mikrofon/Aux 1",
+    "es-ES": "Micrófono/auxiliar 1",
+    "ru-RU": "Микрофон/доп. 1",
+    "uk-UA": "Мікрофон/дод. 1"
+  },
+  "Missing source": {
+    "de-DE": "Fehlende Quelle",
+    "es-ES": "Fuente no encontrada",
+    "ru-RU": "Источник отсутствует",
+    "uk-UA": "Джерело відсутнє"
+  },
+  "Missing source audio frames: {} · clipped samples: {}": {
+    "de-DE": "Fehlende Quell-Audioframes: {} · begrenzte Samples: {}",
+    "es-ES": "Fotogramas de audio de fuente ausentes: {} · muestras recortadas: {}",
+    "ru-RU": "Отсутствующих аудиокадров источника: {} · отсечённых отсчётов: {}",
+    "uk-UA": "Відсутніх аудіокадрів джерела: {} · обрізаних відліків: {}"
+  },
+  "Missing translations": {
+    "de-DE": "Fehlende Übersetzungen",
+    "es-ES": "Traducciones pendientes",
+    "ru-RU": "Отсутствующие переводы",
+    "uk-UA": "Відсутні переклади"
+  },
+  "Module disabled · notes retained. Enable Scene Notes Dock in Tools > Plugins to edit.": {
+    "de-DE": "Modul deaktiviert · Notizen bleiben erhalten. Zum Bearbeiten Scene Notes Dock unter Werkzeuge > Erweiterungen aktivieren.",
+    "es-ES": "Módulo desactivado · notas conservadas. Active Scene Notes Dock en Herramientas > Complementos para editar.",
+    "ru-RU": "Модуль отключён · заметки сохранены. Для редактирования включите Scene Notes Dock в меню «Инструменты > Плагины».",
+    "uk-UA": "Модуль вимкнено · нотатки збережено. Для редагування увімкніть Scene Notes Dock у меню «Інструменти > Плагіни»."
+  },
+  "Module disabled · settings retained. Enable it in Tools > Plugins to edit these properties.": {
+    "de-DE": "Modul deaktiviert · Einstellungen bleiben erhalten. Zum Bearbeiten unter Werkzeuge > Erweiterungen aktivieren.",
+    "es-ES": "Módulo desactivado · ajustes conservados. Actívelo en Herramientas > Complementos para editar estas propiedades.",
+    "ru-RU": "Модуль отключён · настройки сохранены. Для редактирования включите его в меню «Инструменты > Плагины».",
+    "uk-UA": "Модуль вимкнено · налаштування збережено. Для редагування увімкніть його в меню «Інструменти > Плагіни»."
+  },
+  "Modules: {built_in} built-in · {} third-party": {
+    "de-DE": "Module: {built_in} integriert · {} von Drittanbietern",
+    "es-ES": "Módulos: {built_in} integrados · {} externos",
+    "ru-RU": "Модули: {built_in} встроенных · {} сторонних",
+    "uk-UA": "Модулі: {built_in} вбудованих · {} сторонніх"
+  },
+  "Monotonic playback time exceeds supported nanoseconds": {
+    "de-DE": "Die monotone Wiedergabezeit überschreitet den unterstützten Nanosekundenbereich",
+    "es-ES": "El tiempo de reproducción monotónico supera el intervalo de nanosegundos admitido",
+    "ru-RU": "Монотонное время воспроизведения превышает поддерживаемый диапазон наносекунд",
+    "uk-UA": "Монотонний час відтворення перевищує підтримуваний діапазон наносекунд"
+  },
+  "Move Filter Down": {
+    "de-DE": "Filter nach unten verschieben",
+    "es-ES": "Bajar filtro",
+    "ru-RU": "Переместить фильтр вниз",
+    "uk-UA": "Перемістити фільтр униз"
+  },
+  "Move Filter Up": {
+    "de-DE": "Filter nach oben verschieben",
+    "es-ES": "Subir filtro",
+    "ru-RU": "Переместить фильтр вверх",
+    "uk-UA": "Перемістити фільтр угору"
+  },
+  "Name of this video capture source": {
+    "de-DE": "Name dieser Videoaufnahmequelle",
+    "es-ES": "Nombre de esta fuente de captura de vídeo",
+    "ru-RU": "Имя этого источника видеозахвата",
+    "uk-UA": "Назва цього джерела відеозахоплення"
+  },
+  "Name of this window capture source": {
+    "de-DE": "Name dieser Fensteraufnahmequelle",
+    "es-ES": "Nombre de esta fuente de captura de ventana",
+    "ru-RU": "Имя источника захвата окна",
+    "uk-UA": "Назва джерела захоплення вікна"
+  },
+  "Name this group so you can find it in Sources.": {
+    "de-DE": "Die Gruppe benennen, damit sie unter Quellen zu finden ist.",
+    "es-ES": "Nombra este grupo para encontrarlo en Fuentes.",
+    "ru-RU": "Назовите группу, чтобы находить её в списке источников.",
+    "uk-UA": "Назвіть групу, щоб знаходити її у списку джерел."
+  },
+  "Name this text source so you can find it in Sources.": {
+    "de-DE": "Benenne diese Textquelle, damit du sie unter Quellen wiederfindest.",
+    "es-ES": "Asigna un nombre a esta fuente de texto para encontrarla en Fuentes.",
+    "ru-RU": "Задайте имя текстовому источнику, чтобы найти его в панели «Источники».",
+    "uk-UA": "Задайте назву текстовому джерелу, щоб знайти його на панелі «Джерела»."
+  },
+  "Name this window capture source so you can find it in Sources.": {
+    "de-DE": "Benenne diese Fensteraufnahme, damit du sie unter Quellen wiederfindest.",
+    "es-ES": "Asigna un nombre a esta captura de ventana para encontrarla en Fuentes.",
+    "ru-RU": "Задайте имя источнику захвата окна, чтобы найти его в панели «Источники».",
+    "uk-UA": "Задайте назву джерелу захоплення вікна, щоб знайти його на панелі «Джерела»."
+  },
+  "Native Devices": {
+    "de-DE": "Systemgeräte",
+    "es-ES": "Dispositivos del sistema",
+    "ru-RU": "Системные устройства",
+    "uk-UA": "Системні пристрої"
+  },
+  "Native backend: {}": {
+    "de-DE": "Natives Backend: {}",
+    "es-ES": "Motor nativo: {}",
+    "ru-RU": "Системный модуль: {}",
+    "uk-UA": "Системний модуль: {}"
+  },
+  "Native camera modes": {
+    "de-DE": "Native Kameramodi",
+    "es-ES": "Modos nativos de la cámara",
+    "ru-RU": "Собственные режимы камеры",
+    "uk-UA": "Власні режими камери"
+  },
+  "Native capture depends on the platform and permissions. Game Capture, encoding, recording, streaming and complete OBS parity remain unfinished.": {
+    "de-DE": "Native Aufnahme hängt von Plattform und Berechtigungen ab. Spielaufnahme, Kodierung, Aufzeichnung, Streaming und vollständige OBS-Gleichwertigkeit sind noch nicht fertiggestellt.",
+    "es-ES": "La captura nativa depende de la plataforma y los permisos. La captura de juegos, codificación, grabación, transmisión y compatibilidad completa con OBS siguen pendientes.",
+    "ru-RU": "Нативный захват зависит от платформы и разрешений. Захват игр, кодирование, запись, трансляции и полное соответствие OBS ещё не завершены.",
+    "uk-UA": "Нативне захоплення залежить від платформи й дозволів. Захоплення ігор, кодування, запис, трансляції та повна відповідність OBS ще не завершені."
+  },
+  "Native document opened; OBS identity sidecar cleared. Recovery remains until explicit save": {
+    "de-DE": "Natives Dokument geöffnet; OBS-Identitätsmetadaten gelöscht. Die Wiederherstellung bleibt bis zum ausdrücklichen Speichern erhalten",
+    "es-ES": "Documento nativo abierto; se borraron los metadatos de identidad de OBS. La recuperación se conserva hasta guardar explícitamente",
+    "ru-RU": "Документ собственного формата открыт; метаданные идентификаторов OBS очищены. Данные восстановления сохраняются до явного сохранения",
+    "uk-UA": "Документ власного формату відкрито; метадані ідентифікаторів OBS очищено. Дані відновлення зберігаються до явного збереження"
+  },
+  "Native document saved; OBS identity sidecar remains session-only": {
+    "de-DE": "Natives Dokument gespeichert; OBS-Identitätsmetadaten bleiben auf die Sitzung beschränkt",
+    "es-ES": "Documento nativo guardado; los metadatos de identidad de OBS siguen limitados a la sesión",
+    "ru-RU": "Документ собственного формата сохранён; метаданные идентификаторов OBS доступны только в текущем сеансе",
+    "uk-UA": "Документ власного формату збережено; метадані ідентифікаторів OBS доступні лише в поточному сеансі"
+  },
+  "New Profile": {
+    "de-DE": "Neues Profil",
+    "es-ES": "Nuevo perfil",
+    "ru-RU": "Новый профиль",
+    "uk-UA": "Новий профіль"
+  },
+  "New collection": {
+    "de-DE": "Neue Sammlung",
+    "es-ES": "Nueva colección",
+    "ru-RU": "Новая коллекция",
+    "uk-UA": "Нова колекція"
+  },
+  "No Rust provider implemented.": {
+    "de-DE": "Noch kein Rust-Anbieter implementiert.",
+    "es-ES": "No se ha implementado un proveedor en Rust.",
+    "ru-RU": "Модуль на Rust ещё не реализован.",
+    "uk-UA": "Модуль мовою Rust ще не реалізовано."
+  },
+  "No active audio sources in the selected scene or global slots.": {
+    "de-DE": "In der ausgewählten Szene und den globalen Zuordnungen sind keine Audioquellen aktiv.",
+    "es-ES": "No hay fuentes de audio activas en la escena seleccionada ni en las ranuras globales.",
+    "ru-RU": "В выбранной сцене и глобальных каналах нет активных аудиоисточников.",
+    "uk-UA": "У вибраній сцені та глобальних каналах немає активних аудіоджерел."
+  },
+  "No audio filters.": {
+    "de-DE": "Keine Audiofilter.",
+    "es-ES": "No hay filtros de audio.",
+    "ru-RU": "Аудиофильтры отсутствуют.",
+    "uk-UA": "Аудіофільтри відсутні."
+  },
+  "No change": {
+    "de-DE": "Keine Änderung",
+    "es-ES": "Sin cambios",
+    "ru-RU": "Без изменений",
+    "uk-UA": "Без змін"
+  },
+  "No displays are available.": {
+    "de-DE": "Keine Bildschirme verfügbar.",
+    "es-ES": "No hay pantallas disponibles.",
+    "ru-RU": "Нет доступных экранов.",
+    "uk-UA": "Немає доступних екранів."
+  },
+  "No modules match this search.": {
+    "de-DE": "Keine Module entsprechen dieser Suche.",
+    "es-ES": "Ningún módulo coincide con la búsqueda.",
+    "ru-RU": "По этому запросу модули не найдены.",
+    "uk-UA": "За цим запитом модулі не знайдено."
+  },
+  "No providers available": {
+    "de-DE": "Keine Anbieter verfügbar",
+    "es-ES": "No hay proveedores disponibles",
+    "ru-RU": "Нет доступных модулей",
+    "uk-UA": "Немає доступних модулів"
+  },
+  "No selection": {
+    "de-DE": "Keine Auswahl",
+    "es-ES": "Sin selección",
+    "ru-RU": "Ничего не выбрано",
+    "uk-UA": "Нічого не вибрано"
+  },
+  "No shared presets": {
+    "de-DE": "Keine gemeinsamen Vorgaben",
+    "es-ES": "No hay preajustes compartidos",
+    "ru-RU": "Нет общих предустановок",
+    "uk-UA": "Немає спільних наборів параметрів"
+  },
+  "No sources. Add a Color Source, Image or Display Capture to compose a scene.": {
+    "de-DE": "Keine Quellen. Fügen Sie eine Farbquelle, ein Bild oder eine Bildschirmaufnahme hinzu, um eine Szene zu erstellen.",
+    "es-ES": "No hay fuentes. Añada una fuente de color, una imagen o una captura de pantalla para crear una escena.",
+    "ru-RU": "Нет источников. Для создания сцены добавьте источник цвета, изображение или захват экрана.",
+    "uk-UA": "Немає джерел. Для створення сцени додайте джерело кольору, зображення або захоплення екрана."
+  },
+  "No video filters.": {
+    "de-DE": "Keine Videofilter.",
+    "es-ES": "No hay filtros de vídeo.",
+    "ru-RU": "Нет видеофильтров.",
+    "uk-UA": "Немає відеофільтрів."
+  },
+  "No windows are available.": {
+    "de-DE": "Keine Fenster verfügbar.",
+    "es-ES": "No hay ventanas disponibles.",
+    "ru-RU": "Нет доступных окон.",
+    "uk-UA": "Немає доступних вікон."
+  },
+  "OBS collection JSON path": {
+    "de-DE": "Pfad zur OBS-Sammlungs-JSON",
+    "es-ES": "Ruta del JSON de colección de OBS",
+    "ru-RU": "Путь к JSON коллекции OBS",
+    "uk-UA": "Шлях до JSON колекції OBS"
+  },
+  "OBS export does not mark native edits as saved.": {
+    "de-DE": "Der OBS-Export markiert native Änderungen nicht als gespeichert.",
+    "es-ES": "Exportar a OBS no marca las modificaciones nativas como guardadas.",
+    "ru-RU": "Экспорт OBS не помечает изменения собственного формата как сохранённые.",
+    "uk-UA": "Експорт OBS не позначає зміни власного формату як збережені."
+  },
+  "OBS subset exported. Native unsaved state is unchanged": {
+    "de-DE": "OBS-Teilmenge exportiert. Der native Ungespeichert-Status bleibt unverändert",
+    "es-ES": "Subconjunto de OBS exportado. El estado nativo sin guardar no cambia",
+    "ru-RU": "Поддерживаемая часть OBS экспортирована. Состояние несохранённых изменений собственного формата не изменилось",
+    "uk-UA": "Підтримувану частину OBS експортовано. Стан незбережених змін власного формату не змінився"
+  },
+  "OBS subset imported as an unsaved collection. Original OBS identities are retained only for this session": {
+    "de-DE": "OBS-Teilmenge als ungespeicherte Sammlung importiert. Ursprüngliche OBS-Kennungen bleiben nur in dieser Sitzung erhalten",
+    "es-ES": "Subconjunto de OBS importado como colección sin guardar. Las identidades originales de OBS se conservan solo durante esta sesión",
+    "ru-RU": "Поддерживаемая часть OBS импортирована как несохранённая коллекция. Исходные идентификаторы OBS сохраняются только в текущем сеансе",
+    "uk-UA": "Підтримувану частину OBS імпортовано як незбережену колекцію. Початкові ідентифікатори OBS зберігаються лише в поточному сеансі"
+  },
+  "Older revision saved; current edits remain unsaved": {
+    "de-DE": "Ältere Revision gespeichert; aktuelle Änderungen bleiben ungespeichert",
+    "es-ES": "Se guardó una revisión anterior; las modificaciones actuales siguen sin guardar",
+    "ru-RU": "Предыдущая редакция сохранена; текущие изменения не сохранены",
+    "uk-UA": "Попередню редакцію збережено; поточні зміни не збережені"
+  },
+  "Opacity (0–1)": {
+    "de-DE": "Deckkraft (0–1)",
+    "es-ES": "Opacidad (0–1)",
+    "ru-RU": "Непрозрачность (0–1)",
+    "uk-UA": "Непрозорість (0–1)"
+  },
+  "Opaque RGB color": {
+    "de-DE": "Deckende RGB-Farbe",
+    "es-ES": "Color RGB opaco",
+    "ru-RU": "Непрозрачный цвет RGB",
+    "uk-UA": "Непрозорий колір RGB"
+  },
+  "Opaque color; switch point must be 0–100%. Apply validates the complete draft.": {
+    "de-DE": "Deckende Farbe; der Wechselpunkt muss zwischen 0 und 100 % liegen. Anwenden prüft den gesamten Entwurf.",
+    "es-ES": "Color opaco; el punto de cambio debe estar entre 0 y 100 %. Aplicar valida todo el borrador.",
+    "ru-RU": "Непрозрачный цвет; точка смены должна быть в диапазоне 0–100%. «Применить» проверяет весь черновик.",
+    "uk-UA": "Непрозорий колір; точка зміни має бути в діапазоні 0–100%. «Застосувати» перевіряє всю чернетку."
+  },
+  "Open": {
+    "de-DE": "Öffnen",
+    "es-ES": "Abrir",
+    "ru-RU": "Открыть",
+    "uk-UA": "Відкрити"
+  },
+  "Open scene rename, duplicate, transition and ordering actions.": {
+    "de-DE": "Aktionen zum Umbenennen, Duplizieren, Einstellen von Übergängen und Anordnen der Szene öffnen.",
+    "es-ES": "Abrir las acciones para renombrar, duplicar, configurar transiciones y ordenar la escena.",
+    "ru-RU": "Открыть действия переименования, дублирования, настройки переходов и порядка сцены.",
+    "uk-UA": "Відкрити дії перейменування, дублювання, налаштування переходів і порядку сцени."
+  },
+  "Open source properties, audio filters and signal details.": {
+    "de-DE": "Öffne Quelleneigenschaften, Audiofilter und Signaldetails.",
+    "es-ES": "Abre las propiedades de la fuente, los filtros de audio y los detalles de la señal.",
+    "ru-RU": "Открыть свойства источника, аудиофильтры и сведения о сигнале.",
+    "uk-UA": "Відкрити властивості джерела, аудіофільтри та відомості про сигнал."
+  },
+  "Open source rename, filters, transform and ordering actions.": {
+    "de-DE": "Aktionen zum Umbenennen, Filtern, Transformieren und Anordnen der Quelle öffnen.",
+    "es-ES": "Abrir las acciones para renombrar, filtrar, transformar y ordenar la fuente.",
+    "ru-RU": "Открыть действия переименования, фильтрации, трансформации и порядка источника.",
+    "uk-UA": "Відкрити дії перейменування, фільтрування, трансформації та порядку джерела."
+  },
+  "Output scaling, color formats and encoder settings are pending implementation.": {
+    "de-DE": "Ausgabeskalierung, Farbformate und Encoder-Einstellungen sind noch nicht implementiert.",
+    "es-ES": "El escalado de salida, los formatos de color y los ajustes de codificación aún no están implementados.",
+    "ru-RU": "Масштабирование вывода, цветовые форматы и настройки кодировщиков ещё не реализованы.",
+    "uk-UA": "Масштабування виведення, колірні формати та налаштування кодувальників ще не реалізовані."
+  },
+  "Override global transition for this scene": {
+    "de-DE": "Globalen Übergang für diese Szene überschreiben",
+    "es-ES": "Usar una transición específica para esta escena",
+    "ru-RU": "Переопределить глобальный переход для этой сцены",
+    "uk-UA": "Перевизначити глобальний перехід для цієї сцени"
+  },
+  "Own-output exclusion applies to audio output capture.": {
+    "de-DE": "Der Ausschluss eigenen Audios gilt für die Audioausgabeaufnahme.",
+    "es-ES": "La exclusión del audio propio se aplica a la captura de salida de audio.",
+    "ru-RU": "Исключение собственного звука применяется к захвату аудиовыхода.",
+    "uk-UA": "Виключення власного звуку застосовується до захоплення аудіовиходу."
+  },
+  "PNG, JPEG, BMP, TGA, GIF and WebP. GIF animation is supported; animated PNG and WebP are not supported yet. Reading and decoding happen in the background; rejected files leave this draft unchanged.": {
+    "de-DE": "PNG, JPEG, BMP, TGA, GIF und WebP. GIF-Animation wird unterstützt; animierte PNG- und WebP-Dateien noch nicht. Lesen und Dekodieren erfolgen im Hintergrund; abgelehnte Dateien ändern diesen Entwurf nicht.",
+    "es-ES": "PNG, JPEG, BMP, TGA, GIF y WebP. Se admite la animación GIF; PNG y WebP animados aún no. La lectura y decodificación se realizan en segundo plano; los archivos rechazados no cambian este borrador.",
+    "ru-RU": "PNG, JPEG, BMP, TGA, GIF и WebP. Анимация GIF поддерживается; анимированные PNG и WebP пока не поддерживаются. Чтение и декодирование выполняются в фоне; отклонённые файлы не изменяют черновик.",
+    "uk-UA": "PNG, JPEG, BMP, TGA, GIF і WebP. Анімація GIF підтримується; анімовані PNG і WebP поки не підтримуються. Читання та декодування виконуються у фоні; відхилені файли не змінюють чернетку."
+  },
+  "Pan (Left)": {
+    "de-DE": "Panorama (links)",
+    "es-ES": "Panorama (izquierda)",
+    "ru-RU": "Панорама (левый)",
+    "uk-UA": "Панорама (лівий)"
+  },
+  "Pan (Left), -100 to 100%": {
+    "de-DE": "Panorama (links), -100 bis 100 %",
+    "es-ES": "Panorama (izquierda), de -100 a 100 %",
+    "ru-RU": "Панорама (левый), от -100 до 100%",
+    "uk-UA": "Панорама (лівий), від -100 до 100%"
+  },
+  "Pan (Right)": {
+    "de-DE": "Panorama (rechts)",
+    "es-ES": "Panorama (derecha)",
+    "ru-RU": "Панорама (правый)",
+    "uk-UA": "Панорама (правий)"
+  },
+  "Pan (Right), -100 to 100%": {
+    "de-DE": "Panorama (rechts), -100 bis 100 %",
+    "es-ES": "Panorama (derecha), de -100 a 100 %",
+    "ru-RU": "Панорама (правый), от -100 до 100%",
+    "uk-UA": "Панорама (правий), від -100 до 100%"
+  },
+  "Plain-text notes only. Formatted notes, linked files, auto-scroll and hotkeys are pending.": {
+    "de-DE": "Nur Textnotizen. Formatierung, verknüpfte Dateien, automatischer Bildlauf und Tastenkürzel sind noch nicht implementiert.",
+    "es-ES": "Solo notas de texto. El formato, los archivos vinculados, el desplazamiento automático y los atajos están pendientes.",
+    "ru-RU": "Только текстовые заметки. Форматирование, связанные файлы, автопрокрутка и горячие клавиши ещё не реализованы.",
+    "uk-UA": "Лише текстові нотатки. Форматування, пов’язані файли, автопрокручування та гарячі клавіші ще не реалізовані."
+  },
+  "Plain-text per-scene notes. Rich HTML, external files, auto-scroll, timestamp hotkeys and full dock parity pending.": {
+    "de-DE": "Textnotizen pro Szene. Rich-HTML, externe Dateien, automatischer Bildlauf, Zeitstempel-Tastenkürzel und die vollständige Dock-Funktionalität stehen noch aus.",
+    "es-ES": "Notas de texto por escena. El HTML enriquecido, los archivos externos, el desplazamiento automático, los atajos de marcas de tiempo y la paridad completa del panel están pendientes.",
+    "ru-RU": "Текстовые заметки для каждой сцены. Форматированный HTML, внешние файлы, автопрокрутка, горячие клавиши временных меток и полный перенос панели ещё не реализованы.",
+    "uk-UA": "Текстові нотатки для кожної сцени. Форматований HTML, зовнішні файли, автопрокручування, гарячі клавіші часових позначок і повне перенесення панелі ще не реалізовані."
+  },
+  "Playback snapshot belongs to another session or revision": {
+    "de-DE": "Der Wiedergabe-Snapshot gehört zu einer anderen Sitzung oder Revision",
+    "es-ES": "La instantánea de reproducción pertenece a otra sesión o revisión",
+    "ru-RU": "Снимок воспроизведения относится к другому сеансу или редакции",
+    "uk-UA": "Знімок відтворення належить іншому сеансу або редакції"
+  },
+  "Playback: {error}": {
+    "de-DE": "Wiedergabe: {error}",
+    "es-ES": "Reproducción: {error}",
+    "ru-RU": "Воспроизведение: {error}",
+    "uk-UA": "Відтворення: {error}"
+  },
+  "Plugins": {
+    "de-DE": "Erweiterungen",
+    "es-ES": "Complementos",
+    "ru-RU": "Плагины",
+    "uk-UA": "Плагіни"
+  },
+  "Position X (canvas px)": {
+    "de-DE": "Position X (Leinwandpixel)",
+    "es-ES": "Posición X (px del lienzo)",
+    "ru-RU": "Позиция X (пикс. холста)",
+    "uk-UA": "Позиція X (пікс. полотна)"
+  },
+  "Position Y (canvas px)": {
+    "de-DE": "Position Y (Leinwandpixel)",
+    "es-ES": "Posición Y (px del lienzo)",
+    "ru-RU": "Позиция Y (пикс. холста)",
+    "uk-UA": "Позиція Y (пікс. полотна)"
+  },
+  "Post-filter Program source": {
+    "de-DE": "Programmquelle nach den Filtern",
+    "es-ES": "Fuente del programa después de los filtros",
+    "ru-RU": "Источник программы после фильтров",
+    "uk-UA": "Джерело програми після фільтрів"
+  },
+  "Post-gain/mute source capture · monitoring off": {
+    "de-DE": "Quellenaufnahme nach Verstärkung/Stummschaltung · Monitoring aus",
+    "es-ES": "Captura de fuente tras ganancia/silencio · monitorización desactivada",
+    "ru-RU": "Захват источника после усиления/отключения звука · мониторинг выключен",
+    "uk-UA": "Захоплення джерела після підсилення/вимкнення звуку · моніторинг вимкнено"
+  },
+  "Prefer DXGI without cursor. Use GDI compatibility for cursor capture or a DXGI failure; waiting for a new frame never changes methods.": {
+    "de-DE": "DXGI ohne Cursor bevorzugen. Für die Cursoraufnahme oder bei DXGI-Fehlern GDI verwenden; das Warten auf ein neues Bild ändert die Methode nicht.",
+    "es-ES": "Preferir DXGI sin cursor. Usar compatibilidad GDI para capturar el cursor o si falla DXGI; esperar un nuevo fotograma no cambia el método.",
+    "ru-RU": "Предпочитать DXGI без курсора. Для захвата курсора или при ошибке DXGI использовать GDI; ожидание нового кадра не меняет метод.",
+    "uk-UA": "Надавати перевагу DXGI без курсора. Для захоплення курсора або в разі помилки DXGI використовувати GDI; очікування нового кадру не змінює метод."
+  },
+  "Prepared image belongs to an obsolete session and was not published": {
+    "de-DE": "Das vorbereitete Bild gehört zu einer veralteten Sitzung und wurde nicht übernommen",
+    "es-ES": "La imagen preparada pertenece a una sesión obsoleta y no se publicó",
+    "ru-RU": "Подготовленное изображение относится к устаревшему сеансу и не опубликовано",
+    "uk-UA": "Підготовлене зображення належить застарілому сеансу й не опубліковано"
+  },
+  "Preparing image…": {
+    "de-DE": "Bild wird vorbereitet…",
+    "es-ES": "Preparando imagen…",
+    "ru-RU": "Подготовка изображения…",
+    "uk-UA": "Підготовка зображення…"
+  },
+  "Preparing localization…": {
+    "de-DE": "Übersetzungen werden vorbereitet…",
+    "es-ES": "Preparando traducciones…",
+    "ru-RU": "Подготовка переводов…",
+    "uk-UA": "Підготовка перекладів…"
+  },
+  "Preparing operation…": {
+    "de-DE": "Vorgang wird vorbereitet…",
+    "es-ES": "Preparando operación…",
+    "ru-RU": "Подготовка операции…",
+    "uk-UA": "Підготовка операції…"
+  },
+  "Preset Library": {
+    "de-DE": "Vorgabenbibliothek",
+    "es-ES": "Biblioteca de preajustes",
+    "ru-RU": "Библиотека предустановок",
+    "uk-UA": "Бібліотека наборів параметрів"
+  },
+  "Preset Properties": {
+    "de-DE": "Eigenschaften der Vorgabe",
+    "es-ES": "Propiedades del preajuste",
+    "ru-RU": "Свойства предустановки",
+    "uk-UA": "Властивості набору параметрів"
+  },
+  "Preset Settings": {
+    "de-DE": "Vorgabeneinstellungen",
+    "es-ES": "Ajustes del preajuste",
+    "ru-RU": "Настройки предустановки",
+    "uk-UA": "Налаштування набору параметрів"
+  },
+  "Preset name": {
+    "de-DE": "Name der Vorgabe",
+    "es-ES": "Nombre del preajuste",
+    "ru-RU": "Имя предустановки",
+    "uk-UA": "Назва набору параметрів"
+  },
+  "Prevent transform, reorder and removal": {
+    "de-DE": "Transformation, Umordnung und Entfernen verhindern",
+    "es-ES": "Impedir transformación, reordenación y eliminación",
+    "ru-RU": "Запретить преобразование, изменение порядка и удаление",
+    "uk-UA": "Заборонити перетворення, зміну порядку та видалення"
+  },
+  "Preview": {
+    "de-DE": "Vorschau",
+    "es-ES": "Vista previa",
+    "ru-RU": "Предпросмотр",
+    "uk-UA": "Попередній перегляд"
+  },
+  "Preview edit was cancelled because the scene collection changed.": {
+    "de-DE": "Die Vorschaubearbeitung wurde abgebrochen, weil sich die Szenensammlung geändert hat.",
+    "es-ES": "La edición de la vista previa se canceló porque cambió la colección de escenas.",
+    "ru-RU": "Редактирование предпросмотра отменено: коллекция сцен изменилась.",
+    "uk-UA": "Редагування попереднього перегляду скасовано: колекція сцен змінилася."
+  },
+  "Preview gesture identity is exhausted.": {
+    "de-DE": "Die Kennungen der Vorschaubearbeitung sind ausgeschöpft.",
+    "es-ES": "Se han agotado los identificadores de edición de la vista previa.",
+    "ru-RU": "Исчерпан диапазон идентификаторов редактирования предпросмотра.",
+    "uk-UA": "Вичерпано діапазон ідентифікаторів редагування попереднього перегляду."
+  },
+  "Preview selected": {
+    "de-DE": "Vorschau ausgewählt",
+    "es-ES": "Vista previa seleccionada",
+    "ru-RU": "Предпросмотр выбран",
+    "uk-UA": "Попередній перегляд вибрано"
+  },
+  "Profile name": {
+    "de-DE": "Profilname",
+    "es-ES": "Nombre del perfil",
+    "ru-RU": "Имя профиля",
+    "uk-UA": "Назва профілю"
+  },
+  "Profiles keep their own video and audio format. Scene collection content and global audio sources are preserved. Profile edits are separate from scene Undo.": {
+    "de-DE": "Profile behalten ihr eigenes Video- und Audioformat. Szenensammlung und globale Audioquellen bleiben erhalten. Profiländerungen sind vom Rückgängigmachen von Szenen getrennt.",
+    "es-ES": "Los perfiles conservan su formato de vídeo y audio. Se mantienen el contenido de la colección de escenas y las fuentes de audio globales. Las modificaciones de perfiles son independientes de Deshacer en las escenas.",
+    "ru-RU": "Профили сохраняют собственный формат видео и звука. Содержимое коллекции сцен и глобальные аудиоисточники сохраняются. Изменения профиля не входят в историю отмены сцен.",
+    "uk-UA": "Профілі зберігають власний формат відео та звуку. Вміст колекції сцен і глобальні аудіоджерела зберігаються. Зміни профілю не входять до історії скасування сцен."
+  },
+  "Program": {
+    "de-DE": "Programm",
+    "es-ES": "Programa",
+    "ru-RU": "Программа",
+    "uk-UA": "Програма"
+  },
+  "Program Audio": {
+    "de-DE": "Programmaudio",
+    "es-ES": "Audio del programa",
+    "ru-RU": "Звук программы",
+    "uk-UA": "Звук програми"
+  },
+  "Program ch {} peak {:.3} · RMS {:.3}": {
+    "de-DE": "Programmkanal {} Spitze {:.3} · RMS {:.3}",
+    "es-ES": "Canal de programa {} pico {:.3} · RMS {:.3}",
+    "ru-RU": "Канал программы {}: пик {:.3} · RMS {:.3}",
+    "uk-UA": "Канал програми {}: пік {:.3} · RMS {:.3}"
+  },
+  "Program composition unavailable for audio control": {
+    "de-DE": "Die Programmkomposition ist für die Audiosteuerung nicht verfügbar",
+    "es-ES": "La composición del programa no está disponible para el control de audio",
+    "ru-RU": "Композиция программы недоступна для управления звуком",
+    "uk-UA": "Композиція програми недоступна для керування звуком"
+  },
+  "Project format: {} Hz · {}": {
+    "de-DE": "Projektformat: {} Hz · {}",
+    "es-ES": "Formato del proyecto: {} Hz · {}",
+    "ru-RU": "Формат проекта: {} Гц · {}",
+    "uk-UA": "Формат проєкту: {} Гц · {}"
+  },
+  "Properties belong to this shared named preset. Applying updates every global, quick-row and scene reference together; duration remains per selection.": {
+    "de-DE": "Die Eigenschaften gehören dieser gemeinsamen benannten Vorgabe. Anwenden aktualisiert globale, Schnellübergangs- und Szenenverweise gemeinsam; die Dauer bleibt pro Auswahl erhalten.",
+    "es-ES": "Las propiedades pertenecen a este preajuste compartido. Aplicar actualiza a la vez las referencias globales, rápidas y de escenas; cada selección conserva su duración.",
+    "ru-RU": "Свойства принадлежат общей именованной предустановке. Применение одновременно обновляет глобальные ссылки, быстрые переходы и ссылки сцен; длительность задаётся отдельно для каждого выбора.",
+    "uk-UA": "Властивості належать спільному іменованому набору параметрів. Застосування одночасно оновлює глобальні посилання, швидкі переходи й посилання сцен; тривалість задається окремо для кожного вибору."
+  },
+  "Properties: Audio Capture": {
+    "de-DE": "Eigenschaften: Audioaufnahme",
+    "es-ES": "Propiedades: captura de audio",
+    "ru-RU": "Свойства: захват звука",
+    "uk-UA": "Властивості: захоплення звуку"
+  },
+  "Properties: Color": {
+    "de-DE": "Eigenschaften: Farbe",
+    "es-ES": "Propiedades: color",
+    "ru-RU": "Свойства: цвет",
+    "uk-UA": "Властивості: колір"
+  },
+  "Properties: Display Capture": {
+    "de-DE": "Eigenschaften: Bildschirmaufnahme",
+    "es-ES": "Propiedades: captura de pantalla",
+    "ru-RU": "Свойства: захват экрана",
+    "uk-UA": "Властивості: захоплення екрана"
+  },
+  "Properties: Image": {
+    "de-DE": "Eigenschaften: Bild",
+    "es-ES": "Propiedades: imagen",
+    "ru-RU": "Свойства: изображение",
+    "uk-UA": "Властивості: зображення"
+  },
+  "Properties: Text": {
+    "de-DE": "Eigenschaften: Text",
+    "es-ES": "Propiedades: texto",
+    "ru-RU": "Свойства: текст",
+    "uk-UA": "Властивості: текст"
+  },
+  "Properties: Video Capture Device": {
+    "de-DE": "Eigenschaften: Videoaufnahmegerät",
+    "es-ES": "Propiedades: dispositivo de captura de vídeo",
+    "ru-RU": "Свойства: устройство видеозахвата",
+    "uk-UA": "Властивості: пристрій відеозахоплення"
+  },
+  "Properties: Window Capture": {
+    "de-DE": "Eigenschaften: Fensteraufnahme",
+    "es-ES": "Propiedades: captura de ventana",
+    "ru-RU": "Свойства: захват окна",
+    "uk-UA": "Властивості: захоплення вікна"
+  },
+  "Query Modes": {
+    "de-DE": "Modi abfragen",
+    "es-ES": "Consultar modos",
+    "ru-RU": "Запросить режимы",
+    "uk-UA": "Запитати режими"
+  },
+  "Query and select a supported native camera mode": {
+    "de-DE": "Einen unterstützten nativen Kameramodus abfragen und auswählen",
+    "es-ES": "Consulta y selecciona un modo nativo de cámara compatible",
+    "ru-RU": "Запросите и выберите поддерживаемый собственный режим камеры",
+    "uk-UA": "Запитайте й виберіть підтримуваний власний режим камери"
+  },
+  "Querying camera capabilities…": {
+    "de-DE": "Kamerafunktionen werden abgefragt…",
+    "es-ES": "Consultando las capacidades de la cámara…",
+    "ru-RU": "Запрос возможностей камеры…",
+    "uk-UA": "Запит можливостей камери…"
+  },
+  "Querying modes may briefly activate the selected camera driver": {
+    "de-DE": "Die Modusabfrage kann den Treiber der ausgewählten Kamera kurzzeitig aktivieren",
+    "es-ES": "La consulta de modos puede activar brevemente el controlador de la cámara seleccionada",
+    "ru-RU": "Запрос режимов может ненадолго активировать драйвер выбранной камеры",
+    "uk-UA": "Запит режимів може ненадовго активувати драйвер вибраної камери"
+  },
+  "Quick Cut": {
+    "de-DE": "Schneller Schnitt",
+    "es-ES": "Corte rápido",
+    "ru-RU": "Быстрая резкая смена",
+    "uk-UA": "Швидка різка зміна"
+  },
+  "Quick Transition": {
+    "de-DE": "Schnellübergang",
+    "es-ES": "Transición rápida",
+    "ru-RU": "Быстрый переход",
+    "uk-UA": "Швидкий перехід"
+  },
+  "Quick transition applied": {
+    "de-DE": "Schnellübergang angewendet",
+    "es-ES": "Transición rápida aplicada",
+    "ru-RU": "Быстрый переход применён",
+    "uk-UA": "Швидкий перехід застосовано"
+  },
+  "Quick transition rows removed: {quick_count}": {
+    "de-DE": "Entfernte Schnellübergangszeilen: {quick_count}",
+    "es-ES": "Filas de transiciones rápidas eliminadas: {quick_count}",
+    "ru-RU": "Удалено быстрых переходов: {quick_count}",
+    "uk-UA": "Видалено швидких переходів: {quick_count}"
+  },
+  "Reading and validating image…": {
+    "de-DE": "Bild wird gelesen und geprüft…",
+    "es-ES": "Leyendo y validando imagen…",
+    "ru-RU": "Чтение и проверка изображения…",
+    "uk-UA": "Читання та перевірка зображення…"
+  },
+  "Recover": {
+    "de-DE": "Wiederherstellen",
+    "es-ES": "Recuperar",
+    "ru-RU": "Восстановить",
+    "uk-UA": "Відновити"
+  },
+  "Recovery checkpoint saved": {
+    "de-DE": "Wiederherstellungspunkt gespeichert",
+    "es-ES": "Punto de recuperación guardado",
+    "ru-RU": "Контрольная точка восстановления сохранена",
+    "uk-UA": "Контрольну точку відновлення збережено"
+  },
+  "Reduce green or blue color spill around foreground edges.": {
+    "de-DE": "Grüne oder blaue Farbsäume an Vordergrundkanten reduzieren.",
+    "es-ES": "Reducir el reflejo verde o azul en los bordes del primer plano.",
+    "ru-RU": "Ослабить зелёный или синий цветовой рефлекс по краям переднего плана.",
+    "uk-UA": "Послабити зелений або синій колірний рефлекс на краях переднього плану."
+  },
+  "Reference only · not ported": {
+    "de-DE": "Nur Referenz · noch nicht portiert",
+    "es-ES": "Solo referencia · sin adaptar",
+    "ru-RU": "Только исходники · не перенесён",
+    "uk-UA": "Лише вихідний код · не перенесено"
+  },
+  "Refresh Cameras": {
+    "de-DE": "Kameraliste aktualisieren",
+    "es-ES": "Actualizar cámaras",
+    "ru-RU": "Обновить список камер",
+    "uk-UA": "Оновити список камер"
+  },
+  "Refresh Displays": {
+    "de-DE": "Bildschirme aktualisieren",
+    "es-ES": "Actualizar pantallas",
+    "ru-RU": "Обновить список экранов",
+    "uk-UA": "Оновити список екранів"
+  },
+  "Refresh Windows": {
+    "de-DE": "Fensterliste aktualisieren",
+    "es-ES": "Actualizar ventanas",
+    "ru-RU": "Обновить список окон",
+    "uk-UA": "Оновити список вікон"
+  },
+  "Refresh device names without starting video capture": {
+    "de-DE": "Gerätenamen aktualisieren, ohne die Videoaufnahme zu starten",
+    "es-ES": "Actualiza los nombres de los dispositivos sin iniciar la captura de vídeo",
+    "ru-RU": "Обновить имена устройств без запуска видеозахвата",
+    "uk-UA": "Оновити назви пристроїв без запуску відеозахоплення"
+  },
+  "Refresh the available device names without starting audio capture.": {
+    "de-DE": "Verfügbare Gerätenamen aktualisieren, ohne die Audioaufnahme zu starten.",
+    "es-ES": "Actualizar los nombres de dispositivos disponibles sin iniciar la captura de audio.",
+    "ru-RU": "Обновить имена доступных устройств без запуска захвата аудио.",
+    "uk-UA": "Оновити назви доступних пристроїв без запуску захоплення аудіо."
+  },
+  "Refresh the window list without changing the source": {
+    "de-DE": "Aktualisiere die Fensterliste, ohne die Quelle zu ändern",
+    "es-ES": "Actualiza la lista de ventanas sin cambiar la fuente",
+    "ru-RU": "Обновить список окон, не меняя источник",
+    "uk-UA": "Оновити список вікон, не змінюючи джерело"
+  },
+  "Refresh the window list without changing the source.": {
+    "de-DE": "Aktualisiere die Fensterliste, ohne die Quelle zu ändern.",
+    "es-ES": "Actualiza la lista de ventanas sin cambiar la fuente.",
+    "ru-RU": "Обновить список окон, не меняя источник.",
+    "uk-UA": "Оновити список вікон, не змінюючи джерело."
+  },
+  "Release T-bar": {
+    "de-DE": "T-Bar loslassen",
+    "es-ES": "Soltar barra de transición",
+    "ru-RU": "Отпустить рычаг перехода",
+    "uk-UA": "Відпустити важіль переходу"
+  },
+  "Release the camera while no active scene or Studio Preview shows this source": {
+    "de-DE": "Die Kamera freigeben, solange keine aktive Szene und keine Studio-Vorschau diese Quelle zeigt",
+    "es-ES": "Libera la cámara mientras ninguna escena activa ni la vista previa del estudio muestre esta fuente",
+    "ru-RU": "Освободить камеру, пока этот источник не отображается ни в активной сцене, ни в предпросмотре студии",
+    "uk-UA": "Звільнити камеру, поки це джерело не відображається ні в активній сцені, ні в попередньому перегляді студії"
+  },
+  "Reload": {
+    "de-DE": "Neu laden",
+    "es-ES": "Recargar",
+    "ru-RU": "Перезагрузить",
+    "uk-UA": "Перезавантажити"
+  },
+  "Reload Image": {
+    "de-DE": "Bild neu laden",
+    "es-ES": "Recargar imagen",
+    "ru-RU": "Перезагрузить изображение",
+    "uk-UA": "Перезавантажити зображення"
+  },
+  "Reload Translations": {
+    "de-DE": "Übersetzungen neu laden",
+    "es-ES": "Recargar traducciones",
+    "ru-RU": "Перезагрузить переводы",
+    "uk-UA": "Перезавантажити переклади"
+  },
+  "Reload localization CSV": {
+    "de-DE": "Übersetzungs-CSV neu laden",
+    "es-ES": "Recargar CSV de traducciones",
+    "ru-RU": "Перезагрузить CSV с переводами",
+    "uk-UA": "Перезавантажити CSV із перекладами"
+  },
+  "Remove Filter": {
+    "de-DE": "Filter entfernen",
+    "es-ES": "Eliminar filtro",
+    "ru-RU": "Удалить фильтр",
+    "uk-UA": "Видалити фільтр"
+  },
+  "Remove Preset": {
+    "de-DE": "Vorgabe entfernen",
+    "es-ES": "Eliminar preajuste",
+    "ru-RU": "Удалить предустановку",
+    "uk-UA": "Видалити набір параметрів"
+  },
+  "Remove Profile": {
+    "de-DE": "Profil entfernen",
+    "es-ES": "Eliminar perfil",
+    "ru-RU": "Удалить профиль",
+    "uk-UA": "Видалити профіль"
+  },
+  "Remove Quick Transition": {
+    "de-DE": "Schnellübergang entfernen",
+    "es-ES": "Eliminar transición rápida",
+    "ru-RU": "Удалить быстрый переход",
+    "uk-UA": "Видалити швидкий перехід"
+  },
+  "Remove Transition Preset": {
+    "de-DE": "Übergangsvorgabe entfernen",
+    "es-ES": "Eliminar preajuste de transición",
+    "ru-RU": "Удалить предустановку перехода",
+    "uk-UA": "Видалити набір параметрів переходу"
+  },
+  "Remove a chosen background color or inspect its matte.": {
+    "de-DE": "Eine gewählte Hintergrundfarbe entfernen oder ihre Maske prüfen.",
+    "es-ES": "Eliminar un color de fondo elegido o examinar su máscara.",
+    "ru-RU": "Удалить выбранный цвет фона или просмотреть его маску.",
+    "uk-UA": "Видалити вибраний колір тла або переглянути його маску."
+  },
+  "Remove preset “{name}”?": {
+    "de-DE": "Vorgabe „{name}“ entfernen?",
+    "es-ES": "¿Eliminar el preajuste «{name}»?",
+    "ru-RU": "Удалить предустановку «{name}»?",
+    "uk-UA": "Видалити набір параметрів «{name}»?"
+  },
+  "Remove profile “{name}”?": {
+    "de-DE": "Profil „{name}“ entfernen?",
+    "es-ES": "¿Eliminar el perfil «{name}»?",
+    "ru-RU": "Удалить профиль «{name}»?",
+    "uk-UA": "Видалити профіль «{name}»?"
+  },
+  "Rename": {
+    "de-DE": "Umbenennen",
+    "es-ES": "Cambiar nombre",
+    "ru-RU": "Переименовать",
+    "uk-UA": "Перейменувати"
+  },
+  "Rename Profile": {
+    "de-DE": "Profil umbenennen",
+    "es-ES": "Cambiar nombre del perfil",
+    "ru-RU": "Переименовать профиль",
+    "uk-UA": "Перейменувати профіль"
+  },
+  "Rename Scene": {
+    "de-DE": "Szene umbenennen",
+    "es-ES": "Cambiar nombre de la escena",
+    "ru-RU": "Переименовать сцену",
+    "uk-UA": "Перейменувати сцену"
+  },
+  "Rename Source": {
+    "de-DE": "Quelle umbenennen",
+    "es-ES": "Cambiar nombre de la fuente",
+    "ru-RU": "Переименовать источник",
+    "uk-UA": "Перейменувати джерело"
+  },
+  "Replace Image": {
+    "de-DE": "Bild ersetzen",
+    "es-ES": "Reemplazar imagen",
+    "ru-RU": "Заменить изображение",
+    "uk-UA": "Замінити зображення"
+  },
+  "Reset Filter": {
+    "de-DE": "Filter zurücksetzen",
+    "es-ES": "Restablecer filtro",
+    "ru-RU": "Сбросить фильтр",
+    "uk-UA": "Скинути фільтр"
+  },
+  "Reset Layout": {
+    "de-DE": "Anordnung zurücksetzen",
+    "es-ES": "Restablecer disposición",
+    "ru-RU": "Сбросить расположение",
+    "uk-UA": "Скинути розташування"
+  },
+  "Restore the selected window before applying": {
+    "de-DE": "Stelle das ausgewählte Fenster vor dem Anwenden wieder her",
+    "es-ES": "Restaura la ventana seleccionada antes de aplicar",
+    "ru-RU": "Разверните выбранное окно, прежде чем применять настройки",
+    "uk-UA": "Відновіть вибране вікно, перш ніж застосовувати налаштування"
+  },
+  "Restore this filter's parameter defaults without changing its enabled state.": {
+    "de-DE": "Die Standardparameter dieses Filters wiederherstellen, ohne seinen Aktivierungszustand zu ändern.",
+    "es-ES": "Restaurar los parámetros predeterminados del filtro sin cambiar su estado de activación.",
+    "ru-RU": "Восстановить параметры фильтра по умолчанию без изменения его состояния включения.",
+    "uk-UA": "Відновити типові параметри фільтра без зміни стану ввімкнення."
+  },
+  "Retired Program source · restore its authored reference to edit": {
+    "de-DE": "Entfernte Programmquelle · zum Bearbeiten ihren Verweis wiederherstellen",
+    "es-ES": "Fuente de programa retirada · restaure su referencia para editarla",
+    "ru-RU": "Источник программы удалён из коллекции · восстановите ссылку на него для редактирования",
+    "uk-UA": "Джерело програми видалено з колекції · відновіть посилання на нього для редагування"
+  },
+  "Return to the application without closing.": {
+    "de-DE": "Kehre zur Anwendung zurück, ohne sie zu schließen.",
+    "es-ES": "Vuelve a la aplicación sin cerrarla.",
+    "ru-RU": "Вернуться в приложение, не закрывая его.",
+    "uk-UA": "Повернутися до програми, не закриваючи її."
+  },
+  "Review affected quick rows, scene overrides and global fallback before deletion": {
+    "de-DE": "Prüfen Sie vor dem Löschen betroffene Schnellübergänge, Szenenvorgaben und den globalen Ersatzübergang",
+    "es-ES": "Revise las filas rápidas, las transiciones específicas de escenas y la transición global de reserva antes de eliminar",
+    "ru-RU": "Перед удалением проверьте затронутые быстрые переходы, настройки сцен и резервный глобальный переход",
+    "uk-UA": "Перед видаленням перевірте пов’язані швидкі переходи, налаштування сцен і резервний глобальний перехід"
+  },
+  "Revision {}": {
+    "de-DE": "Revision {}",
+    "es-ES": "Revisión {}",
+    "ru-RU": "Редакция {}",
+    "uk-UA": "Редакція {}"
+  },
+  "Rotation (clockwise degrees)": {
+    "de-DE": "Drehung (Grad im Uhrzeigersinn)",
+    "es-ES": "Rotación (grados en sentido horario)",
+    "ru-RU": "Поворот (градусы по часовой стрелке)",
+    "uk-UA": "Обертання (градуси за годинниковою стрілкою)"
+  },
+  "Row drag belongs to another document": {
+    "de-DE": "Die gezogene Zeile gehört zu einem anderen Dokument",
+    "es-ES": "La fila arrastrada pertenece a otro documento",
+    "ru-RU": "Перетаскиваемая строка относится к другому документу",
+    "uk-UA": "Перетягуваний рядок належить іншому документу"
+  },
+  "Rust port available": {
+    "de-DE": "Rust-Version verfügbar",
+    "es-ES": "Versión en Rust disponible",
+    "ru-RU": "Версия на Rust доступна",
+    "uk-UA": "Версія мовою Rust доступна"
+  },
+  "Rust rewrite of OBS Studio — development build": {
+    "de-DE": "OBS-Studio-Neuentwicklung in Rust — Entwicklungsversion",
+    "es-ES": "Reescritura de OBS Studio en Rust — versión de desarrollo",
+    "ru-RU": "Переписанный на Rust OBS Studio — версия для разработки",
+    "uk-UA": "Переписаний мовою Rust OBS Studio — версія для розробки"
+  },
+  "SDR straight-RGBA8 Linear Color Key, Brightness/Contrast and primary-channel suppression; no HDR, ICC or complete Craft effect suite.": {
+    "de-DE": "Linearer Farbschlüssel, Helligkeit/Kontrast und Primärkanalunterdrückung für SDR mit nicht vormultipliziertem RGBA8; ohne HDR, ICC oder vollständige Craft-Effektsammlung.",
+    "es-ES": "Clave de color lineal, brillo/contraste y supresión del canal primario para SDR RGBA8 sin premultiplicar; sin HDR, ICC ni la suite completa de efectos Craft.",
+    "ru-RU": "Линейный цветовой ключ, яркость/контраст и подавление основного канала для SDR RGBA8 без предумножения; без HDR, ICC и полного набора эффектов Craft.",
+    "uk-UA": "Лінійний колірний ключ, яскравість/контраст і пригнічення основного каналу для SDR RGBA8 без попереднього множення; без HDR, ICC і повного набору ефектів Craft."
+  },
+  "Sampled-peak/RMS compressor with soft knee, attack/release and makeup; no Gate, EQ, limiting, codec or complete Craft parity.": {
+    "de-DE": "Sample-Peak/RMS-Kompressor mit weichem Knie, Attack/Release und Aufholverstärkung; ohne Gate, EQ, Limiter, Codec oder vollständige Craft-Gleichwertigkeit.",
+    "es-ES": "Compresor de picos de muestra/RMS con transición suave, ataque/relajación y compensación; sin puerta de ruido, ecualizador, limitador, códec ni compatibilidad completa con Craft.",
+    "ru-RU": "Компрессор по пикам отсчётов/RMS с мягким коленом, атакой/восстановлением и компенсацией усиления; без шумового порога, эквалайзера, лимитера, кодеков и полного соответствия Craft.",
+    "uk-UA": "Компресор за піками відліків/RMS із м’яким коліном, атакою/відновленням і компенсацією підсилення; без шумового порога, еквалайзера, лімітера, кодеків і повної відповідності Craft."
+  },
+  "Save and close": {
+    "de-DE": "Speichern und schließen",
+    "es-ES": "Guardar y cerrar",
+    "ru-RU": "Сохранить и закрыть",
+    "uk-UA": "Зберегти й закрити"
+  },
+  "Save current edits before creating another collection": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie eine weitere Sammlung erstellen",
+    "es-ES": "Guarde las modificaciones actuales antes de crear otra colección",
+    "ru-RU": "Сохраните текущие изменения перед созданием другой коллекции",
+    "uk-UA": "Збережіть поточні зміни перед створенням іншої колекції"
+  },
+  "Save current edits before importing an OBS collection": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie eine OBS-Sammlung importieren",
+    "es-ES": "Guarde las modificaciones actuales antes de importar una colección de OBS",
+    "ru-RU": "Сохраните текущие изменения перед импортом коллекции OBS",
+    "uk-UA": "Збережіть поточні зміни перед імпортом колекції OBS"
+  },
+  "Save current edits before importing another collection.": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie eine andere Sammlung importieren.",
+    "es-ES": "Guarde las modificaciones actuales antes de importar otra colección.",
+    "ru-RU": "Сохраните текущие изменения перед импортом другой коллекции.",
+    "uk-UA": "Збережіть поточні зміни перед імпортом іншої колекції."
+  },
+  "Save current edits before opening another collection.": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie eine andere Sammlung öffnen.",
+    "es-ES": "Guarde las modificaciones actuales antes de abrir otra colección.",
+    "ru-RU": "Сохраните текущие изменения перед открытием другой коллекции.",
+    "uk-UA": "Збережіть поточні зміни перед відкриттям іншої колекції."
+  },
+  "Save current edits before opening another document": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie ein anderes Dokument öffnen",
+    "es-ES": "Guarde las modificaciones actuales antes de abrir otro documento",
+    "ru-RU": "Сохраните текущие изменения перед открытием другого документа",
+    "uk-UA": "Збережіть поточні зміни перед відкриттям іншого документа"
+  },
+  "Save current edits before recovering another collection.": {
+    "de-DE": "Speichern Sie aktuelle Änderungen, bevor Sie eine andere Sammlung wiederherstellen.",
+    "es-ES": "Guarde las modificaciones actuales antes de recuperar otra colección.",
+    "ru-RU": "Сохраните текущие изменения перед восстановлением другой коллекции.",
+    "uk-UA": "Збережіть поточні зміни перед відновленням іншої колекції."
+  },
+  "Save your edits, keep a recovery checkpoint, or discard them.": {
+    "de-DE": "Speichern Sie Ihre Änderungen, behalten Sie einen Wiederherstellungspunkt oder verwerfen Sie die Änderungen.",
+    "es-ES": "Guarde las modificaciones, conserve un punto de recuperación o descártelas.",
+    "ru-RU": "Сохраните изменения, оставьте контрольную точку восстановления или отмените изменения.",
+    "uk-UA": "Збережіть зміни, залиште контрольну точку відновлення або відкиньте зміни."
+  },
+  "Saved mode; the device will verify it when capture starts.": {
+    "de-DE": "Gespeicherter Modus; das Gerät überprüft ihn beim Start der Aufnahme.",
+    "es-ES": "Modo guardado; el dispositivo lo verificará al iniciar la captura.",
+    "ru-RU": "Сохранённый режим; устройство проверит его при запуске захвата.",
+    "uk-UA": "Збережений режим; пристрій перевірить його під час запуску захоплення."
+  },
+  "Scene Actions": {
+    "de-DE": "Szenenaktionen",
+    "es-ES": "Acciones de escena",
+    "ru-RU": "Действия со сценой",
+    "uk-UA": "Дії зі сценою"
+  },
+  "Scene Notes": {
+    "de-DE": "Szenennotizen",
+    "es-ES": "Notas de escena",
+    "ru-RU": "Заметки сцены",
+    "uk-UA": "Нотатки сцени"
+  },
+  "Scene Source": {
+    "de-DE": "Szenenquelle",
+    "es-ES": "Fuente de escena",
+    "ru-RU": "Сцена как источник",
+    "uk-UA": "Сцена як джерело"
+  },
+  "Scene Transition Override": {
+    "de-DE": "Szenenspezifischer Übergang",
+    "es-ES": "Transición específica de la escena",
+    "ru-RU": "Переход для отдельной сцены",
+    "uk-UA": "Перехід для окремої сцени"
+  },
+  "Scene collection": {
+    "de-DE": "Szenensammlung",
+    "es-ES": "Colección de escenas",
+    "ru-RU": "Коллекция сцен",
+    "uk-UA": "Колекція сцен"
+  },
+  "Scene editing, Image Sources with GIF playback, Display Capture and SDR previews are available. Window/game/device capture, encoding, recording and streaming are pending.": {
+    "de-DE": "Szenenbearbeitung, Bildquellen mit GIF-Wiedergabe, Bildschirmaufnahme und SDR-Vorschauen sind verfügbar. Fenster-, Spiel- und Geräteaufnahme, Kodierung, Aufzeichnung und Streaming stehen noch aus.",
+    "es-ES": "Están disponibles la edición de escenas, las imágenes con reproducción GIF, la captura de pantalla y las vistas previas SDR. La captura de ventanas, juegos y dispositivos, la codificación, la grabación y la transmisión están pendientes.",
+    "ru-RU": "Доступны редактирование сцен, изображения с анимацией GIF, захват экрана и предпросмотр SDR. Захват окон, игр и устройств, кодирование, запись и трансляция ещё не реализованы.",
+    "uk-UA": "Доступні редагування сцен, зображення з анімацією GIF, захоплення екрана й попередній перегляд SDR. Захоплення вікон, ігор і пристроїв, кодування, запис і трансляція ще не реалізовані."
+  },
+  "Scene editing, Text, Images/GIF, display/window capture, camera video, audio mixing, transitions and source effects are supported.": {
+    "de-DE": "Szenenbearbeitung, Text, Bilder/GIF, Bildschirm- und Fensteraufnahme, Kameravideo, Audiomischung, Übergänge und Quelleffekte werden unterstützt.",
+    "es-ES": "Se admiten edición de escenas, texto, imágenes/GIF, captura de pantallas y ventanas, vídeo de cámara, mezcla de audio, transiciones y efectos de fuente.",
+    "ru-RU": "Поддерживаются редактирование сцен, текст, изображения/GIF, захват дисплеев и окон, видео с камеры, микширование аудио, переходы и эффекты источников.",
+    "uk-UA": "Підтримуються редагування сцен, текст, зображення/GIF, захоплення дисплеїв і вікон, відео з камери, мікшування аудіо, переходи та ефекти джерел."
+  },
+  "Scene overrides cleared: {scene_count} (their durations are retained)": {
+    "de-DE": "Gelöschte Szenenvorgaben: {scene_count} (ihre Dauer bleibt erhalten)",
+    "es-ES": "Transiciones específicas de escenas eliminadas: {scene_count} (se conservan sus duraciones)",
+    "ru-RU": "Сброшено переходов отдельных сцен: {scene_count} (их длительности сохранены)",
+    "uk-UA": "Скинуто переходів окремих сцен: {scene_count} (їхні тривалості збережено)"
+  },
+  "Scene: {name}": {
+    "de-DE": "Szene: {name}",
+    "es-ES": "Escena: {name}",
+    "ru-RU": "Сцена: {name}",
+    "uk-UA": "Сцена: {name}"
+  },
+  "Search modules": {
+    "de-DE": "Module suchen",
+    "es-ES": "Buscar módulos",
+    "ru-RU": "Поиск модулей",
+    "uk-UA": "Пошук модулів"
+  },
+  "Select a camera": {
+    "de-DE": "Eine Kamera auswählen",
+    "es-ES": "Selecciona una cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select an actual supported camera mode": {
+    "de-DE": "Einen tatsächlich unterstützten Kameramodus auswählen",
+    "es-ES": "Selecciona un modo que la cámara realmente admita",
+    "ru-RU": "Выберите реально поддерживаемый режим камеры",
+    "uk-UA": "Виберіть режим, який камера насправді підтримує"
+  },
+  "Select an available display": {
+    "de-DE": "Verfügbaren Bildschirm auswählen",
+    "es-ES": "Seleccione una pantalla disponible",
+    "ru-RU": "Выберите доступный экран",
+    "uk-UA": "Виберіть доступний екран"
+  },
+  "Select an available window": {
+    "de-DE": "Wähle ein verfügbares Fenster aus",
+    "es-ES": "Selecciona una ventana disponible",
+    "ru-RU": "Выберите доступное окно",
+    "uk-UA": "Виберіть доступне вікно"
+  },
+  "Select an existing scene.": {
+    "de-DE": "Wähle eine vorhandene Szene aus.",
+    "es-ES": "Selecciona una escena existente.",
+    "ru-RU": "Выберите существующую сцену.",
+    "uk-UA": "Виберіть наявну сцену."
+  },
+  "Select and drag a source. Drag a handle to resize; hold Shift to stretch or Alt to crop. Arrow keys move by one pixel; Shift moves by ten. Escape cancels the current edit.": {
+    "de-DE": "Wähle eine Quelle aus und ziehe sie. Ziehe einen Anfasser zum Skalieren; halte Umschalt zum Strecken oder Alt zum Zuschneiden. Pfeiltasten bewegen um ein Pixel, mit Umschalt um zehn. Escape bricht die aktuelle Bearbeitung ab.",
+    "es-ES": "Selecciona y arrastra una fuente. Arrastra un tirador para cambiar su tamaño; mantén Mayús para estirar o Alt para recortar. Las flechas mueven un píxel; con Mayús, diez. Esc cancela la edición actual.",
+    "ru-RU": "Выберите и перетащите источник. Потяните маркер, чтобы изменить размер; удерживайте Shift для растяжения или Alt для обрезки. Стрелки перемещают на один пиксель, с Shift — на десять. Escape отменяет текущее редактирование.",
+    "uk-UA": "Виберіть і перетягніть джерело. Потягніть маркер, щоб змінити розмір; утримуйте Shift для розтягування або Alt для обрізання. Стрілки переміщують на один піксель, із Shift — на десять. Escape скасовує поточне редагування."
+  },
+  "Select camera": {
+    "de-DE": "Kamera auswählen",
+    "es-ES": "Seleccionar cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select display": {
+    "de-DE": "Bildschirm auswählen",
+    "es-ES": "Seleccionar pantalla",
+    "ru-RU": "Выберите экран",
+    "uk-UA": "Виберіть екран"
+  },
+  "Select mode": {
+    "de-DE": "Modus auswählen",
+    "es-ES": "Seleccionar modo",
+    "ru-RU": "Выберите режим",
+    "uk-UA": "Виберіть режим"
+  },
+  "Select this exact native capture mode": {
+    "de-DE": "Genau diesen nativen Aufnahmemodus auswählen",
+    "es-ES": "Selecciona exactamente este modo de captura nativo",
+    "ru-RU": "Выбрать именно этот собственный режим захвата",
+    "uk-UA": "Вибрати саме цей власний режим захоплення"
+  },
+  "Select this filter to edit its properties.": {
+    "de-DE": "Diesen Filter auswählen, um seine Eigenschaften zu bearbeiten.",
+    "es-ES": "Seleccionar este filtro para editar sus propiedades.",
+    "ru-RU": "Выберите фильтр для изменения его свойств.",
+    "uk-UA": "Виберіть фільтр для зміни його властивостей."
+  },
+  "Select this item to edit its properties. Drag an unlocked row to change its layer order.": {
+    "de-DE": "Dieses Element zum Bearbeiten seiner Eigenschaften auswählen. Eine nicht gesperrte Zeile ziehen, um ihre Ebenenreihenfolge zu ändern.",
+    "es-ES": "Selecciona este elemento para editar sus propiedades. Arrastra una fila desbloqueada para cambiar el orden de sus capas.",
+    "ru-RU": "Выберите элемент для изменения свойств. Перетащите незаблокированную строку, чтобы изменить порядок слоёв.",
+    "uk-UA": "Виберіть елемент для зміни властивостей. Перетягніть незаблокований рядок, щоб змінити порядок шарів."
+  },
+  "Select this module to read its description and supported features.": {
+    "de-DE": "Wähle dieses Modul aus, um seine Beschreibung und die unterstützten Funktionen zu lesen.",
+    "es-ES": "Selecciona este módulo para leer su descripción y las funciones que admite.",
+    "ru-RU": "Выберите модуль, чтобы прочитать его описание и узнать о поддерживаемых функциях.",
+    "uk-UA": "Виберіть модуль, щоб прочитати його опис і дізнатися про підтримувані функції."
+  },
+  "Select window": {
+    "de-DE": "Fenster auswählen",
+    "es-ES": "Seleccionar ventana",
+    "ru-RU": "Выбрать окно",
+    "uk-UA": "Вибрати вікно"
+  },
+  "Send Preview to Program immediately": {
+    "de-DE": "Vorschau sofort ins Programm übernehmen",
+    "es-ES": "Enviar vista previa al programa inmediatamente",
+    "ru-RU": "Немедленно отправить предпросмотр в программу",
+    "uk-UA": "Негайно передати попередній перегляд у програму"
+  },
+  "Send Preview to Program using the selected transition": {
+    "de-DE": "Vorschau mit dem ausgewählten Übergang ins Programm übernehmen",
+    "es-ES": "Enviar vista previa al programa con la transición seleccionada",
+    "ru-RU": "Отправить предпросмотр в программу с выбранным переходом",
+    "uk-UA": "Передати попередній перегляд у програму з вибраним переходом"
+  },
+  "Set how much color spill is removed.": {
+    "de-DE": "Die Stärke der Farbsaumentfernung einstellen.",
+    "es-ES": "Establecer cuánto reflejo de color se elimina.",
+    "ru-RU": "Установить степень удаления цветового рефлекса.",
+    "uk-UA": "Установити ступінь видалення колірного рефлексу."
+  },
+  "Set how quickly gain reduction follows a louder signal.": {
+    "de-DE": "Einstellen, wie schnell die Pegelreduzierung einem lauteren Signal folgt.",
+    "es-ES": "Establecer la rapidez con la que la reducción de ganancia sigue una señal más fuerte.",
+    "ru-RU": "Установите скорость ослабления при увеличении громкости сигнала.",
+    "uk-UA": "Установіть швидкість послаблення при збільшенні гучності сигналу."
+  },
+  "Set how quickly gain reduction recovers after the signal becomes quieter.": {
+    "de-DE": "Einstellen, wie schnell sich die Verstärkung nach einem leiseren Signal erholt.",
+    "es-ES": "Establecer la rapidez con la que se recupera la ganancia cuando baja el nivel de la señal.",
+    "ru-RU": "Установите скорость восстановления усиления после снижения громкости сигнала.",
+    "uk-UA": "Установіть швидкість відновлення підсилення після зниження гучності сигналу."
+  },
+  "Set how strongly levels above the threshold are reduced.": {
+    "de-DE": "Die Stärke der Reduzierung oberhalb des Schwellenwerts einstellen.",
+    "es-ES": "Establecer cuánto se reducen los niveles por encima del umbral.",
+    "ru-RU": "Установите степень ослабления уровней выше порога.",
+    "uk-UA": "Установіть ступінь послаблення рівнів вище порога."
+  },
+  "Set the font size in source pixels, from 1 to 1000.": {
+    "de-DE": "Lege die Schriftgröße auf 1 bis 1000 Quellpixel fest.",
+    "es-ES": "Define el tamaño de fuente en píxeles de la fuente, de 1 a 1000.",
+    "ru-RU": "Задайте размер шрифта в пикселях источника: от 1 до 1000.",
+    "uk-UA": "Задайте розмір шрифту в пікселях джерела: від 1 до 1000."
+  },
+  "Set the level above which compression reduces the signal.": {
+    "de-DE": "Den Pegel einstellen, ab dem die Kompression das Signal reduziert.",
+    "es-ES": "Establecer el nivel a partir del cual la compresión reduce la señal.",
+    "ru-RU": "Установите уровень, выше которого компрессор ослабляет сигнал.",
+    "uk-UA": "Установіть рівень, вище якого компресор послаблює сигнал."
+  },
+  "Set the range of colors treated as a match.": {
+    "de-DE": "Den Farbbereich einstellen, der als Übereinstimmung gilt.",
+    "es-ES": "Establecer el intervalo de colores que se consideran coincidentes.",
+    "ru-RU": "Установите диапазон цветов, считающихся совпадающими.",
+    "uk-UA": "Установіть діапазон кольорів, що вважаються збігом."
+  },
+  "Set the text box height in source pixels. Text outside the box is clipped.": {
+    "de-DE": "Lege die Textfeldhöhe in Quellpixeln fest. Text außerhalb des Felds wird abgeschnitten.",
+    "es-ES": "Define el alto del cuadro de texto en píxeles de la fuente. El texto que queda fuera se recorta.",
+    "ru-RU": "Задайте высоту текстовой области в пикселях источника. Текст за её пределами обрезается.",
+    "uk-UA": "Задайте висоту текстової області в пікселях джерела. Текст за її межами обрізається."
+  },
+  "Set the text box width in source pixels. The box is limited to 8 megapixels.": {
+    "de-DE": "Lege die Textfeldbreite in Quellpixeln fest. Das Textfeld ist auf 8 Megapixel begrenzt.",
+    "es-ES": "Define el ancho del cuadro de texto en píxeles de la fuente. El cuadro está limitado a 8 megapíxeles.",
+    "ru-RU": "Задайте ширину текстовой области в пикселях источника. Площадь области ограничена 8 мегапикселями.",
+    "uk-UA": "Задайте ширину текстової області в пікселях джерела. Площа області обмежена 8 мегапікселями."
+  },
+  "Set the width of the gradual transition into compression.": {
+    "de-DE": "Die Breite des weichen Übergangs in die Kompression einstellen.",
+    "es-ES": "Establecer la anchura de la transición gradual a la compresión.",
+    "ru-RU": "Установите ширину плавного перехода к компрессии.",
+    "uk-UA": "Установіть ширину плавного переходу до компресії."
+  },
+  "Settings — Audio": {
+    "de-DE": "Einstellungen — Audio",
+    "es-ES": "Ajustes — Audio",
+    "ru-RU": "Настройки — Аудио",
+    "uk-UA": "Налаштування — Аудіо"
+  },
+  "Settings — General": {
+    "de-DE": "Einstellungen — Allgemein",
+    "es-ES": "Ajustes — General",
+    "ru-RU": "Настройки — Общие",
+    "uk-UA": "Налаштування — Загальні"
+  },
+  "Settings — Video": {
+    "de-DE": "Einstellungen — Video",
+    "es-ES": "Ajustes — Vídeo",
+    "ru-RU": "Настройки — Видео",
+    "uk-UA": "Налаштування — Відео"
+  },
+  "Signal unavailable · monitoring off": {
+    "de-DE": "Signal nicht verfügbar · Monitoring aus",
+    "es-ES": "Señal no disponible · monitorización desactivada",
+    "ru-RU": "Сигнал недоступен · мониторинг выключен",
+    "uk-UA": "Сигнал недоступний · моніторинг вимкнено"
+  },
+  "Six-property stereo pan DSP; native plugin ABI and OBS filter interchange remain unsupported.": {
+    "de-DE": "Stereo-Panorama-DSP mit sechs Eigenschaften; native Plugin-ABI und OBS-Filteraustausch bleiben ununterstützt.",
+    "es-ES": "Procesamiento de panorama estéreo con seis propiedades; la ABI de complementos nativos y el intercambio de filtros de OBS siguen sin admitirse.",
+    "ru-RU": "Обработка стереопанорамы с шестью параметрами; нативный ABI плагинов и обмен фильтрами OBS пока не поддерживаются.",
+    "uk-UA": "Обробка стереопанорами із шістьма параметрами; нативний ABI плагінів та обмін фільтрами OBS поки не підтримуються."
+  },
+  "Soften the edge of the color match.": {
+    "de-DE": "Den Rand des Farbvergleichs weichzeichnen.",
+    "es-ES": "Suavizar el borde de la coincidencia de color.",
+    "ru-RU": "Смягчить границу совпадения цвета.",
+    "uk-UA": "Пом’якшити межу збігу кольору."
+  },
+  "Source Actions": {
+    "de-DE": "Quellaktionen",
+    "es-ES": "Acciones de fuente",
+    "ru-RU": "Действия с источником",
+    "uk-UA": "Дії з джерелом"
+  },
+  "Source Properties": {
+    "de-DE": "Quelleneigenschaften",
+    "es-ES": "Propiedades de la fuente",
+    "ru-RU": "Свойства источника",
+    "uk-UA": "Властивості джерела"
+  },
+  "Source URL": {
+    "de-DE": "Quellen-URL",
+    "es-ES": "URL de la fuente",
+    "ru-RU": "Адрес источника",
+    "uk-UA": "Адреса джерела"
+  },
+  "Source capture before filters": {
+    "de-DE": "Quellensignal vor den Filtern",
+    "es-ES": "Captura de la fuente antes de los filtros",
+    "ru-RU": "Сигнал источника до фильтров",
+    "uk-UA": "Сигнал джерела до фільтрів"
+  },
+  "Source capture meters · shared volume and mute": {
+    "de-DE": "Quellenaufnahmepegel · gemeinsame Lautstärke und Stummschaltung",
+    "es-ES": "Medidores de captura de fuente · volumen y silencio compartidos",
+    "ru-RU": "Индикаторы захвата источника · общие громкость и отключение звука",
+    "uk-UA": "Індикатори захоплення джерела · спільні гучність і вимкнення звуку"
+  },
+  "Source levels and Program audio; speaker playback and monitoring are off.": {
+    "de-DE": "Quellenpegel und Programmaudio; Lautsprecherwiedergabe und Monitoring sind ausgeschaltet.",
+    "es-ES": "Niveles de fuente y audio del programa; la reproducción por altavoces y la monitorización están desactivadas.",
+    "ru-RU": "Уровни источников и звук программы; вывод на динамики и мониторинг выключены.",
+    "uk-UA": "Рівні джерел і звук програми; виведення на динаміки та моніторинг вимкнені."
+  },
+  "Source name requires 1..256 UTF-8 bytes without control characters.": {
+    "de-DE": "Der Quellenname muss 1 bis 256 UTF-8-Bytes lang sein und darf keine Steuerzeichen enthalten.",
+    "es-ES": "El nombre debe contener entre 1 y 256 bytes UTF-8, sin caracteres de control.",
+    "ru-RU": "Имя источника должно занимать от 1 до 256 байт UTF-8 и не содержать управляющих символов.",
+    "uk-UA": "Назва джерела має займати від 1 до 256 байтів UTF-8 і не містити керувальних символів."
+  },
+  "Source provider pending Rust implementation.": {
+    "de-DE": "Der Quellenanbieter ist noch nicht in Rust implementiert.",
+    "es-ES": "El proveedor de esta fuente aún no está implementado en Rust.",
+    "ru-RU": "Модуль этого источника ещё не реализован на Rust.",
+    "uk-UA": "Модуль цього джерела ще не реалізований мовою Rust."
+  },
+  "Source: {name}": {
+    "de-DE": "Quelle: {name}",
+    "es-ES": "Fuente: {name}",
+    "ru-RU": "Источник: {name}",
+    "uk-UA": "Джерело: {name}"
+  },
+  "Speaker playback and monitoring are not connected.": {
+    "de-DE": "Lautsprecherwiedergabe und Monitoring sind nicht verbunden.",
+    "es-ES": "La reproducción por altavoces y la monitorización no están conectadas.",
+    "ru-RU": "Вывод на динамики и мониторинг не подключены.",
+    "uk-UA": "Виведення на динаміки та моніторинг не підключені."
+  },
+  "Spill Color": {
+    "de-DE": "Farbsaumfarbe",
+    "es-ES": "Color del reflejo",
+    "ru-RU": "Цвет рефлекса",
+    "uk-UA": "Колір рефлексу"
+  },
+  "Start Program Audio": {
+    "de-DE": "Programmaudio starten",
+    "es-ES": "Iniciar audio del programa",
+    "ru-RU": "Запустить звук программы",
+    "uk-UA": "Запустити звук програми"
+  },
+  "Static response · input −60…0 dB · output −100…40 dB": {
+    "de-DE": "Statische Kennlinie · Eingang −60…0 dB · Ausgang −100…40 dB",
+    "es-ES": "Respuesta estática · entrada −60…0 dB · salida −100…40 dB",
+    "ru-RU": "Статическая характеристика · вход −60…0 дБ · выход −100…40 дБ",
+    "uk-UA": "Статична характеристика · вхід −60…0 дБ · вихід −100…40 дБ"
+  },
+  "Stinger / other providers": {
+    "de-DE": "Stinger / andere Anbieter",
+    "es-ES": "Stinger / otros proveedores",
+    "ru-RU": "Stinger / другие модули",
+    "uk-UA": "Stinger / інші модулі"
+  },
+  "Stop Camera Capture": {
+    "de-DE": "Kameraaufnahme stoppen",
+    "es-ES": "Detener la captura de cámara",
+    "ru-RU": "Остановить захват камер",
+    "uk-UA": "Зупинити захоплення камер"
+  },
+  "Stop Program Audio": {
+    "de-DE": "Programmaudio stoppen",
+    "es-ES": "Detener audio del programa",
+    "ru-RU": "Остановить звук программы",
+    "uk-UA": "Зупинити звук програми"
+  },
+  "Stop all camera streams; device shutdown is acknowledged separately": {
+    "de-DE": "Alle Kamerastreams stoppen; das Herunterfahren der Geräte wird gesondert bestätigt",
+    "es-ES": "Detiene todos los flujos de cámara; el cierre de los dispositivos se confirma por separado",
+    "ru-RU": "Остановить все потоки камер; завершение работы устройств подтверждается отдельно",
+    "uk-UA": "Зупинити всі потоки камер; завершення роботи пристроїв підтверджується окремо"
+  },
+  "Streaming protocols and encoders are pending implementation.": {
+    "de-DE": "Streaming-Protokolle und Encoder sind noch nicht implementiert.",
+    "es-ES": "Los protocolos de transmisión y los codificadores aún no están implementados.",
+    "ru-RU": "Протоколы трансляции и кодировщики ещё не реализованы.",
+    "uk-UA": "Протоколи трансляції та кодувальники ще не реалізовані."
+  },
+  "Studio Mode disabled": {
+    "de-DE": "Studiomodus deaktiviert",
+    "es-ES": "Modo estudio desactivado",
+    "ru-RU": "Режим студии выключен",
+    "uk-UA": "Режим студії вимкнено"
+  },
+  "Studio Mode enabled": {
+    "de-DE": "Studiomodus aktiviert",
+    "es-ES": "Modo estudio activado",
+    "ru-RU": "Режим студии включён",
+    "uk-UA": "Режим студії увімкнено"
+  },
+  "Supported subset: absolute coordinates (version 1), flat scenes, Color Sources and Image Sources (including GIF playback). Unsupported authored features are rejected.": {
+    "de-DE": "Unterstützte Teilmenge: absolute Koordinaten (Version 1), flache Szenen, Farb- und Bildquellen (einschließlich GIF-Wiedergabe). Nicht unterstützte Eigenschaften werden abgelehnt.",
+    "es-ES": "Subconjunto admitido: coordenadas absolutas (versión 1), escenas planas, fuentes de color e imágenes (incluida reproducción GIF). Las funciones no admitidas se rechazan.",
+    "ru-RU": "Поддерживаемая часть: абсолютные координаты (версия 1), плоские сцены, источники цвета и изображения (включая анимацию GIF). Неподдерживаемые свойства отклоняются.",
+    "uk-UA": "Підтримувана частина: абсолютні координати (версія 1), плоскі сцени, джерела кольору й зображення (включно з анімацією GIF). Непідтримувані властивості відхиляються."
+  },
+  "Switch Point": {
+    "de-DE": "Wechselpunkt",
+    "es-ES": "Punto de cambio",
+    "ru-RU": "Точка смены",
+    "uk-UA": "Точка зміни"
+  },
+  "Switch point (%)": {
+    "de-DE": "Wechselpunkt (%)",
+    "es-ES": "Punto de cambio (%)",
+    "ru-RU": "Точка смены (%)",
+    "uk-UA": "Точка зміни (%)"
+  },
+  "T-bar": {
+    "de-DE": "T-Bar",
+    "es-ES": "Barra de transición",
+    "ru-RU": "Рычаг перехода",
+    "uk-UA": "Важіль переходу"
+  },
+  "T-bar (0–1023)": {
+    "de-DE": "T-Bar (0–1023)",
+    "es-ES": "Barra de transición (0–1023)",
+    "ru-RU": "Рычаг перехода (0–1023)",
+    "uk-UA": "Важіль переходу (0–1023)"
+  },
+  "T-bar released": {
+    "de-DE": "T-Bar losgelassen",
+    "es-ES": "Barra de transición liberada",
+    "ru-RU": "Рычаг перехода отпущен",
+    "uk-UA": "Важіль переходу відпущено"
+  },
+  "T-bar value: {value}": {
+    "de-DE": "T-Bar-Wert: {value}",
+    "es-ES": "Valor de la barra: {value}",
+    "ru-RU": "Значение рычага перехода: {value}",
+    "uk-UA": "Значення важеля переходу: {value}"
+  },
+  "Target: {target:?}": {
+    "de-DE": "Ziel: {target:?}",
+    "es-ES": "Destino: {target:?}",
+    "ru-RU": "Цель: {target:?}",
+    "uk-UA": "Ціль: {target:?}"
+  },
+  "Text Color": {
+    "de-DE": "Textfarbe",
+    "es-ES": "Color del texto",
+    "ru-RU": "Цвет текста",
+    "uk-UA": "Колір тексту"
+  },
+  "Text field": {
+    "de-DE": "Textfeld",
+    "es-ES": "Campo de texto",
+    "ru-RU": "Текстовое поле",
+    "uk-UA": "Текстове поле"
+  },
+  "The audio capture scope changed while enumerating devices. Retry this request.": {
+    "de-DE": "Der Audioaufnahmebereich hat sich während der Geräteermittlung geändert. Wiederholen Sie die Anfrage.",
+    "es-ES": "El conjunto de captura de audio cambió al enumerar los dispositivos. Vuelva a intentarlo.",
+    "ru-RU": "Во время получения списка устройств изменился набор аудиозахвата. Повторите запрос.",
+    "uk-UA": "Під час отримання списку пристроїв змінився набір аудіозахоплення. Повторіть запит."
+  },
+  "The audio device request belongs to an obsolete draft. Reopen this dialog.": {
+    "de-DE": "Die Audiogeräteanfrage gehört zu einem veralteten Entwurf. Öffnen Sie diesen Dialog erneut.",
+    "es-ES": "La solicitud de dispositivos de audio pertenece a un borrador obsoleto. Vuelva a abrir este diálogo.",
+    "ru-RU": "Запрос аудиоустройств относится к устаревшему черновику. Повторно откройте диалог.",
+    "uk-UA": "Запит аудіопристроїв належить застарілій чернетці. Повторно відкрийте діалог."
+  },
+  "The curve uses the compressor's actual target settings. Attack and release affect how quickly the sound follows this curve.": {
+    "de-DE": "Die Kennlinie verwendet die aktuellen Kompressoreinstellungen. Attack und Release bestimmen, wie schnell der Klang dieser Kurve folgt.",
+    "es-ES": "La curva utiliza los ajustes actuales del compresor. El ataque y la relajación determinan la rapidez con que el sonido sigue esta curva.",
+    "ru-RU": "Кривая отражает текущие настройки компрессора. Атака и восстановление определяют, как быстро звук следует этой кривой.",
+    "uk-UA": "Крива відображає поточні налаштування компресора. Атака та відновлення визначають, як швидко звук дотримується цієї кривої."
+  },
+  "The document changed while enumerating audio devices. Reopen this dialog.": {
+    "de-DE": "Das Dokument wurde während der Audiogeräteermittlung geändert. Öffnen Sie diesen Dialog erneut.",
+    "es-ES": "El documento cambió al enumerar dispositivos de audio. Vuelva a abrir este diálogo.",
+    "ru-RU": "Документ изменился во время получения списка аудиоустройств. Повторно откройте диалог.",
+    "uk-UA": "Документ змінився під час отримання списку аудіопристроїв. Повторно відкрийте діалог."
+  },
+  "The document changed while enumerating displays. Reopen this dialog to bind a display.": {
+    "de-DE": "Das Dokument wurde während der Bildschirmermittlung geändert. Öffnen Sie diesen Dialog zur Bildschirmzuordnung erneut.",
+    "es-ES": "El documento cambió al enumerar pantallas. Vuelva a abrir este diálogo para vincular una pantalla.",
+    "ru-RU": "Документ изменился во время получения списка экранов. Повторно откройте диалог для привязки экрана.",
+    "uk-UA": "Документ змінився під час отримання списку екранів. Повторно відкрийте діалог для прив’язки екрана."
+  },
+  "The document changed. Reopen this audio dialog before enumerating devices.": {
+    "de-DE": "Das Dokument wurde geändert. Öffnen Sie diesen Audiodialog vor der Geräteermittlung erneut.",
+    "es-ES": "El documento cambió. Vuelva a abrir este diálogo de audio antes de enumerar dispositivos.",
+    "ru-RU": "Документ изменился. Повторно откройте аудиодиалог перед получением списка устройств.",
+    "uk-UA": "Документ змінився. Повторно відкрийте аудіодіалог перед отриманням списку пристроїв."
+  },
+  "The document changed. Reopen this audio dialog.": {
+    "de-DE": "Das Dokument wurde geändert. Öffnen Sie diesen Audiodialog erneut.",
+    "es-ES": "El documento cambió. Vuelva a abrir este diálogo de audio.",
+    "ru-RU": "Документ изменился. Повторно откройте аудиодиалог.",
+    "uk-UA": "Документ змінився. Повторно відкрийте аудіодіалог."
+  },
+  "The document changed. Reopen this dialog to bind a camera.": {
+    "de-DE": "Das Dokument wurde geändert. Diesen Dialog erneut öffnen, um eine Kamera einzubinden.",
+    "es-ES": "El documento ha cambiado. Vuelve a abrir este diálogo para vincular una cámara.",
+    "ru-RU": "Документ изменился. Откройте этот диалог заново, чтобы привязать камеру.",
+    "uk-UA": "Документ змінився. Відкрийте цей діалог знову, щоб прив’язати камеру."
+  },
+  "The document changed. Reopen this dialog to bind a display.": {
+    "de-DE": "Das Dokument wurde geändert. Öffnen Sie diesen Dialog zur Bildschirmzuordnung erneut.",
+    "es-ES": "El documento cambió. Vuelva a abrir este diálogo para vincular una pantalla.",
+    "ru-RU": "Документ изменился. Повторно откройте диалог для привязки экрана.",
+    "uk-UA": "Документ змінився. Повторно відкрийте діалог для прив’язки екрана."
+  },
+  "The document changed. Reopen this dialog to bind a window.": {
+    "de-DE": "Das Dokument wurde geändert. Öffne diesen Dialog erneut, um ein Fenster auszuwählen.",
+    "es-ES": "El documento ha cambiado. Vuelve a abrir este diálogo para seleccionar una ventana.",
+    "ru-RU": "Документ изменился. Откройте этот диалог заново, чтобы выбрать окно.",
+    "uk-UA": "Документ змінився. Відкрийте цей діалог знову, щоб вибрати вікно."
+  },
+  "The profile catalog is full.": {
+    "de-DE": "Der Profilkatalog ist voll.",
+    "es-ES": "El catálogo de perfiles está lleno.",
+    "ru-RU": "Каталог профилей заполнен.",
+    "uk-UA": "Каталог профілів заповнений."
+  },
+  "The scene duration is remembered even while its override is disabled. Valid range: 50–20000 ms.": {
+    "de-DE": "Die Szenendauer bleibt auch bei deaktivierter Vorgabe erhalten. Gültiger Bereich: 50–20000 ms.",
+    "es-ES": "La duración de la escena se recuerda incluso con su transición específica desactivada. Intervalo válido: 50–20000 ms.",
+    "ru-RU": "Длительность сцены сохраняется, даже если её переход отключён. Допустимый диапазон: 50–20000 мс.",
+    "uk-UA": "Тривалість сцени зберігається, навіть якщо її перехід вимкнено. Припустимий діапазон: 50–20000 мс."
+  },
+  "The selected camera is unavailable": {
+    "de-DE": "Die ausgewählte Kamera ist nicht verfügbar",
+    "es-ES": "La cámara seleccionada no está disponible",
+    "ru-RU": "Выбранная камера недоступна",
+    "uk-UA": "Вибрана камера недоступна"
+  },
+  "The selected source no longer exists.": {
+    "de-DE": "Die ausgewählte Quelle existiert nicht mehr.",
+    "es-ES": "La fuente seleccionada ya no existe.",
+    "ru-RU": "Выбранный источник больше не существует.",
+    "uk-UA": "Вибране джерело більше не існує."
+  },
+  "The virtual-camera platform provider is pending.": {
+    "de-DE": "Der plattformspezifische Anbieter der virtuellen Kamera ist noch nicht implementiert.",
+    "es-ES": "El proveedor de cámara virtual de la plataforma aún no está implementado.",
+    "ru-RU": "Системный модуль виртуальной камеры ещё не реализован.",
+    "uk-UA": "Системний модуль віртуальної камери ще не реалізований."
+  },
+  "Third-party modules are off by default. Only available Rust ports can be enabled; OBS plugin binaries cannot be loaded here.": {
+    "de-DE": "Drittanbietermodule sind standardmäßig deaktiviert. Nur verfügbare Rust-Versionen können aktiviert werden; OBS-Plugindateien lassen sich hier nicht laden.",
+    "es-ES": "Los módulos externos están desactivados de forma predeterminada. Solo se pueden activar las versiones en Rust disponibles; aquí no se pueden cargar binarios de complementos de OBS.",
+    "ru-RU": "Сторонние модули по умолчанию отключены. Включить можно только доступные версии на Rust; бинарные плагины OBS здесь не загружаются.",
+    "uk-UA": "Сторонні модулі типово вимкнені. Увімкнути можна лише доступні версії мовою Rust; бінарні плагіни OBS тут не завантажуються."
+  },
+  "This OBS action has not been implemented in Rust yet, or requires a selected editable item.": {
+    "de-DE": "Diese OBS-Aktion ist noch nicht in Rust implementiert oder erfordert ein ausgewähltes bearbeitbares Element.",
+    "es-ES": "Esta acción de OBS aún no está implementada en Rust o requiere seleccionar un elemento editable.",
+    "ru-RU": "Это действие OBS ещё не реализовано на Rust либо требует выбора редактируемого элемента.",
+    "uk-UA": "Цю дію OBS ще не реалізовано мовою Rust або вона потребує вибору редагованого елемента."
+  },
+  "This Settings page is pending Rust implementation.": {
+    "de-DE": "Diese Einstellungsseite ist noch nicht in Rust implementiert.",
+    "es-ES": "Esta página de ajustes aún no está implementada en Rust.",
+    "ru-RU": "Эта страница настроек ещё не реализована на Rust.",
+    "uk-UA": "Цю сторінку налаштувань ще не реалізовано мовою Rust."
+  },
+  "This audio capture type is unavailable on this computer.": {
+    "de-DE": "Dieser Audioaufnahmetyp ist auf diesem Computer nicht verfügbar.",
+    "es-ES": "Este tipo de captura de audio no está disponible en este equipo.",
+    "ru-RU": "Этот тип аудиозахвата недоступен на этом компьютере.",
+    "uk-UA": "Цей тип аудіозахоплення недоступний на цьому комп’ютері."
+  },
+  "This backend does not provide device enumeration, or a request is already active.": {
+    "de-DE": "Dieses Backend unterstützt keine Geräteermittlung oder eine Anfrage ist bereits aktiv.",
+    "es-ES": "Este motor no permite enumerar dispositivos o ya hay una solicitud activa.",
+    "ru-RU": "Этот модуль не поддерживает получение списка устройств, либо запрос уже выполняется.",
+    "uk-UA": "Цей модуль не підтримує отримання списку пристроїв або запит уже виконується."
+  },
+  "This backend does not support cursor composition.": {
+    "de-DE": "Dieses Backend unterstützt keine Einblendung des Mauszeigers.",
+    "es-ES": "Este motor no permite componer el cursor.",
+    "ru-RU": "Этот модуль не поддерживает добавление курсора.",
+    "uk-UA": "Цей модуль не підтримує додавання курсора."
+  },
+  "This camera has no modes supported by the current RGB capture profile.": {
+    "de-DE": "Diese Kamera bietet keine Modi, die das aktuelle RGB-Aufnahmeprofil unterstützt.",
+    "es-ES": "Esta cámara no tiene modos compatibles con el perfil actual de captura RGB.",
+    "ru-RU": "У этой камеры нет режимов, поддерживаемых текущим профилем захвата RGB.",
+    "uk-UA": "Ця камера не має режимів, які підтримує поточний профіль захоплення RGB."
+  },
+  "This camera has no modes supported by the current uncompressed capture profile.": {
+    "de-DE": "Diese Kamera bietet keine vom aktuellen unkomprimierten Aufnahmeprofil unterstützten Modi.",
+    "es-ES": "Esta cámara no tiene modos compatibles con el perfil actual de captura sin compresión.",
+    "ru-RU": "У этой камеры нет режимов, поддерживаемых текущим профилем несжатого захвата.",
+    "uk-UA": "Ця камера не має режимів, підтримуваних поточним профілем захоплення без стиснення."
+  },
+  "This capture device cannot exclude this application's audio. Clear the option before applying.": {
+    "de-DE": "Dieses Aufnahmegerät kann den Ton dieser Anwendung nicht ausschließen. Die Option vor dem Anwenden deaktivieren.",
+    "es-ES": "Este dispositivo de captura no puede excluir el audio de esta aplicación. Desmarca la opción antes de aplicar.",
+    "ru-RU": "Это устройство захвата не может исключить звук приложения. Выключите этот параметр перед применением.",
+    "uk-UA": "Цей пристрій захоплення не може виключити звук застосунку. Вимкніть цей параметр перед застосуванням."
+  },
+  "This module has not been ported to Rust.": {
+    "de-DE": "Dieses Modul wurde noch nicht nach Rust portiert.",
+    "es-ES": "Este módulo aún no se ha adaptado a Rust.",
+    "ru-RU": "Этот модуль ещё не перенесён на Rust.",
+    "uk-UA": "Цей модуль ще не перенесено на Rust."
+  },
+  "This quick button uses its own kind/duration and bypasses the scene override without changing global configuration.": {
+    "de-DE": "Diese Schnelltaste verwendet ihren eigenen Typ und ihre Dauer und umgeht die Szenenvorgabe, ohne die globale Konfiguration zu ändern.",
+    "es-ES": "Este botón rápido usa su propio tipo y duración e ignora la transición específica de la escena sin cambiar la configuración global.",
+    "ru-RU": "Быстрая кнопка использует собственные тип и длительность, обходя переход сцены без изменения глобальных настроек.",
+    "uk-UA": "Швидка кнопка використовує власні тип і тривалість, оминаючи перехід сцени без зміни глобальних налаштувань."
+  },
+  "This saved audio device is unavailable for this operating system or capture type. Choose an available device or Default device.": {
+    "de-DE": "Das gespeicherte Audiogerät ist für dieses Betriebssystem oder diesen Aufnahmetyp nicht verfügbar. Ein verfügbares Gerät oder das Standardgerät wählen.",
+    "es-ES": "Este dispositivo de audio guardado no está disponible para este sistema operativo o tipo de captura. Elige un dispositivo disponible o el predeterminado.",
+    "ru-RU": "Сохранённое аудиоустройство недоступно для этой операционной системы или типа захвата. Выберите доступное устройство или устройство по умолчанию.",
+    "uk-UA": "Збережений аудіопристрій недоступний для цієї операційної системи або типу захоплення. Виберіть доступний пристрій або типовий пристрій."
+  },
+  "This saved camera belongs to another platform. Choose an available camera.": {
+    "de-DE": "Die gespeicherte Kamera gehört zu einer anderen Plattform. Eine verfügbare Kamera wählen.",
+    "es-ES": "La cámara guardada pertenece a otra plataforma. Elige una cámara disponible.",
+    "ru-RU": "Сохранённая камера относится к другой платформе. Выберите доступную камеру.",
+    "uk-UA": "Збережена камера належить іншій платформі. Виберіть доступну камеру."
+  },
+  "This saved capture device belongs to another platform. Choose an available device to repair the binding.": {
+    "de-DE": "Das gespeicherte Aufnahmegerät gehört zu einer anderen Plattform. Ein verfügbares Gerät wählen, um die Zuordnung zu korrigieren.",
+    "es-ES": "El dispositivo de captura guardado pertenece a otra plataforma. Elige un dispositivo disponible para corregir la asignación.",
+    "ru-RU": "Сохранённое устройство захвата относится к другой платформе. Выберите доступное устройство, чтобы исправить привязку.",
+    "uk-UA": "Збережений пристрій захоплення належить іншій платформі. Виберіть доступний пристрій, щоб виправити прив’язування."
+  },
+  "This saved capture method is unavailable on this platform. Choose Automatic.": {
+    "de-DE": "Die gespeicherte Aufnahmemethode ist auf dieser Plattform nicht verfügbar. Automatisch wählen.",
+    "es-ES": "El método de captura guardado no está disponible en esta plataforma. Elige Automático.",
+    "ru-RU": "Сохранённый метод захвата недоступен на этой платформе. Выберите автоматический режим.",
+    "uk-UA": "Збережений метод захоплення недоступний на цій платформі. Виберіть автоматичний режим."
+  },
+  "This saved display belongs to another platform. Choose an available display.": {
+    "de-DE": "Der gespeicherte Bildschirm gehört zu einer anderen Plattform. Einen verfügbaren Bildschirm wählen.",
+    "es-ES": "La pantalla guardada pertenece a otra plataforma. Elige una pantalla disponible.",
+    "ru-RU": "Сохранённый дисплей относится к другой платформе. Выберите доступный дисплей.",
+    "uk-UA": "Збережений дисплей належить іншій платформі. Виберіть доступний дисплей."
+  },
+  "This saved option is unavailable on this platform. Clear it to use the selected device.": {
+    "de-DE": "Diese gespeicherte Option ist auf dieser Plattform nicht verfügbar. Deaktivieren, um das ausgewählte Gerät zu verwenden.",
+    "es-ES": "Esta opción guardada no está disponible en esta plataforma. Desmárcala para usar el dispositivo seleccionado.",
+    "ru-RU": "Сохранённый параметр недоступен на этой платформе. Выключите его, чтобы использовать выбранное устройство.",
+    "uk-UA": "Збережений параметр недоступний на цій платформі. Вимкніть його, щоб використовувати вибраний пристрій."
+  },
+  "This saved window belongs to another platform. Choose an available window.": {
+    "de-DE": "Das gespeicherte Fenster gehört zu einer anderen Plattform. Ein verfügbares Fenster wählen.",
+    "es-ES": "La ventana guardada pertenece a otra plataforma. Elige una ventana disponible.",
+    "ru-RU": "Сохранённое окно относится к другой платформе. Выберите доступное окно.",
+    "uk-UA": "Збережене вікно належить іншій платформі. Виберіть доступне вікно."
+  },
+  "Tolerance": {
+    "de-DE": "Toleranz",
+    "es-ES": "Tolerancia",
+    "ru-RU": "Допуск",
+    "uk-UA": "Допуск"
+  },
+  "Transition Override…": {
+    "de-DE": "Übergangsvorgabe…",
+    "es-ES": "Transición específica…",
+    "ru-RU": "Переопределение перехода…",
+    "uk-UA": "Перевизначення переходу…"
+  },
+  "Transition Preset Properties": {
+    "de-DE": "Eigenschaften der Übergangsvorgabe",
+    "es-ES": "Propiedades del preajuste de transición",
+    "ru-RU": "Свойства предустановки перехода",
+    "uk-UA": "Властивості набору параметрів переходу"
+  },
+  "Transition applied": {
+    "de-DE": "Übergang angewendet",
+    "es-ES": "Transición aplicada",
+    "ru-RU": "Переход применён",
+    "uk-UA": "Перехід застосовано"
+  },
+  "Transition in progress": {
+    "de-DE": "Übergang läuft",
+    "es-ES": "Transición en curso",
+    "ru-RU": "Выполняется переход",
+    "uk-UA": "Виконується перехід"
+  },
+  "Transition preset": {
+    "de-DE": "Übergangsvorgabe",
+    "es-ES": "Preajuste de transición",
+    "ru-RU": "Предустановка перехода",
+    "uk-UA": "Набір параметрів переходу"
+  },
+  "Transition preset no longer exists": {
+    "de-DE": "Die Übergangsvorgabe existiert nicht mehr",
+    "es-ES": "El preajuste de transición ya no existe",
+    "ru-RU": "Предустановка перехода больше не существует",
+    "uk-UA": "Набір параметрів переходу більше не існує"
+  },
+  "Transition: {}, {} ms ({})": {
+    "de-DE": "Übergang: {}, {} ms ({})",
+    "es-ES": "Transición: {}, {} ms ({})",
+    "ru-RU": "Переход: {}, {} мс ({})",
+    "uk-UA": "Перехід: {}, {} мс ({})"
+  },
+  "Unavailable capture method": {
+    "de-DE": "Aufnahmemethode nicht verfügbar",
+    "es-ES": "Método de captura no disponible",
+    "ru-RU": "Метод захвата недоступен",
+    "uk-UA": "Метод захоплення недоступний"
+  },
+  "Unavailable device": {
+    "de-DE": "Gerät nicht verfügbar",
+    "es-ES": "Dispositivo no disponible",
+    "ru-RU": "Устройство недоступно",
+    "uk-UA": "Пристрій недоступний"
+  },
+  "Unavailable preset": {
+    "de-DE": "Nicht verfügbare Vorgabe",
+    "es-ES": "Preajuste no disponible",
+    "ru-RU": "Недоступная предустановка",
+    "uk-UA": "Недоступний набір параметрів"
+  },
+  "Unavailable preset {}": {
+    "de-DE": "Nicht verfügbare Vorgabe {}",
+    "es-ES": "Preajuste no disponible {}",
+    "ru-RU": "Недоступная предустановка {}",
+    "uk-UA": "Недоступний набір параметрів {}"
+  },
+  "Uncheck Capture cursor to apply DXGI, or choose GDI compatibility.": {
+    "de-DE": "Cursoraufnahme deaktivieren, um DXGI anzuwenden, oder GDI-Kompatibilität wählen.",
+    "es-ES": "Desmarcar Capturar cursor para aplicar DXGI o elegir compatibilidad GDI.",
+    "ru-RU": "Выключите захват курсора для применения DXGI или выберите совместимость GDI.",
+    "uk-UA": "Вимкніть захоплення курсора для застосування DXGI або виберіть сумісність GDI."
+  },
+  "Unsaved changes": {
+    "de-DE": "Ungespeicherte Änderungen",
+    "es-ES": "Cambios sin guardar",
+    "ru-RU": "Несохранённые изменения",
+    "uk-UA": "Незбережені зміни"
+  },
+  "Unsupported native camera mode": {
+    "de-DE": "Nicht unterstützter nativer Kameramodus",
+    "es-ES": "Modo nativo de cámara no compatible",
+    "ru-RU": "Неподдерживаемый собственный режим камеры",
+    "uk-UA": "Непідтримуваний власний режим камери"
+  },
+  "Unsupported rate: {other} Hz": {
+    "de-DE": "Nicht unterstützte Rate: {other} Hz",
+    "es-ES": "Frecuencia no admitida: {other} Hz",
+    "ru-RU": "Неподдерживаемая частота: {other} Гц",
+    "uk-UA": "Непідтримувана частота: {other} Гц"
+  },
+  "Updating preview…": {
+    "de-DE": "Vorschau wird aktualisiert…",
+    "es-ES": "Actualizando vista previa…",
+    "ru-RU": "Обновление предпросмотра…",
+    "uk-UA": "Оновлення попереднього перегляду…"
+  },
+  "Use Device Timing": {
+    "de-DE": "Gerätezeit verwenden",
+    "es-ES": "Usar reloj del dispositivo",
+    "ru-RU": "Использовать время устройства",
+    "uk-UA": "Використовувати час пристрою"
+  },
+  "Use Legacy": {
+    "de-DE": "Legacy-Modus verwenden",
+    "es-ES": "Usar modo heredado",
+    "ru-RU": "Использовать старый режим",
+    "uk-UA": "Використовувати старий режим"
+  },
+  "Use a bold text appearance.": {
+    "de-DE": "Zeige den Text fett an.",
+    "es-ES": "Muestra el texto en negrita.",
+    "ru-RU": "Использовать полужирное начертание текста.",
+    "uk-UA": "Використовувати напівжирне накреслення тексту."
+  },
+  "Use an existing scene as a shared source.": {
+    "de-DE": "Verwende eine vorhandene Szene als gemeinsam genutzte Quelle.",
+    "es-ES": "Usa una escena existente como fuente compartida.",
+    "ru-RU": "Использовать существующую сцену как общий источник.",
+    "uk-UA": "Використовувати наявну сцену як спільне джерело."
+  },
+  "Use an italic text appearance.": {
+    "de-DE": "Zeige den Text kursiv an.",
+    "es-ES": "Muestra el texto en cursiva.",
+    "ru-RU": "Использовать курсивное начертание текста.",
+    "uk-UA": "Використовувати курсивне накреслення тексту."
+  },
+  "Use device timing": {
+    "de-DE": "Gerätezeit verwenden",
+    "es-ES": "Usar reloj del dispositivo",
+    "ru-RU": "Использовать время устройства",
+    "uk-UA": "Використовувати час пристрою"
+  },
+  "Use real DXGI Desktop Duplication. Capture cursor must be unchecked. An ordinary no-new-frame wait retains the last admitted image.": {
+    "de-DE": "DXGI-Desktopduplizierung verwenden. Cursoraufnahme muss deaktiviert sein. Beim Warten auf ein neues Bild bleibt das letzte angenommene Bild erhalten.",
+    "es-ES": "Usar duplicación de escritorio DXGI. La captura del cursor debe estar desmarcada. Si no hay un nuevo fotograma, se conserva la última imagen aceptada.",
+    "ru-RU": "Использовать дублирование рабочего стола DXGI. Захват курсора должен быть выключен. При ожидании нового кадра сохраняется последнее принятое изображение.",
+    "uk-UA": "Використовувати дублювання робочого столу DXGI. Захоплення курсора має бути вимкнене. Під час очікування нового кадру зберігається останнє прийняте зображення."
+  },
+  "Use the legacy brightness and contrast calculation.": {
+    "de-DE": "Die bisherige Berechnung von Helligkeit und Kontrast verwenden.",
+    "es-ES": "Usar el cálculo heredado de brillo y contraste.",
+    "ru-RU": "Использовать прежний расчёт яркости и контраста.",
+    "uk-UA": "Використовувати попередній розрахунок яскравості й контрасту."
+  },
+  "Use this shared scene as a source.": {
+    "de-DE": "Verwende diese gemeinsam genutzte Szene als Quelle.",
+    "es-ES": "Usa esta escena compartida como fuente.",
+    "ru-RU": "Использовать эту общую сцену как источник.",
+    "uk-UA": "Використовувати цю спільну сцену як джерело."
+  },
+  "Valid duration: 50–20000 ms. Apply validates all fields as one edit.": {
+    "de-DE": "Gültige Dauer: 50–20000 ms. Anwenden prüft alle Felder als eine Änderung.",
+    "es-ES": "Duración válida: 50–20000 ms. Aplicar valida todos los campos como una sola edición.",
+    "ru-RU": "Допустимая длительность: 50–20000 мс. «Применить» проверяет все поля одним изменением.",
+    "uk-UA": "Припустима тривалість: 50–20000 мс. «Застосувати» перевіряє всі поля однією зміною."
+  },
+  "Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät",
+    "es-ES": "Dispositivo de captura de vídeo",
+    "ru-RU": "Устройство видеозахвата",
+    "uk-UA": "Пристрій відеозахоплення"
+  },
+  "Video Filters": {
+    "de-DE": "Videofilter",
+    "es-ES": "Filtros de vídeo",
+    "ru-RU": "Видеофильтры",
+    "uk-UA": "Відеофільтри"
+  },
+  "Video filter draft belongs to another document": {
+    "de-DE": "Der Videofilterentwurf gehört zu einem anderen Dokument",
+    "es-ES": "El borrador del filtro de vídeo pertenece a otro documento",
+    "ru-RU": "Черновик видеофильтра относится к другому документу",
+    "uk-UA": "Чернетка відеофільтра належить іншому документу"
+  },
+  "Video filter editor identity is exhausted.": {
+    "de-DE": "Die Kennungen des Videofiltereditors sind ausgeschöpft.",
+    "es-ES": "Se ha agotado la capacidad del editor de filtros de vídeo.",
+    "ru-RU": "Исчерпан лимит идентификаторов редактора видеофильтров.",
+    "uk-UA": "Вичерпано ліміт ідентифікаторів редактора відеофільтрів."
+  },
+  "Wait for audio device enumeration before applying": {
+    "de-DE": "Warten Sie vor dem Anwenden auf die Audiogeräteermittlung",
+    "es-ES": "Espere a que termine la enumeración de dispositivos de audio antes de aplicar",
+    "ru-RU": "Дождитесь получения списка аудиоустройств перед применением",
+    "uk-UA": "Дочекайтеся отримання списку аудіопристроїв перед застосуванням"
+  },
+  "Wait for camera enumeration before applying": {
+    "de-DE": "Vor dem Anwenden auf den Abschluss der Kameraerfassung warten",
+    "es-ES": "Espera a que termine la enumeración de cámaras antes de aplicar",
+    "ru-RU": "Дождитесь завершения поиска камер перед применением",
+    "uk-UA": "Дочекайтеся завершення пошуку камер перед застосуванням"
+  },
+  "Wait for device enumeration to finish": {
+    "de-DE": "Warten Sie, bis die Geräteermittlung abgeschlossen ist",
+    "es-ES": "Espere a que termine la enumeración de dispositivos",
+    "ru-RU": "Дождитесь завершения получения списка устройств",
+    "uk-UA": "Дочекайтеся завершення отримання списку пристроїв"
+  },
+  "Wait for display enumeration before applying": {
+    "de-DE": "Warten Sie vor dem Anwenden auf die Bildschirmermittlung",
+    "es-ES": "Espere a que termine la enumeración de pantallas antes de aplicar",
+    "ru-RU": "Дождитесь получения списка экранов перед применением",
+    "uk-UA": "Дочекайтеся отримання списку екранів перед застосуванням"
+  },
+  "Wait for the active display operation before changing the capture method.": {
+    "de-DE": "Vor dem Ändern der Aufnahmemethode die laufende Bildschirmoperation abwarten.",
+    "es-ES": "Esperar a que termine la operación de pantalla antes de cambiar el método de captura.",
+    "ru-RU": "Дождитесь завершения текущей операции с дисплеем перед сменой метода захвата.",
+    "uk-UA": "Дочекайтеся завершення поточної операції з дисплеєм перед зміною методу захоплення."
+  },
+  "Wait for the active document operation before editing": {
+    "de-DE": "Warten Sie vor dem Bearbeiten auf den aktiven Dokumentvorgang",
+    "es-ES": "Espere a que termine la operación de documento activa antes de editar",
+    "ru-RU": "Дождитесь завершения операции с документом перед редактированием",
+    "uk-UA": "Дочекайтеся завершення операції з документом перед редагуванням"
+  },
+  "Wait for window enumeration before applying": {
+    "de-DE": "Warte vor dem Anwenden, bis die Fenstersuche abgeschlossen ist",
+    "es-ES": "Espera a que termine la búsqueda de ventanas antes de aplicar",
+    "ru-RU": "Дождитесь завершения поиска окон, прежде чем применять настройки",
+    "uk-UA": "Дочекайтеся завершення пошуку вікон, перш ніж застосовувати налаштування"
+  },
+  "Waiting for audio levels": {
+    "de-DE": "Warten auf Audiopegel",
+    "es-ES": "Esperando niveles de audio",
+    "ru-RU": "Ожидание уровней звука",
+    "uk-UA": "Очікування рівнів звуку"
+  },
+  "Waiting for audio processing": {
+    "de-DE": "Warten auf Audioverarbeitung",
+    "es-ES": "Esperando procesamiento de audio",
+    "ru-RU": "Ожидание обработки звука",
+    "uk-UA": "Очікування обробки звуку"
+  },
+  "Waiting for the active document operation. It cannot be safely cancelled.": {
+    "de-DE": "Warten auf den aktiven Dokumentvorgang. Er lässt sich nicht sicher abbrechen.",
+    "es-ES": "Esperando la operación de documento activa. No se puede cancelar de forma segura.",
+    "ru-RU": "Ожидание операции с документом. Её нельзя безопасно отменить.",
+    "uk-UA": "Очікування операції з документом. Її неможливо безпечно скасувати."
+  },
+  "Width (px)": {
+    "de-DE": "Breite (px)",
+    "es-ES": "Ancho (px)",
+    "ru-RU": "Ширина (пикс.)",
+    "uk-UA": "Ширина (пікс.)"
+  },
+  "Width and height describe the full uncropped source after scaling. Position is the OBS top-left-alignment pivot; rotated bounds may start elsewhere.": {
+    "de-DE": "Breite und Höhe beschreiben die vollständige unbeschnittene Quelle nach dem Skalieren. Die Position ist der OBS-Ausrichtungspunkt links oben; gedrehte Grenzen können anders beginnen.",
+    "es-ES": "La anchura y la altura describen la fuente completa sin recortar tras el escalado. La posición es el pivote de alineación superior izquierda de OBS; los límites girados pueden comenzar en otro punto.",
+    "ru-RU": "Ширина и высота описывают весь необрезанный источник после масштабирования. Позиция — точка выравнивания OBS по левому верхнему углу; повёрнутые границы могут начинаться в другом месте.",
+    "uk-UA": "Ширина й висота описують усе необрізане джерело після масштабування. Позиція — точка вирівнювання OBS за лівим верхнім кутом; повернуті межі можуть починатися в іншому місці."
+  },
+  "Window capture is unavailable on this host": {
+    "de-DE": "Fensteraufnahme ist auf diesem System nicht verfügbar",
+    "es-ES": "La captura de ventanas no está disponible en este equipo",
+    "ru-RU": "Захват окна недоступен на этом компьютере",
+    "uk-UA": "Захоплення вікна недоступне на цьому комп’ютері"
+  },
+  "Window draft belongs to another document": {
+    "de-DE": "Die Fenstereinstellungen gehören zu einem anderen Dokument",
+    "es-ES": "La selección de ventana pertenece a otro documento",
+    "ru-RU": "Настройки окна относятся к другому документу",
+    "uk-UA": "Налаштування вікна належать іншому документу"
+  },
+  "Window picker identity exhausted": {
+    "de-DE": "Die Kennungen der Fensterauswahl sind ausgeschöpft",
+    "es-ES": "Se ha agotado el identificador del selector de ventanas",
+    "ru-RU": "Исчерпан диапазон идентификаторов выбора окна",
+    "uk-UA": "Вичерпано діапазон ідентифікаторів вибору вікна"
+  },
+  "Windows GDI captures the client area; macOS captures the complete window.": {
+    "de-DE": "Windows GDI erfasst den Clientbereich; macOS erfasst das gesamte Fenster.",
+    "es-ES": "GDI de Windows captura el área de cliente; macOS captura la ventana completa.",
+    "ru-RU": "Windows GDI захватывает клиентскую область; macOS захватывает всё окно.",
+    "uk-UA": "Windows GDI захоплює клієнтську область; macOS захоплює все вікно."
+  },
+  "Windows Graphics Capture (unavailable)": {
+    "de-DE": "Windows Graphics Capture (nicht verfügbar)",
+    "es-ES": "Windows Graphics Capture (no disponible)",
+    "ru-RU": "Windows Graphics Capture (недоступен)",
+    "uk-UA": "Windows Graphics Capture (недоступний)"
+  },
+  "Windows Graphics Capture has not been implemented.": {
+    "de-DE": "Windows Graphics Capture ist noch nicht implementiert.",
+    "es-ES": "Windows Graphics Capture aún no está implementado.",
+    "ru-RU": "Windows Graphics Capture ещё не реализован.",
+    "uk-UA": "Windows Graphics Capture ще не реалізовано."
+  },
+  "Windows Graphics Capture is a separate capture provider.": {
+    "de-DE": "Windows Graphics Capture ist ein separater Aufnahmeanbieter.",
+    "es-ES": "Windows Graphics Capture es un proveedor de captura independiente.",
+    "ru-RU": "Windows Graphics Capture — отдельный механизм захвата.",
+    "uk-UA": "Windows Graphics Capture — окремий механізм захоплення."
+  },
+  "Windows endpoint": {
+    "de-DE": "Windows-Endpunkt",
+    "es-ES": "Punto de conexión de Windows",
+    "ru-RU": "Конечная точка Windows",
+    "uk-UA": "Кінцева точка Windows"
+  },
+  "Windows endpoint ID": {
+    "de-DE": "Windows-Endpunkt-ID",
+    "es-ES": "ID del punto de conexión de Windows",
+    "ru-RU": "Идентификатор конечной точки Windows",
+    "uk-UA": "Ідентифікатор кінцевої точки Windows"
+  },
+  "Wrap text to fit the text box width.": {
+    "de-DE": "Brich den Text an der Breite des Textfelds um.",
+    "es-ES": "Ajusta las líneas de texto al ancho del cuadro.",
+    "ru-RU": "Переносить строки по ширине текстовой области.",
+    "uk-UA": "Переносити рядки за шириною текстової області."
+  },
+  "camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "la captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "захват камеры недоступен на этой платформе",
+    "uk-UA": "захоплення камери недоступне на цій платформі"
+  },
+  "macOS 14+, existing Camera permission; exact native BGRA mode; no camera audio": {
+    "de-DE": "macOS 14+, bereits erteilte Kameraberechtigung; exakter nativer BGRA-Modus; kein Kamera-Audio",
+    "es-ES": "macOS 14+, permiso de cámara ya concedido; modo nativo BGRA exacto; sin audio de cámara",
+    "ru-RU": "macOS 14+, уже выданное разрешение на камеру; точный собственный режим BGRA; без звука камеры",
+    "uk-UA": "macOS 14+, уже наданий дозвіл на камеру; точний власний режим BGRA; без звуку камери"
+  },
+  "macOS Automatic uses ScreenCaptureKit.": {
+    "de-DE": "Automatisch unter macOS verwendet ScreenCaptureKit.",
+    "es-ES": "Automático en macOS usa ScreenCaptureKit.",
+    "ru-RU": "Автоматический режим macOS использует ScreenCaptureKit.",
+    "uk-UA": "Автоматичний режим macOS використовує ScreenCaptureKit."
+  },
+  "macOS device": {
+    "de-DE": "macOS-Gerät",
+    "es-ES": "Dispositivo de macOS",
+    "ru-RU": "Устройство macOS",
+    "uk-UA": "Пристрій macOS"
+  },
+  "macOS device UID": {
+    "de-DE": "macOS-Geräte-UID",
+    "es-ES": "UID del dispositivo de macOS",
+    "ru-RU": "UID устройства macOS",
+    "uk-UA": "UID пристрою macOS"
+  },
+  "macOS requires complete-window capture and exact title matching": {
+    "de-DE": "macOS erfordert die Aufnahme des gesamten Fensters und einen exakt passenden Titel",
+    "es-ES": "macOS requiere capturar la ventana completa y que su título coincida exactamente",
+    "ru-RU": "Для macOS требуется захват всего окна и точное совпадение заголовка",
+    "uk-UA": "Для macOS потрібні захоплення всього вікна й точний збіг заголовка"
+  },
+  "macOS requires exact title and bundle identity": {
+    "de-DE": "macOS erfordert den exakten Titel und die Paketkennung der Anwendung",
+    "es-ES": "macOS requiere el título exacto y la identidad del paquete de la aplicación",
+    "ru-RU": "Для macOS требуется точное совпадение заголовка и идентификатора приложения",
+    "uk-UA": "Для macOS потрібен точний збіг заголовка та ідентифікатора програми"
+  },
+  "macOS system audio": {
+    "de-DE": "macOS-Systemaudio",
+    "es-ES": "Audio del sistema macOS",
+    "ru-RU": "Системный звук macOS",
+    "uk-UA": "Системний звук macOS"
+  },
+  "native camera format is outside the BGRA profile; no implicit conversion": {
+    "de-DE": "Natives Kameraformat liegt außerhalb des BGRA-Profils; keine implizite Konvertierung",
+    "es-ES": "el formato nativo de la cámara queda fuera del perfil BGRA; no se realiza conversión implícita",
+    "ru-RU": "собственный формат камеры не входит в профиль BGRA; неявное преобразование не выполняется",
+    "uk-UA": "власний формат камери не входить до профілю BGRA; неявне перетворення не виконується"
+  },
+  "native format or mode is outside the supported RGB camera profile": {
+    "de-DE": "Natives Format oder nativer Modus liegt außerhalb des unterstützten RGB-Kameraprofils",
+    "es-ES": "el formato o modo nativo queda fuera del perfil de cámara RGB compatible",
+    "ru-RU": "собственный формат или режим не входит в поддерживаемый профиль камеры RGB",
+    "uk-UA": "власний формат або режим не входить до підтримуваного профілю камери RGB"
+  },
+  "scene override": {
+    "de-DE": "Szenenvorgabe",
+    "es-ES": "transición específica de la escena",
+    "ru-RU": "переход сцены",
+    "uk-UA": "перехід сцени"
+  },
+  "{base} copy": {
+    "de-DE": "{base} Kopie",
+    "es-ES": "{base} copia",
+    "ru-RU": "{base} копия",
+    "uk-UA": "{base} копія"
+  },
+  "{description} To Black ({} ms)": {
+    "de-DE": "{description} zu Schwarz ({} ms)",
+    "es-ES": "{description} a negro ({} ms)",
+    "ru-RU": "{description} в чёрный ({} мс)",
+    "uk-UA": "{description} у чорний ({} мс)"
+  },
+  "{label} copy": {
+    "de-DE": "{label} – Kopie",
+    "es-ES": "Copia de {label}",
+    "ru-RU": "{label} — копия",
+    "uk-UA": "{label} — копія"
+  },
+  "{} / {} UTF-8 bytes": {
+    "de-DE": "{} / {} UTF-8-Bytes",
+    "es-ES": "{} / {} bytes UTF-8",
+    "ru-RU": "{} / {} байт UTF-8",
+    "uk-UA": "{} / {} байтів UTF-8"
+  },
+  "{} Copy": {
+    "de-DE": "{} Kopie",
+    "es-ES": "{} Copia",
+    "ru-RU": "{} Копия",
+    "uk-UA": "{} Копія"
+  },
+  "{} buffer: {:.1} / {:.1} ms": {
+    "de-DE": "{}-Puffer: {:.1} / {:.1} ms",
+    "es-ES": "Búfer {}: {:.1} / {:.1} ms",
+    "ru-RU": "Буфер {}: {:.1} / {:.1} мс",
+    "uk-UA": "Буфер {}: {:.1} / {:.1} мс"
+  },
+  "{} languages · {} keys · {} missing translations": {
+    "de-DE": "{} Sprachen · {} Schlüssel · {} fehlende Übersetzungen",
+    "es-ES": "{} idiomas · {} claves · {} traducciones pendientes",
+    "ru-RU": "{} языков · {} ключей · {} отсутствующих переводов",
+    "uk-UA": "{} мов · {} ключів · {} відсутніх перекладів"
+  }
+}

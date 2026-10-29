@@ -1,0 +1,68 @@
+{
+  "Name this shared Color Source.": {
+    "es-ES": "Asigna un nombre a esta fuente de color compartida.",
+    "ru-RU": "Задайте имя этому общему источнику цвета.",
+    "uk-UA": "Назвіть це спільне джерело кольору.",
+    "de-DE": "Gib dieser gemeinsam verwendeten Farbquelle einen Namen."
+  },
+  "Choose the shared source color and opacity.": {
+    "es-ES": "Elige el color y la opacidad de la fuente compartida.",
+    "ru-RU": "Выберите цвет и непрозрачность общего источника.",
+    "uk-UA": "Виберіть колір і непрозорість спільного джерела.",
+    "de-DE": "Wähle Farbe und Deckkraft der gemeinsam verwendeten Quelle."
+  },
+  "Intrinsic source size in whole pixels, from 1 to 8192.": {
+    "es-ES": "Tamaño propio de la fuente en píxeles enteros, de 1 a 8192.",
+    "ru-RU": "Собственный размер источника в целых пикселях, от 1 до 8192.",
+    "uk-UA": "Власний розмір джерела в цілих пікселях, від 1 до 8192.",
+    "de-DE": "Eigene Quellengröße in ganzen Pixeln von 1 bis 8192."
+  },
+  "Color and size update all references together. Existing item scale and crop are preserved.": {
+    "es-ES": "El color y el tamaño actualizan todas las referencias a la vez. Se conservan la escala y el recorte de los elementos existentes.",
+    "ru-RU": "Цвет и размер обновляются сразу для всех ссылок на источник. Масштаб и обрезка существующих элементов сохраняются.",
+    "uk-UA": "Колір і розмір оновлюються відразу для всіх посилань на джерело. Масштаб і обрізання наявних елементів зберігаються.",
+    "de-DE": "Farbe und Größe werden für alle Verwendungen gemeinsam aktualisiert. Skalierung und Zuschnitt vorhandener Elemente bleiben erhalten."
+  },
+  "Color properties belong to a closed document.": {
+    "es-ES": "Las propiedades de color pertenecen a un documento cerrado.",
+    "ru-RU": "Свойства цвета относятся к закрытому документу.",
+    "uk-UA": "Властивості кольору належать закритому документу.",
+    "de-DE": "Die Farbeigenschaften gehören zu einem geschlossenen Dokument."
+  },
+  "Color target scene is unavailable.": {
+    "es-ES": "La escena de destino de la fuente de color no está disponible.",
+    "ru-RU": "Целевая сцена источника цвета недоступна.",
+    "uk-UA": "Цільова сцена джерела кольору недоступна.",
+    "de-DE": "Die Zielszene der Farbquelle ist nicht verfügbar."
+  },
+  "Color source is unavailable.": {
+    "es-ES": "La fuente de color no está disponible.",
+    "ru-RU": "Источник цвета недоступен.",
+    "uk-UA": "Джерело кольору недоступне.",
+    "de-DE": "Die Farbquelle ist nicht verfügbar."
+  },
+  "Color source changed before its properties opened.": {
+    "es-ES": "La fuente de color cambió antes de abrir sus propiedades.",
+    "ru-RU": "Источник цвета изменился до открытия его свойств.",
+    "uk-UA": "Джерело кольору змінилося до відкриття його властивостей.",
+    "de-DE": "Die Farbquelle wurde vor dem Öffnen ihrer Eigenschaften geändert."
+  },
+  "Color width and height require whole pixels from 1 to 8192.": {
+    "es-ES": "El ancho y el alto de la fuente de color deben ser píxeles enteros de 1 a 8192.",
+    "ru-RU": "Ширина и высота источника цвета должны быть целым числом пикселей от 1 до 8192.",
+    "uk-UA": "Ширина й висота джерела кольору мають бути цілим числом пікселів від 1 до 8192.",
+    "de-DE": "Breite und Höhe der Farbquelle müssen ganze Pixelwerte von 1 bis 8192 sein."
+  },
+  "Color properties must be opened in a document before Apply.": {
+    "es-ES": "Abre las propiedades de color en un documento antes de aplicar los cambios.",
+    "ru-RU": "Перед применением откройте свойства цвета в документе.",
+    "uk-UA": "Перед застосуванням відкрийте властивості кольору в документі.",
+    "de-DE": "Öffne die Farbeigenschaften vor dem Anwenden in einem Dokument."
+  },
+  "Color properties are stale. Reopen Properties before applying.": {
+    "es-ES": "Las propiedades de color están desactualizadas. Vuelve a abrir Propiedades antes de aplicar los cambios.",
+    "ru-RU": "Свойства цвета устарели. Перед применением заново откройте окно свойств.",
+    "uk-UA": "Властивості кольору застаріли. Перед застосуванням знову відкрийте вікно властивостей.",
+    "de-DE": "Die Farbeigenschaften sind veraltet. Öffne die Eigenschaften vor dem Anwenden erneut."
+  }
+}

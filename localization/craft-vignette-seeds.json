@@ -1,0 +1,98 @@
+{
+  "Vignette": {
+    "es-ES": "Viñeta",
+    "ru-RU": "Виньетка",
+    "uk-UA": "Віньєтка",
+    "de-DE": "Vignette"
+  },
+  "Shade or brighten the source edges with EffectCraft's lens falloff, adjustable center and highlight protection.": {
+    "es-ES": "Oscurece o aclara los bordes de la fuente con la caída óptica de EffectCraft, un centro ajustable y protección de luces.",
+    "ru-RU": "Затемняет или осветляет края источника по оптической модели EffectCraft с настраиваемым центром и защитой светлых участков.",
+    "uk-UA": "Затемнює або освітлює краї джерела за оптичною моделлю EffectCraft із налаштовуваним центром і захистом світлих ділянок.",
+    "de-DE": "Dunkelt die Quellränder mit dem Lichtabfall von EffectCraft ab oder hellt sie auf, mit einstellbarem Zentrum und Lichterschutz."
+  },
+  "EffectCraft lens falloff · CPU · SDR": {
+    "es-ES": "Caída óptica de EffectCraft · CPU · SDR",
+    "ru-RU": "Оптическая модель EffectCraft · CPU · SDR",
+    "uk-UA": "Оптична модель EffectCraft · CPU · SDR",
+    "de-DE": "EffectCraft-Lichtabfall · CPU · SDR"
+  },
+  "Vignette Amount": {
+    "es-ES": "Intensidad de viñeta",
+    "ru-RU": "Сила виньетки",
+    "uk-UA": "Сила віньєтки",
+    "de-DE": "Vignettenstärke"
+  },
+  "Positive values darken the edges; negative values brighten them. Zero bypasses this effect.": {
+    "es-ES": "Los valores positivos oscurecen los bordes; los negativos los aclaran. Cero omite este efecto.",
+    "ru-RU": "Положительные значения затемняют края, отрицательные — осветляют. Ноль отключает обработку этим эффектом.",
+    "uk-UA": "Додатні значення затемнюють краї, від’ємні — освітлюють. Нуль вимикає обробку цим ефектом.",
+    "de-DE": "Positive Werte dunkeln die Ränder ab; negative hellen sie auf. Null umgeht diesen Effekt."
+  },
+  "Angle of View": {
+    "es-ES": "Ángulo de visión",
+    "ru-RU": "Угол обзора",
+    "uk-UA": "Кут огляду",
+    "de-DE": "Bildwinkel"
+  },
+  "Set the lens angle in degrees. Wider angles strengthen the edge falloff; zero bypasses this effect.": {
+    "es-ES": "Establece el ángulo del objetivo en grados. Los ángulos amplios intensifican la caída en los bordes; cero omite el efecto.",
+    "ru-RU": "Задаёт угол объектива в градусах. Чем он шире, тем сильнее затемнение по краям; ноль отключает обработку.",
+    "uk-UA": "Задає кут об’єктива в градусах. Що він ширший, то сильніший спад яскравості по краях; нуль вимикає обробку.",
+    "de-DE": "Legt den Bildwinkel in Grad fest. Größere Winkel verstärken den Lichtabfall am Rand; Null umgeht den Effekt."
+  },
+  "Vignette Center X (%)": {
+    "es-ES": "Centro X de viñeta (%)",
+    "ru-RU": "Центр виньетки X (%)",
+    "uk-UA": "Центр віньєтки X (%)",
+    "de-DE": "Vignettenzentrum X (%)"
+  },
+  "Vignette Center Y (%)": {
+    "es-ES": "Centro Y de viñeta (%)",
+    "ru-RU": "Центр виньетки Y (%)",
+    "uk-UA": "Центр віньєтки Y (%)",
+    "de-DE": "Vignettenzentrum Y (%)"
+  },
+  "Set the horizontal center as a percentage of the current input width. 50% is centered; off-frame values are allowed.": {
+    "es-ES": "Establece el centro horizontal como porcentaje del ancho de entrada actual. El 50% está centrado; se permiten valores fuera del fotograma.",
+    "ru-RU": "Горизонтальный центр в процентах от текущей ширины входного изображения. 50% — середина; допустимы значения за пределами кадра.",
+    "uk-UA": "Горизонтальний центр у відсотках від поточної ширини вхідного зображення. 50% — середина; дозволені значення поза кадром.",
+    "de-DE": "Setzt das horizontale Zentrum als Prozent der aktuellen Eingabebreite. 50% liegt mittig; Werte außerhalb des Bildes sind erlaubt."
+  },
+  "Set the vertical center as a percentage of the current input height. 50% is centered; off-frame values are allowed.": {
+    "es-ES": "Establece el centro vertical como porcentaje de la altura de entrada actual. El 50% está centrado; se permiten valores fuera del fotograma.",
+    "ru-RU": "Вертикальный центр в процентах от текущей высоты входного изображения. 50% — середина; допустимы значения за пределами кадра.",
+    "uk-UA": "Вертикальний центр у відсотках від поточної висоти вхідного зображення. 50% — середина; дозволені значення поза кадром.",
+    "de-DE": "Setzt das vertikale Zentrum als Prozent der aktuellen Eingabehöhe. 50% liegt mittig; Werte außerhalb des Bildes sind erlaubt."
+  },
+  "Pin Highlights": {
+    "es-ES": "Proteger luces",
+    "ru-RU": "Защита светлых участков",
+    "uk-UA": "Захист світлих ділянок",
+    "de-DE": "Lichter schützen"
+  },
+  "Reduce the vignette on bright linear-light areas while preserving the source alpha.": {
+    "es-ES": "Reduce la viñeta en las zonas de luz lineal brillante, conservando el alfa de la fuente.",
+    "ru-RU": "Ослабляет виньетку на ярких участках в линейном свете, сохраняя альфа-канал источника.",
+    "uk-UA": "Послаблює віньєтку на яскравих ділянках у лінійному світлі, зберігаючи альфа-канал джерела.",
+    "de-DE": "Reduziert die Vignette in hellen Bereichen im linearen Licht und erhält das Quellalpha."
+  },
+  "The center follows the image size at this filter position, after any earlier Crop/Pad or Scaling filter.": {
+    "es-ES": "El centro sigue el tamaño de imagen en esta posición de la cadena, después de los filtros anteriores Recortar/Rellenar o Escalado.",
+    "ru-RU": "Центр определяется размером изображения в этой позиции цепочки — после предшествующих фильтров обрезки или масштабирования.",
+    "uk-UA": "Центр визначається розміром зображення в цій позиції ланцюжка — після попередніх фільтрів обрізання або масштабування.",
+    "de-DE": "Das Zentrum bezieht sich auf die Bildgröße an dieser Filterposition, nach vorherigen Zuschneide- oder Skalierungsfiltern."
+  },
+  "Craft Vignette requires native schema9": {
+    "es-ES": "La viñeta de Craft requiere el esquema nativo 9.",
+    "ru-RU": "Для виньетки Craft требуется нативная схема 9.",
+    "uk-UA": "Для віньєтки Craft потрібна нативна схема 9.",
+    "de-DE": "Craft-Vignette erfordert das native Schema 9."
+  },
+  "Nine SDR point effects: Linear Color Key, Brightness/Contrast, Spill Suppression, Invert Colors, Grayscale, Posterize, Exposure, Temperature/Tint and Threshold; plus spatial CPU Vignette adapted from EffectCraft with amount, angle of view, percentage center and highlight protection. No HDR, ICC, native OBS ABI, Vignette GPU kernel or complete Craft effect suite.": {
+    "es-ES": "Nueve efectos SDR por píxel: clave de color lineal, brillo/contraste, supresión de contaminación, invertir colores, escala de grises, posterizar, exposición, temperatura/tinte y umbral; además de la viñeta espacial de CPU adaptada de EffectCraft, con intensidad, ángulo de visión, centro porcentual y protección de luces. Sin HDR, ICC, ABI nativa de OBS, núcleo GPU de viñeta ni biblioteca completa de Craft.",
+    "ru-RU": "Девять точечных SDR-эффектов: линейный цветовой ключ, яркость/контраст, подавление засветки, инверсия, оттенки серого, постеризация, экспозиция, температура/оттенок и порог; а также пространственная CPU-виньетка из EffectCraft с силой, углом обзора, центром в процентах и защитой светлых участков. HDR, ICC, нативный ABI OBS, GPU-ядро виньетки и полный набор Craft не реализованы.",
+    "uk-UA": "Дев’ять точкових SDR-ефектів: лінійний колірний ключ, яскравість/контраст, придушення засвічення, інверсія, відтінки сірого, постеризація, експозиція, температура/відтінок і поріг; а також просторова CPU-віньєтка з EffectCraft із силою, кутом огляду, центром у відсотках і захистом світлих ділянок. HDR, ICC, нативний ABI OBS, GPU-ядро віньєтки та повний набір Craft не реалізовані.",
+    "de-DE": "Neun SDR-Punkteffekte: linearer Farbschlüssel, Helligkeit/Kontrast, Spill-Unterdrückung, Farbinversion, Graustufen, Posterisierung, Belichtung, Temperatur/Farbton und Schwellenwert; dazu eine räumliche CPU-Vignette aus EffectCraft mit Stärke, Bildwinkel, Prozentzentrum und Lichterschutz. Kein HDR, ICC, natives OBS-ABI, GPU-Vignettenkernel oder vollständiger Craft-Effektsatz."
+  }
+}

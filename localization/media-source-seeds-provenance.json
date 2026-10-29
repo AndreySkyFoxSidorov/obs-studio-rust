@@ -1,0 +1,8 @@
+{
+  "policy": "Assistant-authored ES/RU/UK/DE captions and help; no translation service or native-linguist review. Preserve existing nonempty CSV cells. Describes the admitted local MP4/MOV H.264/AAC-LC profile only.",
+  "source_files": [
+    "apps/desktop/src/views/media_source.rs",
+    "apps/desktop/src/app_media.rs"
+  ],
+  "csv_publication": "Not performed by this agent."
+}

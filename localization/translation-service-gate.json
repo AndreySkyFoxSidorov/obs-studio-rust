@@ -1,0 +1,14 @@
+{
+  "status": "paused_after_http_429",
+  "observed_before_utc": "2026-10-25T20:40:56Z",
+  "retry_after": null,
+  "retry_after_recorded": false,
+  "policy": "No client, host, IP or credential rotation; no CAPTCHA/security bypass. No background network worker remains. A single cooled and globally paced retry was permitted only if primary-locale seeds still need it.",
+  "same_endpoint": "https://translate.googleapis.com/translate_a/single",
+  "planned_cooldown_until_utc": "2026-10-25T20:51:00Z",
+  "native_linguistic_review": false,
+  "retry_skipped": true,
+  "retry_skipped_reason": "Primary five completed with assistant-authored/reference-reviewed seeds; no further network after HTTP429",
+  "background_workers": 0,
+  "post_429_network_requests": 0
+}

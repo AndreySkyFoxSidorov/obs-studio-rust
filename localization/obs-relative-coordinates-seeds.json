@@ -1,0 +1,8 @@
+{
+  "Import supports represented OBS v1 absolute and v2 relative coordinates at the selected base canvas. Export uses v1 absolute coordinates. Unsupported source, filter, group and bounds features are rejected.": {
+    "es-ES": "La importación admite las coordenadas absolutas de OBS v1 y las relativas de v2 representadas en el lienzo base seleccionado. La exportación usa coordenadas absolutas v1. Se rechazan las funciones no compatibles de fuentes, filtros, grupos y límites.",
+    "ru-RU": "Импорт поддерживает представленные абсолютные координаты OBS v1 и относительные v2 для выбранного базового холста. Экспорт использует абсолютные координаты v1. Неподдерживаемые возможности источников, фильтров, групп и bounds отклоняются.",
+    "uk-UA": "Імпорт підтримує представлені абсолютні координати OBS v1 і відносні v2 для вибраного базового полотна. Експорт використовує абсолютні координати v1. Непідтримувані можливості джерел, фільтрів, груп і bounds відхиляються.",
+    "de-DE": "Der Import unterstützt die abgebildeten absoluten OBS-v1- und relativen v2-Koordinaten auf der gewählten Basisleinwand. Der Export verwendet absolute v1-Koordinaten. Nicht unterstützte Quellen-, Filter-, Gruppen- und Begrenzungsfunktionen werden abgelehnt."
+  }
+}

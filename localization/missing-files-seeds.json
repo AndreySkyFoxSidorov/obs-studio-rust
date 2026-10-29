@@ -1,0 +1,551 @@
+{
+  "Missing Files": {
+    "es-ES": "Archivos ausentes",
+    "ru-RU": "Отсутствующие файлы",
+    "uk-UA": "Відсутні файли",
+    "de-DE": "Fehlende Dateien"
+  },
+  "Choose replacements, prepare them, then commit all prepared rows with Done. Cancel keeps the project unchanged.": {
+    "es-ES": "Elige los reemplazos, prepáralos y confirma todas las filas preparadas con Listo. Cancelar conserva el proyecto.",
+    "ru-RU": "Выберите замены, подготовьте их и примените все подготовленные строки кнопкой «Готово». «Отмена» сохранит проект без изменений.",
+    "uk-UA": "Виберіть заміни, підготуйте їх і застосуйте всі підготовлені рядки кнопкою «Готово». «Скасувати» збереже проєкт без змін.",
+    "de-DE": "Ersatzdateien auswählen, vorbereiten und alle vorbereiteten Zeilen mit Fertig übernehmen. Abbrechen lässt das Projekt unverändert."
+  },
+  "Presence is checked without decoding or validating existing file contents. File names are never substituted automatically.": {
+    "es-ES": "Se comprueba la existencia sin decodificar ni validar el contenido existente. Los nombres nunca se sustituyen automáticamente.",
+    "ru-RU": "Проверяется наличие без декодирования и проверки содержимого существующих файлов. Автоматической подстановки имён нет.",
+    "uk-UA": "Перевіряється наявність без декодування та перевірки вмісту наявних файлів. Автоматичної підстановки назв немає.",
+    "de-DE": "Geprüft wird das Vorhandensein, ohne bestehende Inhalte zu dekodieren oder zu validieren. Dateinamen werden nie automatisch ersetzt."
+  },
+  "The project changed. Cancel and reopen Missing Files before applying replacements.": {
+    "es-ES": "El proyecto cambió. Cancela y vuelve a abrir Archivos ausentes antes de aplicar reemplazos.",
+    "ru-RU": "Проект изменился. Отмените действие и заново откройте окно отсутствующих файлов перед заменой.",
+    "uk-UA": "Проєкт змінився. Скасуйте дію та знову відкрийте вікно відсутніх файлів перед заміною.",
+    "de-DE": "Das Projekt wurde geändert. Vor dem Übernehmen abbrechen und Fehlende Dateien erneut öffnen."
+  },
+  "Show missing or unreadable paths only": {
+    "es-ES": "Mostrar solo rutas ausentes o ilegibles",
+    "ru-RU": "Только отсутствующие или недоступные пути",
+    "uk-UA": "Лише відсутні або недоступні шляхи",
+    "de-DE": "Nur fehlende oder nicht lesbare Pfade anzeigen"
+  },
+  "Disable to inspect and explicitly replace an existing resource too.": {
+    "es-ES": "Desactiva para examinar y sustituir también un recurso existente.",
+    "ru-RU": "Отключите, чтобы просмотреть и явно заменить также существующий ресурс.",
+    "uk-UA": "Вимкніть, щоб переглянути та явно замінити також наявний ресурс.",
+    "de-DE": "Deaktivieren, um auch vorhandene Ressourcen anzuzeigen und gezielt zu ersetzen."
+  },
+  "Source": {
+    "es-ES": "Fuente",
+    "ru-RU": "Источник",
+    "uk-UA": "Джерело",
+    "de-DE": "Quelle"
+  },
+  "Original path": {
+    "es-ES": "Ruta original",
+    "ru-RU": "Исходный путь",
+    "uk-UA": "Початковий шлях",
+    "de-DE": "Ursprünglicher Pfad"
+  },
+  "State": {
+    "es-ES": "Estado",
+    "ru-RU": "Состояние",
+    "uk-UA": "Стан",
+    "de-DE": "Status"
+  },
+  "Replacement": {
+    "es-ES": "Reemplazo",
+    "ru-RU": "Замена",
+    "uk-UA": "Заміна",
+    "de-DE": "Ersatz"
+  },
+  "Select this exact source or filter resource; equal names do not merge rows.": {
+    "es-ES": "Selecciona este recurso concreto de fuente o filtro; los nombres iguales no combinan filas.",
+    "ru-RU": "Выберите именно этот ресурс источника или фильтра; одинаковые имена не объединяют строки.",
+    "uk-UA": "Виберіть саме цей ресурс джерела чи фільтра; однакові назви не об’єднують рядки.",
+    "de-DE": "Genau diese Quellen- oder Filterressource auswählen; gleiche Namen führen Zeilen nicht zusammen."
+  },
+  "Prepared (not applied)": {
+    "es-ES": "Preparado (sin aplicar)",
+    "ru-RU": "Подготовлено (не применено)",
+    "uk-UA": "Підготовлено (не застосовано)",
+    "de-DE": "Vorbereitet (nicht übernommen)"
+  },
+  "Present (not content-checked)": {
+    "es-ES": "Existe (contenido sin comprobar)",
+    "ru-RU": "Есть (содержимое не проверено)",
+    "uk-UA": "Є (вміст не перевірено)",
+    "de-DE": "Vorhanden (Inhalt ungeprüft)"
+  },
+  "Missing": {
+    "es-ES": "Ausente",
+    "ru-RU": "Отсутствует",
+    "uk-UA": "Відсутній",
+    "de-DE": "Fehlt"
+  },
+  "Unreadable": {
+    "es-ES": "Ilegible",
+    "ru-RU": "Недоступен для чтения",
+    "uk-UA": "Недоступний для читання",
+    "de-DE": "Nicht lesbar"
+  },
+  "Wrong file or folder type": {
+    "es-ES": "Tipo de archivo o carpeta incorrecto",
+    "ru-RU": "Неверный тип файла или папки",
+    "uk-UA": "Неправильний тип файлу чи папки",
+    "de-DE": "Falscher Datei- oder Ordnertyp"
+  },
+  "Previous page": {
+    "es-ES": "Página anterior",
+    "ru-RU": "Предыдущая страница",
+    "uk-UA": "Попередня сторінка",
+    "de-DE": "Vorherige Seite"
+  },
+  "Next page": {
+    "es-ES": "Página siguiente",
+    "ru-RU": "Следующая страница",
+    "uk-UA": "Наступна сторінка",
+    "de-DE": "Nächste Seite"
+  },
+  "References: {count}; prepared: {ready}": {
+    "es-ES": "Referencias: {count}; preparadas: {ready}",
+    "ru-RU": "Ссылок: {count}; подготовлено: {ready}",
+    "uk-UA": "Посилань: {count}; підготовлено: {ready}",
+    "de-DE": "Verweise: {count}; vorbereitet: {ready}"
+  },
+  "Refresh page": {
+    "es-ES": "Actualizar página",
+    "ru-RU": "Обновить страницу",
+    "uk-UA": "Оновити сторінку",
+    "de-DE": "Seite aktualisieren"
+  },
+  "Check this page again without changing any authored resource.": {
+    "es-ES": "Vuelve a comprobar esta página sin modificar ningún recurso del proyecto.",
+    "ru-RU": "Повторно проверить эту страницу без изменения ресурсов проекта.",
+    "uk-UA": "Повторно перевірити цю сторінку без змін ресурсів проєкту.",
+    "de-DE": "Diese Seite erneut prüfen, ohne eine Projektressource zu ändern."
+  },
+  "Replacement path": {
+    "es-ES": "Ruta de reemplazo",
+    "ru-RU": "Путь замены",
+    "uk-UA": "Шлях заміни",
+    "de-DE": "Ersatzpfad"
+  },
+  "Use an absolute file path, or an absolute folder path for a slideshow directory entry.": {
+    "es-ES": "Usa una ruta absoluta de archivo o de carpeta para una entrada de directorio de la presentación.",
+    "ru-RU": "Укажите абсолютный путь файла, а для папки слайд-шоу — абсолютный путь папки.",
+    "uk-UA": "Укажіть абсолютний шлях файлу, а для теки слайд-шоу — абсолютний шлях теки.",
+    "de-DE": "Einen absoluten Dateipfad verwenden, bei einem Diashow-Ordnereintrag einen absoluten Ordnerpfad."
+  },
+  "Prepare replacement": {
+    "es-ES": "Preparar reemplazo",
+    "ru-RU": "Подготовить замену",
+    "uk-UA": "Підготувати заміну",
+    "de-DE": "Ersatz vorbereiten"
+  },
+  "Read and validate this replacement on the file worker. The project is still unchanged.": {
+    "es-ES": "Lee y valida el reemplazo en el trabajador de archivos. El proyecto aún no cambia.",
+    "ru-RU": "Прочитать и проверить замену в файловом обработчике. Проект пока не изменяется.",
+    "uk-UA": "Прочитати та перевірити заміну у файловому обробнику. Проєкт поки не змінюється.",
+    "de-DE": "Den Ersatz im Dateiarbeiter lesen und validieren. Das Projekt bleibt zunächst unverändert."
+  },
+  "Clear optional resource": {
+    "es-ES": "Vaciar recurso opcional",
+    "ru-RU": "Очистить необязательный ресурс",
+    "uk-UA": "Очистити необов’язковий ресурс",
+    "de-DE": "Optionale Ressource leeren"
+  },
+  "Stage an empty Image Mask or LUT resource. Required source paths cannot be cleared.": {
+    "es-ES": "Prepara una máscara de imagen o LUT vacía. Las rutas obligatorias no se pueden vaciar.",
+    "ru-RU": "Подготовить пустой ресурс маски изображения или LUT. Обязательные пути источников очистить нельзя.",
+    "uk-UA": "Підготувати порожній ресурс маски зображення чи LUT. Обов’язкові шляхи джерел очистити не можна.",
+    "de-DE": "Eine leere Bildmasken- oder LUT-Ressource vormerken. Erforderliche Quellenpfade können nicht geleert werden."
+  },
+  "Preparing file operation…": {
+    "es-ES": "Preparando operación de archivo…",
+    "ru-RU": "Подготовка файловой операции…",
+    "uk-UA": "Підготовка файлової операції…",
+    "de-DE": "Dateivorgang wird vorbereitet…"
+  },
+  "Done": {
+    "es-ES": "Listo",
+    "ru-RU": "Готово",
+    "uk-UA": "Готово",
+    "de-DE": "Fertig"
+  },
+  "Cancel": {
+    "es-ES": "Cancelar",
+    "ru-RU": "Отмена",
+    "uk-UA": "Скасувати",
+    "de-DE": "Abbrechen"
+  },
+  "Apply every prepared replacement as one undoable project edit. No document file is saved.": {
+    "es-ES": "Aplica todos los reemplazos preparados como una sola edición reversible. No se guarda ningún documento.",
+    "ru-RU": "Применить все подготовленные замены одним отменяемым изменением проекта. Файл документа не сохраняется.",
+    "uk-UA": "Застосувати всі підготовлені заміни однією скасовною зміною проєкту. Файл документа не зберігається.",
+    "de-DE": "Alle vorbereiteten Ersetzungen als eine rückgängig machbare Projektänderung übernehmen. Keine Dokumentdatei wird gespeichert."
+  },
+  "Discard all unpublished replacements. An admitted file operation retires on its worker.": {
+    "es-ES": "Descarta todos los reemplazos sin publicar. Una operación admitida termina en su trabajador.",
+    "ru-RU": "Отбросить все неприменённые замены. Принятая файловая операция завершится в своём обработчике.",
+    "uk-UA": "Відкинути всі незастосовані заміни. Прийнята файлова операція завершиться у своєму обробнику.",
+    "de-DE": "Alle nicht übernommenen Ersetzungen verwerfen. Ein bereits angenommener Dateivorgang endet in seinem Arbeiter."
+  },
+  "Prepared replacements exceed 64 rows or 8 MiB; finish this batch before preparing more": {
+    "es-ES": "Los reemplazos preparados superan 64 filas u 8 MiB; termina este lote antes de preparar más",
+    "ru-RU": "Подготовленные замены превышают 64 строки или 8 МиБ; завершите этот пакет перед подготовкой новых",
+    "uk-UA": "Підготовлені заміни перевищують 64 рядки або 8 МіБ; завершіть цей пакет перед підготовкою нових",
+    "de-DE": "Vorbereitete Ersetzungen überschreiten 64 Zeilen oder 8 MiB; diesen Stapel zuerst abschließen"
+  },
+  "Close the active dialog or file operation before checking missing files.": {
+    "es-ES": "Cierra el diálogo o la operación de archivo activa antes de comprobar archivos ausentes.",
+    "ru-RU": "Закройте активный диалог или файловую операцию перед поиском отсутствующих файлов.",
+    "uk-UA": "Закрийте активний діалог або файлову операцію перед пошуком відсутніх файлів.",
+    "de-DE": "Vor der Prüfung fehlender Dateien den aktiven Dialog oder Dateivorgang schließen."
+  },
+  "The project changed or a file operation is active. Cancel and reopen Missing Files.": {
+    "es-ES": "El proyecto cambió o hay una operación de archivo activa. Cancela y vuelve a abrir Archivos ausentes.",
+    "ru-RU": "Проект изменился или выполняется файловая операция. Отмените действие и заново откройте окно отсутствующих файлов.",
+    "uk-UA": "Проєкт змінився або виконується файлова операція. Скасуйте дію та знову відкрийте вікно відсутніх файлів.",
+    "de-DE": "Das Projekt wurde geändert oder ein Dateivorgang ist aktiv. Abbrechen und Fehlende Dateien erneut öffnen."
+  },
+  "The replacement draft changed; prepare it again.": {
+    "es-ES": "El borrador del reemplazo cambió; vuelve a prepararlo.",
+    "ru-RU": "Черновик замены изменился; подготовьте его заново.",
+    "uk-UA": "Чернетка заміни змінилася; підготуйте її знову.",
+    "de-DE": "Der Ersatzentwurf wurde geändert; erneut vorbereiten."
+  },
+  "Finish or cancel Missing Files first.": {
+    "es-ES": "Termina o cancela primero Archivos ausentes.",
+    "ru-RU": "Сначала завершите или отмените замену отсутствующих файлов.",
+    "uk-UA": "Спочатку завершіть або скасуйте заміну відсутніх файлів.",
+    "de-DE": "Zuerst Fehlende Dateien abschließen oder abbrechen."
+  },
+  "Inspect missing file references and stage explicit validated replacements without changing source identities.": {
+    "es-ES": "Examina referencias ausentes y prepara reemplazos validados sin cambiar la identidad de las fuentes.",
+    "ru-RU": "Проверить ссылки на отсутствующие файлы и подготовить проверенные замены без изменения ID источников.",
+    "uk-UA": "Перевірити посилання на відсутні файли та підготувати перевірені заміни без змін ID джерел.",
+    "de-DE": "Fehlende Dateiverweise prüfen und validierte Ersetzungen vorbereiten, ohne Quellenidentitäten zu ändern."
+  },
+  "Missing Files diagnostic exceeds 4096 UTF-8 bytes": {
+    "es-ES": "El diagnóstico de archivos ausentes supera 4096 bytes UTF-8",
+    "ru-RU": "Диагностика отсутствующих файлов превышает 4096 байт UTF-8",
+    "uk-UA": "Діагностика відсутніх файлів перевищує 4096 байтів UTF-8",
+    "de-DE": "Diagnose für fehlende Dateien überschreitet 4096 UTF-8-Bytes"
+  },
+  "Missing Files page cursor overflow": {
+    "es-ES": "Desbordamiento del cursor de página de archivos ausentes",
+    "ru-RU": "Переполнение указателя страницы отсутствующих файлов",
+    "uk-UA": "Переповнення вказівника сторінки відсутніх файлів",
+    "de-DE": "Überlauf des Seitencursors für fehlende Dateien"
+  },
+  "Missing Files reference count overflow": {
+    "es-ES": "Desbordamiento del número de referencias ausentes",
+    "ru-RU": "Переполнение счётчика ссылок на отсутствующие файлы",
+    "uk-UA": "Переповнення лічильника посилань на відсутні файли",
+    "de-DE": "Überlauf der Anzahl fehlender Dateiverweise"
+  },
+  "Missing Files page exceeds 2 MiB metadata; no partial page was returned": {
+    "es-ES": "La página supera 2 MiB de metadatos; no se devolvió una página parcial",
+    "ru-RU": "Метаданные страницы превышают 2 МиБ; неполная страница не возвращена",
+    "uk-UA": "Метадані сторінки перевищують 2 МіБ; неповну сторінку не повернуто",
+    "de-DE": "Seitenmetadaten überschreiten 2 MiB; keine unvollständige Seite wurde zurückgegeben"
+  },
+  "Missing Files page cursor is outside this model": {
+    "es-ES": "El cursor de página de archivos ausentes está fuera de este modelo",
+    "ru-RU": "Указатель страницы отсутствующих файлов находится вне этой модели",
+    "uk-UA": "Вказівник сторінки відсутніх файлів розташований поза цією моделлю",
+    "de-DE": "Seitencursor für fehlende Dateien liegt außerhalb dieses Modells"
+  },
+  "Choose an absolute replacement path of at most 4096 UTF-8 bytes": {
+    "es-ES": "Elige una ruta absoluta de reemplazo de hasta 4096 bytes UTF-8",
+    "ru-RU": "Укажите абсолютный путь замены длиной не более 4096 байт UTF-8",
+    "uk-UA": "Укажіть абсолютний шлях заміни завдовжки не більш як 4096 байтів UTF-8",
+    "de-DE": "Einen absoluten Ersatzpfad mit höchstens 4096 UTF-8-Bytes wählen"
+  },
+  "Missing Files source was removed": {
+    "es-ES": "Se eliminó la fuente del recurso ausente",
+    "ru-RU": "Источник отсутствующего файла удалён",
+    "uk-UA": "Джерело відсутнього файлу видалено",
+    "de-DE": "Quelle der fehlenden Datei wurde entfernt"
+  },
+  "Missing Files metadata overflow": {
+    "es-ES": "Desbordamiento de metadatos de archivos ausentes",
+    "ru-RU": "Переполнение метаданных отсутствующих файлов",
+    "uk-UA": "Переповнення метаданих відсутніх файлів",
+    "de-DE": "Überlauf der Metadaten fehlender Dateien"
+  },
+  "Missing Files preparation exceeds 4 MiB metadata": {
+    "es-ES": "La preparación supera 4 MiB de metadatos",
+    "ru-RU": "Метаданные подготовки превышают 4 МиБ",
+    "uk-UA": "Метадані підготовки перевищують 4 МіБ",
+    "de-DE": "Vorbereitung überschreitet 4 MiB Metadaten"
+  },
+  "Only an optional Image Mask or LUT resource can be cleared": {
+    "es-ES": "Solo se puede vaciar una máscara de imagen o LUT opcional",
+    "ru-RU": "Очистить можно только необязательный ресурс маски изображения или LUT",
+    "uk-UA": "Очистити можна лише необов’язковий ресурс маски зображення чи LUT",
+    "de-DE": "Nur optionale Bildmasken- oder LUT-Ressourcen können geleert werden"
+  },
+  "Replacement path is not UTF-8": {
+    "es-ES": "La ruta de reemplazo no es UTF-8",
+    "ru-RU": "Путь замены не соответствует UTF-8",
+    "uk-UA": "Шлях заміни не відповідає UTF-8",
+    "de-DE": "Ersatzpfad ist nicht UTF-8"
+  },
+  "Slideshow preparation returned no authored entry": {
+    "es-ES": "La preparación de la presentación no devolvió una entrada",
+    "ru-RU": "Подготовка слайд-шоу не вернула исходную запись",
+    "uk-UA": "Підготовка слайд-шоу не повернула початковий запис",
+    "de-DE": "Diashow-Vorbereitung lieferte keinen ursprünglichen Eintrag"
+  },
+  "Missing Files prepared row exceeds 4 MiB metadata": {
+    "es-ES": "La fila preparada supera 4 MiB de metadatos",
+    "ru-RU": "Метаданные подготовленной строки превышают 4 МиБ",
+    "uk-UA": "Метадані підготовленого рядка перевищують 4 МіБ",
+    "de-DE": "Vorbereitete Zeile überschreitet 4 MiB Metadaten"
+  },
+  "Missing Files returned an unexpected receipt.": {
+    "es-ES": "Archivos ausentes devolvió una respuesta inesperada.",
+    "ru-RU": "Окно отсутствующих файлов получило неожиданный результат.",
+    "uk-UA": "Вікно відсутніх файлів отримало неочікуваний результат.",
+    "de-DE": "Fehlende Dateien lieferte eine unerwartete Bestätigung."
+  },
+  "Missing Files has no matching request.": {
+    "es-ES": "No hay una solicitud correspondiente de archivos ausentes.",
+    "ru-RU": "Нет соответствующего запроса отсутствующих файлов.",
+    "uk-UA": "Немає відповідного запиту відсутніх файлів.",
+    "de-DE": "Keine passende Anfrage für fehlende Dateien vorhanden."
+  },
+  "Missing Files dialog identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del diálogo de archivos ausentes",
+    "ru-RU": "Исчерпаны идентификаторы окна отсутствующих файлов",
+    "uk-UA": "Вичерпано ідентифікатори вікна відсутніх файлів",
+    "de-DE": "Dialogkennungen für fehlende Dateien sind ausgeschöpft"
+  },
+  "Missing Files draft identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del borrador de archivos ausentes",
+    "ru-RU": "Исчерпаны идентификаторы черновика отсутствующих файлов",
+    "uk-UA": "Вичерпано ідентифікатори чернетки відсутніх файлів",
+    "de-DE": "Entwurfskennungen für fehlende Dateien sind ausgeschöpft"
+  },
+
+  "relink requires 1..=64 prepared resources": {
+    "es-ES": "La sustitución requiere de 1 a 64 recursos preparados",
+    "ru-RU": "Замена требует от 1 до 64 подготовленных ресурсов",
+    "uk-UA": "Заміна потребує від 1 до 64 підготовлених ресурсів",
+    "de-DE": "Ersetzung benötigt 1 bis 64 vorbereitete Ressourcen"
+  },
+  "duplicate resource relink slot": {
+    "es-ES": "Entrada de sustitución de recurso duplicada",
+    "ru-RU": "Повторный слот замены ресурса",
+    "uk-UA": "Повторний слот заміни ресурсу",
+    "de-DE": "Doppelter Ressourcen-Ersetzungsplatz"
+  },
+  "relink prepared metadata exceeds 8 MiB": {
+    "es-ES": "Los metadatos preparados superan 8 MiB",
+    "ru-RU": "Подготовленные метаданные замены превышают 8 МиБ",
+    "uk-UA": "Підготовлені метадані заміни перевищують 8 МіБ",
+    "de-DE": "Vorbereitete Ersetzungsmetadaten überschreiten 8 MiB"
+  },
+  "slideshow entry no longer exists": {
+    "es-ES": "La entrada de la presentación ya no existe",
+    "ru-RU": "Запись слайд-шоу больше не существует",
+    "uk-UA": "Запис слайд-шоу більше не існує",
+    "de-DE": "Diashow-Eintrag ist nicht mehr vorhanden"
+  },
+  "mask relink target changed": {
+    "es-ES": "Cambió el destino de sustitución de la máscara",
+    "ru-RU": "Цель замены маски изменилась",
+    "uk-UA": "Ціль заміни маски змінилася",
+    "de-DE": "Ziel der Maskenersetzung wurde geändert"
+  },
+  "LUT relink target changed": {
+    "es-ES": "Cambió el destino de sustitución de LUT",
+    "ru-RU": "Цель замены LUT изменилась",
+    "uk-UA": "Ціль заміни LUT змінилася",
+    "de-DE": "Ziel der LUT-Ersetzung wurde geändert"
+  },
+  "resource relink target kind changed": {
+    "es-ES": "Cambió el tipo de destino del recurso",
+    "ru-RU": "Тип целевого ресурса изменился",
+    "uk-UA": "Тип цільового ресурсу змінився",
+    "de-DE": "Typ des Ersetzungsziels wurde geändert"
+  },
+  "resource changed since relink preparation": {
+    "es-ES": "El recurso cambió desde que se preparó el reemplazo",
+    "ru-RU": "Ресурс изменился после подготовки замены",
+    "uk-UA": "Ресурс змінився після підготовки заміни",
+    "de-DE": "Ressource wurde seit der Ersetzungsvorbereitung geändert"
+  },
+  "relink must retain media playback settings": {
+    "es-ES": "La sustitución debe conservar la configuración de reproducción",
+    "ru-RU": "Замена должна сохранять настройки воспроизведения медиа",
+    "uk-UA": "Заміна має зберігати налаштування відтворення медіа",
+    "de-DE": "Ersetzung muss die Medienwiedergabeeinstellungen beibehalten"
+  },
+  "replacement media cannot discard authored audio controls": {
+    "es-ES": "El medio de reemplazo no puede descartar los controles de audio del proyecto",
+    "ru-RU": "Заменяющий медиафайл не может удалять настроенные параметры звука",
+    "uk-UA": "Медіафайл заміни не може видаляти налаштовані параметри звуку",
+    "de-DE": "Ersatzmedium darf konfigurierte Audiosteuerungen nicht verwerfen"
+  },
+  "replacement media cannot discard authored video filters": {
+    "es-ES": "El medio de reemplazo no puede descartar los filtros de vídeo del proyecto",
+    "ru-RU": "Заменяющий медиафайл не может удалять настроенные видеофильтры",
+    "uk-UA": "Медіафайл заміни не може видаляти налаштовані відеофільтри",
+    "de-DE": "Ersatzmedium darf konfigurierte Videofilter nicht verwerfen"
+  },
+  "slideshow relink cannot change file/folder kind": {
+    "es-ES": "La sustitución no puede cambiar entre archivo y carpeta",
+    "ru-RU": "Замена в слайд-шоу не может менять тип файла на папку и наоборот",
+    "uk-UA": "Заміна в слайд-шоу не може змінювати тип файлу на теку й навпаки",
+    "de-DE": "Diashow-Ersetzung darf Datei und Ordner nicht vertauschen"
+  },
+  "slideshow relink target changed": {
+    "es-ES": "Cambió el destino de sustitución de la presentación",
+    "ru-RU": "Цель замены в слайд-шоу изменилась",
+    "uk-UA": "Ціль заміни у слайд-шоу змінилася",
+    "de-DE": "Ziel der Diashow-Ersetzung wurde geändert"
+  },
+  "relinked slideshow exceeds 256 images": {
+    "es-ES": "La presentación sustituida supera 256 imágenes",
+    "ru-RU": "Слайд-шоу после замены превышает 256 изображений",
+    "uk-UA": "Слайд-шоу після заміни перевищує 256 зображень",
+    "de-DE": "Ersetzte Diashow überschreitet 256 Bilder"
+  },
+  "mask filter removed": {
+    "es-ES": "Se eliminó el filtro de máscara",
+    "ru-RU": "Фильтр маски удалён",
+    "uk-UA": "Фільтр маски видалено",
+    "de-DE": "Maskenfilter wurde entfernt"
+  },
+  "LUT filter removed": {
+    "es-ES": "Se eliminó el filtro LUT",
+    "ru-RU": "Фильтр LUT удалён",
+    "uk-UA": "Фільтр LUT видалено",
+    "de-DE": "LUT-Filter wurde entfernt"
+  },
+  "resource replacement kind mismatch": {
+    "es-ES": "El tipo del reemplazo no coincide con el recurso",
+    "ru-RU": "Тип замены не соответствует ресурсу",
+    "uk-UA": "Тип заміни не відповідає ресурсу",
+    "de-DE": "Typ der Ersatzressource stimmt nicht überein"
+  },
+  "resource relink belongs to another Session": {
+    "es-ES": "La sustitución pertenece a otra sesión",
+    "ru-RU": "Замена ресурса относится к другой сессии",
+    "uk-UA": "Заміна ресурсу належить до іншої сесії",
+    "de-DE": "Ressourcenersetzung gehört zu einer anderen Sitzung"
+  },
+
+  "Discard this prepared replacement": {
+    "es-ES": "Descartar este reemplazo preparado",
+    "ru-RU": "Отбросить эту подготовленную замену",
+    "uk-UA": "Відкинути цю підготовлену заміну",
+    "de-DE": "Diese vorbereitete Ersetzung verwerfen"
+  },
+  "Remove only this staged replacement; the project and other prepared rows stay unchanged.": {
+    "es-ES": "Elimina solo este reemplazo preparado; el proyecto y las demás filas no cambian.",
+    "ru-RU": "Удалить только эту подготовленную замену; проект и другие подготовленные строки не изменятся.",
+    "uk-UA": "Видалити лише цю підготовлену заміну; проєкт та інші підготовлені рядки не зміняться.",
+    "de-DE": "Nur diese vorgemerkte Ersetzung entfernen; das Projekt und andere vorbereitete Zeilen bleiben unverändert."
+  },
+  "Replacements were not applied. Review the status message, then correct or reopen the draft.": {
+    "es-ES": "No se aplicaron los reemplazos. Revisa el mensaje de estado y corrige o vuelve a abrir el borrador.",
+    "ru-RU": "Замены не применены. Прочитайте сообщение о состоянии, затем исправьте или заново откройте черновик.",
+    "uk-UA": "Заміни не застосовано. Прочитайте повідомлення про стан, потім виправте або знову відкрийте чернетку.",
+    "de-DE": "Ersetzungen wurden nicht übernommen. Statusmeldung lesen und den Entwurf korrigieren oder erneut öffnen."
+  },
+
+  "Linked files were applied, but resource refresh failed: {error}": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero falló la actualización de recursos: {error}",
+    "ru-RU": "Замены связанных файлов применены, но обновление ресурсов не удалось: {error}",
+    "uk-UA": "Заміни пов’язаних файлів застосовано, але оновлення ресурсів не вдалося: {error}",
+    "de-DE": "Verknüpfte Dateien wurden übernommen, aber die Ressourcenaktualisierung ist fehlgeschlagen: {error}"
+  },
+  "Linked files were applied, but the media reload queue exceeded its bound.": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero la cola de recarga de medios superó su límite.",
+    "ru-RU": "Замены связанных файлов применены, но очередь перезагрузки медиа превысила лимит.",
+    "uk-UA": "Заміни пов’язаних файлів застосовано, але черга перезавантаження медіа перевищила ліміт.",
+    "de-DE": "Verknüpfte Dateien wurden übernommen, aber die Medien-Neulade-Warteschlange überschritt ihre Grenze."
+  },
+  "Linked files were applied, but media reload failed: {error}": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero falló la recarga de medios: {error}",
+    "ru-RU": "Замены связанных файлов применены, но перезагрузка медиа не удалась: {error}",
+    "uk-UA": "Заміни пов’язаних файлів застосовано, але перезавантаження медіа не вдалося: {error}",
+    "de-DE": "Verknüpfte Dateien wurden übernommen, aber das Neuladen der Medien ist fehlgeschlagen: {error}"
+  },
+  "Linked files were applied; a changed source invalidated its pending media reload.": {
+    "es-ES": "Se aplicaron los archivos vinculados; un cambio en la fuente invalidó su recarga pendiente.",
+    "ru-RU": "Замены связанных файлов применены; изменение источника отменило его ожидающую перезагрузку медиа.",
+    "uk-UA": "Заміни пов’язаних файлів застосовано; зміна джерела скасувала його очікуване перезавантаження медіа.",
+    "de-DE": "Verknüpfte Dateien wurden übernommen; eine geänderte Quelle machte das ausstehende Neuladen ungültig."
+  },
+  "Linked files were applied, but the media runtime did not admit its reload before the deadline.": {
+    "es-ES": "Se aplicaron los archivos vinculados, pero el motor de medios no admitió la recarga antes del plazo.",
+    "ru-RU": "Замены связанных файлов применены, но обработчик медиа не принял перезагрузку до истечения срока ожидания.",
+    "uk-UA": "Заміни пов’язаних файлів застосовано, але обробник медіа не прийняв перезавантаження до завершення часу очікування.",
+    "de-DE": "Verknüpfte Dateien wurden übernommen, aber die Medienlaufzeit nahm das Neuladen nicht rechtzeitig an."
+  },
+  "Linked files were applied; the old current-source media reader was retired or absent. New decoding remains subject to eligibility and file errors.": {
+    "es-ES": "Se aplicaron los archivos vinculados; el lector anterior de la fuente actual se cerró o no existía. La nueva decodificación depende de la activación y de posibles errores del archivo.",
+    "ru-RU": "Замены связанных файлов применены; старый медиадекодер текущего источника освобождён или отсутствовал. Новое декодирование зависит от активности источника и ошибок файла.",
+    "uk-UA": "Заміни пов’язаних файлів застосовано; старий медіадекодер поточного джерела звільнено або він був відсутній. Нове декодування залежить від активності джерела та помилок файлу.",
+    "de-DE": "Verknüpfte Dateien wurden übernommen; der alte Medienleser der aktuellen Quelle wurde freigegeben oder war nicht vorhanden. Neues Dekodieren hängt weiterhin von der Aktivierung und Dateifehlern ab."
+  },
+  "Linked files were applied; a changed source invalidated its media reload receipt.": {
+    "es-ES": "Se aplicaron los archivos vinculados; un cambio en la fuente invalidó la confirmación de recarga.",
+    "ru-RU": "Замены связанных файлов применены; изменение источника отменило актуальность подтверждения перезагрузки медиа.",
+    "uk-UA": "Заміни пов’язаних файлів застосовано; зміна джерела скасувала чинність підтвердження перезавантаження медіа.",
+    "de-DE": "Verknüpfte Dateien wurden übernommen; eine geänderte Quelle machte die Neulade-Bestätigung ungültig."
+  },
+  "Reload requires an existing local Media Source": {
+    "es-ES": "La recarga requiere una fuente de medios local existente",
+    "ru-RU": "Для перезагрузки нужен существующий локальный медиаисточник",
+    "uk-UA": "Для перезавантаження потрібне наявне локальне медіаджерело",
+    "de-DE": "Neuladen benötigt eine vorhandene lokale Medienquelle"
+  },
+  "Media Source definition is unavailable": {
+    "es-ES": "La definición de la fuente de medios no está disponible",
+    "ru-RU": "Определение медиаисточника недоступно",
+    "uk-UA": "Визначення медіаджерела недоступне",
+    "de-DE": "Definition der Medienquelle ist nicht verfügbar"
+  },
+  "Media reload target path exceeds 16 KiB": {
+    "es-ES": "La ruta del destino de recarga supera 16 KiB",
+    "ru-RU": "Путь цели перезагрузки медиа превышает 16 КиБ",
+    "uk-UA": "Шлях цілі перезавантаження медіа перевищує 16 КіБ",
+    "de-DE": "Zielpfad für Medien-Neuladen überschreitet 16 KiB"
+  },
+  "Media reload target changed; prepare it again": {
+    "es-ES": "Cambió el destino de recarga; prepáralo de nuevo",
+    "ru-RU": "Цель перезагрузки медиа изменилась; подготовьте её заново",
+    "uk-UA": "Ціль перезавантаження медіа змінилася; підготуйте її знову",
+    "de-DE": "Ziel für Medien-Neuladen wurde geändert; erneut vorbereiten"
+  },
+  "Reload requires an exact MediaReloadTarget proof": {
+    "es-ES": "La recarga requiere una prueba exacta de MediaReloadTarget",
+    "ru-RU": "Перезагрузка требует точного подтверждения MediaReloadTarget",
+    "uk-UA": "Перезавантаження потребує точного підтвердження MediaReloadTarget",
+    "de-DE": "Neuladen benötigt einen exakten MediaReloadTarget-Nachweis"
+  },
+  "Media reload receipt belongs to a changed source definition": {
+    "es-ES": "La confirmación de recarga pertenece a una definición de fuente modificada",
+    "ru-RU": "Подтверждение перезагрузки относится к изменённому определению источника",
+    "uk-UA": "Підтвердження перезавантаження належить зміненому визначенню джерела",
+    "de-DE": "Medien-Neulade-Bestätigung gehört zu einer geänderten Quellendefinition"
+  },
+  "Media playback is not running; its next normal start opens the current file.": {
+    "es-ES": "La reproducción de medios no está activa; el siguiente inicio normal abrirá el archivo actual.",
+    "ru-RU": "Воспроизведение медиа не запущено; следующий обычный запуск откроет текущий файл.",
+    "uk-UA": "Відтворення медіа не запущено; наступний звичайний запуск відкриє поточний файл.",
+    "de-DE": "Die Medienwiedergabe läuft nicht; der nächste normale Start öffnet die aktuelle Datei."
+  },
+  "Wait for the pending media reload receipt.": {
+    "es-ES": "Espera la confirmación de la recarga de medios pendiente.",
+    "ru-RU": "Дождитесь подтверждения ожидающей перезагрузки медиа.",
+    "uk-UA": "Дочекайтеся підтвердження очікуваного перезавантаження медіа.",
+    "de-DE": "Auf die ausstehende Medien-Neulade-Bestätigung warten."
+  }
+}

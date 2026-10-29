@@ -1,0 +1,53 @@
+{
+  "RTMP / RTMPS · H.264 · AAC": {"es-ES":"RTMP / RTMPS · H.264 · AAC","ru-RU":"RTMP / RTMPS · H.264 · AAC","uk-UA":"RTMP / RTMPS · H.264 · AAC","de-DE":"RTMP / RTMPS · H.264 · AAC"},
+  "Streaming Service": {"es-ES":"Servicio de transmisión","ru-RU":"Сервис трансляции","uk-UA":"Сервіс трансляції","de-DE":"Streamingdienst"},
+  "Streaming Server": {"es-ES":"Servidor de transmisión","ru-RU":"Сервер трансляции","uk-UA":"Сервер трансляції","de-DE":"Streamingserver"},
+  "Custom RTMP / RTMPS": {"es-ES":"RTMP / RTMPS personalizado","ru-RU":"Свой RTMP / RTMPS","uk-UA":"Власний RTMP / RTMPS","de-DE":"Benutzerdefiniertes RTMP / RTMPS"},
+  "Custom server URL": {"es-ES":"URL de servidor personalizada","ru-RU":"Свой URL сервера","uk-UA":"Власний URL сервера","de-DE":"Benutzerdefinierte Server-URL"},
+  "Search services": {"es-ES":"Buscar servicios","ru-RU":"Поиск сервисов","uk-UA":"Пошук сервісів","de-DE":"Dienste suchen"},
+  "Search servers": {"es-ES":"Buscar servidores","ru-RU":"Поиск серверов","uk-UA":"Пошук серверів","de-DE":"Server suchen"},
+  "No matching services.": {"es-ES":"No hay servicios coincidentes.","ru-RU":"Подходящие сервисы не найдены.","uk-UA":"Відповідних сервісів не знайдено.","de-DE":"Keine passenden Dienste gefunden."},
+  "No matching servers.": {"es-ES":"No hay servidores coincidentes.","ru-RU":"Подходящие серверы не найдены.","uk-UA":"Відповідних серверів не знайдено.","de-DE":"Keine passenden Server gefunden."},
+  "Search historical service names, aliases or server locations. No network lookup is performed.": {
+    "es-ES":"Busque nombres históricos de servicios, alias o ubicaciones de servidores. No se realiza ninguna consulta de red.",
+    "ru-RU":"Ищите по историческим названиям сервисов, псевдонимам или расположению серверов. Сетевые запросы не выполняются.",
+    "uk-UA":"Шукайте за історичними назвами сервісів, псевдонімами або розташуванням серверів. Мережеві запити не виконуються.",
+    "de-DE":"Nach historischen Dienstnamen, Aliasnamen oder Serverstandorten suchen. Es erfolgt keine Netzwerkabfrage."
+  },
+  "Keep the current URL and edit it directly. The stream key and encoder settings are preserved.": {
+    "es-ES":"Conserve la URL actual y edítela directamente. Se mantienen la clave de transmisión y los ajustes del codificador.",
+    "ru-RU":"Оставить текущий URL и редактировать его вручную. Ключ трансляции и настройки кодера сохраняются.",
+    "uk-UA":"Залишити поточний URL і редагувати його вручну. Ключ трансляції та налаштування кодера зберігаються.",
+    "de-DE":"Die aktuelle URL beibehalten und direkt bearbeiten. Streamschlüssel und Encodereinstellungen bleiben erhalten."
+  },
+  "Choose a historical service address. Only the draft server URL changes; applying settings and starting the stream remain separate actions.": {
+    "es-ES":"Elija una dirección histórica del servicio. Solo cambia la URL del servidor del borrador; aplicar ajustes e iniciar la transmisión siguen siendo acciones independientes.",
+    "ru-RU":"Выбрать исторический адрес сервиса. Меняется только URL сервера в черновике; применение настроек и запуск трансляции остаются отдельными действиями.",
+    "uk-UA":"Вибрати історичну адресу сервісу. Змінюється лише URL сервера в чернетці; застосування налаштувань і запуск трансляції залишаються окремими діями.",
+    "de-DE":"Eine historische Dienstadresse wählen. Nur die Server-URL im Entwurf ändert sich; Einstellungen anwenden und den Stream starten bleiben getrennte Aktionen."
+  },
+  "Filter the selected service's exact server names or URLs.": {
+    "es-ES":"Filtre los nombres o las URL exactos de los servidores del servicio seleccionado.",
+    "ru-RU":"Фильтровать точные названия или URL серверов выбранного сервиса.",
+    "uk-UA":"Фільтрувати точні назви або URL серверів вибраного сервісу.",
+    "de-DE":"Die exakten Servernamen oder URLs des ausgewählten Dienstes filtern."
+  },
+  "Use this exact historical ingest URL, including its application path and query. This does not connect or change the stream key.": {
+    "es-ES":"Use esta URL histórica de entrada exacta, incluida su ruta de aplicación y consulta. No se conecta ni se cambia la clave de transmisión.",
+    "ru-RU":"Использовать точный исторический URL приёма, включая путь приложения и параметры запроса. Подключение не запускается, ключ трансляции не меняется.",
+    "uk-UA":"Використати точний історичний URL приймання, включно зі шляхом застосунку та параметрами запиту. Підключення не запускається, ключ трансляції не змінюється.",
+    "de-DE":"Diese exakte historische Ingest-URL einschließlich Anwendungspfad und Abfrage verwenden. Es wird keine Verbindung hergestellt und der Streamschlüssel bleibt unverändert."
+  },
+  "Service presets come from OBS 32.2.2. Addresses are historical; availability and account access are not checked.": {
+    "es-ES":"Los ajustes de servicios proceden de OBS 32.2.2. Las direcciones son históricas; no se comprueban la disponibilidad ni el acceso de la cuenta.",
+    "ru-RU":"Пресеты сервисов взяты из OBS 32.2.2. Адреса исторические; доступность и права учётной записи не проверяются.",
+    "uk-UA":"Пресети сервісів узято з OBS 32.2.2. Адреси історичні; доступність і права облікового запису не перевіряються.",
+    "de-DE":"Die Dienstvorlagen stammen aus OBS 32.2.2. Die Adressen sind historisch; Verfügbarkeit und Kontozugriff werden nicht geprüft."
+  },
+  "Preset selection preserves the stream key, encoder, bitrates and keyframe interval. Service recommendations, OAuth and automatic ingest discovery are not applied.": {
+    "es-ES":"La selección conserva la clave de transmisión, el codificador, las tasas de bits y el intervalo de fotogramas clave. No se aplican recomendaciones del servicio, OAuth ni descubrimiento automático de entrada.",
+    "ru-RU":"Выбор пресета сохраняет ключ трансляции, кодер, битрейты и интервал ключевых кадров. Рекомендации сервиса, OAuth и автоматическое обнаружение серверов не применяются.",
+    "uk-UA":"Вибір пресета зберігає ключ трансляції, кодер, бітрейти та інтервал ключових кадрів. Рекомендації сервісу, OAuth й автоматичне виявлення серверів не застосовуються.",
+    "de-DE":"Die Vorlagenauswahl erhält Streamschlüssel, Encoder, Bitraten und Schlüsselbildintervall. Dienstempfehlungen, OAuth und automatische Ingest-Erkennung werden nicht angewendet."
+  }
+}

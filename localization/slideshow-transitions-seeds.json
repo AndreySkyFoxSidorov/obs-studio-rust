@@ -1,0 +1,140 @@
+{
+  "Swipe": {
+    "es-ES": "Barrido",
+    "ru-RU": "Смахивание",
+    "uk-UA": "Змахування",
+    "de-DE": "Wischen"
+  },
+  "Slide": {
+    "es-ES": "Deslizamiento",
+    "ru-RU": "Сдвиг",
+    "uk-UA": "Зсув",
+    "de-DE": "Schieben"
+  },
+  "Wipe the outgoing image to the left to reveal the next image, using the stock slideshow Swipe transition.": {
+    "es-ES": "Desplace la imagen saliente hacia la izquierda para revelar la siguiente con el barrido estándar del pase de diapositivas.",
+    "ru-RU": "Смахнуть уходящее изображение влево, открывая следующее, стандартным переходом слайд-шоу Swipe.",
+    "uk-UA": "Змахнути попереднє зображення ліворуч, відкриваючи наступне, стандартним переходом слайд-шоу Swipe.",
+    "de-DE": "Das bisherige Bild nach links wegwischen und das nächste mit dem standardmäßigen Wischübergang der Diashow aufdecken."
+  },
+  "Slide both images to the left using the stock slideshow transition and easing.": {
+    "es-ES": "Deslice ambas imágenes hacia la izquierda con el movimiento y suavizado estándar del pase de diapositivas.",
+    "ru-RU": "Сдвинуть оба изображения влево со стандартным переходом слайд-шоу и плавным ускорением.",
+    "uk-UA": "Зсунути обидва зображення ліворуч зі стандартним переходом слайд-шоу та плавним прискоренням.",
+    "de-DE": "Beide Bilder mit dem Standardübergang und der Standardbeschleunigung der Diashow nach links schieben."
+  },
+  "Visible hold time. Fade, Swipe and Slide add their transition duration to the interval; subsequent transitions begin at the interval boundary.": {
+    "es-ES": "Tiempo visible de pausa. Fundido, Barrido y Deslizamiento añaden su duración al intervalo; los siguientes cambios comienzan en el límite del intervalo.",
+    "ru-RU": "Время показа. Fade, Swipe и Slide добавляют длительность перехода к интервалу; последующие переходы начинаются на границе интервала.",
+    "uk-UA": "Час показу. Fade, Swipe та Slide додають тривалість переходу до інтервалу; наступні переходи починаються на межі інтервалу.",
+    "de-DE": "Sichtbare Standzeit. Überblenden, Wischen und Schieben addieren ihre Übergangsdauer zum Intervall; weitere Übergänge beginnen an der Intervallgrenze."
+  },
+  "Transition duration from 0 to 3600000 milliseconds. Zero switches immediately; Cut retains this value for the next animated transition.": {
+    "es-ES": "Duración de 0 a 3600000 milisegundos. Cero cambia de inmediato; Corte conserva el valor para el próximo cambio animado.",
+    "ru-RU": "Длительность от 0 до 3600000 миллисекунд. Ноль переключает сразу; Cut сохраняет значение для следующего анимированного перехода.",
+    "uk-UA": "Тривалість від 0 до 3600000 мілісекунд. Нуль перемикає одразу; Cut зберігає значення для наступного анімованого переходу.",
+    "de-DE": "Übergangsdauer von 0 bis 3600000 Millisekunden. Null wechselt sofort; Schnitt behält den Wert für den nächsten animierten Übergang."
+  },
+  "Cut switches immediately. The saved transition speed is retained for Fade, Swipe or Slide.": {
+    "es-ES": "Corte cambia de inmediato. La velocidad guardada se conserva para Fundido, Barrido o Deslizamiento.",
+    "ru-RU": "Cut переключает сразу. Сохранённая скорость перехода остаётся для Fade, Swipe или Slide.",
+    "uk-UA": "Cut перемикає одразу. Збережена швидкість переходу залишається для Fade, Swipe або Slide.",
+    "de-DE": "Schnitt wechselt sofort. Die gespeicherte Übergangsdauer bleibt für Überblenden, Wischen oder Schieben erhalten."
+  },
+  "After the last interval, use the selected transition to become transparent. Cut or zero speed hides immediately.": {
+    "es-ES": "Tras el último intervalo, use el cambio elegido para quedar transparente. Corte o duración cero oculta de inmediato.",
+    "ru-RU": "После последнего интервала перейти в прозрачность выбранным переходом. Cut или нулевая длительность скрывает сразу.",
+    "uk-UA": "Після останнього інтервалу перейти в прозорість вибраним переходом. Cut або нульова тривалість приховує одразу.",
+    "de-DE": "Nach dem letzten Intervall mit dem gewählten Übergang transparent werden. Schnitt oder Dauer null blendet sofort aus."
+  },
+  "Images use centered aspect fit in the largest image canvas. Playback stops when hidden and restarts when visible. Manual controls, folder playlists and other visibility modes are not available.": {
+    "es-ES": "Las imágenes se centran manteniendo la proporción en el lienzo de la imagen más grande. La reproducción se detiene al ocultarse y se reinicia al mostrarse. No hay controles manuales, listas de carpetas ni otros modos de visibilidad.",
+    "ru-RU": "Изображения вписываются по центру с сохранением пропорций в холст самого большого изображения. При скрытии показ останавливается и при появлении начинается заново. Ручное управление, плейлисты папок и другие режимы видимости пока недоступны.",
+    "uk-UA": "Зображення вписуються по центру зі збереженням пропорцій у полотно найбільшого зображення. Після приховування показ зупиняється й після появи починається заново. Ручне керування, списки тек та інші режими видимості поки недоступні.",
+    "de-DE": "Bilder werden proportional zentriert in die größte Bildfläche eingepasst. Ausblenden stoppt die Wiedergabe; Einblenden startet sie neu. Manuelle Steuerung, Ordnerlisten und andere Sichtbarkeitsmodi sind nicht verfügbar."
+  },
+  "slideshow transition speed must be 0..=3600000ms; Cut retains the value without animating": {
+    "es-ES": "la duración del cambio debe ser de 0 a 3600000 ms; Corte conserva el valor sin animación",
+    "ru-RU": "длительность перехода слайд-шоу должна быть от 0 до 3600000 мс; Cut сохраняет значение без анимации",
+    "uk-UA": "тривалість переходу слайд-шоу має бути від 0 до 3600000 мс; Cut зберігає значення без анімації",
+    "de-DE": "die Diashow-Übergangsdauer muss zwischen 0 und 3600000 ms liegen; Schnitt behält den Wert ohne Animation"
+  },
+  "strict slideshow import requires explicit stop_restart; always_play and pause_unpause are not implemented": {
+    "es-ES": "la importación estricta requiere stop_restart explícito; always_play y pause_unpause no están implementados",
+    "ru-RU": "для строгого импорта слайд-шоу нужен явный режим stop_restart; always_play и pause_unpause не реализованы",
+    "uk-UA": "для строгого імпорту слайд-шоу потрібен явний режим stop_restart; always_play і pause_unpause не реалізовано",
+    "de-DE": "der strikte Diashow-Import erfordert ausdrücklich stop_restart; always_play und pause_unpause sind nicht implementiert"
+  },
+  "manual slideshow playback is not implemented": {
+    "es-ES": "la reproducción manual de diapositivas no está implementada",
+    "ru-RU": "ручное воспроизведение слайд-шоу не реализовано",
+    "uk-UA": "ручне відтворення слайд-шоу не реалізовано",
+    "de-DE": "manuelle Diashow-Wiedergabe ist nicht implementiert"
+  },
+  "custom/localized slideshow size cannot be represented; only empty or omitted automatic size is accepted": {
+    "es-ES": "el tamaño personalizado o localizado no se puede representar; solo se admite tamaño automático vacío u omitido",
+    "ru-RU": "пользовательский или локализованный размер слайд-шоу нельзя представить; автоматический размер должен быть пустым или отсутствовать",
+    "uk-UA": "власний або локалізований розмір слайд-шоу неможливо подати; автоматичний розмір має бути порожнім або відсутнім",
+    "de-DE": "benutzerdefinierte oder übersetzte Diashow-Größen lassen sich nicht darstellen; die automatische Größe muss leer sein oder fehlen"
+  },
+  "OBS successive random choices are not the native deterministic shuffle; random slideshow interchange is rejected": {
+    "es-ES": "las elecciones aleatorias sucesivas de OBS no equivalen al orden determinista nativo; se rechaza el intercambio aleatorio",
+    "ru-RU": "случайный выбор следующих слайдов в OBS отличается от нашего стабильного перемешивания; обмен случайным слайд-шоу отклонён",
+    "uk-UA": "випадковий вибір наступних слайдів в OBS відрізняється від нашого сталого перемішування; обмін випадковим слайд-шоу відхилено",
+    "de-DE": "die fortlaufende Zufallsauswahl von OBS entspricht nicht der nativen deterministischen Mischung; zufällige Diashows werden beim Austausch abgelehnt"
+  },
+  "slideshow transition must be cut, fade, swipe or slide": {
+    "es-ES": "el cambio debe ser cut, fade, swipe o slide",
+    "ru-RU": "переход слайд-шоу должен быть cut, fade, swipe или slide",
+    "uk-UA": "перехід слайд-шоу має бути cut, fade, swipe або slide",
+    "de-DE": "der Diashow-Übergang muss cut, fade, swipe oder slide sein"
+  },
+  "strict slideshow import requires 1..=256 explicit image files": {
+    "es-ES": "la importación estricta requiere de 1 a 256 archivos de imagen explícitos",
+    "ru-RU": "для строгого импорта слайд-шоу нужно от 1 до 256 явно указанных файлов изображений",
+    "uk-UA": "для строгого імпорту слайд-шоу потрібно від 1 до 256 явно вказаних файлів зображень",
+    "de-DE": "der strikte Diashow-Import erfordert 1 bis 256 ausdrücklich angegebene Bilddateien"
+  },
+  "slideshow file must be an exact UTF-8 path of 1..=4096 bytes without controls": {
+    "es-ES": "el archivo requiere una ruta UTF-8 exacta de 1 a 4096 bytes sin caracteres de control",
+    "ru-RU": "для файла слайд-шоу нужен точный путь UTF-8 длиной от 1 до 4096 байт без управляющих символов",
+    "uk-UA": "для файлу слайд-шоу потрібен точний шлях UTF-8 завдовжки від 1 до 4096 байтів без керівних символів",
+    "de-DE": "die Diashow-Datei benötigt einen genauen UTF-8-Pfad von 1 bis 4096 Bytes ohne Steuerzeichen"
+  },
+  "slideshow directory expansion is not implemented; use explicit image files": {
+    "es-ES": "no se admite expandir carpetas; use archivos de imagen explícitos",
+    "ru-RU": "раскрытие каталогов слайд-шоу не реализовано; укажите отдельные файлы изображений",
+    "uk-UA": "розгортання каталогів слайд-шоу не реалізовано; вкажіть окремі файли зображень",
+    "de-DE": "Diashow-Ordner werden nicht aufgelöst; einzelne Bilddateien angeben"
+  },
+  "slideshow image exceeds 32 MiB": {
+    "es-ES": "la imagen supera 32 MiB",
+    "ru-RU": "изображение слайд-шоу превышает 32 МиБ",
+    "uk-UA": "зображення слайд-шоу перевищує 32 МіБ",
+    "de-DE": "das Diashow-Bild überschreitet 32 MiB"
+  },
+  "OBS image/slideshow import exceeds the cumulative decoded-image budget of 64 MiB": {
+    "es-ES": "la importación supera el límite acumulado de 64 MiB de imágenes decodificadas",
+    "ru-RU": "импорт изображений или слайд-шоу OBS превышает общий лимит декодированных изображений 64 МиБ",
+    "uk-UA": "імпорт зображень або слайд-шоу OBS перевищує загальний ліміт декодованих зображень 64 МіБ",
+    "de-DE": "der OBS-Bild-/Diashow-Import überschreitet das Gesamtbudget von 64 MiB für dekodierte Bilder"
+  },
+  "native stable shuffle cannot be exported as OBS successive random playback": {
+    "es-ES": "el orden estable nativo no se puede exportar como reproducción aleatoria sucesiva de OBS",
+    "ru-RU": "стабильное перемешивание нельзя экспортировать как случайный выбор следующего слайда в OBS",
+    "uk-UA": "стале перемішування неможливо експортувати як випадковий вибір наступного слайда в OBS",
+    "de-DE": "die native stabile Mischung kann nicht als fortlaufende Zufallswiedergabe von OBS exportiert werden"
+  },
+  "OBS image/slideshow import exceeds 1024 image references": {
+    "es-ES": "la importación supera 1024 referencias de imagen",
+    "ru-RU": "импорт изображений или слайд-шоу OBS превышает 1024 ссылки на изображения",
+    "uk-UA": "імпорт зображень або слайд-шоу OBS перевищує 1024 посилання на зображення",
+    "de-DE": "der OBS-Bild-/Diashow-Import überschreitet 1024 Bildverweise"
+  },
+  "Static PNG/JPEG/WebP and animated GIF images; timed slide shows with Cut, Fade, Swipe and Slide, loop, stable shuffle and transition to transparency. Native linked assets and strict legacy OBS automatic stop/restart file-list interchange without random playback. Manual slideshow controls, folder expansion, custom canvas, other visibility modes and complete image-source parity are not implemented.": {
+    "es-ES": "Imágenes PNG/JPEG/WebP y GIF animadas; diapositivas temporizadas con Corte, Fundido, Barrido y Deslizamiento, bucle, orden estable y paso a transparencia. Recursos vinculados e intercambio estricto de listas OBS antiguas con reinicio automático, sin aleatoriedad. Faltan controles manuales, carpetas, lienzo propio, otros modos de visibilidad y paridad completa.",
+    "ru-RU": "Статические PNG/JPEG/WebP и анимированные GIF; слайд-шоу с Cut, Fade, Swipe и Slide, циклом, стабильным перемешиванием и переходом в прозрачность. Связанные ресурсы и строгий обмен списками файлов старого формата OBS с автоматическим перезапуском без случайного выбора. Ручное управление, папки, пользовательский холст, другие режимы видимости и полное соответствие image-source не реализованы.",
+    "uk-UA": "Статичні PNG/JPEG/WebP та анімовані GIF; слайд-шоу з Cut, Fade, Swipe та Slide, циклом, сталим перемішуванням і переходом у прозорість. Зв’язані ресурси та строгий обмін списками файлів старого формату OBS з автоматичним перезапуском без випадкового вибору. Ручне керування, теки, власне полотно, інші режими видимості та повну відповідність image-source не реалізовано.",
+    "de-DE": "Statische PNG/JPEG/WebP und animierte GIFs; zeitgesteuerte Diashows mit Schnitt, Überblenden, Wischen, Schieben, Schleife, stabiler Mischung und Übergang zur Transparenz. Verknüpfte Ressourcen und strikter Austausch älterer OBS-Dateilisten mit automatischem Neustart ohne Zufallswiedergabe. Manuelle Steuerung, Ordner, eigene Bildfläche, andere Sichtbarkeitsmodi und vollständige image-source-Parität fehlen."
+  }
+}

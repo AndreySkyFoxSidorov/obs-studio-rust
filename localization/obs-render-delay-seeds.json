@@ -1,0 +1,50 @@
+{
+  "Render Delay": {
+    "es-ES": "Retardo de renderizado",
+    "ru-RU": "Задержка рендеринга",
+    "uk-UA": "Затримка рендерингу",
+    "de-DE": "Renderverzögerung"
+  },
+  "Delay (ms)": {
+    "es-ES": "Retardo (ms)",
+    "ru-RU": "Задержка (мс)",
+    "uk-UA": "Затримка (мс)",
+    "de-DE": "Verzögerung (ms)"
+  },
+  "Delay video at this position in the filter chain using shared, bounded CPU frame history. Audio is unchanged.": {
+    "es-ES": "Retrasa el vídeo en esta posición de la cadena mediante un historial compartido y limitado en CPU. El audio no cambia.",
+    "ru-RU": "Задерживает видео в этой позиции цепочки через общую ограниченную историю кадров на CPU. Звук не меняется.",
+    "uk-UA": "Затримує відео в цій позиції ланцюжка через спільну обмежену історію кадрів на CPU. Звук не змінюється.",
+    "de-DE": "Verzögert Video an dieser Filterposition mit gemeinsamem, begrenztem CPU-Bildverlauf. Audio bleibt unverändert."
+  },
+  "Set Render Delay from 0 to 500 milliseconds. Zero bypasses the delay; audio is unchanged.": {
+    "es-ES": "Ajusta el retardo de renderizado entre0 y500 milisegundos. Cero lo omite; el audio no cambia.",
+    "ru-RU": "Задайте задержку рендеринга от0 до500 миллисекунд. Ноль отключает задержку; звук не меняется.",
+    "uk-UA": "Задайте затримку рендерингу від0 до500 мілісекунд. Нуль вимикає затримку; звук не змінюється.",
+    "de-DE": "Renderverzögerung von0 bis500 Millisekunden. Null umgeht die Verzögerung; Audio bleibt unverändert."
+  },
+  "Render Delay · CPU · SDR · shared source history": {
+    "es-ES": "Retardo de renderizado · CPU · SDR · historial compartido de la fuente",
+    "ru-RU": "Задержка рендеринга · CPU · SDR · общая история источника",
+    "uk-UA": "Затримка рендерингу · CPU · SDR · спільна історія джерела",
+    "de-DE": "Renderverzögerung · CPU · SDR · gemeinsamer Quellverlauf"
+  },
+  "The queue follows actual rendered project ticks. Repeated draws share one capture; missed ticks are not invented. Warmup is transparent.": {
+    "es-ES": "La cola sigue los ciclos realmente renderizados del proyecto. Los dibujos repetidos comparten una captura; no se inventan ciclos perdidos. El inicio es transparente.",
+    "ru-RU": "Очередь следует реально отрисованным видеотикам проекта. Повторные отрисовки используют один захват; пропущенные тики не выдумываются. Начальное заполнение прозрачно.",
+    "uk-UA": "Черга слідує реально відмальованим відеотикам проєкту. Повторні відмальовування використовують одне захоплення; пропущені тики не вигадуються. Початкове заповнення прозоре.",
+    "de-DE": "Die Warteschlange folgt tatsächlich gerenderten Projekttakten. Wiederholtes Zeichnen teilt eine Aufnahme; fehlende Takte werden nicht erfunden. Der Anlauf ist transparent."
+  },
+  "All delayed frames share the 128 MiB filter budget. Large resolution, frame rate or delay may be rejected; quality is never reduced automatically.": {
+    "es-ES": "Todos los fotogramas retrasados comparten el presupuesto de128MiB de filtros. Una resolución, frecuencia o retardo elevados pueden rechazarse; la calidad nunca se reduce automáticamente.",
+    "ru-RU": "Все задержанные кадры используют общий бюджет фильтров128МиБ. Высокое разрешение, частота или задержка могут быть отклонены; качество автоматически не снижается.",
+    "uk-UA": "Усі затримані кадри використовують спільний бюджет фільтрів128МіБ. Висока роздільність, частота або затримка можуть бути відхилені; якість автоматично не знижується.",
+    "de-DE": "Alle verzögerten Bilder teilen das128MiB-Filterbudget. Hohe Auflösung, Bildrate oder Verzögerung können abgewiesen werden; die Qualität wird niemals automatisch reduziert."
+  },
+  "Hiding, stopping, seeking or rebinding a source retires its private history. Resuming starts a fresh queue.": {
+    "es-ES": "Ocultar, detener, buscar o cambiar el enlace de una fuente retira su historial privado. Al reanudar comienza una cola nueva.",
+    "ru-RU": "Скрытие, остановка, перемотка или смена привязки источника освобождает его историю. Возобновление начинает новую очередь.",
+    "uk-UA": "Приховування, зупинка, перемотування або зміна прив’язки джерела звільняє його історію. Відновлення починає нову чергу.",
+    "de-DE": "Ausblenden, Stoppen, Suchen oder Neubinden einer Quelle verwirft ihren Verlauf. Beim Fortsetzen beginnt eine neue Warteschlange."
+  }
+}

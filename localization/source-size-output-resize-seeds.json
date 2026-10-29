@@ -1,0 +1,206 @@
+{
+  "Resize output confirmation identity exhausted. Restart SkyLive.": {
+    "es-ES": "Se agotó la identidad de confirmación. Reinicie SkyLive.",
+    "ru-RU": "Исчерпаны идентификаторы подтверждений размера. Перезапустите SkyLive.",
+    "uk-UA": "Вичерпано ідентифікатори підтверджень розміру. Перезапустіть SkyLive.",
+    "de-DE": "Die Bestätigungsidentitäten sind erschöpft. SkyLive neu starten."
+  },
+  "Use this source's current intrinsic video size for both canvas and output. Confirm before changing settings.": {
+    "es-ES": "Use el tamaño de vídeo intrínseco actual de esta fuente para lienzo y salida. Confirme antes de cambiar los ajustes.",
+    "ru-RU": "Использовать текущий собственный размер видеоисточника для холста и выхода. Изменения потребуют подтверждения.",
+    "uk-UA": "Використати поточний власний розмір відеоджерела для полотна й виходу. Зміни потребують підтвердження.",
+    "de-DE": "Die aktuelle intrinsische Videogröße dieser Quelle für Leinwand und Ausgabe verwenden. Änderungen vorher bestätigen."
+  },
+  "A source with actual video dimensions is required.": {
+    "es-ES": "Se requiere una fuente con dimensiones de vídeo reales.",
+    "ru-RU": "Нужен источник с реальными размерами видео.",
+    "uk-UA": "Потрібне джерело з реальними розмірами відео.",
+    "de-DE": "Eine Quelle mit tatsächlichen Videomaßen ist erforderlich."
+  },
+  "Select this source and wait for current video metadata.": {
+    "es-ES": "Seleccione esta fuente y espere a sus metadatos de vídeo actuales.",
+    "ru-RU": "Выберите этот источник и дождитесь актуальных метаданных видео.",
+    "uk-UA": "Виберіть це джерело та дочекайтеся актуальних метаданих відео.",
+    "de-DE": "Diese Quelle auswählen und auf aktuelle Videometadaten warten."
+  },
+  "Source input: {width} × {height}": {
+    "es-ES": "Entrada de fuente: {width} × {height}",
+    "ru-RU": "Вход источника: {width} × {height}",
+    "uk-UA": "Вхід джерела: {width} × {height}",
+    "de-DE": "Quelleneingang: {width} × {height}"
+  },
+  "After source filters: {width} × {height}": {
+    "es-ES": "Tras los filtros de fuente: {width} × {height}",
+    "ru-RU": "После фильтров источника: {width} × {height}",
+    "uk-UA": "Після фільтрів джерела: {width} × {height}",
+    "de-DE": "Nach Quellenfiltern: {width} × {height}"
+  },
+  "New canvas and output: {width} × {height}": {
+    "es-ES": "Nuevo lienzo y salida: {width} × {height}",
+    "ru-RU": "Новые холст и выход: {width} × {height}",
+    "uk-UA": "Нові полотно й вихід: {width} × {height}",
+    "de-DE": "Neue Leinwand und Ausgabe: {width} × {height}"
+  },
+  "Width is rounded up to a multiple of four; height to a multiple of two. Frame rate and scaling algorithm are preserved.": {
+    "es-ES": "El ancho se redondea hacia arriba a un múltiplo de cuatro; la altura, de dos. Se conservan la frecuencia de cuadros y el algoritmo de escalado.",
+    "ru-RU": "Ширина округляется вверх до кратного четырём, высота — двум. Частота кадров и алгоритм масштабирования сохраняются.",
+    "uk-UA": "Ширина округлюється вгору до кратного чотирьом, висота — двом. Частота кадрів і алгоритм масштабування зберігаються.",
+    "de-DE": "Die Breite wird auf ein Vielfaches von vier, die Höhe von zwei aufgerundet. Bildrate und Skalierungsalgorithmus bleiben erhalten."
+  },
+  "The selected source item will be fitted to the new canvas. Other item transforms are retained.": {
+    "es-ES": "El elemento de fuente seleccionado se ajustará al nuevo lienzo. Se conservan las transformaciones de los demás elementos.",
+    "ru-RU": "Выбранный элемент источника будет вписан в новый холст. Трансформации остальных элементов сохраняются.",
+    "uk-UA": "Вибраний елемент джерела буде вписано в нове полотно. Трансформації інших елементів зберігаються.",
+    "de-DE": "Das gewählte Quellenelement wird in die neue Leinwand eingepasst. Transformationen anderer Elemente bleiben erhalten."
+  },
+  "The selected item is locked, so its transform will be retained.": {
+    "es-ES": "El elemento seleccionado está bloqueado; se conservará su transformación.",
+    "ru-RU": "Выбранный элемент заблокирован, поэтому его трансформация сохранится.",
+    "uk-UA": "Вибраний елемент заблокований, тому його трансформація збережеться.",
+    "de-DE": "Das gewählte Element ist gesperrt; seine Transformation bleibt erhalten."
+  },
+  "Finish the current dialog or file operation before resizing output.": {
+    "es-ES": "Finalice el diálogo u operación de archivo actual antes de cambiar el tamaño de salida.",
+    "ru-RU": "Завершите текущий диалог или файловую операцию перед изменением размера выхода.",
+    "uk-UA": "Завершіть поточний діалог або файлову операцію перед зміною розміру виходу.",
+    "de-DE": "Vor der Ausgabegrößenänderung den aktuellen Dialog oder Dateivorgang beenden."
+  },
+  "Stop recording, streaming, Replay Buffer, virtual camera and NDI outputs before resizing output.": {
+    "es-ES": "Detenga grabación, emisión, búfer de repetición, cámara virtual y salidas NDI antes de cambiar el tamaño.",
+    "ru-RU": "Перед изменением размера остановите запись, стриминг, Replay Buffer, виртуальную камеру и выходы NDI.",
+    "uk-UA": "Перед зміною розміру зупиніть запис, стримінг, Replay Buffer, віртуальну камеру та виходи NDI.",
+    "de-DE": "Vor der Größenänderung Aufnahme, Streaming, Replay-Puffer, virtuelle Kamera und NDI-Ausgaben stoppen."
+  },
+  "Stop recording, streaming, Replay Buffer and NDI outputs before resizing output.": {
+    "es-ES": "Detenga grabación, emisión, búfer de repetición y salidas NDI antes de cambiar el tamaño.",
+    "ru-RU": "Перед изменением размера остановите запись, стриминг, Replay Buffer и выходы NDI.",
+    "uk-UA": "Перед зміною розміру зупиніть запис, стримінг, Replay Buffer та виходи NDI.",
+    "de-DE": "Vor der Größenänderung Aufnahme, Streaming, Replay-Puffer und NDI-Ausgaben stoppen."
+  },
+  "The source selection changed. Reopen Resize output.": {
+    "es-ES": "La selección de fuente cambió. Vuelva a abrir Cambiar tamaño de salida.",
+    "ru-RU": "Выбор источника изменился. Заново откройте изменение размера выхода.",
+    "uk-UA": "Вибір джерела змінився. Знову відкрийте зміну розміру виходу.",
+    "de-DE": "Die Quellenauswahl wurde geändert. Ausgabegröße erneut öffnen."
+  },
+  "Resize output confirmation is obsolete. Cancel and reopen it.": {
+    "es-ES": "La confirmación de tamaño está obsoleta. Cancele y vuelva a abrirla.",
+    "ru-RU": "Подтверждение размера выхода устарело. Отмените и откройте его заново.",
+    "uk-UA": "Підтвердження розміру виходу застаріло. Скасуйте та відкрийте його знову.",
+    "de-DE": "Die Bestätigung der Ausgabegröße ist veraltet. Abbrechen und erneut öffnen."
+  },
+  "Canvas and output were resized to the selected source.": {
+    "es-ES": "El lienzo y la salida se ajustaron al tamaño de la fuente seleccionada.",
+    "ru-RU": "Размеры холста и выхода установлены по выбранному источнику.",
+    "uk-UA": "Розміри полотна й виходу встановлено за вибраним джерелом.",
+    "de-DE": "Leinwand und Ausgabe wurden auf die gewählte Quellengröße eingestellt."
+  },
+  "Declared source dimensions do not match the current source frame.": {
+    "es-ES": "Las dimensiones declaradas no coinciden con el cuadro actual de la fuente.",
+    "ru-RU": "Указанные размеры не совпадают с текущим кадром источника.",
+    "uk-UA": "Зазначені розміри не збігаються з поточним кадром джерела.",
+    "de-DE": "Die angegebenen Quellmaße stimmen nicht mit dem aktuellen Quellenbild überein."
+  },
+  "Resize canvas and output, then fit the selected unlocked item.": {
+    "es-ES": "Cambie el tamaño del lienzo y la salida y ajuste el elemento seleccionado no bloqueado.",
+    "ru-RU": "Изменить размер холста и выхода, затем вписать выбранный незаблокированный элемент.",
+    "uk-UA": "Змінити розмір полотна й виходу, потім вписати вибраний незаблокований елемент.",
+    "de-DE": "Leinwand und Ausgabe ändern und das gewählte ungesperrte Element einpassen."
+  },
+  "Resize output is unavailable. Resolve the shown reason or cancel.": {
+    "es-ES": "No se puede cambiar el tamaño. Resuelva la causa indicada o cancele.",
+    "ru-RU": "Изменение размера выхода недоступно. Устраните указанную причину или отмените действие.",
+    "uk-UA": "Зміна розміру виходу недоступна. Усуньте зазначену причину або скасуйте дію.",
+    "de-DE": "Die Ausgabegrößenänderung ist nicht verfügbar. Angezeigte Ursache beheben oder abbrechen."
+  },
+  "Selected source has no video dimensions.": {
+    "es-ES": "La fuente seleccionada no tiene dimensiones de vídeo.",
+    "ru-RU": "У выбранного источника нет размеров видео.",
+    "uk-UA": "Вибране джерело не має розмірів відео.",
+    "de-DE": "Die gewählte Quelle hat keine Videomaße."
+  },
+  "Source dimensions exceed the admitted video source limits.": {
+    "es-ES": "Las dimensiones de fuente superan los límites de vídeo admitidos.",
+    "ru-RU": "Размеры источника превышают допустимые ограничения видео.",
+    "uk-UA": "Розміри джерела перевищують допустимі обмеження відео.",
+    "de-DE": "Die Quellmaße überschreiten die zugelassenen Videogrenzen."
+  },
+  "Source size metadata no longer matches its intrinsic definition.": {
+    "es-ES": "Los metadatos de tamaño ya no coinciden con la definición intrínseca de la fuente.",
+    "ru-RU": "Метаданные размера больше не соответствуют собственному определению источника.",
+    "uk-UA": "Метадані розміру більше не відповідають власному визначенню джерела.",
+    "de-DE": "Die Größenmetadaten stimmen nicht mehr mit der intrinsischen Quellendefinition überein."
+  },
+  "Resize output requires a source of at least 32 by 32 pixels.": {
+    "es-ES": "Cambiar el tamaño de salida requiere una fuente de al menos 32 por 32 píxeles.",
+    "ru-RU": "Для изменения размера выхода нужен источник размером не менее 32 на 32 пикселя.",
+    "uk-UA": "Для зміни розміру виходу потрібне джерело розміром не менше 32 на 32 пікселі.",
+    "de-DE": "Die Ausgabegrößenänderung benötigt eine Quelle mit mindestens 32 mal 32 Pixeln."
+  },
+  "Source width rounding overflow.": {
+    "es-ES": "Desbordamiento al redondear el ancho de fuente.",
+    "ru-RU": "Переполнение при округлении ширины источника.",
+    "uk-UA": "Переповнення під час округлення ширини джерела.",
+    "de-DE": "Überlauf beim Runden der Quellenbreite."
+  },
+  "Source height rounding overflow.": {
+    "es-ES": "Desbordamiento al redondear la altura de fuente.",
+    "ru-RU": "Переполнение при округлении высоты источника.",
+    "uk-UA": "Переповнення під час округлення висоти джерела.",
+    "de-DE": "Überlauf beim Runden der Quellenhöhe."
+  },
+  "The selected source item no longer exists.": {
+    "es-ES": "El elemento de fuente seleccionado ya no existe.",
+    "ru-RU": "Выбранный элемент источника больше не существует.",
+    "uk-UA": "Вибраний елемент джерела більше не існує.",
+    "de-DE": "Das gewählte Quellenelement existiert nicht mehr."
+  },
+  "The selected source no longer exists.": {
+    "es-ES": "La fuente seleccionada ya no existe.",
+    "ru-RU": "Выбранный источник больше не существует.",
+    "uk-UA": "Вибране джерело більше не існує.",
+    "de-DE": "Die gewählte Quelle existiert nicht mehr."
+  },
+  "Source intrinsic dimensions could not be resolved.": {
+    "es-ES": "No se pudieron determinar las dimensiones intrínsecas de la fuente.",
+    "ru-RU": "Не удалось определить собственные размеры источника.",
+    "uk-UA": "Не вдалося визначити власні розміри джерела.",
+    "de-DE": "Die intrinsischen Quellmaße konnten nicht ermittelt werden."
+  },
+  "Source capture belongs to another collection.": {
+    "es-ES": "La captura de fuente pertenece a otra colección.",
+    "ru-RU": "Захват источника относится к другой коллекции.",
+    "uk-UA": "Захоплення джерела належить іншій колекції.",
+    "de-DE": "Die Quellenaufnahme gehört zu einer anderen Sammlung."
+  },
+  "The selected source has a current capture error; resize output is unavailable.": {
+    "es-ES": "La fuente tiene un error de captura actual; no se puede cambiar el tamaño de salida.",
+    "ru-RU": "У выбранного источника есть ошибка захвата; изменение размера выхода недоступно.",
+    "uk-UA": "Вибране джерело має помилку захоплення; зміна розміру виходу недоступна.",
+    "de-DE": "Die gewählte Quelle hat einen aktuellen Aufnahmefehler; die Ausgabegröße ist nicht verfügbar."
+  },
+  "Wait for a real frame from the selected source before resizing output.": {
+    "es-ES": "Espere un cuadro real de la fuente seleccionada antes de cambiar el tamaño de salida.",
+    "ru-RU": "Перед изменением размера выхода дождитесь реального кадра выбранного источника.",
+    "uk-UA": "Перед зміною розміру виходу дочекайтеся реального кадру вибраного джерела.",
+    "de-DE": "Vor der Ausgabegrößenänderung auf ein echtes Bild der gewählten Quelle warten."
+  },
+  "The selected source size, filters or rounded resolution exceed the supported output profile.": {
+    "es-ES": "El tamaño, filtros o resolución redondeada superan el perfil de salida admitido.",
+    "ru-RU": "Размер источника, фильтры или округлённое разрешение выходят за пределы поддерживаемого профиля.",
+    "uk-UA": "Розмір джерела, фільтри або округлена роздільність виходять за межі підтримуваного профілю.",
+    "de-DE": "Quellgröße, Filter oder gerundete Auflösung überschreiten das unterstützte Ausgabeprofil."
+  },
+  "The source, profile or collection changed. Reopen Resize output.": {
+    "es-ES": "La fuente, perfil o colección cambió. Vuelva a abrir Cambiar tamaño de salida.",
+    "ru-RU": "Источник, профиль или коллекция изменились. Заново откройте изменение размера выхода.",
+    "uk-UA": "Джерело, профіль або колекція змінилися. Знову відкрийте зміну розміру виходу.",
+    "de-DE": "Quelle, Profil oder Sammlung wurden geändert. Ausgabegröße erneut öffnen."
+  },
+  "Source frame dimensions or capture identity changed. Reopen Resize output.": {
+    "es-ES": "Las dimensiones del cuadro o identidad de captura cambiaron. Vuelva a abrir Cambiar tamaño de salida.",
+    "ru-RU": "Размеры кадра или идентичность захвата изменились. Заново откройте изменение размера выхода.",
+    "uk-UA": "Розміри кадру або ідентичність захоплення змінилися. Знову відкрийте зміну розміру виходу.",
+    "de-DE": "Bildmaße oder Aufnahmeidentität wurden geändert. Ausgabegröße erneut öffnen."
+  }
+}

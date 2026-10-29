@@ -1,0 +1,116 @@
+{
+  "Color Key": {
+    "es-ES": "Clave de color",
+    "ru-RU": "Цветовой ключ",
+    "uk-UA": "Колірний ключ",
+    "de-DE": "Farbschlüssel"
+  },
+  "Chroma Key": {
+    "es-ES": "Clave de croma",
+    "ru-RU": "Хромакей",
+    "uk-UA": "Хромакей",
+    "de-DE": "Chroma-Key"
+  },
+  "Key Color Type": {
+    "es-ES": "Tipo de color clave",
+    "ru-RU": "Тип ключевого цвета",
+    "uk-UA": "Тип ключового кольору",
+    "de-DE": "Schlüsselfarbtyp"
+  },
+  "Similarity": {
+    "es-ES": "Similitud",
+    "ru-RU": "Сходство",
+    "uk-UA": "Подібність",
+    "de-DE": "Ähnlichkeit"
+  },
+  "Smoothness": {
+    "es-ES": "Suavizado",
+    "ru-RU": "Сглаживание",
+    "uk-UA": "Згладжування",
+    "de-DE": "Glättung"
+  },
+  "Spill Reduction": {
+    "es-ES": "Reducción de contaminación de color",
+    "ru-RU": "Подавление цветового ореола",
+    "uk-UA": "Придушення колірного ореолу",
+    "de-DE": "Farbsäumen reduzieren"
+  },
+  "Custom": {
+    "es-ES": "Personalizado",
+    "ru-RU": "Пользовательский",
+    "uk-UA": "Власний",
+    "de-DE": "Benutzerdefiniert"
+  },
+  "Magenta": {
+    "es-ES": "Magenta",
+    "ru-RU": "Пурпурный",
+    "uk-UA": "Пурпуровий",
+    "de-DE": "Magenta"
+  },
+  "Craft effects are disabled. Built-in OBS video filters remain available.": {
+    "es-ES": "Los efectos Craft están desactivados. Los filtros de vídeo integrados de OBS siguen disponibles.",
+    "ru-RU": "Эффекты Craft отключены. Встроенные видеофильтры OBS остаются доступны.",
+    "uk-UA": "Ефекти Craft вимкнено. Вбудовані відеофільтри OBS залишаються доступними.",
+    "de-DE": "Craft-Effekte sind deaktiviert. Integrierte OBS-Videofilter bleiben verfügbar."
+  },
+  "Remove a background using OBS Color Key v2 RGB distance and SDR color controls.": {
+    "es-ES": "Elimina un fondo mediante la distancia RGB y los controles de color SDR de Color Key v2 de OBS.",
+    "ru-RU": "Удаление фона по расстоянию RGB с настройками цвета SDR в Color Key v2 OBS.",
+    "uk-UA": "Видалення фону за відстанню RGB з налаштуваннями кольору SDR у Color Key v2 OBS.",
+    "de-DE": "Entfernt einen Hintergrund mit RGB-Abstand und SDR-Farbreglern von OBS Color Key v2."
+  },
+  "Remove a background using OBS Chroma Key v2 spatial sampling and spill reduction.": {
+    "es-ES": "Elimina un fondo mediante el muestreo espacial y la reducción de contaminación de color de Chroma Key v2 de OBS.",
+    "ru-RU": "Удаление фона с пространственной выборкой и подавлением цветового ореола в Chroma Key v2 OBS.",
+    "uk-UA": "Видалення фону з просторовою вибіркою та придушенням колірного ореолу в Chroma Key v2 OBS.",
+    "de-DE": "Entfernt einen Hintergrund mit räumlicher Abtastung und Farbsäumenkorrektur von OBS Chroma Key v2."
+  },
+  "Choose a preset background color or use the retained custom color.": {
+    "es-ES": "Elige un color de fondo predefinido o utiliza el color personalizado guardado.",
+    "ru-RU": "Выберите готовый цвет фона или сохранённый пользовательский цвет.",
+    "uk-UA": "Виберіть готовий колір фону або збережений власний колір.",
+    "de-DE": "Wählt eine voreingestellte Hintergrundfarbe oder die gespeicherte eigene Farbe."
+  },
+  "Choose the custom key color. Presets preserve this value for later use.": {
+    "es-ES": "Elige el color clave personalizado. Los ajustes predefinidos conservan este valor para usarlo más tarde.",
+    "ru-RU": "Выберите пользовательский ключевой цвет. Готовые варианты сохраняют это значение для дальнейшего использования.",
+    "uk-UA": "Виберіть власний ключовий колір. Готові варіанти зберігають це значення для подальшого використання.",
+    "de-DE": "Wählt die eigene Schlüsselfarbe. Voreinstellungen bewahren diesen Wert zur späteren Verwendung."
+  },
+  "OBS keyers apply to SDR video. Chroma Key samples one source-pixel neighborhood; large or repeated stages may exceed the work budget.": {
+    "es-ES": "Los filtros de clave de OBS se aplican al vídeo SDR. Chroma Key muestrea un entorno de un píxel de la fuente; las etapas grandes o repetidas pueden superar el presupuesto de trabajo.",
+    "ru-RU": "Ключевые фильтры OBS применяются к видео SDR. Chroma Key использует окрестность одного пикселя источника; большие или повторные этапы могут превысить бюджет вычислений.",
+    "uk-UA": "Ключові фільтри OBS застосовуються до відео SDR. Chroma Key використовує окіл одного пікселя джерела; великі або повторні етапи можуть перевищити бюджет обчислень.",
+    "de-DE": "OBS-Keyer gelten für SDR-Video. Chroma Key tastet eine Umgebung von einem Quellpixel ab; große oder wiederholte Stufen können das Arbeitsbudget überschreiten."
+  },
+  "Set the OBS key similarity from 1 to 1000.": {
+    "es-ES": "Define la similitud de la clave de OBS entre 1 y 1000.",
+    "ru-RU": "Задайте сходство ключа OBS от 1 до 1000.",
+    "uk-UA": "Задайте подібність ключа OBS від 1 до 1000.",
+    "de-DE": "Legt die OBS-Schlüsselähnlichkeit von 1 bis 1000 fest."
+  },
+  "Soften the OBS key transition from 1 to 1000.": {
+    "es-ES": "Suaviza la transición de la clave de OBS entre 1 y 1000.",
+    "ru-RU": "Задайте сглаживание перехода ключа OBS от 1 до 1000.",
+    "uk-UA": "Задайте згладжування переходу ключа OBS від 1 до 1000.",
+    "de-DE": "Glättet den OBS-Schlüsselübergang von 1 bis 1000."
+  },
+  "Reduce background chroma spill using the OBS mask.": {
+    "es-ES": "Reduce la contaminación de croma del fondo con la máscara de OBS.",
+    "ru-RU": "Подавление цветового ореола фона с помощью маски OBS.",
+    "uk-UA": "Придушення колірного ореолу фону за допомогою маски OBS.",
+    "de-DE": "Reduziert Hintergrundfarbsäume mit der OBS-Maske."
+  },
+  "The selected scene no longer exists.": {
+    "es-ES": "La escena seleccionada ya no existe.",
+    "ru-RU": "Выбранная сцена больше не существует.",
+    "uk-UA": "Вибрана сцена більше не існує.",
+    "de-DE": "Die ausgewählte Szene ist nicht mehr vorhanden."
+  },
+  "OBS Color Correction v2, Color Key v2 and Chroma Key v2 (SDR), Gain and Invert Polarity. Remaining standard filters, HDR and legacy v1 effects are not implemented.": {
+    "es-ES": "Color Correction v2, Color Key v2 y Chroma Key v2 de OBS (SDR), Ganancia e Invertir polaridad. Los demás filtros estándar, HDR y los efectos heredados v1 no están implementados.",
+    "ru-RU": "Color Correction v2, Color Key v2 и Chroma Key v2 OBS (SDR), усиление и инверсия полярности. Остальные стандартные фильтры, HDR и устаревшие эффекты v1 не реализованы.",
+    "uk-UA": "Color Correction v2, Color Key v2 і Chroma Key v2 OBS (SDR), підсилення та інверсія полярності. Решту стандартних фільтрів, HDR і застарілі ефекти v1 не реалізовано.",
+    "de-DE": "OBS Color Correction v2, Color Key v2 und Chroma Key v2 (SDR), Verstärkung und Polarität umkehren. Übrige Standardfilter, HDR und ältere v1-Effekte sind nicht implementiert."
+  }
+}

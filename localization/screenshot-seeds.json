@@ -1,0 +1,134 @@
+{
+  "PNG image": {
+    "es-ES": "Imagen PNG",
+    "ru-RU": "Изображение PNG",
+    "uk-UA": "Зображення PNG",
+    "de-DE": "PNG-Bild"
+  },
+  "Choose a PNG destination, then save a full-size rendered frame with its current filters. Existing files are preserved.": {
+    "es-ES": "Elige un destino PNG para guardar un fotograma a tamaño completo con sus filtros actuales. Los archivos existentes se conservan.",
+    "ru-RU": "Выберите путь PNG для сохранения полноразмерного кадра с текущими фильтрами. Существующие файлы сохраняются.",
+    "uk-UA": "Виберіть шлях PNG для збереження повнорозмірного кадру з поточними фільтрами. Наявні файли зберігаються.",
+    "de-DE": "PNG-Ziel wählen und ein Bild in voller Größe mit den aktuellen Filtern speichern. Vorhandene Dateien bleiben erhalten."
+  },
+  "A screenshot requires an available video source and the application window.": {
+    "es-ES": "La captura requiere una fuente de vídeo disponible y la ventana de la aplicación.",
+    "ru-RU": "Для снимка нужен доступный видеоисточник и окно приложения.",
+    "uk-UA": "Для знімка потрібні доступне відеоджерело та вікно застосунку.",
+    "de-DE": "Ein Screenshot benötigt eine verfügbare Videoquelle und das Anwendungsfenster."
+  },
+  "Right-click to save a full-size PNG screenshot of this view.": {
+    "es-ES": "Haz clic derecho para guardar una captura PNG de esta vista a tamaño completo.",
+    "ru-RU": "Щёлкните правой кнопкой, чтобы сохранить полноразмерный снимок этой области в PNG.",
+    "uk-UA": "Клацніть правою кнопкою, щоб зберегти повнорозмірний знімок цієї області у PNG.",
+    "de-DE": "Rechtsklicken, um diese Ansicht als PNG in voller Größe zu speichern."
+  },
+  "Finish the active operation before saving a screenshot.": {
+    "es-ES": "Finaliza la operación activa antes de guardar una captura.",
+    "ru-RU": "Дождитесь завершения текущей операции перед сохранением снимка.",
+    "uk-UA": "Дочекайтеся завершення поточної операції перед збереженням знімка.",
+    "de-DE": "Vor dem Speichern des Screenshots den laufenden Vorgang abschließen."
+  },
+  "Screenshot identity exhausted.": {
+    "es-ES": "Se agotaron los identificadores de captura.",
+    "ru-RU": "Закончились идентификаторы снимков.",
+    "uk-UA": "Вичерпано ідентифікатори знімків.",
+    "de-DE": "Keine weiteren Screenshot-Kennungen verfügbar."
+  },
+  "The screenshot target changed. Select it again.": {
+    "es-ES": "El destino de la captura cambió. Selecciónalo de nuevo.",
+    "ru-RU": "Цель снимка изменилась. Выберите её заново.",
+    "uk-UA": "Ціль знімка змінилася. Виберіть її знову.",
+    "de-DE": "Das Screenshot-Ziel hat sich geändert. Erneut auswählen."
+  },
+  "The screenshot chooser requires an application window.": {
+    "es-ES": "El selector de capturas requiere una ventana de la aplicación.",
+    "ru-RU": "Для выбора файла снимка требуется окно приложения.",
+    "uk-UA": "Для вибору файлу знімка потрібне вікно застосунку.",
+    "de-DE": "Die Screenshot-Dateiauswahl benötigt ein Anwendungsfenster."
+  },
+  "Screenshot receipt has no matching request.": {
+    "es-ES": "La respuesta de captura no corresponde a ninguna solicitud.",
+    "ru-RU": "Результат сохранения снимка не соответствует запросу.",
+    "uk-UA": "Результат збереження знімка не відповідає запиту.",
+    "de-DE": "Die Screenshot-Rückmeldung passt zu keinem Auftrag."
+  },
+  "Screenshot saved to {path}": {
+    "es-ES": "Captura guardada en {path}",
+    "ru-RU": "Снимок сохранён: {path}",
+    "uk-UA": "Знімок збережено: {path}",
+    "de-DE": "Screenshot gespeichert unter {path}"
+  },
+  "Screenshot path must be valid UTF-8.": {
+    "es-ES": "La ruta de captura debe ser UTF-8 válido.",
+    "ru-RU": "Путь снимка должен быть корректной строкой UTF-8.",
+    "uk-UA": "Шлях знімка має бути коректним рядком UTF-8.",
+    "de-DE": "Der Screenshot-Pfad muss gültiges UTF-8 sein."
+  },
+  "Choose an absolute PNG path, at most4096 bytes and without control characters.": {
+    "es-ES": "Elige una ruta PNG absoluta de hasta4096 bytes sin caracteres de control.",
+    "ru-RU": "Выберите абсолютный путь PNG длиной до4096 байт без управляющих символов.",
+    "uk-UA": "Виберіть абсолютний шлях PNG довжиною до4096 байтів без керувальних символів.",
+    "de-DE": "Einen absoluten PNG-Pfad mit höchstens4096 Bytes ohne Steuerzeichen wählen."
+  },
+  "Another screenshot is still rendering or publishing.": {
+    "es-ES": "Otra captura sigue procesándose o guardándose.",
+    "ru-RU": "Другой снимок ещё обрабатывается или сохраняется.",
+    "uk-UA": "Інший знімок ще обробляється або зберігається.",
+    "de-DE": "Ein anderer Screenshot wird noch gerendert oder gespeichert."
+  },
+  "Screenshot inputs belong to another document, revision or time.": {
+    "es-ES": "Los datos de captura pertenecen a otro documento, revisión o instante.",
+    "ru-RU": "Данные снимка относятся к другому документу, версии или моменту времени.",
+    "uk-UA": "Дані знімка належать іншому документу, версії або моменту часу.",
+    "de-DE": "Die Screenshot-Daten gehören zu einem anderen Dokument, Stand oder Zeitpunkt."
+  },
+  "Screenshot source no longer exists.": {
+    "es-ES": "La fuente de captura ya no existe.",
+    "ru-RU": "Источник снимка больше не существует.",
+    "uk-UA": "Джерело знімка більше не існує.",
+    "de-DE": "Die Screenshot-Quelle ist nicht mehr vorhanden."
+  },
+  "Screenshot exceeds the40MiB SDR render profile.": {
+    "es-ES": "La captura supera el perfil SDR de40MiB.",
+    "ru-RU": "Снимок превышает лимит SDR-кадра40МиБ.",
+    "uk-UA": "Знімок перевищує ліміт SDR-кадру40МіБ.",
+    "de-DE": "Der Screenshot überschreitet das SDR-Profil von40MiB."
+  },
+  "Screenshot has no parent directory.": {
+    "es-ES": "La captura no tiene directorio de destino.",
+    "ru-RU": "У снимка отсутствует каталог назначения.",
+    "uk-UA": "У знімка немає каталогу призначення.",
+    "de-DE": "Für den Screenshot fehlt das Zielverzeichnis."
+  },
+  "Screenshot temporary-directory collision limit.": {
+    "es-ES": "Se alcanzó el límite de colisiones del directorio temporal de capturas.",
+    "ru-RU": "Достигнут лимит совпадений временных каталогов снимков.",
+    "uk-UA": "Досягнуто ліміту збігів тимчасових каталогів знімків.",
+    "de-DE": "Zu viele Namenskollisionen für das temporäre Screenshot-Verzeichnis."
+  },
+  "Screenshot worker failed.": {
+    "es-ES": "Falló el proceso de captura.",
+    "ru-RU": "Ошибка фонового обработчика снимков.",
+    "uk-UA": "Помилка фонового обробника знімків.",
+    "de-DE": "Der Screenshot-Hintergrundauftrag ist fehlgeschlagen."
+  },
+  "Screenshot destination already exists. Choose another name.": {
+    "es-ES": "El destino de la captura ya existe. Elige otro nombre.",
+    "ru-RU": "Файл снимка уже существует. Выберите другое имя.",
+    "uk-UA": "Файл знімка вже існує. Виберіть іншу назву.",
+    "de-DE": "Die Screenshot-Datei ist bereits vorhanden. Einen anderen Namen wählen."
+  },
+  "The current frame is unavailable. Try saving the screenshot again.": {
+    "es-ES": "El fotograma actual no está disponible. Intenta guardar la captura de nuevo.",
+    "ru-RU": "Текущий кадр недоступен. Повторите сохранение снимка.",
+    "uk-UA": "Поточний кадр недоступний. Повторіть збереження знімка.",
+    "de-DE": "Das aktuelle Bild ist nicht verfügbar. Screenshot erneut speichern."
+  },
+  "Select a video source before saving its screenshot.": {
+    "es-ES": "Selecciona una fuente de vídeo antes de guardar su captura.",
+    "ru-RU": "Выберите видеоисточник перед сохранением его снимка.",
+    "uk-UA": "Виберіть відеоджерело перед збереженням його знімка.",
+    "de-DE": "Vor dem Speichern des Screenshots eine Videoquelle auswählen."
+  }
+}

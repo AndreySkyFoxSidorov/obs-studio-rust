@@ -1,0 +1,66 @@
+{
+  "Browse…": {"es-ES":"Examinar…","ru-RU":"Обзор…","uk-UA":"Огляд…","de-DE":"Durchsuchen…"},
+  "Add folder…": {"es-ES":"Añadir carpeta…","ru-RU":"Добавить папку…","uk-UA":"Додати папку…","de-DE":"Ordner hinzufügen…"},
+  "JSON files": {"es-ES":"Archivos JSON","ru-RU":"Файлы JSON","uk-UA":"Файли JSON","de-DE":"JSON-Dateien"},
+  "All files": {"es-ES":"Todos los archivos","ru-RU":"Все файлы","uk-UA":"Усі файли","de-DE":"Alle Dateien"},
+  "Choose a path using the Windows file dialog. Cancel keeps this draft unchanged.": {
+    "es-ES":"Elige una ruta con el diálogo de archivos de Windows. Cancelar conserva el borrador.",
+    "ru-RU":"Выберите путь в диалоге Windows. Отмена оставляет черновик без изменений.",
+    "uk-UA":"Виберіть шлях у діалозі Windows. Скасування залишає чернетку без змін.",
+    "de-DE":"Wähle einen Pfad im Windows-Dateidialog. Abbrechen lässt den Entwurf unverändert."
+  },
+  "Wait for the active operation and keep the application window available before browsing.": {
+    "es-ES":"Espera a que termine la operación en curso y mantén disponible la ventana de la aplicación.",
+    "ru-RU":"Дождитесь завершения текущей операции; окно приложения должно оставаться доступным.",
+    "uk-UA":"Дочекайтеся завершення поточної операції; вікно програми має залишатися доступним.",
+    "de-DE":"Warte auf den laufenden Vorgang und halte das Anwendungsfenster verfügbar."
+  },
+  "The file chooser target changed. Click Browse again.": {
+    "es-ES":"El destino del selector cambió. Pulsa Examinar de nuevo.",
+    "ru-RU":"Цель выбора файла изменилась. Нажмите Обзор ещё раз.",
+    "uk-UA":"Ціль вибору файлу змінилася. Натисніть Огляд ще раз.",
+    "de-DE":"Das Ziel der Dateiauswahl hat sich geändert. Klicke erneut auf Durchsuchen."
+  },
+  "The file chooser target changed; selected paths were discarded.": {
+    "es-ES":"El destino del selector cambió; se descartaron las rutas seleccionadas.",
+    "ru-RU":"Цель выбора файла изменилась; выбранные пути не применены.",
+    "uk-UA":"Ціль вибору файлу змінилася; вибрані шляхи не застосовано.",
+    "de-DE":"Das Ziel der Dateiauswahl hat sich geändert; die ausgewählten Pfade wurden verworfen."
+  },
+  "The native file chooser has no application window owner.": {
+    "es-ES":"El selector de archivos no tiene una ventana de aplicación asociada.",
+    "ru-RU":"У системного диалога выбора файлов нет родительского окна приложения.",
+    "uk-UA":"Системний діалог вибору файлів не має батьківського вікна програми.",
+    "de-DE":"Der native Dateidialog hat kein zugeordnetes Anwendungsfenster."
+  },
+  "The slideshow can contain at most 256 images; the draft was retained.": {
+    "es-ES":"La presentación admite hasta 256 imágenes; se conservó el borrador.",
+    "ru-RU":"Слайд-шоу может содержать не более 256 изображений; черновик сохранён.",
+    "uk-UA":"Слайд-шоу може містити щонайбільше 256 зображень; чернетку збережено.",
+    "de-DE":"Die Diashow kann höchstens 256 Bilder enthalten; der Entwurf wurde beibehalten."
+  },
+  "Choose exactly one file for this source or document.": {
+    "es-ES":"Elige exactamente un archivo para esta fuente o documento.",
+    "ru-RU":"Выберите ровно один файл для этого источника или документа.",
+    "uk-UA":"Виберіть рівно один файл для цього джерела або документа.",
+    "de-DE":"Wähle genau eine Datei für diese Quelle oder dieses Dokument."
+  },
+  "The selected folder contains no supported image files.": {
+    "es-ES":"La carpeta seleccionada no contiene imágenes compatibles.",
+    "ru-RU":"В выбранной папке нет поддерживаемых файлов изображений.",
+    "uk-UA":"У вибраній папці немає підтримуваних файлів зображень.",
+    "de-DE":"Der ausgewählte Ordner enthält keine unterstützten Bilddateien."
+  },
+  "The selected folder contains more than 256 supported images.": {
+    "es-ES":"La carpeta seleccionada contiene más de 256 imágenes compatibles.",
+    "ru-RU":"В выбранной папке более 256 поддерживаемых изображений.",
+    "uk-UA":"У вибраній папці понад 256 підтримуваних зображень.",
+    "de-DE":"Der ausgewählte Ordner enthält mehr als 256 unterstützte Bilder."
+  },
+  "The selected image folder exceeds 4096 entries; choose a smaller folder.": {
+    "es-ES":"La carpeta de imágenes contiene más de 4096 elementos; elige una más pequeña.",
+    "ru-RU":"В папке изображений более 4096 элементов; выберите папку меньшего размера.",
+    "uk-UA":"У папці зображень понад 4096 елементів; виберіть меншу папку.",
+    "de-DE":"Der Bildordner enthält mehr als 4096 Einträge; wähle einen kleineren Ordner."
+  }
+}

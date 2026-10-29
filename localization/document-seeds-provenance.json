@@ -1,0 +1,24 @@
+{
+  "policy": "Assistant-authored Spanish, Russian, Ukrainian and German translations for the actual document replacement/Save As workflow; no HTTP translation service and no native-linguist review. Preserve existing nonempty CSV cells. Authored paths and native filesystem error detail are data, not translated labels.",
+  "seed_file": "localization/document-seeds.json",
+  "source_files": [
+    "apps/desktop/src/views/document.rs",
+    "apps/desktop/src/app_document.rs",
+    "apps/desktop/src/app.rs",
+    "apps/desktop/src/io.rs"
+  ],
+  "placeholder_policy": "Preserve {path} exactly in Replacement and Active native document format strings.",
+  "error_key_verification": "The request-identity and recovery errors are actual io.rs user-facing strings. The orphan replacement message is in app.rs and ends with 'was retained', not 'was kept'. These are translations, not technical invariants.",
+  "technical_ids_not_translations": [
+    "document-replacement",
+    "replace-document-body",
+    "save-document-body",
+    "native-save-path"
+  ],
+  "excluded_source_data": [
+    "untitled.skylive.json is a filename default, not a translatable caption",
+    "app_document_tests.rs is a cfg(test) module path, not UI text",
+    "authored paths and underlying filesystem errors remain unchanged"
+  ],
+  "csv_publication": "Not performed by this agent; root integrates the sidecar with the canonical generator."
+}

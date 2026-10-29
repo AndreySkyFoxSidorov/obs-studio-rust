@@ -1,0 +1,68 @@
+{
+  "Global shortcuts admit at most 22 assignments.": {
+    "es-ES": "Los atajos globales admiten como máximo 22 asignaciones.",
+    "ru-RU": "Глобальным сочетаниям можно назначить не более 22 комбинаций.",
+    "uk-UA": "Глобальним сполученням можна призначити не більш як 22 комбінації.",
+    "de-DE": "Globale Tastenkürzel erlauben höchstens 22 Zuweisungen."
+  },
+  "Global shortcuts support output, Studio and screenshot actions. Document editing shortcuts work in SkyLive only.": {
+    "es-ES": "Los atajos globales admiten acciones de salida, Studio y capturas de pantalla. Los atajos de edición de documentos solo funcionan en SkyLive.",
+    "ru-RU": "Глобальные сочетания поддерживают вывод, Studio Mode и снимки. Сочетания редактирования документов работают только в SkyLive.",
+    "uk-UA": "Глобальні сполучення підтримують виведення, Studio Mode та знімки. Сполучення редагування документів працюють лише в SkyLive.",
+    "de-DE": "Globale Tastenkürzel unterstützen Ausgabe, Studio und Screenshots. Dokumentbearbeitung per Tastenkürzel funktioniert nur in SkyLive."
+  },
+  "Global output, Studio and screenshot shortcuts also work in games and other apps. Windows may reject a combination already in use.": {
+    "es-ES": "Los atajos globales de salida, Studio y capturas también funcionan en juegos y otras aplicaciones. Windows puede rechazar una combinación que ya esté en uso.",
+    "ru-RU": "Глобальные сочетания вывода, Studio Mode и снимков работают также в играх и других приложениях. Windows может отклонить занятую комбинацию.",
+    "uk-UA": "Глобальні сполучення виведення, Studio Mode та знімків працюють також в іграх та інших застосунках. Windows може відхилити зайняту комбінацію.",
+    "de-DE": "Globale Tastenkürzel für Ausgabe, Studio und Screenshots funktionieren auch in Spielen und anderen Apps. Windows kann bereits belegte Kombinationen ablehnen."
+  },
+  "Global shortcuts are active": {
+    "es-ES": "Los atajos globales están activos",
+    "ru-RU": "Глобальные сочетания активны",
+    "uk-UA": "Глобальні сполучення активні",
+    "de-DE": "Globale Tastenkürzel sind aktiv"
+  },
+  "Choose the interface language, reload translations, and configure projectors and Multiview.": {
+    "es-ES": "Elija el idioma de la interfaz, recargue las traducciones y configure los proyectores y la vista múltiple.",
+    "ru-RU": "Выберите язык интерфейса, перезагрузите переводы и настройте проекторы и Multiview.",
+    "uk-UA": "Виберіть мову інтерфейсу, перезавантажте переклади та налаштуйте проєктори й Multiview.",
+    "de-DE": "Wählen Sie die Oberflächensprache, laden Sie Übersetzungen neu und konfigurieren Sie Projektoren und Multiview."
+  },
+  "Choose the interface theme and scale.": {
+    "es-ES": "Elija el tema y la escala de la interfaz.",
+    "ru-RU": "Выберите тему и масштаб интерфейса.",
+    "uk-UA": "Виберіть тему й масштаб інтерфейсу.",
+    "de-DE": "Wählen Sie Design und Skalierung der Oberfläche."
+  },
+  "Configure the streaming service, server and stream key.": {
+    "es-ES": "Configure el servicio de emisión, el servidor y la clave de emisión.",
+    "ru-RU": "Настройте сервис трансляции, сервер и ключ потока.",
+    "uk-UA": "Налаштуйте сервіс трансляції, сервер і ключ потоку.",
+    "de-DE": "Konfigurieren Sie Streamingdienst, Server und Streamschlüssel."
+  },
+  "Configure recording encoders, audio tracks and the replay buffer.": {
+    "es-ES": "Configure los codificadores de grabación, las pistas de audio y el búfer de repetición.",
+    "ru-RU": "Настройте кодировщики записи, звуковые дорожки и буфер повтора.",
+    "uk-UA": "Налаштуйте кодувальники запису, звукові доріжки та буфер повтору.",
+    "de-DE": "Konfigurieren Sie Aufnahmeencoder, Audiospuren und Wiedergabepuffer."
+  },
+  "Configure local and Windows global keyboard shortcuts.": {
+    "es-ES": "Configure los atajos locales y globales de Windows.",
+    "ru-RU": "Настройте локальные и глобальные сочетания клавиш Windows.",
+    "uk-UA": "Налаштуйте локальні та глобальні сполучення клавіш Windows.",
+    "de-DE": "Konfigurieren Sie lokale und Windows-weite Tastenkürzel."
+  },
+  "Choose selection, crop, hover and audio meter colors.": {
+    "es-ES": "Elija los colores de selección, recorte, resaltado al pasar el cursor y medidores de audio.",
+    "ru-RU": "Выберите цвета выделения, обрезки, наведения и индикаторов звука.",
+    "uk-UA": "Виберіть кольори виділення, обрізання, наведення та індикаторів звуку.",
+    "de-DE": "Wählen Sie Farben für Auswahl, Zuschneiden, Hervorhebung und Audiopegelanzeigen."
+  },
+  "Configure process priority and stream reconnection.": {
+    "es-ES": "Configure la prioridad del proceso y la reconexión de la emisión.",
+    "ru-RU": "Настройте приоритет процесса и переподключение трансляции.",
+    "uk-UA": "Налаштуйте пріоритет процесу та повторне підключення трансляції.",
+    "de-DE": "Konfigurieren Sie Prozesspriorität und Wiederverbindung des Streams."
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "Add Game Capture": {
+    "es-ES": "Añadir captura de juego",
+    "ru-RU": "Добавить захват игры",
+    "uk-UA": "Додати захоплення гри",
+    "de-DE": "Spielaufnahme hinzufügen"
+  },
+  "Properties: Game Capture": {
+    "es-ES": "Propiedades: captura de juego",
+    "ru-RU": "Свойства: захват игры",
+    "uk-UA": "Властивості: захоплення гри",
+    "de-DE": "Eigenschaften: Spielaufnahme"
+  },
+  "Captures a selected Windows x64 D3D11 game through the bundled Rust hook. Apply or Start enables this process for this session.": {
+    "es-ES": "Captura un juego D3D11 de Windows x64 mediante el componente Rust incluido. Aplicar o Iniciar habilita este proceso para la sesión.",
+    "ru-RU": "Захватывает выбранную игру D3D11 в Windows x64 через встроенный Rust-компонент. Применить или Запустить разрешает захват этого процесса на текущую сессию.",
+    "uk-UA": "Захоплює вибрану гру D3D11 у Windows x64 через вбудований Rust-компонент. Застосувати або Запустити дозволяє захоплення цього процесу на поточну сесію.",
+    "de-DE": "Erfasst ein gewähltes Windows-x64-D3D11-Spiel mit der enthaltenen Rust-Komponente. Anwenden oder Start aktiviert diesen Prozess für die Sitzung."
+  },
+  "D3D11 Present/Present1, opaque SDR RGBA/BGRA8 only. DX12, Vulkan, OpenGL, anti-cheat bypass and cursor capture are unavailable.": {
+    "es-ES": "Solo D3D11 Present/Present1 y SDR RGBA/BGRA8 opaco. DX12, Vulkan, OpenGL, eludir antitrampas y la captura del cursor no están disponibles.",
+    "ru-RU": "Только D3D11 Present/Present1 и непрозрачное SDR-видео RGBA/BGRA8. DX12, Vulkan, OpenGL, обход античита и захват курсора недоступны.",
+    "uk-UA": "Лише D3D11 Present/Present1 і непрозоре SDR-відео RGBA/BGRA8. DX12, Vulkan, OpenGL, обхід античита та захоплення курсора недоступні.",
+    "de-DE": "Nur D3D11 Present/Present1 und undurchsichtiges SDR-RGBA/BGRA8. DX12, Vulkan, OpenGL, Anti-Cheat-Umgehung und Mauszeigeraufnahme sind nicht verfügbar."
+  },
+  "Name this game source in the scene.": {
+    "es-ES": "Asigna un nombre a esta fuente de juego.",
+    "ru-RU": "Назовите этот источник игры в сцене.",
+    "uk-UA": "Назвіть це джерело гри у сцені.",
+    "de-DE": "Diese Spielquelle in der Szene benennen."
+  },
+  "Refresh game windows": {
+    "es-ES": "Actualizar ventanas de juegos",
+    "ru-RU": "Обновить окна игр",
+    "uk-UA": "Оновити вікна ігор",
+    "de-DE": "Spielfenster aktualisieren"
+  },
+  "List real visible game windows and process identities. Discovery does not inject a hook.": {
+    "es-ES": "Mostrar ventanas visibles reales e identidades de procesos. La búsqueda no carga el componente de captura en el juego.",
+    "ru-RU": "Показать реальные видимые окна и сведения о процессах. Поиск не внедряет компонент захвата в игру.",
+    "uk-UA": "Показати реальні видимі вікна та відомості про процеси. Пошук не впроваджує компонент захоплення у гру.",
+    "de-DE": "Tatsächliche sichtbare Fenster und Prozessidentitäten auflisten. Die Suche lädt keine Aufnahmekomponente in das Spiel."
+  },
+  "Search game windows": {
+    "es-ES": "Buscar ventanas de juegos",
+    "ru-RU": "Поиск окон игр",
+    "uk-UA": "Пошук вікон ігор",
+    "de-DE": "Spielfenster suchen"
+  },
+  "Filter discovered windows by title, executable or PID.": {
+    "es-ES": "Filtrar por título, ejecutable o PID.",
+    "ru-RU": "Фильтровать найденные окна по заголовку, исполняемому файлу или PID.",
+    "uk-UA": "Фільтрувати знайдені вікна за заголовком, виконуваним файлом або PID.",
+    "de-DE": "Gefundene Fenster nach Titel, Programmdatei oder PID filtern."
+  },
+  "Game window and process": {
+    "es-ES": "Ventana y proceso del juego",
+    "ru-RU": "Окно и процесс игры",
+    "uk-UA": "Вікно та процес гри",
+    "de-DE": "Spielfenster und Prozess"
+  },
+  "Choose an actual game window first.": {
+    "es-ES": "Selecciona primero una ventana de juego real.",
+    "ru-RU": "Сначала выберите реальное окно игры.",
+    "uk-UA": "Спочатку виберіть реальне вікно гри.",
+    "de-DE": "Zuerst ein tatsächliches Spielfenster auswählen."
+  },
+  "Select the exact running process and window. PID reuse or a different executable cannot rebind this source.": {
+    "es-ES": "Selecciona el proceso y la ventana exactos. Reutilizar el PID u otro ejecutable no cambia el destino de esta fuente.",
+    "ru-RU": "Выберите конкретный запущенный процесс и окно. Повторное использование PID или другой исполняемый файл не переназначат источник.",
+    "uk-UA": "Виберіть конкретний запущений процес і вікно. Повторне використання PID або інший виконуваний файл не перепризначать джерело.",
+    "de-DE": "Den exakten laufenden Prozess und sein Fenster auswählen. Eine wiederverwendete PID oder andere Programmdatei bindet diese Quelle nicht neu."
+  },
+  "Capture frame-rate limit": {
+    "es-ES": "Límite de frecuencia de captura",
+    "ru-RU": "Ограничение частоты захвата",
+    "uk-UA": "Обмеження частоти захоплення",
+    "de-DE": "Bildratenlimit der Aufnahme"
+  },
+  "{fps} fps": {
+    "es-ES": "{fps} fps",
+    "ru-RU": "{fps} кадр/с",
+    "uk-UA": "{fps} кадр/с",
+    "de-DE": "{fps} Bilder/s"
+  },
+  "Limit captured frames without changing the game's own frame rate.": {
+    "es-ES": "Limitar los fotogramas capturados sin cambiar la frecuencia del juego.",
+    "ru-RU": "Ограничить частоту захвата, не меняя частоту кадров самой игры.",
+    "uk-UA": "Обмежити частоту захоплення, не змінюючи частоту кадрів самої гри.",
+    "de-DE": "Aufgenommene Bilder begrenzen, ohne die Bildrate des Spiels zu ändern."
+  },
+  "Start Game Capture": {
+    "es-ES": "Iniciar captura de juego",
+    "ru-RU": "Запустить захват игры",
+    "uk-UA": "Запустити захоплення гри",
+    "de-DE": "Spielaufnahme starten"
+  },
+  "Stop Game Capture": {
+    "es-ES": "Detener captura de juego",
+    "ru-RU": "Остановить захват игры",
+    "uk-UA": "Зупинити захоплення гри",
+    "de-DE": "Spielaufnahme stoppen"
+  },
+  "Enable the saved exact target for this session. Apply a different target before starting it.": {
+    "es-ES": "Habilitar el destino exacto guardado para esta sesión. Aplica otro destino antes de iniciarlo.",
+    "ru-RU": "Разрешить сохранённый точный процесс на текущую сессию. Примените другой процесс перед его запуском.",
+    "uk-UA": "Дозволити збережений точний процес на поточну сесію. Застосуйте інший процес перед його запуском.",
+    "de-DE": "Das gespeicherte exakte Ziel für diese Sitzung aktivieren. Ein anderes Ziel vor dem Start zuerst anwenden."
+  },
+  "Revoke this process's capture permission for the current session. Other output and audio owners remain independent.": {
+    "es-ES": "Revocar el permiso de captura de este proceso en la sesión. Las demás salidas y el audio siguen siendo independientes.",
+    "ru-RU": "Отозвать разрешение на захват этого процесса в текущей сессии. Другие видеовыходы и звук работают независимо.",
+    "uk-UA": "Відкликати дозвіл на захоплення цього процесу в поточній сесії. Інші відеовиходи та звук працюють незалежно.",
+    "de-DE": "Die Aufnahmeberechtigung dieses Prozesses für die Sitzung widerrufen. Andere Ausgaben und Audio bleiben unabhängig."
+  },
+  "Captured game frame: {width} × {height} · dropped {dropped}": {
+    "es-ES": "Fotograma del juego: {width} × {height} · descartados {dropped}",
+    "ru-RU": "Кадр игры: {width} × {height} · пропущено {dropped}",
+    "uk-UA": "Кадр гри: {width} × {height} · пропущено {dropped}",
+    "de-DE": "Spielbild: {width} × {height} · verworfen {dropped}"
+  },
+  "Opening a collection does not inject. The hook code remains loaded until the selected game exits; at most two target processes are admitted.": {
+    "es-ES": "Abrir una colección no carga el componente en el juego. Su código permanece cargado hasta que el juego termine; se admiten dos procesos como máximo.",
+    "ru-RU": "Открытие коллекции не внедряет компонент захвата. Его код остаётся загруженным до завершения выбранной игры; допускаются не более двух процессов.",
+    "uk-UA": "Відкриття колекції не впроваджує компонент захоплення. Його код залишається завантаженим до завершення вибраної гри; допускаються щонайбільше два процеси.",
+    "de-DE": "Das Öffnen einer Sammlung lädt keine Aufnahmekomponente in das Spiel. Ihr Code bleibt bis zum Spielende geladen; höchstens zwei Zielprozesse werden zugelassen."
+  },
+  "Initial window size is only the transform basis. Captured backbuffers retain their actual dimensions, up to4096-edge/8.8M pixels; they are never replaced by Window Capture.": {
+    "es-ES": "El tamaño inicial de la ventana solo sirve de base de transformación. Los búferes capturados conservan sus dimensiones reales, hasta 4096 por lado y 8,8 millones de píxeles; no se sustituyen por captura de ventana.",
+    "ru-RU": "Начальный размер окна используется только как основа трансформации. Захваченные буферы сохраняют реальные размеры: до 4096 по стороне и 8,8 млн пикселей. Подмена захватом окна не выполняется.",
+    "uk-UA": "Початковий розмір вікна використовується лише як основа трансформації. Захоплені буфери зберігають реальні розміри: до 4096 по стороні та 8,8 млн пікселів. Підміна захопленням вікна не виконується.",
+    "de-DE": "Die anfängliche Fenstergröße dient nur als Transformationsbasis. Aufgenommene Backbuffer behalten ihre tatsächliche Größe bis 4096 Pixel pro Kante und 8,8 Millionen Pixel; es gibt keinen Ersatz durch Fensteraufnahme."
+  },
+  "Discovering game windows…": {
+    "es-ES": "Buscando ventanas de juegos…",
+    "ru-RU": "Поиск окон игр…",
+    "uk-UA": "Пошук вікон ігор…",
+    "de-DE": "Spielfenster werden gesucht…"
+  },
+  "No captured game frame is available yet.": {
+    "es-ES": "Aún no hay ningún fotograma de juego capturado.",
+    "ru-RU": "Захваченный кадр игры пока недоступен.",
+    "uk-UA": "Захоплений кадр гри поки недоступний.",
+    "de-DE": "Es ist noch kein aufgenommenes Spielbild verfügbar."
+  },
+  "The game source draft changed. Reopen its properties.": {
+    "es-ES": "El borrador de la fuente de juego ha cambiado. Abre sus propiedades de nuevo.",
+    "ru-RU": "Параметры источника игры изменились. Откройте его свойства заново.",
+    "uk-UA": "Параметри джерела гри змінилися. Відкрийте його властивості знову.",
+    "de-DE": "Der Entwurf der Spielquelle hat sich geändert. Eigenschaften erneut öffnen."
+  },
+  "Game Capture requires Windows x64 D3D11.": {
+    "es-ES": "La captura de juego requiere Windows x64 y D3D11.",
+    "ru-RU": "Для захвата игры требуется Windows x64 и D3D11.",
+    "uk-UA": "Для захоплення гри потрібні Windows x64 і D3D11.",
+    "de-DE": "Spielaufnahme erfordert Windows x64 und D3D11."
+  },
+  "Game dialog identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del diálogo de juego",
+    "ru-RU": "Исчерпаны идентификаторы окна захвата игры",
+    "uk-UA": "Вичерпано ідентифікатори вікна захоплення гри",
+    "de-DE": "Kennungen des Spielaufnahme-Dialogs sind ausgeschöpft"
+  },
+  "Game capture enabled for the selected process in this session.": {
+    "es-ES": "Se habilitó la captura del proceso seleccionado para esta sesión.",
+    "ru-RU": "Захват выбранного процесса разрешён на текущую сессию.",
+    "uk-UA": "Захоплення вибраного процесу дозволено на поточну сесію.",
+    "de-DE": "Aufnahme des gewählten Prozesses ist für diese Sitzung freigegeben."
+  },
+  "Game capture permission revoked; native resources retire on their owner.": {
+    "es-ES": "Permiso de captura revocado; los recursos nativos se están liberando en su proceso propietario.",
+    "ru-RU": "Разрешение на захват игры отозвано; освобождение нативных ресурсов выполняется их владельцем.",
+    "uk-UA": "Дозвіл на захоплення гри відкликано; звільнення нативних ресурсів виконується їхнім власником.",
+    "de-DE": "Aufnahmeberechtigung widerrufen; native Ressourcen werden durch ihren Besitzer freigegeben."
+  },
+  "Game source is unavailable.": {
+    "es-ES": "La fuente de juego no está disponible.",
+    "ru-RU": "Источник игры недоступен.",
+    "uk-UA": "Джерело гри недоступне.",
+    "de-DE": "Spielquelle ist nicht verfügbar."
+  },
+  "Choose an actual game window and wait for discovery to finish.": {
+    "es-ES": "Selecciona una ventana real y espera a que termine la búsqueda.",
+    "ru-RU": "Выберите реальное окно игры и дождитесь завершения поиска.",
+    "uk-UA": "Виберіть реальне вікно гри та дочекайтеся завершення пошуку.",
+    "de-DE": "Ein tatsächliches Spielfenster auswählen und die Suche abwarten."
+  },
+  "Wait for game-window discovery to finish.": {
+    "es-ES": "Espera a que termine la búsqueda de ventanas.",
+    "ru-RU": "Дождитесь завершения поиска окон игр.",
+    "uk-UA": "Дочекайтеся завершення пошуку вікон ігор.",
+    "de-DE": "Die Suche nach Spielfenstern abwarten."
+  },
+  "Selected game target or capture rate is invalid.": {
+    "es-ES": "El destino o la frecuencia de captura no son válidos.",
+    "ru-RU": "Выбранный процесс или частота захвата недопустимы.",
+    "uk-UA": "Вибраний процес або частота захоплення неприпустимі.",
+    "de-DE": "Gewähltes Spielziel oder Aufnahmebildrate ist ungültig."
+  },
+  "Add an actual D3D11 game backbuffer source for a selected process.": {
+    "es-ES": "Añadir una fuente real del búfer D3D11 del proceso seleccionado.",
+    "ru-RU": "Добавить реальный захват буфера игры D3D11 для выбранного процесса.",
+    "uk-UA": "Додати реальне захоплення буфера гри D3D11 для вибраного процесу.",
+    "de-DE": "Eine tatsächliche D3D11-Spiel-Backbufferquelle für einen gewählten Prozess hinzufügen."
+  },
+  "Source providers have explicit supported formats and platform limits. Complete OBS parity remains unfinished; unavailable capabilities are reported in source properties.": {
+    "es-ES": "Las fuentes tienen formatos compatibles y límites de plataforma explícitos. La equivalencia completa con OBS está pendiente; las propiedades indican las funciones no disponibles.",
+    "ru-RU": "У источников указаны поддерживаемые форматы и ограничения платформы. Полное соответствие OBS ещё не достигнуто; недоступные возможности указаны в свойствах.",
+    "uk-UA": "Для джерел вказано підтримувані формати та обмеження платформи. Повної відповідності OBS ще не досягнуто; недоступні можливості вказано у властивостях.",
+    "de-DE": "Quellen haben ausdrücklich unterstützte Formate und Plattformgrenzen. Vollständige OBS-Parität ist noch nicht erreicht; nicht verfügbare Funktionen stehen in den Eigenschaften."
+  },
+  "Partial equivalent: Windows display/window capture and own Rust x64 D3D11 Game Capture through Present/Present1 with exact authorized process/window selection, opaque SDR RGBA/BGRA8 shared textures and bounded host readback. No DX12/Vulkan/OpenGL game hooks, anti-cheat bypass, game cursor/transparency options, HDR or complete OBS win-capture parity.": {
+    "es-ES": "Equivalente parcial: captura de pantalla y ventana de Windows y captura D3D11 de juegos x64 con un componente Rust propio para Present/Present1, selección exacta del proceso y ventana autorizados, texturas SDR RGBA/BGRA8 opacas compartidas y lectura limitada en el host. No incluye hooks de juegos DX12/Vulkan/OpenGL, eludir antitrampas, opciones de cursor o transparencia, HDR ni equivalencia completa con OBS win-capture.",
+    "ru-RU": "Частичный аналог: захват экрана и окон Windows, а также собственный Rust-захват игр D3D11 x64 через Present/Present1 с точным выбором разрешённого процесса и окна, общими непрозрачными SDR-текстурами RGBA/BGRA8 и ограниченным чтением кадров в host. Перехват игр DX12/Vulkan/OpenGL, обход античита, настройки курсора и прозрачности игры, HDR и полное соответствие OBS win-capture не реализованы.",
+    "uk-UA": "Частковий аналог: захоплення екрана й вікон Windows, а також власне Rust-захоплення ігор D3D11 x64 через Present/Present1 із точним вибором дозволеного процесу та вікна, спільними непрозорими SDR-текстурами RGBA/BGRA8 й обмеженим читанням кадрів у host. Перехоплення ігор DX12/Vulkan/OpenGL, обхід античита, налаштування курсора та прозорості гри, HDR і повну відповідність OBS win-capture не реалізовано.",
+    "de-DE": "Teilweise Entsprechung: Windows-Bildschirm- und Fensteraufnahme sowie eigene Rust-x64-D3D11-Spielaufnahme über Present/Present1 mit exakter Auswahl des freigegebenen Prozesses und Fensters, gemeinsam genutzten undurchsichtigen SDR-RGBA/BGRA8-Texturen und begrenztem Host-Readback. Keine DX12/Vulkan/OpenGL-Spielhooks, Anti-Cheat-Umgehung, Spielcursor- oder Transparenzoptionen, HDR oder vollständige OBS-win-capture-Parität."
+  },
+  "Game Capture": {
+    "es-ES": "Captura de juego",
+    "ru-RU": "Захват игры",
+    "uk-UA": "Захоплення гри",
+    "de-DE": "Spielaufnahme"
+  },
+  "Single-threaded D3D11 devices and custom swap-chain implementations are unsupported.": {
+    "es-ES": "No se admiten dispositivos D3D11 de un solo hilo ni implementaciones personalizadas de swap chain.",
+    "ru-RU": "Однопоточные устройства D3D11 и нестандартные реализации swap chain не поддерживаются.",
+    "uk-UA": "Однопотокові пристрої D3D11 та нестандартні реалізації swap chain не підтримуються.",
+    "de-DE": "Single-Thread-D3D11-Geräte und eigene Swapchain-Implementierungen werden nicht unterstützt."
+  }
+}

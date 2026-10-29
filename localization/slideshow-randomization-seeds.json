@@ -1,0 +1,170 @@
+{
+  "Slideshow Order": {
+    "es-ES": "Orden del pase",
+    "ru-RU": "Порядок слайд-шоу",
+    "uk-UA": "Порядок слайд-шоу",
+    "de-DE": "Diashow-Reihenfolge"
+  },
+  "Stable shuffled order": {
+    "es-ES": "Orden aleatorio estable",
+    "ru-RU": "Стабильный перемешанный порядок",
+    "uk-UA": "Сталий перемішаний порядок",
+    "de-DE": "Stabile Mischreihenfolge"
+  },
+  "In file order": {
+    "es-ES": "En el orden de archivos",
+    "ru-RU": "В порядке файлов",
+    "uk-UA": "У порядку файлів",
+    "de-DE": "In Dateireihenfolge"
+  },
+  "Advance through the explicit image list.": {
+    "es-ES": "Avanzar por la lista explícita de imágenes.",
+    "ru-RU": "Переключать изображения по явному списку.",
+    "uk-UA": "Перемикати зображення за явним списком.",
+    "de-DE": "Die explizite Bilderliste durchlaufen."
+  },
+  "Use the existing deterministic permutation; each image appears once per loop.": {
+    "es-ES": "Use la permutación determinista existente; cada imagen aparece una vez por ciclo.",
+    "ru-RU": "Использовать прежнюю детерминированную перестановку; каждое изображение появляется один раз за цикл.",
+    "uk-UA": "Використовувати попередню детерміновану перестановку; кожне зображення з’являється один раз за цикл.",
+    "de-DE": "Die vorhandene deterministische Permutation verwenden; jedes Bild erscheint einmal pro Durchlauf."
+  },
+  "Use source-owned random choices without adjacent repeats. Modern playback retains five previous and five next indices; it ignores Loop and Hide.": {
+    "es-ES": "Use elecciones aleatorias de la fuente sin repeticiones consecutivas. La reproducción moderna conserva cinco índices anteriores y cinco siguientes; ignora Bucle y Ocultar.",
+    "ru-RU": "Использовать случайные выборы источника без соседних повторов. Современное воспроизведение хранит пять предыдущих и пять следующих индексов; Loop и Hide игнорируются.",
+    "uk-UA": "Використовувати випадкові вибори джерела без сусідніх повторів. Сучасне відтворення зберігає п’ять попередніх і п’ять наступних індексів; Loop та Hide ігноруються.",
+    "de-DE": "Zufällige Auswahl der Quelle ohne direkte Wiederholung verwenden. Moderne Wiedergabe behält fünf vorherige und fünf nächste Indizes; Wiederholung und Ausblenden werden ignoriert."
+  },
+  "Random playback and the saved stable permutation are distinct. Changing order requires Apply; transport and render never reroll the setting.": {
+    "es-ES": "La reproducción aleatoria y la permutación estable guardada son diferentes. Cambiar el orden requiere Aplicar; los controles y el renderizado nunca sortean de nuevo el ajuste.",
+    "ru-RU": "Случайное воспроизведение отличается от сохранённой стабильной перестановки. Изменение порядка требует «Применить»; управление и отрисовка не пересчитывают эту настройку случайно.",
+    "uk-UA": "Випадкове відтворення відрізняється від збереженої сталої перестановки. Зміна порядку потребує «Застосувати»; керування та відмальовування не переобирають це налаштування випадково.",
+    "de-DE": "Zufallswiedergabe und gespeicherte stabile Permutation sind verschieden. Die Reihenfolge muss angewendet werden; Steuerung und Rendering würfeln diese Einstellung nicht neu aus."
+  },
+  "Legacy OBS random compatibility: Previous rerolls; without Loop, the final file index can end playback. The imported policy is retained.": {
+    "es-ES": "Compatibilidad aleatoria de OBS antiguo: Anterior vuelve a sortear; sin Bucle, el índice del último archivo puede finalizar la reproducción. Se conserva la política importada.",
+    "ru-RU": "Совместимость со старым случайным режимом OBS: «Назад» выбирает заново; без Loop последний индекс файла может завершить воспроизведение. Импортированная политика сохраняется.",
+    "uk-UA": "Сумісність зі старим випадковим режимом OBS: «Назад» обирає знову; без Loop останній індекс файла може завершити відтворення. Імпортована політика зберігається.",
+    "de-DE": "Kompatibilität mit älterem OBS-Zufallsmodus: Zurück wählt neu; ohne Wiederholung kann der letzte Dateiindex die Wiedergabe beenden. Die importierte Richtlinie bleibt erhalten."
+  },
+  "stable shuffle and OBS random playback cannot both be enabled": {
+    "es-ES": "no se pueden activar a la vez el orden estable y la reproducción aleatoria de OBS",
+    "ru-RU": "стабильное перемешивание и случайное воспроизведение OBS нельзя включить одновременно",
+    "uk-UA": "стале перемішування та випадкове відтворення OBS не можна ввімкнути одночасно",
+    "de-DE": "Stabiles Mischen und OBS-Zufallswiedergabe können nicht gleichzeitig aktiviert werden"
+  },
+  "legacy random compatibility requires enabled random playback": {
+    "es-ES": "la compatibilidad aleatoria antigua requiere reproducción aleatoria activa",
+    "ru-RU": "совместимость со старым случайным режимом требует включённого случайного воспроизведения",
+    "uk-UA": "сумісність зі старим випадковим режимом потребує ввімкненого випадкового відтворення",
+    "de-DE": "Ältere Zufallskompatibilität erfordert aktivierte Zufallswiedergabe"
+  },
+  "slideshow random playback requires native schema9": {
+    "es-ES": "la reproducción aleatoria del pase requiere el esquema nativo9",
+    "ru-RU": "случайное воспроизведение слайд-шоу требует собственной схемы9",
+    "uk-UA": "випадкове відтворення слайд-шоу потребує власної схеми9",
+    "de-DE": "Diashow-Zufallswiedergabe erfordert das native Schema9"
+  },
+  "Random slideshow catch-up exceeds the bounded work limit; explicitly restart, stop or reseed it.": {
+    "es-ES": "La puesta al día aleatoria supera el límite de trabajo; reinicie, detenga o cambie explícitamente su semilla.",
+    "ru-RU": "Восстановление случайной истории превышает лимит работы; явно перезапустите, остановите или задайте новый seed.",
+    "uk-UA": "Відновлення випадкової історії перевищує ліміт роботи; явно перезапустіть, зупиніть або задайте новий seed.",
+    "de-DE": "Das Nachholen der Zufallsdiashow überschreitet das Arbeitslimit; explizit neu starten, stoppen oder neu initialisieren."
+  },
+  "Random slideshow draw identity exhausted.": {
+    "es-ES": "Se agotó la identidad de elecciones aleatorias.",
+    "ru-RU": "Исчерпаны идентификаторы случайных выборов слайд-шоу.",
+    "uk-UA": "Вичерпано ідентифікатори випадкових виборів слайд-шоу.",
+    "de-DE": "Zufallsauswahl-Identitäten der Diashow sind erschöpft."
+  },
+  "Random slideshow bounded range sampling exhausted.": {
+    "es-ES": "Se agotó el muestreo acotado del intervalo aleatorio.",
+    "ru-RU": "Исчерпан ограниченный выбор случайного значения диапазона.",
+    "uk-UA": "Вичерпано обмежений вибір випадкового значення діапазону.",
+    "de-DE": "Begrenzte Zufallsbereichsauswahl der Diashow ist erschöpft."
+  },
+  "Random slideshow run identity exhausted.": {
+    "es-ES": "Se agotó la identidad de ejecuciones aleatorias.",
+    "ru-RU": "Исчерпаны идентификаторы случайных запусков слайд-шоу.",
+    "uk-UA": "Вичерпано ідентифікатори випадкових запусків слайд-шоу.",
+    "de-DE": "Zufallslauf-Identitäten der Diashow sind erschöpft."
+  },
+  "Enable OBS random playback before reseeding this slideshow.": {
+    "es-ES": "Active la reproducción aleatoria de OBS antes de cambiar la semilla.",
+    "ru-RU": "Включите случайное воспроизведение OBS перед сменой seed этого слайд-шоу.",
+    "uk-UA": "Увімкніть випадкове відтворення OBS перед зміною seed цього слайд-шоу.",
+    "de-DE": "Vor dem Neuinitialisieren dieser Diashow die OBS-Zufallswiedergabe aktivieren."
+  },
+  "Random slideshow requires its owned playback clock; cold snapshots cannot invent a random run.": {
+    "es-ES": "El pase aleatorio requiere su reloj de reproducción; las instantáneas sin reloj no pueden inventar una secuencia aleatoria.",
+    "ru-RU": "Случайному слайд-шоу нужны собственные часы воспроизведения; снимок без часов не может выдумать случайный запуск.",
+    "uk-UA": "Випадковому слайд-шоу потрібен власний годинник відтворення; знімок без годинника не може вигадати випадковий запуск.",
+    "de-DE": "Eine Zufallsdiashow benötigt ihren eigenen Wiedergabetakt; kalte Momentaufnahmen können keinen Zufallslauf erfinden."
+  },
+  "Random run {seed}, generation {generation}, draws {draws}. {status}": {
+    "es-ES": "Secuencia aleatoria {seed}, generación {generation}, elecciones {draws}. {status}",
+    "ru-RU": "Случайный запуск {seed}, поколение {generation}, выборов {draws}. {status}",
+    "uk-UA": "Випадковий запуск {seed}, покоління {generation}, виборів {draws}. {status}",
+    "de-DE": "Zufallslauf {seed}, Generation {generation}, Auswahlen {draws}. {status}"
+  },
+  "Excessive random catch-up was discarded by the explicit transport reset. {status}": {
+    "es-ES": "El restablecimiento explícito descartó la puesta al día aleatoria excesiva. {status}",
+    "ru-RU": "Чрезмерная случайная история пропущена явной командой сброса воспроизведения. {status}",
+    "uk-UA": "Надмірну випадкову історію пропущено явною командою скидання відтворення. {status}",
+    "de-DE": "Übermäßiges Zufallsnachholen wurde durch das explizite Zurücksetzen verworfen. {status}"
+  },
+  "conflicting modern and legacy slideshow random choices are not represented": {
+    "es-ES": "las opciones aleatorias modernas y antiguas en conflicto no se pueden representar",
+    "ru-RU": "противоречащие современные и устаревшие случайные настройки слайд-шоу не представимы",
+    "uk-UA": "суперечливі сучасні та застарілі випадкові налаштування слайд-шоу неможливо подати",
+    "de-DE": "Widersprüchliche moderne und ältere Diashow-Zufallsoptionen werden nicht dargestellt"
+  },
+  "modern OBS random export requires an explicit pixel canvas; automatic and aspect authoring cannot be silently fixed": {
+    "es-ES": "la exportación aleatoria moderna requiere un lienzo explícito en píxeles; no se puede fijar silenciosamente el lienzo automático o por proporción",
+    "ru-RU": "современный случайный экспорт OBS требует явного холста в пикселях; автоматический холст и соотношение сторон нельзя молча превратить в фиксированные",
+    "uk-UA": "сучасний випадковий експорт OBS потребує явного полотна в пікселях; автоматичне полотно та співвідношення сторін не можна мовчки перетворити на фіксовані",
+    "de-DE": "Moderner OBS-Zufallsexport erfordert eine explizite Pixelleinwand; automatische oder Seitenverhältnis-Einstellungen dürfen nicht stillschweigend fixiert werden"
+  },
+  "Show the buffered previous random slide and extend the far history edge. Busy transitions ignore this command.": {
+    "es-ES": "Muestra la diapositiva aleatoria anterior del búfer y amplía el extremo del historial. Se ignora durante un cambio activo.",
+    "ru-RU": "Показать предыдущий случайный слайд из буфера и расширить дальний край истории. Команда игнорируется во время перехода.",
+    "uk-UA": "Показати попередній випадковий слайд із буфера та розширити дальній край історії. Команда ігнорується під час переходу.",
+    "de-DE": "Das gepufferte vorherige Zufallsbild anzeigen und das ferne Ende des Verlaufs erweitern. Laufende Übergänge ignorieren diesen Befehl."
+  },
+  "Show the buffered next random slide and extend the far future edge. Busy transitions ignore this command.": {
+    "es-ES": "Muestra la siguiente diapositiva aleatoria del búfer y amplía el extremo futuro. Se ignora durante un cambio activo.",
+    "ru-RU": "Показать следующий случайный слайд из буфера и расширить дальний край будущей очереди. Команда игнорируется во время перехода.",
+    "uk-UA": "Показати наступний випадковий слайд із буфера та розширити дальній край майбутньої черги. Команда ігнорується під час переходу.",
+    "de-DE": "Das gepufferte nächste Zufallsbild anzeigen und das ferne Ende der Vorschau erweitern. Laufende Übergänge ignorieren diesen Befehl."
+  },
+  "Choose another random slide, excluding the current one. Legacy Previous uses the same random rule as Next.": {
+    "es-ES": "Elige otra diapositiva aleatoria, excluyendo la actual. Anterior antiguo usa la misma regla aleatoria que Siguiente.",
+    "ru-RU": "Выбрать другой случайный слайд, исключая текущий. В старом режиме «Назад» использует то же случайное правило, что и «Далее».",
+    "uk-UA": "Вибрати інший випадковий слайд, виключаючи поточний. У старому режимі «Назад» використовує те саме випадкове правило, що й «Далі».",
+    "de-DE": "Ein anderes Zufallsbild wählen und das aktuelle ausschließen. Älteres Zurück verwendet dieselbe Zufallsregel wie Weiter."
+  },
+  "Rebuild the random start and five-slide history buffers using the owned RNG. Keep the runtime manual mode.": {
+    "es-ES": "Reconstruye el inicio aleatorio y los búferes de cinco diapositivas con el generador propio. Conserva el modo manual actual.",
+    "ru-RU": "Пересоздать случайное начало и буферы по пять слайдов собственным генератором. Сохранить текущий ручной режим.",
+    "uk-UA": "Перебудувати випадковий початок і буфери по п’ять слайдів власним генератором. Зберегти поточний ручний режим.",
+    "de-DE": "Zufallsstart und Fünf-Bild-Verlaufspuffer mit dem eigenen Generator neu aufbauen. Den manuellen Laufzeitmodus beibehalten."
+  },
+  "Rebuild the random buffers and transition to transparency. Playing again reveals the prepared random start.": {
+    "es-ES": "Reconstruye los búferes aleatorios y pasa a transparencia. Reproducir de nuevo muestra el inicio aleatorio preparado.",
+    "ru-RU": "Пересоздать случайные буферы и перейти в прозрачность. Повторный запуск покажет подготовленное случайное начало.",
+    "uk-UA": "Перебудувати випадкові буфери та перейти в прозорість. Повторний запуск покаже підготовлений випадковий початок.",
+    "de-DE": "Zufallspuffer neu aufbauen und in Transparenz übergehen. Erneutes Abspielen zeigt den vorbereiteten Zufallsstart."
+  },
+  "Static PNG/JPEG/WebP and animated GIF images; timed slide shows with Cut/Fade/Swipe/Slide, automatic/custom/aspect canvas, three visibility behaviors, authored automatic/manual mode and shared Play/Pause/Restart/Stop/Previous/Next controls. Listed, stable shuffled and source-owned random playback with explicit legacy v1 or buffered v2 compatibility; strict represented OBS interchange and private seeded run receipts. Directory expansion, source hotkey binding UI and complete image-source parity are not implemented.": {
+    "es-ES": "Imágenes estáticas PNG/JPEG/WebP y GIF animados; pases con Corte/Fundido/Barrido/Deslizamiento, lienzo automático/personalizado/por proporción, tres comportamientos de visibilidad, modo automático/manual y controles compartidos Reproducir/Pausa/Reiniciar/Detener/Anterior/Siguiente. Orden de lista, permutación estable y reproducción aleatoria propia con compatibilidad explícita v1 antigua o v2 con búfer; intercambio estricto representable de OBS e identidades privadas de secuencia. No se implementan carpetas, interfaz de teclas por fuente ni paridad completa de image-source.",
+    "ru-RU": "Статичные PNG/JPEG/WebP и анимированные GIF; слайд-шоу с Cut/Fade/Swipe/Slide, автоматическим/пользовательским холстом и соотношением сторон, тремя режимами видимости, автоматическим/ручным режимом и общими командами воспроизведения/паузы/перезапуска/остановки/назад/далее. Порядок списка, стабильное перемешивание и собственное случайное воспроизведение с явной совместимостью со старой v1 или буферной v2; строгий представимый обмен OBS и приватные данные запуска с seed. Папки, интерфейс горячих клавиш источника и полное соответствие image-source не реализованы.",
+    "uk-UA": "Статичні PNG/JPEG/WebP та анімовані GIF; слайд-шоу з Cut/Fade/Swipe/Slide, автоматичним/власним полотном і співвідношенням сторін, трьома режимами видимості, автоматичним/ручним режимом і спільними командами відтворення/паузи/перезапуску/зупинки/назад/далі. Порядок списку, стале перемішування та власне випадкове відтворення з явною сумісністю зі старою v1 або буферною v2; суворий поданий обмін OBS і приватні дані запуску з seed. Папки, інтерфейс гарячих клавіш джерела та повну відповідність image-source не реалізовано.",
+    "de-DE": "Statische PNG/JPEG/WebP und animierte GIFs; Diashows mit Schnitt/Überblenden/Wischen/Schieben, automatischer/benutzerdefinierter/Seitenverhältnis-Leinwand, drei Sichtbarkeitsmodi, automatischem/manuellem Modus und gemeinsamer Steuerung Abspielen/Pause/Neustart/Stopp/Zurück/Weiter. Listenreihenfolge, stabiles Mischen und eigene Zufallswiedergabe mit expliziter älterer v1- oder gepufferter v2-Kompatibilität; strikter darstellbarer OBS-Austausch und private Laufbelege mit Startwert. Ordner, UI für Quellen-Tastenkürzel und vollständige image-source-Parität sind nicht implementiert."
+  },
+"Modern random playback continues indefinitely; Loop and Hide are retained but not used.": {
+  "es-ES": "La reproducción aleatoria moderna continúa indefinidamente; Bucle y Ocultar se conservan pero no se usan.",
+  "ru-RU": "Современное случайное воспроизведение продолжается неограниченно; Loop и Hide сохраняются, но не используются.",
+  "uk-UA": "Сучасне випадкове відтворення триває необмежено; Loop та Hide зберігаються, але не використовуються.",
+  "de-DE": "Moderne Zufallswiedergabe läuft unbegrenzt; Wiederholung und Ausblenden bleiben gespeichert, werden aber nicht verwendet."
+}
+}

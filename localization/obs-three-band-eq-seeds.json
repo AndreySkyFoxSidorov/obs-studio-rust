@@ -1,0 +1,86 @@
+{
+  "Add OBS 3-Band Equalizer": {
+    "es-ES": "Añadir ecualizador OBS de 3 bandas",
+    "ru-RU": "Добавить трёхполосный эквалайзер OBS",
+    "uk-UA": "Додати трисмуговий еквалайзер OBS",
+    "de-DE": "OBS-Dreiband-Equalizer hinzufügen"
+  },
+  "OBS 3-Band Equalizer {}": {
+    "es-ES": "Ecualizador OBS de 3 bandas {}",
+    "ru-RU": "Трёхполосный эквалайзер OBS {}",
+    "uk-UA": "Трисмуговий еквалайзер OBS {}",
+    "de-DE": "OBS-Dreiband-Equalizer {}"
+  },
+  "Add the standard OBS equalizer with independent low, mid and high band gains.": {
+    "es-ES": "Añada el ecualizador estándar de OBS con ganancias independientes para graves, medios y agudos.",
+    "ru-RU": "Добавить стандартный эквалайзер OBS с независимым усилением низких, средних и высоких частот.",
+    "uk-UA": "Додати стандартний еквалайзер OBS із незалежним підсиленням низьких, середніх і високих частот.",
+    "de-DE": "Den standardmäßigen OBS-Equalizer mit unabhängiger Verstärkung für Tiefen, Mitten und Höhen hinzufügen."
+  },
+  "Enable or bypass the OBS equalizer without removing its gain settings.": {
+    "es-ES": "Active o desactive el ecualizador OBS sin eliminar sus ajustes de ganancia.",
+    "ru-RU": "Включить или обойти эквалайзер OBS, сохранив настройки усиления полос.",
+    "uk-UA": "Увімкнути або обійти еквалайзер OBS, зберігши налаштування підсилення смуг.",
+    "de-DE": "Den OBS-Equalizer aktivieren oder umgehen, ohne seine Verstärkungseinstellungen zu entfernen."
+  },
+  "Uses the standard OBS band split at 800 Hz and 5000 Hz. Each audio channel is equalized independently.": {
+    "es-ES": "Usa la división de bandas estándar de OBS a 800 Hz y 5000 Hz. Cada canal de audio se ecualiza de forma independiente.",
+    "ru-RU": "Используется стандартное разделение полос OBS на 800 Гц и 5000 Гц. Каждый аудиоканал обрабатывается независимо.",
+    "uk-UA": "Використовується стандартний поділ смуг OBS на 800 Гц і 5000 Гц. Кожен аудіоканал обробляється незалежно.",
+    "de-DE": "Verwendet die standardmäßige OBS-Bandaufteilung bei 800 Hz und 5000 Hz. Jeder Audiokanal wird unabhängig entzerrt."
+  },
+  "High gain (dB)": {
+    "es-ES": "Ganancia de agudos (dB)",
+    "ru-RU": "Усиление высоких частот (дБ)",
+    "uk-UA": "Підсилення високих частот (дБ)",
+    "de-DE": "Höhenverstärkung (dB)"
+  },
+  "Mid gain (dB)": {
+    "es-ES": "Ganancia de medios (dB)",
+    "ru-RU": "Усиление средних частот (дБ)",
+    "uk-UA": "Підсилення середніх частот (дБ)",
+    "de-DE": "Mittenverstärkung (dB)"
+  },
+  "Low gain (dB)": {
+    "es-ES": "Ganancia de graves (dB)",
+    "ru-RU": "Усиление низких частот (дБ)",
+    "uk-UA": "Підсилення низьких частот (дБ)",
+    "de-DE": "Tiefenverstärkung (dB)"
+  },
+  "Adjust the high band from -20 to +20 dB in 0.1 dB steps.": {
+    "es-ES": "Ajuste los agudos de -20 a +20 dB en pasos de 0,1 dB.",
+    "ru-RU": "Настройте высокие частоты от −20 до +20 дБ с шагом 0,1 дБ.",
+    "uk-UA": "Налаштуйте високі частоти від −20 до +20 дБ із кроком 0,1 дБ.",
+    "de-DE": "Das Höhenband von −20 bis +20 dB in 0,1-dB-Schritten einstellen."
+  },
+  "Adjust the mid band from -20 to +20 dB in 0.1 dB steps.": {
+    "es-ES": "Ajuste los medios de -20 a +20 dB en pasos de 0,1 dB.",
+    "ru-RU": "Настройте средние частоты от −20 до +20 дБ с шагом 0,1 дБ.",
+    "uk-UA": "Налаштуйте середні частоти від −20 до +20 дБ із кроком 0,1 дБ.",
+    "de-DE": "Das Mittenband von −20 bis +20 dB in 0,1-dB-Schritten einstellen."
+  },
+  "Adjust the low band from -20 to +20 dB in 0.1 dB steps.": {
+    "es-ES": "Ajuste los graves de -20 a +20 dB en pasos de 0,1 dB.",
+    "ru-RU": "Настройте низкие частоты от −20 до +20 дБ с шагом 0,1 дБ.",
+    "uk-UA": "Налаштуйте низькі частоти від −20 до +20 дБ із кроком 0,1 дБ.",
+    "de-DE": "Das Tiefenband von −20 bis +20 dB in 0,1-dB-Schritten einstellen."
+  },
+  "Reset EQ gains": {
+    "es-ES": "Restablecer ganancias del ecualizador",
+    "ru-RU": "Сбросить усиление полос",
+    "uk-UA": "Скинути підсилення смуг",
+    "de-DE": "EQ-Verstärkungen zurücksetzen"
+  },
+  "Set all three gains to 0 dB while keeping the current enabled state.": {
+    "es-ES": "Establezca las tres ganancias en 0 dB y mantenga el estado de activación actual.",
+    "ru-RU": "Установить усиление всех трёх полос в 0 дБ, сохранив текущее состояние включения фильтра.",
+    "uk-UA": "Установити підсилення всіх трьох смуг у 0 дБ, зберігши поточний стан увімкнення фільтра.",
+    "de-DE": "Alle drei Verstärkungen auf 0 dB setzen und den aktuellen Aktivierungszustand beibehalten."
+  },
+  "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 and Sharpen v2 (SDR; Luma/Sharpen on CPU), Crop/Pad (signed relative crop or absolute dimensions with transparent padding), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor and Expander. Dynamics use admitted source-block callback boundaries; external sidechain, RNNoise/Speex noise suppression, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 y Sharpen v2 (SDR; Luma/Sharpen en CPU), Recorte/Relleno (recorte relativo con signo o dimensiones absolutas con relleno transparente), Ganancia, Invertir polaridad, Puerta de ruido, Ecualizador de 3 bandas, Limitador, Compresor, Compresor ascendente y Expansor. La dinámica respeta los límites de callbacks de bloques admitidos; aún no se implementan la cadena lateral externa, la supresión de ruido RNNoise/Speex, el alojamiento VST, HDR, las versiones v1 heredadas ni los demás filtros estándar.",
+    "ru-RU": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 и Sharpen v2 (SDR; Luma/Sharpen на CPU), Обрезка/Поля (относительная обрезка со знаком или абсолютный размер с прозрачными полями), Усиление, Инверсия полярности, Noise Gate, Трёхполосный эквалайзер, Лимитер, Компрессор, Повышающий компрессор и Экспандер. Динамика соблюдает границы принятых аудиоблоков; внешний сайдчейн, шумоподавление RNNoise/Speex, загрузка VST, HDR, устаревшие версии v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 і Sharpen v2 (SDR; Luma/Sharpen на CPU), Обрізання/Поля (відносне обрізання зі знаком або абсолютний розмір із прозорими полями), Підсилення, Інверсія полярності, Noise Gate, Трисмуговий еквалайзер, Лімітер, Компресор, Підвищувальний компресор та Експандер. Динаміка дотримується меж прийнятих аудіоблоків; зовнішній сайдчейн, шумозаглушення RNNoise/Speex, завантаження VST, HDR, застарілі версії v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 und Sharpen v2 (SDR; Luma/Sharpen auf CPU), Zuschneiden/Auffüllen (relative Werte mit Vorzeichen oder absolute Maße mit transparenten Rändern), Verstärkung, Polarität umkehren, Rauschgate, Dreiband-Equalizer, Limiter, Kompressor, Aufwärtskompressor und Expander. Dynamikfilter beachten die Grenzen zugelassener Audioblock-Callbacks; externe Sidechain, RNNoise/Speex-Rauschunterdrückung, VST-Hosting, HDR, ältere v1-Versionen und weitere Standardfilter sind nicht implementiert."
+  }
+}

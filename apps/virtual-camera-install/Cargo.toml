@@ -1,0 +1,10 @@
+[package]
+name = "skylive-virtual-camera-install"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+skylive-virtual-camera-protocol = { path = "../../crates/virtual-camera-protocol" }

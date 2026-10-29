@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-26T05:49:32.103847+00:00",
+  "files": [
+    {
+      "path": "localization/settings-workflow-seeds.json",
+      "sha256": "a029133678ae80fa675a76367b801d8c709f7c3051d85408a528b0d4815e28d4",
+      "entries": 20,
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "path": "localization/obs-dynamics-seeds.json",
+      "sha256": "a6a438b9dadf9c6d65026f93ea2bd6b1b1a426e4c4d7bedd468e4076574dffeb",
+      "entries": 33,
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "path": "localization/obs-dynamics-scope-seeds.json",
+      "sha256": "f76d64166dba5d56aeb67ba92a2b70d6e68c8430d30c2b57056329a382732d9e",
+      "entries": 1,
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "path": "localization/obs-dynamics-description-seeds.json",
+      "sha256": "b6cad1328aecd9e0399d5a369b6c797503c230326c929a41d420bb5a847f01ff",
+      "entries": 1,
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    }
+  ]
+}

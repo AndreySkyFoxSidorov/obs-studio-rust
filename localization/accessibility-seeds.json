@@ -1,0 +1,56 @@
+{
+  "Settings — Accessibility": {
+    "es-ES": "Ajustes — Accesibilidad",
+    "ru-RU": "Настройки — Специальные возможности",
+    "uk-UA": "Налаштування — Спеціальні можливості",
+    "de-DE": "Einstellungen — Barrierefreiheit"
+  },
+  "Override selection, crop, hover and audio meter colors. Apply publishes this palette to the interface.": {
+    "es-ES": "Personaliza los colores de selección, recorte, resaltado y medidores de audio. Aplicar publica esta paleta en la interfaz.",
+    "ru-RU": "Переопределить цвета выделения, обрезки, наведения и индикаторов звука. Кнопка «Применить» задаёт эту палитру интерфейсу.",
+    "uk-UA": "Перевизначити кольори виділення, обрізання, наведення та індикаторів звуку. Кнопка «Застосувати» задає цю палітру інтерфейсу.",
+    "de-DE": "Farben für Auswahl, Zuschnitt, Hervorhebung und Audiopegel überschreiben. Anwenden übernimmt diese Palette für die Oberfläche."
+  },
+  "Use the original OBS palette, its color-blind preset, or your own colors.": {
+    "es-ES": "Usa la paleta original de OBS, su ajuste para daltonismo o tus propios colores.",
+    "ru-RU": "Используйте исходную палитру OBS, её вариант для нарушений цветового зрения или собственные цвета.",
+    "uk-UA": "Використовуйте вихідну палітру OBS, її варіант для порушень колірного зору або власні кольори.",
+    "de-DE": "Originale OBS-Palette, die Voreinstellung für Farbfehlsichtigkeit oder eigene Farben verwenden."
+  },
+  "Choosing a predefined palette replaces the current draft colors.": {
+    "es-ES": "Elegir una paleta predefinida sustituye los colores del borrador actual.",
+    "ru-RU": "Выбор готовой палитры заменяет цвета в текущем черновике.",
+    "uk-UA": "Вибір готової палітри замінює кольори в поточній чернетці.",
+    "de-DE": "Eine vorgegebene Palette ersetzt die Farben des aktuellen Entwurfs."
+  },
+  "Choose this interface color. Editing a color selects the Custom preset.": {
+    "es-ES": "Elige este color de interfaz. Al editar un color se selecciona el ajuste Personalizado.",
+    "ru-RU": "Выберите этот цвет интерфейса. Изменение цвета включает пользовательскую палитру.",
+    "uk-UA": "Виберіть цей колір інтерфейсу. Зміна кольору вмикає користувацьку палітру.",
+    "de-DE": "Diese Oberflächenfarbe wählen. Eine Farbänderung aktiviert die benutzerdefinierte Palette."
+  },
+  "These colors affect interface overlays and meters. They do not change video pixels, audio samples or output color encoding.": {
+    "es-ES": "Estos colores afectan las superposiciones de interfaz y los medidores. No cambian los píxeles de vídeo, las muestras de audio ni la codificación de color de salida.",
+    "ru-RU": "Эти цвета задают рамки интерфейса и индикаторы. Они не меняют пиксели видео, аудиосэмплы или цветовое кодирование выходов.",
+    "uk-UA": "Ці кольори задають рамки інтерфейсу та індикатори. Вони не змінюють пікселі відео, аудіосемпли або колірне кодування виходів.",
+    "de-DE": "Diese Farben betreffen Oberflächenrahmen und Pegelanzeigen. Videopixel, Audiosamples und die Farbkodierung der Ausgaben bleiben unverändert."
+  },
+  "Accessibility preset colors do not match the selected preset.": {
+    "es-ES": "Los colores de accesibilidad no coinciden con el ajuste seleccionado.",
+    "ru-RU": "Цвета специальных возможностей не соответствуют выбранной палитре.",
+    "uk-UA": "Кольори спеціальних можливостей не відповідають вибраній палітрі.",
+    "de-DE": "Die Barrierefreiheitsfarben entsprechen nicht der gewählten Palette."
+  },
+  "Open this Settings page.": {
+    "es-ES": "Abre esta página de ajustes.",
+    "ru-RU": "Открыть эту страницу настроек.",
+    "uk-UA": "Відкрити цю сторінку налаштувань.",
+    "de-DE": "Diese Einstellungsseite öffnen."
+  },
+  "This Settings page is not implemented yet.": {
+    "es-ES": "Esta página de ajustes aún no está implementada.",
+    "ru-RU": "Эта страница настроек ещё не реализована.",
+    "uk-UA": "Цю сторінку налаштувань ще не реалізовано.",
+    "de-DE": "Diese Einstellungsseite ist noch nicht implementiert."
+  }
+}

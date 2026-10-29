@@ -1,0 +1,98 @@
+{
+  "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "source_services": 84,
+  "included_services": 80,
+  "included_servers": 525,
+  "excluded": [
+    {
+      "service": "YouTube - HLS",
+      "server": "Primary YouTube ingest server",
+      "url": "https://a.upload.youtube.com/http_upload_hls?cid={stream_key}&copy=0&file=out.m3u8",
+      "reason": "unsupported_protocol"
+    },
+    {
+      "service": "YouTube - HLS",
+      "server": "Backup YouTube ingest server",
+      "url": "https://b.upload.youtube.com/http_upload_hls?cid={stream_key}&copy=1&file=out.m3u8",
+      "reason": "unsupported_protocol"
+    },
+    {
+      "service": "SHOWROOM",
+      "server": "Default",
+      "url": "https://www.showroom-live.com/api/obs/streaming_info?obs_key=",
+      "reason": "dynamic_api_or_non_rtmp_url"
+    },
+    {
+      "service": "Dacast",
+      "server": "Default",
+      "url": "https://developer.dacast.com/v3/encoder-setup/",
+      "reason": "dynamic_api_or_non_rtmp_url"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Default (Auto Detect)",
+      "url": "rtmp://stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Atlanta, Georgia, USA",
+      "url": "rtmp://live-us-atl-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Chicago, Illinois, USA",
+      "url": "rtmp://live-us-ord-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Dallas, Texas, USA",
+      "url": "rtmp://live-us-dfw-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Los Angeles, California, USA",
+      "url": "rtmp://live-us-lax-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Seattle, Washington, USA",
+      "url": "rtmp://live-us-sea-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Washington D.C., USA",
+      "url": "rtmp://live-us-iad-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Toronto, Canada",
+      "url": "rtmp://live-ca-yyz-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Paris, France",
+      "url": "rtmp://live-fr-par-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "London, UK",
+      "url": "rtmp://live-uk-lhr-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    },
+    {
+      "service": "SharePlay.tv",
+      "server": "Sydney, Australia",
+      "url": "rtmp://live-au-syd-stream.shareplay.tv",
+      "reason": "application_path_required_by_current_endpoint"
+    }
+  ]
+}

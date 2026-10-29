@@ -1,0 +1,25 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "frontend/widgets/OBSBasic_Projectors.cpp",
+      "sha256": "6d1f4bdc47bc4b2f1a9bf7305163cabfee0e6c901a314ee0bc5ac415b08ee6bf"
+    },
+    {
+      "path": "frontend/widgets/OBSBasic_SceneCollections.cpp",
+      "sha256": "a75a7048cbfea4d82b341353304e4eefa6317ac5fe9efd25d856662d4964fbf3"
+    },
+    {
+      "path": "frontend/OBSApp.cpp",
+      "sha256": "bc298358c9fd2b8e7e8ca7952108adfeafe6243df4718b854003e33e96372963"
+    },
+    {
+      "path": "frontend/forms/OBSBasicSettings.ui",
+      "sha256": "833391d0138c4306be7cc7ce5d04017044e36054806b64a6098b149424bcd828"
+    }
+  ],
+  "scope": "Rust bounded native-collection Save/Open projector restoration. Own physical geometry and collection-local stable identities, not Qt base64 geometry or source-name matching. No runtime/native/UI acceptance."
+}

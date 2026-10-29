@@ -1,0 +1,47 @@
+{
+  "name": "Source-derived OBS affine fixture",
+  "version": 1,
+  "current_scene": "Affine",
+  "current_program_scene": "Affine",
+  "scene_order": [{"name": "Affine"}],
+  "groups": [],
+  "sources": [
+    {
+      "name": "Cropped Color",
+      "uuid": "78d638af-ad43-4a08-aeb6-c8ec2a0f1901",
+      "id": "color_source",
+      "versioned_id": "color_source_v3",
+      "settings": {"color": 4282400832, "width": 320, "height": 240}
+    },
+    {
+      "name": "Affine",
+      "uuid": "78d638af-ad43-4a08-aeb6-c8ec2a0f1902",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "custom_size": false,
+        "id_counter": 9,
+        "items": [{
+          "name": "Cropped Color",
+          "source_uuid": "78d638af-ad43-4a08-aeb6-c8ec2a0f1901",
+          "id": 9,
+          "visible": true,
+          "locked": false,
+          "pos": {"x": 100.0, "y": 200.0},
+          "scale": {"x": -2.0, "y": 1.5},
+          "rot": 450.25,
+          "align": 5,
+          "crop_left": 10,
+          "crop_top": 20,
+          "crop_right": 30,
+          "crop_bottom": 40,
+          "bounds_type": 0,
+          "bounds": {"x": 0.0, "y": 0.0},
+          "scale_filter": "disable",
+          "blend_method": "default",
+          "blend_type": "normal"
+        }]
+      }
+    }
+  ]
+}

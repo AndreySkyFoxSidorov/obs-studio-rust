@@ -1,0 +1,121 @@
+{
+  "SkyLive.CameraControl.Pan": {
+    "en-US": "Pan",
+    "es-ES": "Panorámica horizontal",
+    "ru-RU": "Поворот по горизонтали",
+    "uk-UA": "Поворот по горизонталі",
+    "de-DE": "Schwenken"
+  },
+  "SkyLive.CameraControl.Tilt": {
+    "en-US": "Tilt",
+    "es-ES": "Inclinación vertical",
+    "ru-RU": "Наклон по вертикали",
+    "uk-UA": "Нахил по вертикалі",
+    "de-DE": "Neigung"
+  },
+  "SkyLive.CameraControl.Roll": {
+    "en-US": "Roll",
+    "es-ES": "Rotación",
+    "ru-RU": "Крен",
+    "uk-UA": "Крен",
+    "de-DE": "Drehung"
+  },
+  "SkyLive.CameraControl.Zoom": {
+    "en-US": "Zoom",
+    "es-ES": "Zoom",
+    "ru-RU": "Масштаб",
+    "uk-UA": "Масштаб",
+    "de-DE": "Zoom"
+  },
+  "SkyLive.CameraControl.Exposure": {
+    "en-US": "Exposure",
+    "es-ES": "Exposición",
+    "ru-RU": "Экспозиция",
+    "uk-UA": "Експозиція",
+    "de-DE": "Belichtung"
+  },
+  "SkyLive.CameraControl.Iris": {
+    "en-US": "Iris",
+    "es-ES": "Apertura",
+    "ru-RU": "Диафрагма",
+    "uk-UA": "Діафрагма",
+    "de-DE": "Blende"
+  },
+  "SkyLive.CameraControl.Focus": {
+    "en-US": "Focus",
+    "es-ES": "Enfoque",
+    "ru-RU": "Фокус",
+    "uk-UA": "Фокус",
+    "de-DE": "Fokus"
+  },
+  "SkyLive.CameraControl.Brightness": {
+    "en-US": "Brightness",
+    "es-ES": "Brillo",
+    "ru-RU": "Яркость",
+    "uk-UA": "Яскравість",
+    "de-DE": "Helligkeit"
+  },
+  "SkyLive.CameraControl.Contrast": {
+    "en-US": "Contrast",
+    "es-ES": "Contraste",
+    "ru-RU": "Контрастность",
+    "uk-UA": "Контрастність",
+    "de-DE": "Kontrast"
+  },
+  "SkyLive.CameraControl.Hue": {
+    "en-US": "Hue",
+    "es-ES": "Tono",
+    "ru-RU": "Цветовой тон",
+    "uk-UA": "Колірний тон",
+    "de-DE": "Farbton"
+  },
+  "SkyLive.CameraControl.Saturation": {
+    "en-US": "Saturation",
+    "es-ES": "Saturación",
+    "ru-RU": "Насыщенность",
+    "uk-UA": "Насиченість",
+    "de-DE": "Sättigung"
+  },
+  "SkyLive.CameraControl.Sharpness": {
+    "en-US": "Sharpness",
+    "es-ES": "Nitidez",
+    "ru-RU": "Резкость",
+    "uk-UA": "Різкість",
+    "de-DE": "Schärfe"
+  },
+  "SkyLive.CameraControl.Gamma": {
+    "en-US": "Gamma",
+    "es-ES": "Gamma",
+    "ru-RU": "Гамма",
+    "uk-UA": "Гамма",
+    "de-DE": "Gamma"
+  },
+  "SkyLive.CameraControl.ColorEnable": {
+    "en-US": "Color Enable",
+    "es-ES": "Activar color",
+    "ru-RU": "Цветовой режим",
+    "uk-UA": "Колірний режим",
+    "de-DE": "Farbe aktivieren"
+  },
+  "SkyLive.CameraControl.WhiteBalance": {
+    "en-US": "White Balance",
+    "es-ES": "Balance de blancos",
+    "ru-RU": "Баланс белого",
+    "uk-UA": "Баланс білого",
+    "de-DE": "Weißabgleich"
+  },
+  "SkyLive.CameraControl.BacklightCompensation": {
+    "en-US": "Backlight Compensation",
+    "es-ES": "Compensación de contraluz",
+    "ru-RU": "Компенсация контрового света",
+    "uk-UA": "Компенсація контрового світла",
+    "de-DE": "Gegenlichtkompensation"
+  },
+  "SkyLive.CameraControl.Gain": {
+    "en-US": "Gain",
+    "es-ES": "Ganancia",
+    "ru-RU": "Усиление",
+    "uk-UA": "Підсилення",
+    "de-DE": "Verstärkung"
+  }
+}

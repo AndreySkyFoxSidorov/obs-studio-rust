@@ -1,0 +1,158 @@
+{
+  "Volume units": {
+    "es-ES": "Unidades de volumen",
+    "ru-RU": "Единицы громкости",
+    "uk-UA": "Одиниці гучності",
+    "de-DE": "Lautstärkeeinheit"
+  },
+  "Display volume in decibels.": {
+    "es-ES": "Mostrar el volumen en decibelios.",
+    "ru-RU": "Показывать громкость в децибелах.",
+    "uk-UA": "Показувати гучність у децибелах.",
+    "de-DE": "Lautstärke in Dezibel anzeigen."
+  },
+  "Display volume as a percentage, from 0 to 2000%.": {
+    "es-ES": "Mostrar el volumen como porcentaje, de 0 a 2000 %.",
+    "ru-RU": "Показывать громкость в процентах от 0 до 2000%.",
+    "uk-UA": "Показувати гучність у відсотках від 0 до 2000%.",
+    "de-DE": "Lautstärke in Prozent von 0 bis 2000 % anzeigen."
+  },
+  "Volume and mute changes apply immediately when confirmed. Press Enter to confirm typed volume; Close discards an unconfirmed value.": {
+    "es-ES": "Los cambios de volumen y silencio se aplican al confirmarlos. Pulse Intro para confirmar el volumen escrito; Cerrar descarta los valores sin confirmar.",
+    "ru-RU": "Изменения громкости и отключения звука применяются сразу после подтверждения. Нажмите Enter для введённой громкости; закрытие отменяет неподтверждённое значение.",
+    "uk-UA": "Зміни гучності та вимкнення звуку застосовуються відразу після підтвердження. Натисніть Enter для введеної гучності; закриття скасовує непідтверджене значення.",
+    "de-DE": "Lautstärke und Stummschaltung werden nach Bestätigung sofort angewendet. Eingabetaste bestätigt einen eingegebenen Wert; Schließen verwirft unbestätigte Werte."
+  },
+  "No audio sources. Add an audio capture or a media source with audio.": {
+    "es-ES": "No hay fuentes de audio. Añada una captura de audio o una fuente multimedia con audio.",
+    "ru-RU": "Нет источников звука. Добавьте захват звука или медиаисточник со звуком.",
+    "uk-UA": "Немає джерел звуку. Додайте захоплення звуку або медіаджерело зі звуком.",
+    "de-DE": "Keine Audioquellen. Fügen Sie eine Audioaufnahmequelle oder eine Medienquelle mit Audio hinzu."
+  },
+  "Where this source is included. Device availability and signal levels are shown in the mixer.": {
+    "es-ES": "Dónde se incluye esta fuente. La disponibilidad de dispositivos y los niveles de señal se muestran en el mezclador.",
+    "ru-RU": "Где используется источник. Доступность устройства и уровень сигнала показаны в микшере.",
+    "uk-UA": "Де використовується джерело. Доступність пристрою та рівень сигналу показано в мікшері.",
+    "de-DE": "Wo diese Quelle eingebunden ist. Geräteverfügbarkeit und Signalpegel werden im Mixer angezeigt."
+  },
+  "Program + Preview": {
+    "es-ES": "Programa + Vista previa",
+    "ru-RU": "Программа + Предпросмотр",
+    "uk-UA": "Програма + Попередній перегляд",
+    "de-DE": "Programm + Vorschau"
+  },
+  "In Program": {
+    "es-ES": "En Programa",
+    "ru-RU": "В Программе",
+    "uk-UA": "У Програмі",
+    "de-DE": "Im Programm"
+  },
+  "In Preview": {
+    "es-ES": "En Vista previa",
+    "ru-RU": "В Предпросмотре",
+    "uk-UA": "У Попередньому перегляді",
+    "de-DE": "In der Vorschau"
+  },
+  "Inactive": {
+    "es-ES": "Inactivo",
+    "ru-RU": "Неактивен",
+    "uk-UA": "Неактивний",
+    "de-DE": "Inaktiv"
+  },
+  "Activity": {
+    "es-ES": "Actividad",
+    "ru-RU": "Активность",
+    "uk-UA": "Активність",
+    "de-DE": "Aktivität"
+  },
+  "Drag to adjust volume, or type a value and press Enter. Escape cancels the unconfirmed value.": {
+    "es-ES": "Arrastre para ajustar el volumen, o escriba un valor y pulse Intro. Escape cancela el valor sin confirmar.",
+    "ru-RU": "Изменяйте громкость перетаскиванием или введите значение и нажмите Enter. Escape отменяет неподтверждённое значение.",
+    "uk-UA": "Змінюйте гучність перетягуванням або введіть значення й натисніть Enter. Escape скасовує непідтверджене значення.",
+    "de-DE": "Zum Ändern der Lautstärke ziehen oder einen Wert eingeben und mit der Eingabetaste bestätigen. Escape verwirft den unbestätigten Wert."
+  },
+  "Enable an audio filter module in Tools > Plugins.": {
+    "es-ES": "Active un módulo de filtros de audio en Herramientas > Plugins.",
+    "ru-RU": "Включите модуль аудиофильтров в меню Сервис > Плагины.",
+    "uk-UA": "Увімкніть модуль аудіофільтрів у меню Інструменти > Плагіни.",
+    "de-DE": "Aktivieren Sie ein Audiofiltermodul unter Werkzeuge > Plugins."
+  },
+  "Mono downmix, balance, sync offsets, audio monitoring and separate audio tracks are not available yet. Sources feed the single Program mix.": {
+    "es-ES": "Aún no están disponibles la mezcla a mono, el balance, los desfases de sincronización, la monitorización ni las pistas separadas. Las fuentes alimentan una sola mezcla de Programa.",
+    "ru-RU": "Сведение в моно, баланс, смещение синхронизации, прослушивание и отдельные звуковые дорожки пока недоступны. Источники поступают в общий микс Программы.",
+    "uk-UA": "Зведення в моно, баланс, зміщення синхронізації, прослуховування й окремі звукові доріжки поки недоступні. Джерела надходять до спільного міксу Програми.",
+    "de-DE": "Mono-Downmix, Balance, Synchronisationsversatz, Audio-Monitoring und getrennte Audiospuren sind noch nicht verfügbar. Quellen speisen einen gemeinsamen Programmmix."
+  },
+  "This audio dialog belongs to another document. Close and reopen it.": {
+    "es-ES": "Este diálogo de audio pertenece a otro documento. Ciérrelo y ábralo de nuevo.",
+    "ru-RU": "Этот диалог звука относится к другому документу. Закройте его и откройте заново.",
+    "uk-UA": "Цей діалог звуку належить іншому документу. Закрийте його й відкрийте знову.",
+    "de-DE": "Dieser Audiodialog gehört zu einem anderen Dokument. Schließen und öffnen Sie ihn erneut."
+  },
+  "The audio settings changed. Review their current values and try again.": {
+    "es-ES": "Los ajustes de audio han cambiado. Revise los valores actuales e inténtelo de nuevo.",
+    "ru-RU": "Настройки звука изменились. Проверьте текущие значения и повторите попытку.",
+    "uk-UA": "Налаштування звуку змінилися. Перевірте поточні значення та повторіть спробу.",
+    "de-DE": "Die Audioeinstellungen wurden geändert. Prüfen Sie die aktuellen Werte und versuchen Sie es erneut."
+  },
+  "This audio source is no longer available.": {
+    "es-ES": "Esta fuente de audio ya no está disponible.",
+    "ru-RU": "Этот источник звука больше недоступен.",
+    "uk-UA": "Це джерело звуку більше недоступне.",
+    "de-DE": "Diese Audioquelle ist nicht mehr verfügbar."
+  },
+  "Review audio source activity, volume, mute and filter settings.": {
+    "es-ES": "Revisar la actividad, el volumen, el silencio y los filtros de las fuentes de audio.",
+    "ru-RU": "Просмотреть активность, громкость, отключение звука и фильтры аудиоисточников.",
+    "uk-UA": "Переглянути активність, гучність, вимкнення звуку й фільтри аудіоджерел.",
+    "de-DE": "Aktivität, Lautstärke, Stummschaltung und Filter der Audioquellen prüfen."
+  },
+  "Sync offsets, audio monitoring and separate audio tracks are not available yet. Sources feed the single Program mix.": {
+    "es-ES": "Aún no están disponibles los desfases de sincronización, la monitorización de audio ni las pistas separadas. Las fuentes alimentan una sola mezcla de Programa.",
+    "ru-RU": "Смещение синхронизации, прослушивание и отдельные звуковые дорожки пока недоступны. Источники поступают в общий микс Программы.",
+    "uk-UA": "Зміщення синхронізації, прослуховування й окремі звукові доріжки поки недоступні. Джерела надходять до спільного міксу Програми.",
+    "de-DE": "Synchronisationsversatz, Audio-Monitoring und getrennte Audiospuren sind noch nicht verfügbar. Quellen speisen einen gemeinsamen Programmmix."
+  },
+  "Mix this source to mono. The setting is retained when the project already uses mono output.": {
+    "es-ES": "Mezclar esta fuente a mono. El ajuste se conserva si el proyecto ya utiliza salida mono.",
+    "ru-RU": "Сводить этот источник в моно. Настройка сохраняется, если проект уже использует монофонический вывод.",
+    "uk-UA": "Зводити це джерело в моно. Налаштування зберігається, якщо проєкт уже використовує монофонічний вивід.",
+    "de-DE": "Diese Quelle in Mono mischen. Die Einstellung bleibt erhalten, wenn das Projekt bereits Mono ausgibt."
+  },
+  "Stereo balance: 0% left, 50% center, 100% right. Values between 40% and 60% snap to center. Confirm a typed value with Enter.": {
+    "es-ES": "Balance estéreo: 0 % izquierda, 50 % centro, 100 % derecha. Los valores entre 40 % y 60 % se centran. Confirme un valor escrito con Intro.",
+    "ru-RU": "Стереобаланс: 0% — слева, 50% — центр, 100% — справа. Значения между 40% и 60% устанавливаются в центр. Подтвердите введённое значение клавишей Enter.",
+    "uk-UA": "Стереобаланс: 0% — ліворуч, 50% — центр, 100% — праворуч. Значення між 40% і 60% встановлюються в центр. Підтвердьте введене значення клавішею Enter.",
+    "de-DE": "Stereo-Balance: 0 % links, 50 % Mitte, 100 % rechts. Werte zwischen 40 % und 60 % rasten in der Mitte ein. Eingabewerte mit der Eingabetaste bestätigen."
+  },
+  "Balance is unavailable when the project output is mono.": {
+    "es-ES": "El balance no está disponible con la salida mono del proyecto.",
+    "ru-RU": "Баланс недоступен при монофоническом выводе проекта.",
+    "uk-UA": "Баланс недоступний за монофонічного виводу проєкту.",
+    "de-DE": "Balance ist bei Mono-Ausgabe des Projekts nicht verfügbar."
+  },
+  "Balance requires a confirmed original stereo format. Start this source to identify its format.": {
+    "es-ES": "El balance requiere un formato estéreo original confirmado. Active esta fuente para identificar su formato.",
+    "ru-RU": "Для баланса нужен подтверждённый исходный стереоформат. Запустите источник, чтобы определить его формат.",
+    "uk-UA": "Для балансу потрібен підтверджений початковий стереоформат. Запустіть джерело, щоб визначити його формат.",
+    "de-DE": "Balance erfordert ein bestätigtes ursprüngliches Stereoformat. Starten Sie die Quelle, um ihr Format zu ermitteln."
+  },
+  "Balance is available only for an original stereo source.": {
+    "es-ES": "El balance solo está disponible para una fuente estéreo original.",
+    "ru-RU": "Баланс доступен только для исходного стереоисточника.",
+    "uk-UA": "Баланс доступний лише для початкового стереоджерела.",
+    "de-DE": "Balance ist nur für eine Quelle mit ursprünglichem Stereoformat verfügbar."
+  },
+  "source balance must be finite in0..1": {
+    "es-ES": "El balance de la fuente debe ser finito y estar entre 0 y 1",
+    "ru-RU": "Баланс источника должен быть конечным значением от 0 до 1",
+    "uk-UA": "Баланс джерела має бути скінченним значенням від 0 до 1",
+    "de-DE": "Die Quellenbalance muss endlich sein und zwischen 0 und 1 liegen"
+  },
+  "Audio worker is busy; try recording again": {
+    "es-ES": "El procesamiento de audio está ocupado; intente grabar de nuevo",
+    "ru-RU": "Обработка звука занята; попробуйте запустить запись ещё раз",
+    "uk-UA": "Обробка звуку зайнята; спробуйте запустити запис ще раз",
+    "de-DE": "Die Audioverarbeitung ist ausgelastet; versuchen Sie die Aufnahme erneut"
+  }
+}

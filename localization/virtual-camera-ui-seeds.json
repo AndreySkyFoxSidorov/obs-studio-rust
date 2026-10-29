@@ -1,0 +1,224 @@
+{
+  "Virtual Camera Settings": {
+    "es-ES": "Ajustes de cámara virtual",
+    "ru-RU": "Настройки виртуальной камеры",
+    "uk-UA": "Налаштування віртуальної камери",
+    "de-DE": "Einstellungen der virtuellen Kamera"
+  },
+  "Start Virtual Camera": {
+    "es-ES": "Iniciar cámara virtual",
+    "ru-RU": "Запустить виртуальную камеру",
+    "uk-UA": "Запустити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera starten"
+  },
+  "Stop Virtual Camera": {
+    "es-ES": "Detener cámara virtual",
+    "ru-RU": "Остановить виртуальную камеру",
+    "uk-UA": "Зупинити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera stoppen"
+  },
+  "Cancel Virtual Camera Start": {
+    "es-ES": "Cancelar inicio de cámara virtual",
+    "ru-RU": "Отменить запуск виртуальной камеры",
+    "uk-UA": "Скасувати запуск віртуальної камери",
+    "de-DE": "Start der virtuellen Kamera abbrechen"
+  },
+  "Starting virtual camera…": {
+    "es-ES": "Iniciando cámara virtual…",
+    "ru-RU": "Запуск виртуальной камеры…",
+    "uk-UA": "Запуск віртуальної камери…",
+    "de-DE": "Virtuelle Kamera wird gestartet…"
+  },
+  "Stopping virtual camera…": {
+    "es-ES": "Deteniendo cámara virtual…",
+    "ru-RU": "Остановка виртуальной камеры…",
+    "uk-UA": "Зупинення віртуальної камери…",
+    "de-DE": "Virtuelle Kamera wird gestoppt…"
+  },
+  "Virtual camera is stopped.": {
+    "es-ES": "La cámara virtual está detenida.",
+    "ru-RU": "Виртуальная камера остановлена.",
+    "uk-UA": "Віртуальну камеру зупинено.",
+    "de-DE": "Die virtuelle Kamera ist gestoppt."
+  },
+  "Virtual camera started.": {
+    "es-ES": "La cámara virtual se ha iniciado.",
+    "ru-RU": "Виртуальная камера запущена.",
+    "uk-UA": "Віртуальну камеру запущено.",
+    "de-DE": "Die virtuelle Kamera wurde gestartet."
+  },
+  "Virtual camera started; waiting for a receiving application.": {
+    "es-ES": "Cámara virtual iniciada; esperando una aplicación receptora.",
+    "ru-RU": "Виртуальная камера запущена; ожидание принимающего приложения.",
+    "uk-UA": "Віртуальну камеру запущено; очікування програми-одержувача.",
+    "de-DE": "Virtuelle Kamera gestartet; Warten auf eine empfangende Anwendung."
+  },
+  "Virtual camera is active; a receiving application is connected.": {
+    "es-ES": "La cámara virtual está activa; hay una aplicación receptora conectada.",
+    "ru-RU": "Виртуальная камера активна; принимающее приложение подключено.",
+    "uk-UA": "Віртуальна камера активна; програму-одержувач підключено.",
+    "de-DE": "Die virtuelle Kamera ist aktiv; eine empfangende Anwendung ist verbunden."
+  },
+  "Output: Program (including scene transitions)": {
+    "es-ES": "Salida: Programa (con transiciones de escena)",
+    "ru-RU": "Вывод: Program (с переходами сцен)",
+    "uk-UA": "Вивід: Program (із переходами сцен)",
+    "de-DE": "Ausgabe: Programm (mit Szenenübergängen)"
+  },
+  "The current scene canvas is resized to the selected camera format. Preview-only, individual scene and individual source routing are not available yet.": {
+    "es-ES": "El lienzo actual se adapta al formato de cámara elegido. Aún no se puede enviar solo la vista previa, una escena o una fuente.",
+    "ru-RU": "Текущий холст масштабируется под выбранный формат камеры. Отдельный вывод Preview, сцены или источника пока недоступен.",
+    "uk-UA": "Поточне полотно масштабується під вибраний формат камери. Окремий вивід Preview, сцени або джерела поки недоступний.",
+    "de-DE": "Die aktuelle Szenenfläche wird an das Kameraformat angepasst. Separate Vorschau-, Szenen- oder Quellenausgabe ist noch nicht verfügbar."
+  },
+  "Camera format": {
+    "es-ES": "Formato de cámara",
+    "ru-RU": "Формат камеры",
+    "uk-UA": "Формат камери",
+    "de-DE": "Kameraformat"
+  },
+  "Use this resolution at 30 frames per second for the virtual camera.": {
+    "es-ES": "Usar esta resolución a 30 fotogramas por segundo para la cámara virtual.",
+    "ru-RU": "Использовать это разрешение с частотой 30 кадров в секунду для виртуальной камеры.",
+    "uk-UA": "Використовувати цю роздільну здатність із частотою 30 кадрів за секунду для віртуальної камери.",
+    "de-DE": "Diese Auflösung mit 30 Bildern pro Sekunde für die virtuelle Kamera verwenden."
+  },
+  "Stop the virtual camera before changing its format.": {
+    "es-ES": "Detén la cámara virtual antes de cambiar su formato.",
+    "ru-RU": "Остановите виртуальную камеру перед изменением её формата.",
+    "uk-UA": "Зупиніть віртуальну камеру перед зміною її формату.",
+    "de-DE": "Stoppe die virtuelle Kamera, bevor du ihr Format änderst."
+  },
+  "This profile is kept for this application window. Apply does not start the camera.": {
+    "es-ES": "Este perfil se conserva para esta ventana. Aplicar no inicia la cámara.",
+    "ru-RU": "Профиль сохраняется для текущего окна приложения. Кнопка «Применить» не запускает камеру.",
+    "uk-UA": "Профіль зберігається для поточного вікна програми. Кнопка «Застосувати» не запускає камеру.",
+    "de-DE": "Dieses Profil gilt für dieses Anwendungsfenster. Anwenden startet die Kamera nicht."
+  },
+  "Frames: {frames} · Source activations: {starts}": {
+    "es-ES": "Fotogramas: {frames} · Activaciones: {starts}",
+    "ru-RU": "Кадры: {frames} · Активации источника: {starts}",
+    "uk-UA": "Кадри: {frames} · Активації джерела: {starts}",
+    "de-DE": "Bilder: {frames} · Quellenaktivierungen: {starts}"
+  },
+  "Windows 11 x64 (build 22000 or later) and a protected SkyLive virtual-camera installation are required. This window does not install, register or elevate permissions for a device.": {
+    "es-ES": "Se requiere Windows 11 x64 (compilación 22000 o posterior) y la instalación protegida de la cámara virtual SkyLive. Esta ventana no instala, registra ni eleva permisos de dispositivos.",
+    "ru-RU": "Нужны Windows 11 x64 (сборка 22000 или новее) и защищённая установка виртуальной камеры SkyLive. Это окно не устанавливает и не регистрирует устройство и не повышает права.",
+    "uk-UA": "Потрібні Windows 11 x64 (збірка 22000 або новіша) і захищена інсталяція віртуальної камери SkyLive. Це вікно не встановлює та не реєструє пристрій і не підвищує права.",
+    "de-DE": "Windows 11 x64 (Build 22000 oder neuer) und eine geschützte Installation der virtuellen SkyLive-Kamera sind erforderlich. Dieses Fenster installiert oder registriert kein Gerät und erhöht keine Rechte."
+  },
+  "After starting, select SkyLive (Windows Virtual Camera) in the receiving application. Audio uses that application's separate microphone selection.": {
+    "es-ES": "Después de iniciar, elige SkyLive (Windows Virtual Camera) en la aplicación receptora. El audio usa su selección de micrófono independiente.",
+    "ru-RU": "После запуска выберите SkyLive (Windows Virtual Camera) в принимающем приложении. Микрофон для звука выбирается в нём отдельно.",
+    "uk-UA": "Після запуску виберіть SkyLive (Windows Virtual Camera) у програмі-одержувачі. Мікрофон для звуку вибирається в ній окремо.",
+    "de-DE": "Wähle nach dem Start SkyLive (Windows Virtual Camera) in der empfangenden Anwendung. Audio verwendet deren separate Mikrofonwahl."
+  },
+  "Stop the virtual camera independently of recording and streaming.": {
+    "es-ES": "Detener la cámara virtual sin detener la grabación ni la transmisión.",
+    "ru-RU": "Остановить виртуальную камеру независимо от записи и стриминга.",
+    "uk-UA": "Зупинити віртуальну камеру незалежно від запису та стримінгу.",
+    "de-DE": "Die virtuelle Kamera unabhängig von Aufnahme und Stream stoppen."
+  },
+  "Send the actual Program picture, including transitions and source filters, to the installed SkyLive virtual camera.": {
+    "es-ES": "Enviar la imagen real del Programa, con transiciones y filtros, a la cámara virtual SkyLive instalada.",
+    "ru-RU": "Отправить настоящую картинку Program с переходами и фильтрами источников в установленную виртуальную камеру SkyLive.",
+    "uk-UA": "Надіслати справжню картинку Program із переходами та фільтрами джерел до встановленої віртуальної камери SkyLive.",
+    "de-DE": "Das echte Programmbild mit Übergängen und Quellenfiltern an die installierte virtuelle SkyLive-Kamera senden."
+  },
+  "Virtual camera requires Windows 11 x64 (build 22000 or later).": {
+    "es-ES": "La cámara virtual requiere Windows 11 x64 (compilación 22000 o posterior).",
+    "ru-RU": "Виртуальной камере нужны Windows 11 x64 (сборка 22000 или новее).",
+    "uk-UA": "Віртуальній камері потрібні Windows 11 x64 (збірка 22000 або новіша).",
+    "de-DE": "Die virtuelle Kamera benötigt Windows 11 x64 (Build 22000 oder neuer)."
+  },
+  "Use this virtual-camera profile on the next start.": {
+    "es-ES": "Usar este perfil de cámara virtual en el próximo inicio.",
+    "ru-RU": "Использовать этот профиль виртуальной камеры при следующем запуске.",
+    "uk-UA": "Використати цей профіль віртуальної камери під час наступного запуску.",
+    "de-DE": "Dieses Kameraprofil beim nächsten Start verwenden."
+  },
+  "Close virtual-camera settings without applying the draft.": {
+    "es-ES": "Cerrar los ajustes de cámara virtual sin aplicar el borrador.",
+    "ru-RU": "Закрыть настройки виртуальной камеры без применения черновика.",
+    "uk-UA": "Закрити налаштування віртуальної камери без застосування чернетки.",
+    "de-DE": "Kameraeinstellungen schließen, ohne den Entwurf anzuwenden."
+  },
+  "Virtual-camera profile updated for the next start.": {
+    "es-ES": "Perfil de cámara virtual actualizado para el próximo inicio.",
+    "ru-RU": "Профиль виртуальной камеры обновлён для следующего запуска.",
+    "uk-UA": "Профіль віртуальної камери оновлено для наступного запуску.",
+    "de-DE": "Das Kameraprofil wurde für den nächsten Start aktualisiert."
+  },
+  "Stop the virtual camera before replacing the scene collection": {
+    "es-ES": "Detén la cámara virtual antes de sustituir la colección de escenas",
+    "ru-RU": "Остановите виртуальную камеру перед заменой коллекции сцен",
+    "uk-UA": "Зупиніть віртуальну камеру перед заміною колекції сцен",
+    "de-DE": "Stoppe die virtuelle Kamera vor dem Ersetzen der Szenensammlung"
+  },
+  "Finish or close virtual-camera settings first": {
+    "es-ES": "Primero aplica o cierra los ajustes de cámara virtual",
+    "ru-RU": "Сначала завершите или закройте настройки виртуальной камеры",
+    "uk-UA": "Спочатку завершіть або закрийте налаштування віртуальної камери",
+    "de-DE": "Schließe zuerst die Kameraeinstellungen ab oder schließe das Fenster"
+  },
+  "Virtual-camera settings are stale; reopen Settings.": {
+    "es-ES": "Los ajustes de cámara virtual quedaron desactualizados; vuelve a abrirlos.",
+    "ru-RU": "Настройки виртуальной камеры устарели; откройте их заново.",
+    "uk-UA": "Налаштування віртуальної камери застаріли; відкрийте їх знову.",
+    "de-DE": "Die Kameraeinstellungen sind veraltet; öffne sie erneut."
+  },
+  "Virtual-camera document changed; output was stopped.": {
+    "es-ES": "El documento de la cámara virtual cambió; se detuvo la salida.",
+    "ru-RU": "Документ виртуальной камеры изменился; вывод остановлен.",
+    "uk-UA": "Документ віртуальної камери змінився; вивід зупинено.",
+    "de-DE": "Das Kameradokument hat sich geändert; die Ausgabe wurde gestoppt."
+  },
+  "Virtual-camera clock moved backwards": {
+    "es-ES": "El reloj de la cámara virtual retrocedió",
+    "ru-RU": "Часы виртуальной камеры пошли назад",
+    "uk-UA": "Годинник віртуальної камери пішов назад",
+    "de-DE": "Die Uhr der virtuellen Kamera ist rückwärts gelaufen"
+  },
+  "Install Virtual Camera…": {
+    "es-ES": "Instalar cámara virtual…",
+    "ru-RU": "Установить виртуальную камеру…",
+    "uk-UA": "Установити віртуальну камеру…",
+    "de-DE": "Virtuelle Kamera installieren…"
+  },
+  "Install the bundled camera component. Windows will ask for administrator approval. This does not start the camera.": {
+    "es-ES": "Instala el componente de cámara incluido. Windows solicitará permisos de administrador. Esto no inicia la cámara.",
+    "ru-RU": "Установить компонент камеры из этой сборки. Windows запросит права администратора. Камера при этом не запускается.",
+    "uk-UA": "Установити компонент камери з цієї збірки. Windows попросить права адміністратора. Камера при цьому не запускається.",
+    "de-DE": "Installiert die mitgelieferte Kamerakomponente. Windows fragt nach Administratorrechten. Die Kamera wird dabei nicht gestartet."
+  },
+  "Windows 11 x64 (build 22000 or later) and a protected SkyLive virtual-camera installation are required.": {
+    "es-ES": "Se requiere Windows 11 x64 (compilación 22000 o posterior) y una instalación protegida de la cámara virtual SkyLive.",
+    "ru-RU": "Требуются Windows 11 x64 (сборка 22000 или новее) и компонент виртуальной камеры SkyLive в защищённом каталоге.",
+    "uk-UA": "Потрібні Windows 11 x64 (збірка 22000 або новіша) і компонент віртуальної камери SkyLive у захищеному каталозі.",
+    "de-DE": "Windows 11 x64 (Build 22000 oder neuer) und eine geschützte Installation der virtuellen SkyLive-Kamera sind erforderlich."
+  },
+  "Stop the virtual camera before installing its component.": {
+    "es-ES": "Detén la cámara virtual antes de instalar su componente.",
+    "ru-RU": "Остановите виртуальную камеру перед установкой её компонента.",
+    "uk-UA": "Зупиніть віртуальну камеру перед встановленням її компонента.",
+    "de-DE": "Beenden Sie die virtuelle Kamera vor der Installation ihrer Komponente."
+  },
+  "Installing virtual camera…": {
+    "es-ES": "Instalando cámara virtual…",
+    "ru-RU": "Установка виртуальной камеры…",
+    "uk-UA": "Встановлення віртуальної камери…",
+    "de-DE": "Virtuelle Kamera wird installiert…"
+  },
+  "Virtual camera installed. You can start it from Controls.": {
+    "es-ES": "Cámara virtual instalada. Puedes iniciarla desde Controles.",
+    "ru-RU": "Виртуальная камера установлена. Её можно запустить на панели управления.",
+    "uk-UA": "Віртуальну камеру встановлено. Її можна запустити на панелі керування.",
+    "de-DE": "Virtuelle Kamera installiert. Sie kann über die Steuerung gestartet werden."
+  },
+  "Virtual-camera installation was cancelled.": {
+    "es-ES": "Se canceló la instalación de la cámara virtual.",
+    "ru-RU": "Установка виртуальной камеры отменена.",
+    "uk-UA": "Встановлення віртуальної камери скасовано.",
+    "de-DE": "Die Installation der virtuellen Kamera wurde abgebrochen."
+  }
+}

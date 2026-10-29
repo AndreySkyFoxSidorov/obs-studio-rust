@@ -1,0 +1,20 @@
+{
+  "AI refresh interval (ms)": {
+    "es-ES": "Intervalo de actualización de IA (ms)",
+    "ru-RU": "Интервал обновления ИИ (мс)",
+    "uk-UA": "Інтервал оновлення ШІ (мс)",
+    "de-DE": "KI-Aktualisierungsintervall (ms)"
+  },
+  "Zero recalculates every frame. For cameras, a larger interval reuses the last person mask on newer frames and can reduce CPU use; edges may lag during motion.": {
+    "es-ES": "Cero recalcula cada fotograma. En cámaras, un intervalo mayor reutiliza la última máscara en fotogramas nuevos y puede reducir el uso de CPU; los bordes pueden retrasarse durante el movimiento.",
+    "ru-RU": "Ноль запускает расчёт на каждом кадре. Для камер больший интервал повторно использует последнюю маску на новых кадрах и может снизить нагрузку на CPU; края могут запаздывать при движении.",
+    "uk-UA": "Нуль запускає розрахунок на кожному кадрі. Для камер більший інтервал повторно використовує останню маску на нових кадрах і може зменшити навантаження на CPU; краї можуть запізнюватися під час руху.",
+    "de-DE": "Null berechnet jedes Bild neu. Bei Kameras verwendet ein größeres Intervall die letzte Maske für neue Bilder und kann die CPU-Last senken; Kanten können bei Bewegung nachlaufen."
+  },
+  "If this filter chain contains Freeze or Render Delay, AI still recalculates every frame.": {
+    "es-ES": "Si la cadena contiene Freeze o Render Delay, la IA sigue calculando cada fotograma.",
+    "ru-RU": "Если цепочка содержит Freeze или Render Delay, ИИ продолжает рассчитывать каждый кадр.",
+    "uk-UA": "Якщо ланцюжок містить Freeze або Render Delay, ШІ продовжує обчислювати кожен кадр.",
+    "de-DE": "Enthält die Filterkette Freeze oder Render Delay, berechnet die KI weiterhin jedes Bild neu."
+  }
+}

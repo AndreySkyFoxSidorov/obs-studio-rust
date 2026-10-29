@@ -1,0 +1,26 @@
+{
+  "Text file replacement keeps the source appearance and chat-log settings. Preparation checks a readable file up to 1 MiB; the renderer later checks UTF-8 and text limits.": {
+    "es-ES": "El reemplazo conserva la apariencia y la configuración de chat. La preparación comprueba un archivo legible de hasta 1 MiB; después el renderizador verifica UTF-8 y los límites de texto.",
+    "ru-RU": "Замена сохраняет оформление и настройки чата. Подготовка проверяет доступность файла размером до 1 МиБ; кодировку UTF-8 и ограничения текста проверит обработчик при отрисовке.",
+    "uk-UA": "Заміна зберігає оформлення та налаштування чату. Підготовка перевіряє доступність файлу розміром до 1 МіБ; кодування UTF-8 і обмеження тексту перевірить обробник під час відображення.",
+    "de-DE": "Beim Ersetzen bleiben Darstellung und Chat-Einstellungen erhalten. Die Vorbereitung prüft eine lesbare Datei bis 1 MiB; UTF-8 und Textgrenzen prüft später der Renderer."
+  },
+  "Check that this is a regular readable file up to 1 MiB. Text contents are not read or validated until rendering.": {
+    "es-ES": "Comprueba que sea un archivo normal legible de hasta 1 MiB. El texto se lee y valida al renderizar.",
+    "ru-RU": "Проверить, что это обычный читаемый файл размером до 1 МиБ. Содержимое читается и проверяется при отрисовке.",
+    "uk-UA": "Перевірити, що це звичайний доступний файл розміром до 1 МіБ. Вміст читається та перевіряється під час відображення.",
+    "de-DE": "Prüft eine lesbare reguläre Datei bis 1 MiB. Der Text wird erst beim Rendern gelesen und geprüft."
+  },
+  "Text replacement must be a regular readable file": {
+    "es-ES": "El archivo de reemplazo debe ser un archivo normal legible",
+    "ru-RU": "Файл замены должен быть обычным читаемым файлом",
+    "uk-UA": "Файл заміни має бути звичайним доступним файлом",
+    "de-DE": "Die Ersatzdatei muss eine lesbare reguläre Datei sein"
+  },
+  "Text file exceeds 1 MiB": {
+    "es-ES": "El archivo de texto supera 1 MiB",
+    "ru-RU": "Размер текстового файла превышает 1 МиБ",
+    "uk-UA": "Розмір текстового файлу перевищує 1 МіБ",
+    "de-DE": "Die Textdatei überschreitet 1 MiB"
+  }
+}

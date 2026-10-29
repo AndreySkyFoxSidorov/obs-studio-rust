@@ -1,0 +1,356 @@
+{
+  "Windowed Projector": {
+    "es-ES": "Proyector en ventana",
+    "ru-RU": "Оконный проектор",
+    "uk-UA": "Віконний проєктор",
+    "de-DE": "Fensterprojektor"
+  },
+  "Fullscreen Projector": {
+    "es-ES": "Proyector a pantalla completa",
+    "ru-RU": "Полноэкранный проектор",
+    "uk-UA": "Повноекранний проєктор",
+    "de-DE": "Vollbildprojektor"
+  },
+  "Preview Projector": {
+    "es-ES": "Proyector de vista previa",
+    "ru-RU": "Проектор предпросмотра",
+    "uk-UA": "Проєктор попереднього перегляду",
+    "de-DE": "Vorschauprojektor"
+  },
+  "Program Projector": {
+    "es-ES": "Proyector de programa",
+    "ru-RU": "Проектор программы",
+    "uk-UA": "Проєктор програми",
+    "de-DE": "Programmprojektor"
+  },
+  "Source Projector": {
+    "es-ES": "Proyector de fuente",
+    "ru-RU": "Проектор источника",
+    "uk-UA": "Проєктор джерела",
+    "de-DE": "Quellenprojektor"
+  },
+  "Scene Projector": {
+    "es-ES": "Proyector de escena",
+    "ru-RU": "Проектор сцены",
+    "uk-UA": "Проєктор сцени",
+    "de-DE": "Szenenprojektor"
+  },
+  "Multiview": {
+    "es-ES": "Vista múltiple",
+    "ru-RU": "Мультипросмотр",
+    "uk-UA": "Мультиперегляд",
+    "de-DE": "Mehrfachansicht"
+  },
+  "Refresh Projector Monitors": {
+    "es-ES": "Actualizar monitores de proyectores",
+    "ru-RU": "Обновить мониторы проекторов",
+    "uk-UA": "Оновити монітори проєкторів",
+    "de-DE": "Projektormonitore aktualisieren"
+  },
+  "Close All Projectors": {
+    "es-ES": "Cerrar todos los proyectores",
+    "ru-RU": "Закрыть все проекторы",
+    "uk-UA": "Закрити всі проєктори",
+    "de-DE": "Alle Projektoren schließen"
+  },
+  "Projector Options": {
+    "es-ES": "Opciones del proyector",
+    "ru-RU": "Параметры проектора",
+    "uk-UA": "Параметри проєктора",
+    "de-DE": "Projektoroptionen"
+  },
+  "Close Projector": {
+    "es-ES": "Cerrar proyector",
+    "ru-RU": "Закрыть проектор",
+    "uk-UA": "Закрити проєктор",
+    "de-DE": "Projektor schließen"
+  },
+  "Windowed": {
+    "es-ES": "En ventana",
+    "ru-RU": "В окне",
+    "uk-UA": "У вікні",
+    "de-DE": "Fenstermodus"
+  },
+  "Always on Top": {
+    "es-ES": "Siempre visible",
+    "ru-RU": "Поверх всех окон",
+    "uk-UA": "Поверх усіх вікон",
+    "de-DE": "Immer im Vordergrund"
+  },
+  "Resize Window to Content": {
+    "es-ES": "Ajustar ventana al contenido",
+    "ru-RU": "Подогнать окно под содержимое",
+    "uk-UA": "Припасувати вікно до вмісту",
+    "de-DE": "Fenster an Inhalt anpassen"
+  },
+  "Hide Fullscreen Cursor": {
+    "es-ES": "Ocultar cursor en pantalla completa",
+    "ru-RU": "Скрывать курсор в полноэкранном режиме",
+    "uk-UA": "Ховати курсор у повноекранному режимі",
+    "de-DE": "Vollbildzeiger ausblenden"
+  },
+  "Cut to This Scene": {
+    "es-ES": "Corte a esta escena",
+    "ru-RU": "Переключить на эту сцену без перехода",
+    "uk-UA": "Перемкнути на цю сцену без переходу",
+    "de-DE": "Direkt auf diese Szene schneiden"
+  },
+  "Show Scene Names": {
+    "es-ES": "Mostrar nombres de escenas",
+    "ru-RU": "Показывать названия сцен",
+    "uk-UA": "Показувати назви сцен",
+    "de-DE": "Szenennamen anzeigen"
+  },
+  "Show Safe Areas": {
+    "es-ES": "Mostrar áreas seguras",
+    "ru-RU": "Показывать безопасные области",
+    "uk-UA": "Показувати безпечні області",
+    "de-DE": "Sicherheitsbereiche anzeigen"
+  },
+  "Switch Scenes on Click": {
+    "es-ES": "Cambiar escenas al hacer clic",
+    "ru-RU": "Переключать сцены щелчком",
+    "uk-UA": "Перемикати сцени клацанням",
+    "de-DE": "Szenen per Klick wechseln"
+  },
+  "Transition on Double-click": {
+    "es-ES": "Transición con doble clic",
+    "ru-RU": "Переход двойным щелчком",
+    "uk-UA": "Перехід подвійним клацанням",
+    "de-DE": "Übergang per Doppelklick"
+  },
+  "Waiting for projector video": {
+    "es-ES": "Esperando vídeo del proyector",
+    "ru-RU": "Ожидание видео для проектора",
+    "uk-UA": "Очікування відео для проєктора",
+    "de-DE": "Warte auf Projektorvideo"
+  },
+  "Video unavailable": {
+    "es-ES": "Vídeo no disponible",
+    "ru-RU": "Видео недоступно",
+    "uk-UA": "Відео недоступне",
+    "de-DE": "Video nicht verfügbar"
+  },
+  "Horizontal, Top (8 scenes)": {
+    "es-ES": "Horizontal, arriba (8 escenas)",
+    "ru-RU": "Горизонтально, сверху (8 сцен)",
+    "uk-UA": "Горизонтально, згори (8 сцен)",
+    "de-DE": "Horizontal, oben (8 Szenen)"
+  },
+  "Horizontal, Bottom (8 scenes)": {
+    "es-ES": "Horizontal, abajo (8 escenas)",
+    "ru-RU": "Горизонтально, снизу (8 сцен)",
+    "uk-UA": "Горизонтально, знизу (8 сцен)",
+    "de-DE": "Horizontal, unten (8 Szenen)"
+  },
+  "Vertical, Left (8 scenes)": {
+    "es-ES": "Vertical, izquierda (8 escenas)",
+    "ru-RU": "Вертикально, слева (8 сцен)",
+    "uk-UA": "Вертикально, ліворуч (8 сцен)",
+    "de-DE": "Vertikal, links (8 Szenen)"
+  },
+  "Vertical, Right (8 scenes)": {
+    "es-ES": "Vertical, derecha (8 escenas)",
+    "ru-RU": "Вертикально, справа (8 сцен)",
+    "uk-UA": "Вертикально, праворуч (8 сцен)",
+    "de-DE": "Vertikal, rechts (8 Szenen)"
+  },
+  "Horizontal, Top (18 scenes)": {
+    "es-ES": "Horizontal, arriba (18 escenas)",
+    "ru-RU": "Горизонтально, сверху (18 сцен)",
+    "uk-UA": "Горизонтально, згори (18 сцен)",
+    "de-DE": "Horizontal, oben (18 Szenen)"
+  },
+  "Horizontal, Top (24 scenes)": {
+    "es-ES": "Horizontal, arriba (24 escenas)",
+    "ru-RU": "Горизонтально, сверху (24 сцены)",
+    "uk-UA": "Горизонтально, згори (24 сцени)",
+    "de-DE": "Horizontal, oben (24 Szenen)"
+  },
+  "Scenes Only (4 scenes)": {
+    "es-ES": "Solo escenas (4 escenas)",
+    "ru-RU": "Только сцены (4 сцены)",
+    "uk-UA": "Лише сцени (4 сцени)",
+    "de-DE": "Nur Szenen (4 Szenen)"
+  },
+  "Scenes Only (9 scenes)": {
+    "es-ES": "Solo escenas (9 escenas)",
+    "ru-RU": "Только сцены (9 сцен)",
+    "uk-UA": "Лише сцени (9 сцен)",
+    "de-DE": "Nur Szenen (9 Szenen)"
+  },
+  "Scenes Only (16 scenes)": {
+    "es-ES": "Solo escenas (16 escenas)",
+    "ru-RU": "Только сцены (16 сцен)",
+    "uk-UA": "Лише сцени (16 сцен)",
+    "de-DE": "Nur Szenen (16 Szenen)"
+  },
+  "Scenes Only (25 scenes)": {
+    "es-ES": "Solo escenas (25 escenas)",
+    "ru-RU": "Только сцены (25 сцен)",
+    "uk-UA": "Лише сцени (25 сцен)",
+    "de-DE": "Nur Szenen (25 Szenen)"
+  },
+  "Open this video view in a separate modeless window. Audio routing is unchanged.": {
+    "es-ES": "Abrir esta vista de vídeo en una ventana independiente no modal. El enrutamiento de audio no cambia.",
+    "ru-RU": "Открыть это видео в отдельном немодальном окне. Маршрутизация звука не меняется.",
+    "uk-UA": "Відкрити це відео в окремому немодальному вікні. Маршрутизація звуку не змінюється.",
+    "de-DE": "Diese Videoansicht in einem unabhängigen, nichtmodalen Fenster öffnen. Die Audiorouten bleiben gleich."
+  },
+  "Refresh monitors to select an actual display.": {
+    "es-ES": "Actualice los monitores para seleccionar una pantalla real.",
+    "ru-RU": "Обновите мониторы, чтобы выбрать реальный экран.",
+    "uk-UA": "Оновіть монітори, щоб вибрати реальний екран.",
+    "de-DE": "Monitore aktualisieren, um einen tatsächlichen Bildschirm auszuwählen."
+  },
+  "Move a new projector to this display, then enter borderless fullscreen.": {
+    "es-ES": "Mover un proyector nuevo a esta pantalla y activar pantalla completa sin bordes.",
+    "ru-RU": "Переместить новый проектор на этот экран и открыть полноэкранный режим без рамки.",
+    "uk-UA": "Перемістити новий проєктор на цей екран і відкрити повноекранний режим без рамки.",
+    "de-DE": "Neuen Projektor auf diesen Bildschirm verschieben und dann randloses Vollbild aktivieren."
+  },
+  "Enumerate current physical display names and geometry on the I/O worker.": {
+    "es-ES": "Consultar los nombres y la geometría de las pantallas físicas en el trabajador de E/S.",
+    "ru-RU": "Получить названия и геометрию физических экранов в I/O worker.",
+    "uk-UA": "Отримати назви та геометрію фізичних екранів в I/O worker.",
+    "de-DE": "Aktuelle physische Bildschirmnamen und Geometrie im E/A-Worker ermitteln."
+  },
+  "Render size: {width}×{height} · maximum 1920×1080": {
+    "es-ES": "Tamaño de renderizado: {width}×{height} · máximo 1920×1080",
+    "ru-RU": "Размер рендера: {width}×{height} · максимум 1920×1080",
+    "uk-UA": "Розмір рендеру: {width}×{height} · максимум 1920×1080",
+    "de-DE": "Rendergröße: {width}×{height} · höchstens 1920×1080"
+  },
+  "Hide the pointer over fullscreen single-view projectors; context menus and Multiview keep it visible.": {
+    "es-ES": "Ocultar el puntero en proyectores de una vista a pantalla completa; los menús contextuales y la vista múltiple lo mantienen visible.",
+    "ru-RU": "Скрывать указатель в полноэкранных проекторах одной картинки; в контекстных меню и мультипросмотре он виден.",
+    "uk-UA": "Ховати вказівник у повноекранних проєкторах однієї картинки; у контекстних меню й мультиперегляді він видимий.",
+    "de-DE": "Zeiger in Vollbildprojektoren mit einer Ansicht ausblenden; Kontextmenüs und Mehrfachansicht behalten ihn sichtbar."
+  },
+  "Draw authored scene names and Preview/Program labels over the corresponding tiles.": {
+    "es-ES": "Dibujar nombres de escenas y etiquetas de vista previa/programa sobre las celdas correspondientes.",
+    "ru-RU": "Отображать названия сцен и подписи предпросмотра/программы над соответствующими ячейками.",
+    "uk-UA": "Показувати назви сцен і підписи попереднього перегляду/програми над відповідними комірками.",
+    "de-DE": "Vergebene Szenennamen und Vorschau-/Programmbeschriftungen über den entsprechenden Kacheln anzeigen."
+  },
+  "Draw OBS action/graphics safe margins (3.5%/5%), the 16.25% widescreen guide and edge ticks on Preview.": {
+    "es-ES": "Dibujar en la vista previa los márgenes seguros de OBS para acción/gráficos (3,5%/5%), la guía panorámica del 16,25% y marcas en los bordes.",
+    "ru-RU": "Показывать в предпросмотре безопасные поля OBS для действия/графики (3,5%/5%), широкоформатную направляющую 16,25% и отметки на краях.",
+    "uk-UA": "Показувати в попередньому перегляді безпечні поля OBS для дії/графіки (3,5%/5%), широкоформатну напрямну 16,25% і позначки на краях.",
+    "de-DE": "OBS-Sicherheitsränder für Aktion/Grafik (3,5%/5%), die 16,25%-Breitbildhilfe und Randmarken in der Vorschau anzeigen."
+  },
+  "Click a scene tile to select it in Preview, or switch it normally outside Studio Mode.": {
+    "es-ES": "Haga clic en una escena para seleccionarla en vista previa o cambiarla normalmente fuera del modo estudio.",
+    "ru-RU": "Щёлкните сцену, чтобы выбрать её в предпросмотре или переключить обычным способом вне студийного режима.",
+    "uk-UA": "Клацніть сцену, щоб вибрати її в попередньому перегляді або перемкнути звичайним способом поза студійним режимом.",
+    "de-DE": "Szenenkachel anklicken, um sie in der Vorschau auszuwählen oder außerhalb des Studiomodus normal zu wechseln."
+  },
+  "In Studio Mode, double-click a scene tile to send it to Program with the selected transition.": {
+    "es-ES": "En modo estudio, haga doble clic en una escena para enviarla al programa con la transición seleccionada.",
+    "ru-RU": "В студийном режиме дважды щёлкните сцену, чтобы отправить её в программу с выбранным переходом.",
+    "uk-UA": "У студійному режимі двічі клацніть сцену, щоб надіслати її до програми з вибраним переходом.",
+    "de-DE": "Im Studiomodus eine Szenenkachel doppelt anklicken, um sie mit dem ausgewählten Übergang ins Programm zu senden."
+  },
+  "Click selects Preview; double-click transitions in Studio Mode.": {
+    "es-ES": "Un clic selecciona la vista previa; un doble clic activa la transición en modo estudio.",
+    "ru-RU": "Щелчок выбирает предпросмотр; двойной щелчок запускает переход в студийном режиме.",
+    "uk-UA": "Клацання вибирає попередній перегляд; подвійне клацання запускає перехід у студійному режимі.",
+    "de-DE": "Klick wählt die Vorschau; Doppelklick startet den Übergang im Studiomodus."
+  },
+  "Right-click to change projector options; Escape closes this window.": {
+    "es-ES": "Clic derecho para cambiar opciones del proyector; Escape cierra la ventana.",
+    "ru-RU": "Правый щелчок открывает параметры проектора; Escape закрывает окно.",
+    "uk-UA": "Праве клацання відкриває параметри проєктора; Escape закриває вікно.",
+    "de-DE": "Rechtsklick ändert Projektoroptionen; Escape schließt das Fenster."
+  },
+  "The projector target changed. Open it again.": {
+    "es-ES": "El destino del proyector cambió. Ábralo de nuevo.",
+    "ru-RU": "Цель проектора изменилась. Откройте его заново.",
+    "uk-UA": "Ціль проєктора змінилася. Відкрийте його знову.",
+    "de-DE": "Das Projektorziel hat sich geändert. Erneut öffnen."
+  },
+  "At most four projector windows can be open.": {
+    "es-ES": "Se pueden abrir como máximo cuatro ventanas de proyector.",
+    "ru-RU": "Можно открыть не более четырёх окон проекторов.",
+    "uk-UA": "Можна відкрити щонайбільше чотири вікна проєкторів.",
+    "de-DE": "Höchstens vier Projektorfenster können geöffnet sein."
+  },
+  "A Multiview window is already open.": {
+    "es-ES": "Ya hay una ventana de vista múltiple abierta.",
+    "ru-RU": "Окно мультипросмотра уже открыто.",
+    "uk-UA": "Вікно мультиперегляду вже відкрите.",
+    "de-DE": "Eine Mehrfachansicht ist bereits geöffnet."
+  },
+  "The projector monitor list changed. Refresh it again.": {
+    "es-ES": "La lista de monitores cambió. Actualícela de nuevo.",
+    "ru-RU": "Список мониторов изменился. Обновите его снова.",
+    "uk-UA": "Список моніторів змінився. Оновіть його знову.",
+    "de-DE": "Die Projektormonitorliste hat sich geändert. Erneut aktualisieren."
+  },
+  "The projector source was removed.": {
+    "es-ES": "La fuente del proyector se eliminó.",
+    "ru-RU": "Источник проектора удалён.",
+    "uk-UA": "Джерело проєктора видалено.",
+    "de-DE": "Die Projektorquelle wurde entfernt."
+  },
+  "The projector scene was removed.": {
+    "es-ES": "La escena del proyector se eliminó.",
+    "ru-RU": "Сцена проектора удалена.",
+    "uk-UA": "Сцену проєктора видалено.",
+    "de-DE": "Die Projektorszene wurde entfernt."
+  },
+  "Audio-only sources have no video projector.": {
+    "es-ES": "Las fuentes de solo audio no tienen proyector de vídeo.",
+    "ru-RU": "Для источников только звука нет видеопроектора.",
+    "uk-UA": "Для суто звукових джерел немає відеопроєктора.",
+    "de-DE": "Reine Audioquellen haben keinen Videoprojektor."
+  },
+  "The selected monitor is unavailable. Returning to windowed mode.": {
+    "es-ES": "El monitor seleccionado no está disponible. Se vuelve al modo ventana.",
+    "ru-RU": "Выбранный монитор недоступен. Возврат в оконный режим.",
+    "uk-UA": "Вибраний монітор недоступний. Повернення до віконного режиму.",
+    "de-DE": "Der gewählte Monitor ist nicht verfügbar. Rückkehr zum Fenstermodus."
+  },
+  "The projector could not reach the selected monitor. Refresh monitors.": {
+    "es-ES": "El proyector no pudo llegar al monitor seleccionado. Actualice los monitores.",
+    "ru-RU": "Не удалось переместить проектор на выбранный монитор. Обновите мониторы.",
+    "uk-UA": "Не вдалося перемістити проєктор на вибраний монітор. Оновіть монітори.",
+    "de-DE": "Projektor konnte den gewählten Monitor nicht erreichen. Monitore aktualisieren."
+  },
+  "Independent projectors require native viewport support.": {
+    "es-ES": "Los proyectores independientes requieren ventanas nativas.",
+    "ru-RU": "Для отдельных проекторов нужна поддержка нативных окон.",
+    "uk-UA": "Для окремих проєкторів потрібна підтримка нативних вікон.",
+    "de-DE": "Unabhängige Projektoren benötigen native Ansichtsfenster."
+  },
+  "The projector belongs to another document.": {
+    "es-ES": "El proyector pertenece a otro documento.",
+    "ru-RU": "Проектор относится к другому документу.",
+    "uk-UA": "Проєктор належить іншому документу.",
+    "de-DE": "Der Projektor gehört zu einem anderen Dokument."
+  },
+  "Wait for the active I/O operation before refreshing projector monitors.": {
+    "es-ES": "Espere a que termine la operación de E/S antes de actualizar los monitores.",
+    "ru-RU": "Перед обновлением мониторов дождитесь завершения I/O-операции.",
+    "uk-UA": "Перед оновленням моніторів дочекайтеся завершення I/O-операції.",
+    "de-DE": "Vor dem Aktualisieren der Projektormonitore die aktive E/A-Operation abwarten."
+  },
+  "Projector monitor discovery returned an unexpected receipt.": {
+    "es-ES": "La detección de monitores devolvió una respuesta inesperada.",
+    "ru-RU": "Обнаружение мониторов вернуло неожиданный ответ.",
+    "uk-UA": "Виявлення моніторів повернуло неочікувану відповідь.",
+    "de-DE": "Die Monitorerkennung lieferte eine unerwartete Antwort."
+  },
+  "This layout has no Preview tile.": {
+    "es-ES": "Esta disposición no tiene celda de vista previa.",
+    "ru-RU": "В этой компоновке нет ячейки предпросмотра.",
+    "uk-UA": "У цьому компонуванні немає комірки попереднього перегляду.",
+    "de-DE": "Dieses Layout hat keine Vorschaukachel."
+  },
+  "Enable scene switching on click to use double-click transitions.": {
+    "es-ES": "Active el cambio de escena con un clic para usar transiciones con doble clic.",
+    "ru-RU": "Включите переключение сцен щелчком для переходов двойным щелчком.",
+    "uk-UA": "Увімкніть перемикання сцен клацанням для переходів подвійним клацанням.",
+    "de-DE": "Szenenwechsel per Klick aktivieren, um Übergänge per Doppelklick zu nutzen."
+  }
+}

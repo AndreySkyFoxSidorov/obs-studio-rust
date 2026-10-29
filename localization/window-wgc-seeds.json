@@ -1,0 +1,62 @@
+{
+  "Capture Method": {
+    "es-ES": "Método de captura",
+    "ru-RU": "Метод захвата",
+    "uk-UA": "Метод захоплення",
+    "de-DE": "Aufnahmemethode"
+  },
+  "BitBlt (GDI compatibility)": {
+    "es-ES": "BitBlt (compatibilidad con GDI)",
+    "ru-RU": "BitBlt (совместимость с GDI)",
+    "uk-UA": "BitBlt (сумісність із GDI)",
+    "de-DE": "BitBlt (GDI-Kompatibilität)"
+  },
+  "Windows Graphics Capture": {
+    "es-ES": "Captura de gráficos de Windows",
+    "ru-RU": "Захват графики Windows",
+    "uk-UA": "Захоплення графіки Windows",
+    "de-DE": "Windows-Grafikaufnahme"
+  },
+  "Automatic (OBS window-class policy)": {
+    "es-ES": "Automático (política de clase de ventana de OBS)",
+    "ru-RU": "Автоматически (по классу окна, как в OBS)",
+    "uk-UA": "Автоматично (за класом вікна, як в OBS)",
+    "de-DE": "Automatisch (OBS-Fensterklassenregel)"
+  },
+  "Choose a real capture backend. WGC keeps the Windows border; protected content and HDR are not supported.": {
+    "es-ES": "Elige un motor de captura real. WGC mantiene el borde de Windows; el contenido protegido y HDR no son compatibles.",
+    "ru-RU": "Выберите реальный механизм захвата. WGC сохраняет рамку Windows; защищённое содержимое и HDR не поддерживаются.",
+    "uk-UA": "Виберіть справжній механізм захоплення. WGC зберігає рамку Windows; захищений вміст і HDR не підтримуються.",
+    "de-DE": "Wähle ein tatsächliches Aufnahmeverfahren. WGC behält den Windows-Rahmen bei; geschützte Inhalte und HDR werden nicht unterstützt."
+  },
+  "GDI captures the client area only; choose Windows Graphics Capture for the complete window": {
+    "es-ES": "GDI solo captura el área de cliente; elige Captura de gráficos de Windows para la ventana completa",
+    "ru-RU": "GDI захватывает только клиентскую область; для всего окна выберите захват графики Windows",
+    "uk-UA": "GDI захоплює лише клієнтську область; для всього вікна виберіть захоплення графіки Windows",
+    "de-DE": "GDI nimmt nur den Clientbereich auf; wähle Windows-Grafikaufnahme für das gesamte Fenster"
+  },
+  "GDI captures the client area. WGC can capture the complete window or its client area. macOS uses ScreenCaptureKit.": {
+    "es-ES": "GDI captura el área de cliente. WGC puede capturar la ventana completa o su área de cliente. macOS usa ScreenCaptureKit.",
+    "ru-RU": "GDI захватывает клиентскую область. WGC может захватывать всё окно или его клиентскую область. macOS использует ScreenCaptureKit.",
+    "uk-UA": "GDI захоплює клієнтську область. WGC може захоплювати все вікно або його клієнтську область. macOS використовує ScreenCaptureKit.",
+    "de-DE": "GDI nimmt den Clientbereich auf. WGC kann das gesamte Fenster oder dessen Clientbereich aufnehmen. macOS verwendet ScreenCaptureKit."
+  },
+  "Apply stores this binding without starting capture. WGC starts on the capture worker after an explicit request. Cancel changes no source.": {
+    "es-ES": "Aplicar guarda esta asignación sin iniciar la captura. WGC se inicia en el trabajador de captura tras una solicitud explícita. Cancelar no cambia ninguna fuente.",
+    "ru-RU": "Применение сохраняет привязку без запуска захвата. WGC запускается в рабочем потоке захвата по явному запросу. Отмена не изменяет источник.",
+    "uk-UA": "Застосування зберігає прив’язку без запуску захоплення. WGC запускається в робочому потоці захоплення за явним запитом. Скасування не змінює джерело.",
+    "de-DE": "Anwenden speichert diese Zuordnung, ohne die Aufnahme zu starten. WGC startet im Aufnahme-Worker nach einer ausdrücklichen Anforderung. Abbrechen verändert keine Quelle."
+  },
+  "SDR GDI client-area or genuine Windows Graphics Capture client/full-window; WGC requires runtime support and retains the OS border. HDR and protected-content bypass are unavailable.": {
+    "es-ES": "Área de cliente SDR mediante GDI o captura real de la ventana completa o del área de cliente con Windows Graphics Capture; WGC necesita compatibilidad del sistema y mantiene el borde del sistema operativo. HDR y la omisión de protección de contenido no están disponibles.",
+    "ru-RU": "SDR-захват клиентской области через GDI или настоящий захват всего окна либо клиентской области через Windows Graphics Capture; WGC требует поддержки системы и сохраняет рамку ОС. HDR и обход защиты содержимого недоступны.",
+    "uk-UA": "SDR-захоплення клієнтської області через GDI або справжнє захоплення всього вікна чи клієнтської області через Windows Graphics Capture; WGC потребує підтримки системи та зберігає рамку ОС. HDR і обхід захисту вмісту недоступні.",
+    "de-DE": "SDR-Clientbereich über GDI oder echte Windows Graphics Capture des gesamten Fensters bzw. Clientbereichs; WGC benötigt Laufzeitunterstützung und behält den Betriebssystemrahmen bei. HDR und das Umgehen des Inhaltsschutzes sind nicht verfügbar."
+  },
+  "full-window geometry is unavailable; refresh the window list": {
+    "es-ES": "La geometría de la ventana completa no está disponible; actualiza la lista de ventanas",
+    "ru-RU": "Геометрия всего окна недоступна; обновите список окон",
+    "uk-UA": "Геометрія всього вікна недоступна; оновіть список вікон",
+    "de-DE": "Die Geometrie des gesamten Fensters ist nicht verfügbar; aktualisiere die Fensterliste"
+  }
+}

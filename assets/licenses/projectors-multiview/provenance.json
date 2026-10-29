@@ -1,0 +1,34 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "copyright": [
+    "OBS Studio contributors",
+    "Lain Bailey",
+    "Zachary Lund",
+    "Philippe Groarke"
+  ],
+  "sources": [
+    {
+      "path": "frontend/widgets/OBSBasic_Projectors.cpp",
+      "sha256": "6d1f4bdc47bc4b2f1a9bf7305163cabfee0e6c901a314ee0bc5ac415b08ee6bf"
+    },
+    {
+      "path": "frontend/widgets/OBSProjector.cpp",
+      "sha256": "eddf581b8b9a380a654894575ab3139cfe4edd054616663040ad4b654d21d003"
+    },
+    {
+      "path": "frontend/components/Multiview.cpp",
+      "sha256": "6a49176e0422ea053b9e4b815d8d34db5e6f62150149297778537e036bf9d4fc"
+    },
+    {
+      "path": "frontend/components/Multiview.hpp",
+      "sha256": "d7df98121e51cecb2c719cdfdc396ba7584f60bcf3c048afbc4975f665e57646"
+    },
+    {
+      "path": "frontend/utility/display-helpers.hpp",
+      "sha256": "877a1c376251fe4f19d1a3d66145cfe7f6459bd693a05e223c6916ee05cb5118"
+    }
+  ],
+  "adaptation": "Rust bounded worker composition and independent egui modeless viewports, all10 Multiview geometric layouts and original safe-area constants. No C++/Qt/libobs runtime. Native/GUI/visual/performance behavior unverified under the user execution ban."
+}

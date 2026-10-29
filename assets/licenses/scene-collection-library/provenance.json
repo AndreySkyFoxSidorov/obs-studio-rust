@@ -1,0 +1,21 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "frontend/widgets/OBSBasic_SceneCollections.cpp",
+      "sha256": "a75a7048cbfea4d82b341353304e4eefa6317ac5fe9efd25d856662d4964fbf3"
+    },
+    {
+      "path": "frontend/OBSApp.cpp",
+      "sha256": "bc298358c9fd2b8e7e8ca7952108adfeafe6243df4718b854003e33e96372963"
+    },
+    {
+      "path": "frontend/models/SceneCollection.cpp",
+      "sha256": "6d139018dadb2a5d2e820151ff5563958eaab98dba60bf00686c7a2af077eff8"
+    }
+  ],
+  "scope": "Managed native collection New/Duplicate/Rename/Remove/Switch workflow; explicit dirty choices, stable derived-ID paths and recoverable trash adapt original automatic-save/destructive-file policies. Source-only, no runtime/platform acceptance."
+}

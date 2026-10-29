@@ -1,0 +1,27 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "source_files": [
+    {
+      "path": "plugins/obs-filters/color-grade-filter.c",
+      "sha256": "feccc3d073d506bc461e50aebb8eff433e18f34d9e4a783b40b256006799f2d0"
+    },
+    {
+      "path": "plugins/obs-filters/data/color_grade_filter.effect",
+      "sha256": "66275f8dbc2811e436ffa23147681997f1cb35edd4e5be29a7fdd0f7d374d206"
+    },
+    {
+      "path": "libobs/graphics/half.h",
+      "sha256": "a312abd49ad20f67a4524c5f3702d6636a74c03a83abcd0bde98e62138b20ee9"
+    },
+    {
+      "path": "libobs/graphics/srgb.h",
+      "sha256": "9db1900bd8dfeb20db2ee432217a9bdaf4605f42f90e43de7df715b44b2973d1"
+    }
+  ],
+  "licenses": [
+    "GPL-2.0-or-later",
+    "MIT (DirectXMath half conversion)"
+  ],
+  "adaptation": "Rust SDR CPU implementation of original interpolation/amount/alpha branches. No C/libobs dependency. Finite supported CUBE subset and exact static 512x512 PNG only. Binary16 overflow is rejected; subnormal shifts of 32 or more safely underflow to zero. No byte-exact shader or performance acceptance executed."
+}

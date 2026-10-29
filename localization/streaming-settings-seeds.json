@@ -1,0 +1,278 @@
+{
+  "The profile changed. Reopen Stream settings before applying.": {
+    "es-ES": "El perfil ha cambiado. Vuelve a abrir los ajustes de emisión antes de aplicarlos.",
+    "ru-RU": "Профиль изменился. Откройте настройки трансляции заново перед применением.",
+    "uk-UA": "Профіль змінився. Відкрийте налаштування трансляції знову перед застосуванням.",
+    "de-DE": "Das Profil wurde geändert. Öffnen Sie die Stream-Einstellungen vor dem Anwenden erneut."
+  },
+  "Enter a whole streaming video bitrate in kbit/s.": {
+    "es-ES": "Introduce una tasa de bits de vídeo de emisión entera en kbit/s.",
+    "ru-RU": "Введите целое значение битрейта видео трансляции в кбит/с.",
+    "uk-UA": "Введіть ціле значення бітрейту відео трансляції у кбіт/с.",
+    "de-DE": "Geben Sie eine ganze Stream-Video-Bitrate in kbit/s ein."
+  },
+  "Enter a whole keyframe interval in seconds.": {
+    "es-ES": "Introduce un intervalo de fotogramas clave entero en segundos.",
+    "ru-RU": "Введите целый интервал ключевых кадров в секундах.",
+    "uk-UA": "Введіть цілий інтервал ключових кадрів у секундах.",
+    "de-DE": "Geben Sie ein ganzzahliges Schlüsselbildintervall in Sekunden ein."
+  },
+  "Stream settings have no active document binding.": {
+    "es-ES": "Los ajustes de emisión no están vinculados a un documento activo.",
+    "ru-RU": "Настройки трансляции не привязаны к активному документу.",
+    "uk-UA": "Налаштування трансляції не прив’язані до активного документа.",
+    "de-DE": "Die Stream-Einstellungen sind keinem aktiven Dokument zugeordnet."
+  },
+  "Profile: {name}": {
+    "es-ES": "Perfil: {name}",
+    "ru-RU": "Профиль: {name}",
+    "uk-UA": "Профіль: {name}",
+    "de-DE": "Profil: {name}"
+  },
+  "Custom RTMP · H.264 · AAC": {
+    "es-ES": "RTMP personalizado · H.264 · AAC",
+    "ru-RU": "Пользовательский RTMP · H.264 · AAC",
+    "uk-UA": "Власний RTMP · H.264 · AAC",
+    "de-DE": "Benutzerdefiniertes RTMP · H.264 · AAC"
+  },
+  "Configure a custom plain RTMP server. RTMPS, service sign-in and hardware encoding are not provided by this profile. Applying settings never starts a connection.": {
+    "es-ES": "Configura un servidor RTMP sin cifrado personalizado. Este perfil no ofrece RTMPS, inicio de sesión en servicios ni codificación por hardware. Aplicar los ajustes nunca inicia una conexión.",
+    "ru-RU": "Настройте пользовательский сервер RTMP без шифрования. Этот профиль не предоставляет RTMPS, вход в сервисы и аппаратное кодирование. Применение настроек никогда не запускает подключение.",
+    "uk-UA": "Налаштуйте власний сервер RTMP без шифрування. Цей профіль не надає RTMPS, вхід до сервісів та апаратне кодування. Застосування налаштувань ніколи не запускає з’єднання.",
+    "de-DE": "Konfigurieren Sie einen eigenen unverschlüsselten RTMP-Server. Dieses Profil bietet weder RTMPS noch Dienstanmeldung oder Hardware-Kodierung. Das Anwenden startet niemals eine Verbindung."
+  },
+  "Server URL": {
+    "es-ES": "URL del servidor",
+    "ru-RU": "URL сервера",
+    "uk-UA": "URL сервера",
+    "de-DE": "Server-URL"
+  },
+  "Enter rtmp://host[:port]/application. IPv6 uses brackets. No DNS or connection occurs while editing.": {
+    "es-ES": "Introduce rtmp://host[:port]/application. IPv6 utiliza corchetes. Durante la edición no se realiza ninguna consulta DNS ni conexión.",
+    "ru-RU": "Введите rtmp://host[:port]/application. Для IPv6 нужны квадратные скобки. При редактировании нет запросов DNS или подключений.",
+    "uk-UA": "Введіть rtmp://host[:port]/application. Для IPv6 потрібні квадратні дужки. Під час редагування немає запитів DNS або з’єднань.",
+    "de-DE": "Geben Sie rtmp://host[:port]/application ein. IPv6 verwendet eckige Klammern. Beim Bearbeiten erfolgen weder DNS-Abfrage noch Verbindung."
+  },
+  "Stream Key": {
+    "es-ES": "Clave de emisión",
+    "ru-RU": "Ключ трансляции",
+    "uk-UA": "Ключ трансляції",
+    "de-DE": "Stream-Schlüssel"
+  },
+  "Enter the exact stream name or key. Spaces and query text are preserved; the server URL is separate.": {
+    "es-ES": "Introduce el nombre o la clave exactos de la emisión. Se conservan los espacios y el texto de consulta; la URL del servidor se indica por separado.",
+    "ru-RU": "Введите точное имя или ключ трансляции. Пробелы и текст запроса сохраняются; URL сервера задаётся отдельно.",
+    "uk-UA": "Введіть точне ім’я або ключ трансляції. Пробіли й текст запиту зберігаються; URL сервера задається окремо.",
+    "de-DE": "Geben Sie den genauen Stream-Namen oder Schlüssel ein. Leerzeichen und Abfragetext bleiben erhalten; die Server-URL wird separat angegeben."
+  },
+  "Show Stream Key": {
+    "es-ES": "Mostrar clave de emisión",
+    "ru-RU": "Показать ключ трансляции",
+    "uk-UA": "Показати ключ трансляції",
+    "de-DE": "Stream-Schlüssel anzeigen"
+  },
+  "Show or hide the key in this editor without changing its stored value.": {
+    "es-ES": "Muestra u oculta la clave en este editor sin cambiar el valor guardado.",
+    "ru-RU": "Показать или скрыть ключ в редакторе, не меняя сохранённое значение.",
+    "uk-UA": "Показати або приховати ключ у редакторі, не змінюючи збережене значення.",
+    "de-DE": "Zeigt oder verbirgt den Schlüssel im Editor, ohne den gespeicherten Wert zu ändern."
+  },
+  "Video Bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits de vídeo (kbit/s)",
+    "ru-RU": "Битрейт видео (кбит/с)",
+    "uk-UA": "Бітрейт відео (кбіт/с)",
+    "de-DE": "Video-Bitrate (kbit/s)"
+  },
+  "Request an average H.264 bitrate from 64 to 100000 kbit/s. Constant bitrate is not guaranteed.": {
+    "es-ES": "Solicita una tasa de bits media H.264 entre 64 y 100000 kbit/s. No se garantiza una tasa constante.",
+    "ru-RU": "Запросите средний битрейт H.264 от 64 до 100000 кбит/с. Постоянный битрейт не гарантируется.",
+    "uk-UA": "Запросіть середній бітрейт H.264 від 64 до 100000 кбіт/с. Сталий бітрейт не гарантується.",
+    "de-DE": "Fordert eine durchschnittliche H.264-Bitrate von 64 bis 100000 kbit/s an. Eine konstante Bitrate ist nicht garantiert."
+  },
+  "Keyframe Interval (seconds)": {
+    "es-ES": "Intervalo de fotogramas clave (segundos)",
+    "ru-RU": "Интервал ключевых кадров (секунды)",
+    "uk-UA": "Інтервал ключових кадрів (секунди)",
+    "de-DE": "Schlüsselbildintervall (Sekunden)"
+  },
+  "Choose 1 to 10 seconds. Native GOP frames use the OBS integer frame-rate calculation.": {
+    "es-ES": "Elige entre 1 y 10 segundos. Los fotogramas GOP nativos utilizan el cálculo entero de frecuencia de fotogramas de OBS.",
+    "ru-RU": "Выберите от 1 до 10 секунд. Число кадров GOP вычисляется целочисленно по частоте кадров, как в OBS.",
+    "uk-UA": "Виберіть від 1 до 10 секунд. Кількість кадрів GOP обчислюється цілочисельно за частотою кадрів, як в OBS.",
+    "de-DE": "Wählen Sie 1 bis 10 Sekunden. Native GOP-Bildzahlen verwenden die ganzzahlige OBS-Berechnung der Bildrate."
+  },
+  "Include Program Audio": {
+    "es-ES": "Incluir audio de Programa",
+    "ru-RU": "Включить звук программы",
+    "uk-UA": "Увімкнути звук програми",
+    "de-DE": "Programmaudio einschließen"
+  },
+  "Publish final Program audio as AAC. Preview-only sources are excluded; the format is checked at Start.": {
+    "es-ES": "Publica el audio final de Programa como AAC. Se excluyen las fuentes solo de Vista previa; el formato se comprueba al iniciar.",
+    "ru-RU": "Публикация итогового звука программы в AAC. Источники только из предпросмотра исключаются; формат проверяется при запуске.",
+    "uk-UA": "Публікація підсумкового звуку програми в AAC. Джерела лише з попереднього перегляду виключаються; формат перевіряється під час запуску.",
+    "de-DE": "Veröffentlicht das fertige Programmaudio als AAC. Reine Vorschauquellen sind ausgeschlossen; das Format wird beim Start geprüft."
+  },
+  "Audio Bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits de audio (kbit/s)",
+    "ru-RU": "Битрейт звука (кбит/с)",
+    "uk-UA": "Бітрейт звуку (кбіт/с)",
+    "de-DE": "Audio-Bitrate (kbit/s)"
+  },
+  "Choose a supported AAC bitrate; the choice is retained while audio is disabled.": {
+    "es-ES": "Elige una tasa AAC compatible; la selección se conserva mientras el audio está desactivado.",
+    "ru-RU": "Выберите поддерживаемый битрейт AAC; выбор сохраняется при отключённом звуке.",
+    "uk-UA": "Виберіть підтримуваний бітрейт AAC; вибір зберігається за вимкненого звуку.",
+    "de-DE": "Wählt eine unterstützte AAC-Bitrate; die Auswahl bleibt bei deaktiviertem Audio erhalten."
+  },
+  "Clear Server Configuration": {
+    "es-ES": "Borrar configuración del servidor",
+    "ru-RU": "Очистить настройки сервера",
+    "uk-UA": "Очистити налаштування сервера",
+    "de-DE": "Serverkonfiguration löschen"
+  },
+  "Clear the server and key in this draft while keeping encoder choices. Apply is still required.": {
+    "es-ES": "Borra el servidor y la clave de este borrador conservando los ajustes del codificador. Aún es necesario aplicar.",
+    "ru-RU": "Очистить сервер и ключ в черновике, сохранив настройки кодера. Всё равно требуется применение.",
+    "uk-UA": "Очистити сервер і ключ у чернетці, зберігши налаштування кодера. Усе одно потрібне застосування.",
+    "de-DE": "Löscht Server und Schlüssel im Entwurf und behält die Kodiererauswahl bei. Anwenden ist weiterhin erforderlich."
+  },
+  "Restore Stream Defaults": {
+    "es-ES": "Restaurar valores de emisión predeterminados",
+    "ru-RU": "Восстановить настройки трансляции",
+    "uk-UA": "Відновити налаштування трансляції",
+    "de-DE": "Stream-Standardwerte wiederherstellen"
+  },
+  "Restore an unconfigured server and default encoder choices in this draft. Apply is still required.": {
+    "es-ES": "Restaura un servidor sin configurar y los valores predeterminados del codificador en este borrador. Aún es necesario aplicar.",
+    "ru-RU": "Восстановить ненастроенный сервер и стандартные настройки кодера в черновике. Всё равно требуется применение.",
+    "uk-UA": "Відновити неналаштований сервер і стандартні налаштування кодера в чернетці. Усе одно потрібне застосування.",
+    "de-DE": "Setzt den Entwurf auf einen unkonfigurierten Server und Standard-Kodiererauswahl zurück. Anwenden ist weiterhin erforderlich."
+  },
+  "Streaming choices belong to the selected profile and stay outside scene Undo. Apply saves the draft; Cancel leaves the profile unchanged.": {
+    "es-ES": "Los ajustes de emisión pertenecen al perfil seleccionado y no se incluyen en Deshacer de escenas. Aplicar guarda el borrador; Cancelar deja el perfil sin cambios.",
+    "ru-RU": "Настройки трансляции принадлежат выбранному профилю и не входят в историю отмены сцен. Применение сохраняет черновик; отмена не меняет профиль.",
+    "uk-UA": "Налаштування трансляції належать вибраному профілю й не входять до історії скасування сцен. Застосування зберігає чернетку; скасування не змінює профіль.",
+    "de-DE": "Stream-Einstellungen gehören zum ausgewählten Profil und liegen außerhalb des Szenen-Rückgängigmachens. Anwenden speichert den Entwurf; Abbrechen lässt das Profil unverändert."
+  },
+  "Server URL and stream key must both be configured or both be empty.": {
+    "es-ES": "La URL del servidor y la clave de emisión deben estar ambas configuradas o ambas vacías.",
+    "ru-RU": "URL сервера и ключ трансляции должны быть либо оба заданы, либо оба пусты.",
+    "uk-UA": "URL сервера й ключ трансляції мають бути або обидва задані, або обидва порожні.",
+    "de-DE": "Server-URL und Stream-Schlüssel müssen beide konfiguriert oder beide leer sein."
+  },
+  "Streaming URL/key exceed 4096 UTF-8 bytes or contain controls.": {
+    "es-ES": "La URL o clave de emisión supera 4096 bytes UTF-8 o contiene caracteres de control.",
+    "ru-RU": "URL или ключ трансляции превышает 4096 байт UTF-8 либо содержит управляющие символы.",
+    "uk-UA": "URL або ключ трансляції перевищує 4096 байтів UTF-8 або містить керівні символи.",
+    "de-DE": "Streaming-URL oder Schlüssel überschreiten 4096 UTF-8-Bytes oder enthalten Steuerzeichen."
+  },
+  "Streaming video bitrate must be 64 to 100000 kbit/s.": {
+    "es-ES": "La tasa de bits de vídeo de emisión debe estar entre 64 y 100000 kbit/s.",
+    "ru-RU": "Битрейт видео трансляции должен быть от 64 до 100000 кбит/с.",
+    "uk-UA": "Бітрейт відео трансляції має бути від 64 до 100000 кбіт/с.",
+    "de-DE": "Die Stream-Video-Bitrate muss zwischen 64 und 100000 kbit/s liegen."
+  },
+  "Streaming keyframe interval must be 1 to 10 seconds.": {
+    "es-ES": "El intervalo de fotogramas clave de emisión debe ser de 1 a 10 segundos.",
+    "ru-RU": "Интервал ключевых кадров трансляции должен быть от 1 до 10 секунд.",
+    "uk-UA": "Інтервал ключових кадрів трансляції має бути від 1 до 10 секунд.",
+    "de-DE": "Das Stream-Schlüsselbildintervall muss zwischen 1 und 10 Sekunden liegen."
+  },
+  "Streaming AAC bitrate must be 96, 128, 160 or 192 kbit/s.": {
+    "es-ES": "La tasa de bits AAC de emisión debe ser 96, 128, 160 o 192 kbit/s.",
+    "ru-RU": "Битрейт AAC трансляции должен быть 96, 128, 160 или 192 кбит/с.",
+    "uk-UA": "Бітрейт AAC трансляції має бути 96, 128, 160 або 192 кбіт/с.",
+    "de-DE": "Die Stream-AAC-Bitrate muss 96, 128, 160 oder 192 kbit/s betragen."
+  },
+  "Streaming native frame rate must be 1 to 120 FPS.": {
+    "es-ES": "La frecuencia de fotogramas nativa de emisión debe ser de 1 a 120 FPS.",
+    "ru-RU": "Частота кадров кодера трансляции должна быть от 1 до 120 FPS.",
+    "uk-UA": "Частота кадрів кодера трансляції має бути від 1 до 120 FPS.",
+    "de-DE": "Die native Stream-Bildrate muss zwischen 1 und 120 FPS liegen."
+  },
+  "Streaming native GOP must be 1 to 1200 frames.": {
+    "es-ES": "El GOP nativo de emisión debe tener entre 1 y 1200 fotogramas.",
+    "ru-RU": "GOP кодера трансляции должен быть от 1 до 1200 кадров.",
+    "uk-UA": "GOP кодера трансляції має бути від 1 до 1200 кадрів.",
+    "de-DE": "Die native Stream-GOP muss zwischen 1 und 1200 Bildern liegen."
+  },
+  "RTMPS is not supported by the selected streaming transport.": {
+    "es-ES": "El transporte de emisión seleccionado no admite RTMPS.",
+    "ru-RU": "Выбранный транспорт трансляции не поддерживает RTMPS.",
+    "uk-UA": "Вибраний транспорт трансляції не підтримує RTMPS.",
+    "de-DE": "Der gewählte Streaming-Transport unterstützt RTMPS nicht."
+  },
+  "Use a plain rtmp:// server URL.": {
+    "es-ES": "Utiliza una URL de servidor rtmp:// sin cifrado.",
+    "ru-RU": "Используйте URL сервера rtmp:// без шифрования.",
+    "uk-UA": "Використовуйте URL сервера rtmp:// без шифрування.",
+    "de-DE": "Verwenden Sie eine unverschlüsselte rtmp://-Server-URL."
+  },
+  "Streaming URL cannot contain whitespace, fragments or backslashes.": {
+    "es-ES": "La URL de emisión no puede contener espacios, fragmentos ni barras inversas.",
+    "ru-RU": "URL трансляции не может содержать пробелы, фрагменты или обратные косые черты.",
+    "uk-UA": "URL трансляції не може містити пробіли, фрагменти або зворотні скісні риски.",
+    "de-DE": "Die Streaming-URL darf keine Leerzeichen, Fragmente oder umgekehrten Schrägstriche enthalten."
+  },
+  "Streaming server URL needs an application path.": {
+    "es-ES": "La URL del servidor de emisión necesita una ruta de aplicación.",
+    "ru-RU": "URL сервера трансляции требует путь приложения.",
+    "uk-UA": "URL сервера трансляції потребує шлях застосунку.",
+    "de-DE": "Die Streaming-Server-URL benötigt einen Anwendungspfad."
+  },
+  "URL userinfo is unsupported; use the explicit stream key.": {
+    "es-ES": "No se admiten credenciales en la URL; utiliza la clave de emisión explícita.",
+    "ru-RU": "Данные пользователя в URL не поддерживаются; используйте отдельный ключ трансляции.",
+    "uk-UA": "Дані користувача в URL не підтримуються; використовуйте окремий ключ трансляції.",
+    "de-DE": "Benutzerdaten in der URL werden nicht unterstützt; verwenden Sie den separaten Stream-Schlüssel."
+  },
+  "Streaming server URL needs a nonempty application path.": {
+    "es-ES": "La URL del servidor de emisión necesita una ruta de aplicación no vacía.",
+    "ru-RU": "URL сервера трансляции требует непустой путь приложения.",
+    "uk-UA": "URL сервера трансляції потребує непорожній шлях застосунку.",
+    "de-DE": "Die Streaming-Server-URL benötigt einen nicht leeren Anwendungspfad."
+  },
+  "Streaming URL contains an invalid percent escape.": {
+    "es-ES": "La URL de emisión contiene una secuencia de escape porcentual no válida.",
+    "ru-RU": "URL трансляции содержит недопустимую процентную escape-последовательность.",
+    "uk-UA": "URL трансляції містить неприпустиму відсоткову escape-послідовність.",
+    "de-DE": "Die Streaming-URL enthält eine ungültige Prozent-Kodierung."
+  },
+  "Streaming IPv6 host needs closing bracket.": {
+    "es-ES": "El host IPv6 de emisión necesita un corchete de cierre.",
+    "ru-RU": "Адрес IPv6 трансляции требует закрывающую квадратную скобку.",
+    "uk-UA": "Адреса IPv6 трансляції потребує закривальну квадратну дужку.",
+    "de-DE": "Die IPv6-Stream-Adresse benötigt eine schließende eckige Klammer."
+  },
+  "Streaming IPv6 host is invalid.": {
+    "es-ES": "El host IPv6 de emisión no es válido.",
+    "ru-RU": "Неверный адрес IPv6 трансляции.",
+    "uk-UA": "Неправильна адреса IPv6 трансляції.",
+    "de-DE": "Die IPv6-Stream-Adresse ist ungültig."
+  },
+  "Streaming IPv6 authority suffix is invalid.": {
+    "es-ES": "El sufijo de autoridad IPv6 de emisión no es válido.",
+    "ru-RU": "Неверный суффикс адреса сервера IPv6 трансляции.",
+    "uk-UA": "Неправильний суфікс адреси сервера IPv6 трансляції.",
+    "de-DE": "Der Zusatz hinter der IPv6-Serveradresse ist ungültig."
+  },
+  "Streaming host must be a bounded ASCII name or bracketed IPv6 address.": {
+    "es-ES": "El host de emisión debe ser un nombre ASCII de longitud limitada o una dirección IPv6 entre corchetes.",
+    "ru-RU": "Сервер трансляции должен быть ASCII-именем ограниченной длины или адресом IPv6 в квадратных скобках.",
+    "uk-UA": "Сервер трансляції має бути ASCII-ім’ям обмеженої довжини або адресою IPv6 у квадратних дужках.",
+    "de-DE": "Der Streaming-Host muss ein begrenzter ASCII-Name oder eine IPv6-Adresse in eckigen Klammern sein."
+  },
+  "Streaming port must be 1 to 65535.": {
+    "es-ES": "El puerto de emisión debe estar entre 1 y 65535.",
+    "ru-RU": "Порт трансляции должен быть от 1 до 65535.",
+    "uk-UA": "Порт трансляції має бути від 1 до 65535.",
+    "de-DE": "Der Streaming-Port muss zwischen 1 und 65535 liegen."
+  },
+  "Settings — Stream": {
+    "es-ES": "Ajustes — Emisión",
+    "ru-RU": "Настройки — Трансляция",
+    "uk-UA": "Налаштування — Трансляція",
+    "de-DE": "Einstellungen — Stream"
+  }
+}

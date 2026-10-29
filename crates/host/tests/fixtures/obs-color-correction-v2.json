@@ -1,0 +1,51 @@
+{
+  "name":"OBS v2 forward filter order",
+  "version":1,
+  "current_scene":"Main",
+  "current_program_scene":"Main",
+  "scene_order":[{"name":"Main"}],
+  "groups":[],
+  "sources":[
+    {
+      "name":"Gray",
+      "uuid":"1457ed57-09de-4c8e-aad8-3708dd393b9b",
+      "id":"color_source",
+      "versioned_id":"color_source_v3",
+      "settings":{"color":4286611584,"width":16,"height":16},
+      "filters":[
+        {
+          "name":"Черный",
+          "uuid":"4457ed57-09de-4c8e-aad8-3708dd393b9b",
+          "id":"color_filter",
+          "versioned_id":"color_filter_v2",
+          "enabled":true,
+          "settings":{"gamma":0,"contrast":0,"brightness":-1,"saturation":0,"hue_shift":0,"opacity":1,"color_multiply":2885681151,"color_add":3439329280},
+          "private_settings":{}
+        },
+        {
+          "name":"White",
+          "uuid":"5457ed57-09de-4c8e-aad8-3708dd393b9b",
+          "id":"color_filter",
+          "versioned_id":"color_filter_v2",
+          "enabled":true,
+          "settings":{"brightness":1}
+        },
+        {
+          "name":"Disabled dark",
+          "uuid":"6457ed57-09de-4c8e-aad8-3708dd393b9b",
+          "id":"color_filter",
+          "versioned_id":"color_filter_v2",
+          "enabled":false,
+          "settings":{"brightness":-1}
+        }
+      ]
+    },
+    {
+      "name":"Main",
+      "uuid":"2457ed57-09de-4c8e-aad8-3708dd393b9b",
+      "id":"scene",
+      "versioned_id":"scene",
+      "settings":{"id_counter":1,"custom_size":false,"items":[{"name":"Gray","source_uuid":"1457ed57-09de-4c8e-aad8-3708dd393b9b","id":1,"visible":true,"locked":false,"pos":{"x":0,"y":0},"scale":{"x":1,"y":1},"rot":0,"align":5,"bounds_type":0,"blend_type":"normal"}]}
+    }
+  ]
+}

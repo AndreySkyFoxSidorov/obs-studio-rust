@@ -1,0 +1,80 @@
+{
+  "Global Audio Devices": {
+    "es-ES": "Dispositivos de audio globales",
+    "ru-RU": "Глобальные аудиоустройства",
+    "uk-UA": "Глобальні аудіопристрої",
+    "de-DE": "Globale Audiogeräte"
+  },
+  "Add New": {
+    "es-ES": "Añadir nuevo",
+    "ru-RU": "Добавить новый",
+    "uk-UA": "Додати нове",
+    "de-DE": "Neu hinzufügen"
+  },
+  "Changes to global audio slots apply immediately and can be undone. Close keeps confirmed changes. Device properties use their own Apply and Cancel.": {
+    "es-ES": "Los cambios en los canales de audio globales se aplican de inmediato y se pueden deshacer. Cerrar conserva los cambios confirmados. Las propiedades del dispositivo tienen sus propios botones Aplicar y Cancelar.",
+    "ru-RU": "Изменения глобальных аудиослотов применяются сразу и поддерживают отмену. Закрытие сохраняет подтверждённые изменения. В свойствах устройства действуют отдельные кнопки «Применить» и «Отмена».",
+    "uk-UA": "Зміни глобальних аудіослотів застосовуються одразу та підтримують скасування. Закриття зберігає підтверджені зміни. У властивостях пристрою діють окремі кнопки «Застосувати» та «Скасувати».",
+    "de-DE": "Änderungen an globalen Audioplätzen werden sofort übernommen und können rückgängig gemacht werden. Schließen behält bestätigte Änderungen bei. Geräteeigenschaften haben eigene Schaltflächen zum Übernehmen und Abbrechen."
+  },
+  "Choose an existing audio source for this global slot, or disable the slot.": {
+    "es-ES": "Elija una fuente de audio existente para este canal global o desactívelo.",
+    "ru-RU": "Выберите существующий источник звука для этого глобального слота или отключите слот.",
+    "uk-UA": "Виберіть наявне джерело звуку для цього глобального слота або вимкніть слот.",
+    "de-DE": "Vorhandene Audioquelle für diesen globalen Platz wählen oder den Platz deaktivieren."
+  },
+  "Create and configure a new audio source for this global slot.": {
+    "es-ES": "Cree y configure una nueva fuente de audio para este canal global.",
+    "ru-RU": "Создайте и настройте новый источник звука для этого глобального слота.",
+    "uk-UA": "Створіть і налаштуйте нове джерело звуку для цього глобального слота.",
+    "de-DE": "Neue Audioquelle für diesen globalen Platz erstellen und einrichten."
+  },
+  "Audio capture is unavailable on this platform.": {
+    "es-ES": "La captura de audio no está disponible en esta plataforma.",
+    "ru-RU": "Захват звука недоступен на этой платформе.",
+    "uk-UA": "Захоплення звуку недоступне на цій платформі.",
+    "de-DE": "Audioaufnahme ist auf dieser Plattform nicht verfügbar."
+  },
+  "Choose the device and capture options for this global audio source.": {
+    "es-ES": "Elija el dispositivo y las opciones de captura de esta fuente de audio global.",
+    "ru-RU": "Выберите устройство и параметры захвата для этого глобального источника звука.",
+    "uk-UA": "Виберіть пристрій і параметри захоплення для цього глобального джерела звуку.",
+    "de-DE": "Gerät und Aufnahmeoptionen für diese globale Audioquelle wählen."
+  },
+  "Choose or add an audio source first.": {
+    "es-ES": "Primero elija o añada una fuente de audio.",
+    "ru-RU": "Сначала выберите или добавьте источник звука.",
+    "uk-UA": "Спочатку виберіть або додайте джерело звуку.",
+    "de-DE": "Zuerst eine Audioquelle wählen oder hinzufügen."
+  },
+  "A shared source keeps the same volume, mute and filters in every slot and scene. Global slots stay active independently of scene selection.": {
+    "es-ES": "Una fuente compartida conserva el mismo volumen, silencio y filtros en todos los canales y escenas. Los canales globales siguen activos independientemente de la escena seleccionada.",
+    "ru-RU": "Общий источник сохраняет одинаковую громкость, отключение звука и фильтры во всех слотах и сценах. Глобальные слоты остаются активными независимо от выбранной сцены.",
+    "uk-UA": "Спільне джерело зберігає однакову гучність, вимкнення звуку та фільтри в усіх слотах і сценах. Глобальні слоти залишаються активними незалежно від вибраної сцени.",
+    "de-DE": "Eine gemeinsam genutzte Quelle behält Lautstärke, Stummschaltung und Filter in allen Plätzen und Szenen bei. Globale Plätze bleiben unabhängig von der ausgewählten Szene aktiv."
+  },
+  "Manage the six global audio slots. Confirm or cancel the format draft before opening device settings.": {
+    "es-ES": "Gestione los seis canales de audio globales. Confirme o descarte los cambios de formato antes de abrir los ajustes de dispositivos.",
+    "ru-RU": "Управляйте шестью глобальными аудиослотами. Подтвердите или отмените изменения формата перед открытием настроек устройств.",
+    "uk-UA": "Керуйте шістьма глобальними аудіослотами. Підтвердьте або скасуйте зміни формату перед відкриттям налаштувань пристроїв.",
+    "de-DE": "Die sechs globalen Audioplätze verwalten. Formatänderungen vor dem Öffnen der Geräteeinstellungen übernehmen oder verwerfen."
+  },
+  "No unique audio source name is available.": {
+    "es-ES": "No hay un nombre único disponible para la fuente de audio.",
+    "ru-RU": "Нет свободного уникального имени для источника звука.",
+    "uk-UA": "Немає вільної унікальної назви для джерела звуку.",
+    "de-DE": "Kein eindeutiger Name für die Audioquelle verfügbar."
+  },
+  "This audio source is no longer available for this global slot.": {
+    "es-ES": "Esta fuente de audio ya no está disponible para este canal global.",
+    "ru-RU": "Этот источник звука больше недоступен для данного глобального слота.",
+    "uk-UA": "Це джерело звуку більше недоступне для цього глобального слота.",
+    "de-DE": "Diese Audioquelle ist für diesen globalen Platz nicht mehr verfügbar."
+  },
+  "{} languages · {} keys · {} missing in the current language": {
+    "es-ES": "{} idiomas · {} claves · {} traducciones pendientes en el idioma actual",
+    "ru-RU": "{} языков · {} ключей · {} переводов отсутствует в текущем языке",
+    "uk-UA": "{} мов · {} ключів · {} перекладів відсутні поточною мовою",
+    "de-DE": "{} Sprachen · {} Schlüssel · {} fehlende Übersetzungen in der aktuellen Sprache"
+  }
+}

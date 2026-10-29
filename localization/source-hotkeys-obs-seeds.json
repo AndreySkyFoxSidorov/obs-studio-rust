@@ -1,0 +1,110 @@
+{
+  "OBS source hotkey key token exceeds 64 bytes": {
+    "es-ES": "El nombre de tecla OBS supera64 bytes",
+    "ru-RU": "Имя клавиши OBS превышает64 байта",
+    "uk-UA": "Назва клавіші OBS перевищує64 байти",
+    "de-DE": "OBS-Tastentoken überschreitet64 Bytes"
+  },
+  "OBS source hotkeys require an exact supported OBS_KEY token; aliases are not guessed": {
+    "es-ES": "Los atajos de fuente requieren un nombre OBS_KEY exacto admitido; no se adivinan alias",
+    "ru-RU": "Горячие клавиши источника требуют точного поддерживаемого имени OBS_KEY; псевдонимы не угадываются",
+    "uk-UA": "Гарячі клавіші джерела потребують точного підтримуваного імені OBS_KEY; псевдоніми не вгадуються",
+    "de-DE": "Quellen-Tastenkürzel benötigen ein exakt unterstütztes OBS_KEY-Token; Aliase werden nicht geraten"
+  },
+  "This OBS source hotkey key is outside the exact Windows subset; keypad, modifier-only, punctuation and F12 keys are not converted": {
+    "es-ES": "La tecla queda fuera del subconjunto exacto de Windows; no se convierten teclado numérico, modificadores solos, puntuación ni F12",
+    "ru-RU": "Эта клавиша OBS вне точного подмножества Windows; цифровой блок, отдельные модификаторы, знаки и F12 не преобразуются",
+    "uk-UA": "Ця клавіша OBS поза точним піднабором Windows; цифровий блок, окремі модифікатори, знаки та F12 не перетворюються",
+    "de-DE": "Diese OBS-Quellentaste liegt außerhalb der exakten Windows-Teilmenge; Ziffernblock, reine Modifikatoren, Satzzeichen und F12 werden nicht konvertiert"
+  },
+  "Native source hotkey has no exact OBS key representation": {
+    "es-ES": "El atajo nativo no tiene una representación exacta en OBS",
+    "ru-RU": "У горячей клавиши источника нет точного представления клавишей OBS",
+    "uk-UA": "Гаряча клавіша джерела не має точного подання клавішею OBS",
+    "de-DE": "Natives Quellen-Tastenkürzel hat keine exakte OBS-Tastendarstellung"
+  },
+  "OBS source hotkey entries support only key, control, alt, shift and command fields; unknown data is not dropped": {
+    "es-ES": "Las entradas admiten solo key, control, alt, shift y command; los datos desconocidos no se descartan",
+    "ru-RU": "Записи горячих клавиш OBS поддерживают только key, control, alt, shift и command; неизвестные данные не отбрасываются",
+    "uk-UA": "Записи гарячих клавіш OBS підтримують лише key, control, alt, shift і command; невідомі дані не відкидаються",
+    "de-DE": "OBS-Quellenkürzel unterstützen nur key, control, alt, shift und command; unbekannte Daten werden nicht verworfen"
+  },
+  "Command, Meta and Windows-key source hotkeys cannot be converted to native Ctrl bindings": {
+    "es-ES": "No se pueden convertir Command, Meta ni la tecla Windows a combinaciones nativas Ctrl",
+    "ru-RU": "Command, Meta и клавишу Windows нельзя преобразовать в собственные сочетания Ctrl",
+    "uk-UA": "Command, Meta та клавішу Windows не можна перетворити на власні сполучення Ctrl",
+    "de-DE": "Command-, Meta- und Windows-Tastenkürzel können nicht in native Strg-Bindungen umgewandelt werden"
+  },
+  "Native global source hotkey policy does not support this key": {
+    "es-ES": "La política global nativa de atajos de fuente no admite esta tecla",
+    "ru-RU": "Политика глобальных горячих клавиш источника не поддерживает эту клавишу",
+    "uk-UA": "Політика глобальних гарячих клавіш джерела не підтримує цю клавішу",
+    "de-DE": "Die native Richtlinie für globale Quellenkürzel unterstützt diese Taste nicht"
+  },
+  "OBS source hotkey object exceeds the represented nine-name subset": {
+    "es-ES": "El objeto de atajos supera los nueve nombres representados",
+    "ru-RU": "Объект горячих клавиш OBS превышает подмножество из девяти представимых имён",
+    "uk-UA": "Об’єкт гарячих клавіш OBS перевищує піднабір із дев’яти поданих імен",
+    "de-DE": "OBS-Quellenkürzelobjekt überschreitet die darstellbare Teilmenge mit neun Namen"
+  },
+  "Bound OBS mute/unmute/push-to-talk source hotkeys are not represented by playback controls": {
+    "es-ES": "Los atajos asignados de silencio/activar audio/pulsar para hablar no se representan con controles de reproducción",
+    "ru-RU": "Назначенные клавиши mute/unmute/push-to-talk OBS не представимы командами воспроизведения",
+    "uk-UA": "Призначені клавіші mute/unmute/push-to-talk OBS не можна подати командами відтворення",
+    "de-DE": "Gebundene OBS-Quellenkürzel für Stumm/Audio aktivieren/Push-to-Talk sind durch Wiedergabesteuerung nicht darstellbar"
+  },
+  "Unknown or unsupported OBS source hotkey action; Media Source pairs and frontend bindings are not converted": {
+    "es-ES": "Acción de atajo desconocida o no admitida; no se convierten pares de Media Source ni atajos de interfaz",
+    "ru-RU": "Неизвестное или неподдерживаемое действие горячей клавиши OBS; пары Media Source и команды интерфейса не преобразуются",
+    "uk-UA": "Невідома або непідтримувана дія гарячої клавіші OBS; пари Media Source та команди інтерфейсу не перетворюються",
+    "de-DE": "Unbekannte oder nicht unterstützte OBS-Quellenaktion; Media-Source-Paare und Frontend-Bindungen werden nicht konvertiert"
+  },
+  "Slideshow hotkey names require an actual slideshow or slideshow_v2 source": {
+    "es-ES": "Los nombres de atajo del pase requieren una fuente slideshow o slideshow_v2 real",
+    "ru-RU": "Имена горячих клавиш слайд-шоу требуют настоящего источника slideshow или slideshow_v2",
+    "uk-UA": "Імена гарячих клавіш слайд-шоу потребують справжнього джерела slideshow або slideshow_v2",
+    "de-DE": "Diashow-Tastenkürzelnamen benötigen eine tatsächliche slideshow- oder slideshow_v2-Quelle"
+  },
+  "An OBS slideshow control can contain at most two represented shortcuts": {
+    "es-ES": "Cada control del pase OBS puede contener como máximo dos atajos representados",
+    "ru-RU": "Команда слайд-шоу OBS может содержать не более двух представимых сочетаний",
+    "uk-UA": "Команда слайд-шоу OBS може містити не більше двох поданих сполучень",
+    "de-DE": "Eine OBS-Diashow-Steuerung darf höchstens zwei darstellbare Tastenkürzel enthalten"
+  },
+  "OBS source hotkey interchange currently preserves Windows Ctrl semantics only": {
+    "es-ES": "El intercambio de atajos conserva actualmente solo la semántica Ctrl de Windows",
+    "ru-RU": "Обмен горячими клавишами источника сейчас сохраняет только семантику Ctrl Windows",
+    "uk-UA": "Обмін гарячими клавішами джерела зараз зберігає лише семантику Ctrl Windows",
+    "de-DE": "Der Austausch von Quellenkürzeln bewahrt derzeit nur die Strg-Semantik von Windows"
+  },
+  "OBS source hotkeys exceed the canonical 106-binding collection limit": {
+    "es-ES": "Los atajos superan el límite canónico de106 asignaciones de la colección",
+    "ru-RU": "Горячие клавиши OBS превышают канонический лимит коллекции в106 назначений",
+    "uk-UA": "Гарячі клавіші OBS перевищують канонічний ліміт колекції у106 призначень",
+    "de-DE": "OBS-Quellenkürzel überschreiten das kanonische Sammlungslimit von106 Bindungen"
+  },
+  "OBS source shortcut conflicts with another source or existing local/global application shortcut": {
+    "es-ES": "El atajo entra en conflicto con otra fuente o un atajo local/global de la aplicación",
+    "ru-RU": "Сочетание OBS конфликтует с другим источником или существующим локальным/глобальным сочетанием приложения",
+    "uk-UA": "Сполучення OBS конфліктує з іншим джерелом або наявним локальним/глобальним сполученням застосунку",
+    "de-DE": "OBS-Quellenkürzel kollidiert mit einer anderen Quelle oder einem vorhandenen lokalen/globalen Anwendungskürzel"
+  },
+  "Only Slideshow playback shortcuts have exact OBS source interchange here; Media Source Play/Pause pairs and other providers remain unsupported": {
+    "es-ES": "Solo los atajos del pase tienen intercambio exacto aquí; los pares Reproducir/Pausa de Media Source y otros proveedores siguen sin admitirse",
+    "ru-RU": "Здесь точный обмен OBS поддержан только для клавиш слайд-шоу; пары Play/Pause Media Source и другие провайдеры остаются неподдерживаемыми",
+    "uk-UA": "Тут точний обмін OBS підтримано лише для клавіш слайд-шоу; пари Play/Pause Media Source та інші провайдери залишаються непідтримуваними",
+    "de-DE": "Hier ist exakter OBS-Austausch nur für Diashow-Kürzel vorhanden; Media-Source-Paare für Abspielen/Pause und andere Anbieter bleiben ununterstützt"
+  },
+  "Slideshow hotkey owner was not retained by the imported scene graph": {
+    "es-ES": "El grafo importado no conservó al propietario del atajo del pase",
+    "ru-RU": "Владелец горячей клавиши слайд-шоу не сохранён в импортированном графе сцен",
+    "uk-UA": "Власника гарячої клавіші слайд-шоу не збережено в імпортованому графі сцен",
+    "de-DE": "Der importierte Szenengraph enthält den Eigentümer des Diashow-Kürzels nicht"
+  },
+"OBS source hotkey action name exceeds 128 bytes": {
+  "es-ES": "El nombre de acción del atajo OBS supera128 bytes",
+  "ru-RU": "Имя действия горячей клавиши OBS превышает128 байтов",
+  "uk-UA": "Назва дії гарячої клавіші OBS перевищує128 байтів",
+  "de-DE": "OBS-Quellenaktionsname überschreitet128 Bytes"
+}
+}

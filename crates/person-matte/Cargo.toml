@@ -1,0 +1,11 @@
+[package]
+name = "skylive-person-matte"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+rten = { version = "=0.21.0", default-features = false }
+rten-tensor = "=0.21.0"

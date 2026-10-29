@@ -1,0 +1,38 @@
+{
+  "Control audio via SkyLive": {
+    "es-ES": "Controlar audio mediante SkyLive",
+    "ru-RU": "Управлять звуком через SkyLive",
+    "uk-UA": "Керувати звуком через SkyLive",
+    "de-DE": "Audio über SkyLive steuern"
+  },
+  "Capture actual CEF48kHz stereo PCM into this source's mixer, audio filters and monitoring. When off, CEF plays through its native audio output and this source has no Program PCM route.": {
+    "es-ES": "Capture PCM estéreo real de CEF a48kHz en el mezclador, filtros de audio y monitorización de esta fuente. Al desactivarlo, CEF reproduce mediante su salida nativa y esta fuente no envía PCM al programa.",
+    "ru-RU": "Передавать реальные стереопакеты PCM CEF48кГц в микшер, аудиофильтры и мониторинг этого источника. Если выключено, CEF воспроизводит звук через собственный системный выход, а источник не передаёт PCM в программу.",
+    "uk-UA": "Передавати справжні стереопакети PCM CEF48кГц у мікшер, аудіофільтри та моніторинг цього джерела. Якщо вимкнено, CEF відтворює звук через власний системний вихід, а джерело не передає PCM у програму.",
+    "de-DE": "Tatsächliches CEF-Stereo-PCM mit48kHz an Mixer, Audiofilter und Monitoring dieser Quelle übergeben. Im ausgeschalteten Zustand spielt CEF über seine native Audioausgabe; diese Quelle hat dann keinen PCM-Pfad zum Programm."
+  },
+  "Controlled browser audio uses actual CEF48kHz stereo PCM and the shared Program converter. Browser JavaScript bindings and browser docks are not included yet.": {
+    "es-ES": "El audio controlado del navegador usa PCM estéreo real de CEF a48kHz y el conversor compartido del programa. Aún no se incluyen enlaces JavaScript del navegador ni paneles de navegador.",
+    "ru-RU": "Управляемый звук браузера использует реальное стерео PCM CEF48кГц и общий преобразователь программы. Привязки JavaScript и браузерные панели ещё не включены.",
+    "uk-UA": "Керований звук браузера використовує справжнє стерео PCM CEF48кГц і спільний перетворювач програми. Прив’язки JavaScript і браузерні панелі ще не включено.",
+    "de-DE": "Gesteuertes Browseraudio verwendet tatsächliches CEF-Stereo-PCM mit48kHz und den gemeinsamen Programmkonverter. Browser-JavaScript-Anbindungen und Browser-Docks sind noch nicht enthalten."
+  },
+  "Browser audio control (CEF48kHz stereo PCM)": {
+    "es-ES": "Control de audio del navegador (PCM estéreo CEF a48kHz)",
+    "ru-RU": "Управление звуком браузера (стерео PCM CEF48кГц)",
+    "uk-UA": "Керування звуком браузера (стерео PCM CEF48кГц)",
+    "de-DE": "Browseraudiosteuerung (CEF-Stereo-PCM mit48kHz)"
+  },
+  "remove browser audio filters, monitoring and audio properties before returning audio to native CEF playback": {
+    "es-ES": "Quite los filtros de audio, la monitorización y los ajustes de audio del navegador antes de volver a la reproducción nativa de CEF.",
+    "ru-RU": "Перед возвратом к системному воспроизведению CEF удалите аудиофильтры браузера, выключите мониторинг и сбросьте аудиосвойства.",
+    "uk-UA": "Перед поверненням до системного відтворення CEF видаліть аудіофільтри браузера, вимкніть моніторинг і скиньте аудіовластивості.",
+    "de-DE": "Vor der Rückkehr zur nativen CEF-Wiedergabe Browseraudiofilter entfernen, Monitoring ausschalten und Audioeigenschaften zurücksetzen."
+  },
+  "Windows x64 CEF127.145.7 software OSR through a Rust helper and C ABI: URL/local HTML, CSS, viewport/FPS, visibility/reload, alpha frames and HTML popup overlays. Optional actual CEF48kHz stereo PCM feeds source gain, filters, Program conversion and monitoring; control off retains native CEF playback. Matching external CEF runtime is required. OBS JS bridge, browser docks and native OBS browser-plugin ABI are not implemented.": {
+    "es-ES": "OSR por software de CEF127.145.7 para Windows x64 mediante un auxiliar en Rust y la ABI de C: URL/HTML local, CSS, tamaño/FPS, visibilidad/recarga, imágenes con alfa y menús HTML superpuestos. El PCM estéreo real opcional de CEF a48kHz alimenta la ganancia, filtros, conversión del programa y monitorización; al desactivar el control se conserva la reproducción nativa de CEF. Requiere la versión externa compatible de CEF. Aún no se implementan el puente JavaScript de OBS, los paneles de navegador ni la ABI nativa del complemento de navegador de OBS.",
+    "ru-RU": "Программный OSR CEF127.145.7 для Windows x64 через вспомогательный процесс на Rust и C ABI: URL/локальный HTML, CSS, размер/FPS, видимость/перезагрузка, кадры с альфа-каналом и наложения HTML-меню. Дополнительный реальный стереопоток PCM CEF48кГц передаётся в усиление, фильтры, преобразователь программы и мониторинг; при выключенном управлении сохраняется системное воспроизведение CEF. Требуется совместимая внешняя среда CEF. Мост JavaScript OBS, браузерные панели и нативный ABI браузерного плагина OBS не реализованы.",
+    "uk-UA": "Програмний OSR CEF127.145.7 для Windows x64 через допоміжний процес мовою Rust і C ABI: URL/локальний HTML, CSS, розмір/FPS, видимість/перезавантаження, кадри з альфа-каналом і накладення HTML-меню. Додатковий справжній стереопотік PCM CEF48кГц передається в підсилення, фільтри, перетворювач програми та моніторинг; коли керування вимкнено, зберігається системне відтворення CEF. Потрібне сумісне зовнішнє середовище CEF. Міст JavaScript OBS, браузерні панелі та нативний ABI браузерного плагіна OBS не реалізовано.",
+    "de-DE": "CEF127.145.7-Software-OSR für Windows x64 über einen Rust-Hilfsprozess und die C-ABI: URL/lokales HTML, CSS, Bildgröße/FPS, Sichtbarkeit/Neuladen, Bilder mit Alpha und HTML-Auswahllisten-Overlays. Optionales tatsächliches CEF-Stereo-PCM mit48kHz speist Quellverstärkung, Filter, Programmkonvertierung und Monitoring; bei ausgeschalteter Steuerung bleibt die native CEF-Wiedergabe erhalten. Die passende externe CEF-Laufzeit ist erforderlich. OBS-JavaScript-Brücke, Browser-Docks und native OBS-Browserplugin-ABI sind nicht implementiert."
+  }
+}

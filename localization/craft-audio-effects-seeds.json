@@ -1,0 +1,182 @@
+{
+  "Add Craft Mod Delay": {
+    "es-ES": "Añadir Craft Mod Delay",
+    "ru-RU": "Добавить Craft Mod Delay",
+    "uk-UA": "Додати Craft Mod Delay",
+    "de-DE": "Craft Mod Delay hinzufügen"
+  },
+  "Add Craft FDN Reverb": {
+    "es-ES": "Añadir Craft FDN Reverb",
+    "ru-RU": "Добавить Craft FDN Reverb",
+    "uk-UA": "Додати Craft FDN Reverb",
+    "de-DE": "Craft FDN Reverb hinzufügen"
+  },
+  "Craft Mod Delay {}": {
+    "es-ES": "Craft Mod Delay {}",
+    "ru-RU": "Craft Mod Delay {}",
+    "uk-UA": "Craft Mod Delay {}",
+    "de-DE": "Craft Mod Delay {}"
+  },
+  "Craft FDN Reverb {}": {
+    "es-ES": "Craft FDN Reverb {}",
+    "ru-RU": "Craft FDN Reverb {}",
+    "uk-UA": "Craft FDN Reverb {}",
+    "de-DE": "Craft FDN Reverb {}"
+  },
+  "Delay Time (ms)": {
+    "es-ES": "Tiempo de retardo (ms)",
+    "ru-RU": "Время задержки (мс)",
+    "uk-UA": "Час затримки (мс)",
+    "de-DE": "Verzögerungszeit (ms)"
+  },
+  "Feedback (%)": {
+    "es-ES": "Realimentación (%)",
+    "ru-RU": "Обратная связь (%)",
+    "uk-UA": "Зворотний зв’язок (%)",
+    "de-DE": "Rückkopplung (%)"
+  },
+  "Mix (%)": {
+    "es-ES": "Mezcla (%)",
+    "ru-RU": "Смешивание (%)",
+    "uk-UA": "Змішування (%)",
+    "de-DE": "Mischung (%)"
+  },
+  "Mod Rate (Hz)": {
+    "es-ES": "Frecuencia de modulación (Hz)",
+    "ru-RU": "Частота модуляции (Гц)",
+    "uk-UA": "Частота модуляції (Гц)",
+    "de-DE": "Modulationsrate (Hz)"
+  },
+  "Mod Depth (%)": {
+    "es-ES": "Profundidad de modulación (%)",
+    "ru-RU": "Глубина модуляции (%)",
+    "uk-UA": "Глибина модуляції (%)",
+    "de-DE": "Modulationstiefe (%)"
+  },
+  "Feedback LPF (Hz)": {
+    "es-ES": "Filtro paso bajo de realimentación (Hz)",
+    "ru-RU": "ФНЧ обратной связи (Гц)",
+    "uk-UA": "ФНЧ зворотного зв’язку (Гц)",
+    "de-DE": "Rückkopplungs-Tiefpass (Hz)"
+  },
+  "Pre-delay (ms)": {
+    "es-ES": "Prerretardo (ms)",
+    "ru-RU": "Предзадержка (мс)",
+    "uk-UA": "Попередня затримка (мс)",
+    "de-DE": "Vorverzögerung (ms)"
+  },
+  "Decay RT60 (s)": {
+    "es-ES": "Decaimiento RT60 (s)",
+    "ru-RU": "Затухание RT60 (с)",
+    "uk-UA": "Згасання RT60 (с)",
+    "de-DE": "Abklingzeit RT60 (s)"
+  },
+  "HF Damping (%)": {
+    "es-ES": "Amortiguación de agudos (%)",
+    "ru-RU": "Затухание ВЧ (%)",
+    "uk-UA": "Згасання ВЧ (%)",
+    "de-DE": "Höhendämpfung (%)"
+  },
+  "Room Size (%)": {
+    "es-ES": "Tamaño de sala (%)",
+    "ru-RU": "Размер помещения (%)",
+    "uk-UA": "Розмір приміщення (%)",
+    "de-DE": "Raumgröße (%)"
+  },
+  "Add SoundCraft's modulated feedback delay with its original time, modulation, feedback and mix controls.": {
+    "es-ES": "Añade el retardo modulado de SoundCraft con sus controles originales de tiempo, modulación, realimentación y mezcla.",
+    "ru-RU": "Добавляет модулированную задержку SoundCraft с исходными настройками времени, модуляции, обратной связи и смешивания.",
+    "uk-UA": "Додає модульовану затримку SoundCraft з оригінальними параметрами часу, модуляції, зворотного зв’язку та змішування.",
+    "de-DE": "Fügt SoundCrafts modulierte Rückkopplungsverzögerung mit den ursprünglichen Reglern für Zeit, Modulation, Rückkopplung und Mischung hinzu."
+  },
+  "Add FilmCraft's eight-line algorithmic reverb with pre-delay, RT60, damping, size and mix.": {
+    "es-ES": "Añade la reverberación algorítmica de ocho líneas de FilmCraft con prerretardo, RT60, amortiguación, tamaño y mezcla.",
+    "ru-RU": "Добавляет алгоритмическую реверберацию FilmCraft с восемью линиями задержки, предзадержкой, RT60, затуханием, размером и смешиванием.",
+    "uk-UA": "Додає алгоритмічну реверберацію FilmCraft із вісьмома лініями затримки, попередньою затримкою, RT60, згасанням, розміром і змішуванням.",
+    "de-DE": "Fügt FilmCrafts algorithmischen Acht-Leitungs-Hall mit Vorverzögerung, RT60, Dämpfung, Größe und Mischung hinzu."
+  },
+  "Bypass this Craft effect. Re-enabling starts a fresh delay/reverb state; its authored settings are retained.": {
+    "es-ES": "Omite este efecto Craft. Al reactivarlo se reinicia su estado de retardo/reverberación; se conservan sus ajustes.",
+    "ru-RU": "Обходит этот эффект Craft. При повторном включении состояние задержки/реверберации начинается заново; настройки сохраняются.",
+    "uk-UA": "Обходить цей ефект Craft. Після повторного ввімкнення стан затримки/реверберації починається заново; налаштування зберігаються.",
+    "de-DE": "Umgeht diesen Craft-Effekt. Beim erneuten Aktivieren beginnt der Verzögerungs-/Hallzustand neu; die Einstellungen bleiben erhalten."
+  },
+  "SoundCraft Mod Delay: cubic modulated echo with a low-pass feedback path and stereo phase spread.": {
+    "es-ES": "SoundCraft Mod Delay: eco modulado con interpolación cúbica, realimentación filtrada y desfase estéreo.",
+    "ru-RU": "SoundCraft Mod Delay: модулированное эхо с кубической интерполяцией, ФНЧ в обратной связи и стереофазовым разносом.",
+    "uk-UA": "SoundCraft Mod Delay: модульоване відлуння з кубічною інтерполяцією, ФНЧ у зворотному зв’язку та стереофазовим рознесенням.",
+    "de-DE": "SoundCraft Mod Delay: kubisch interpoliertes moduliertes Echo mit Tiefpass-Rückkopplung und Stereo-Phasenversatz."
+  },
+  "FilmCraft FDN Reverb: eight feedback lines with a Householder matrix, pre-delay and high-frequency damping.": {
+    "es-ES": "FilmCraft FDN Reverb: ocho líneas de realimentación con matriz Householder, prerretardo y amortiguación de agudos.",
+    "ru-RU": "FilmCraft FDN Reverb: восемь линий обратной связи с матрицей Хаусхолдера, предзадержкой и затуханием высоких частот.",
+    "uk-UA": "FilmCraft FDN Reverb: вісім ліній зворотного зв’язку з матрицею Гаусгольдера, попередньою затримкою та згасанням високих частот.",
+    "de-DE": "FilmCraft FDN Reverb: acht Rückkopplungsleitungen mit Householder-Matrix, Vorverzögerung und Höhendämpfung."
+  },
+  "Delay time glides over 120 ms when edited, preserving existing echoes.": {
+    "es-ES": "Al editarlo, el tiempo de retardo cambia gradualmente durante 120 ms sin borrar los ecos existentes.",
+    "ru-RU": "При редактировании время задержки плавно меняется за 120 мс, сохраняя существующее эхо.",
+    "uk-UA": "Під час редагування час затримки плавно змінюється за 120 мс, зберігаючи наявне відлуння.",
+    "de-DE": "Änderungen der Verzögerungszeit gleiten über 120 ms und erhalten vorhandene Echos."
+  },
+  "Negative feedback inverts repeated echoes. Values near 99% produce long tails.": {
+    "es-ES": "La realimentación negativa invierte los ecos repetidos. Los valores cercanos al 99% producen colas largas.",
+    "ru-RU": "Отрицательная обратная связь инвертирует повторяющееся эхо. Значения около 99% дают длинный хвост.",
+    "uk-UA": "Від’ємний зворотний зв’язок інвертує повторне відлуння. Значення близько 99% дають довгий хвіст.",
+    "de-DE": "Negative Rückkopplung invertiert wiederholte Echos. Werte nahe 99% erzeugen lange Nachklänge."
+  },
+  "Dry/wet mix: 0% keeps the dry signal; 100% outputs only the effect.": {
+    "es-ES": "Mezcla seca/procesada: 0% conserva la señal original; 100% emite solo el efecto.",
+    "ru-RU": "Смешивание сухого и обработанного сигнала: 0% оставляет оригинал, 100% выводит только эффект.",
+    "uk-UA": "Змішування сухого й обробленого сигналу: 0% залишає оригінал, 100% виводить лише ефект.",
+    "de-DE": "Trocken-/Effektmischung: 0% erhält das Originalsignal; 100% gibt nur den Effekt aus."
+  },
+  "Rate of the sine delay modulation. Odd channels have a quarter-cycle phase offset.": {
+    "es-ES": "Frecuencia de modulación sinusoidal del retardo. Los canales con índice impar tienen un desfase de un cuarto de ciclo.",
+    "ru-RU": "Частота синусоидальной модуляции задержки. Каналы с нечётным индексом сдвинуты по фазе на четверть периода.",
+    "uk-UA": "Частота синусоїдальної модуляції затримки. Канали з непарним індексом зсунуті за фазою на чверть періоду.",
+    "de-DE": "Rate der sinusförmigen Verzögerungsmodulation. Kanäle mit ungeradem Index sind um eine Viertelperiode phasenversetzt."
+  },
+  "Modulation depth: 100% moves the delay by up to 5 ms.": {
+    "es-ES": "Profundidad de modulación: 100% desplaza el retardo hasta 5 ms.",
+    "ru-RU": "Глубина модуляции: 100% изменяет задержку в пределах 5 мс.",
+    "uk-UA": "Глибина модуляції: 100% змінює затримку в межах 5 мс.",
+    "de-DE": "Modulationstiefe: 100% verändert die Verzögerung um bis zu 5 ms."
+  },
+  "Low-pass filter in the feedback path darkens repeated echoes.": {
+    "es-ES": "El filtro paso bajo de la realimentación oscurece los ecos repetidos.",
+    "ru-RU": "Фильтр низких частот в обратной связи приглушает высокие частоты повторяющегося эха.",
+    "uk-UA": "Фільтр низьких частот у зворотному зв’язку приглушує високі частоти повторного відлуння.",
+    "de-DE": "Der Tiefpass im Rückkopplungsweg dämpft die Höhen wiederholter Echos."
+  },
+  "Time before the reverberant field. The original algorithm keeps at least one sample of pre-delay.": {
+    "es-ES": "Tiempo anterior al campo reverberante. El algoritmo original mantiene al menos una muestra de prerretardo.",
+    "ru-RU": "Время до появления реверберации. Исходный алгоритм сохраняет минимум один сэмпл предзадержки.",
+    "uk-UA": "Час до появи реверберації. Оригінальний алгоритм зберігає щонайменше один семпл попередньої затримки.",
+    "de-DE": "Zeit vor dem Hallfeld. Der ursprüngliche Algorithmus hält mindestens ein Sample Vorverzögerung."
+  },
+  "Nominal time for the reverb feedback field to decay by 60 dB.": {
+    "es-ES": "Tiempo nominal para que el campo reverberante decaiga 60 dB.",
+    "ru-RU": "Номинальное время затухания поля реверберации на 60 дБ.",
+    "uk-UA": "Номінальний час згасання поля реверберації на 60 дБ.",
+    "de-DE": "Nominelle Zeit, in der das Hallfeld um 60 dB abklingt."
+  },
+  "Higher damping makes high frequencies decay faster in the feedback loops.": {
+    "es-ES": "Una amortiguación mayor acelera el decaimiento de los agudos en los bucles de realimentación.",
+    "ru-RU": "Большее затухание ускоряет спад высоких частот в петлях обратной связи.",
+    "uk-UA": "Більше згасання пришвидшує спад високих частот у петлях зворотного зв’язку.",
+    "de-DE": "Stärkere Dämpfung lässt hohe Frequenzen in den Rückkopplungsschleifen schneller abklingen."
+  },
+  "Changes the eight delay lengths with the donor's smooth room-size mapping.": {
+    "es-ES": "Cambia las longitudes de las ocho líneas con el mapeo suave de tamaño de sala del proyecto original.",
+    "ru-RU": "Меняет длины восьми линий задержки с исходным плавным преобразованием размера помещения.",
+    "uk-UA": "Змінює довжини восьми ліній затримки з оригінальним плавним перетворенням розміру приміщення.",
+    "de-DE": "Ändert die acht Leitungslängen mit der ursprünglichen geglätteten Raumgrößenabbildung."
+  },
+  "Live parameter edits retain effect history and smooth to new values. Tails process while real source PCM, including silence, continues; source EOF does not synthesize extra audio.": {
+    "es-ES": "Los cambios conservan el historial del efecto y se suavizan hasta los valores nuevos. Las colas se procesan mientras llega PCM real, incluido silencio; el final de la fuente no sintetiza audio adicional.",
+    "ru-RU": "Изменения параметров сохраняют историю эффекта и плавно переходят к новым значениям. Хвост обрабатывается, пока источник передаёт реальный PCM, включая тишину; конец источника не синтезирует дополнительный звук.",
+    "uk-UA": "Зміни параметрів зберігають історію ефекту й плавно переходять до нових значень. Хвіст обробляється, поки джерело передає справжній PCM, зокрема тишу; кінець джерела не синтезує додатковий звук.",
+    "de-DE": "Live-Änderungen erhalten den Effektverlauf und gleiten zu neuen Werten. Nachklänge werden bei weiterem echtem Quell-PCM einschließlich Stille verarbeitet; das Quellenende erzeugt kein zusätzliches Audio."
+  }
+}

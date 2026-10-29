@@ -1,0 +1,9 @@
+{
+  "reference": "supplied local OBS Studio 32.2.2",
+  "peeled_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "license": "GPL-2.0-or-later",
+  "license_reference": "assets/licenses/projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": ["libobs/obs-scene.c", "frontend/models/SceneCollection.hpp", "frontend/widgets/OBSBasic_SceneCollections.cpp"],
+  "scope": "supported relative v2 item position, signed leaf/Scene scale and absolute fallback conversion at explicit profile canvas; absolute v1 export normalization",
+  "execution": "source-only; no build, parser validation, roundtrip, media, native, CLI or UI execution"
+}

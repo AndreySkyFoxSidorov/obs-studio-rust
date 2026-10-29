@@ -1,0 +1,8 @@
+{
+  "Filters are applied before sync offset. With a positive offset, filter changes are heard after that delay. Volume and mute follow output time.": {
+    "es-ES": "Los filtros se aplican antes del desfase de sincronización. Con un desfase positivo, los cambios de filtro se oyen tras ese retraso. El volumen y el silencio siguen el tiempo de salida.",
+    "ru-RU": "Фильтры применяются до смещения синхронизации. При положительном смещении изменения фильтров слышны после этой задержки. Громкость и отключение звука следуют времени выхода.",
+    "uk-UA": "Фільтри застосовуються до зсуву синхронізації. За додатного зсуву зміни фільтрів чути після цієї затримки. Гучність і вимкнення звуку відповідають часу виходу.",
+    "de-DE": "Filter werden vor dem Synchronisationsversatz angewendet. Bei positivem Versatz sind Filteränderungen erst nach dieser Verzögerung hörbar. Lautstärke und Stummschaltung folgen der Ausgabezeit."
+  }
+}

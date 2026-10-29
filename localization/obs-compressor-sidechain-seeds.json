@@ -1,0 +1,38 @@
+{
+  "Sidechain / Ducking source": {
+    "es-ES": "Fuente de cadena lateral / atenuación",
+    "ru-RU": "Источник сайдчейна / ducking",
+    "uk-UA": "Джерело сайдчейна / ducking",
+    "de-DE": "Sidechain- / Ducking-Quelle"
+  },
+  "None (own source)": {
+    "es-ES": "Ninguna (la propia fuente)",
+    "ru-RU": "Нет (сам источник)",
+    "uk-UA": "Немає (саме джерело)",
+    "de-DE": "Keine (eigene Quelle)"
+  },
+  "Missing source #{id}": {
+    "es-ES": "Fuente ausente #{id}",
+    "ru-RU": "Отсутствует источник №{id}",
+    "uk-UA": "Відсутнє джерело №{id}",
+    "de-DE": "Fehlende Quelle #{id}"
+  },
+  "Choose a microphone to lower music while you speak. Key volume does not affect ducking; key Mute does. A missing or inactive key is silence, never the music itself. Self references and cycles are rejected on Apply.": {
+    "es-ES": "Elige un micrófono para bajar la música al hablar. Su volumen no afecta a la atenuación; Silenciar sí. Una fuente ausente o inactiva aporta silencio, nunca la propia música. Aplicar rechaza las referencias a sí misma y los ciclos.",
+    "ru-RU": "Выберите микрофон, чтобы музыка становилась тише во время речи. Его фейдер громкости не влияет на ducking, а Mute влияет. Отсутствующий или неактивный источник даёт детектору тишину, без подмены на саму музыку. Самоссылки и циклы отклоняются при применении.",
+    "uk-UA": "Виберіть мікрофон, щоб музика ставала тихішою під час мовлення. Його фейдер гучності не впливає на ducking, а Mute впливає. Відсутнє або неактивне джерело дає детектору тишу, без підміни на саму музику. Посилання на себе й цикли відхиляються під час застосування.",
+    "de-DE": "Wähle ein Mikrofon, um Musik während des Sprechens abzusenken. Sein Lautstärkefader beeinflusst Ducking nicht, Stummschalten hingegen schon. Eine fehlende oder inaktive Quelle liefert Stille, niemals die Musik selbst. Selbstverweise und Zyklen werden beim Anwenden abgelehnt."
+  },
+  "Enable this filter's module before changing its sidechain.": {
+    "es-ES": "Activa el módulo de este filtro antes de cambiar su cadena lateral.",
+    "ru-RU": "Включите модуль этого фильтра перед изменением сайдчейна.",
+    "uk-UA": "Увімкніть модуль цього фільтра перед зміною сайдчейна.",
+    "de-DE": "Aktiviere das Modul dieses Filters, bevor du seine Sidechain änderst."
+  },
+  "OBS Compressor links all channels through a peak detector. An external sidechain ducks this source using another source after its filters and before its volume fader; muting the key silences its detector.": {
+    "es-ES": "OBS Compressor enlaza todos los canales con un detector de picos. La cadena lateral externa atenúa esta fuente usando otra después de sus filtros y antes de su fader; silenciar la fuente de control silencia el detector.",
+    "ru-RU": "OBS Compressor объединяет каналы пиковым детектором. Внешний сайдчейн приглушает этот источник по сигналу другого источника после его фильтров и до фейдера громкости; Mute ключевого источника заглушает детектор.",
+    "uk-UA": "OBS Compressor об’єднує канали піковим детектором. Зовнішній сайдчейн приглушує це джерело за сигналом іншого джерела після його фільтрів і до фейдера гучності; Mute ключового джерела заглушує детектор.",
+    "de-DE": "OBS Compressor koppelt alle Kanäle über einen Peak-Detektor. Eine externe Sidechain senkt diese Quelle anhand einer anderen Quelle nach deren Filtern und vor deren Lautstärkefader ab; Stummschalten der Steuerquelle schaltet den Detektor stumm."
+  }
+}

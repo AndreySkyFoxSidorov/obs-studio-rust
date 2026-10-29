@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/exeldro/obs-freeze-filter.git",
+  "commit": "5de212bd067672f9349a85e0494a65c8b0156bd4",
+  "version": "0.3.5",
+  "license": "GPL-2.0",
+  "scope": "Manual hold and exact region-selection equations; no automatic controls/hotkeys/screenshot parity",
+  "files": [
+    {
+      "path": "freeze-filter.c",
+      "sha256": "8ef9e9afb9ebfcd15795cedb4f1b78ea4852b370bc9cfd718d5af3e7cb53a248"
+    },
+    {
+      "path": "freeze-filter.h",
+      "sha256": "250314bdf5f00c7caae84ebd908b886dc8c41a8c1e1646419bfe9cb79f6e7b89"
+    },
+    {
+      "path": "data/effects/freeze_part.effect",
+      "sha256": "8418c939c83d592279c850e692928295f69fc3d19256bf4acef82bde5b9a7413"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "189b1af95d661151e054cea10c91b3d754e4de4d3fecfb074c1fb29476f7167b"
+    }
+  ]
+}

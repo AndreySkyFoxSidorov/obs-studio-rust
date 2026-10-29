@@ -1,0 +1,110 @@
+{
+  "Recording · MP4/Matroska · H.264/AAC": {
+    "es-ES": "Grabación · MP4/Matroska · H.264/AAC",
+    "ru-RU": "Запись · MP4/Matroska · H.264/AAC",
+    "uk-UA": "Запис · MP4/Matroska · H.264/AAC",
+    "de-DE": "Aufnahme · MP4/Matroska · H.264/AAC"
+  },
+  "Streaming · RTMP/RTMPS": {
+    "es-ES": "Transmisión · RTMP/RTMPS",
+    "ru-RU": "Трансляция · RTMP/RTMPS",
+    "uk-UA": "Трансляція · RTMP/RTMPS",
+    "de-DE": "Streaming · RTMP/RTMPS"
+  },
+  "Configure streaming with a service preset or custom RTMP/RTMPS address without making a connection.": {
+    "es-ES": "Configura la transmisión con un servicio o una dirección RTMP/RTMPS personalizada sin conectar.",
+    "ru-RU": "Настройте трансляцию через пресет сервиса или свой адрес RTMP/RTMPS без подключения.",
+    "uk-UA": "Налаштуйте трансляцію через пресет сервісу або власну адресу RTMP/RTMPS без підключення.",
+    "de-DE": "Streaming mit Dienstvorgabe oder eigener RTMP/RTMPS-Adresse konfigurieren, ohne eine Verbindung aufzubauen."
+  },
+  "Existing audio format, device bindings, scenes and filters are preserved.": {
+    "es-ES": "Se conservan el formato de audio, los dispositivos, las escenas y los filtros existentes.",
+    "ru-RU": "Существующие аудиоформат, привязки устройств, сцены и фильтры сохраняются.",
+    "uk-UA": "Наявні аудіоформат, прив’язки пристроїв, сцени й фільтри зберігаються.",
+    "de-DE": "Vorhandenes Audioformat, Gerätezuordnungen, Szenen und Filter bleiben erhalten."
+  },
+  "Default audio devices": {
+    "es-ES": "Dispositivos de audio predeterminados",
+    "ru-RU": "Аудиоустройства по умолчанию",
+    "uk-UA": "Аудіопристрої за замовчуванням",
+    "de-DE": "Standard-Audiogeräte"
+  },
+  "Choose the default Windows devices for empty global audio slots. Capture starts only after Apply.": {
+    "es-ES": "Elige los dispositivos de Windows para los canales globales vacíos. La captura comienza al aplicar.",
+    "ru-RU": "Выберите устройства Windows по умолчанию для свободных глобальных аудиоканалов. Захват начнётся после нажатия «Применить».",
+    "uk-UA": "Виберіть типові пристрої Windows для вільних глобальних аудіоканалів. Захоплення почнеться після натискання «Застосувати».",
+    "de-DE": "Windows-Standardgeräte für freie globale Audiokanäle wählen. Die Aufnahme beginnt erst nach Anwenden."
+  },
+  "Add default Desktop Audio": {
+    "es-ES": "Añadir audio de escritorio predeterminado",
+    "ru-RU": "Добавить звук рабочего стола по умолчанию",
+    "uk-UA": "Додати звук робочого столу за замовчуванням",
+    "de-DE": "Standard-Desktop-Audio hinzufügen"
+  },
+  "Add default Mic/Aux": {
+    "es-ES": "Añadir Mic/Aux predeterminado",
+    "ru-RU": "Добавить Mic/Aux по умолчанию",
+    "uk-UA": "Додати Mic/Aux за замовчуванням",
+    "de-DE": "Standard-Mikrofon/Aux hinzufügen"
+  },
+  "Add real WASAPI loopback from the default Windows playback device to Desktop Audio 1.": {
+    "es-ES": "Añadir la captura WASAPI del dispositivo de reproducción predeterminado a Audio del escritorio 1.",
+    "ru-RU": "Добавить реальный WASAPI loopback с устройства воспроизведения Windows по умолчанию в канал «Звук рабочего стола 1».",
+    "uk-UA": "Додати справжнє захоплення WASAPI loopback із типового пристрою відтворення Windows до каналу «Звук робочого столу 1».",
+    "de-DE": "WASAPI-Loopback des Windows-Standardwiedergabegeräts zu Desktop-Audio 1 hinzufügen."
+  },
+  "Add the default Windows recording device to Mic/Aux 1.": {
+    "es-ES": "Añadir el dispositivo de grabación predeterminado de Windows a Mic/Aux 1.",
+    "ru-RU": "Добавить устройство записи Windows по умолчанию в Mic/Aux 1.",
+    "uk-UA": "Додати типовий пристрій запису Windows до Mic/Aux 1.",
+    "de-DE": "Windows-Standardaufnahmegerät zu Mikrofon/Aux 1 hinzufügen."
+  },
+  "This global audio slot already has a source. Its binding is preserved.": {
+    "es-ES": "Este canal global ya tiene una fuente. Se conserva su dispositivo.",
+    "ru-RU": "Этот глобальный аудиоканал уже занят. Его привязка сохраняется.",
+    "uk-UA": "Цей глобальний аудіоканал уже зайнятий. Його прив’язка зберігається.",
+    "de-DE": "Dieser globale Audiokanal hat bereits eine Quelle. Die Zuordnung bleibt erhalten."
+  },
+  "Desktop Audio 1: default Windows playback device (loopback)": {
+    "es-ES": "Audio del escritorio 1: reproducción predeterminada de Windows (loopback)",
+    "ru-RU": "Звук рабочего стола 1: устройство воспроизведения Windows по умолчанию (loopback)",
+    "uk-UA": "Звук робочого столу 1: типовий пристрій відтворення Windows (loopback)",
+    "de-DE": "Desktop-Audio 1: Windows-Standardwiedergabegerät (Loopback)"
+  },
+  "Mic/Aux 1: default Windows recording device": {
+    "es-ES": "Mic/Aux 1: dispositivo de grabación predeterminado de Windows",
+    "ru-RU": "Mic/Aux 1: устройство записи Windows по умолчанию",
+    "uk-UA": "Mic/Aux 1: типовий пристрій запису Windows",
+    "de-DE": "Mikrofon/Aux 1: Windows-Standardaufnahmegerät"
+  },
+  "Recording Format: {format}": {
+    "es-ES": "Formato de grabación: {format}",
+    "ru-RU": "Формат записи: {format}",
+    "uk-UA": "Формат запису: {format}",
+    "de-DE": "Aufnahmeformat: {format}"
+  },
+  "Setup default audio is unavailable or its slot is already occupied.": {
+    "es-ES": "El audio predeterminado no está disponible o su canal está ocupado.",
+    "ru-RU": "Аудиоустройство по умолчанию недоступно или его канал уже занят.",
+    "uk-UA": "Типовий аудіопристрій недоступний або його канал уже зайнятий.",
+    "de-DE": "Standard-Audio ist nicht verfügbar oder der Kanal ist bereits belegt."
+  },
+  "Setup default audio slot is occupied. Reopen setup and keep the existing binding.": {
+    "es-ES": "El canal está ocupado. Vuelve a abrir el asistente y conserva el dispositivo existente.",
+    "ru-RU": "Глобальный аудиоканал уже занят. Откройте мастер заново и сохраните существующую привязку.",
+    "uk-UA": "Глобальний аудіоканал уже зайнятий. Відкрийте майстер знову та збережіть наявну прив’язку.",
+    "de-DE": "Der globale Audiokanal ist belegt. Den Assistenten erneut öffnen und die vorhandene Zuordnung beibehalten."
+  },
+  "Current video settings also retain the existing output size and scaling filter. Other presets use their canvas size for output.": {
+    "es-ES": "La opción de vídeo actual conserva el tamaño de salida y el filtro de escalado. Los demás ajustes usan el tamaño del lienzo.",
+    "ru-RU": "Текущие настройки видео сохраняют размер выхода и фильтр масштабирования. Остальные пресеты используют размер холста и для выхода.",
+    "uk-UA": "Поточні налаштування відео зберігають розмір виходу та фільтр масштабування. Решта пресетів використовують розмір полотна й для виходу.",
+    "de-DE": "Aktuelle Videoeinstellungen behalten Ausgabegröße und Skalierungsfilter. Andere Vorgaben verwenden die Leinwandgröße als Ausgabe."
+  },
+  "Output video: {width} × {height}": {
+    "es-ES": "Vídeo de salida: {width} × {height}",
+    "ru-RU": "Выходное видео: {width} × {height}",
+    "uk-UA": "Вихідне відео: {width} × {height}",
+    "de-DE": "Ausgabevideo: {width} × {height}"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "OK": {
+    "es-ES": "Aceptar",
+    "ru-RU": "ОК",
+    "uk-UA": "Гаразд",
+    "de-DE": "OK"
+  },
+  "Cancel": {
+    "es-ES": "Cancelar",
+    "ru-RU": "Отмена",
+    "uk-UA": "Скасувати",
+    "de-DE": "Abbrechen"
+  },
+  "Apply": {
+    "es-ES": "Aplicar",
+    "ru-RU": "Применить",
+    "uk-UA": "Застосувати",
+    "de-DE": "Anwenden"
+  },
+  "Save these settings and close Settings.": {
+    "es-ES": "Guarda estos ajustes y cierra Configuración.",
+    "ru-RU": "Сохранить настройки и закрыть окно настроек.",
+    "uk-UA": "Зберегти налаштування й закрити вікно налаштувань.",
+    "de-DE": "Diese Einstellungen speichern und das Einstellungsfenster schließen."
+  },
+  "Discard unapplied changes and close Settings.": {
+    "es-ES": "Descarta los cambios sin aplicar y cierra Configuración.",
+    "ru-RU": "Отбросить неприменённые изменения и закрыть окно настроек.",
+    "uk-UA": "Відкинути незастосовані зміни й закрити вікно налаштувань.",
+    "de-DE": "Nicht angewendete Änderungen verwerfen und das Einstellungsfenster schließen."
+  },
+  "There are no unapplied settings on this page.": {
+    "es-ES": "No hay ajustes sin aplicar en esta página.",
+    "ru-RU": "На этой странице нет неприменённых изменений.",
+    "uk-UA": "На цій сторінці немає незастосованих змін.",
+    "de-DE": "Auf dieser Seite gibt es keine nicht angewendeten Änderungen."
+  },
+  "Save these settings and keep this Settings page open.": {
+    "es-ES": "Guarda estos ajustes y deja abierta esta página de Configuración.",
+    "ru-RU": "Сохранить настройки и оставить эту страницу настроек открытой.",
+    "uk-UA": "Зберегти налаштування й залишити цю сторінку налаштувань відкритою.",
+    "de-DE": "Diese Einstellungen speichern und diese Einstellungsseite geöffnet lassen."
+  },
+  "Settings have no active draft. Reopen Settings.": {
+    "es-ES": "No hay un borrador activo de los ajustes. Vuelve a abrir Configuración.",
+    "ru-RU": "Нет активного черновика настроек. Откройте настройки заново.",
+    "uk-UA": "Немає активної чернетки налаштувань. Відкрийте налаштування знову.",
+    "de-DE": "Es gibt keinen aktiven Einstellungsentwurf. Die Einstellungen erneut öffnen."
+  },
+  "Settings changed. Reopen this page before applying.": {
+    "es-ES": "Los ajustes han cambiado. Vuelve a abrir esta página antes de aplicarlos.",
+    "ru-RU": "Настройки изменились. Откройте эту страницу заново перед применением.",
+    "uk-UA": "Налаштування змінилися. Відкрийте цю сторінку знову перед застосуванням.",
+    "de-DE": "Die Einstellungen haben sich geändert. Diese Seite vor dem Anwenden erneut öffnen."
+  },
+  "Wait for the current Settings operation to finish.": {
+    "es-ES": "Espera a que termine la operación de configuración actual.",
+    "ru-RU": "Дождитесь завершения текущей операции с настройками.",
+    "uk-UA": "Дочекайтеся завершення поточної операції з налаштуваннями.",
+    "de-DE": "Warten, bis der aktuelle Einstellungsvorgang abgeschlossen ist."
+  },
+  "Settings operation has no request identity.": {
+    "es-ES": "La operación de configuración no tiene identificador de solicitud.",
+    "ru-RU": "У операции с настройками отсутствует идентификатор запроса.",
+    "uk-UA": "В операції з налаштуваннями відсутній ідентифікатор запиту.",
+    "de-DE": "Der Einstellungsvorgang hat keine Anforderungskennung."
+  },
+  "Reload is available only on the General page.": {
+    "es-ES": "La recarga solo está disponible en la página General.",
+    "ru-RU": "Перезагрузка доступна только на странице «Общие».",
+    "uk-UA": "Перезавантаження доступне лише на сторінці «Загальні».",
+    "de-DE": "Erneutes Laden ist nur auf der Seite Allgemein verfügbar."
+  },
+  "Settings language result is obsolete; the current draft was kept.": {
+    "es-ES": "El resultado de carga del idioma está obsoleto; se ha conservado el borrador actual.",
+    "ru-RU": "Результат загрузки языка устарел; текущий черновик сохранён.",
+    "uk-UA": "Результат завантаження мови застарів; поточну чернетку збережено.",
+    "de-DE": "Das Sprachladeergebnis ist veraltet; der aktuelle Entwurf wurde beibehalten."
+  },
+  "Settings page has no command.": {
+    "es-ES": "La página de configuración no tiene ninguna operación.",
+    "ru-RU": "Для этой страницы настроек не задана операция.",
+    "uk-UA": "Для цієї сторінки налаштувань не задано операції.",
+    "de-DE": "Für diese Einstellungsseite ist kein Vorgang definiert."
+  },
+  "Canvas dimensions and frame rate apply to Program output. Separate output scaling and additional color formats are not available yet. Encoder options are in Output and Stream settings.": {
+    "es-ES": "Las dimensiones del lienzo y la frecuencia de fotogramas se aplican a la salida Programa. El escalado de salida independiente y los formatos de color adicionales aún no están disponibles. Las opciones del codificador están en Salida y Emisión.",
+    "ru-RU": "Размер холста и частота кадров применяются к выходу «Программа». Отдельное масштабирование выхода и дополнительные цветовые форматы пока недоступны. Параметры кодировщика находятся в настройках «Вывод» и «Трансляция».",
+    "uk-UA": "Розмір полотна та частота кадрів застосовуються до виходу «Програма». Окреме масштабування виходу й додаткові колірні формати поки недоступні. Параметри кодувальника містяться в налаштуваннях «Вивід» і «Трансляція».",
+    "de-DE": "Leinwandabmessungen und Bildrate gelten für die Programmausgabe. Separate Ausgabeskalierung und zusätzliche Farbformate sind noch nicht verfügbar. Encoderoptionen befinden sich in den Einstellungen für Ausgabe und Stream."
+  },
+  "Settings action belongs to another draft. Reopen this page.": {
+    "es-ES": "Esta acción pertenece a otro borrador de configuración. Vuelve a abrir esta página.",
+    "ru-RU": "Действие относится к другому черновику настроек. Откройте эту страницу заново.",
+    "uk-UA": "Дія належить іншій чернетці налаштувань. Відкрийте цю сторінку знову.",
+    "de-DE": "Diese Einstellungsaktion gehört zu einem anderen Entwurf. Diese Seite erneut öffnen."
+  },
+  "Settings draft identity exhausted. Restart SkyLive.": {
+    "es-ES": "Se han agotado los identificadores de los borradores de configuración. Reinicia SkyLive.",
+    "ru-RU": "Исчерпаны идентификаторы черновиков настроек. Перезапустите SkyLive.",
+    "uk-UA": "Вичерпано ідентифікатори чернеток налаштувань. Перезапустіть SkyLive.",
+    "de-DE": "Die Kennungen der Einstellungsentwürfe sind ausgeschöpft. SkyLive neu starten."
+  },
+  "Custom buffering uses the default maximum and is preserved.": {
+    "es-ES": "El búfer personalizado usa el máximo predeterminado y se conserva.",
+    "ru-RU": "Сохраняются пользовательские настройки буферизации с максимальным значением по умолчанию.",
+    "uk-UA": "Зберігаються користувацькі налаштування буферизації з максимальним значенням за замовчуванням.",
+    "de-DE": "Die benutzerdefinierte Pufferung verwendet das Standardmaximum und bleibt erhalten."
+  },
+  "Custom fixed buffering, maximum {max_ms} ms, is preserved.": {
+    "es-ES": "Se conserva el búfer fijo personalizado con un máximo de {max_ms} ms.",
+    "ru-RU": "Сохраняется фиксированная пользовательская буферизация с максимумом {max_ms} мс.",
+    "uk-UA": "Зберігається фіксована користувацька буферизація з максимумом {max_ms} мс.",
+    "de-DE": "Die benutzerdefinierte feste Pufferung mit maximal {max_ms} ms bleibt erhalten."
+  },
+  "Custom automatic buffering, maximum {max_ms} ms, is preserved.": {
+    "es-ES": "Se conserva el búfer automático personalizado con un máximo de {max_ms} ms.",
+    "ru-RU": "Сохраняется автоматическая пользовательская буферизация с максимумом {max_ms} мс.",
+    "uk-UA": "Зберігається автоматична користувацька буферизація з максимумом {max_ms} мс.",
+    "de-DE": "Die benutzerdefinierte automatische Pufferung mit maximal {max_ms} ms bleibt erhalten."
+  }
+}

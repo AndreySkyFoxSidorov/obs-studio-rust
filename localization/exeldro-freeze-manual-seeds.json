@@ -1,0 +1,219 @@
+{
+  "Freeze timer target is not registered": {"es-ES":"El temporizador de Freeze no está registrado","ru-RU":"Цель таймера стоп-кадра не зарегистрирована","uk-UA":"Ціль таймера стоп-кадру не зареєстрована","de-DE":"Das Standbild-Timerziel ist nicht registriert"},
+  "Freeze source or refresh request changed while capturing": {"es-ES":"La fuente o la solicitud de actualización cambió durante la captura","ru-RU":"Источник или запрос обновления изменился во время захвата","uk-UA":"Джерело або запит оновлення змінився під час захоплення","de-DE":"Quelle oder Aktualisierungsanfrage hat sich während der Aufnahme geändert"},
+  "Freeze fallback metadata budget": {"es-ES":"Se agotó el presupuesto de metadatos de respaldo de Freeze","ru-RU":"Исчерпан лимит метаданных резервного стоп-кадра","uk-UA":"Вичерпано ліміт метаданих резервного стоп-кадру","de-DE":"Das Metadatenbudget für das Standbild wurde überschritten"},
+  "Freeze could not update its image. The last complete image remains visible when available; another attempt is scheduled.": {"es-ES":"Freeze no pudo actualizar la imagen. La última imagen completa sigue visible cuando está disponible; se programó otro intento.","ru-RU":"Не удалось обновить стоп-кадр. Последнее полное изображение остаётся видимым, если оно доступно; запланирована повторная попытка.","uk-UA":"Не вдалося оновити стоп-кадр. Останнє повне зображення залишається видимим, якщо воно доступне; заплановано повторну спробу.","de-DE":"Das Standbild konnte nicht aktualisiert werden. Das letzte vollständige Bild bleibt sichtbar, falls vorhanden; ein erneuter Versuch ist geplant."},
+  "CPU SDR Freeze holds the first real upstream frame at the filter position and supports partial edge masks, duration and automatic refresh. Duration includes time waiting for the first frame; failed refresh retains the last complete image. Held, replacing and displayed frames share the existing128MiB budget. Start/end delays, lifecycle actions, logging, Freeze hotkeys, filter-position screenshots and HDR remain unavailable.": {"es-ES":"Freeze en CPU SDR conserva el primer fotograma real en la posición del filtro y admite máscaras parciales, duración y actualización automática. La duración incluye la espera del primer fotograma; si falla la actualización se conserva la última imagen completa. Los fotogramas comparten el límite de 128 MiB. Los retrasos, acciones de ciclo de vida, registros, atajos, capturas en la posición del filtro y HDR aún no están disponibles.","ru-RU":"Стоп-кадр CPU SDR удерживает первый реальный кадр в позиции фильтра и поддерживает частичные маски, длительность и автообновление. Длительность включает ожидание первого кадра; при ошибке обновления сохраняется последнее полное изображение. Кадры используют общий лимит 128 МиБ. Задержки, действия жизненного цикла, журналирование, горячие клавиши, снимки в позиции фильтра и HDR пока недоступны.","uk-UA":"Стоп-кадр CPU SDR утримує перший реальний кадр у позиції фільтра й підтримує часткові маски, тривалість і автооновлення. Тривалість включає очікування першого кадру; у разі помилки оновлення зберігається останнє повне зображення. Кадри використовують спільний ліміт 128 МіБ. Затримки, дії життєвого циклу, журналювання, гарячі клавіші, знімки в позиції фільтра та HDR поки недоступні.","de-DE":"CPU-SDR-Standbild hält das erste echte Bild an der Filterposition und unterstützt Teilmasken, Dauer und automatische Aktualisierung. Die Dauer umfasst das Warten auf das erste Bild; bei Fehlern bleibt das letzte vollständige Bild erhalten. Alle Bilder teilen das 128-MiB-Budget. Verzögerungen, Lebenszyklusaktionen, Protokollierung, Hotkeys, Screenshots an der Filterposition und HDR sind noch nicht verfügbar."},
+  "Freeze · CPU · SDR": {"es-ES":"Congelar · CPU · SDR","ru-RU":"Стоп-кадр · CPU · SDR","uk-UA":"Стоп-кадр · CPU · SDR","de-DE":"Standbild · CPU · SDR"},
+  "Duration (ms)": {"es-ES":"Duración (ms)","ru-RU":"Длительность (мс)","uk-UA":"Тривалість (мс)","de-DE":"Dauer (ms)"},
+  "Refresh interval (ms)": {"es-ES":"Intervalo de actualización (ms)","ru-RU":"Интервал обновления (мс)","uk-UA":"Інтервал оновлення (мс)","de-DE":"Aktualisierungsintervall (ms)"},
+  "Disable Freeze after this many milliseconds from enabling it, including time spent waiting for the first frame. Zero keeps it enabled indefinitely.": {"es-ES":"Desactiva la congelación tras este tiempo desde su activación, incluida la espera del primer fotograma. Cero la mantiene activa sin límite.","ru-RU":"Отключить стоп-кадр через указанное время после включения, включая ожидание первого кадра. Ноль оставляет его включённым без ограничения.","uk-UA":"Вимкнути стоп-кадр через вказаний час після ввімкнення, включно з очікуванням першого кадру. Нуль залишає його ввімкненим без обмеження.","de-DE":"Deaktiviert das Standbild nach dieser Zeit ab dem Einschalten, einschließlich der Wartezeit auf das erste Bild. Null lässt es unbegrenzt aktiv."},
+  "Capture a replacement after this interval. The previous picture remains visible until a real replacement succeeds. Zero disables automatic refresh.": {"es-ES":"Captura una imagen nueva tras este intervalo. La anterior sigue visible hasta que se complete la captura. Cero desactiva la actualización automática.","ru-RU":"Захватить новый кадр через этот интервал. Предыдущее изображение остаётся видимым до успешного захвата. Ноль отключает автообновление.","uk-UA":"Захопити новий кадр через цей інтервал. Попереднє зображення залишається видимим до успішного захоплення. Нуль вимикає автооновлення.","de-DE":"Nach diesem Intervall ein neues Bild aufnehmen. Das vorige bleibt bis zur erfolgreichen Aufnahme sichtbar. Null deaktiviert die automatische Aktualisierung."},
+  "Start/end delays, lifecycle actions, Freeze hotkeys and filter-position screenshots are not implemented.": {"es-ES":"Los retrasos de inicio y fin, las acciones de ciclo de vida, los atajos de congelación y las capturas en la posición del filtro aún no están implementados.","ru-RU":"Задержки запуска и завершения, действия жизненного цикла, горячие клавиши стоп-кадра и снимки в позиции фильтра ещё не реализованы.","uk-UA":"Затримки запуску й завершення, дії життєвого циклу, гарячі клавіші стоп-кадру та знімки в позиції фільтра ще не реалізовані.","de-DE":"Start-/Endverzögerungen, Lebenszyklusaktionen, Standbild-Hotkeys und Screenshots an der Filterposition sind noch nicht implementiert."},
+  "Freeze": {
+    "es-ES": "Congelar",
+    "ru-RU": "Стоп-кадр",
+    "uk-UA": "Стоп-кадр",
+    "de-DE": "Standbild"
+  },
+  "Freeze · manual · CPU · SDR": {
+    "es-ES": "Congelar · manual · CPU · SDR",
+    "ru-RU": "Стоп-кадр · вручную · CPU · SDR",
+    "uk-UA": "Стоп-кадр · вручну · CPU · SDR",
+    "de-DE": "Standbild · manuell · CPU · SDR"
+  },
+  "Partial freeze mask": {
+    "es-ES": "Máscara de congelación parcial",
+    "ru-RU": "Маска частичной заморозки",
+    "uk-UA": "Маска часткового заморожування",
+    "de-DE": "Maske für partielles Standbild"
+  },
+  "Freeze left (%)": {
+    "es-ES": "Congelar izquierda (%)",
+    "ru-RU": "Заморозить слева (%)",
+    "uk-UA": "Заморозити зліва (%)",
+    "de-DE": "Links einfrieren (%)"
+  },
+  "Freeze right (%)": {
+    "es-ES": "Congelar derecha (%)",
+    "ru-RU": "Заморозить справа (%)",
+    "uk-UA": "Заморозити справа (%)",
+    "de-DE": "Rechts einfrieren (%)"
+  },
+  "Freeze top (%)": {
+    "es-ES": "Congelar arriba (%)",
+    "ru-RU": "Заморозить сверху (%)",
+    "uk-UA": "Заморозити згори (%)",
+    "de-DE": "Oben einfrieren (%)"
+  },
+  "Freeze bottom (%)": {
+    "es-ES": "Congelar abajo (%)",
+    "ru-RU": "Заморозить снизу (%)",
+    "uk-UA": "Заморозити знизу (%)",
+    "de-DE": "Unten einfrieren (%)"
+  },
+  "The Enabled checkbox holds the first real frame at this filter position. Disable and Apply to release it; enable and Apply to capture again.": {
+    "es-ES": "La casilla Activado retiene el primer fotograma real en esta posición del filtro. Desactive y aplique para liberarlo; active y aplique para capturar de nuevo.",
+    "ru-RU": "Флажок «Включено» удерживает первый реальный кадр в этой позиции фильтра. Выключите и примените, чтобы освободить его; включите и примените, чтобы захватить заново.",
+    "uk-UA": "Прапорець «Увімкнено» утримує перший реальний кадр у цій позиції фільтра. Вимкніть і застосуйте, щоб звільнити його; увімкніть і застосуйте, щоб захопити знову.",
+    "de-DE": "Das Kontrollkästchen Aktiviert hält das erste reale Bild an dieser Filterposition. Zum Freigeben deaktivieren und anwenden; für eine neue Aufnahme aktivieren und anwenden."
+  },
+  "Overlay selected held regions on current live video. With all edges at zero, no frozen region is selected.": {
+    "es-ES": "Superponga las regiones retenidas seleccionadas sobre el vídeo en directo. Con todos los bordes a cero no se selecciona ninguna región congelada.",
+    "ru-RU": "Наложить выбранные удерживаемые области на текущее видео. Если все края равны нулю, замороженные области не выбраны.",
+    "uk-UA": "Накласти вибрані утримувані ділянки на поточне відео. Якщо всі краї дорівнюють нулю, заморожені ділянки не вибрано.",
+    "de-DE": "Ausgewählte gehaltene Bereiche über das aktuelle Livevideo legen. Bei vier Nullwerten ist kein eingefrorener Bereich ausgewählt."
+  },
+  "Select the frozen edge percentage from 0 to 100. Opposing edges above 100 percent together use the original Freeze mask intersection rule.": {
+    "es-ES": "Seleccione el porcentaje del borde congelado de 0 a 100. Si los bordes opuestos suman más del 100 %, se aplica la intersección original de Freeze.",
+    "ru-RU": "Выберите долю замороженного края от 0 до 100 %. Если сумма противоположных краёв превышает 100 %, применяется исходное правило пересечения маски Freeze.",
+    "uk-UA": "Виберіть частку замороженого краю від 0 до 100 %. Якщо сума протилежних країв перевищує 100 %, застосовується початкове правило перетину маски Freeze.",
+    "de-DE": "Anteil des eingefrorenen Randes von 0 bis 100 % wählen. Überschreiten gegenüberliegende Ränder zusammen 100 %, gilt die ursprüngliche Schnittregel der Freeze-Maske."
+  },
+  "The filter preview owns an independent frozen picture. Apply keeps an existing Program capture; draft pixels are not adopted into Program.": {
+    "es-ES": "La vista previa del filtro tiene su propia imagen congelada. Aplicar conserva la captura existente de Programa; no transfiere los píxeles del borrador.",
+    "ru-RU": "Предпросмотр фильтра хранит отдельный стоп-кадр. «Применить» сохраняет существующий кадр программы; пиксели черновика в программу не переносятся.",
+    "uk-UA": "Перегляд фільтра зберігає окремий стоп-кадр. «Застосувати» залишає наявний кадр програми; пікселі чернетки в програму не переносяться.",
+    "de-DE": "Die Filtervorschau besitzt ein eigenes Standbild. Anwenden erhält das vorhandene Programmbild; Entwurfspixel werden nicht ins Programm übernommen."
+  },
+  "Hidden, stopped, rebound, resized or seeked sources release their held picture. Resume captures a fresh real frame.": {
+    "es-ES": "Las fuentes ocultas, detenidas, reasignadas, redimensionadas o con búsqueda liberan su imagen retenida. Al reanudar se captura un fotograma real nuevo.",
+    "ru-RU": "Скрытие, остановка, смена привязки или размера источника и перемотка освобождают удерживаемый кадр. При возобновлении захватывается новый реальный кадр.",
+    "uk-UA": "Приховування, зупинка, зміна прив’язки чи розміру джерела та перемотування звільняють утримуваний кадр. Після відновлення захоплюється новий реальний кадр.",
+    "de-DE": "Ausblenden, Stoppen, Neuverbinden, Größenänderung oder Suchen gibt das gehaltene Bild frei. Beim Fortsetzen wird ein neues reales Bild aufgenommen."
+  },
+  "Held, replacing and still displayed frames share the 128 MiB filter budget. Overload is reported without reducing resolution.": {
+    "es-ES": "Los fotogramas retenidos, de reemplazo y aún visibles comparten el presupuesto de filtros de 128 MiB. La sobrecarga se informa sin reducir la resolución.",
+    "ru-RU": "Удерживаемые, заменяющие и ещё отображаемые кадры делят общий бюджет фильтров 128 МиБ. О перегрузке сообщается без снижения разрешения.",
+    "uk-UA": "Утримувані, замінні та ще відображувані кадри ділять спільний бюджет фільтрів 128 МіБ. Про перевантаження повідомляється без зниження роздільності.",
+    "de-DE": "Gehaltene, ersetzende und noch angezeigte Bilder teilen das Filterbudget von 128 MiB. Überlastung wird gemeldet, ohne die Auflösung zu senken."
+  },
+  "Timers, lifecycle actions, Freeze hotkeys and filter-position screenshots are not implemented in this manual port.": {
+    "es-ES": "Esta versión manual no implementa temporizadores, acciones del ciclo de vida, atajos Freeze ni capturas en la posición del filtro.",
+    "ru-RU": "Таймеры, автоматические действия, горячие клавиши Freeze и снимки в позиции фильтра в этой ручной версии не реализованы.",
+    "uk-UA": "Таймери, автоматичні дії, гарячі клавіші Freeze та знімки в позиції фільтра в цій ручній версії не реалізовано.",
+    "de-DE": "Timer, Lebenszyklusaktionen, Freeze-Tastenkürzel und Screenshots an der Filterposition sind in dieser manuellen Portierung nicht implementiert."
+  },
+  "Hold the first real frame at this filter position. Disable and apply to release it; enable and apply to capture again. Optional edge masks overlay held regions on live video.": {
+    "es-ES": "Retenga el primer fotograma real en esta posición del filtro. Desactive y aplique para liberarlo; active y aplique para capturar de nuevo. Las máscaras de borde opcionales superponen regiones retenidas al vídeo en directo.",
+    "ru-RU": "Удерживать первый реальный кадр в этой позиции фильтра. Выключите и примените, чтобы освободить его; включите и примените для нового захвата. Маски краёв накладывают удерживаемые области на текущее видео.",
+    "uk-UA": "Утримувати перший реальний кадр у цій позиції фільтра. Вимкніть і застосуйте, щоб звільнити його; увімкніть і застосуйте для нового захоплення. Маски країв накладають утримувані ділянки на поточне відео.",
+    "de-DE": "Das erste reale Bild an dieser Filterposition halten. Zum Freigeben deaktivieren und anwenden; für eine neue Aufnahme aktivieren und anwenden. Optionale Randmasken legen gehaltene Bereiche über das Livevideo."
+  },
+  "Freeze timers, lifecycle actions and logging are not implemented; use manual Enabled and mask controls": {
+    "es-ES": "Los temporizadores, acciones del ciclo de vida y registro de Freeze no están implementados; use Activado manual y las máscaras",
+    "ru-RU": "Таймеры, автоматические действия и журналирование Freeze не реализованы; используйте ручное включение и маски",
+    "uk-UA": "Таймери, автоматичні дії та журналювання Freeze не реалізовано; використовуйте ручне ввімкнення та маски",
+    "de-DE": "Freeze-Timer, Lebenszyklusaktionen und Protokollierung sind nicht implementiert; manuelle Aktivierung und Masken verwenden"
+  },
+  "Freeze timings require 0..100000 milliseconds": {
+    "es-ES": "Los tiempos de Freeze deben estar entre 0 y 100000 milisegundos",
+    "ru-RU": "Время Freeze должно быть от 0 до 100000 миллисекунд",
+    "uk-UA": "Час Freeze має бути від 0 до 100000 мілісекунд",
+    "de-DE": "Freeze-Zeiten müssen zwischen 0 und 100000 Millisekunden liegen"
+  },
+  "Freeze mask percentages require finite values in 0..100": {
+    "es-ES": "La máscara Freeze requiere porcentajes finitos de 0 a 100",
+    "ru-RU": "Проценты маски Freeze должны быть конечными числами от 0 до 100",
+    "uk-UA": "Відсотки маски Freeze мають бути скінченними числами від 0 до 100",
+    "de-DE": "Freeze-Maskenanteile müssen endliche Werte von 0 bis 100 sein"
+  },
+  "Freeze requires native schema9": {
+    "es-ES": "Freeze requiere el esquema nativo 9",
+    "ru-RU": "Freeze требует нативную схему 9",
+    "uk-UA": "Freeze потребує нативну схему 9",
+    "de-DE": "Freeze erfordert das native Schema 9"
+  },
+  "Render Delay and Freeze currently use CPU SDR frame history": {
+    "es-ES": "Render Delay y Freeze usan actualmente historial de fotogramas SDR en CPU",
+    "ru-RU": "Render Delay и Freeze сейчас используют историю кадров SDR на CPU",
+    "uk-UA": "Render Delay та Freeze зараз використовують історію кадрів SDR на CPU",
+    "de-DE": "Render Delay und Freeze verwenden derzeit SDR-Bildhistorie auf der CPU"
+  },
+
+  "Manual CPU SDR Freeze: the first real upstream frame is detached and held at the exact filter position; optional original edge masks overlay it on live video. Shared source history, native schema9 and strict OBS freeze_filter settings are connected. Disable and apply releases the picture; enable and apply captures again. Hiding, Stop, seek, rebind or resize retires affected history. All held, replacing and escaped frames share the existing128MiB budget. Timers, refresh, delayed lifecycle actions, logging, Freeze hotkeys, filter-position screenshots, HDR and native OBS plugin ABI are not implemented.": {
+    "es-ES": "Freeze manual en CPU SDR: el primer fotograma real se copia y retiene en la posición exacta del filtro; las máscaras de borde originales opcionales lo superponen al vídeo en directo. Se conectan el historial compartido, el esquema nativo 9 y los ajustes OBS freeze_filter estrictos. Desactivar y aplicar libera la imagen; activar y aplicar captura de nuevo. Ocultar, detener, buscar, reasignar o redimensionar retira el historial afectado. Los fotogramas retenidos, de reemplazo y aún usados comparten los 128 MiB existentes. No se implementan temporizadores, actualización periódica, acciones automáticas con demora, registro, atajos Freeze, capturas en la posición del filtro, HDR ni la ABI de plugins nativos OBS.",
+    "ru-RU": "Ручной Freeze на CPU в SDR: первый реальный входной кадр копируется и удерживается в точной позиции фильтра; исходные маски краёв могут накладывать его на текущее видео. Подключены общая история источника, нативная схема 9 и строгие настройки OBS freeze_filter. Выключение и применение освобождают кадр; включение и применение захватывают заново. Скрытие, остановка, перемотка, смена привязки и размера освобождают соответствующую историю. Удерживаемые, заменяющие и ещё используемые кадры делят существующие 128 МиБ. Не реализованы таймеры, периодическое обновление, отложенные автоматические действия, журналирование, горячие клавиши Freeze, снимки в позиции фильтра, HDR и ABI нативных плагинов OBS.",
+    "uk-UA": "Ручний Freeze на CPU в SDR: перший реальний вхідний кадр копіюється й утримується в точній позиції фільтра; початкові маски країв можуть накладати його на поточне відео. Підключено спільну історію джерела, нативну схему 9 та строгі налаштування OBS freeze_filter. Вимкнення й застосування звільняють кадр; увімкнення й застосування захоплюють знову. Приховування, зупинка, перемотування, зміна прив’язки та розміру звільняють відповідну історію. Утримувані, замінні та ще використовувані кадри ділять наявні 128 МіБ. Не реалізовано таймери, періодичне оновлення, відкладені автоматичні дії, журналювання, гарячі клавіші Freeze, знімки в позиції фільтра, HDR та ABI нативних плагінів OBS.",
+    "de-DE": "Manuelles CPU-SDR-Freeze: Das erste reale Eingangsbild wird an der exakten Filterposition kopiert und gehalten; optionale ursprüngliche Randmasken legen es über das Livevideo. Gemeinsame Quellhistorie, natives Schema 9 und strenge OBS-freeze_filter-Einstellungen sind verbunden. Deaktivieren und Anwenden gibt das Bild frei; Aktivieren und Anwenden nimmt es neu auf. Ausblenden, Stoppen, Suchen, Neuverbinden oder Größenänderung gibt die betroffene Historie frei. Gehaltene, ersetzende und noch verwendete Bilder teilen die vorhandenen 128 MiB. Timer, periodische Aktualisierung, verzögerte Lebenszyklusaktionen, Protokollierung, Freeze-Tastenkürzel, Screenshots an der Filterposition, HDR und die native OBS-Plugin-ABI sind nicht implementiert."
+  },
+  "Freeze mask requires a percentage in 0..100": {
+    "es-ES": "La máscara Freeze requiere un porcentaje de 0 a 100",
+    "ru-RU": "Маска Freeze требует процент от 0 до 100",
+    "uk-UA": "Маска Freeze потребує відсоток від 0 до 100",
+    "de-DE": "Die Freeze-Maske erfordert einen Anteil von 0 bis 100"
+  },
+  "Freeze held/replacing/escaped frames exceed shared128MiB": {
+    "es-ES": "Los fotogramas retenidos, de reemplazo y aún usados de Freeze superan los 128 MiB compartidos",
+    "ru-RU": "Удерживаемые, заменяющие и ещё используемые кадры Freeze превышают общий лимит 128 МиБ",
+    "uk-UA": "Утримувані, замінні та ще використовувані кадри Freeze перевищують спільний ліміт 128 МіБ",
+    "de-DE": "Gehaltene, ersetzende und noch verwendete Freeze-Bilder überschreiten die gemeinsamen 128 MiB"
+  },
+  "Freeze source history count128": {
+    "es-ES": "Freeze admite como máximo 128 historiales de fuentes",
+    "ru-RU": "Freeze допускает не более 128 историй источников",
+    "uk-UA": "Freeze допускає не більш ніж 128 історій джерел",
+    "de-DE": "Freeze erlaubt höchstens 128 Quellhistorien"
+  },
+  "Freeze older request predates the owned capture": {
+    "es-ES": "La solicitud antigua de Freeze es anterior a la captura retenida",
+    "ru-RU": "Старый запрос Freeze предшествует удерживаемому кадру",
+    "uk-UA": "Старий запит Freeze передує утримуваному кадру",
+    "de-DE": "Die ältere Freeze-Anforderung liegt vor der gehaltenen Aufnahme"
+  },
+  "Freeze privacy scope changed during upstream processing": {
+    "es-ES": "La autorización de la fuente Freeze cambió durante el procesamiento previo",
+    "ru-RU": "Область доступа к источнику Freeze изменилась во время предыдущей обработки",
+    "uk-UA": "Область доступу до джерела Freeze змінилася під час попередньої обробки",
+    "de-DE": "Die Quellberechtigung für Freeze hat sich während der Vorverarbeitung geändert"
+  },
+  "Freeze source changed while capturing": {
+    "es-ES": "La fuente Freeze cambió durante la captura",
+    "ru-RU": "Источник Freeze изменился во время захвата",
+    "uk-UA": "Джерело Freeze змінилося під час захоплення",
+    "de-DE": "Die Freeze-Quelle hat sich während der Aufnahme geändert"
+  },
+  "Freeze live mask bytes/work admission": {
+    "es-ES": "La máscara Freeze supera el presupuesto de memoria o procesamiento",
+    "ru-RU": "Маска Freeze превышает бюджет памяти или обработки",
+    "uk-UA": "Маска Freeze перевищує бюджет пам’яті або обробки",
+    "de-DE": "Die Freeze-Maske überschreitet das Speicher- oder Verarbeitungsbudget"
+  },
+  "Freeze hotkeys are not implemented in the manual port; nonempty bindings cannot be imported": {
+    "es-ES": "La versión manual no implementa atajos Freeze; no se pueden importar asignaciones no vacías",
+    "ru-RU": "Ручная версия не поддерживает горячие клавиши Freeze; непустые привязки нельзя импортировать",
+    "uk-UA": "Ручна версія не підтримує гарячі клавіші Freeze; непорожні прив’язки не можна імпортувати",
+    "de-DE": "Die manuelle Portierung unterstützt keine Freeze-Tastenkürzel; nicht leere Bindungen können nicht importiert werden"
+  },
+  "Freeze is waiting for complete source pixels; the current input has resource diagnostics": {
+    "es-ES": "Freeze espera los píxeles completos de la fuente; la entrada actual tiene errores de recursos",
+    "ru-RU": "Freeze ожидает полное изображение источника; текущий вход содержит ошибки ресурсов",
+    "uk-UA": "Freeze очікує повне зображення джерела; поточний вхід містить помилки ресурсів",
+    "de-DE": "Freeze wartet auf vollständige Quellpixel; die aktuelle Eingabe enthält Ressourcendiagnosen"
+  },
+
+  "Invalid filter preview draft row ownership": {
+    "es-ES": "La identidad de la fila del borrador de filtros no es válida",
+    "ru-RU": "Недействительная принадлежность строки черновика фильтров",
+    "uk-UA": "Недійсна належність рядка чернетки фільтрів",
+    "de-DE": "Ungültige Zeilenidentität im Filterentwurf"
+  },
+  "Filter preview projection has no issued filter identity": {
+    "es-ES": "La proyección de vista previa no tiene un ID de filtro emitido",
+    "ru-RU": "У проекции предпросмотра отсутствует выданный ID фильтра",
+    "uk-UA": "У проєкції попереднього перегляду відсутній виданий ID фільтра",
+    "de-DE": "Der Filtervorschau fehlt eine ausgestellte Filteridentität"
+  },
+  "Filter preview draft row binding changed": {
+    "es-ES": "Cambió la vinculación de la fila del borrador de filtros",
+    "ru-RU": "Привязка строки черновика предпросмотра изменилась",
+    "uk-UA": "Прив’язка рядка чернетки попереднього перегляду змінилася",
+    "de-DE": "Die Zeilenbindung im Filterentwurf hat sich geändert"
+  },
+  "Freeze filter preview requires stable draft row identities": {
+    "es-ES": "La vista previa Freeze requiere identidades estables de las filas del borrador",
+    "ru-RU": "Предпросмотр Freeze требует устойчивые ID строк черновика",
+    "uk-UA": "Попередній перегляд Freeze потребує стійкі ID рядків чернетки",
+    "de-DE": "Die Freeze-Vorschau erfordert stabile Zeilenidentitäten im Entwurf"
+  }
+}

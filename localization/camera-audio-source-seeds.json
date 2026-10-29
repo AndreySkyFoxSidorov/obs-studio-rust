@@ -1,0 +1,194 @@
+{
+  "Camera Audio": {
+    "es-ES": "Audio de la cámara",
+    "ru-RU": "Звук камеры",
+    "uk-UA": "Звук камери",
+    "de-DE": "Kamera-Audio"
+  },
+  "Use custom audio device": {
+    "es-ES": "Usar dispositivo de audio personalizado",
+    "ru-RU": "Использовать отдельное аудиоустройство",
+    "uk-UA": "Використовувати окремий аудіопристрій",
+    "de-DE": "Benutzerdefiniertes Audiogerät verwenden"
+  },
+  "Audio input device": {
+    "es-ES": "Dispositivo de entrada de audio",
+    "ru-RU": "Устройство ввода звука",
+    "uk-UA": "Пристрій введення звуку",
+    "de-DE": "Audio-Eingabegerät"
+  },
+  "Default input: {name}": {
+    "es-ES": "Entrada predeterminada: {name}",
+    "ru-RU": "Вход по умолчанию: {name}",
+    "uk-UA": "Типовий вхід: {name}",
+    "de-DE": "Standardeingang: {name}"
+  },
+  "Default input device": {
+    "es-ES": "Dispositivo de entrada predeterminado",
+    "ru-RU": "Устройство ввода по умолчанию",
+    "uk-UA": "Типовий пристрій введення",
+    "de-DE": "Standard-Eingabegerät"
+  },
+  "Select audio input": {
+    "es-ES": "Seleccionar entrada de audio",
+    "ru-RU": "Выберите аудиовход",
+    "uk-UA": "Виберіть аудіовхід",
+    "de-DE": "Audioeingang auswählen"
+  },
+  "Saved input; refresh to resolve its name": {
+    "es-ES": "Entrada guardada; actualice para obtener su nombre",
+    "ru-RU": "Сохранённый вход; обновите список для определения имени",
+    "uk-UA": "Збережений вхід; оновіть список для визначення назви",
+    "de-DE": "Gespeicherter Eingang; zum Ermitteln des Namens aktualisieren"
+  },
+  "Refresh audio inputs": {
+    "es-ES": "Actualizar entradas de audio",
+    "ru-RU": "Обновить аудиовходы",
+    "uk-UA": "Оновити аудіовходи",
+    "de-DE": "Audioeingänge aktualisieren"
+  },
+  "Use device timestamps": {
+    "es-ES": "Usar marcas de tiempo del dispositivo",
+    "ru-RU": "Использовать метки времени устройства",
+    "uk-UA": "Використовувати часові мітки пристрою",
+    "de-DE": "Gerätezeitstempel verwenden"
+  },
+  "Capture a separately selected Windows input into this camera source's mixer channel. No device is guessed or opened before Apply.": {
+    "es-ES": "Capture una entrada de Windows seleccionada por separado en el canal de mezclador de esta cámara. No se deduce ni abre ningún dispositivo antes de Aplicar.",
+    "ru-RU": "Захватывать отдельно выбранный вход Windows в канал микшера этого источника камеры. До нажатия «Применить» устройство не подбирается и не открывается.",
+    "uk-UA": "Захоплювати окремо вибраний вхід Windows у канал мікшера цього джерела камери. До натискання «Застосувати» пристрій не підбирається і не відкривається.",
+    "de-DE": "Einen separat gewählten Windows-Eingang in den Mixerkanal dieser Kameraquelle aufnehmen. Vor Anwenden wird kein Gerät erraten oder geöffnet."
+  },
+  "Camera audio is captured only while this source is in Program. Preview and video-only outputs do not start it.": {
+    "es-ES": "El audio de la cámara solo se captura mientras la fuente está en Programa. La vista previa y las salidas de solo vídeo no lo inician.",
+    "ru-RU": "Звук камеры захватывается только пока источник находится в Program. Предпросмотр и выходы только с видео его не запускают.",
+    "uk-UA": "Звук камери захоплюється лише поки джерело перебуває в Program. Попередній перегляд і виходи лише з відео його не запускають.",
+    "de-DE": "Kamera-Audio wird nur aufgenommen, während die Quelle im Programm ist. Vorschau und reine Videoausgaben starten es nicht."
+  },
+  "Follow the Windows default recording endpoint; this does not choose a camera-associated device.": {
+    "es-ES": "Usar el dispositivo de grabación predeterminado de Windows; no selecciona un dispositivo asociado a la cámara.",
+    "ru-RU": "Следовать устройству записи Windows по умолчанию; связанное с камерой устройство автоматически не выбирается.",
+    "uk-UA": "Використовувати типовий пристрій запису Windows; пов’язаний із камерою пристрій автоматично не вибирається.",
+    "de-DE": "Dem Windows-Standardaufnahmegerät folgen; dabei wird kein zur Kamera gehörendes Gerät automatisch gewählt."
+  },
+  "Enumerate actual Windows recording endpoint names without starting capture.": {
+    "es-ES": "Enumerar los nombres reales de los dispositivos de grabación de Windows sin iniciar la captura.",
+    "ru-RU": "Получить реальные названия устройств записи Windows без запуска захвата.",
+    "uk-UA": "Отримати справжні назви пристроїв запису Windows без запуску захоплення.",
+    "de-DE": "Tatsächliche Namen der Windows-Aufnahmegeräte auflisten, ohne die Aufnahme zu starten."
+  },
+  "Use the selected input's native timestamps instead of receive-time estimates.": {
+    "es-ES": "Usar las marcas de tiempo nativas de la entrada seleccionada en lugar de estimar la hora de recepción.",
+    "ru-RU": "Использовать собственные метки времени выбранного входа вместо оценки по времени получения.",
+    "uk-UA": "Використовувати власні часові мітки вибраного входу замість оцінки за часом отримання.",
+    "de-DE": "Native Zeitstempel des gewählten Eingangs statt Schätzungen anhand der Empfangszeit verwenden."
+  },
+  "Custom input capture only. Embedded camera audio and DirectSound/WaveOut playback are not implemented.": {
+    "es-ES": "Solo captura de entrada personalizada. No se implementan el audio integrado de la cámara ni la reproducción DirectSound/WaveOut.",
+    "ru-RU": "Только захват отдельного входа. Встроенный звук камеры и воспроизведение DirectSound/WaveOut не реализованы.",
+    "uk-UA": "Лише захоплення окремого входу. Вбудований звук камери й відтворення DirectSound/WaveOut не реалізовано.",
+    "de-DE": "Nur Aufnahme eines separaten Eingangs. Eingebettetes Kamera-Audio und DirectSound/WaveOut-Wiedergabe sind nicht implementiert."
+  },
+  "Wait for camera audio device enumeration before applying": {
+    "es-ES": "Espere a que termine la enumeración de dispositivos de audio de la cámara antes de aplicar",
+    "ru-RU": "Перед применением дождитесь списка аудиоустройств камеры",
+    "uk-UA": "Перш ніж застосувати, дочекайтеся списку аудіопристроїв камери",
+    "de-DE": "Vor dem Anwenden auf die Auflistung der Kamera-Audiogeräte warten"
+  },
+  "Select a custom camera audio input device": {
+    "es-ES": "Seleccione una entrada de audio personalizada para la cámara",
+    "ru-RU": "Выберите отдельный аудиовход камеры",
+    "uk-UA": "Виберіть окремий аудіовхід камери",
+    "de-DE": "Separates Audio-Eingabegerät für die Kamera wählen"
+  },
+  "camera custom audio requires a Windows input endpoint": {
+    "es-ES": "el audio personalizado de cámara requiere una entrada de Windows",
+    "ru-RU": "для отдельного звука камеры требуется входное устройство Windows",
+    "uk-UA": "для окремого звуку камери потрібен вхідний пристрій Windows",
+    "de-DE": "separates Kamera-Audio erfordert einen Windows-Aufnahmeeingang"
+  },
+  "The document changed. Reopen camera audio properties.": {
+    "es-ES": "El documento cambió. Vuelva a abrir las propiedades de audio de la cámara.",
+    "ru-RU": "Документ изменился. Откройте свойства звука камеры заново.",
+    "uk-UA": "Документ змінився. Відкрийте властивості звуку камери знову.",
+    "de-DE": "Das Dokument wurde geändert. Die Kamera-Audioeigenschaften erneut öffnen."
+  },
+  "Camera audio enumeration became obsolete. Refresh audio inputs again.": {
+    "es-ES": "La enumeración de audio de la cámara quedó obsoleta. Actualice de nuevo las entradas de audio.",
+    "ru-RU": "Список аудиовходов камеры устарел. Обновите его ещё раз.",
+    "uk-UA": "Список аудіовходів камери застарів. Оновіть його ще раз.",
+    "de-DE": "Die Kamera-Audioauflistung ist veraltet. Audioeingänge erneut aktualisieren."
+  },
+  "camera custom input audio requires native schema9": {
+    "es-ES": "el audio de entrada personalizado de cámara requiere el esquema nativo 9",
+    "ru-RU": "для отдельного аудиовхода камеры требуется собственная схема 9",
+    "uk-UA": "для окремого аудіовходу камери потрібна власна схема 9",
+    "de-DE": "separater Kamera-Audioeingang erfordert natives Schema 9"
+  },
+  "Apply binds camera video and optional custom input audio. Audio follows Program and uses the source mixer. Embedded camera audio, H.264 and vendor configuration dialogs are not connected. Cancel changes no source.": {
+    "es-ES": "Aplicar vincula el vídeo de la cámara y la entrada de audio personalizada opcional. El audio sigue Programa y usa el mezclador de la fuente. El audio integrado de cámara, H.264 y los diálogos del fabricante no están conectados. Cancelar no modifica ninguna fuente.",
+    "ru-RU": "«Применить» привязывает видео камеры и необязательный отдельный аудиовход. Звук следует Program и использует микшер источника. Встроенный звук камеры, H.264 и окна настройки производителя не подключены. «Отмена» не меняет источник.",
+    "uk-UA": "«Застосувати» прив’язує відео камери й необов’язковий окремий аудіовхід. Звук слідує Program і використовує мікшер джерела. Вбудований звук камери, H.264 і вікна налаштування виробника не підключено. «Скасувати» не змінює джерело.",
+    "de-DE": "Anwenden bindet Kameravideo und optional einen separaten Audioeingang. Audio folgt dem Programm und nutzt den Quellenmixer. Eingebettetes Kamera-Audio, H.264 und Herstellerdialoge sind nicht angebunden. Abbrechen ändert keine Quelle."
+  },
+  "Partial equivalent: Windows Media Foundation camera video with exact raw RGB/YUV and baseline 8-bit MJPEG modes, pure-Rust JPEG decoding, standard driver controls and optional explicitly selected WASAPI input routed through the camera source mixer in Program. No embedded camera audio, automatic USB audio association, H264 camera transport, vendor property pages, DirectSound/WaveOut playback or native DirectShow plugin loading.": {
+    "es-ES": "Equivalente parcial: vídeo de cámara Windows Media Foundation con modos exactos RGB/YUV sin comprimir y MJPEG de 8 bits de línea base, decodificación JPEG en Rust, controles estándar del controlador y entrada WASAPI opcional seleccionada explícitamente que pasa por el mezclador de la cámara en Programa. Sin audio integrado de cámara, asociación automática de audio USB, transporte H264 de cámara, páginas del fabricante, reproducción DirectSound/WaveOut ni carga de complementos DirectShow nativos.",
+    "ru-RU": "Частичный аналог: видео камеры Windows Media Foundation с точными режимами raw RGB/YUV и базовым 8-битным MJPEG, декодированием JPEG на Rust, стандартными драйверными настройками и необязательным явно выбранным входом WASAPI через микшер камеры в Program. Без встроенного звука камеры, автоматической привязки USB-аудио, H264 камеры, страниц производителя, воспроизведения DirectSound/WaveOut и загрузки нативных плагинов DirectShow.",
+    "uk-UA": "Частковий аналог: відео камери Windows Media Foundation із точними режимами raw RGB/YUV та базовим 8-бітним MJPEG, декодуванням JPEG на Rust, стандартними драйверними налаштуваннями й необов’язковим явно вибраним входом WASAPI через мікшер камери в Program. Без вбудованого звуку камери, автоматичної прив’язки USB-аудіо, H264 камери, сторінок виробника, відтворення DirectSound/WaveOut і завантаження нативних плагінів DirectShow.",
+    "de-DE": "Teilweise Entsprechung: Windows-Media-Foundation-Kameravideo mit exakten rohen RGB/YUV- und 8-Bit-Baseline-MJPEG-Modi, JPEG-Decodierung in Rust, Standardtreibersteuerung und optional explizit gewähltem WASAPI-Eingang über den Kamera-Quellenmixer im Programm. Kein eingebettetes Kamera-Audio, keine automatische USB-Audiozuordnung, kein H264-Kameratransport, keine Herstellerseiten, DirectSound/WaveOut-Wiedergabe oder nativen DirectShow-Plugins."
+  },
+  "Optional separately selected WASAPI input audio to the mixer; no embedded camera audio or DirectSound/WaveOut playback. Exact native RGB24/RGB32/ARGB32, YUY2/UYVY, NV12, I420/IYUV, YV12 and MJPEG modes. Baseline JPEG is decoded in Rust on the capture owner; H.264 camera modes and unsupported metadata are reported explicitly": {
+    "es-ES": "Entrada WASAPI opcional seleccionada por separado al mezclador; sin audio integrado de cámara ni reproducción DirectSound/WaveOut. Modos nativos exactos RGB24/RGB32/ARGB32, YUY2/UYVY, NV12, I420/IYUV, YV12 y MJPEG. JPEG de línea base se decodifica en Rust en el propietario de captura; los modos H.264 y los metadatos no compatibles se indican explícitamente.",
+    "ru-RU": "Необязательный отдельно выбранный вход WASAPI в микшер; без встроенного звука камеры и воспроизведения DirectSound/WaveOut. Точные нативные режимы RGB24/RGB32/ARGB32, YUY2/UYVY, NV12, I420/IYUV, YV12 и MJPEG. Базовый JPEG декодируется на Rust владельцем захвата; режимы H.264 и неподдерживаемые метаданные явно отмечаются.",
+    "uk-UA": "Необов’язковий окремо вибраний вхід WASAPI до мікшера; без вбудованого звуку камери й відтворення DirectSound/WaveOut. Точні нативні режими RGB24/RGB32/ARGB32, YUY2/UYVY, NV12, I420/IYUV, YV12 та MJPEG. Базовий JPEG декодується на Rust власником захоплення; режими H.264 і непідтримувані метадані явно позначаються.",
+    "de-DE": "Optional separat gewählter WASAPI-Eingang zum Mixer; kein eingebettetes Kamera-Audio und keine DirectSound/WaveOut-Wiedergabe. Exakte native RGB24/RGB32/ARGB32-, YUY2/UYVY-, NV12-, I420/IYUV-, YV12- und MJPEG-Modi. Baseline-JPEG wird im Aufnahmebesitzer in Rust decodiert; H.264-Modi und nicht unterstützte Metadaten werden ausdrücklich gemeldet."
+  },
+  "Disabling camera audio stops its route and preserves filters, monitoring, gain, balance and sync offset for re-enable.": {
+    "es-ES": "Desactivar el audio de la cámara detiene su ruta y conserva los filtros, la monitorización, la ganancia, el balance y el desfase para reactivarlo.",
+    "ru-RU": "Отключение звука камеры останавливает его маршрут и сохраняет фильтры, мониторинг, усиление, баланс и задержку для повторного включения.",
+    "uk-UA": "Вимкнення звуку камери зупиняє його маршрут і зберігає фільтри, моніторинг, підсилення, баланс та затримку для повторного ввімкнення.",
+    "de-DE": "Das Deaktivieren von Kamera-Audio stoppt dessen Route und behält Filter, Monitoring, Verstärkung, Balance und Synchronversatz für das erneute Aktivieren bei."
+  },
+  "The camera Start/Stop buttons control video. Disable custom audio here to stop its input route.": {
+    "es-ES": "Los botones Iniciar/Detener de la cámara controlan el vídeo. Desactive aquí el audio personalizado para detener su ruta de entrada.",
+    "ru-RU": "Кнопки запуска и остановки камеры управляют видео. Чтобы остановить аудиовход, отключите отдельный звук здесь.",
+    "uk-UA": "Кнопки запуску й зупинки камери керують відео. Щоб зупинити аудіовхід, вимкніть окремий звук тут.",
+    "de-DE": "Die Start/Stopp-Schaltflächen der Kamera steuern Video. Zum Stoppen der Audio-Eingangsroute das separate Audio hier deaktivieren."
+  },
+  "This saved custom camera audio requires Windows. Disable it explicitly before choosing a camera on this platform.": {
+    "es-ES": "El audio de cámara personalizado guardado requiere Windows. Desactívelo explícitamente antes de elegir una cámara en esta plataforma.",
+    "ru-RU": "Этот сохранённый отдельный звук камеры требует Windows. Явно отключите его перед выбором камеры на этой платформе.",
+    "uk-UA": "Цей збережений окремий звук камери потребує Windows. Явно вимкніть його перед вибором камери на цій платформі.",
+    "de-DE": "Dieses gespeicherte separate Kamera-Audio erfordert Windows. Vor der Kamerawahl auf dieser Plattform ausdrücklich deaktivieren."
+  },
+  "Start Camera Video": {
+    "es-ES": "Iniciar vídeo de cámara",
+    "ru-RU": "Запустить видео камеры",
+    "uk-UA": "Запустити відео камери",
+    "de-DE": "Kameravideo starten"
+  },
+  "Stop Camera Video": {
+    "es-ES": "Detener vídeo de cámara",
+    "ru-RU": "Остановить видео камеры",
+    "uk-UA": "Зупинити відео камери",
+    "de-DE": "Kameravideo stoppen"
+  },
+  "Stop All Camera Video": {
+    "es-ES": "Detener todos los vídeos de cámaras",
+    "ru-RU": "Остановить видео всех камер",
+    "uk-UA": "Зупинити відео всіх камер",
+    "de-DE": "Alle Kameravideos stoppen"
+  },
+  "Camera video is enabled; actual device failures appear in capture diagnostics.": {
+    "es-ES": "El vídeo de cámara está activado; los fallos reales del dispositivo aparecen en los diagnósticos de captura.",
+    "ru-RU": "Видео камеры включено; реальные ошибки устройства отображаются в диагностике захвата.",
+    "uk-UA": "Відео камери ввімкнено; справжні помилки пристрою відображаються в діагностиці захоплення.",
+    "de-DE": "Kameravideo ist aktiviert; tatsächliche Gerätefehler erscheinen in der Aufnahmediagnose."
+  },
+  "Camera video is stopped. A shared device may remain open for another source.": {
+    "es-ES": "El vídeo de cámara está detenido. Un dispositivo compartido puede seguir abierto para otra fuente.",
+    "ru-RU": "Видео камеры остановлено. Общее устройство может оставаться открытым для другого источника.",
+    "uk-UA": "Відео камери зупинено. Спільний пристрій може залишатися відкритим для іншого джерела.",
+    "de-DE": "Kameravideo ist gestoppt. Ein gemeinsam genutztes Gerät kann für eine andere Quelle geöffnet bleiben."
+  }
+}

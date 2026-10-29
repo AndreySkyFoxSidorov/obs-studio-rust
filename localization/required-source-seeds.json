@@ -1,0 +1,590 @@
+{
+  "policy": "Assistant-authored explicit review of currently omitted original-OBS source labels. Identical strings are approved technical identifiers or actual target-language cognates, never blanket English fallback. Existing nonempty CSV cells must be preserved. This is not native-linguist review. Physical-key captions among required-language values were individually retained as conventional key names, not declared universal language-independent strings.",
+  "language_independent_english": [
+    "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF",
+    "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>",
+    "<a href='https://vr.youtube.com/create/360/'>(?)</a>",
+    "AAC",
+    "BetterTTV",
+    "CRF",
+    "CoreAudio AAC",
+    "DSP",
+    "Esc",
+    "FFmpeg AAC",
+    "FFmpeg MPEG-TS",
+    "FFmpeg Opus",
+    "FPS",
+    "Flash Video (.flv)",
+    "FrankerFaceZ",
+    "GPU",
+    "HDR: maxRGB",
+    "HLS (.m3u8 + .ts)",
+    "HP",
+    "LL",
+    "LLHP",
+    "LLHQ",
+    "Lanczos",
+    "MPEG-4 (.mp4)",
+    "MPEG-TS (.ts)",
+    "MQ",
+    "OBS Classic",
+    "OBS Studio",
+    "OK",
+    "Opus",
+    "PCM",
+    "ProRes 422",
+    "ProRes 422 HQ",
+    "ProRes 422 LT",
+    "ProRes 4444",
+    "ProRes 4444 XQ",
+    "QuickTime (.mov)",
+    "RMS",
+    "Rec. 2100 (HLG)",
+    "Rec. 2100 (PQ)",
+    "Rec. 601",
+    "Rec. 709",
+    "SDR: Reinhard",
+    "SDR: maxRGB",
+    "Streamlabs",
+    "URL",
+    "Windows",
+    "X",
+    "XSplit Broadcaster",
+    "Y",
+    "Yadif",
+    "Yadif 2x",
+    "YouTube",
+    "libfdk AAC",
+    "sRGB"
+  ],
+  "values": {
+    "URL: %1": {
+      "de-DE": "URL: %1",
+      "es-ES": "URL: %1"
+    },
+    "Region": {
+      "de-DE": "Region"
+    },
+    "Asia": {
+      "es-ES": "Asia"
+    },
+    "Mono": {
+      "de-DE": "Mono",
+      "es-ES": "Mono"
+    },
+    "Name": {
+      "de-DE": "Name"
+    },
+    "Global": {
+      "de-DE": "Global"
+    },
+    "Server": {
+      "de-DE": "Server"
+    },
+    "&Docks": {
+      "de-DE": "&Docks"
+    },
+    "Normal": {
+      "de-DE": "Normal",
+      "es-ES": "Normal"
+    },
+    "Rec. 2100 (HLG)": {
+      "es-ES": "Rec. 2100 (HLG)"
+    },
+    "Rec. 2100 (PQ)": {
+      "es-ES": "Rec. 2100 (PQ)"
+    },
+    "Rec. 601": {
+      "es-ES": "Rec. 601"
+    },
+    "Rec. 709": {
+      "es-ES": "Rec. 709"
+    },
+    "sRGB": {
+      "de-DE": "sRGB",
+      "uk-UA": "sRGB",
+      "es-ES": "sRGB",
+      "ru-RU": "sRGB"
+    },
+    "Audio": {
+      "de-DE": "Audio",
+      "es-ES": "Audio"
+    },
+    "Multiview": {
+      "de-DE": "Multiview"
+    },
+    "Hotkeys": {
+      "de-DE": "Hotkeys"
+    },
+    "Video": {
+      "de-DE": "Video"
+    },
+    "Standard": {
+      "de-DE": "Standard"
+    },
+    "Flash Video (.flv)": {
+      "uk-UA": "Flash Video (.flv)"
+    },
+    "HLS (.m3u8 + .ts)": {
+      "de-DE": "HLS (.m3u8 + .ts)",
+      "uk-UA": "HLS (.m3u8 + .ts)",
+      "es-ES": "HLS (.m3u8 + .ts)",
+      "ru-RU": "HLS (.m3u8 + .ts)"
+    },
+    "QuickTime (.mov)": {
+      "de-DE": "QuickTime (.mov)",
+      "uk-UA": "QuickTime (.mov)",
+      "es-ES": "QuickTime (.mov)",
+      "ru-RU": "QuickTime (.mov)"
+    },
+    "MPEG-4 (.mp4)": {
+      "de-DE": "MPEG-4 (.mp4)",
+      "uk-UA": "MPEG-4 (.mp4)",
+      "es-ES": "MPEG-4 (.mp4)",
+      "ru-RU": "MPEG-4 (.mp4)"
+    },
+    "MPEG-TS (.ts)": {
+      "de-DE": "MPEG-TS (.ts)",
+      "uk-UA": "MPEG-TS (.ts)",
+      "es-ES": "MPEG-TS (.ts)",
+      "ru-RU": "MPEG-TS (.ts)"
+    },
+    "Suffix": {
+      "de-DE": "Suffix"
+    },
+    "AAC": {
+      "uk-UA": "AAC",
+      "de-DE": "AAC"
+    },
+    "Opus": {
+      "de-DE": "Opus"
+    },
+    "Hardware (AMD, AV1)": {
+      "de-DE": "Hardware (AMD, AV1)",
+      "es-ES": "Hardware (AMD, AV1)"
+    },
+    "Hardware (AMD, H.264)": {
+      "de-DE": "Hardware (AMD, H.264)",
+      "es-ES": "Hardware (AMD, H.264)"
+    },
+    "Hardware (AMD, HEVC)": {
+      "de-DE": "Hardware (AMD, HEVC)",
+      "es-ES": "Hardware (AMD, HEVC)"
+    },
+    "Hardware (Apple, H.264)": {
+      "de-DE": "Hardware (Apple, H.264)",
+      "es-ES": "Hardware (Apple, H.264)"
+    },
+    "Hardware (Apple, HEVC)": {
+      "de-DE": "Hardware (Apple, HEVC)",
+      "es-ES": "Hardware (Apple, HEVC)"
+    },
+    "Hardware (NVENC, AV1)": {
+      "de-DE": "Hardware (NVENC, AV1)",
+      "es-ES": "Hardware (NVENC, AV1)"
+    },
+    "Hardware (NVENC, H.264)": {
+      "de-DE": "Hardware (NVENC, H.264)",
+      "es-ES": "Hardware (NVENC, H.264)"
+    },
+    "Hardware (NVENC, HEVC)": {
+      "de-DE": "Hardware (NVENC, HEVC)",
+      "es-ES": "Hardware (NVENC, HEVC)"
+    },
+    "Hardware (QSV, AV1)": {
+      "de-DE": "Hardware (QSV, AV1)",
+      "es-ES": "Hardware (QSV, AV1)"
+    },
+    "Hardware (QSV, H.264)": {
+      "de-DE": "Hardware (QSV, H.264)",
+      "es-ES": "Hardware (QSV, H.264)"
+    },
+    "Software (x264)": {
+      "de-DE": "Software (x264)",
+      "es-ES": "Software (x264)"
+    },
+    "FPS: %1": {
+      "de-DE": "FPS: %1"
+    },
+    "BetterTTV": {
+      "uk-UA": "BetterTTV",
+      "de-DE": "BetterTTV"
+    },
+    "FrankerFaceZ": {
+      "de-DE": "FrankerFaceZ",
+      "uk-UA": "FrankerFaceZ",
+      "es-ES": "FrankerFaceZ"
+    },
+    "Simulcast": {
+      "de-DE": "Simulcast"
+    },
+    "FPS": {
+      "de-DE": "FPS",
+      "es-ES": "FPS"
+    },
+    "Renderer": {
+      "de-DE": "Renderer"
+    },
+    "%1 (Experimental)": {
+      "es-ES": "%1 (Experimental)"
+    },
+    "Bitrate": {
+      "de-DE": "Bitrate"
+    },
+    "Status": {
+      "de-DE": "Status"
+    },
+    "LIVE": {
+      "de-DE": "LIVE"
+    },
+    "Position": {
+      "de-DE": "Position"
+    },
+    "X": {
+      "de-DE": "X",
+      "uk-UA": "X",
+      "es-ES": "X"
+    },
+    "Y": {
+      "de-DE": "Y",
+      "es-ES": "Y"
+    },
+    "Deinterlacing": {
+      "de-DE": "Deinterlacing"
+    },
+    "Linear": {
+      "de-DE": "Linear"
+    },
+    "Linear 2x": {
+      "de-DE": "Linear 2x"
+    },
+    "Retro": {
+      "de-DE": "Retro",
+      "es-ES": "Retro"
+    },
+    "Yadif": {
+      "de-DE": "Yadif",
+      "es-ES": "Yadif"
+    },
+    "Yadif 2x": {
+      "de-DE": "Yadif 2x",
+      "es-ES": "Yadif 2x"
+    },
+    "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF": {
+      "de-DE": "%CCYY-%MM-%DD %hh-%mm-%ss\n%YY-%MM-%DD %hh-%mm-%ss\n%Y-%m-%d %H-%M-%S\n%y-%m-%d %H-%M-%S\n%a %Y-%m-%d %H-%M-%S\n%A %Y-%m-%d %H-%M-%S\n%Y-%b-%d %H-%M-%S\n%Y-%B-%d %H-%M-%S\n%Y-%m-%d %I-%M-%S-%p\n%Y-%m-%d %H-%M-%S-%z\n%Y-%m-%d %H-%M-%S-%Z\n%FPS\n%CRES\n%ORES\n%VF"
+    },
+    "Backspace": {
+      "uk-UA": "Backspace"
+    },
+    "Caps Lock": {
+      "uk-UA": "Caps Lock"
+    },
+    "Esc": {
+      "de-DE": "Esc",
+      "uk-UA": "Esc",
+      "es-ES": "Esc",
+      "ru-RU": "Esc"
+    },
+    "Num Lock": {
+      "uk-UA": "Num Lock",
+      "ru-RU": "Num Lock"
+    },
+    "Numpad Add": {
+      "uk-UA": "Додавання на цифровій клавіатурі"
+    },
+    "Numpad Decimal": {
+      "uk-UA": "Десятковий розділювач цифрової клавіатури"
+    },
+    "Numpad Divide": {
+      "uk-UA": "Ділення на цифровій клавіатурі"
+    },
+    "Numpad Multiply": {
+      "uk-UA": "Множення на цифровій клавіатурі"
+    },
+    "Page Down": {
+      "uk-UA": "Page Down"
+    },
+    "Page Up": {
+      "uk-UA": "Page Up"
+    },
+    "Scroll Lock": {
+      "uk-UA": "Scroll Lock"
+    },
+    "Super": {
+      "de-DE": "Super"
+    },
+    "Windows": {
+      "de-DE": "Windows"
+    },
+    "2ch": {
+      "de-DE": "2 Kanäle"
+    },
+    "2.1ch": {
+      "de-DE": "2.1 Kanäle"
+    },
+    "4ch": {
+      "de-DE": "4 Kanäle"
+    },
+    "4.1ch": {
+      "de-DE": "4.1 Kanäle"
+    },
+    "5.1ch": {
+      "de-DE": "5.1 Kanäle"
+    },
+    "7.1ch": {
+      "de-DE": "7.1 Kanäle"
+    },
+    "Interlaced": {
+      "de-DE": "Zeilensprung"
+    },
+    "CoreAudio AAC": {
+      "de-DE": "CoreAudio AAC",
+      "uk-UA": "CoreAudio AAC",
+      "es-ES": "CoreAudio AAC",
+      "ru-RU": "CoreAudio AAC"
+    },
+    "Color": {
+      "es-ES": "Color"
+    },
+    "PCM": {
+      "de-DE": "PCM",
+      "uk-UA": "PCM",
+      "es-ES": "PCM"
+    },
+    "Manual": {
+      "es-ES": "Manual"
+    },
+    "ProRes 422": {
+      "de-DE": "ProRes 422",
+      "uk-UA": "ProRes 422",
+      "es-ES": "ProRes 422"
+    },
+    "ProRes 422 HQ": {
+      "de-DE": "ProRes 422 HQ",
+      "uk-UA": "ProRes 422 HQ",
+      "es-ES": "ProRes 422 HQ"
+    },
+    "ProRes 422 LT": {
+      "uk-UA": "ProRes 422 LT",
+      "de-DE": "ProRes 422 LT",
+      "ru-RU": "ProRes 422 LT"
+    },
+    "ProRes 4444": {
+      "de-DE": "ProRes 4444",
+      "uk-UA": "ProRes 4444",
+      "es-ES": "ProRes 4444"
+    },
+    "ProRes 4444 XQ": {
+      "de-DE": "ProRes 4444 XQ",
+      "uk-UA": "ProRes 4444 XQ",
+      "es-ES": "ProRes 4444 XQ",
+      "ru-RU": "ProRes 4444 XQ"
+    },
+    "Browser": {
+      "de-DE": "Browser"
+    },
+    "Error: %1": {
+      "es-ES": "Error: %1"
+    },
+    "URL: %2": {
+      "de-DE": "URL: %2",
+      "uk-UA": "URL: %2",
+      "es-ES": "URL: %2"
+    },
+    "URL": {
+      "de-DE": "URL",
+      "es-ES": "URL"
+    },
+    "FFmpeg AAC": {
+      "de-DE": "FFmpeg AAC",
+      "uk-UA": "FFmpeg AAC",
+      "es-ES": "FFmpeg AAC",
+      "ru-RU": "FFmpeg AAC"
+    },
+    "FFmpeg MPEG-TS": {
+      "de-DE": "FFmpeg MPEG-TS",
+      "uk-UA": "FFmpeg MPEG-TS",
+      "es-ES": "FFmpeg MPEG-TS",
+      "ru-RU": "FFmpeg MPEG-TS"
+    },
+    "FFmpeg Muxer": {
+      "uk-UA": "Мультиплексор FFmpeg"
+    },
+    "FFmpeg Opus": {
+      "de-DE": "FFmpeg Opus"
+    },
+    "GPU": {
+      "de-DE": "GPU",
+      "es-ES": "GPU"
+    },
+    "HP": {
+      "uk-UA": "HP",
+      "es-ES": "HP"
+    },
+    "LL": {
+      "de-DE": "LL",
+      "uk-UA": "LL",
+      "es-ES": "LL"
+    },
+    "LLHP": {
+      "de-DE": "LLHP",
+      "uk-UA": "LLHP",
+      "es-ES": "LLHP",
+      "ru-RU": "LLHP"
+    },
+    "LLHQ": {
+      "de-DE": "LLHQ",
+      "uk-UA": "LLHQ",
+      "es-ES": "LLHQ",
+      "ru-RU": "LLHQ"
+    },
+    "MQ": {
+      "de-DE": "MQ",
+      "uk-UA": "MQ",
+      "es-ES": "MQ"
+    },
+    "Expander": {
+      "de-DE": "Expander"
+    },
+    "RMS": {
+      "de-DE": "RMS",
+      "es-ES": "RMS"
+    },
+    "Gamma": {
+      "de-DE": "Gamma"
+    },
+    "HDR: maxRGB": {
+      "uk-UA": "HDR: maxRGB",
+      "de-DE": "HDR: maxRGB",
+      "ru-RU": "HDR: maxRGB"
+    },
+    "SDR: maxRGB": {
+      "uk-UA": "SDR: maxRGB",
+      "de-DE": "SDR: maxRGB",
+      "ru-RU": "SDR: maxRGB"
+    },
+    "SDR: Reinhard": {
+      "de-DE": "SDR: Reinhard"
+    },
+    "Magenta": {
+      "de-DE": "Magenta",
+      "es-ES": "Magenta"
+    },
+    "Bilinear": {
+      "de-DE": "Bilinear"
+    },
+    "Lanczos": {
+      "de-DE": "Lanczos",
+      "es-ES": "Lanczos"
+    },
+    "libfdk AAC": {
+      "de-DE": "libfdk AAC",
+      "uk-UA": "libfdk AAC",
+      "es-ES": "libfdk AAC",
+      "ru-RU": "libfdk AAC"
+    },
+    "Variable Bitrate": {
+      "de-DE": "Variable Bitrate"
+    },
+    "Text": {
+      "de-DE": "Text"
+    },
+    "Text (GDI+)": {
+      "de-DE": "Text (GDI+)"
+    },
+    "Vertical": {
+      "es-ES": "Vertical"
+    },
+    "Fractal": {
+      "es-ES": "Fractal"
+    },
+    "Iris": {
+      "de-DE": "Iris",
+      "es-ES": "Iris"
+    },
+    "Sinus 9": {
+      "de-DE": "Sinus 9"
+    },
+    "Luma Wipe": {
+      "uk-UA": "Яскравісне витіснення",
+      "de-DE": "Luma-Wischblende"
+    },
+    "Stinger": {
+      "de-DE": "Stinger"
+    },
+    "CRF": {
+      "de-DE": "CRF",
+      "es-ES": "CRF"
+    },
+    "DSP": {
+      "de-DE": "DSP",
+      "uk-UA": "DSP",
+      "es-ES": "DSP"
+    },
+    "Color 1": {
+      "es-ES": "Color 1"
+    },
+    "Color 2": {
+      "es-ES": "Color 2"
+    },
+    "Text (FreeType 2)": {
+      "de-DE": "Text (FreeType 2)"
+    },
+    "Legacy (DXGI)": {
+      "uk-UA": "Застарілий (DXGI)"
+    },
+    "Modern (WGC)": {
+      "de-DE": "Modern (WGC)"
+    },
+    "Legacy (BitBlt)": {
+      "uk-UA": "Застарілий (BitBlt)"
+    },
+    "No": {
+      "es-ES": "No"
+    },
+    "OBS Classic": {
+      "uk-UA": "OBS Classic",
+      "de-DE": "OBS Classic"
+    },
+    "OBS Studio": {
+      "uk-UA": "OBS Studio",
+      "de-DE": "OBS Studio"
+    },
+    "OK": {
+      "de-DE": "OK"
+    },
+    "Error": {
+      "es-ES": "Error"
+    },
+    "Stereo": {
+      "de-DE": "Stereo"
+    },
+    "Streamlabs": {
+      "uk-UA": "Streamlabs",
+      "de-DE": "Streamlabs",
+      "ru-RU": "Streamlabs"
+    },
+    "XSplit Broadcaster": {
+      "uk-UA": "XSplit Broadcaster",
+      "de-DE": "XSplit Broadcaster"
+    },
+    "<a href='https://vr.youtube.com/create/360/'>(?)</a>": {
+      "de-DE": "<a href='https://vr.youtube.com/create/360/'>(?)</a>",
+      "uk-UA": "<a href='https://vr.youtube.com/create/360/'>(?)</a>",
+      "es-ES": "<a href='https://vr.youtube.com/create/360/'>(?)</a>",
+      "ru-RU": "<a href='https://vr.youtube.com/create/360/'>(?)</a>"
+    },
+    "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>": {
+      "de-DE": "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>",
+      "uk-UA": "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>",
+      "es-ES": "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>",
+      "ru-RU": "<a href='https://support.google.com/youtube/topic/9689353'>(?)</a>"
+    },
+    "YouTube": {
+      "de-DE": "YouTube",
+      "uk-UA": "YouTube",
+      "es-ES": "YouTube",
+      "ru-RU": "YouTube"
+    }
+  }
+}

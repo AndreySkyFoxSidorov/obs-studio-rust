@@ -1,0 +1,206 @@
+{
+  "File": {
+    "es-ES": "Archivo",
+    "ru-RU": "Файл",
+    "uk-UA": "Файл",
+    "de-DE": "Datei"
+  },
+  "Open collection": {
+    "es-ES": "Abrir colección",
+    "ru-RU": "Открыть коллекцию",
+    "uk-UA": "Відкрити колекцію",
+    "de-DE": "Sammlung öffnen"
+  },
+  "Recover collection": {
+    "es-ES": "Recuperar colección",
+    "ru-RU": "Восстановить коллекцию",
+    "uk-UA": "Відновити колекцію",
+    "de-DE": "Sammlung wiederherstellen"
+  },
+  "Import OBS Scene Collection": {
+    "es-ES": "Importar colección de escenas de OBS",
+    "ru-RU": "Импорт коллекции сцен OBS",
+    "uk-UA": "Імпорт колекції сцен OBS",
+    "de-DE": "OBS-Szenensammlung importieren"
+  },
+  "Open": {
+    "es-ES": "Abrir",
+    "ru-RU": "Открыть",
+    "uk-UA": "Відкрити",
+    "de-DE": "Öffnen"
+  },
+  "Recover": {
+    "es-ES": "Recuperar",
+    "ru-RU": "Восстановить",
+    "uk-UA": "Відновити",
+    "de-DE": "Wiederherstellen"
+  },
+  "Import": {
+    "es-ES": "Importar",
+    "ru-RU": "Импортировать",
+    "uk-UA": "Імпортувати",
+    "de-DE": "Importieren"
+  },
+  "Cancel": {
+    "es-ES": "Cancelar",
+    "ru-RU": "Отмена",
+    "uk-UA": "Скасувати",
+    "de-DE": "Abbrechen"
+  },
+  "Untitled": {
+    "es-ES": "Sin título",
+    "ru-RU": "Без названия",
+    "uk-UA": "Без назви",
+    "de-DE": "Unbenannt"
+  },
+  "Not yet saved": {
+    "es-ES": "Aún sin guardar",
+    "ru-RU": "Ещё не сохранено",
+    "uk-UA": "Ще не збережено",
+    "de-DE": "Noch nicht gespeichert"
+  },
+  "File path": {
+    "es-ES": "Ruta del archivo",
+    "ru-RU": "Путь к файлу",
+    "uk-UA": "Шлях до файлу",
+    "de-DE": "Dateipfad"
+  },
+  "Read and validate this file before replacing the current collection.": {
+    "es-ES": "Lee y valida este archivo antes de sustituir la colección actual.",
+    "ru-RU": "Прочитать и проверить файл перед заменой текущей коллекции.",
+    "uk-UA": "Прочитати й перевірити файл перед заміною поточної колекції.",
+    "de-DE": "Diese Datei vor dem Ersetzen der aktuellen Sammlung lesen und prüfen."
+  },
+  "Close the file chooser and keep the current collection.": {
+    "es-ES": "Cierra el selector de archivo y conserva la colección actual.",
+    "ru-RU": "Закрыть выбор файла и оставить текущую коллекцию.",
+    "uk-UA": "Закрити вибір файлу й залишити поточну колекцію.",
+    "de-DE": "Die Dateiauswahl schließen und die aktuelle Sammlung beibehalten."
+  },
+  "Enter the exact file to open, recover or import.": {
+    "es-ES": "Introduce el archivo exacto que quieres abrir, recuperar o importar.",
+    "ru-RU": "Укажите точный путь к файлу для открытия, восстановления или импорта.",
+    "uk-UA": "Укажіть точний шлях до файлу для відкриття, відновлення або імпорту.",
+    "de-DE": "Den genauen Pfad der zu öffnenden, wiederherzustellenden oder zu importierenden Datei eingeben."
+  },
+  "Opening a file does not change the destination used by Save.": {
+    "es-ES": "Abrir un archivo no cambia el destino utilizado por Guardar.",
+    "ru-RU": "Открытие файла не меняет путь, используемый командой «Сохранить».",
+    "uk-UA": "Відкриття файлу не змінює шлях, який використовує команда «Зберегти».",
+    "de-DE": "Das Öffnen einer Datei ändert nicht das für Speichern verwendete Ziel."
+  },
+  "Only supported OBS collection features can be imported; unsupported features are reported.": {
+    "es-ES": "Solo se importan las funciones compatibles de las colecciones de OBS; se informa de las no compatibles.",
+    "ru-RU": "Импортируются только поддерживаемые функции коллекций OBS; о неподдерживаемых функциях будет сообщено.",
+    "uk-UA": "Імпортуються лише підтримувані функції колекцій OBS; про непідтримувані функції буде повідомлено.",
+    "de-DE": "Nur unterstützte Funktionen von OBS-Sammlungen werden importiert; nicht unterstützte Funktionen werden gemeldet."
+  },
+  "The file chooser changed. Reopen it before continuing.": {
+    "es-ES": "El selector de archivo ha cambiado. Vuelve a abrirlo antes de continuar.",
+    "ru-RU": "Выбор файла изменился. Откройте его заново перед продолжением.",
+    "uk-UA": "Вибір файлу змінився. Відкрийте його знову перед продовженням.",
+    "de-DE": "Die Dateiauswahl hat sich geändert. Vor dem Fortfahren erneut öffnen."
+  },
+  "The document changed. Reopen the file chooser.": {
+    "es-ES": "El documento ha cambiado. Vuelve a abrir el selector de archivo.",
+    "ru-RU": "Документ изменился. Откройте выбор файла заново.",
+    "uk-UA": "Документ змінився. Відкрийте вибір файлу знову.",
+    "de-DE": "Das Dokument hat sich geändert. Die Dateiauswahl erneut öffnen."
+  },
+  "Enter a file path of at most 4096 characters.": {
+    "es-ES": "Introduce una ruta de archivo de un máximo de 4096 caracteres.",
+    "ru-RU": "Укажите путь к файлу длиной не более 4096 символов.",
+    "uk-UA": "Укажіть шлях до файлу завдовжки не більш ніж 4096 символів.",
+    "de-DE": "Einen Dateipfad mit höchstens 4096 Zeichen eingeben."
+  },
+  "Stop active outputs before replacing the collection.": {
+    "es-ES": "Detén las salidas activas antes de sustituir la colección.",
+    "ru-RU": "Остановите активные выходы перед заменой коллекции.",
+    "uk-UA": "Зупиніть активні виходи перед заміною колекції.",
+    "de-DE": "Aktive Ausgaben vor dem Ersetzen der Sammlung stoppen."
+  },
+  "New collection": {
+    "es-ES": "Nueva colección",
+    "ru-RU": "Новая коллекция",
+    "uk-UA": "Нова колекція",
+    "de-DE": "Neue Sammlung"
+  },
+  "Create a new collection after resolving unsaved changes.": {
+    "es-ES": "Crea una colección nueva después de resolver los cambios sin guardar.",
+    "ru-RU": "Создать новую коллекцию после решения о несохранённых изменениях.",
+    "uk-UA": "Створити нову колекцію після рішення щодо незбережених змін.",
+    "de-DE": "Nach Klärung der ungespeicherten Änderungen eine neue Sammlung erstellen."
+  },
+  "Open…": {
+    "es-ES": "Abrir…",
+    "ru-RU": "Открыть…",
+    "uk-UA": "Відкрити…",
+    "de-DE": "Öffnen…"
+  },
+  "Choose a SkyLive collection to open.": {
+    "es-ES": "Elige una colección de SkyLive para abrirla.",
+    "ru-RU": "Выбрать коллекцию SkyLive для открытия.",
+    "uk-UA": "Вибрати колекцію SkyLive для відкриття.",
+    "de-DE": "Eine SkyLive-Sammlung zum Öffnen auswählen."
+  },
+  "Recover…": {
+    "es-ES": "Recuperar…",
+    "ru-RU": "Восстановить…",
+    "uk-UA": "Відновити…",
+    "de-DE": "Wiederherstellen…"
+  },
+  "Choose a SkyLive collection to recover from its checkpoint.": {
+    "es-ES": "Elige una colección de SkyLive para recuperarla desde su punto de recuperación.",
+    "ru-RU": "Выбрать коллекцию SkyLive для восстановления из контрольной точки.",
+    "uk-UA": "Вибрати колекцію SkyLive для відновлення з контрольної точки.",
+    "de-DE": "Eine SkyLive-Sammlung zum Wiederherstellen aus ihrem Sicherungspunkt auswählen."
+  },
+  "Save": {
+    "es-ES": "Guardar",
+    "ru-RU": "Сохранить",
+    "uk-UA": "Зберегти",
+    "de-DE": "Speichern"
+  },
+  "Save changes to the active collection file.": {
+    "es-ES": "Guarda los cambios en el archivo de la colección activa.",
+    "ru-RU": "Сохранить изменения в файл текущей коллекции.",
+    "uk-UA": "Зберегти зміни у файл поточної колекції.",
+    "de-DE": "Änderungen in der Datei der aktiven Sammlung speichern."
+  },
+  "Save As…": {
+    "es-ES": "Guardar como…",
+    "ru-RU": "Сохранить как…",
+    "uk-UA": "Зберегти як…",
+    "de-DE": "Speichern unter…"
+  },
+  "Choose and explicitly confirm a different native save destination.": {
+    "es-ES": "Elige y confirma expresamente otro destino de guardado de SkyLive.",
+    "ru-RU": "Выбрать и явно подтвердить другой путь сохранения SkyLive.",
+    "uk-UA": "Вибрати та явно підтвердити інший шлях збереження SkyLive.",
+    "de-DE": "Ein anderes SkyLive-Speicherziel auswählen und ausdrücklich bestätigen."
+  },
+  "Import OBS…": {
+    "es-ES": "Importar OBS…",
+    "ru-RU": "Импорт OBS…",
+    "uk-UA": "Імпорт OBS…",
+    "de-DE": "OBS importieren…"
+  },
+  "Choose an OBS scene collection to import.": {
+    "es-ES": "Elige una colección de escenas de OBS para importarla.",
+    "ru-RU": "Выбрать коллекцию сцен OBS для импорта.",
+    "uk-UA": "Вибрати колекцію сцен OBS для імпорту.",
+    "de-DE": "Eine OBS-Szenensammlung zum Importieren auswählen."
+  },
+  "Export OBS…": {
+    "es-ES": "Exportar OBS…",
+    "ru-RU": "Экспорт OBS…",
+    "uk-UA": "Експорт OBS…",
+    "de-DE": "OBS exportieren…"
+  },
+  "Choose an OBS scene collection export destination.": {
+    "es-ES": "Elige el destino de exportación de la colección de escenas de OBS.",
+    "ru-RU": "Выбрать путь экспорта коллекции сцен OBS.",
+    "uk-UA": "Вибрати шлях експорту колекції сцен OBS.",
+    "de-DE": "Ein Exportziel für die OBS-Szenensammlung auswählen."
+  }
+}

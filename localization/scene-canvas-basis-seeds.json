@@ -1,0 +1,50 @@
+{
+  "Invalid Scene or Group scale anchor basis.": {
+    "es-ES": "La base de escala de la escena o del grupo no es válida.",
+    "ru-RU": "Некорректный базовый размер масштаба сцены или группы.",
+    "uk-UA": "Некоректний базовий розмір масштабу сцени або групи.",
+    "de-DE": "Ungültige Skalierungsbasis für Szene oder Gruppe."
+  },
+  "Cannot allocate bounded Scene scale metadata.": {
+    "es-ES": "No se pueden reservar los metadatos limitados de escala de escenas.",
+    "ru-RU": "Не удалось выделить ограниченную память для метаданных масштаба сцен.",
+    "uk-UA": "Не вдалося виділити обмежену пам’ять для метаданих масштабу сцен.",
+    "de-DE": "Der begrenzte Speicher für Szenen-Skalierungsmetadaten kann nicht reserviert werden."
+  },
+  "Scene scale anchors require an explicit interpretation canvas.": {
+    "es-ES": "Las referencias de escala de escena requieren un lienzo de interpretación explícito.",
+    "ru-RU": "Для опорных значений масштаба нужен явно заданный базовый холст.",
+    "uk-UA": "Для опорних значень масштабу потрібне явно задане базове полотно.",
+    "de-DE": "Szenen-Skalierungsanker benötigen eine explizite Bezugsleinwand."
+  },
+  "Only Scene and Group references may have scale anchors.": {
+    "es-ES": "Solo las referencias a escenas y grupos pueden tener anclajes de escala.",
+    "ru-RU": "Опорные значения масштаба допустимы только у ссылок на сцены и группы.",
+    "uk-UA": "Опорні значення масштабу дозволені лише для посилань на сцени й групи.",
+    "de-DE": "Nur Szenen- und Gruppenreferenzen dürfen Skalierungsanker besitzen."
+  },
+  "Scene scale anchor does not match its stored extent and basis.": {
+    "es-ES": "El anclaje de escala de escena no coincide con el tamaño y la base guardados.",
+    "ru-RU": "Опорный масштаб не соответствует сохранённому размеру и базовому разрешению.",
+    "uk-UA": "Опорний масштаб не відповідає збереженому розміру й базовій роздільності.",
+    "de-DE": "Der Szenen-Skalierungsanker stimmt nicht mit der gespeicherten Ausdehnung und Basis überein."
+  },
+  "Scene interpretation canvas does not match the selected profile.": {
+    "es-ES": "El lienzo de referencia de la escena no coincide con el perfil seleccionado.",
+    "ru-RU": "Базовый холст сцены не соответствует выбранному профилю.",
+    "uk-UA": "Базове полотно сцени не відповідає вибраному профілю.",
+    "de-DE": "Die Bezugsleinwand der Szene stimmt nicht mit dem ausgewählten Profil überein."
+  },
+  "Materialized Scene and Group references require stable scale anchors.": {
+    "es-ES": "Las referencias de escena y grupo materializadas necesitan anclajes de escala estables.",
+    "ru-RU": "Для текущих ссылок на сцены и группы нужны стабильные опорные значения масштаба.",
+    "uk-UA": "Для поточних посилань на сцени й групи потрібні сталі опорні значення масштабу.",
+    "de-DE": "Materialisierte Szenen- und Gruppenreferenzen benötigen stabile Skalierungsanker."
+  },
+  "Scene canvas interpretation and stable scale anchors require native schema9": {
+    "es-ES": "El lienzo de referencia de escena y los anclajes de escala requieren el esquema nativo9",
+    "ru-RU": "Базовый холст сцены и стабильный опорный масштаб требуют native schema9",
+    "uk-UA": "Базове полотно сцени та сталий опорний масштаб потребують native schema9",
+    "de-DE": "Szenen-Bezugsleinwand und stabile Skalierungsanker benötigen das native Schema9"
+  }
+}

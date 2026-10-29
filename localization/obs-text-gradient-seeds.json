@@ -1,0 +1,50 @@
+{
+  "Gradient": {
+    "es-ES": "Degradado",
+    "ru-RU": "Градиент",
+    "uk-UA": "Градієнт",
+    "de-DE": "Farbverlauf"
+  },
+  "Gradient Color": {
+    "es-ES": "Color del degradado",
+    "ru-RU": "Цвет градиента",
+    "uk-UA": "Колір градієнта",
+    "de-DE": "Verlaufsfarbe"
+  },
+  "Gradient Opacity": {
+    "es-ES": "Opacidad del degradado",
+    "ru-RU": "Непрозрачность градиента",
+    "uk-UA": "Непрозорість градієнта",
+    "de-DE": "Verlaufsdeckkraft"
+  },
+  "Gradient Direction": {
+    "es-ES": "Dirección del degradado",
+    "ru-RU": "Направление градиента",
+    "uk-UA": "Напрямок градієнта",
+    "de-DE": "Verlaufsrichtung"
+  },
+  "Blend the text color into a second color across the source. Disabled gradient settings are retained.": {
+    "es-ES": "Mezcla el color del texto con un segundo color en la fuente. Los ajustes se conservan al desactivarlo.",
+    "ru-RU": "Смешать цвет текста со вторым цветом по всему источнику. При выключении настройки градиента сохраняются.",
+    "uk-UA": "Змішати колір тексту з другим кольором по всьому джерелу. Після вимкнення налаштування градієнта зберігаються.",
+    "de-DE": "Die Textfarbe über die Quelle mit einer zweiten Farbe mischen. Deaktivierte Verlaufseinstellungen bleiben erhalten."
+  },
+  "Choose the second text gradient color.": {
+    "es-ES": "Elige el segundo color del degradado del texto.",
+    "ru-RU": "Выберите второй цвет градиента текста.",
+    "uk-UA": "Оберіть другий колір градієнта тексту.",
+    "de-DE": "Die zweite Farbe des Textverlaufs auswählen."
+  },
+  "Set the second color opacity from 0 to 100 percent.": {
+    "es-ES": "Ajusta la opacidad del segundo color entre 0 y 100 por ciento.",
+    "ru-RU": "Задайте непрозрачность второго цвета от 0 до 100 процентов.",
+    "uk-UA": "Задайте непрозорість другого кольору від 0 до 100 відсотків.",
+    "de-DE": "Deckkraft der zweiten Farbe von 0 bis 100 Prozent einstellen."
+  },
+  "Set the gradient direction in degrees. 0 runs left to right; 90 runs top to bottom.": {
+    "es-ES": "Ajusta la dirección en grados. 0 va de izquierda a derecha; 90 de arriba abajo.",
+    "ru-RU": "Задайте направление градиента в градусах. 0 — слева направо, 90 — сверху вниз.",
+    "uk-UA": "Задайте напрямок градієнта в градусах. 0 — зліва направо, 90 — згори вниз.",
+    "de-DE": "Verlaufsrichtung in Grad einstellen. 0 verläuft von links nach rechts, 90 von oben nach unten."
+  }
+}

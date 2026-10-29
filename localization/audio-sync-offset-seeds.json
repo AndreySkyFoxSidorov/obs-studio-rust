@@ -1,0 +1,14 @@
+{
+  "Sync Offset (ms)": {
+    "es-ES": "Desfase de sincronización (ms)",
+    "ru-RU": "Смещение синхронизации (мс)",
+    "uk-UA": "Зсув синхронізації (мс)",
+    "de-DE": "Synchronisationsversatz (ms)"
+  },
+  "Positive offset delays this source; negative offset advances it using buffered future audio. Range: -950 to 20000 ms. Native capture timestamps are unchanged. Press Enter to confirm; Escape cancels.": {
+    "es-ES": "Un valor positivo retrasa esta fuente; uno negativo la adelanta mediante audio futuro almacenado en el búfer. Rango: de −950 a 20000 ms. Las marcas de tiempo de captura originales no cambian. Intro confirma; Esc cancela.",
+    "ru-RU": "Положительное значение задерживает этот источник; отрицательное опережает его за счёт буферизации будущего аудио. Диапазон: от −950 до 20000 мс. Исходные метки времени захвата не меняются. Enter — подтвердить; Escape — отменить.",
+    "uk-UA": "Додатне значення затримує це джерело; від’ємне випереджає його завдяки буферизації майбутнього аудіо. Діапазон: від −950 до 20000 мс. Початкові часові мітки захоплення не змінюються. Enter — підтвердити; Escape — скасувати.",
+    "de-DE": "Ein positiver Wert verzögert diese Quelle; ein negativer zieht sie mithilfe gepufferter zukünftiger Audiodaten vor. Bereich: −950 bis 20000 ms. Die ursprünglichen Aufnahmezeitstempel bleiben unverändert. Eingabe bestätigt; Esc bricht ab."
+  }
+}

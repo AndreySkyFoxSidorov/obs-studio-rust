@@ -1,0 +1,80 @@
+{
+  "Save projectors on exit": {
+    "es-ES": "Guardar los proyectores al salir",
+    "ru-RU": "Сохранять проекторы при выходе",
+    "uk-UA": "Зберігати проєктори під час виходу",
+    "de-DE": "Projektoren beim Beenden speichern"
+  },
+  "Save projector routes with this native collection and restore them when that native collection is opened. Enabling this setting opens no windows.": {
+    "es-ES": "Guardar las rutas de los proyectores con esta colección nativa y restaurarlas al abrirla. Activar esta opción no abre ventanas.",
+    "ru-RU": "Сохранять проекторы в этой native-коллекции и восстанавливать при её открытии. Включение настройки не открывает окна.",
+    "uk-UA": "Зберігати проєктори в цій native-колекції та відновлювати під час її відкриття. Увімкнення налаштування не відкриває вікон.",
+    "de-DE": "Projektorzuordnungen mit dieser nativen Sammlung speichern und beim Öffnen wiederherstellen. Das Aktivieren öffnet keine Fenster."
+  },
+  "Saved projector restoration became obsolete; no windows were opened.": {
+    "es-ES": "La restauración de proyectores quedó desactualizada; no se abrió ninguna ventana.",
+    "ru-RU": "Запрос восстановления проекторов устарел; окна не открывались.",
+    "uk-UA": "Запит відновлення проєкторів застарів; вікна не відкривалися.",
+    "de-DE": "Die Projektorwiederherstellung ist veraltet; es wurden keine Fenster geöffnet."
+  },
+  "Projector restoration returned an unexpected receipt.": {
+    "es-ES": "La restauración devolvió una respuesta inesperada.",
+    "ru-RU": "Восстановление проекторов вернуло неожиданный ответ.",
+    "uk-UA": "Відновлення проєкторів повернуло неочікувану відповідь.",
+    "de-DE": "Die Projektorwiederherstellung lieferte eine unerwartete Bestätigung."
+  },
+  "Waiting for the previous projector renderer to retire before restoring windows.": {
+    "es-ES": "Esperando a que termine el renderizador anterior antes de restaurar las ventanas.",
+    "ru-RU": "Ожидание завершения прежнего рендера проекторов перед восстановлением окон.",
+    "uk-UA": "Очікування завершення попереднього рендера проєкторів перед відновленням вікон.",
+    "de-DE": "Vor der Fensterwiederherstellung wird auf das Ende des vorherigen Projektorrenderers gewartet."
+  },
+  "Projector monitor discovery is unavailable; using windowed backend placement.": {
+    "es-ES": "La detección de monitores no está disponible; se usará la ubicación de ventana del sistema.",
+    "ru-RU": "Обнаружение мониторов недоступно; используется обычное размещение окна системой.",
+    "uk-UA": "Виявлення моніторів недоступне; використовується звичайне розміщення вікна системою.",
+    "de-DE": "Die Monitorerkennung ist nicht verfügbar; die normale Fensterplatzierung des Systems wird verwendet."
+  },
+  "No saved projector windows were queued. Unavailable routes remain in the saved collection metadata.": {
+    "es-ES": "No se programaron ventanas de proyectores. Las rutas no disponibles permanecen en los metadatos de la colección.",
+    "ru-RU": "Окна проекторов не поставлены на восстановление. Недоступные маршруты оставлены в метаданных коллекции.",
+    "uk-UA": "Вікна проєкторів не поставлено на відновлення. Недоступні маршрути залишено в метаданих колекції.",
+    "de-DE": "Es wurden keine Projektorfenster eingeplant. Nicht verfügbare Zuordnungen bleiben in den Sammlungsmetadaten erhalten."
+  },
+  "Saved projector routes queued: {count}. Native windows and video readiness are still pending.": {
+    "es-ES": "Rutas de proyectores programadas: {count}. Las ventanas nativas y el vídeo aún están pendientes.",
+    "ru-RU": "Маршрутов проекторов поставлено в очередь: {count}. Создание native-окон и готовность видео ещё ожидаются.",
+    "uk-UA": "Маршрутів проєкторів поставлено в чергу: {count}. Створення native-вікон і готовність відео ще очікуються.",
+    "de-DE": "Eingeplante Projektorzuordnungen: {count}. Native Fenster und Videobereitschaft stehen noch aus."
+  },
+  "Projector restoration has no request identity.": {
+    "es-ES": "La restauración no tiene identificador de solicitud.",
+    "ru-RU": "У запроса восстановления проекторов нет идентификатора.",
+    "uk-UA": "Запит відновлення проєкторів не має ідентифікатора.",
+    "de-DE": "Die Projektorwiederherstellung hat keine Anforderungskennung."
+  },
+  "Restored projector has no runtime window identity.": {
+    "es-ES": "El proyector restaurado no tiene identificador de ventana en ejecución.",
+    "ru-RU": "У восстановленного проектора нет идентификатора окна.",
+    "uk-UA": "Відновлений проєктор не має ідентифікатора вікна.",
+    "de-DE": "Der wiederhergestellte Projektor hat keine Laufzeitfensterkennung."
+  },
+  "The saved monitor is unavailable; this projector was restored as a window.": {
+    "es-ES": "El monitor guardado no está disponible; el proyector se restauró en una ventana.",
+    "ru-RU": "Сохранённый монитор недоступен; проектор восстановлен в обычном окне.",
+    "uk-UA": "Збережений монітор недоступний; проєктор відновлено у звичайному вікні.",
+    "de-DE": "Der gespeicherte Monitor ist nicht verfügbar; der Projektor wurde als Fenster wiederhergestellt."
+  },
+  "The saved projector position was adjusted to the current monitor layout.": {
+    "es-ES": "La posición guardada se ajustó a la distribución actual de monitores.",
+    "ru-RU": "Сохранённая позиция проектора скорректирована под текущее расположение мониторов.",
+    "uk-UA": "Збережену позицію проєктора скориговано під поточне розташування моніторів.",
+    "de-DE": "Die gespeicherte Projektorposition wurde an die aktuelle Monitoranordnung angepasst."
+  },
+  "The saved projector geometry could not be applied; the current window placement is kept.": {
+    "es-ES": "No se pudo aplicar la geometría guardada; se mantiene la ubicación actual de la ventana.",
+    "ru-RU": "Не удалось применить сохранённую геометрию; оставлено текущее положение окна.",
+    "uk-UA": "Не вдалося застосувати збережену геометрію; залишено поточне розташування вікна.",
+    "de-DE": "Die gespeicherte Fenstergeometrie konnte nicht angewendet werden; die aktuelle Platzierung bleibt erhalten."
+  }
+}

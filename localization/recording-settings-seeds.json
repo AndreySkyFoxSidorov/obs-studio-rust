@@ -1,0 +1,122 @@
+{
+  "Settings — Output": {
+    "es-ES": "Ajustes — Salida",
+    "ru-RU": "Настройки — Вывод",
+    "uk-UA": "Налаштування — Вивід",
+    "de-DE": "Einstellungen — Ausgabe"
+  },
+  "Profile: {name}": {
+    "es-ES": "Perfil: {name}",
+    "ru-RU": "Профиль: {name}",
+    "uk-UA": "Профіль: {name}",
+    "de-DE": "Profil: {name}"
+  },
+  "MP4 · H.264 video · AAC audio": {
+    "es-ES": "MP4 · vídeo H.264 · audio AAC",
+    "ru-RU": "MP4 · видео H.264 · аудио AAC",
+    "uk-UA": "MP4 · відео H.264 · аудіо AAC",
+    "de-DE": "MP4 · H.264-Video · AAC-Audio"
+  },
+  "Recording Path": {
+    "es-ES": "Ruta de grabación",
+    "ru-RU": "Путь записи",
+    "uk-UA": "Шлях запису",
+    "de-DE": "Aufnahmepfad"
+  },
+  "Video Bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits de vídeo (kbit/s)",
+    "ru-RU": "Битрейт видео (кбит/с)",
+    "uk-UA": "Бітрейт відео (кбіт/с)",
+    "de-DE": "Video-Bitrate (kbit/s)"
+  },
+  "Audio Bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits de audio (kbit/s)",
+    "ru-RU": "Битрейт аудио (кбит/с)",
+    "uk-UA": "Бітрейт аудіо (кбіт/с)",
+    "de-DE": "Audio-Bitrate (kbit/s)"
+  },
+  "Record Audio": {
+    "es-ES": "Grabar audio",
+    "ru-RU": "Записывать звук",
+    "uk-UA": "Записувати звук",
+    "de-DE": "Audio aufnehmen"
+  },
+  "Prefer hardware encoding": {
+    "es-ES": "Preferir codificación por hardware",
+    "ru-RU": "Предпочитать аппаратное кодирование",
+    "uk-UA": "Надавати перевагу апаратному кодуванню",
+    "de-DE": "Hardware-Kodierung bevorzugen"
+  },
+  "Enter a whole video bitrate in kbit/s.": {
+    "es-ES": "Introduzca una tasa de bits de vídeo entera en kbit/s.",
+    "ru-RU": "Введите целое значение битрейта видео в кбит/с.",
+    "uk-UA": "Введіть ціле значення бітрейту відео у кбіт/с.",
+    "de-DE": "Geben Sie eine ganzzahlige Video-Bitrate in kbit/s ein."
+  },
+  "Set the folder for new recordings. Its availability is checked when recording starts.": {
+    "es-ES": "Elija la carpeta para nuevas grabaciones. Se comprobará su disponibilidad al iniciar la grabación.",
+    "ru-RU": "Укажите папку для новых записей. Её доступность проверяется при запуске записи.",
+    "uk-UA": "Укажіть папку для нових записів. Її доступність перевіряється під час запуску запису.",
+    "de-DE": "Legen Sie den Ordner für neue Aufnahmen fest. Seine Verfügbarkeit wird beim Aufnahmestart geprüft."
+  },
+  "Request an average H.264 bitrate from 100 to 200000 kbit/s. Constant bitrate is not guaranteed.": {
+    "es-ES": "Solicite una tasa de bits media H.264 de 100 a 200000 kbit/s. No se garantiza una tasa constante.",
+    "ru-RU": "Задайте средний битрейт H.264 от 100 до 200000 кбит/с. Постоянный битрейт не гарантируется.",
+    "uk-UA": "Задайте середній бітрейт H.264 від 100 до 200000 кбіт/с. Постійний бітрейт не гарантується.",
+    "de-DE": "Fordern Sie eine mittlere H.264-Bitrate von 100 bis 200000 kbit/s an. Eine konstante Bitrate wird nicht garantiert."
+  },
+  "Choose a supported AAC audio bitrate.": {
+    "es-ES": "Elija una tasa de bits AAC compatible.",
+    "ru-RU": "Выберите поддерживаемый битрейт AAC.",
+    "uk-UA": "Виберіть підтримуваний бітрейт AAC.",
+    "de-DE": "Wählen Sie eine unterstützte AAC-Audio-Bitrate."
+  },
+  "Enable Record Audio to change its bitrate. The saved bitrate is retained while audio is off.": {
+    "es-ES": "Active Grabar audio para cambiar su tasa de bits. El valor guardado se conserva mientras el audio esté desactivado.",
+    "ru-RU": "Включите запись звука, чтобы изменить его битрейт. При выключенном звуке сохранённое значение сохраняется.",
+    "uk-UA": "Увімкніть запис звуку, щоб змінити його бітрейт. Коли звук вимкнено, збережене значення залишається.",
+    "de-DE": "Aktivieren Sie Audio aufnehmen, um die Bitrate zu ändern. Der gespeicherte Wert bleibt bei deaktiviertem Audio erhalten."
+  },
+  "Include the Program audio mix, encoded as mono or stereo AAC.": {
+    "es-ES": "Incluir la mezcla de audio de Programa codificada como AAC mono o estéreo.",
+    "ru-RU": "Включить звуковой микс Программы с кодированием в моно или стерео AAC.",
+    "uk-UA": "Додати звуковий мікс Програми з кодуванням у моно або стерео AAC.",
+    "de-DE": "Den Programmaudiomix als AAC in Mono oder Stereo aufnehmen."
+  },
+  "Prefer a compatible hardware encoder when available. This preference does not guarantee hardware encoding.": {
+    "es-ES": "Preferir un codificador por hardware compatible si está disponible. Esta opción no garantiza la codificación por hardware.",
+    "ru-RU": "Предпочитать совместимый аппаратный кодировщик при его наличии. Эта настройка не гарантирует аппаратное кодирование.",
+    "uk-UA": "Надавати перевагу сумісному апаратному кодувальнику за наявності. Ця настройка не гарантує апаратне кодування.",
+    "de-DE": "Einen kompatiblen Hardware-Encoder bevorzugen, sofern verfügbar. Diese Einstellung garantiert keine Hardware-Kodierung."
+  },
+  "These settings apply to new recordings. Apply saves the selected profile without starting recording or creating folders. Cancel keeps its current settings.": {
+    "es-ES": "Estos ajustes se aplican a nuevas grabaciones. Aplicar guarda el perfil seleccionado sin iniciar la grabación ni crear carpetas. Cancelar conserva sus ajustes actuales.",
+    "ru-RU": "Эти настройки применяются к новым записям. Применение сохраняет выбранный профиль, не запуская запись и не создавая папки. Отмена сохраняет текущие настройки.",
+    "uk-UA": "Ці налаштування застосовуються до нових записів. Застосування зберігає вибраний профіль, не запускаючи запис і не створюючи папки. Скасування залишає поточні налаштування.",
+    "de-DE": "Diese Einstellungen gelten für neue Aufnahmen. Anwenden speichert das gewählte Profil, ohne eine Aufnahme zu starten oder Ordner anzulegen. Abbrechen behält die aktuellen Einstellungen bei."
+  },
+  "recording directory exceeds4096 UTF-8 bytes or contains controls": {
+    "es-ES": "La carpeta de grabación supera 4096 bytes UTF-8 o contiene caracteres de control",
+    "ru-RU": "Путь записи превышает 4096 байт UTF-8 или содержит управляющие символы",
+    "uk-UA": "Шлях запису перевищує 4096 байтів UTF-8 або містить керівні символи",
+    "de-DE": "Der Aufnahmepfad überschreitet 4096 UTF-8-Bytes oder enthält Steuerzeichen"
+  },
+  "recording H264 bitrate must be100..=200000 kbit/s": {
+    "es-ES": "La tasa de bits H264 debe estar entre 100 y 200000 kbit/s",
+    "ru-RU": "Битрейт H264 должен быть от 100 до 200000 кбит/с",
+    "uk-UA": "Бітрейт H264 має бути від 100 до 200000 кбіт/с",
+    "de-DE": "Die H264-Bitrate muss zwischen 100 und 200000 kbit/s liegen"
+  },
+  "recording AAC bitrate must be96,128,160 or192 kbit/s": {
+    "es-ES": "La tasa de bits AAC debe ser 96, 128, 160 o 192 kbit/s",
+    "ru-RU": "Битрейт AAC должен быть 96, 128, 160 или 192 кбит/с",
+    "uk-UA": "Бітрейт AAC має бути 96, 128, 160 або 192 кбіт/с",
+    "de-DE": "Die AAC-Bitrate muss 96, 128, 160 oder 192 kbit/s betragen"
+  },
+  "MP4 recording is available on Windows and macOS. Encoder availability is checked when recording starts. Additional recording formats are not available yet.": {
+    "es-ES": "La grabación MP4 está disponible en Windows y macOS. La disponibilidad del codificador se comprueba al iniciar la grabación. Aún no hay otros formatos de grabación.",
+    "ru-RU": "Запись MP4 доступна в Windows и macOS. Доступность кодировщика проверяется при запуске записи. Другие форматы записи пока недоступны.",
+    "uk-UA": "Запис MP4 доступний у Windows і macOS. Доступність кодувальника перевіряється під час запуску запису. Інші формати запису поки недоступні.",
+    "de-DE": "MP4-Aufnahmen sind unter Windows und macOS verfügbar. Die Verfügbarkeit des Encoders wird beim Aufnahmestart geprüft. Weitere Aufnahmeformate sind noch nicht verfügbar."
+  }
+}

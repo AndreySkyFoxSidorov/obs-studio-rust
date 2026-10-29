@@ -1,0 +1,68 @@
+{
+  "Pause": {
+    "es-ES": "Pausar",
+    "ru-RU": "Пауза",
+    "uk-UA": "Пауза",
+    "de-DE": "Pause"
+  },
+  "Resume": {
+    "es-ES": "Reanudar",
+    "ru-RU": "Продолжить",
+    "uk-UA": "Продовжити",
+    "de-DE": "Fortsetzen"
+  },
+  "Wait…": {
+    "es-ES": "Espera…",
+    "ru-RU": "Подождите…",
+    "uk-UA": "Зачекайте…",
+    "de-DE": "Bitte warten…"
+  },
+  "Pausing recording…": {
+    "es-ES": "Pausando grabación…",
+    "ru-RU": "Пауза записи…",
+    "uk-UA": "Призупинення запису…",
+    "de-DE": "Aufnahme wird pausiert…"
+  },
+  "Resuming recording…": {
+    "es-ES": "Reanudando grabación…",
+    "ru-RU": "Возобновление записи…",
+    "uk-UA": "Відновлення запису…",
+    "de-DE": "Aufnahme wird fortgesetzt…"
+  },
+  "Recording paused": {
+    "es-ES": "Grabación pausada",
+    "ru-RU": "Запись приостановлена",
+    "uk-UA": "Запис призупинено",
+    "de-DE": "Aufnahme pausiert"
+  },
+  "Recording resumed": {
+    "es-ES": "Grabación reanudada",
+    "ru-RU": "Запись возобновлена",
+    "uk-UA": "Запис відновлено",
+    "de-DE": "Aufnahme fortgesetzt"
+  },
+  "Recording pause belongs to another session": {
+    "es-ES": "La pausa de grabación pertenece a otra sesión",
+    "ru-RU": "Пауза записи относится к другой сессии",
+    "uk-UA": "Пауза запису належить іншій сесії",
+    "de-DE": "Die Aufnahmepause gehört zu einer anderen Sitzung"
+  },
+  "Pause only MP4 recording. Video and AAC audio omit the paused interval; streaming, replay, virtual camera and Preview continue.": {
+    "es-ES": "Pausa solo la grabación MP4. El video y el audio AAC omiten el intervalo en pausa; la transmisión, las repeticiones, la cámara virtual y la vista previa continúan.",
+    "ru-RU": "Пауза только записи MP4. Видео и звук AAC исключают интервал паузы; стрим, повторы, виртуальная камера и Preview продолжают работу.",
+    "uk-UA": "Пауза лише запису MP4. Відео та звук AAC виключають інтервал паузи; стрим, повтори, віртуальна камера та Preview продовжують роботу.",
+    "de-DE": "Nur die MP4-Aufnahme pausieren. Video und AAC-Audio lassen das Pausenintervall aus; Stream, Replay, virtuelle Kamera und Vorschau laufen weiter."
+  },
+  "Wait for recording and pause acknowledgements. Stop remains available while paused.": {
+    "es-ES": "Espera las confirmaciones de grabación y pausa. Detener sigue disponible durante la pausa.",
+    "ru-RU": "Дождитесь подтверждения запуска записи и паузы. Во время паузы остановка остаётся доступной.",
+    "uk-UA": "Дочекайтеся підтвердження запуску запису та паузи. Під час паузи зупинення залишається доступним.",
+    "de-DE": "Auf Aufnahme- und Pausenbestätigungen warten. Stoppen bleibt während der Pause verfügbar."
+  },
+  "Pause starts after already accepted video/audio. Its acknowledged cut may be later than the click; the encoded prefix is retained.": {
+    "es-ES": "La pausa empieza después del video y audio ya aceptados. Su corte confirmado puede ser posterior al clic; se conserva el contenido ya codificado.",
+    "ru-RU": "Пауза начинается после уже принятых видео и звука. Подтверждённая граница может быть позже нажатия; уже закодированная часть сохраняется.",
+    "uk-UA": "Пауза починається після вже прийнятих відео та звуку. Підтверджена межа може бути пізнішою за натискання; уже закодована частина зберігається.",
+    "de-DE": "Die Pause beginnt nach bereits angenommenen Video- und Audiodaten. Der bestätigte Schnitt kann nach dem Klick liegen; der bereits kodierte Teil bleibt erhalten."
+  }
+}

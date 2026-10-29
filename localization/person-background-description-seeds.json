@@ -1,0 +1,9 @@
+{
+  "Plugin.royshil/obs-backgroundremoval.Description.Selfie1": {
+    "en-US": "AI person background removal with the fixed Selfie256 CPU model, threshold and softness. This limited pure Rust port is off by default; enable it, then add the filter to a video source.",
+    "es-ES": "Eliminación del fondo de personas con IA, modelo fijo Selfie256 en CPU, umbral y suavidad. Esta adaptación limitada en Rust puro está desactivada de forma predeterminada; actívala y añade el filtro a una fuente de vídeo.",
+    "ru-RU": "Нейросетевое удаление фона человека: фиксированная модель Selfie256 на CPU, порог и мягкость. Этот ограниченный порт на чистом Rust выключен по умолчанию; включите его и добавьте фильтр к видеоисточнику.",
+    "uk-UA": "Нейромережеве видалення тла людини: фіксована модель Selfie256 на CPU, поріг і м’якість. Цей обмежений порт на чистому Rust типово вимкнено; увімкніть його й додайте фільтр до відеоджерела.",
+    "de-DE": "KI-Hintergrundentfernung für Personen mit festem Selfie256-CPU-Modell, Schwellenwert und Weichheit. Diese begrenzte reine Rust-Portierung ist standardmäßig deaktiviert; aktivieren Sie sie und fügen Sie den Filter einer Videoquelle hinzu."
+  }
+}

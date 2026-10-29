@@ -1,0 +1,78 @@
+{
+  "name": "OBS color subset fixture",
+  "version": 1,
+  "current_scene": "First",
+  "current_program_scene": "Second",
+  "scene_order": [{"name": "Second"}, {"name": "First"}],
+  "groups": [],
+  "sources": [
+    {
+      "name": "Shared Color",
+      "uuid": "1457ed57-09de-4c8e-aad8-3708dd393b9b",
+      "id": "color_source",
+      "versioned_id": "color_source_v3",
+      "settings": {"color": 4282400832, "width": 320, "height": 240},
+      "volume": 1.0,
+      "muted": false,
+      "enabled": true,
+      "filters": []
+    },
+    {
+      "name": "Second",
+      "uuid": "2457ed57-09de-4c8e-aad8-3708dd393b9b",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 7,
+        "custom_size": false,
+        "items": [{
+          "name": "Shared Color",
+          "source_uuid": "1457ed57-09de-4c8e-aad8-3708dd393b9b",
+          "id": 7,
+          "visible": true,
+          "locked": true,
+          "pos": {"x": 25.0, "y": 40.0},
+          "scale": {"x": 2.0, "y": 1.0},
+          "rot": 0.0,
+          "align": 5,
+          "bounds_type": 0,
+          "bounds_align": 0,
+          "bounds_crop": false,
+          "bounds": {"x": 0.0, "y": 0.0},
+          "crop_left": 0,
+          "crop_top": 0,
+          "crop_right": 0,
+          "crop_bottom": 0,
+          "group_item_backup": false,
+          "scale_filter": "disable",
+          "blend_method": "default",
+          "blend_type": "normal",
+          "show_transition": {"duration": 300},
+          "hide_transition": {"duration": 300},
+          "private_settings": {}
+        }]
+      }
+    },
+    {
+      "name": "First",
+      "uuid": "3457ed57-09de-4c8e-aad8-3708dd393b9b",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 1,
+        "custom_size": false,
+        "items": [{
+          "name": "Shared Color",
+          "source_uuid": "1457ed57-09de-4c8e-aad8-3708dd393b9b",
+          "id": 1,
+          "visible": false,
+          "locked": false,
+          "pos": {"x": 0.0, "y": 0.0},
+          "scale": {"x": 1.0, "y": 1.0},
+          "rot": 0.0,
+          "blend_type": "normal"
+        }]
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "Scene notes changed. Copy the retained draft or cancel edits to reload the current scene.": {
+    "es-ES": "Las notas han cambiado. Copia el borrador conservado o cancela los cambios para cargar la escena actual.",
+    "ru-RU": "Заметки изменились. Скопируйте сохранённый черновик или отмените правки, чтобы загрузить текущую сцену.",
+    "uk-UA": "Нотатки змінилися. Скопіюйте збережену чернетку або скасуйте правки, щоб завантажити поточну сцену.",
+    "de-DE": "Die Szenennotizen wurden geändert. Kopieren Sie den erhaltenen Entwurf oder verwerfen Sie die Änderungen, um die aktuelle Szene zu laden."
+  },
+  "Another collection is open. This retained notes draft cannot be applied. Cancel edits to load the current scene.": {
+    "es-ES": "Hay otra colección abierta. No se puede aplicar este borrador conservado. Cancela los cambios para cargar la escena actual.",
+    "ru-RU": "Открыта другая коллекция. Этот сохранённый черновик нельзя применить. Отмените правки, чтобы загрузить текущую сцену.",
+    "uk-UA": "Відкрито іншу колекцію. Цю збережену чернетку не можна застосувати. Скасуйте правки, щоб завантажити поточну сцену.",
+    "de-DE": "Eine andere Sammlung ist geöffnet. Dieser erhaltene Notizentwurf kann nicht angewendet werden. Verwerfen Sie die Änderungen, um die aktuelle Szene zu laden."
+  },
+  "Scene Notes dock identity exhausted. Reopen the application.": {
+    "es-ES": "Se agotaron los identificadores del panel de notas. Reinicia la aplicación.",
+    "ru-RU": "Исчерпаны идентификаторы панели заметок. Перезапустите приложение.",
+    "uk-UA": "Вичерпано ідентифікатори панелі нотаток. Перезапустіть застосунок.",
+    "de-DE": "Keine weiteren Kennungen für das Notizendock verfügbar. Starten Sie die Anwendung neu."
+  },
+  "The insertion exceeds the 16 KiB notes limit. The draft was kept unchanged.": {
+    "es-ES": "La inserción supera el límite de 16 KiB de las notas. El borrador se ha conservado sin cambios.",
+    "ru-RU": "Вставка превышает ограничение заметок в 16 КиБ. Черновик оставлен без изменений.",
+    "uk-UA": "Вставлення перевищує обмеження нотаток у 16 КіБ. Чернетку залишено без змін.",
+    "de-DE": "Die Einfügung überschreitet das Notizenlimit von 16 KiB. Der Entwurf wurde unverändert beibehalten."
+  },
+  "Scene notes exceed the supported limit.": {
+    "es-ES": "Las notas superan el límite admitido.",
+    "ru-RU": "Заметки сцены превышают допустимый размер.",
+    "uk-UA": "Нотатки сцени перевищують допустимий розмір.",
+    "de-DE": "Die Szenennotizen überschreiten die unterstützte Größe."
+  },
+  "Scene Notes module is disabled.": {
+    "es-ES": "El módulo de notas de escena está desactivado.",
+    "ru-RU": "Модуль заметок сцены отключён.",
+    "uk-UA": "Модуль нотаток сцени вимкнено.",
+    "de-DE": "Das Modul für Szenennotizen ist deaktiviert."
+  },
+  "There is no Scene Notes dock draft.": {
+    "es-ES": "No hay un borrador en el panel de notas de escena.",
+    "ru-RU": "Нет черновика в панели заметок сцены.",
+    "uk-UA": "Немає чернетки в панелі нотаток сцени.",
+    "de-DE": "Es gibt keinen Entwurf im Szenennotizendock."
+  },
+  "Scene Notes Dock": {
+    "es-ES": "Notas de escena",
+    "ru-RU": "Заметки сцены",
+    "uk-UA": "Нотатки сцени",
+    "de-DE": "Szenennotizen"
+  },
+  "Hide": {
+    "es-ES": "Ocultar",
+    "ru-RU": "Скрыть",
+    "uk-UA": "Сховати",
+    "de-DE": "Ausblenden"
+  },
+  "Hide this dock without applying or discarding its draft.": {
+    "es-ES": "Oculta este panel sin aplicar ni descartar su borrador.",
+    "ru-RU": "Скрыть панель, не применяя и не удаляя черновик.",
+    "uk-UA": "Сховати панель, не застосовуючи й не видаляючи чернетку.",
+    "de-DE": "Blenden Sie dieses Dock aus, ohne seinen Entwurf anzuwenden oder zu verwerfen."
+  },
+  "Plain text only": {
+    "es-ES": "Solo texto sin formato",
+    "ru-RU": "Только простой текст",
+    "uk-UA": "Лише простий текст",
+    "de-DE": "Nur Klartext"
+  },
+  "This port supports plain text. HTML, external files and automatic scrolling are not implemented.": {
+    "es-ES": "Esta adaptación admite texto sin formato. HTML, archivos externos y desplazamiento automático no están implementados.",
+    "ru-RU": "Этот порт поддерживает простой текст. HTML, внешние файлы и автоматическая прокрутка не реализованы.",
+    "uk-UA": "Цей порт підтримує простий текст. HTML, зовнішні файли й автоматичне прокручування не реалізовано.",
+    "de-DE": "Diese Portierung unterstützt Klartext. HTML, externe Dateien und automatisches Scrollen sind nicht implementiert."
+  },
+  "Selection changed. This draft still belongs to the scene named above.": {
+    "es-ES": "La selección ha cambiado. Este borrador sigue perteneciendo a la escena indicada arriba.",
+    "ru-RU": "Выбор изменился. Этот черновик по-прежнему относится к указанной выше сцене.",
+    "uk-UA": "Вибір змінився. Ця чернетка й далі належить указаній вище сцені.",
+    "de-DE": "Die Auswahl wurde geändert. Dieser Entwurf gehört weiterhin zur oben genannten Szene."
+  },
+  "Notes for this scene": {
+    "es-ES": "Notas de esta escena",
+    "ru-RU": "Заметки для этой сцены",
+    "uk-UA": "Нотатки для цієї сцени",
+    "de-DE": "Notizen für diese Szene"
+  },
+  "Edit plain-text cues for this scene. Apply notes commits them; Cancel edits discards the draft.": {
+    "es-ES": "Edita las indicaciones de texto de esta escena. Aplicar confirma las notas; Cancelar descarta el borrador.",
+    "ru-RU": "Редактируйте текстовые подсказки для сцены. Применение переносит заметки в сцену; отмена удаляет черновик.",
+    "uk-UA": "Редагуйте текстові підказки для сцени. Застосування переносить нотатки в сцену; скасування видаляє чернетку.",
+    "de-DE": "Bearbeiten Sie Klartexthinweise für diese Szene. Übernehmen bestätigt die Notizen; Verwerfen verwirft den Entwurf."
+  },
+  "Finish the active operation before editing scene notes.": {
+    "es-ES": "Finaliza la operación activa antes de editar las notas de la escena.",
+    "ru-RU": "Завершите текущую операцию перед редактированием заметок сцены.",
+    "uk-UA": "Завершіть поточну операцію перед редагуванням нотаток сцени.",
+    "de-DE": "Beenden Sie den aktiven Vorgang, bevor Sie Szenennotizen bearbeiten."
+  },
+  "Apply notes": {
+    "es-ES": "Aplicar",
+    "ru-RU": "Применить",
+    "uk-UA": "Застосувати",
+    "de-DE": "Übernehmen"
+  },
+  "Apply notes to the original scene. This does not save the document file.": {
+    "es-ES": "Aplica las notas a la escena original. Esto no guarda el archivo del documento.",
+    "ru-RU": "Применить заметки к исходной сцене. Это не сохраняет файл документа.",
+    "uk-UA": "Застосувати нотатки до початкової сцени. Це не зберігає файл документа.",
+    "de-DE": "Übernehmen Sie die Notizen für die ursprüngliche Szene. Dadurch wird die Dokumentdatei nicht gespeichert."
+  },
+  "Cancel edits": {
+    "es-ES": "Cancelar",
+    "ru-RU": "Отменить",
+    "uk-UA": "Скасувати",
+    "de-DE": "Verwerfen"
+  },
+  "Discard this draft and load notes for the currently selected scene.": {
+    "es-ES": "Descarta este borrador y carga las notas de la escena seleccionada actualmente.",
+    "ru-RU": "Удалить этот черновик и загрузить заметки выбранной сейчас сцены.",
+    "uk-UA": "Видалити цю чернетку й завантажити нотатки вибраної зараз сцени.",
+    "de-DE": "Verwerfen Sie diesen Entwurf und laden Sie die Notizen der aktuell ausgewählten Szene."
+  },
+  "Reopen the Scene Notes dock and finish the active dialog before editing notes.": {
+    "es-ES": "Vuelve a abrir el panel de notas y finaliza el diálogo activo antes de editar las notas.",
+    "ru-RU": "Снова откройте панель заметок и завершите текущий диалог перед редактированием.",
+    "uk-UA": "Знову відкрийте панель нотаток і завершіть поточний діалог перед редагуванням.",
+    "de-DE": "Öffnen Sie das Szenennotizendock erneut und schließen Sie den aktiven Dialog ab, bevor Sie Notizen bearbeiten."
+  },
+  "Scene notes were applied, but the dock could not refresh: {error}": {
+    "es-ES": "Las notas se aplicaron, pero el panel no pudo actualizarse: {error}",
+    "ru-RU": "Заметки применены, но панель не удалось обновить: {error}",
+    "uk-UA": "Нотатки застосовано, але панель не вдалося оновити: {error}",
+    "de-DE": "Die Szenennotizen wurden übernommen, aber das Dock konnte nicht aktualisiert werden: {error}"
+  },
+  "Show or hide the plain-text Scene Notes dock. Hiding retains its draft and authored notes.": {
+    "es-ES": "Muestra u oculta el panel de notas de texto sin formato. Al ocultarlo se conservan el borrador y las notas creadas.",
+    "ru-RU": "Показать или скрыть панель текстовых заметок сцены. При скрытии черновик и записанные заметки сохраняются.",
+    "uk-UA": "Показати або сховати панель текстових нотаток сцени. Під час приховування чернетка й записані нотатки зберігаються.",
+    "de-DE": "Zeigen Sie das Klartextdock für Szenennotizen an oder blenden Sie es aus. Beim Ausblenden bleiben Entwurf und erstellte Notizen erhalten."
+  }
+}

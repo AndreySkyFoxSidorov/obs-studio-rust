@@ -1,0 +1,110 @@
+{
+  "Interact": {
+    "es-ES": "Interactuar",
+    "ru-RU": "Взаимодействовать",
+    "uk-UA": "Взаємодіяти",
+    "de-DE": "Interagieren"
+  },
+  "Interact with {}": {
+    "es-ES": "Interactuar con {}",
+    "ru-RU": "Взаимодействие с {}",
+    "uk-UA": "Взаємодія з {}",
+    "de-DE": "Mit {} interagieren"
+  },
+  "Select a Browser Source to interact with it.": {
+    "es-ES": "Selecciona una fuente de navegador para interactuar.",
+    "ru-RU": "Выберите источник браузера для взаимодействия.",
+    "uk-UA": "Виберіть джерело браузера для взаємодії.",
+    "de-DE": "Eine Browser-Quelle zur Interaktion auswählen."
+  },
+  "Browser interaction identity exhausted.": {
+    "es-ES": "Se agotaron los identificadores de interacción del navegador.",
+    "ru-RU": "Исчерпаны идентификаторы окна взаимодействия с браузером.",
+    "uk-UA": "Вичерпано ідентифікатори вікна взаємодії з браузером.",
+    "de-DE": "Die Kennungen für Browser-Interaktionen sind ausgeschöpft."
+  },
+  "The Browser Source changed. Select it again.": {
+    "es-ES": "La fuente de navegador cambió. Selecciónala de nuevo.",
+    "ru-RU": "Источник браузера изменился. Выберите его заново.",
+    "uk-UA": "Джерело браузера змінилося. Виберіть його знову.",
+    "de-DE": "Die Browser-Quelle wurde geändert. Bitte erneut auswählen."
+  },
+  "Open the real browser page in a separate interaction window.": {
+    "es-ES": "Abre la página real en una ventana de interacción independiente.",
+    "ru-RU": "Открыть настоящую страницу браузера в отдельном окне взаимодействия.",
+    "uk-UA": "Відкрити справжню сторінку браузера в окремому вікні взаємодії.",
+    "de-DE": "Die echte Browser-Seite in einem eigenen Interaktionsfenster öffnen."
+  },
+  "Browser Interaction requires Windows x64 and the matching external CEF runtime.": {
+    "es-ES": "La interacción del navegador requiere Windows x64 y el entorno CEF externo correspondiente.",
+    "ru-RU": "Для взаимодействия с браузером нужны Windows x64 и соответствующая внешняя среда CEF.",
+    "uk-UA": "Для взаємодії з браузером потрібні Windows x64 і відповідне зовнішнє середовище CEF.",
+    "de-DE": "Browser-Interaktion benötigt Windows x64 und die passende externe CEF-Laufzeit."
+  },
+  "Reload the real browser page and reset interaction focus.": {
+    "es-ES": "Recarga la página real y restablece el foco de interacción.",
+    "ru-RU": "Перезагрузить настоящую страницу браузера и сбросить фокус ввода.",
+    "uk-UA": "Перезавантажити справжню сторінку браузера та скинути фокус вводу.",
+    "de-DE": "Die echte Browser-Seite neu laden und den Eingabefokus zurücksetzen."
+  },
+  "Close browser interaction and release its keyboard and mouse focus.": {
+    "es-ES": "Cierra la interacción y libera el foco de teclado y ratón.",
+    "ru-RU": "Закрыть окно взаимодействия и освободить фокус клавиатуры и мыши.",
+    "uk-UA": "Закрити вікно взаємодії та звільнити фокус клавіатури й миші.",
+    "de-DE": "Die Browser-Interaktion schließen und Tastatur- sowie Mausfokus freigeben."
+  },
+  "Click the preview to use the page. Escape releases keyboard focus.": {
+    "es-ES": "Haz clic en la vista previa para usar la página. Escape libera el foco del teclado.",
+    "ru-RU": "Нажмите на превью для работы со страницей. Escape освобождает фокус клавиатуры.",
+    "uk-UA": "Натисніть на попередній перегляд для роботи зі сторінкою. Escape звільняє фокус клавіатури.",
+    "de-DE": "Zur Bedienung der Seite auf die Vorschau klicken. Escape gibt den Tastaturfokus frei."
+  },
+  "Native IME composition and scan codes are unavailable; Unicode text events are forwarded as UTF-16. Clipboard integration is not provided.": {
+    "es-ES": "La composición IME nativa y los códigos de exploración no están disponibles; el texto Unicode se envía como UTF-16. No hay integración del portapapeles.",
+    "ru-RU": "Нативная IME-композиция и скан-коды недоступны; текстовые события Unicode передаются как UTF-16. Интеграции с буфером обмена нет.",
+    "uk-UA": "Нативна IME-композиція та скан-коди недоступні; текстові події Unicode передаються як UTF-16. Інтеграції з буфером обміну немає.",
+    "de-DE": "Native IME-Komposition und Scan-Codes sind nicht verfügbar; Unicode-Textereignisse werden als UTF-16 weitergeleitet. Keine Zwischenablage-Integration."
+  },
+  "Browser page interaction": {
+    "es-ES": "Interacción con la página",
+    "ru-RU": "Взаимодействие со страницей браузера",
+    "uk-UA": "Взаємодія зі сторінкою браузера",
+    "de-DE": "Interaktion mit der Browser-Seite"
+  },
+  "Waiting for browser frame": {
+    "es-ES": "Esperando un fotograma del navegador",
+    "ru-RU": "Ожидание кадра браузера",
+    "uk-UA": "Очікування кадру браузера",
+    "de-DE": "Warten auf Browser-Bild"
+  },
+  "Browser input is busy. Click the preview to resume.": {
+    "es-ES": "La entrada del navegador está ocupada. Haz clic en la vista previa para continuar.",
+    "ru-RU": "Очередь ввода браузера занята. Нажмите на превью, чтобы продолжить.",
+    "uk-UA": "Черга вводу браузера зайнята. Натисніть на попередній перегляд, щоб продовжити.",
+    "de-DE": "Die Browser-Eingabe ist ausgelastet. Zum Fortsetzen auf die Vorschau klicken."
+  },
+  "Browser text input exceeds the bounded input queue; no text from this event was sent.": {
+    "es-ES": "El texto supera la cola de entrada limitada; no se envió texto de este evento.",
+    "ru-RU": "Текст не помещается в ограниченную очередь ввода; текст этого события не отправлен.",
+    "uk-UA": "Текст не вміщується в обмежену чергу вводу; текст цієї події не надіслано.",
+    "de-DE": "Der Text überschreitet die begrenzte Eingabewarteschlange; aus diesem Ereignis wurde kein Text gesendet."
+  },
+  "Clipboard integration is not provided in Browser Interaction.": {
+    "es-ES": "La interacción del navegador no integra el portapapeles.",
+    "ru-RU": "В окне взаимодействия с браузером нет интеграции с буфером обмена.",
+    "uk-UA": "У вікні взаємодії з браузером немає інтеграції з буфером обміну.",
+    "de-DE": "Browser-Interaktion bietet keine Zwischenablage-Integration."
+  },
+  "Open Browser Interaction for the selected Browser Source, with real page input and refresh.": {
+    "es-ES": "Abre la interacción para la fuente seleccionada, con entrada y recarga reales.",
+    "ru-RU": "Открыть взаимодействие с выбранным источником браузера, с настоящим вводом и перезагрузкой страницы.",
+    "uk-UA": "Відкрити взаємодію з вибраним джерелом браузера, зі справжнім вводом і перезавантаженням сторінки.",
+    "de-DE": "Browser-Interaktion für die gewählte Quelle mit echter Eingabe und Seitenneuladung öffnen."
+  },
+  "Input compatibility": {
+    "es-ES": "Compatibilidad de entrada",
+    "ru-RU": "Совместимость ввода",
+    "uk-UA": "Сумісність вводу",
+    "de-DE": "Eingabekompatibilität"
+  }
+}

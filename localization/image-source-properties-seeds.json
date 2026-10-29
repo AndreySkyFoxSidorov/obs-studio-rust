@@ -1,0 +1,56 @@
+{
+  "The image draft changed. Reopen its properties before preparing.": {
+    "es-ES": "El borrador de la imagen cambió. Vuelve a abrir sus propiedades antes de prepararla.",
+    "ru-RU": "Черновик свойств изображения изменился. Откройте свойства заново перед подготовкой.",
+    "uk-UA": "Чернетка властивостей зображення змінилася. Відкрийте властивості знову перед підготовкою.",
+    "de-DE": "Der Bildentwurf wurde geändert. Öffne die Eigenschaften vor der Vorbereitung erneut."
+  },
+  "The image properties changed or closed before preparation finished. The prepared image was not applied.": {
+    "es-ES": "Las propiedades de la imagen cambiaron o se cerraron antes de terminar la preparación. La imagen preparada no se aplicó.",
+    "ru-RU": "Свойства изображения изменились или были закрыты до окончания подготовки. Подготовленное изображение не применено.",
+    "uk-UA": "Властивості зображення змінилися або були закриті до завершення підготовки. Підготовлене зображення не застосовано.",
+    "de-DE": "Die Bildeigenschaften wurden vor Ende der Vorbereitung geändert oder geschlossen. Das vorbereitete Bild wurde nicht übernommen."
+  },
+  "Image clip metadata exceeds its bounded cache allowance.": {
+    "es-ES": "Los metadatos de la imagen superan el límite de su caché.",
+    "ru-RU": "Метаданные изображения превышают лимит кеша.",
+    "uk-UA": "Метадані зображення перевищують ліміт кешу.",
+    "de-DE": "Die Bildmetadaten überschreiten das Cache-Limit."
+  },
+  "Image clip metadata allocation failed.": {
+    "es-ES": "No se pudo asignar memoria para los metadatos de la imagen.",
+    "ru-RU": "Не удалось выделить память для метаданных изображения.",
+    "uk-UA": "Не вдалося виділити пам’ять для метаданих зображення.",
+    "de-DE": "Der Speicher für die Bildmetadaten konnte nicht reserviert werden."
+  },
+  "A new linear-alpha clip must have exclusive ownership.": {
+    "es-ES": "Una imagen nueva con alfa lineal debe tener propiedad exclusiva.",
+    "ru-RU": "Новый клип с линейной альфой должен находиться в исключительном владении.",
+    "uk-UA": "Новий кліп із лінійною альфою має перебувати у виключному володінні.",
+    "de-DE": "Ein neuer Clip mit linearem Alpha muss exklusiven Besitz haben."
+  },
+  "The image source no longer exists or changed type.": {
+    "es-ES": "La fuente de imagen ya no existe o cambió de tipo.",
+    "ru-RU": "Источник изображения больше не существует или изменил тип.",
+    "uk-UA": "Джерело зображення більше не існує або змінило тип.",
+    "de-DE": "Die Bildquelle existiert nicht mehr oder hat ihren Typ geändert."
+  },
+  "Static BMP/TGA/PNG/JPEG/WebP and animated GIF images with unload-when-hidden and linear-alpha properties. Timed slideshows include four stock transitions, custom canvas, visibility behaviors, shared transport, random policies and authored file/folder entries. Native and strict OBS interchange preserve image properties and represented slideshow settings. Bounded workers expand or explicitly refresh folders. Automatic image file watching, eager hidden preload, JXR decoding, empty playlists and complete image-source parity remain unimplemented.": {
+    "es-ES": "Imágenes BMP/TGA/PNG/JPEG/WebP estáticas y GIF animadas con descarga al ocultarse y alfa lineal. Las presentaciones incluyen cuatro transiciones estándar, lienzo personalizado, comportamientos de visibilidad, transporte compartido, modos aleatorios y entradas de archivo o carpeta. Los formatos nativo y OBS estricto conservan las propiedades de imagen y los ajustes de presentación representados. Los trabajadores con límites expanden o actualizan carpetas de forma explícita. Quedan pendientes la vigilancia automática de archivos, la precarga oculta, JXR, las listas vacías y la paridad completa de image-source.",
+    "ru-RU": "Статические BMP/TGA/PNG/JPEG/WebP и анимированные GIF с выгрузкой скрытого изображения и линейной альфой. Слайд-шоу поддерживает четыре стандартных перехода, свой холст, поведение видимости, общее управление, режимы перемешивания и записи файлов или папок. Нативный формат и строгий обмен с OBS сохраняют свойства изображения и представимые настройки слайд-шоу. Рабочие потоки с лимитами раскрывают папки или обновляют их по команде. Автоматическое отслеживание файлов, предварительная загрузка скрытых изображений, JXR, пустые списки и полное соответствие image-source ещё не реализованы.",
+    "uk-UA": "Статичні BMP/TGA/PNG/JPEG/WebP й анімовані GIF із вивантаженням прихованого зображення та лінійною альфою. Слайд-шоу підтримує чотири стандартні переходи, власне полотно, поведінку видимості, спільне керування, режими перемішування й записи файлів або папок. Нативний формат і суворий обмін з OBS зберігають властивості зображення та відтворювані налаштування слайд-шоу. Робочі потоки з лімітами розгортають папки або оновлюють їх за командою. Автоматичне відстеження файлів, попереднє завантаження прихованих зображень, JXR, порожні списки та повну відповідність image-source ще не реалізовано.",
+    "de-DE": "Statische BMP/TGA/PNG/JPEG/WebP-Bilder und animierte GIFs mit Entladen bei Unsichtbarkeit und linearem Alpha. Diashows enthalten vier Standardübergänge, eigene Leinwand, Sichtbarkeitsverhalten, gemeinsame Steuerung, Zufallsmodi sowie Datei- und Ordnereinträge. Das native Format und der strikte OBS-Austausch erhalten Bildeigenschaften und abbildbare Diashow-Einstellungen. Begrenzte Worker lesen Ordner ein oder aktualisieren sie ausdrücklich. Automatische Dateiüberwachung, Vorladen verborgener Bilder, JXR, leere Listen und vollständige image-source-Parität fehlen noch."
+  },
+  "Free memory used by this image when it is not shown. Images still used by another output remain loaded.": {
+    "es-ES": "Libera la memoria de esta imagen cuando no se muestra. Las imágenes que se usan en otra salida permanecen cargadas.",
+    "ru-RU": "Освобождать память изображения, когда оно не показывается. Если изображение используется другим выходом, оно остаётся загруженным.",
+    "uk-UA": "Звільняти пам’ять зображення, коли воно не показується. Якщо зображення використовується іншим виходом, воно залишається завантаженим.",
+    "de-DE": "Gibt den Bildspeicher frei, wenn das Bild nicht angezeigt wird. Bilder, die eine andere Ausgabe noch verwendet, bleiben geladen."
+  },
+  "Apply transparency in linear color space for smoother blending around semi-transparent edges.": {
+    "es-ES": "Aplica la transparencia en el espacio de color lineal para suavizar la mezcla en los bordes semitransparentes.",
+    "ru-RU": "Применять прозрачность в линейном цветовом пространстве для более плавного смешивания полупрозрачных краёв.",
+    "uk-UA": "Застосовувати прозорість у лінійному колірному просторі для плавнішого змішування напівпрозорих країв.",
+    "de-DE": "Wendet Transparenz im linearen Farbraum an, um halbtransparente Kanten weicher zu mischen."
+  }
+}

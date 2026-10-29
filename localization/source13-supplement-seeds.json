@@ -1,0 +1,560 @@
+{
+  "{:.1} MiB": {
+    "es-ES": "{:.1} MiB",
+    "ru-RU": "{:.1} МиБ",
+    "uk-UA": "{:.1} МіБ",
+    "de-DE": "{:.1} MiB"
+  },
+  "{:.2} s": {
+    "es-ES": "{:.2} s",
+    "ru-RU": "{:.2} с",
+    "uk-UA": "{:.2} с",
+    "de-DE": "{:.2} s"
+  },
+  "{v:.0} kb/s": {
+    "es-ES": "{v:.0} kb/s",
+    "ru-RU": "{v:.0} кбит/с",
+    "uk-UA": "{v:.0} кбіт/с",
+    "de-DE": "{v:.0} kbit/s"
+  },
+  "{v:.1} ms": {
+    "es-ES": "{v:.1} ms",
+    "ru-RU": "{v:.1} мс",
+    "uk-UA": "{v:.1} мс",
+    "de-DE": "{v:.1} ms"
+  },
+  "LUT preparation has no active matching request.": {
+    "es-ES": "No hay ninguna solicitud activa que coincida con la preparación de la LUT.",
+    "ru-RU": "Нет активного запроса, соответствующего подготовке LUT.",
+    "uk-UA": "Немає активного запиту, що відповідає підготовці LUT.",
+    "de-DE": "Für die LUT-Vorbereitung gibt es keine passende aktive Anfrage."
+  },
+  "Projector identity exhausted.": {
+    "es-ES": "Se han agotado los identificadores de proyectores.",
+    "ru-RU": "Исчерпаны идентификаторы проекторов.",
+    "uk-UA": "Вичерпано ідентифікатори проєкторів.",
+    "de-DE": "Es sind keine weiteren Projektor-IDs verfügbar."
+  },
+  "Projector monitor identity exhausted.": {
+    "es-ES": "Se han agotado los identificadores de monitores de proyección.",
+    "ru-RU": "Исчерпаны идентификаторы мониторов проекторов.",
+    "uk-UA": "Вичерпано ідентифікатори моніторів проєкторів.",
+    "de-DE": "Es sind keine weiteren IDs für Projektormonitore verfügbar."
+  },
+  "1280 × 720 · 30 fps": {
+    "es-ES": "1280 × 720 · 30 fps",
+    "ru-RU": "1280 × 720 · 30 кадр/с",
+    "uk-UA": "1280 × 720 · 30 кадр/с",
+    "de-DE": "1280 × 720 · 30 fps"
+  },
+  "1920 × 1080 · 30 fps": {
+    "es-ES": "1920 × 1080 · 30 fps",
+    "ru-RU": "1920 × 1080 · 30 кадр/с",
+    "uk-UA": "1920 × 1080 · 30 кадр/с",
+    "de-DE": "1920 × 1080 · 30 fps"
+  },
+  "Adjust exposure stops, offset and gamma with EffectCraft's signed2.2 curve.": {
+    "es-ES": "Ajusta exposición, desplazamiento y gamma con la curva signed2.2 de EffectCraft.",
+    "ru-RU": "Настроить экспозицию в ступенях, смещение и гамму с помощью кривой signed2.2 из EffectCraft.",
+    "uk-UA": "Налаштувати експозицію в ступенях, зміщення та гаму за допомогою кривої signed2.2 з EffectCraft.",
+    "de-DE": "Belichtungsstufen, Versatz und Gamma mit der signed2.2-Kurve von EffectCraft einstellen."
+  },
+  "Adjust warm/cool and green/magenta balance using EffectCraft's basic white balance.": {
+    "es-ES": "Ajusta el equilibrio cálido/frío y verde/magenta con el balance de blancos básico de EffectCraft.",
+    "ru-RU": "Настроить баланс тёплых/холодных и зелёных/пурпурных оттенков с помощью баланса белого из EffectCraft.",
+    "uk-UA": "Налаштувати баланс теплих/холодних і зелених/пурпурових відтінків за допомогою балансу білого з EffectCraft.",
+    "de-DE": "Warm/Kalt- und Grün/Magenta-Balance mit dem grundlegenden Weißabgleich von EffectCraft einstellen."
+  },
+  "Append this image path to the playlist": {
+    "es-ES": "Añade esta ruta de imagen a la lista.",
+    "ru-RU": "Добавить этот файл изображения в список показа.",
+    "uk-UA": "Додати цей файл зображення до списку показу.",
+    "de-DE": "Diesen Bildpfad an die Wiedergabeliste anhängen."
+  },
+  "Apply exposure directly to encoded values instead of the signed2.2 conversion.": {
+    "es-ES": "Aplica la exposición directamente a los valores codificados en lugar de convertir con signed2.2.",
+    "ru-RU": "Применить экспозицию непосредственно к закодированным значениям без преобразования signed2.2.",
+    "uk-UA": "Застосувати експозицію безпосередньо до закодованих значень без перетворення signed2.2.",
+    "de-DE": "Belichtung direkt auf kodierte Werte statt nach der signed2.2-Umwandlung anwenden."
+  },
+  "Audio Meter": {
+    "es-ES": "Medidor de audio",
+    "ru-RU": "Индикатор уровня звука",
+    "uk-UA": "Індикатор рівня звуку",
+    "de-DE": "Audiopegelanzeige"
+  },
+  "Audio Sources": {
+    "es-ES": "Fuentes de audio",
+    "ru-RU": "Источники звука",
+    "uk-UA": "Джерела звуку",
+    "de-DE": "Audioquellen"
+  },
+  "Audio device list became stale; refresh playback devices": {
+    "es-ES": "La lista de dispositivos de audio está desactualizada; actualiza los dispositivos de reproducción.",
+    "ru-RU": "Список аудиоустройств устарел; обновите устройства воспроизведения.",
+    "uk-UA": "Список аудіопристроїв застарів; оновіть пристрої відтворення.",
+    "de-DE": "Die Audiogeräteliste ist veraltet; aktualisieren Sie die Wiedergabegeräte."
+  },
+  "Audio monitoring device request is stale": {
+    "es-ES": "La solicitud del dispositivo de monitorización de audio está desactualizada.",
+    "ru-RU": "Запрос устройства аудиомониторинга устарел.",
+    "uk-UA": "Запит пристрою аудіомоніторингу застарів.",
+    "de-DE": "Die Anfrage für das Audiomonitorgerät ist veraltet."
+  },
+  "Audio monitoring settings changed; choose the device again": {
+    "es-ES": "Los ajustes de monitorización cambiaron; selecciona de nuevo el dispositivo.",
+    "ru-RU": "Настройки аудиомониторинга изменились; выберите устройство заново.",
+    "uk-UA": "Налаштування аудіомоніторингу змінилися; виберіть пристрій знову.",
+    "de-DE": "Die Audiomonitoreinstellungen wurden geändert; wählen Sie das Gerät erneut aus."
+  },
+  "Become transparent after one complete playlist": {
+    "es-ES": "Se vuelve transparente después de reproducir toda la lista.",
+    "ru-RU": "Становиться прозрачным после полного показа списка.",
+    "uk-UA": "Ставати прозорим після повного показу списку.",
+    "de-DE": "Nach einer vollständigen Wiedergabeliste transparent werden."
+  },
+  "Camera properties belong to an obsolete document or dialog": {
+    "es-ES": "Las propiedades de cámara pertenecen a un documento o diálogo obsoleto.",
+    "ru-RU": "Свойства камеры относятся к устаревшему документу или окну.",
+    "uk-UA": "Властивості камери стосуються застарілого документа або вікна.",
+    "de-DE": "Die Kameraeigenschaften gehören zu einem veralteten Dokument oder Dialog."
+  },
+  "Camera properties changed; driver was not written": {
+    "es-ES": "Las propiedades de cámara cambiaron; no se modificó el controlador.",
+    "ru-RU": "Свойства камеры изменились; запись в драйвер не выполнена.",
+    "uk-UA": "Властивості камери змінилися; запис у драйвер не виконано.",
+    "de-DE": "Die Kameraeigenschaften wurden geändert; der Treiber wurde nicht beschrieben."
+  },
+  "Choose a profile file.": {
+    "es-ES": "Selecciona un archivo de perfil.",
+    "ru-RU": "Выберите файл профиля.",
+    "uk-UA": "Виберіть файл профілю.",
+    "de-DE": "Wählen Sie eine Profildatei aus."
+  },
+  "Convert source luminosity to black and white using PhotoCraft's eight-bit threshold rule.": {
+    "es-ES": "Convierte la luminosidad a blanco y negro con el umbral de ocho bits de PhotoCraft.",
+    "ru-RU": "Преобразовать яркость источника в чёрно-белое изображение по восьмибитному порогу PhotoCraft.",
+    "uk-UA": "Перетворити яскравість джерела на чорно-біле зображення за восьмибітним порогом PhotoCraft.",
+    "de-DE": "Quellenhelligkeit mit der 8-Bit-Schwellenregel von PhotoCraft in Schwarzweiß umwandeln."
+  },
+  "Crossfade images with their transparency preserved": {
+    "es-ES": "Transición cruzada entre imágenes conservando la transparencia.",
+    "ru-RU": "Плавно сменять изображения с сохранением прозрачности.",
+    "uk-UA": "Плавно змінювати зображення зі збереженням прозорості.",
+    "de-DE": "Bilder unter Beibehaltung ihrer Transparenz überblenden."
+  },
+  "Devices can use a different input format; audio is converted to these project settings. Windows monitoring uses a separate selected playback endpoint.": {
+    "es-ES": "Los dispositivos pueden usar otro formato de entrada; el audio se convierte a estos ajustes del proyecto. La monitorización de Windows usa un dispositivo de reproducción seleccionado por separado.",
+    "ru-RU": "Устройства могут использовать другой входной формат; звук преобразуется в формат проекта. Для мониторинга в Windows отдельно выбирается устройство воспроизведения.",
+    "uk-UA": "Пристрої можуть використовувати інший вхідний формат; звук перетворюється у формат проєкту. Для моніторингу у Windows окремо вибирається пристрій відтворення.",
+    "de-DE": "Geräte können ein anderes Eingabeformat verwenden; Audio wird in dieses Projektformat umgewandelt. Das Windows-Monitoring nutzt einen separat gewählten Wiedergabeendpunkt."
+  },
+  "Disable Loop to use this option": {
+    "es-ES": "Desactiva Bucle para usar esta opción.",
+    "ru-RU": "Отключите зацикливание для использования этого параметра.",
+    "uk-UA": "Вимкніть зациклення для використання цього параметра.",
+    "de-DE": "Deaktivieren Sie die Schleife, um diese Option zu verwenden."
+  },
+  "Display an ordered image playlist with timed cuts or fades": {
+    "es-ES": "Muestra una lista ordenada de imágenes con cortes o fundidos temporizados.",
+    "ru-RU": "Показывать упорядоченный список изображений с заданными интервалами и резкой или плавной сменой.",
+    "uk-UA": "Показувати впорядкований список зображень із заданими інтервалами та різкою або плавною зміною.",
+    "de-DE": "Eine geordnete Bildliste mit zeitgesteuerten Schnitten oder Überblendungen anzeigen."
+  },
+  "Duration of the image crossfade": {
+    "es-ES": "Duración de la transición entre imágenes.",
+    "ru-RU": "Длительность плавной смены изображений.",
+    "uk-UA": "Тривалість плавної зміни зображень.",
+    "de-DE": "Dauer der Bildüberblendung."
+  },
+  "Each image needs a valid path of 1..=4096 bytes without controls": {
+    "es-ES": "Cada imagen necesita una ruta válida de 1..=4096 bytes sin caracteres de control.",
+    "ru-RU": "Для каждого изображения нужен корректный путь длиной 1..=4096 байт без управляющих символов.",
+    "uk-UA": "Для кожного зображення потрібен коректний шлях завдовжки 1..=4096 байтів без керівних символів.",
+    "de-DE": "Jedes Bild benötigt einen gültigen Pfad mit 1..=4096 Bytes ohne Steuerzeichen."
+  },
+  "Enter a PNG, JPEG, GIF or WebP image path": {
+    "es-ES": "Introduce la ruta de una imagen PNG, JPEG, GIF o WebP.",
+    "ru-RU": "Введите путь к изображению PNG, JPEG, GIF или WebP.",
+    "uk-UA": "Введіть шлях до зображення PNG, JPEG, GIF або WebP.",
+    "de-DE": "Pfad zu einem PNG-, JPEG-, GIF- oder WebP-Bild eingeben."
+  },
+  "Enter a path; maximum 256 images": {
+    "es-ES": "Introduce una ruta; máximo 256 imágenes.",
+    "ru-RU": "Введите путь; не более 256 изображений.",
+    "uk-UA": "Введіть шлях; не більше 256 зображень.",
+    "de-DE": "Pfad eingeben; höchstens 256 Bilder."
+  },
+  "Exact path to this image file; Apply prepares and validates all files": {
+    "es-ES": "Ruta exacta del archivo de imagen; Aplicar prepara y valida todos los archivos.",
+    "ru-RU": "Точный путь к файлу изображения; при применении подготавливаются и проверяются все файлы.",
+    "uk-UA": "Точний шлях до файлу зображення; під час застосування готуються та перевіряються всі файли.",
+    "de-DE": "Exakter Pfad zur Bilddatei; Anwenden bereitet alle Dateien vor und validiert sie."
+  },
+  "Folder requested: {path}": {
+    "es-ES": "Carpeta solicitada: {path}",
+    "ru-RU": "Запрошено открытие папки: {path}",
+    "uk-UA": "Запитано відкриття теки: {path}",
+    "de-DE": "Ordner angefordert: {path}"
+  },
+  "Hold time; Fade adds its transition duration to the slide interval": {
+    "es-ES": "Tiempo de permanencia; Fundido añade su duración al intervalo de la diapositiva.",
+    "ru-RU": "Время показа; плавная смена добавляет длительность перехода к интервалу изображения.",
+    "uk-UA": "Час показу; плавна зміна додає тривалість переходу до інтервалу зображення.",
+    "de-DE": "Standzeit; Überblenden addiert die Übergangsdauer zum Bildintervall."
+  },
+  "Image file path": {
+    "es-ES": "Ruta del archivo de imagen",
+    "ru-RU": "Путь к файлу изображения",
+    "uk-UA": "Шлях до файлу зображення",
+    "de-DE": "Pfad zur Bilddatei"
+  },
+  "Images use centered aspect fit in the largest image canvas. Playback stops when hidden and restarts when visible.": {
+    "es-ES": "Las imágenes se centran manteniendo la proporción en el lienzo de mayor tamaño. La reproducción se detiene al ocultarse y se reinicia al mostrarse.",
+    "ru-RU": "Изображения вписываются с сохранением пропорций по центру холста самого большого изображения. Показ останавливается при скрытии и начинается заново при появлении.",
+    "uk-UA": "Зображення вписуються зі збереженням пропорцій у центр полотна найбільшого зображення. Показ зупиняється після приховування та починається заново після появи.",
+    "de-DE": "Bilder werden proportional zentriert in die größte Bildleinwand eingepasst. Die Wiedergabe stoppt beim Ausblenden und startet beim Einblenden neu."
+  },
+  "Invalid video filter preview command.": {
+    "es-ES": "Orden de vista previa de filtro de vídeo no válida.",
+    "ru-RU": "Некорректная команда предпросмотра видеофильтра.",
+    "uk-UA": "Некоректна команда попереднього перегляду відеофільтра.",
+    "de-DE": "Ungültiger Befehl für die Videofiltervorschau."
+  },
+  "Invert source RGB colors while preserving its alpha.": {
+    "es-ES": "Invierte los colores RGB de la fuente conservando su alfa.",
+    "ru-RU": "Инвертировать RGB-цвета источника с сохранением прозрачности.",
+    "uk-UA": "Інвертувати RGB-кольори джерела зі збереженням прозорості.",
+    "de-DE": "RGB-Farben der Quelle unter Beibehaltung ihres Alphakanals invertieren."
+  },
+  "Mix Rec.601 grayscale into the source without removing transparency.": {
+    "es-ES": "Mezcla escala de grises Rec.601 en la fuente sin eliminar la transparencia.",
+    "ru-RU": "Добавить оттенки серого Rec.601 с сохранением прозрачности.",
+    "uk-UA": "Додати відтінки сірого Rec.601 зі збереженням прозорості.",
+    "de-DE": "Rec.601-Graustufen in die Quelle einmischen, ohne die Transparenz zu entfernen."
+  },
+  "Move image earlier": {
+    "es-ES": "Mover imagen antes",
+    "ru-RU": "Переместить изображение раньше",
+    "uk-UA": "Перемістити зображення раніше",
+    "de-DE": "Bild nach vorn verschieben"
+  },
+  "Move image later": {
+    "es-ES": "Mover imagen después",
+    "ru-RU": "Переместить изображение позже",
+    "uk-UA": "Перемістити зображення пізніше",
+    "de-DE": "Bild nach hinten verschieben"
+  },
+  "Name of this image slideshow source": {
+    "es-ES": "Nombre de esta fuente de presentación de imágenes",
+    "ru-RU": "Название этого источника слайд-шоу",
+    "uk-UA": "Назва цього джерела слайд-шоу",
+    "de-DE": "Name dieser Bildpräsentationsquelle"
+  },
+  "Native file chooser identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del selector de archivos.",
+    "ru-RU": "Исчерпаны идентификаторы диалога выбора файла.",
+    "uk-UA": "Вичерпано ідентифікатори діалогу вибору файлу.",
+    "de-DE": "Die Kennungen des nativen Dateiauswahldialogs sind ausgeschöpft."
+  },
+  "Not a folder: {}": {
+    "es-ES": "No es una carpeta: {}",
+    "ru-RU": "Это не папка: {}",
+    "uk-UA": "Це не тека: {}",
+    "de-DE": "Kein Ordner: {}"
+  },
+  "Preparing slideshow images…": {
+    "es-ES": "Preparando imágenes de presentación…",
+    "ru-RU": "Подготовка изображений слайд-шоу…",
+    "uk-UA": "Підготовка зображень слайд-шоу…",
+    "de-DE": "Bilder der Präsentation werden vorbereitet…"
+  },
+  "Program shows the composition used for streaming and recording. Use Controls to start or stop an output.": {
+    "es-ES": "Programa muestra la composición usada para transmitir y grabar. Usa Controles para iniciar o detener una salida.",
+    "ru-RU": "Program показывает композицию для стриминга и записи. Запускайте и останавливайте выходы на панели управления.",
+    "uk-UA": "Program показує композицію для трансляції та запису. Запускайте й зупиняйте виходи на панелі керування.",
+    "de-DE": "Programm zeigt die für Streaming und Aufnahme verwendete Komposition. Ausgaben werden über die Steuerung gestartet oder gestoppt."
+  },
+  "Properties: Image Slide Show": {
+    "es-ES": "Propiedades: presentación de imágenes",
+    "ru-RU": "Свойства: слайд-шоу изображений",
+    "uk-UA": "Властивості: слайд-шоу зображень",
+    "de-DE": "Eigenschaften: Bildpräsentation"
+  },
+  "Quantize RGB into PhotoCraft's eight-bit posterization levels.": {
+    "es-ES": "Cuantiza RGB en los niveles de posterización de ocho bits de PhotoCraft.",
+    "ru-RU": "Квантовать RGB по восьмибитным уровням постеризации PhotoCraft.",
+    "uk-UA": "Квантувати RGB за восьмибітними рівнями постеризації PhotoCraft.",
+    "de-DE": "RGB in die 8-Bit-Posterisierungsstufen von PhotoCraft quantisieren."
+  },
+  "Remove this image from the draft playlist": {
+    "es-ES": "Elimina esta imagen del borrador de lista.",
+    "ru-RU": "Удалить это изображение из редактируемого списка.",
+    "uk-UA": "Видалити це зображення з редагованого списку.",
+    "de-DE": "Dieses Bild aus dem Entwurf der Wiedergabeliste entfernen."
+  },
+  "Restart the playlist after its last image": {
+    "es-ES": "Reinicia la lista después de la última imagen.",
+    "ru-RU": "Начинать список заново после последнего изображения.",
+    "uk-UA": "Починати список знову після останнього зображення.",
+    "de-DE": "Wiedergabeliste nach dem letzten Bild neu starten."
+  },
+  "Select 1..=256 image files": {
+    "es-ES": "Selecciona 1..=256 archivos de imagen.",
+    "ru-RU": "Выберите 1..=256 файлов изображений.",
+    "uk-UA": "Виберіть 1..=256 файлів зображень.",
+    "de-DE": "Wählen Sie 1..=256 Bilddateien aus."
+  },
+  "Send Program to the installed SkyLive virtual camera.": {
+    "es-ES": "Envía Programa a la cámara virtual SkyLive instalada.",
+    "ru-RU": "Передавать Program в установленную виртуальную камеру SkyLive.",
+    "uk-UA": "Передавати Program у встановлену віртуальну камеру SkyLive.",
+    "de-DE": "Programm an die installierte virtuelle SkyLive-Kamera senden."
+  },
+  "Session is closed": {
+    "es-ES": "La sesión está cerrada.",
+    "ru-RU": "Сессия закрыта.",
+    "uk-UA": "Сесію закрито.",
+    "de-DE": "Die Sitzung ist geschlossen."
+  },
+  "Slideshow dialog identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del diálogo de presentación.",
+    "ru-RU": "Исчерпаны идентификаторы окна слайд-шоу.",
+    "uk-UA": "Вичерпано ідентифікатори вікна слайд-шоу.",
+    "de-DE": "Die Kennungen des Bildpräsentationsdialogs sind ausgeschöpft."
+  },
+  "Slideshow document is closed": {
+    "es-ES": "El documento de presentación está cerrado.",
+    "ru-RU": "Документ слайд-шоу закрыт.",
+    "uk-UA": "Документ слайд-шоу закрито.",
+    "de-DE": "Das Bildpräsentationsdokument ist geschlossen."
+  },
+  "Slideshow image preparation is already active": {
+    "es-ES": "La preparación de imágenes ya está activa.",
+    "ru-RU": "Подготовка изображений слайд-шоу уже выполняется.",
+    "uk-UA": "Підготовка зображень слайд-шоу вже виконується.",
+    "de-DE": "Die Vorbereitung der Präsentationsbilder läuft bereits."
+  },
+  "Slideshow preparation is stale; current source was retained": {
+    "es-ES": "La preparación de la presentación está desactualizada; se conservó la fuente actual.",
+    "ru-RU": "Подготовка слайд-шоу устарела; текущий источник сохранён.",
+    "uk-UA": "Підготовка слайд-шоу застаріла; поточне джерело збережено.",
+    "de-DE": "Die Vorbereitung der Bildpräsentation ist veraltet; die aktuelle Quelle wurde beibehalten."
+  },
+  "Slideshow preparation returned an incomplete playlist": {
+    "es-ES": "La preparación devolvió una lista incompleta.",
+    "ru-RU": "При подготовке слайд-шоу получен неполный список изображений.",
+    "uk-UA": "Під час підготовки слайд-шоу отримано неповний список зображень.",
+    "de-DE": "Die Vorbereitung der Bildpräsentation lieferte eine unvollständige Liste."
+  },
+  "Slideshow preparation returned an unexpected receipt": {
+    "es-ES": "La preparación devolvió una respuesta inesperada.",
+    "ru-RU": "При подготовке слайд-шоу получен неожиданный результат.",
+    "uk-UA": "Під час підготовки слайд-шоу отримано неочікуваний результат.",
+    "de-DE": "Die Vorbereitung der Bildpräsentation lieferte eine unerwartete Rückmeldung."
+  },
+  "Slideshow properties are stale; reopen Properties": {
+    "es-ES": "Las propiedades están desactualizadas; vuelve a abrir Propiedades.",
+    "ru-RU": "Свойства слайд-шоу устарели; откройте их заново.",
+    "uk-UA": "Властивості слайд-шоу застаріли; відкрийте їх знову.",
+    "de-DE": "Die Bildpräsentationseigenschaften sind veraltet; öffnen Sie die Eigenschaften erneut."
+  },
+  "Slideshow receipt has no active matching preparation": {
+    "es-ES": "La respuesta de presentación no coincide con una preparación activa.",
+    "ru-RU": "Для результата слайд-шоу нет соответствующей активной подготовки.",
+    "uk-UA": "Для результату слайд-шоу немає відповідної активної підготовки.",
+    "de-DE": "Die Rückmeldung der Bildpräsentation hat keine passende aktive Vorbereitung."
+  },
+  "Slideshow source is unavailable": {
+    "es-ES": "La fuente de presentación no está disponible.",
+    "ru-RU": "Источник слайд-шоу недоступен.",
+    "uk-UA": "Джерело слайд-шоу недоступне.",
+    "de-DE": "Die Bildpräsentationsquelle ist nicht verfügbar."
+  },
+  "Slideshow target scene is unavailable": {
+    "es-ES": "La escena de destino de la presentación no está disponible.",
+    "ru-RU": "Целевая сцена слайд-шоу недоступна.",
+    "uk-UA": "Цільова сцена слайд-шоу недоступна.",
+    "de-DE": "Die Zielszene der Bildpräsentation ist nicht verfügbar."
+  },
+  "Switch images immediately": {
+    "es-ES": "Cambia las imágenes inmediatamente.",
+    "ru-RU": "Мгновенно сменять изображения.",
+    "uk-UA": "Миттєво змінювати зображення.",
+    "de-DE": "Bilder sofort wechseln."
+  },
+  "The document or Plugin Manager changed. Choose the source target again.": {
+    "es-ES": "El documento o el gestor de plugins cambió. Selecciona de nuevo el destino de la fuente.",
+    "ru-RU": "Документ или менеджер плагинов изменился. Выберите целевую сцену источника заново.",
+    "uk-UA": "Документ або менеджер плагінів змінився. Виберіть цільову сцену джерела знову.",
+    "de-DE": "Das Dokument oder die Pluginverwaltung wurde geändert. Wählen Sie das Quellenziel erneut aus."
+  },
+  "The selected target scene no longer exists.": {
+    "es-ES": "La escena de destino seleccionada ya no existe.",
+    "ru-RU": "Выбранная целевая сцена больше не существует.",
+    "uk-UA": "Вибрана цільова сцена більше не існує.",
+    "de-DE": "Die gewählte Zielszene existiert nicht mehr."
+  },
+  "This camera has no modes supported by the current raw/MJPEG capture profile.": {
+    "es-ES": "Esta cámara no tiene modos compatibles con el perfil de captura raw/MJPEG actual.",
+    "ru-RU": "У этой камеры нет режимов, поддерживаемых текущим профилем захвата raw/MJPEG.",
+    "uk-UA": "Ця камера не має режимів, підтримуваних поточним профілем захоплення raw/MJPEG.",
+    "de-DE": "Diese Kamera bietet keine vom aktuellen Raw/MJPEG-Aufnahmeprofil unterstützten Modi."
+  },
+  "This image is first": {
+    "es-ES": "Esta imagen es la primera.",
+    "ru-RU": "Это первое изображение.",
+    "uk-UA": "Це перше зображення.",
+    "de-DE": "Dieses Bild ist das erste."
+  },
+  "This image is last": {
+    "es-ES": "Esta imagen es la última.",
+    "ru-RU": "Это последнее изображение.",
+    "uk-UA": "Це останнє зображення.",
+    "de-DE": "Dieses Bild ist das letzte."
+  },
+  "This module has no available source provider for this operation on this platform.": {
+    "es-ES": "Este módulo no ofrece una fuente disponible para esta operación en esta plataforma.",
+    "ru-RU": "В этом модуле нет доступного источника для данной операции на этой платформе.",
+    "uk-UA": "У цьому модулі немає доступного джерела для цієї операції на цій платформі.",
+    "de-DE": "Dieses Modul bietet auf dieser Plattform keinen verfügbaren Quellenanbieter für diesen Vorgang."
+  },
+  "Use a stable shuffled order; each image appears once per loop": {
+    "es-ES": "Usa un orden aleatorio estable; cada imagen aparece una vez por ciclo.",
+    "ru-RU": "Использовать стабильный перемешанный порядок; каждое изображение показывается один раз за цикл.",
+    "uk-UA": "Використовувати стабільний перемішаний порядок; кожне зображення показується один раз за цикл.",
+    "de-DE": "Eine stabile Zufallsreihenfolge verwenden; jedes Bild erscheint einmal pro Durchlauf."
+  },
+  "Video frames": {
+    "es-ES": "Fotogramas de vídeo",
+    "ru-RU": "Видеокадры",
+    "uk-UA": "Відеокадри",
+    "de-DE": "Videobilder"
+  },
+  "Virtual-camera resource generation exhausted": {
+    "es-ES": "Se agotaron las generaciones de recursos de cámara virtual.",
+    "ru-RU": "Исчерпаны поколения ресурсов виртуальной камеры.",
+    "uk-UA": "Вичерпано покоління ресурсів віртуальної камери.",
+    "de-DE": "Die Ressourcengenerationen der virtuellen Kamera sind ausgeschöpft."
+  },
+  "Virtual-camera settings identity exhausted": {
+    "es-ES": "Se agotaron los identificadores de ajustes de cámara virtual.",
+    "ru-RU": "Исчерпаны идентификаторы настроек виртуальной камеры.",
+    "uk-UA": "Вичерпано ідентифікатори налаштувань віртуальної камери.",
+    "de-DE": "Die Einstellungskennungen der virtuellen Kamera sind ausgeschöpft."
+  },
+  "Wait for the scene transition to finish before writing camera controls": {
+    "es-ES": "Espera a que termine la transición de escena antes de modificar los controles de cámara.",
+    "ru-RU": "Дождитесь завершения перехода между сценами перед изменением параметров камеры.",
+    "uk-UA": "Дочекайтеся завершення переходу між сценами перед зміною параметрів камери.",
+    "de-DE": "Warten Sie vor dem Ändern der Kamerasteuerung, bis der Szenenübergang abgeschlossen ist."
+  },
+  "Windows audio monitoring backend is unavailable": {
+    "es-ES": "El sistema de monitorización de audio de Windows no está disponible.",
+    "ru-RU": "Система аудиомониторинга Windows недоступна.",
+    "uk-UA": "Система аудіомоніторингу Windows недоступна.",
+    "de-DE": "Das Windows-Audiomonitoring ist nicht verfügbar."
+  },
+  "Windows monitoring uses the selected playback device. Sync offsets and separate audio tracks are not available yet.": {
+    "es-ES": "La monitorización de Windows usa el dispositivo de reproducción seleccionado. Los desfases de sincronización y las pistas de audio separadas aún no están disponibles.",
+    "ru-RU": "Мониторинг Windows использует выбранное устройство воспроизведения. Смещения синхронизации и отдельные аудиодорожки пока недоступны.",
+    "uk-UA": "Моніторинг Windows використовує вибраний пристрій відтворення. Зміщення синхронізації та окремі аудіодоріжки поки недоступні.",
+    "de-DE": "Das Windows-Monitoring verwendet das gewählte Wiedergabegerät. Synchronisationsversatz und separate Audiospuren sind noch nicht verfügbar."
+  },
+  "Unavailable on this platform": {
+    "es-ES": "No disponible en esta plataforma",
+    "ru-RU": "Недоступно на этой платформе",
+    "uk-UA": "Недоступно на цій платформі",
+    "de-DE": "Auf dieser Plattform nicht verfügbar"
+  },
+  "Select and drag a source. Drag a square handle to resize or the round handle to rotate. Hold Shift to stretch or snap rotation, Alt to crop, or Ctrl for free rotation. Arrow keys move by one pixel; Shift moves by ten. Escape cancels the current edit.": {
+    "es-ES": "Selecciona y arrastra una fuente. Arrastra un tirador cuadrado para cambiar su tamaño o el redondo para girarla. Mantén Mayús para estirar o ajustar el giro, Alt para recortar o Ctrl para girar libremente. Las flechas desplazan un píxel; con Mayús, diez. Escape cancela la edición.",
+    "ru-RU": "Выберите и перетащите источник. Квадратные маркеры меняют размер, круглый поворачивает. Shift растягивает или включает шаг поворота, Alt обрезает, Ctrl отключает привязку угла. Стрелки сдвигают на один пиксель, с Shift — на десять. Escape отменяет изменение.",
+    "uk-UA": "Виберіть і перетягніть джерело. Квадратні маркери змінюють розмір, круглий повертає. Shift розтягує або вмикає крок повороту, Alt обрізає, Ctrl вимикає прив’язку кута. Стрілки зсувають на один піксель, із Shift — на десять. Escape скасовує зміну.",
+    "de-DE": "Quelle auswählen und ziehen. Eckige Griffe ändern die Größe, der runde Griff dreht. Umschalt dehnt oder rastet die Drehung ein, Alt beschneidet, Strg erlaubt freie Drehung. Pfeile verschieben um einen Pixel, mit Umschalt um zehn. Escape verwirft die Änderung."
+  },
+  "Drag to rotate around the source center. Shift snaps to 15°; Ctrl disables angle snapping.": {
+    "es-ES": "Arrastra para girar alrededor del centro de la fuente. Mayús ajusta a 15°; Ctrl desactiva el ajuste angular.",
+    "ru-RU": "Перетаскивайте для поворота вокруг центра источника. Shift задаёт шаг 15°, Ctrl отключает привязку угла.",
+    "uk-UA": "Перетягуйте для повороту навколо центру джерела. Shift задає крок 15°, Ctrl вимикає прив’язку кута.",
+    "de-DE": "Ziehen, um die Quelle um ihren Mittelpunkt zu drehen. Umschalt rastet in 15° ein; Strg deaktiviert das Einrasten."
+  },
+  "Rotation pointer coordinates must be finite.": {
+    "es-ES": "Las coordenadas del puntero de giro deben ser finitas.",
+    "ru-RU": "Координаты указателя поворота должны быть конечными числами.",
+    "uk-UA": "Координати вказівника повороту мають бути скінченними числами.",
+    "de-DE": "Die Zeigerkoordinaten der Drehung müssen endlich sein."
+  },
+  "Browser dialog identity exhausted": {
+    "es-ES": "No se puede crear otro diálogo de fuente de navegador.",
+    "ru-RU": "Невозможно создать ещё одно окно браузерного источника.",
+    "uk-UA": "Неможливо створити ще одне вікно браузерного джерела.",
+    "de-DE": "Es kann kein weiterer Browserquellendialog erstellt werden."
+  },
+  "{}\nPID {} · creation {} · HWND {}\n{}": {
+    "es-ES": "{}\nPID {} · creación {} · HWND {}\n{}",
+    "ru-RU": "{}\nPID {} · время создания {} · HWND {}\n{}",
+    "uk-UA": "{}\nPID {} · час створення {} · HWND {}\n{}",
+    "de-DE": "{}\nPID {} · Erstellung {} · HWND {}\n{}"
+  },
+  "Browser Source": {
+    "es-ES": "Fuente de navegador",
+    "ru-RU": "Источник браузера",
+    "uk-UA": "Джерело браузера",
+    "de-DE": "Browser-Quelle"
+  },
+  "OBS source mixers must be an unsigned 32-bit mask.": {
+    "es-ES": "La máscara de mezclas de la fuente OBS debe ser un entero de 32 bits sin signo.",
+    "ru-RU": "Маска аудиомикшера источника OBS должна быть 32-битным целым числом без знака.",
+    "uk-UA": "Маска аудіомікшера джерела OBS має бути 32-бітним цілим числом без знака.",
+    "de-DE": "Die Audiomix-Maske der OBS-Quelle muss eine vorzeichenlose 32-Bit-Ganzzahl sein."
+  },
+  "Filter audio routing must enable all six OBS mixes.": {
+    "es-ES": "El enrutamiento de audio del filtro debe habilitar las seis mezclas de OBS.",
+    "ru-RU": "Маршрутизация звука фильтра должна включать все шесть миксов OBS.",
+    "uk-UA": "Маршрутизація звуку фільтра має вмикати всі шість міксів OBS.",
+    "de-DE": "Das Audio-Routing des Filters muss alle sechs OBS-Mixe aktivieren."
+  },
+  "Separate Scene or Group audio-track routing is not represented by this importer.": {
+    "es-ES": "Este importador no representa el enrutamiento independiente de pistas de audio de escenas o grupos.",
+    "ru-RU": "Этот импортёр не поддерживает отдельную маршрутизацию аудиодорожек сцены или группы.",
+    "uk-UA": "Цей імпортер не підтримує окрему маршрутизацію аудіодоріжок сцени або групи.",
+    "de-DE": "Dieser Importer bildet kein separates Audiospur-Routing für Szenen oder Gruppen ab."
+  },
+  "Source-owned compressor/gate/EQ plus SoundCraft modulated feedback delay and FilmCraft eight-line FDN reverb; original smoothing and bounded state. No convolution, chorus, complete donor library or composite scene audio-filter claim.": {
+    "es-ES": "Compresor, puerta y ecualizador por fuente, más retardo de realimentación modulado de SoundCraft y reverberación FDN de ocho líneas de FilmCraft, con suavizado original y estado limitado. No incluye convolución, chorus, toda la biblioteca original ni filtros de audio sobre escenas compuestas.",
+    "ru-RU": "Компрессор, гейт и эквалайзер для отдельных источников, модулируемая задержка с обратной связью из SoundCraft и восьмилинейная FDN-реверберация из FilmCraft; оригинальное сглаживание и ограниченное состояние. Свёртка, хорус, полная библиотека исходных программ и аудиофильтры составных сцен не реализованы.",
+    "uk-UA": "Компресор, гейт і еквалайзер для окремих джерел, модульована затримка зі зворотним зв’язком із SoundCraft та восьмилінійна FDN-реверберація з FilmCraft; оригінальне згладжування й обмежений стан. Згортка, хорус, повна бібліотека вихідних програм та аудіофільтри складених сцен не реалізовані.",
+    "de-DE": "Quelleneigener Kompressor, Gate und EQ sowie modulierter Feedback-Delay aus SoundCraft und achtliniger FDN-Hall aus FilmCraft; originale Glättung und begrenzter Zustand. Keine Faltung, kein Chorus, keine vollständige Originalbibliothek und keine Audiofilter für zusammengesetzte Szenen."
+  },
+  "SDR OBS video: Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2, Sharpen v2, Crop/Pad, Image Mask/Blend v2, Apply LUT, Scroll and Scaling/Aspect Ratio. CPU spatial stages; admitted GPU point/LUT stages where available. Audio: Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, RNNoise Noise Suppression, Limiter, Compressor with external sidechain, Upward Compressor and Expander. Original-model RNNoise runs once per source on the CPU, with real delayed history shared by sidechain, monitoring and six tracks at project 44.1/48 kHz. Active RNNoise requires the source-owner pipeline; single-snapshot audio evaluation is explicitly unsupported. Speex, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented. Render Delay uses a shared source-owned CPU SDR frame queue at its exact ordered filter position, with stock0..500ms settings and transparent warmup. Actual rendered ticks advance it once; missed ticks are not fabricated. The unchanged128MiB aggregate can reject large resolution/FPS/delay combinations. Stop, seek, deletion and rebind retire affected history; HDR and isolated stateless delay evaluation are unsupported.": {
+    "es-ES": "Vídeo SDR de OBS: Corrección de color v2, Clave de color v2, Clave cromática v2, Clave de luminancia v2, Enfoque v2, Recortar/Rellenar, Máscara/Mezcla de imagen v2, Aplicar LUT, Desplazamiento y Escalado/Relación de aspecto. Etapas espaciales en CPU; etapas puntuales y LUT en GPU cuando están disponibles y admitidas. Audio: Ganancia, Invertir polaridad, Puerta de ruido, Ecualizador de 3 bandas, Supresión RNNoise, Limitador, Compresor con cadena lateral externa, Compresor ascendente y Expansor. El modelo RNNoise original se ejecuta una vez por fuente en CPU; la cadena lateral, la monitorización y seis pistas comparten su historial procesado con retraso a44,1/48kHz. RNNoise activo requiere el procesamiento del propietario de la fuente; no admite evaluación de una instantánea aislada. Speex, alojamiento VST, HDR, filtros v1 antiguos y los demás filtros estándar no están implementados. Retardo de renderizado utiliza una cola SDR compartida en CPU en su posición exacta de la cadena, con ajustes originales de0..500ms e inicio transparente. Avanza una vez por fotograma del proyecto realmente renderizado; no inventa los omitidos. El límite conjunto de128MiB puede rechazar combinaciones grandes de resolución, FPS y retardo. Detener, buscar, eliminar o volver a vincular retira el historial afectado; HDR y la evaluación aislada sin estado del retardo no están disponibles.",
+    "ru-RU": "SDR-видеофильтры OBS: коррекция цвета v2, цветовой ключ v2, хромакей v2, яркостный ключ v2, резкость v2, обрезка/поля, маска/смешивание изображений v2, LUT, прокрутка и масштабирование/соотношение сторон. Пространственная обработка на CPU; точечные фильтры и LUT на GPU при доступности и соблюдении лимитов. Аудио: усиление, инверсия полярности, шумовой гейт, трёхполосный эквалайзер, шумоподавление RNNoise, лимитер, компрессор с внешним сайдчейном, повышающий компрессор и экспандер. Оригинальная модель RNNoise выполняется на CPU один раз для источника; сайдчейн, мониторинг и шесть дорожек используют общую историю обработанного звука с задержкой при44,1/48кГц. Активный RNNoise требует обработки владельцем источника; вычисление отдельного снимка без состояния не поддерживается. Speex, VST, HDR, старые фильтры v1 и остальные стандартные фильтры не реализованы. Render Delay использует общую CPU-очередь SDR-кадров в заданной позиции цепочки с оригинальными настройками0..500мс и прозрачным заполнением. Очередь продвигается один раз за фактически отрисованный кадр проекта; пропуски не восполняются вымышленными кадрами. Общий лимит128МиБ может отклонить сочетания большого разрешения, FPS и задержки. Остановка, перемотка, удаление и перепривязка освобождают соответствующую историю; HDR и отдельное вычисление задержки без состояния не поддерживаются.",
+    "uk-UA": "SDR-відеофільтри OBS: корекція кольору v2, колірний ключ v2, хромакей v2, яскравісний ключ v2, різкість v2, обрізання/поля, маска/змішування зображень v2, LUT, прокручування та масштабування/співвідношення сторін. Просторова обробка на CPU; точкові фільтри й LUT на GPU за доступності та дотримання лімітів. Аудіо: підсилення, інверсія полярності, шумовий гейт, трисмуговий еквалайзер, шумозаглушення RNNoise, лімітер, компресор із зовнішнім сайдчейном, підвищувальний компресор та експандер. Оригінальна модель RNNoise виконується на CPU один раз для джерела; сайдчейн, моніторинг і шість доріжок використовують спільну історію обробленого звуку із затримкою при44,1/48кГц. Активний RNNoise потребує обробки власником джерела; обчислення окремого знімка без стану не підтримується. Speex, VST, HDR, старі фільтри v1 та решта стандартних фільтрів не реалізовані. Render Delay використовує спільну CPU-чергу SDR-кадрів у заданій позиції ланцюжка з оригінальними налаштуваннями0..500мс і прозорим заповненням. Черга просувається один раз за фактично відмальований кадр проєкту; пропуски не заповнюються вигаданими кадрами. Загальний ліміт128МіБ може відхилити поєднання великої роздільності, FPS і затримки. Зупинка, перемотування, видалення та переприв’язування звільняють відповідну історію; HDR і окреме обчислення затримки без стану не підтримуються.",
+    "de-DE": "OBS-SDR-Video: Farbkorrektur v2, Farbschlüssel v2, Chroma-Key v2, Luma-Key v2, Schärfen v2, Zuschneiden/Auffüllen, Bildmaske/Mischung v2, LUT anwenden, Scrollen und Skalierung/Seitenverhältnis. Räumliche Verarbeitung auf CPU; zugelassene Punkt- und LUT-Stufen auf GPU, soweit verfügbar. Audio: Verstärkung, Polarität umkehren, Noise-Gate, 3-Band-Equalizer, RNNoise-Rauschunterdrückung, Limiter, Kompressor mit externer Sidechain, Aufwärtskompressor und Expander. Das originale RNNoise-Modell läuft einmal je Quelle auf CPU; Sidechain, Monitoring und sechs Spuren teilen seinen verzögerten verarbeiteten Verlauf bei44,1/48kHz. Aktives RNNoise benötigt die quelleneigene Verarbeitung; eine isolierte zustandslose Audioauswertung wird nicht unterstützt. Speex, VST-Hosting, HDR, alte v1- und weitere Standardfilter sind nicht implementiert. Renderverzögerung verwendet eine gemeinsame quelleneigene CPU-SDR-Bildwarteschlange an ihrer tatsächlichen Filterposition, mit originalen0..500ms und transparentem Anlauf. Nur tatsächlich gerenderte Projekttakte schalten sie weiter; ausgelassene Bilder werden nicht erfunden. Das unveränderte128MiB-Gesamtlimit kann große Kombinationen aus Auflösung, FPS und Verzögerung ablehnen. Stoppen, Suchen, Löschen und Neubinden verwerfen den betroffenen Verlauf; HDR und isolierte zustandslose Verzögerungsauswertung werden nicht unterstützt."
+  },
+  "Finish the active document operation first.": {
+    "es-ES": "Finalice primero la operación activa del documento.",
+    "ru-RU": "Сначала завершите текущую операцию с документом.",
+    "uk-UA": "Спочатку завершіть поточну операцію з документом.",
+    "de-DE": "Beenden Sie zuerst den laufenden Dokumentvorgang."
+  },
+  " · Invert": {
+    "es-ES": " · Invertir",
+    "ru-RU": " · Инверсия",
+    "uk-UA": " · Інверсія",
+    "de-DE": " · Umkehren"
+  },
+  "Managed collection library: {error}": {
+    "es-ES": "Biblioteca de colecciones administradas: {error}",
+    "ru-RU": "Библиотека управляемых коллекций: {error}",
+    "uk-UA": "Бібліотека керованих колекцій: {error}",
+    "de-DE": "Bibliothek verwalteter Sammlungen: {error}"
+  },
+  "Managed native collection retained at {}; current document was not replaced: {}": {
+    "es-ES": "La colección nativa administrada se conservó en {}; el documento actual no se reemplazó: {}",
+    "ru-RU": "Управляемая коллекция сохранена по адресу {}; текущий документ не заменён: {}",
+    "uk-UA": "Керовану колекцію збережено за адресою {}; поточний документ не замінено: {}",
+    "de-DE": "Verwaltete native Sammlung unter {} beibehalten; das aktuelle Dokument wurde nicht ersetzt: {}"
+  }
+}

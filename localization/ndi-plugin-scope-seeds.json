@@ -1,0 +1,8 @@
+{
+  "Windows x64 installed NDI6 Runtime receive: discovered NDI video RGB(A)/BGR(A), FLTp PCM, source properties and shared compositor/DSP/monitor. No NDI send/output, HX codec installation, tally, PTZ, recording metadata or native OBS plugin ABI.": {
+    "es-ES": "Recepción en Windows x64 mediante NDI6 Runtime instalado: descubrimiento de vídeo NDI RGB(A)/BGR(A), PCM FLTp, propiedades de la fuente y compositor, DSP y monitorización compartidos. No incluye envío o salida NDI, instalación de códecs HX, señalización tally, PTZ, metadatos de grabación ni ABI de complementos nativos de OBS.",
+    "ru-RU": "Приём в Windows x64 через установленную среду NDI6 Runtime: обнаружение видео NDI RGB(A)/BGR(A), PCM FLTp, свойства источника и общий композитор, обработка звука и мониторинг. Передача и вывод NDI, установка кодеков HX, индикация эфира, PTZ, метаданные записи и ABI нативных плагинов OBS не реализованы.",
+    "uk-UA": "Приймання у Windows x64 через установлене середовище NDI6 Runtime: виявлення відео NDI RGB(A)/BGR(A), PCM FLTp, властивості джерела та спільний композитор, обробка звуку й моніторинг. Передавання й виведення NDI, установлення кодеків HX, індикацію ефіру, PTZ, метадані запису та ABI нативних плагінів OBS не реалізовано.",
+    "de-DE": "Empfang unter Windows x64 mit installierter NDI6 Runtime: erkanntes NDI-Video RGB(A)/BGR(A), FLTp-PCM, Quelleneigenschaften und gemeinsamer Compositor, DSP und Abhörpfad. NDI-Senden und -Ausgabe, Installation von HX-Codecs, Tally, PTZ, Aufnahmemetadaten und die native OBS-Plugin-ABI sind nicht implementiert."
+  }
+}

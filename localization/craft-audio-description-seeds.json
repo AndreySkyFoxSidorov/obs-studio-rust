@@ -1,0 +1,16 @@
+{
+  "Plugin.skylive/craft-audio-effects.Description.GateEq1": {
+    "en-US": "Bundled FilmCraft-derived compressor, noise gate and three-band equalizer.",
+    "es-ES": "Compresor, puerta de ruido y ecualizador de tres bandas integrados, derivados de FilmCraft.",
+    "ru-RU": "Встроенные компрессор, шумовой гейт и трёхполосный эквалайзер на основе FilmCraft.",
+    "uk-UA": "Вбудовані компресор, шумовий гейт і трисмуговий еквалайзер на основі FilmCraft.",
+    "de-DE": "Integrierter Kompressor, Noise-Gate und Dreiband-Equalizer auf Basis von FilmCraft."
+  },
+  "Plugin.skylive/craft-audio-effects.Description.TimeFx1": {
+    "en-US": "Bundled compressor, noise gate, equalizer, SoundCraft Mod Delay and FilmCraft FDN Reverb.",
+    "es-ES": "Compresor, puerta de ruido y ecualizador incluidos, SoundCraft Mod Delay y FilmCraft FDN Reverb.",
+    "ru-RU": "Встроенные компрессор, шумовой гейт, эквалайзер, SoundCraft Mod Delay и FilmCraft FDN Reverb.",
+    "uk-UA": "Вбудовані компресор, шумовий гейт, еквалайзер, SoundCraft Mod Delay та FilmCraft FDN Reverb.",
+    "de-DE": "Enthaltene Effekte: Kompressor, Noise-Gate, Equalizer, SoundCraft Mod Delay und FilmCraft FDN Reverb."
+  }
+}

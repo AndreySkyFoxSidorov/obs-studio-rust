@@ -1,0 +1,8 @@
+FilmCraft
+Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors.
+Selected compressor, gate, three-band EQ, biquad and smoothing code adapted under the MIT License.
+Source revision: bfc23840b603e69c782302c6ed04d4a9f6ec26a8.
+
+This directory transfers only code; no FilmCraft fonts, assets, presets or ArtCraft trademarks are included.
+The source project also offers Apache-2.0; this transfer selects MIT.
+See SOURCE.json for exact upstream file hashes and adaptation scope.

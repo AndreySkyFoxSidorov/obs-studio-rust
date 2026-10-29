@@ -1,0 +1,105 @@
+{
+  "Automatic Reconnect": {
+    "es-ES": "Reconexión automática",
+    "ru-RU": "Автоматическое переподключение",
+    "uk-UA": "Автоматичне перепідключення",
+    "de-DE": "Automatische Wiederverbindung"
+  },
+  "Enable automatic reconnect": {
+    "es-ES": "Activar reconexión automática",
+    "ru-RU": "Включить автоматическое переподключение",
+    "uk-UA": "Увімкнути автоматичне перепідключення",
+    "de-DE": "Automatische Wiederverbindung aktivieren"
+  },
+  "Retry recoverable transport loss after an established stream. Invalid settings, authentication, certificate and encoder failures stop the output.": {
+    "es-ES": "Reintenta pérdidas recuperables del transporte tras establecer la emisión. Los errores de ajustes, autenticación, certificado o codificador detienen la salida.",
+    "ru-RU": "Повторять соединение при устранимом обрыве транспорта уже установленного стрима. Ошибки настроек, авторизации, сертификата или кодека завершают вывод.",
+    "uk-UA": "Повторювати з’єднання за усувного обриву транспорту вже встановленого стриму. Помилки налаштувань, авторизації, сертифіката або кодека завершують вивід.",
+    "de-DE": "Behebbare Transportabbrüche nach aufgebautem Stream erneut versuchen. Fehler in Einstellungen, Authentifizierung, Zertifikat oder Encoder beenden die Ausgabe."
+  },
+  "Retry Delay (seconds)": {
+    "es-ES": "Retraso de reintento (segundos)",
+    "ru-RU": "Задержка повтора (секунды)",
+    "uk-UA": "Затримка повтору (секунди)",
+    "de-DE": "Wartezeit vor Wiederholung (Sekunden)"
+  },
+  "First retry delay: 1 to 30 seconds. Failed attempts back off by 1.5 to 1.55, up to 15 minutes.": {
+    "es-ES": "Primer reintento: de 1 a 30 segundos. Los intentos fallidos multiplican la espera por 1,5–1,55, hasta 15 minutos.",
+    "ru-RU": "Первая задержка — от 1 до 30 секунд. После неудачных попыток она умножается на 1,5–1,55, максимум до 15 минут.",
+    "uk-UA": "Перша затримка — від 1 до 30 секунд. Після невдалих спроб вона множиться на 1,5–1,55, щонайбільше до 15 хвилин.",
+    "de-DE": "Erste Wartezeit: 1 bis 30 Sekunden. Fehlgeschlagene Versuche erhöhen sie um Faktor 1,5 bis 1,55, auf höchstens 15 Minuten."
+  },
+  "Maximum Retries": {
+    "es-ES": "Máximo de reintentos",
+    "ru-RU": "Максимум повторов",
+    "uk-UA": "Максимум повторів",
+    "de-DE": "Maximale Wiederholungen"
+  },
+  "Limit consecutive retry attempts to 1–10000. A successful new connection and fresh Program frame reset the outage counter.": {
+    "es-ES": "Limita los reintentos consecutivos a 1–10000. Una conexión nueva correcta y un fotograma Program actual reinician el contador de interrupción.",
+    "ru-RU": "От 1 до 10000 последовательных попыток. Успешное новое соединение и свежий кадр Program сбрасывают счётчик текущего обрыва.",
+    "uk-UA": "Від 1 до 10000 послідовних спроб. Успішне нове з’єднання та свіжий кадр Program скидають лічильник поточного обриву.",
+    "de-DE": "1–10000 aufeinanderfolgende Versuche. Eine erfolgreiche neue Verbindung und ein aktueller Program-Frame setzen den Ausfallzähler zurück."
+  },
+  "Defaults: enabled, 2 seconds, 25 retries. Offline media is discarded; reconnection starts fresh at the current Program time. Stop cancels retries and retires their real output resources.": {
+    "es-ES": "Valores predeterminados: activada, 2 segundos y 25 reintentos. Se descarta el contenido durante la desconexión y se vuelve a la hora Program actual. Detener cancela los reintentos y cierra sus recursos reales.",
+    "ru-RU": "По умолчанию: включено, 2 секунды, 25 повторов. Данные периода обрыва отбрасываются; новое соединение начинает с текущего времени Program. Stop отменяет повторы и завершает реальные ресурсы вывода.",
+    "uk-UA": "Типово: увімкнено, 2 секунди, 25 повторів. Дані за час обриву відкидаються; нове з’єднання починає з поточного часу Program. Stop скасовує повтори й завершує реальні ресурси виводу.",
+    "de-DE": "Vorgabe: aktiv, 2 Sekunden, 25 Versuche. Medien während des Ausfalls werden verworfen; der Neustart verwendet die aktuelle Program-Zeit. Stopp bricht Wiederholungen ab und beendet die tatsächlichen Ausgaberessourcen."
+  },
+  "Reconnecting: attempt {attempt}/{limit}, waiting {seconds} s": {
+    "es-ES": "Reconectando: intento {attempt}/{limit}, espera de {seconds} s",
+    "ru-RU": "Переподключение: попытка {attempt}/{limit}, ожидание {seconds} с",
+    "uk-UA": "Перепідключення: спроба {attempt}/{limit}, очікування {seconds} с",
+    "de-DE": "Wiederverbindung: Versuch {attempt}/{limit}, Wartezeit {seconds} s"
+  },
+  "Reconnecting: closing the previous connection (attempt {attempt}/{limit})": {
+    "es-ES": "Reconectando: cerrando la conexión anterior (intento {attempt}/{limit})",
+    "ru-RU": "Переподключение: закрывается прежнее соединение (попытка {attempt}/{limit})",
+    "uk-UA": "Перепідключення: закривається попереднє з’єднання (спроба {attempt}/{limit})",
+    "de-DE": "Wiederverbindung: vorherige Verbindung wird beendet (Versuch {attempt}/{limit})"
+  },
+  "Reconnecting: establishing attempt {attempt}/{limit}": {
+    "es-ES": "Reconectando: estableciendo el intento {attempt}/{limit}",
+    "ru-RU": "Переподключение: устанавливается соединение {attempt}/{limit}",
+    "uk-UA": "Перепідключення: встановлюється з’єднання {attempt}/{limit}",
+    "de-DE": "Wiederverbindung: Versuch {attempt}/{limit} wird aufgebaut"
+  },
+  "The old connection is retired before a new codec and publisher epoch starts. No offline media backlog is replayed.": {
+    "es-ES": "La conexión anterior termina antes de iniciar una época nueva del codificador y publicador. No se reproduce contenido acumulado durante el corte.",
+    "ru-RU": "Прежнее соединение завершается до запуска новой эпохи кодека и publisher. Накопленные за время обрыва данные не воспроизводятся.",
+    "uk-UA": "Попереднє з’єднання завершується до запуску нової епохи кодека та publisher. Накопичені за час обриву дані не відтворюються.",
+    "de-DE": "Die alte Verbindung wird beendet, bevor eine neue Codec- und Publisher-Epoche beginnt. Ein während des Ausfalls entstandener Medienrückstand wird nicht nachgespielt."
+  },
+  "Stop streaming before changing automatic reconnect settings.": {
+    "es-ES": "Detén la emisión antes de cambiar la reconexión automática.",
+    "ru-RU": "Остановите стрим перед изменением настроек автоматического переподключения.",
+    "uk-UA": "Зупиніть стрим перед зміною налаштувань автоматичного перепідключення.",
+    "de-DE": "Vor dem Ändern der Wiederverbindungseinstellungen den Stream stoppen."
+  },
+  "Wait for the Advanced settings operation to finish.": {
+    "es-ES": "Espera a que termine la operación de ajustes avanzados.",
+    "ru-RU": "Дождитесь завершения операции дополнительных настроек.",
+    "uk-UA": "Дочекайтеся завершення операції додаткових налаштувань.",
+    "de-DE": "Auf den Abschluss der erweiterten Einstellungsänderung warten."
+  },
+  "The profile changed. Reopen Advanced settings before applying.": {
+    "es-ES": "El perfil cambió. Vuelve a abrir los ajustes avanzados antes de aplicar.",
+    "ru-RU": "Профиль изменился. Откройте дополнительные настройки заново перед применением.",
+    "uk-UA": "Профіль змінився. Відкрийте додаткові налаштування знову перед застосуванням.",
+    "de-DE": "Das Profil wurde geändert. Vor dem Anwenden die erweiterten Einstellungen erneut öffnen."
+  },
+  "Apply Advanced settings and close after Windows confirms the process priority.": {
+    "es-ES": "Aplica los ajustes avanzados y cierra cuando Windows confirme la prioridad del proceso.",
+    "ru-RU": "Применить дополнительные настройки и закрыть окно после подтверждения приоритета процесса Windows.",
+    "uk-UA": "Застосувати додаткові налаштування й закрити вікно після підтвердження пріоритету процесу Windows.",
+    "de-DE": "Erweiterte Einstellungen anwenden und nach Bestätigung der Prozesspriorität durch Windows schließen."
+  },
+  "Apply the captured process priority and selected-profile reconnect policy.": {
+    "es-ES": "Aplica la prioridad de proceso preparada y la política de reconexión del perfil seleccionado.",
+    "ru-RU": "Применить подготовленный приоритет процесса и политику переподключения выбранного профиля.",
+    "uk-UA": "Застосувати підготовлений пріоритет процесу та політику перепідключення вибраного профілю.",
+    "de-DE": "Vorbereitete Prozesspriorität und Wiederverbindungsrichtlinie des ausgewählten Profils anwenden."
+  },
+  "Cancel automatic reconnect and wait for the current connection and codecs to retire.": {"es-ES":"Cancela la reconexión automática y espera a que terminen la conexión y los codificadores actuales.","ru-RU":"Отменить автоматическое переподключение и дождаться завершения текущего соединения и кодеков.","uk-UA":"Скасувати автоматичне перепідключення й дочекатися завершення поточного з’єднання та кодеків.","de-DE":"Automatische Wiederverbindung abbrechen und auf das Ende der aktuellen Verbindung und Codecs warten."}
+}

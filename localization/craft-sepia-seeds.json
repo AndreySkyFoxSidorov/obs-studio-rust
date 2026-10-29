@@ -1,0 +1,62 @@
+{
+  "Sepia (Photo Filter)": {
+    "es-ES": "Sepia (filtro fotográfico)",
+    "ru-RU": "Сепия (фотофильтр)",
+    "uk-UA": "Сепія (фотофільтр)",
+    "de-DE": "Sepia (Fotofilter)"
+  },
+  "Apply EffectCraft’s fixed Sepia photo-filter tint with density and preserve-luminosity controls. CPU processing; alpha is unchanged.": {
+    "es-ES": "Aplica el tono Sepia fijo de EffectCraft con controles de densidad y conservación de luminosidad. Procesamiento por CPU; alfa no cambia.",
+    "ru-RU": "Применить фиксированный оттенок фотофильтра «Сепия» из EffectCraft с настройками плотности и сохранения яркости. Обработка на CPU; альфа не меняется.",
+    "uk-UA": "Застосувати фіксований відтінок фотофільтра «Сепія» з EffectCraft із налаштуваннями щільності та збереження яскравості. Обробка на CPU; альфа не змінюється.",
+    "de-DE": "Den festen Sepia-Fotofilterfarbton von EffectCraft mit Dichte und Helligkeitserhalt anwenden. CPU-Verarbeitung; Alpha bleibt unverändert."
+  },
+  "EffectCraft Sepia photo-filter tint · CPU · alpha unchanged": {
+    "es-ES": "Tono de filtro fotográfico Sepia de EffectCraft · CPU · alfa sin cambios",
+    "ru-RU": "Фотофильтр «Сепия» из EffectCraft · CPU · альфа без изменений",
+    "uk-UA": "Фотофільтр «Сепія» з EffectCraft · CPU · альфа без змін",
+    "de-DE": "EffectCraft-Sepia-Fotofilterfarbton · CPU · Alpha unverändert"
+  },
+  "Density": {
+    "es-ES": "Densidad",
+    "ru-RU": "Плотность",
+    "uk-UA": "Щільність",
+    "de-DE": "Dichte"
+  },
+  "Preserve Luminosity": {
+    "es-ES": "Conservar luminosidad",
+    "ru-RU": "Сохранять яркость",
+    "uk-UA": "Зберігати яскравість",
+    "de-DE": "Helligkeit erhalten"
+  },
+  "Blend the fixed warm Sepia photo-filter color into the original RGB. Zero leaves the source unchanged.": {
+    "es-ES": "Mezcla el color cálido Sepia fijo del filtro fotográfico con el RGB original. Cero deja la fuente sin cambios.",
+    "ru-RU": "Смешать фиксированный тёплый цвет фотофильтра «Сепия» с исходным RGB. При нуле источник не меняется.",
+    "uk-UA": "Змішати фіксований теплий колір фотофільтра «Сепія» з початковим RGB. За нульового значення джерело не змінюється.",
+    "de-DE": "Den festen warmen Sepia-Fotofilterfarbton mit dem ursprünglichen RGB mischen. Null lässt die Quelle unverändert."
+  },
+  "Preserve Rec.709 working-space luminance using EffectCraft’s original photo-filter normalization. SDR clipping still applies.": {
+    "es-ES": "Conserva la luminancia Rec.709 del espacio de trabajo mediante la normalización original del filtro fotográfico de EffectCraft. Se mantiene el recorte SDR.",
+    "ru-RU": "Сохранять яркость рабочего пространства по Rec.709 с исходной нормализацией фотофильтра EffectCraft. Ограничение диапазоном SDR сохраняется.",
+    "uk-UA": "Зберігати яскравість робочого простору за Rec.709 з початковою нормалізацією фотофільтра EffectCraft. Обмеження діапазоном SDR залишається.",
+    "de-DE": "Die Rec.709-Helligkeit im Arbeitsfarbraum mit der ursprünglichen EffectCraft-Fotofilternormalisierung erhalten. SDR-Begrenzung gilt weiterhin."
+  },
+  "Craft Sepia Photo Filter requires native schema9": {
+    "es-ES": "El filtro fotográfico Sepia de Craft requiere el esquema nativo9",
+    "ru-RU": "Фотофильтр «Сепия» Craft требует нативную схему9",
+    "uk-UA": "Фотофільтр «Сепія» Craft потребує нативної схеми9",
+    "de-DE": "Der Craft-Sepia-Fotofilter erfordert das native Schema9"
+  },
+  "Sepia Photo Filter uses the CPU worker; no GPU kernel is registered": {
+    "es-ES": "El filtro fotográfico Sepia usa el trabajador CPU; no hay ningún núcleo GPU registrado",
+    "ru-RU": "Фотофильтр «Сепия» обрабатывается на CPU; ядро GPU не зарегистрировано",
+    "uk-UA": "Фотофільтр «Сепія» обробляється на CPU; ядро GPU не зареєстровано",
+    "de-DE": "Der Sepia-Fotofilter verwendet den CPU-Worker; kein GPU-Kernel ist registriert"
+  },
+  "Ten SDR point effects: Linear Color Key, Brightness/Contrast, Spill Suppression, Invert Colors, Grayscale, Posterize, Exposure, Temperature/Tint, Threshold and Sepia (EffectCraft Photo Filter); plus spatial CPU Vignette adapted from EffectCraft with amount, angle of view, percentage center and highlight protection. No HDR, ICC, native OBS ABI, Sepia/Vignette GPU kernels or complete Craft effect suite.": {
+    "es-ES": "Diez efectos puntuales SDR: clave de color lineal, brillo/contraste, supresión de derrame, invertir colores, escala de grises, posterizar, exposición, temperatura/tinte, umbral y Sepia (filtro fotográfico de EffectCraft); además de Viñeta espacial por CPU adaptada de EffectCraft con cantidad, ángulo de visión, centro porcentual y protección de luces. Sin HDR, ICC, ABI nativa de OBS, núcleos GPU para Sepia/Viñeta ni la biblioteca completa de efectos Craft.",
+    "ru-RU": "Десять точечных SDR-эффектов: линейный цветовой ключ, яркость/контраст, подавление цветового засвета, инверсия цветов, оттенки серого, постеризация, экспозиция, температура/оттенок, порог и «Сепия» (фотофильтр EffectCraft); дополнительно пространственная CPU-виньетка из EffectCraft с интенсивностью, углом обзора, центром в процентах и защитой светов. Без HDR, ICC, нативного ABI OBS, GPU-ядер «Сепии»/виньетки и полной библиотеки эффектов Craft.",
+    "uk-UA": "Десять точкових SDR-ефектів: лінійний колірний ключ, яскравість/контраст, пригнічення колірного засвічення, інверсія кольорів, відтінки сірого, постеризація, експозиція, температура/відтінок, поріг і «Сепія» (фотофільтр EffectCraft); додатково просторова CPU-віньєтка з EffectCraft з інтенсивністю, кутом огляду, центром у відсотках і захистом світлих ділянок. Без HDR, ICC, нативного ABI OBS, GPU-ядер «Сепії»/віньєтки та повної бібліотеки ефектів Craft.",
+    "de-DE": "Zehn SDR-Punkteffekte: Linear Color Key, Helligkeit/Kontrast, Farbsaumunterdrückung, Farbumkehrung, Graustufen, Tontrennung, Belichtung, Temperatur/Farbton, Schwellenwert und Sepia (EffectCraft-Fotofilter); zusätzlich eine räumliche CPU-Vignette aus EffectCraft mit Stärke, Blickwinkel, prozentualem Mittelpunkt und Spitzlichtschutz. Kein HDR, ICC, natives OBS-ABI, Sepia-/Vignetten-GPU-Kernel oder vollständige Craft-Effektbibliothek."
+  }
+}

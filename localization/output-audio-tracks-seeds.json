@@ -1,0 +1,152 @@
+{
+  "Audio Track {number}": {
+    "es-ES": "Pista de audio {number}",
+    "ru-RU": "Аудиодорожка {number}",
+    "uk-UA": "Аудіодоріжка {number}",
+    "de-DE": "Audiospur {number}"
+  },
+  "Streaming Audio Track": {
+    "es-ES": "Pista de audio de la emisión",
+    "ru-RU": "Аудиодорожка трансляции",
+    "uk-UA": "Аудіодоріжка трансляції",
+    "de-DE": "Stream-Audiospur"
+  },
+  "Replay Audio Track": {
+    "es-ES": "Pista de audio del búfer de repetición",
+    "ru-RU": "Аудиодорожка буфера повтора",
+    "uk-UA": "Аудіодоріжка буфера повтору",
+    "de-DE": "Audiospur des Wiederholungspuffers"
+  },
+  "NDI Program Audio Track": {
+    "es-ES": "Pista de audio del programa NDI",
+    "ru-RU": "Аудиодорожка Program NDI",
+    "uk-UA": "Аудіодоріжка Program NDI",
+    "de-DE": "NDI-Programm-Audiospur"
+  },
+  "Recording Audio Tracks": {
+    "es-ES": "Pistas de audio de la grabación",
+    "ru-RU": "Аудиодорожки записи",
+    "uk-UA": "Аудіодоріжки запису",
+    "de-DE": "Aufnahme-Audiospuren"
+  },
+  "Record": {
+    "es-ES": "Grabar",
+    "ru-RU": "Записывать",
+    "uk-UA": "Записувати",
+    "de-DE": "Aufnehmen"
+  },
+  "Track name": {
+    "es-ES": "Nombre de pista",
+    "ru-RU": "Имя дорожки",
+    "uk-UA": "Назва доріжки",
+    "de-DE": "Spurname"
+  },
+  "AAC bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits AAC (kbit/s)",
+    "ru-RU": "Битрейт AAC (кбит/с)",
+    "uk-UA": "Бітрейт AAC (кбіт/с)",
+    "de-DE": "AAC-Bitrate (kbit/s)"
+  },
+  "Default recording audio bitrate (kbit/s)": {
+    "es-ES": "Tasa de bits de audio predeterminada de la grabación (kbit/s)",
+    "ru-RU": "Общий битрейт звука записи (кбит/с)",
+    "uk-UA": "Загальний бітрейт звуку запису (кбіт/с)",
+    "de-DE": "Standard-Audiobitrate der Aufnahme (kbit/s)"
+  },
+  "Inherit · {rate} kbit/s": {
+    "es-ES": "Heredar · {rate} kbit/s",
+    "ru-RU": "Наследовать · {rate} кбит/с",
+    "uk-UA": "Успадковувати · {rate} кбіт/с",
+    "de-DE": "Übernehmen · {rate} kbit/s"
+  },
+  "{rate} kbit/s": {
+    "es-ES": "{rate} kbit/s",
+    "ru-RU": "{rate} кбит/с",
+    "uk-UA": "{rate} кбіт/с",
+    "de-DE": "{rate} kbit/s"
+  },
+  "Leave the name empty to use Track1 to Track6. Names are written to the recording exactly as entered; at most 256 UTF-8 bytes, without control characters.": {
+    "es-ES": "Deje el nombre vacío para usar Track1 a Track6. Los nombres se guardan exactamente como se escriben: hasta 256 bytes UTF-8 y sin caracteres de control.",
+    "ru-RU": "Оставьте имя пустым, чтобы использовать Track1–Track6. Имя записывается в файл без изменений: не более 256 байт UTF-8 и без управляющих символов.",
+    "uk-UA": "Залиште назву порожньою, щоб використовувати Track1–Track6. Назва записується у файл без змін: щонайбільше 256 байтів UTF-8 і без керівних символів.",
+    "de-DE": "Für Track1 bis Track6 den Namen leer lassen. Namen werden unverändert in die Aufnahme geschrieben: höchstens 256 UTF-8-Bytes, ohne Steuerzeichen."
+  },
+  "Inherit the recording audio bitrate, or choose an explicit AAC bitrate for this track. Unselected tracks retain their names and bitrates.": {
+    "es-ES": "Heredar la tasa de bits de audio de la grabación o elegir una tasa AAC propia para esta pista. Las pistas no seleccionadas conservan sus nombres y tasas.",
+    "ru-RU": "Наследовать общий битрейт звука записи или выбрать отдельный битрейт AAC для этой дорожки. Имена и битрейты невыбранных дорожек сохраняются.",
+    "uk-UA": "Успадковувати загальний бітрейт звуку запису або вибрати окремий бітрейт AAC для цієї доріжки. Назви та бітрейти невибраних доріжок зберігаються.",
+    "de-DE": "Audiobitrate der Aufnahme übernehmen oder eine eigene AAC-Bitrate für diese Spur wählen. Nicht ausgewählte Spuren behalten ihre Namen und Bitraten."
+  },
+  "Select one real post-DSP audio mix from Advanced Audio Properties. This does not add audio from Preview-only sources or start an output.": {
+    "es-ES": "Seleccione una mezcla de audio real después del DSP en Propiedades de audio avanzadas. No añade audio de fuentes solo de vista previa ni inicia una salida.",
+    "ru-RU": "Выберите один реальный звуковой микс после DSP из расширенных свойств аудио. Выбор не добавляет звук источников только предпросмотра и не запускает вывод.",
+    "uk-UA": "Виберіть один реальний звуковий мікс після DSP з розширених властивостей аудіо. Вибір не додає звук джерел лише попереднього перегляду та не запускає вивід.",
+    "de-DE": "Einen tatsächlichen Audiomix nach DSP aus den erweiterten Audioeigenschaften wählen. Dies fügt weder Ton reiner Vorschauquellen hinzu noch startet es eine Ausgabe."
+  },
+  "The selected audio track is retained while this output's audio is disabled.": {
+    "es-ES": "La pista seleccionada se conserva mientras el audio de esta salida está desactivado.",
+    "ru-RU": "Выбранная аудиодорожка сохраняется, пока звук этого вывода отключён.",
+    "uk-UA": "Вибрана аудіодоріжка зберігається, поки звук цього виводу вимкнено.",
+    "de-DE": "Die ausgewählte Audiospur bleibt erhalten, während der Ton dieser Ausgabe deaktiviert ist."
+  },
+  "Track names must contain at most 256 UTF-8 bytes and no control characters.": {
+    "es-ES": "Los nombres de pista deben tener como máximo 256 bytes UTF-8 y ningún carácter de control.",
+    "ru-RU": "Имя дорожки должно занимать не более 256 байт UTF-8 и не содержать управляющих символов.",
+    "uk-UA": "Назва доріжки має займати щонайбільше 256 байтів UTF-8 і не містити керівних символів.",
+    "de-DE": "Spurnamen dürfen höchstens 256 UTF-8-Bytes und keine Steuerzeichen enthalten."
+  },
+  "Include this logical audio mix as a separate AAC track in the recording. At least one track must remain selected.": {
+    "es-ES": "Incluir esta mezcla lógica como una pista AAC independiente en la grabación. Debe quedar seleccionada al menos una pista.",
+    "ru-RU": "Включить этот звуковой микс в запись как отдельную дорожку AAC. Должна оставаться выбрана хотя бы одна дорожка.",
+    "uk-UA": "Додати цей звуковий мікс до запису як окрему доріжку AAC. Має залишатися вибраною хоча б одна доріжка.",
+    "de-DE": "Diesen logischen Audiomix als eigene AAC-Spur aufnehmen. Mindestens eine Spur muss ausgewählt bleiben."
+  },
+  "At least one recording track must remain selected. Select another track before disabling this one.": {
+    "es-ES": "Debe quedar seleccionada al menos una pista de grabación. Seleccione otra antes de desactivar esta.",
+    "ru-RU": "Хотя бы одна дорожка записи должна оставаться выбранной. Выберите другую дорожку, прежде чем отключать эту.",
+    "uk-UA": "Хоча б одна доріжка запису має залишатися вибраною. Виберіть іншу доріжку, перш ніж вимикати цю.",
+    "de-DE": "Mindestens eine Aufnahmespur muss ausgewählt bleiben. Vor dem Deaktivieren dieser Spur eine andere auswählen."
+  },
+  "Record up to six independent AAC mixes. Route each source to tracks in Advanced Audio Properties; selecting a track does not duplicate another mix.": {
+    "es-ES": "Grabe hasta seis mezclas AAC independientes. Asigne cada fuente a las pistas en Propiedades de audio avanzadas; seleccionar una pista no duplica otra mezcla.",
+    "ru-RU": "Записывайте до шести независимых миксов AAC. Назначайте дорожки источникам в расширенных свойствах аудио; выбор дорожки не дублирует другой микс.",
+    "uk-UA": "Записуйте до шести незалежних міксів AAC. Призначайте доріжки джерелам у розширених властивостях аудіо; вибір доріжки не дублює інший мікс.",
+    "de-DE": "Bis zu sechs unabhängige AAC-Mixe aufnehmen. Quellen in den erweiterten Audioeigenschaften den Spuren zuordnen; die Spurauswahl dupliziert keinen anderen Mix."
+  },
+  "Recording audio is off. These track choices are saved for the next recording with audio enabled.": {
+    "es-ES": "El audio de grabación está desactivado. Estas pistas se guardan para la próxima grabación con audio.",
+    "ru-RU": "Запись звука отключена. Выбор дорожек сохраняется для следующей записи со звуком.",
+    "uk-UA": "Запис звуку вимкнено. Вибір доріжок зберігається для наступного запису зі звуком.",
+    "de-DE": "Aufnahmeton ist deaktiviert. Diese Spurauswahl wird für die nächste Aufnahme mit Ton gespeichert."
+  },
+  "Multiple audio track recording requires the active Windows multitrack backend. Saved choices are retained.": {
+    "es-ES": "La grabación de varias pistas requiere el motor multipista de Windows activo. Se conservan los ajustes guardados.",
+    "ru-RU": "Для записи нескольких аудиодорожек нужен подключённый многодорожечный механизм Windows. Сохранённые настройки сохраняются.",
+    "uk-UA": "Для запису кількох аудіодоріжок потрібен підключений багатодоріжковий механізм Windows. Збережені налаштування зберігаються.",
+    "de-DE": "Mehrspur-Audioaufnahme erfordert den aktiven Windows-Mehrspur-Adapter. Gespeicherte Einstellungen bleiben erhalten."
+  },
+  "Replay Buffer saves one selected audio mix using the global recording audio bitrate, recording video encoder and folder. Changes apply on the next start.": {
+    "es-ES": "El búfer guarda una mezcla de audio seleccionada con la tasa de bits de audio global, el codificador de vídeo y la carpeta de grabación. Los cambios se aplican al próximo inicio.",
+    "ru-RU": "Буфер повтора сохраняет один выбранный звуковой микс с общим битрейтом звука записи, видеокодером и папкой записи. Изменения применяются при следующем запуске.",
+    "uk-UA": "Буфер повтору зберігає один вибраний звуковий мікс із загальним бітрейтом звуку запису, відеокодером і текою запису. Зміни застосовуються за наступного запуску.",
+    "de-DE": "Der Wiederholungspuffer speichert einen ausgewählten Audiomix mit der globalen Aufnahme-Audiobitrate, dem Aufnahme-Videoencoder und dem Aufnahmeordner. Änderungen gelten beim nächsten Start."
+  },
+  "Matroska supports the selected recording audio tracks. MKV Media Source input and arbitrary multitrack remux are outside this recording feature.": {
+    "es-ES": "Matroska admite las pistas de audio seleccionadas. La entrada MKV como fuente multimedia y la conversión arbitraria multipista no forman parte de esta función de grabación.",
+    "ru-RU": "Matroska поддерживает выбранные аудиодорожки записи. Вход MKV как медиаисточник и произвольный многодорожечный ремультиплексинг не входят в эту функцию записи.",
+    "uk-UA": "Matroska підтримує вибрані аудіодоріжки запису. Вхід MKV як медіаджерело та довільне багатодоріжкове перепакування не входять до цієї функції запису.",
+    "de-DE": "Matroska unterstützt die ausgewählten Aufnahme-Audiospuren. MKV-Medienquellen und beliebiges Mehrspur-Remuxing gehören nicht zu dieser Aufnahmefunktion."
+  },
+  "Include the selected audio mixes as independent mono or stereo AAC tracks.": {
+    "es-ES": "Incluir las mezclas seleccionadas como pistas AAC mono o estéreo independientes.",
+    "ru-RU": "Включить выбранные звуковые миксы как независимые моно- или стереодорожки AAC.",
+    "uk-UA": "Додати вибрані звукові мікси як незалежні моно- або стереодоріжки AAC.",
+    "de-DE": "Die ausgewählten Audiomixe als unabhängige Mono- oder Stereo-AAC-Spuren aufnehmen."
+  },
+  "Send the selected post-DSP audio track as planar float PCM with Program video. Preview never sends audio.": {
+    "es-ES": "Enviar la pista de audio seleccionada después del DSP como PCM flotante planar con el vídeo de Programa. Vista previa nunca envía audio.",
+    "ru-RU": "Передавать выбранную аудиодорожку после DSP как планарный PCM с плавающей точкой вместе с видео Program. Preview никогда не передаёт звук.",
+    "uk-UA": "Передавати вибрану аудіодоріжку після DSP як планарний PCM із рухомою комою разом із відео Program. Preview ніколи не передає звук.",
+    "de-DE": "Die ausgewählte Audiospur nach DSP als planares Float-PCM mit dem Programmvideo senden. Die Vorschau sendet niemals Ton."
+  }
+}

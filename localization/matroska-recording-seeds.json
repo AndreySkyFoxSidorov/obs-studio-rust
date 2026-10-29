@@ -1,0 +1,50 @@
+{
+  "H.264 video · AAC audio": {
+    "es-ES": "Vídeo H.264 · Audio AAC",
+    "ru-RU": "Видео H.264 · Аудио AAC",
+    "uk-UA": "Відео H.264 · Аудіо AAC",
+    "de-DE": "H.264-Video · AAC-Audio"
+  },
+  "Recording Format": {
+    "es-ES": "Formato de grabación",
+    "ru-RU": "Формат записи",
+    "uk-UA": "Формат запису",
+    "de-DE": "Aufnahmeformat"
+  },
+  "MPEG-4 (.mp4)": {
+    "es-ES": "Vídeo MPEG-4 (.mp4)",
+    "ru-RU": "Видео MPEG-4 (.mp4)",
+    "uk-UA": "Відео MPEG-4 (.mp4)",
+    "de-DE": "MPEG-4-Video (.mp4)"
+  },
+  "Matroska (.mkv)": {
+    "es-ES": "Vídeo Matroska (.mkv)",
+    "ru-RU": "Видео Matroska (.mkv)",
+    "uk-UA": "Відео Matroska (.mkv)",
+    "de-DE": "Matroska-Video (.mkv)"
+  },
+  "Choose the actual recording container. New files use its matching extension; Replay Buffer saves MP4.": {
+    "es-ES": "Elige el contenedor de grabación. Los archivos nuevos usan su extensión correspondiente; el búfer de repetición guarda MP4.",
+    "ru-RU": "Выберите контейнер записи. Новые файлы получат соответствующее расширение; буфер повтора сохраняет MP4.",
+    "uk-UA": "Виберіть контейнер запису. Нові файли отримають відповідне розширення; буфер повтору зберігає MP4.",
+    "de-DE": "Aufnahmecontainer wählen. Neue Dateien erhalten die passende Erweiterung; der Wiederholungspuffer speichert MP4."
+  },
+  "Matroska recording is available on Windows. The saved selection is retained on other platforms.": {
+    "es-ES": "La grabación Matroska está disponible en Windows. La selección guardada se conserva en otras plataformas.",
+    "ru-RU": "Запись Matroska доступна в Windows. На других платформах сохранённый выбор сохраняется.",
+    "uk-UA": "Запис Matroska доступний у Windows. На інших платформах збережений вибір залишається.",
+    "de-DE": "Matroska-Aufnahmen sind unter Windows verfügbar. Die gespeicherte Auswahl bleibt auf anderen Plattformen erhalten."
+  },
+  "Matroska writes complete video and audio blocks during recording. Interrupted private files may contain an incomplete tail; automatic repair and playback are not guaranteed.": {
+    "es-ES": "Matroska escribe bloques completos de vídeo y audio durante la grabación. Los archivos temporales interrumpidos pueden tener una cola incompleta; no se garantiza su reparación automática ni su reproducción.",
+    "ru-RU": "Matroska записывает полные блоки видео и аудио во время записи. При прерывании во временном файле может остаться незавершённый конец; автоматическое восстановление и воспроизведение не гарантируются.",
+    "uk-UA": "Matroska записує повні блоки відео й аудіо під час запису. У разі переривання тимчасовий файл може мати незавершений кінець; автоматичне відновлення та відтворення не гарантуються.",
+    "de-DE": "Matroska schreibt während der Aufnahme vollständige Video- und Audioblöcke. Bei einem Abbruch kann die temporäre Datei ein unvollständiges Ende enthalten; automatische Reparatur und Wiedergabe sind nicht garantiert."
+  },
+  "Matroska is a recording output. MKV Media Source input, remux and multiple audio tracks are not available yet.": {
+    "es-ES": "Matroska es un formato de salida de grabación. La entrada MKV en Fuente multimedia, el remultiplexado y varias pistas de audio aún no están disponibles.",
+    "ru-RU": "Matroska доступна для записи. Импорт MKV в медиаисточник, ремультиплексирование и несколько аудиодорожек пока недоступны.",
+    "uk-UA": "Matroska доступна для запису. Імпорт MKV у медіаджерело, ремультиплексування та кілька аудіодоріжок поки недоступні.",
+    "de-DE": "Matroska ist ein Aufnahmeausgabeformat. MKV als Medienquelle, Remux und mehrere Audiospuren sind noch nicht verfügbar."
+  }
+}

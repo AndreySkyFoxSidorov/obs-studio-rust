@@ -1,0 +1,98 @@
+{
+  "Craft effects are disabled. Built-in Color Correction remains available.": {
+    "es-ES": "Los efectos de Craft están desactivados. La corrección de color integrada sigue disponible.",
+    "ru-RU": "Эффекты Craft отключены. Встроенная коррекция цвета остаётся доступной.",
+    "uk-UA": "Ефекти Craft вимкнено. Вбудована корекція кольору залишається доступною.",
+    "de-DE": "Craft-Effekte sind deaktiviert. Die integrierte Farbkorrektur bleibt verfügbar."
+  },
+  "Adjust SDR gamma, contrast, brightness, saturation, hue, opacity and color washes.": {
+    "es-ES": "Ajusta la gamma, el contraste, el brillo, la saturación, el tono, la opacidad y los colores de mezcla en SDR.",
+    "ru-RU": "Настройте гамму, контрастность, яркость, насыщенность, оттенок, непрозрачность и цветовые наложения в SDR.",
+    "uk-UA": "Налаштуйте гамму, контрастність, яскравість, насиченість, відтінок, непрозорість і колірні накладання в SDR.",
+    "de-DE": "SDR-Gamma, Kontrast, Helligkeit, Sättigung, Farbton, Deckkraft und Farbmischungen anpassen."
+  },
+  "Color Correction v2 applies to SDR video. HDR correction and legacy v1 are not supported.": {
+    "es-ES": "La corrección de color v2 se aplica al vídeo SDR. No se admiten la corrección HDR ni la versión anterior v1.",
+    "ru-RU": "Коррекция цвета v2 применяется к видео SDR. Коррекция HDR и устаревшая версия v1 не поддерживаются.",
+    "uk-UA": "Корекція кольору v2 застосовується до відео SDR. Корекція HDR та застаріла версія v1 не підтримуються.",
+    "de-DE": "Farbkorrektur v2 gilt für SDR-Video. HDR-Korrektur und die ältere Version v1 werden nicht unterstützt."
+  },
+  "Adjust the gamma exponent in linear light.": {
+    "es-ES": "Ajusta el exponente gamma en luz lineal.",
+    "ru-RU": "Настройте показатель гаммы в линейном световом пространстве.",
+    "uk-UA": "Налаштуйте показник гамми в лінійному світловому просторі.",
+    "de-DE": "Den Gamma-Exponenten im linearen Lichtraum anpassen."
+  },
+  "Scale linear-light contrast around black.": {
+    "es-ES": "Escala el contraste en luz lineal con respecto al negro.",
+    "ru-RU": "Масштабируйте контрастность в линейном световом пространстве относительно чёрного.",
+    "uk-UA": "Масштабуйте контрастність у лінійному світловому просторі відносно чорного.",
+    "de-DE": "Den Kontrast im linearen Lichtraum relativ zu Schwarz skalieren."
+  },
+  "Add a linear-light brightness offset.": {
+    "es-ES": "Añade un desplazamiento de brillo en luz lineal.",
+    "ru-RU": "Добавьте смещение яркости в линейном световом пространстве.",
+    "uk-UA": "Додайте зміщення яскравості в лінійному світловому просторі.",
+    "de-DE": "Einen Helligkeitsversatz im linearen Lichtraum hinzufügen."
+  },
+  "Adjust color saturation using OBS luminance weights.": {
+    "es-ES": "Ajusta la saturación del color con los coeficientes de luminancia de OBS.",
+    "ru-RU": "Настройте насыщенность цвета с коэффициентами яркости OBS.",
+    "uk-UA": "Налаштуйте насиченість кольору з коефіцієнтами яскравості OBS.",
+    "de-DE": "Die Farbsättigung mit den Leuchtdichtegewichten von OBS anpassen."
+  },
+  "Rotate hue around the RGB diagonal in degrees.": {
+    "es-ES": "Gira el tono alrededor de la diagonal RGB en grados.",
+    "ru-RU": "Поверните оттенок вокруг диагонали RGB в градусах.",
+    "uk-UA": "Поверніть відтінок навколо діагоналі RGB у градусах.",
+    "de-DE": "Den Farbton in Grad um die RGB-Diagonale drehen."
+  },
+  "Set the filtered source opacity from zero to one.": {
+    "es-ES": "Establece la opacidad de la fuente filtrada entre cero y uno.",
+    "ru-RU": "Задайте непрозрачность источника после фильтра от нуля до единицы.",
+    "uk-UA": "Задайте непрозорість джерела після фільтра від нуля до одиниці.",
+    "de-DE": "Die Deckkraft der gefilterten Quelle zwischen null und eins festlegen."
+  },
+  "Multiply RGB by this color in linear light.": {
+    "es-ES": "Multiplica los componentes RGB por este color en luz lineal.",
+    "ru-RU": "Умножьте компоненты RGB на этот цвет в линейном световом пространстве.",
+    "uk-UA": "Помножте компоненти RGB на цей колір у лінійному світловому просторі.",
+    "de-DE": "RGB im linearen Lichtraum mit dieser Farbe multiplizieren."
+  },
+  "Add this color in linear light.": {
+    "es-ES": "Añade este color en luz lineal.",
+    "ru-RU": "Добавьте этот цвет в линейном световом пространстве.",
+    "uk-UA": "Додайте цей колір у лінійному світловому просторі.",
+    "de-DE": "Diese Farbe im linearen Lichtraum hinzufügen."
+  },
+  "OBS Color Correction v2: SDR gamma, contrast, brightness, saturation, hue, opacity and RGB multiply/add. Other standard filters, HDR correction and legacy v1 remain unported.": {
+    "es-ES": "Corrección de color v2 de OBS: gamma, contraste, brillo, saturación, tono, opacidad y multiplicación/suma RGB en SDR. Los demás filtros estándar, la corrección HDR y la versión anterior v1 aún no se han portado.",
+    "ru-RU": "Коррекция цвета OBS v2: гамма, контрастность, яркость, насыщенность, оттенок, непрозрачность и умножение/сложение RGB в SDR. Остальные стандартные фильтры, коррекция HDR и устаревшая версия v1 ещё не перенесены.",
+    "uk-UA": "Корекція кольору OBS v2: гамма, контрастність, яскравість, насиченість, відтінок, непрозорість і множення/додавання RGB у SDR. Решту стандартних фільтрів, корекцію HDR та застарілу версію v1 ще не перенесено.",
+    "de-DE": "OBS-Farbkorrektur v2: SDR-Gamma, Kontrast, Helligkeit, Sättigung, Farbton, Deckkraft und RGB-Multiplikation/-Addition. Andere Standardfilter, HDR-Korrektur und die ältere Version v1 sind noch nicht portiert."
+  },
+  "OBS Color Correction v2 (SDR), Gain and Invert Polarity. Remaining standard filters, HDR correction and legacy Color Correction v1 are not implemented.": {
+    "es-ES": "Corrección de color v2 de OBS (SDR), Ganancia e Invertir polaridad. Los demás filtros estándar, la corrección HDR y la versión anterior de corrección de color v1 no están implementados.",
+    "ru-RU": "Коррекция цвета OBS v2 (SDR), усиление и инверсия полярности. Остальные стандартные фильтры, коррекция HDR и устаревшая коррекция цвета v1 не реализованы.",
+    "uk-UA": "Корекція кольору OBS v2 (SDR), підсилення та інверсія полярності. Решту стандартних фільтрів, корекцію HDR та застарілу корекцію кольору v1 не реалізовано.",
+    "de-DE": "OBS-Farbkorrektur v2 (SDR), Verstärkung und Polaritätsumkehr. Andere Standardfilter, HDR-Korrektur und die ältere Farbkorrektur v1 sind nicht implementiert."
+  },
+  "Name this filter. Names must be unique within this source.": {
+    "es-ES": "Asigna un nombre a este filtro. Los nombres deben ser únicos dentro de esta fuente.",
+    "ru-RU": "Назовите этот фильтр. Имена должны быть уникальны в пределах источника.",
+    "uk-UA": "Назвіть цей фільтр. Назви мають бути унікальними в межах джерела.",
+    "de-DE": "Diesen Filter benennen. Namen müssen innerhalb dieser Quelle eindeutig sein."
+  },
+  "Filters run from top to bottom, matching OBS. Changes affect every scene reference to this source. Apply saves the stack; Cancel discards the draft.": {
+    "es-ES": "Los filtros se ejecutan de arriba abajo, igual que en OBS. Los cambios afectan a todas las referencias a esta fuente en las escenas. Aplicar guarda la cadena; Cancelar descarta el borrador.",
+    "ru-RU": "Фильтры выполняются сверху вниз, как в OBS. Изменения влияют на все ссылки на источник в сценах. Применить сохраняет цепочку, Отмена отбрасывает черновик.",
+    "uk-UA": "Фільтри виконуються згори вниз, як в OBS. Зміни впливають на всі посилання на джерело в сценах. Застосувати зберігає ланцюжок, Скасувати відкидає чернетку.",
+    "de-DE": "Filter werden wie in OBS von oben nach unten ausgeführt. Änderungen betreffen alle Szenenverweise auf diese Quelle. Anwenden speichert die Kette; Abbrechen verwirft den Entwurf."
+  },
+  "Video filter name generation exhausted.": {
+    "es-ES": "No se pudo generar otro nombre de filtro de vídeo.",
+    "ru-RU": "Невозможно создать ещё одно имя видеофильтра.",
+    "uk-UA": "Неможливо створити ще одну назву відеофільтра.",
+    "de-DE": "Es kann kein weiterer Videofiltername erzeugt werden."
+  }
+}

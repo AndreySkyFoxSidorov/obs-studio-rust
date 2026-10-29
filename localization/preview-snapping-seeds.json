@@ -1,0 +1,118 @@
+{
+  "Align dragged sources with canvas edges, adjacent source edges or the canvas center. Hold Ctrl to move freely.": {
+    "es-ES": "Alinea las fuentes arrastradas con los bordes del lienzo, otras fuentes o el centro. Mantén Ctrl para mover libremente.",
+    "ru-RU": "Привязывает перемещаемые источники к краям холста, соседним источникам или центру. Удерживайте Ctrl для свободного перемещения.",
+    "uk-UA": "Прив’язує переміщувані джерела до країв полотна, сусідніх джерел або центру. Утримуйте Ctrl для вільного переміщення.",
+    "de-DE": "Gezogene Quellen an Leinwandkanten, Nachbarquellen oder der Mitte ausrichten. Für freies Bewegen Strg halten."
+  },
+  "Maximum alignment distance in display pixels; it follows Preview zoom. Zero disables snapping.": {
+    "es-ES": "Distancia máxima de alineación en píxeles de pantalla; se adapta al zoom de la vista previa. Cero desactiva el ajuste.",
+    "ru-RU": "Максимальное расстояние привязки в экранных пикселях с учётом масштаба превью. Ноль отключает привязку.",
+    "uk-UA": "Максимальна відстань прив’язування в екранних пікселях з урахуванням масштабу перегляду. Нуль вимикає прив’язування.",
+    "de-DE": "Maximaler Abstand in Bildschirmpixeln unter Berücksichtigung des Vorschauzooms. Null deaktiviert die Ausrichtung."
+  },
+  "Align the visible source bounds with the four canvas edges.": {
+    "es-ES": "Alinea los límites visibles de la fuente con los cuatro bordes del lienzo.",
+    "ru-RU": "Привязывает видимые границы источника к четырём краям холста.",
+    "uk-UA": "Прив’язує видимі межі джерела до чотирьох країв полотна.",
+    "de-DE": "Sichtbare Quellgrenzen an den vier Leinwandkanten ausrichten."
+  },
+  "Align facing source edges when their perpendicular spans overlap.": {
+    "es-ES": "Alinea los bordes enfrentados de las fuentes cuando sus intervalos perpendiculares se superponen.",
+    "ru-RU": "Привязывает обращённые друг к другу края источников при перекрытии по другой оси.",
+    "uk-UA": "Прив’язує звернені один до одного краї джерел за перекриття по іншій осі.",
+    "de-DE": "Gegenüberliegende Quellkanten bei Überlappung auf der anderen Achse ausrichten."
+  },
+  "Align the dragged source center with the horizontal or vertical canvas center.": {
+    "es-ES": "Alinea el centro de la fuente arrastrada con el centro horizontal o vertical del lienzo.",
+    "ru-RU": "Привязывает центр перемещаемого источника к центру холста по горизонтали или вертикали.",
+    "uk-UA": "Прив’язує центр переміщуваного джерела до центру полотна по горизонталі або вертикалі.",
+    "de-DE": "Die Mitte der gezogenen Quelle horizontal oder vertikal an der Leinwandmitte ausrichten."
+  },
+  "Enable source alignment snapping to edit these options.": {
+    "es-ES": "Activa el ajuste de alineación de fuentes para editar estas opciones.",
+    "ru-RU": "Включите привязку источников, чтобы изменить эти параметры.",
+    "uk-UA": "Увімкніть прив’язування джерел, щоб змінити ці параметри.",
+    "de-DE": "Quellenausrichtung aktivieren, um diese Optionen zu bearbeiten."
+  },
+  "Restore OBS snapping defaults": {
+    "es-ES": "Restaurar los valores de ajuste de OBS",
+    "ru-RU": "Восстановить привязку по умолчанию OBS",
+    "uk-UA": "Відновити типове прив’язування OBS",
+    "de-DE": "OBS-Ausrichtungsvorgaben wiederherstellen"
+  },
+  "Restore enabled edge snapping at 10 pixels, with center snapping off, in this draft.": {
+    "es-ES": "Restaura en este borrador el ajuste de bordes a 10 píxeles y desactiva el ajuste al centro.",
+    "ru-RU": "Восстанавливает в черновике привязку к краям на расстоянии 10 пикселей без привязки к центру.",
+    "uk-UA": "Відновлює в чернетці прив’язування до країв на відстані 10 пікселів без прив’язування до центру.",
+    "de-DE": "Im Entwurf die Kantenausrichtung mit 10 Pixeln aktivieren und die Mittenausrichtung deaktivieren."
+  },
+  "Preview snapping distance requires 0..100 display pixels": {
+    "es-ES": "La distancia de ajuste debe estar entre 0 y 100 píxeles de pantalla",
+    "ru-RU": "Расстояние привязки должно быть от 0 до 100 экранных пикселей",
+    "uk-UA": "Відстань прив’язування має бути від 0 до 100 екранних пікселів",
+    "de-DE": "Der Ausrichtungsabstand muss zwischen 0 und 100 Bildschirmpixeln liegen"
+  },
+  "Preview snapping settings changed. Reopen General settings before applying.": {
+    "es-ES": "Los ajustes de alineación han cambiado. Vuelve a abrir General antes de aplicar.",
+    "ru-RU": "Настройки привязки изменились. Перед применением заново откройте раздел «Общие».",
+    "uk-UA": "Налаштування прив’язування змінилися. Перед застосуванням знову відкрийте розділ «Загальні».",
+    "de-DE": "Die Ausrichtungseinstellungen wurden geändert. Vor dem Anwenden Allgemein erneut öffnen."
+  },
+  "Preview snapping requires finite movement and positive display scales.": {
+    "es-ES": "El ajuste requiere un desplazamiento finito y escalas de pantalla positivas.",
+    "ru-RU": "Для привязки нужны конечные координаты перемещения и положительный масштаб отображения.",
+    "uk-UA": "Для прив’язування потрібні скінченні координати переміщення та додатний масштаб відображення.",
+    "de-DE": "Die Ausrichtung erfordert endliche Verschiebungen und positive Anzeigeskalen."
+  },
+  "Preview snapping display scale is outside the valid range.": {
+    "es-ES": "La escala de pantalla para el ajuste está fuera del intervalo válido.",
+    "ru-RU": "Масштаб отображения для привязки выходит за допустимый диапазон.",
+    "uk-UA": "Масштаб відображення для прив’язування виходить за допустимий діапазон.",
+    "de-DE": "Die Anzeigeskala der Ausrichtung liegt außerhalb des gültigen Bereichs."
+  },
+  "A snapping source no longer exists.": {
+    "es-ES": "Ya no existe una fuente usada para la alineación.",
+    "ru-RU": "Один из источников для привязки больше не существует.",
+    "uk-UA": "Одне з джерел для прив’язування більше не існує.",
+    "de-DE": "Eine Quelle für die Ausrichtung existiert nicht mehr."
+  },
+  "Preview snapping settings require native schema9": {
+    "es-ES": "Los ajustes de alineación requieren el esquema nativo 9",
+    "ru-RU": "Настройки привязки требуют схему собственного формата 9",
+    "uk-UA": "Налаштування прив’язування потребують схему власного формату 9",
+    "de-DE": "Ausrichtungseinstellungen erfordern das native Schema 9"
+  },
+  "Preview snapping settings require preferences schema2": {
+    "es-ES": "Los ajustes de alineación requieren el esquema de preferencias 2",
+    "ru-RU": "Настройки привязки требуют схему пользовательских настроек 2",
+    "uk-UA": "Налаштування прив’язування потребують схему користувацьких налаштувань 2",
+    "de-DE": "Ausrichtungseinstellungen erfordern Einstellungsschema 2"
+  },
+  "The source definition identity is unavailable. Reopen the source before editing.": {
+    "es-ES":"La identidad de la definición de la fuente no está disponible. Vuelve a abrir la fuente antes de editar.",
+    "ru-RU":"Идентификатор определения источника недоступен. Перед редактированием заново откройте источник.",
+    "uk-UA":"Ідентифікатор визначення джерела недоступний. Перед редагуванням знову відкрийте джерело.",
+    "de-DE":"Die Identität der Quelldefinition ist nicht verfügbar. Die Quelle vor dem Bearbeiten erneut öffnen."
+  },
+  "Resize top-left corner": {"es-ES":"Cambiar tamaño desde la esquina superior izquierda","ru-RU":"Изменить размер за левый верхний угол","uk-UA":"Змінити розмір за лівий верхній кут","de-DE":"Größe an der linken oberen Ecke ändern"},
+  "Resize top edge": {"es-ES":"Cambiar tamaño desde el borde superior","ru-RU":"Изменить размер за верхний край","uk-UA":"Змінити розмір за верхній край","de-DE":"Größe am oberen Rand ändern"},
+  "Resize top-right corner": {"es-ES":"Cambiar tamaño desde la esquina superior derecha","ru-RU":"Изменить размер за правый верхний угол","uk-UA":"Змінити розмір за правий верхній кут","de-DE":"Größe an der rechten oberen Ecke ändern"},
+  "Resize right edge": {"es-ES":"Cambiar tamaño desde el borde derecho","ru-RU":"Изменить размер за правый край","uk-UA":"Змінити розмір за правий край","de-DE":"Größe am rechten Rand ändern"},
+  "Resize bottom-right corner": {"es-ES":"Cambiar tamaño desde la esquina inferior derecha","ru-RU":"Изменить размер за правый нижний угол","uk-UA":"Змінити розмір за правий нижній кут","de-DE":"Größe an der rechten unteren Ecke ändern"},
+  "Resize bottom edge": {"es-ES":"Cambiar tamaño desde el borde inferior","ru-RU":"Изменить размер за нижний край","uk-UA":"Змінити розмір за нижній край","de-DE":"Größe am unteren Rand ändern"},
+  "Resize bottom-left corner": {"es-ES":"Cambiar tamaño desde la esquina inferior izquierda","ru-RU":"Изменить размер за левый нижний угол","uk-UA":"Змінити розмір за лівий нижній кут","de-DE":"Größe an der linken unteren Ecke ändern"},
+  "Resize left edge": {"es-ES":"Cambiar tamaño desde el borde izquierdo","ru-RU":"Изменить размер за левый край","uk-UA":"Змінити розмір за лівий край","de-DE":"Größe am linken Rand ändern"},
+  "Drag to resize. Hold Shift to stretch, Alt to crop, or Ctrl to bypass canvas snapping. Escape cancels.": {
+    "es-ES":"Arrastra para cambiar el tamaño. Shift permite estirar, Alt recorta y Ctrl omite el ajuste al lienzo. Escape cancela.",
+    "ru-RU":"Перетащите для изменения размера. Shift растягивает, Alt обрезает, Ctrl отключает привязку к холсту. Escape отменяет действие.",
+    "uk-UA":"Перетягніть для зміни розміру. Shift розтягує, Alt обрізає, Ctrl вимикає прив’язування до полотна. Escape скасовує дію.",
+    "de-DE":"Zum Ändern der Größe ziehen. Umschalt streckt, Alt schneidet zu, Strg umgeht die Leinwandausrichtung. Escape bricht ab."
+  },
+  "Hold Ctrl while dragging to bypass source alignment snapping.": {
+    "es-ES": "Mantén Ctrl al arrastrar para omitir el ajuste de alineación de fuentes.",
+    "ru-RU": "Удерживайте Ctrl при перетаскивании, чтобы временно отключить привязку источника.",
+    "uk-UA": "Утримуйте Ctrl під час перетягування, щоб тимчасово вимкнути прив’язування джерела.",
+    "de-DE": "Beim Ziehen Strg halten, um die Quellenausrichtung vorübergehend zu umgehen."
+  }
+}

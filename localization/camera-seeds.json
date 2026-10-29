@@ -1,0 +1,266 @@
+{
+  "Add Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät hinzufügen",
+    "es-ES": "Añadir dispositivo de captura de vídeo",
+    "ru-RU": "Добавить устройство видеозахвата",
+    "uk-UA": "Додати пристрій відеозахоплення"
+  },
+  "Apply binds and starts camera video. Audio, compressed formats and vendor configuration dialogs are not connected. Cancel changes no source.": {
+    "de-DE": "Anwenden bindet die Kamera ein und startet das Kameravideo. Audio, komprimierte Formate und Hersteller-Konfigurationsdialoge sind nicht angebunden. Abbrechen ändert keine Quelle.",
+    "es-ES": "Aplicar vincula e inicia el vídeo de la cámara. El audio, los formatos comprimidos y los diálogos de configuración del fabricante no están conectados. Cancelar no modifica ninguna fuente.",
+    "ru-RU": "Применение привязывает камеру и запускает видеозахват. Звук, сжатые форматы и диалоги настройки производителя не подключены. Отмена не изменяет источники.",
+    "uk-UA": "Застосування прив’язує камеру й запускає відеозахоплення. Звук, стиснені формати та діалоги налаштування виробника не підключені. Скасування не змінює джерела."
+  },
+  "Camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "La captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "Захват камеры недоступен на этой платформе",
+    "uk-UA": "Захоплення камери недоступне на цій платформі"
+  },
+  "Camera draft belongs to another document": {
+    "de-DE": "Der Kameraentwurf gehört zu einem anderen Dokument",
+    "es-ES": "El borrador de la cámara pertenece a otro documento",
+    "ru-RU": "Черновик настройки камеры относится к другому документу",
+    "uk-UA": "Чернетка налаштування камери належить іншому документу"
+  },
+  "Camera picker identity exhausted": {
+    "de-DE": "Die Kennungen der Kameraauswahl sind ausgeschöpft",
+    "es-ES": "Se han agotado los identificadores del selector de cámaras",
+    "ru-RU": "Исчерпаны идентификаторы диалога выбора камеры",
+    "uk-UA": "Вичерпано ідентифікатори діалогу вибору камери"
+  },
+  "Camera streams stopped": {
+    "de-DE": "Kamerastreams gestoppt",
+    "es-ES": "Flujos de cámara detenidos",
+    "ru-RU": "Потоки камер остановлены",
+    "uk-UA": "Потоки камер зупинено"
+  },
+  "Camera: {error}": {
+    "de-DE": "Kamera: {error}",
+    "es-ES": "Cámara: {error}",
+    "ru-RU": "Камера: {error}",
+    "uk-UA": "Камера: {error}"
+  },
+  "Choose a camera and query its actual supported native modes": {
+    "de-DE": "Eine Kamera auswählen und ihre tatsächlich unterstützten nativen Modi abfragen",
+    "es-ES": "Elige una cámara y consulta los modos nativos que realmente admite",
+    "ru-RU": "Выберите камеру и запросите реально поддерживаемые ею собственные режимы",
+    "uk-UA": "Виберіть камеру й запитайте власні режими, які вона насправді підтримує"
+  },
+  "Choose exact native resolution, frame rate and pixel format": {
+    "de-DE": "Die genaue native Auflösung, Bildrate und das Pixelformat auswählen",
+    "es-ES": "Elige la resolución nativa, la frecuencia de fotogramas y el formato de píxel exactos",
+    "ru-RU": "Выберите точные собственные разрешение, частоту кадров и формат пикселей",
+    "uk-UA": "Виберіть точні власні роздільність, частоту кадрів і формат пікселів"
+  },
+  "Choose the video capture device": {
+    "de-DE": "Das Videoaufnahmegerät auswählen",
+    "es-ES": "Elige el dispositivo de captura de vídeo",
+    "ru-RU": "Выберите устройство видеозахвата",
+    "uk-UA": "Виберіть пристрій відеозахоплення"
+  },
+  "Chroma centered": {
+    "de-DE": "Chroma zentriert",
+    "es-ES": "Croma centrado",
+    "ru-RU": "Цветность по центру",
+    "uk-UA": "Колірність по центру"
+  },
+  "Chroma left": {
+    "de-DE": "Chroma links",
+    "es-ES": "Croma a la izquierda",
+    "ru-RU": "Цветность слева",
+    "uk-UA": "Колірність зліва"
+  },
+  "Deactivate when not showing": {
+    "de-DE": "Deaktivieren, wenn nicht sichtbar",
+    "es-ES": "Desactivar cuando no se muestre",
+    "ru-RU": "Деактивировать, когда не отображается",
+    "uk-UA": "Деактивувати, коли не відображається"
+  },
+  "Exact native RGB24/RGB32/ARGB32, YUY2 and NV12 modes; compressed formats and unsupported color metadata are reported explicitly": {
+    "de-DE": "Exakte native RGB24/RGB32/ARGB32-, YUY2- und NV12-Modi; komprimierte Formate und nicht unterstützte Farbmetadaten werden ausdrücklich angezeigt",
+    "es-ES": "Modos nativos exactos RGB24/RGB32/ARGB32, YUY2 y NV12; los formatos comprimidos y los metadatos de color no admitidos se indican explícitamente",
+    "ru-RU": "Точные нативные режимы RGB24/RGB32/ARGB32, YUY2 и NV12; сжатые форматы и неподдерживаемые метаданные цвета явно отмечаются",
+    "uk-UA": "Точні нативні режими RGB24/RGB32/ARGB32, YUY2 та NV12; стиснені формати й непідтримувані метадані кольору явно позначаються"
+  },
+  "Full range": {
+    "de-DE": "Voller Bereich",
+    "es-ES": "Rango completo",
+    "ru-RU": "Полный диапазон",
+    "uk-UA": "Повний діапазон"
+  },
+  "Limited range": {
+    "de-DE": "Begrenzter Bereich",
+    "es-ES": "Rango limitado",
+    "ru-RU": "Ограниченный диапазон",
+    "uk-UA": "Обмежений діапазон"
+  },
+  "Name of this video capture source": {
+    "de-DE": "Name dieser Videoaufnahmequelle",
+    "es-ES": "Nombre de esta fuente de captura de vídeo",
+    "ru-RU": "Имя этого источника видеозахвата",
+    "uk-UA": "Назва цього джерела відеозахоплення"
+  },
+  "Native camera modes": {
+    "de-DE": "Native Kameramodi",
+    "es-ES": "Modos nativos de la cámara",
+    "ru-RU": "Собственные режимы камеры",
+    "uk-UA": "Власні режими камери"
+  },
+  "Properties: Video Capture Device": {
+    "de-DE": "Eigenschaften: Videoaufnahmegerät",
+    "es-ES": "Propiedades: dispositivo de captura de vídeo",
+    "ru-RU": "Свойства: устройство видеозахвата",
+    "uk-UA": "Властивості: пристрій відеозахоплення"
+  },
+  "Query Modes": {
+    "de-DE": "Modi abfragen",
+    "es-ES": "Consultar modos",
+    "ru-RU": "Запросить режимы",
+    "uk-UA": "Запитати режими"
+  },
+  "Query and select a supported native camera mode": {
+    "de-DE": "Einen unterstützten nativen Kameramodus abfragen und auswählen",
+    "es-ES": "Consulta y selecciona un modo nativo de cámara compatible",
+    "ru-RU": "Запросите и выберите поддерживаемый собственный режим камеры",
+    "uk-UA": "Запитайте й виберіть підтримуваний власний режим камери"
+  },
+  "Querying camera capabilities…": {
+    "de-DE": "Kamerafunktionen werden abgefragt…",
+    "es-ES": "Consultando las capacidades de la cámara…",
+    "ru-RU": "Запрос возможностей камеры…",
+    "uk-UA": "Запит можливостей камери…"
+  },
+  "Querying modes may briefly activate the selected camera driver": {
+    "de-DE": "Die Modusabfrage kann den Treiber der ausgewählten Kamera kurzzeitig aktivieren",
+    "es-ES": "La consulta de modos puede activar brevemente el controlador de la cámara seleccionada",
+    "ru-RU": "Запрос режимов может ненадолго активировать драйвер выбранной камеры",
+    "uk-UA": "Запит режимів може ненадовго активувати драйвер вибраної камери"
+  },
+  "Refresh Cameras": {
+    "de-DE": "Kameraliste aktualisieren",
+    "es-ES": "Actualizar cámaras",
+    "ru-RU": "Обновить список камер",
+    "uk-UA": "Оновити список камер"
+  },
+  "Refresh device names without starting video capture": {
+    "de-DE": "Gerätenamen aktualisieren, ohne die Videoaufnahme zu starten",
+    "es-ES": "Actualiza los nombres de los dispositivos sin iniciar la captura de vídeo",
+    "ru-RU": "Обновить имена устройств без запуска видеозахвата",
+    "uk-UA": "Оновити назви пристроїв без запуску відеозахоплення"
+  },
+  "Release the camera while no active scene or Studio Preview shows this source": {
+    "de-DE": "Die Kamera freigeben, solange keine aktive Szene und keine Studio-Vorschau diese Quelle zeigt",
+    "es-ES": "Libera la cámara mientras ninguna escena activa ni la vista previa del estudio muestre esta fuente",
+    "ru-RU": "Освободить камеру, пока этот источник не отображается ни в активной сцене, ни в предпросмотре студии",
+    "uk-UA": "Звільнити камеру, поки це джерело не відображається ні в активній сцені, ні в попередньому перегляді студії"
+  },
+  "Saved mode; the device will verify it when capture starts.": {
+    "de-DE": "Gespeicherter Modus; das Gerät überprüft ihn beim Start der Aufnahme.",
+    "es-ES": "Modo guardado; el dispositivo lo verificará al iniciar la captura.",
+    "ru-RU": "Сохранённый режим; устройство проверит его при запуске захвата.",
+    "uk-UA": "Збережений режим; пристрій перевірить його під час запуску захоплення."
+  },
+  "Select a camera": {
+    "de-DE": "Eine Kamera auswählen",
+    "es-ES": "Selecciona una cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select an actual supported camera mode": {
+    "de-DE": "Einen tatsächlich unterstützten Kameramodus auswählen",
+    "es-ES": "Selecciona un modo que la cámara realmente admita",
+    "ru-RU": "Выберите реально поддерживаемый режим камеры",
+    "uk-UA": "Виберіть режим, який камера насправді підтримує"
+  },
+  "Select camera": {
+    "de-DE": "Kamera auswählen",
+    "es-ES": "Seleccionar cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select mode": {
+    "de-DE": "Modus auswählen",
+    "es-ES": "Seleccionar modo",
+    "ru-RU": "Выберите режим",
+    "uk-UA": "Виберіть режим"
+  },
+  "Select this exact native capture mode": {
+    "de-DE": "Genau diesen nativen Aufnahmemodus auswählen",
+    "es-ES": "Selecciona exactamente este modo de captura nativo",
+    "ru-RU": "Выбрать именно этот собственный режим захвата",
+    "uk-UA": "Вибрати саме цей власний режим захоплення"
+  },
+  "Stop Camera Capture": {
+    "de-DE": "Kameraaufnahme stoppen",
+    "es-ES": "Detener la captura de cámara",
+    "ru-RU": "Остановить захват камер",
+    "uk-UA": "Зупинити захоплення камер"
+  },
+  "Stop all camera streams; device shutdown is acknowledged separately": {
+    "de-DE": "Alle Kamerastreams stoppen; das Herunterfahren der Geräte wird gesondert bestätigt",
+    "es-ES": "Detiene todos los flujos de cámara; el cierre de los dispositivos se confirma por separado",
+    "ru-RU": "Остановить все потоки камер; завершение работы устройств подтверждается отдельно",
+    "uk-UA": "Зупинити всі потоки камер; завершення роботи пристроїв підтверджується окремо"
+  },
+  "The document changed. Reopen this dialog to bind a camera.": {
+    "de-DE": "Das Dokument wurde geändert. Diesen Dialog erneut öffnen, um eine Kamera einzubinden.",
+    "es-ES": "El documento ha cambiado. Vuelve a abrir este diálogo para vincular una cámara.",
+    "ru-RU": "Документ изменился. Откройте этот диалог заново, чтобы привязать камеру.",
+    "uk-UA": "Документ змінився. Відкрийте цей діалог знову, щоб прив’язати камеру."
+  },
+  "The selected camera is unavailable": {
+    "de-DE": "Die ausgewählte Kamera ist nicht verfügbar",
+    "es-ES": "La cámara seleccionada no está disponible",
+    "ru-RU": "Выбранная камера недоступна",
+    "uk-UA": "Вибрана камера недоступна"
+  },
+  "This camera has no modes supported by the current uncompressed capture profile.": {
+    "de-DE": "Diese Kamera bietet keine vom aktuellen unkomprimierten Aufnahmeprofil unterstützten Modi.",
+    "es-ES": "Esta cámara no tiene modos compatibles con el perfil actual de captura sin compresión.",
+    "ru-RU": "У этой камеры нет режимов, поддерживаемых текущим профилем несжатого захвата.",
+    "uk-UA": "Ця камера не має режимів, підтримуваних поточним профілем захоплення без стиснення."
+  },
+  "Unsupported native camera mode": {
+    "de-DE": "Nicht unterstützter nativer Kameramodus",
+    "es-ES": "Modo nativo de cámara no compatible",
+    "ru-RU": "Неподдерживаемый собственный режим камеры",
+    "uk-UA": "Непідтримуваний власний режим камери"
+  },
+  "Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät",
+    "es-ES": "Dispositivo de captura de vídeo",
+    "ru-RU": "Устройство видеозахвата",
+    "uk-UA": "Пристрій відеозахоплення"
+  },
+  "Wait for camera enumeration before applying": {
+    "de-DE": "Vor dem Anwenden auf den Abschluss der Kameraerfassung warten",
+    "es-ES": "Espera a que termine la enumeración de cámaras antes de aplicar",
+    "ru-RU": "Дождитесь завершения поиска камер перед применением",
+    "uk-UA": "Дочекайтеся завершення пошуку камер перед застосуванням"
+  },
+  "camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "la captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "захват камеры недоступен на этой платформе",
+    "uk-UA": "захоплення камери недоступне на цій платформі"
+  },
+  "macOS 14+, existing Camera permission; exact native BGRA mode; no camera audio": {
+    "de-DE": "macOS 14+, bereits erteilte Kameraberechtigung; exakter nativer BGRA-Modus; kein Kamera-Audio",
+    "es-ES": "macOS 14+, permiso de cámara ya concedido; modo nativo BGRA exacto; sin audio de cámara",
+    "ru-RU": "macOS 14+, уже выданное разрешение на камеру; точный собственный режим BGRA; без звука камеры",
+    "uk-UA": "macOS 14+, уже наданий дозвіл на камеру; точний власний режим BGRA; без звуку камери"
+  },
+  "native camera format is outside the BGRA profile; no implicit conversion": {
+    "de-DE": "Natives Kameraformat liegt außerhalb des BGRA-Profils; keine implizite Konvertierung",
+    "es-ES": "el formato nativo de la cámara queda fuera del perfil BGRA; no se realiza conversión implícita",
+    "ru-RU": "собственный формат камеры не входит в профиль BGRA; неявное преобразование не выполняется",
+    "uk-UA": "власний формат камери не входить до профілю BGRA; неявне перетворення не виконується"
+  },
+  "native format or mode is outside the supported RGB camera profile": {
+    "de-DE": "Natives Format oder nativer Modus liegt außerhalb des unterstützten RGB-Kameraprofils",
+    "es-ES": "el formato o modo nativo queda fuera del perfil de cámara RGB compatible",
+    "ru-RU": "собственный формат или режим не входит в поддерживаемый профиль камеры RGB",
+    "uk-UA": "власний формат або режим не входить до підтримуваного профілю камери RGB"
+  }
+}

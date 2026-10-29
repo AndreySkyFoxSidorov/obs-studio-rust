@@ -1,0 +1,170 @@
+{
+  "Video Encoder": {
+    "es-ES": "Codificador de vídeo",
+    "ru-RU": "Видеокодер",
+    "uk-UA": "Відеокодер",
+    "de-DE": "Videoencoder"
+  },
+  "Software H.264": {
+    "es-ES": "H.264 por software",
+    "ru-RU": "Программный H.264",
+    "uk-UA": "Програмний H.264",
+    "de-DE": "Software H.264"
+  },
+  "System H.264": {
+    "es-ES": "H.264 del sistema",
+    "ru-RU": "Системный H.264",
+    "uk-UA": "Системний H.264",
+    "de-DE": "System H.264"
+  },
+  "NVIDIA NVENC H.264": {
+    "es-ES": "NVIDIA NVENC H.264",
+    "ru-RU": "NVIDIA NVENC H.264",
+    "uk-UA": "NVIDIA NVENC H.264",
+    "de-DE": "NVIDIA NVENC H.264"
+  },
+  "Use the Windows software encoder. No NVIDIA driver is required.": {
+    "es-ES": "Usar el codificador por software de Windows. No requiere el controlador de NVIDIA.",
+    "ru-RU": "Использовать программный кодер Windows. Драйвер NVIDIA не требуется.",
+    "uk-UA": "Використовувати програмний кодер Windows. Драйвер NVIDIA не потрібен.",
+    "de-DE": "Den Windows-Softwareencoder verwenden. Kein NVIDIA-Treiber erforderlich."
+  },
+  "NVENC Baseline / NV12 / CBR · {minw}×{minh}…{maxw}×{maxh}": {
+    "es-ES": "NVENC Baseline / NV12 / CBR · {minw}×{minh}…{maxw}×{maxh}",
+    "ru-RU": "NVENC Baseline / NV12 / CBR · {minw}×{minh}…{maxw}×{maxh}",
+    "uk-UA": "NVENC Baseline / NV12 / CBR · {minw}×{minh}…{maxw}×{maxh}",
+    "de-DE": "NVENC Baseline / NV12 / CBR · {minw}×{minh}…{maxw}×{maxh}"
+  },
+  "Choose an encoder for the next output start. An unavailable NVIDIA adapter never falls back silently.": {
+    "es-ES": "Elegir el codificador para el próximo inicio. Si el adaptador NVIDIA no está disponible, no se sustituye silenciosamente.",
+    "ru-RU": "Выберите кодер для следующего запуска вывода. Недоступный адаптер NVIDIA не заменяется другим незаметно.",
+    "uk-UA": "Виберіть кодер для наступного запуску виводу. Недоступний адаптер NVIDIA не замінюється іншим непомітно.",
+    "de-DE": "Encoder für den nächsten Ausgabestart wählen. Ein nicht verfügbarer NVIDIA-Adapter wird nicht stillschweigend ersetzt."
+  },
+  "Probe NVIDIA encoders": {
+    "es-ES": "Consultar codificadores NVIDIA",
+    "ru-RU": "Проверить кодеры NVIDIA",
+    "uk-UA": "Перевірити кодери NVIDIA",
+    "de-DE": "NVIDIA-Encoder abfragen"
+  },
+  "Probing NVIDIA encoders…": {
+    "es-ES": "Consultando codificadores NVIDIA…",
+    "ru-RU": "Проверка кодеров NVIDIA…",
+    "uk-UA": "Перевірка кодерів NVIDIA…",
+    "de-DE": "NVIDIA-Encoder werden abgefragt…"
+  },
+  "Explicitly load the installed NVIDIA driver and query real adapter capabilities on a worker. This does not start recording or streaming.": {
+    "es-ES": "Cargar explícitamente el controlador NVIDIA instalado y consultar las capacidades reales del adaptador en segundo plano. No inicia grabación ni transmisión.",
+    "ru-RU": "Явно загрузить установленный драйвер NVIDIA и запросить реальные возможности адаптеров в рабочем потоке. Запись и стриминг не запускаются.",
+    "uk-UA": "Явно завантажити встановлений драйвер NVIDIA та запитати реальні можливості адаптерів у робочому потоці. Запис і трансляція не запускаються.",
+    "de-DE": "Installierten NVIDIA-Treiber ausdrücklich laden und tatsächliche Adapterfähigkeiten im Arbeitsthread abfragen. Startet weder Aufnahme noch Stream."
+  },
+  "NVENC requires Windows x64. A running probe must retire before another is admitted.": {
+    "es-ES": "NVENC requiere Windows x64. Debe terminar la consulta actual antes de admitir otra.",
+    "ru-RU": "NVENC требует Windows x64. Предыдущий запрос должен завершиться до нового.",
+    "uk-UA": "NVENC потребує Windows x64. Попередній запит має завершитися до нового.",
+    "de-DE": "NVENC erfordert Windows x64. Die laufende Abfrage muss vor einer weiteren vollständig beendet sein."
+  },
+  "No NVIDIA hardware adapters were found.": {
+    "es-ES": "No se encontraron adaptadores de hardware NVIDIA.",
+    "ru-RU": "Аппаратные адаптеры NVIDIA не найдены.",
+    "uk-UA": "Апаратні адаптери NVIDIA не знайдено.",
+    "de-DE": "Keine NVIDIA-Hardwareadapter gefunden."
+  },
+  "NVENC: H.264 Baseline, 8-bit NV12, CBR, P4, no B-frames or lookahead. Driver support is checked again at Start.": {
+    "es-ES": "NVENC: H.264 Baseline, NV12 de 8 bits, CBR, P4, sin fotogramas B ni lookahead. Se comprueba de nuevo el controlador al iniciar.",
+    "ru-RU": "NVENC: H.264 Baseline, 8-битный NV12, CBR, P4, без B-кадров и lookahead. При запуске поддержка драйвера проверяется повторно.",
+    "uk-UA": "NVENC: H.264 Baseline, 8-бітний NV12, CBR, P4, без B-кадрів і lookahead. Під час запуску підтримка драйвера перевіряється повторно.",
+    "de-DE": "NVENC: H.264 Baseline, 8-Bit-NV12, CBR, P4, ohne B-Frames oder Lookahead. Die Treiberunterstützung wird beim Start erneut geprüft."
+  },
+  "NVENC Keyframe Interval (seconds)": {
+    "es-ES": "Intervalo de fotogramas clave NVENC (segundos)",
+    "ru-RU": "Интервал ключевых кадров NVENC (секунды)",
+    "uk-UA": "Інтервал ключових кадрів NVENC (секунди)",
+    "de-DE": "NVENC-Schlüsselbildintervall (Sekunden)"
+  },
+  "Configure the native NVENC GOP for recording and Replay Buffer. Applies on the next start.": {
+    "es-ES": "Configurar el GOP nativo de NVENC para grabación y búfer de repetición. Se aplica en el próximo inicio.",
+    "ru-RU": "Настроить нативный GOP NVENC для записи и буфера повтора. Применяется при следующем запуске.",
+    "uk-UA": "Налаштувати нативний GOP NVENC для запису та буфера повтору. Застосовується під час наступного запуску.",
+    "de-DE": "Nativen NVENC-GOP für Aufnahme und Wiedergabepuffer konfigurieren. Gilt ab dem nächsten Start."
+  },
+  "This GOP control is available for the explicit NVENC encoder.": {
+    "es-ES": "Este control GOP está disponible al elegir explícitamente NVENC.",
+    "ru-RU": "Эта настройка GOP доступна при явном выборе кодера NVENC.",
+    "uk-UA": "Це налаштування GOP доступне за явного вибору кодера NVENC.",
+    "de-DE": "Diese GOP-Einstellung ist für den ausdrücklich gewählten NVENC-Encoder verfügbar."
+  },
+  "Replay Buffer uses the selected recording video encoder, AAC, folder and bitrates. Changes apply on the next start.": {
+    "es-ES": "El búfer de repetición usa el codificador de vídeo, AAC, carpeta y tasas de bits de grabación seleccionados. Los cambios se aplican en el próximo inicio.",
+    "ru-RU": "Буфер повтора использует выбранный видеокодер записи, AAC, папку и битрейты. Изменения действуют при следующем запуске.",
+    "uk-UA": "Буфер повтору використовує вибраний відеокодер запису, AAC, теку та бітрейти. Зміни діють під час наступного запуску.",
+    "de-DE": "Der Wiedergabepuffer verwendet den gewählten Aufnahme-Videoencoder, AAC, Aufnahmeordner und Bitraten. Änderungen gelten ab dem nächsten Start."
+  },
+  "Settings changed. Reopen the encoder page before probing.": {
+    "es-ES": "La configuración cambió. Vuelve a abrir la página del codificador antes de consultar.",
+    "ru-RU": "Настройки изменились. Перед запросом заново откройте страницу кодера.",
+    "uk-UA": "Налаштування змінилися. Перед запитом знову відкрийте сторінку кодера.",
+    "de-DE": "Einstellungen wurden geändert. Die Encoderseite vor der Abfrage erneut öffnen."
+  },
+  "Open Output or Stream settings before probing NVIDIA encoders.": {
+    "es-ES": "Abre los ajustes de salida o transmisión antes de consultar los codificadores NVIDIA.",
+    "ru-RU": "Перед запросом кодеров NVIDIA откройте настройки вывода или стриминга.",
+    "uk-UA": "Перед запитом кодерів NVIDIA відкрийте налаштування виводу або трансляції.",
+    "de-DE": "Vor der NVIDIA-Encoderabfrage die Ausgabe- oder Streameinstellungen öffnen."
+  },
+  "Choose NVIDIA explicitly in Output or Stream settings. Probe reads the installed driver; opening this module never loads it.": {
+    "es-ES": "Elige NVIDIA explícitamente en los ajustes de salida o transmisión. La consulta accede al controlador instalado; abrir este módulo no lo carga.",
+    "ru-RU": "Явно выберите NVIDIA в настройках вывода или стриминга. Проверка обращается к установленному драйверу; открытие этого модуля его не загружает.",
+    "uk-UA": "Явно виберіть NVIDIA в налаштуваннях виводу або трансляції. Перевірка звертається до встановленого драйвера; відкриття цього модуля його не завантажує.",
+    "de-DE": "NVIDIA ausdrücklich in den Ausgabe- oder Streameinstellungen wählen. Die Abfrage liest den installierten Treiber; das Öffnen dieses Moduls lädt ihn nicht."
+  },
+  "Open Output Encoder Settings": {
+    "es-ES": "Abrir ajustes del codificador de salida",
+    "ru-RU": "Открыть настройки кодера вывода",
+    "uk-UA": "Відкрити налаштування кодера виводу",
+    "de-DE": "Ausgabe-Encodereinstellungen öffnen"
+  },
+  "Configure the next recording and Replay Buffer video encoder.": {
+    "es-ES": "Configurar el codificador de vídeo de la próxima grabación y del búfer de repetición.",
+    "ru-RU": "Настроить видеокодер для следующей записи и буфера повтора.",
+    "uk-UA": "Налаштувати відеокодер для наступного запису та буфера повтору.",
+    "de-DE": "Videoencoder für die nächste Aufnahme und den Wiedergabepuffer konfigurieren."
+  },
+  "Open Stream Encoder Settings": {
+    "es-ES": "Abrir ajustes del codificador de transmisión",
+    "ru-RU": "Открыть настройки кодера стриминга",
+    "uk-UA": "Відкрити налаштування кодера трансляції",
+    "de-DE": "Stream-Encodereinstellungen öffnen"
+  },
+  "Configure the next streaming video encoder.": {
+    "es-ES": "Configurar el codificador de vídeo de la próxima transmisión.",
+    "ru-RU": "Настроить видеокодер следующей трансляции.",
+    "uk-UA": "Налаштувати відеокодер наступної трансляції.",
+    "de-DE": "Videoencoder für den nächsten Stream konfigurieren."
+  },
+  "Video Encoder: {state}": {
+    "es-ES": "Codificador de vídeo: {state}",
+    "ru-RU": "Видеокодер: {state}",
+    "uk-UA": "Відеокодер: {state}",
+    "de-DE": "Videoencoder: {state}"
+  },
+  "NVIDIA NVENC H.264 (Windows x64 · NV12 · CBR · Baseline)": {
+    "es-ES": "NVIDIA NVENC H.264 (Windows x64 · NV12 · CBR · Baseline)",
+    "ru-RU": "NVIDIA NVENC H.264 (Windows x64 · NV12 · CBR · Baseline)",
+    "uk-UA": "NVIDIA NVENC H.264 (Windows x64 · NV12 · CBR · Baseline)",
+    "de-DE": "NVIDIA NVENC H.264 (Windows x64 · NV12 · CBR · Baseline)"
+  },
+  "Windows x64 NVENC API12.1 H264 Baseline/NV12/CBR P4 without B-frames, lookahead or other codecs; actual adapter capabilities require explicit Probe or Start. Shared recording, streaming and Replay Buffer encoder.": {
+    "es-ES": "Windows x64, NVENC API12.1, H264 Baseline/NV12/CBR P4, sin fotogramas B, lookahead ni otros códecs. Las capacidades reales requieren consultar o iniciar explícitamente. Codificador compartido por grabación, transmisión y búfer de repetición.",
+    "ru-RU": "Windows x64, NVENC API12.1, H264 Baseline/NV12/CBR P4, без B-кадров, lookahead и других кодеков. Реальные возможности адаптера запрашиваются явной проверкой или запуском. Общий кодер записи, стриминга и буфера повтора.",
+    "uk-UA": "Windows x64, NVENC API12.1, H264 Baseline/NV12/CBR P4, без B-кадрів, lookahead та інших кодеків. Реальні можливості адаптера запитуються явною перевіркою або запуском. Спільний кодер запису, трансляції та буфера повтору.",
+    "de-DE": "Windows x64, NVENC API12.1, H264 Baseline/NV12/CBR P4, ohne B-Frames, Lookahead oder andere Codecs. Tatsächliche Adapterfähigkeiten erfordern ausdrückliche Abfrage oder Start. Gemeinsamer Encoder für Aufnahme, Streaming und Wiedergabepuffer."
+  },
+  "Use the existing system H.264 encoder.": {
+    "es-ES": "Usar el codificador H.264 existente del sistema.",
+    "ru-RU": "Использовать существующий системный кодер H.264.",
+    "uk-UA": "Використовувати наявний системний кодер H.264.",
+    "de-DE": "Den vorhandenen H.264-Systemencoder verwenden."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "plugins/obs-transitions/transition-fade-to-color.c",
+      "sha256": "915c8654a676057e35fef365cb0806f10e0f24a446b88b21245098d0aee15ef3"
+    },
+    {
+      "path": "plugins/obs-transitions/data/fade_to_color_transition.effect",
+      "sha256": "6f602d811dda26728984b71097c34f076a31d26c9682a7095efa7fec9ef6f44b"
+    },
+    {
+      "path": "plugins/obs-transitions/data/locale/en-US.ini",
+      "sha256": "9aaef21c743864d59770c61aa114010ecce58b64b89af6a05e0398b8b13b101d"
+    }
+  ],
+  "scope": "Narrow authentic defaults, Peak Color Point range and draft UI help; existing CPU SDR and audio transition implementation preserved."
+}

@@ -1,0 +1,110 @@
+{
+  "Settings — Hotkeys": {
+    "es-ES": "Ajustes — Atajos de teclado",
+    "ru-RU": "Настройки — Горячие клавиши",
+    "uk-UA": "Налаштування — Гарячі клавіші",
+    "de-DE": "Einstellungen — Tastenkürzel"
+  },
+  "Toggle Studio Mode": {
+    "es-ES": "Alternar modo de estudio",
+    "ru-RU": "Переключить режим студии",
+    "uk-UA": "Перемкнути режим студії",
+    "de-DE": "Studiomodus umschalten"
+  },
+  "Shortcuts work while the SkyLive window is active, outside text fields and dialogs. Global system shortcuts are not registered.": {
+    "es-ES": "Los atajos funcionan cuando la ventana de SkyLive está activa, fuera de campos de texto y diálogos. No se registran atajos globales del sistema.",
+    "ru-RU": "Горячие клавиши работают в активном окне SkyLive, вне текстовых полей и диалогов. Глобальные системные сочетания не регистрируются.",
+    "uk-UA": "Гарячі клавіші працюють в активному вікні SkyLive, поза текстовими полями й діалогами. Глобальні системні сполучення не реєструються.",
+    "de-DE": "Tastenkürzel funktionieren im aktiven SkyLive-Fenster außerhalb von Textfeldern und Dialogen. Es werden keine globalen Systemkürzel registriert."
+  },
+  "Click an assignment and press a key combination. Escape cancels capture. Apply saves all assignments; Cancel discards the draft.": {
+    "es-ES": "Haz clic en una asignación y pulsa una combinación. Escape cancela la captura. Aplicar guarda todas las asignaciones; Cancelar descarta el borrador.",
+    "ru-RU": "Нажмите на назначение и введите сочетание клавиш. Escape отменяет ввод. Применить сохраняет все назначения; Отмена отбрасывает черновик.",
+    "uk-UA": "Натисніть призначення й уведіть сполучення клавіш. Escape скасовує введення. Застосувати зберігає всі призначення; Скасувати відкидає чернетку.",
+    "de-DE": "Auf eine Zuweisung klicken und eine Tastenkombination drücken. Escape bricht die Erfassung ab. Anwenden speichert alle Zuweisungen; Abbrechen verwirft den Entwurf."
+  },
+  "Press a shortcut…": {
+    "es-ES": "Pulsa un atajo…",
+    "ru-RU": "Введите сочетание…",
+    "uk-UA": "Уведіть сполучення…",
+    "de-DE": "Tastenkürzel drücken…"
+  },
+  "Unassigned": {
+    "es-ES": "Sin asignar",
+    "ru-RU": "Не назначено",
+    "uk-UA": "Не призначено",
+    "de-DE": "Nicht zugewiesen"
+  },
+  "Assign a shortcut to this action. Escape cancels capture.": {
+    "es-ES": "Asigna un atajo a esta acción. Escape cancela la captura.",
+    "ru-RU": "Назначьте сочетание для этого действия. Escape отменяет ввод.",
+    "uk-UA": "Призначте сполучення для цієї дії. Escape скасовує введення.",
+    "de-DE": "Dieser Aktion ein Tastenkürzel zuweisen. Escape bricht die Erfassung ab."
+  },
+  "Remove this shortcut assignment.": {
+    "es-ES": "Elimina esta asignación de atajo.",
+    "ru-RU": "Удалить это назначение горячих клавиш.",
+    "uk-UA": "Видалити це призначення гарячих клавіш.",
+    "de-DE": "Diese Tastenkürzelzuweisung entfernen."
+  },
+  "Restore default shortcuts": {
+    "es-ES": "Restaurar atajos predeterminados",
+    "ru-RU": "Восстановить горячие клавиши по умолчанию",
+    "uk-UA": "Відновити типові гарячі клавіші",
+    "de-DE": "Standard-Tastenkürzel wiederherstellen"
+  },
+  "Restore Ctrl/Command+Z, Ctrl/Command+Shift+Z and Ctrl/Command+S in this draft.": {
+    "es-ES": "Restaura Ctrl/Command+Z, Ctrl/Command+Shift+Z y Ctrl/Command+S en este borrador.",
+    "ru-RU": "Восстановить Ctrl/Command+Z, Ctrl/Command+Shift+Z и Ctrl/Command+S в этом черновике.",
+    "uk-UA": "Відновити Ctrl/Command+Z, Ctrl/Command+Shift+Z і Ctrl/Command+S у цій чернетці.",
+    "de-DE": "Ctrl/Command+Z, Ctrl/Command+Shift+Z und Ctrl/Command+S in diesem Entwurf wiederherstellen."
+  },
+  "Finish or cancel the shortcut capture before applying.": {
+    "es-ES": "Finaliza o cancela la captura del atajo antes de aplicar.",
+    "ru-RU": "Завершите или отмените ввод сочетания перед применением.",
+    "uk-UA": "Завершіть або скасуйте введення сполучення перед застосуванням.",
+    "de-DE": "Die Erfassung des Tastenkürzels vor dem Anwenden abschließen oder abbrechen."
+  },
+  "Use the primary modifier (Ctrl on Windows, Command on macOS), Alt or Shift.": {
+    "es-ES": "Usa el modificador principal (Ctrl en Windows, Command en macOS), Alt o Shift.",
+    "ru-RU": "Используйте основной модификатор (Ctrl в Windows, Command в macOS), Alt или Shift.",
+    "uk-UA": "Використовуйте основний модифікатор (Ctrl у Windows, Command у macOS), Alt або Shift.",
+    "de-DE": "Den Hauptmodifikator (Ctrl unter Windows, Command unter macOS), Alt oder Shift verwenden."
+  },
+  "This key is not supported for application shortcuts.": {
+    "es-ES": "Esta tecla no es compatible con los atajos de la aplicación.",
+    "ru-RU": "Эта клавиша не поддерживается для сочетаний приложения.",
+    "uk-UA": "Ця клавіша не підтримується для сполучень застосунку.",
+    "de-DE": "Diese Taste wird für Anwendungskürzel nicht unterstützt."
+  },
+  "Application shortcuts exceed sixteen bindings.": {
+    "es-ES": "Los atajos de la aplicación superan las dieciséis asignaciones.",
+    "ru-RU": "Превышен предел в шестнадцать назначений горячих клавиш.",
+    "uk-UA": "Перевищено межу в шістнадцять призначень гарячих клавіш.",
+    "de-DE": "Die Anwendungskürzel überschreiten sechzehn Zuweisungen."
+  },
+  "A shortcut is assigned more than once. Choose a different key combination.": {
+    "es-ES": "Un atajo está asignado más de una vez. Elige otra combinación.",
+    "ru-RU": "Сочетание назначено несколько раз. Выберите другую комбинацию клавиш.",
+    "uk-UA": "Сполучення призначено кілька разів. Виберіть іншу комбінацію клавіш.",
+    "de-DE": "Ein Tastenkürzel ist mehrfach zugewiesen. Eine andere Tastenkombination wählen."
+  },
+  "An action can have at most two shortcuts.": {
+    "es-ES": "Una acción puede tener como máximo dos atajos.",
+    "ru-RU": "Для действия можно назначить не более двух сочетаний.",
+    "uk-UA": "Для дії можна призначити не більш як два сполучення.",
+    "de-DE": "Einer Aktion können höchstens zwei Tastenkürzel zugewiesen werden."
+  },
+  "Game Capture, Browser Source, streaming and complete OBS parity remain unfinished. Recording uses the available native platform encoder.": {
+    "es-ES": "La captura de juegos, la fuente de navegador, la transmisión y la paridad completa con OBS siguen sin terminar. La grabación usa el codificador nativo disponible.",
+    "ru-RU": "Захват игр, браузерный источник, стриминг и полное соответствие OBS ещё не завершены. Запись использует доступный системный кодировщик.",
+    "uk-UA": "Захоплення ігор, браузерне джерело, стримінг і повна відповідність OBS ще не завершені. Запис використовує доступний системний кодувальник.",
+    "de-DE": "Spielaufnahme, Browserquelle, Streaming und vollständige OBS-Funktionsgleichheit sind noch nicht fertig. Die Aufnahme verwendet den verfügbaren nativen Plattform-Encoder."
+  },
+  "Shortcut assignments changed. Reopen this page before applying.": {
+    "es-ES": "Las asignaciones cambiaron. Vuelve a abrir esta página antes de aplicar.",
+    "ru-RU": "Назначения сочетаний изменились. Откройте эту страницу заново перед применением.",
+    "uk-UA": "Призначення сполучень змінилися. Відкрийте цю сторінку знову перед застосуванням.",
+    "de-DE": "Die Tastenkürzelzuweisungen haben sich geändert. Diese Seite vor dem Anwenden erneut öffnen."
+  }
+}

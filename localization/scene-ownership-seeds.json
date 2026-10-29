@@ -1,0 +1,32 @@
+{
+  "Scene filter compatibility": {
+    "es-ES": "Compatibilidad de filtros de escena",
+    "ru-RU": "Совместимость фильтров сцен",
+    "uk-UA": "Сумісність фільтрів сцен",
+    "de-DE": "Kompatibilität der Szenenfilter"
+  },
+  "Scene filters now apply both to nested references and when a scene is shown directly. Older versions skipped filters on the direct scene output.": {
+    "es-ES": "Los filtros de escena ahora se aplican tanto a las referencias anidadas como a la escena mostrada directamente. Las versiones anteriores omitían los filtros en la salida directa de la escena.",
+    "ru-RU": "Теперь фильтры сцены применяются и к вложенным ссылкам, и при прямом показе сцены. В предыдущих версиях фильтры прямого выхода сцены пропускались.",
+    "uk-UA": "Тепер фільтри сцени застосовуються і до вкладених посилань, і під час прямого показу сцени. У попередніх версіях фільтри прямого виходу сцени пропускалися.",
+    "de-DE": "Szenenfilter wirken jetzt sowohl auf verschachtelte Verweise als auch auf die direkt angezeigte Szene. Frühere Versionen übersprangen die Filter bei der direkten Szenenausgabe."
+  },
+  "Filter identities, names, settings and order were preserved. Review these scenes and save explicitly to keep the new format.": {
+    "es-ES": "Se han conservado los identificadores, nombres, ajustes y orden de los filtros. Revise estas escenas y guarde explícitamente para conservar el nuevo formato.",
+    "ru-RU": "Идентификаторы, имена, настройки и порядок фильтров сохранены. Проверьте эти сцены и явно сохраните документ в новом формате.",
+    "uk-UA": "Ідентифікатори, назви, налаштування та порядок фільтрів збережено. Перевірте ці сцени та явно збережіть документ у новому форматі.",
+    "de-DE": "Kennungen, Namen, Einstellungen und Reihenfolge der Filter wurden beibehalten. Prüfen Sie diese Szenen und speichern Sie das Dokument ausdrücklich im neuen Format."
+  },
+  "{name} · scene {scene} · source {source} · filters {filters}": {
+    "es-ES": "{name} · escena {scene} · fuente {source} · filtros {filters}",
+    "ru-RU": "{name} · сцена {scene} · источник {source} · фильтры {filters}",
+    "uk-UA": "{name} · сцена {scene} · джерело {source} · фільтри {filters}",
+    "de-DE": "{name} · Szene {scene} · Quelle {source} · Filter {filters}"
+  },
+  "Scene filter compatibility changed. Review the affected scenes and save this document explicitly.": {
+    "es-ES": "Ha cambiado la compatibilidad de los filtros de escena. Revise las escenas afectadas y guarde este documento explícitamente.",
+    "ru-RU": "Изменилась совместимость фильтров сцен. Проверьте затронутые сцены и явно сохраните этот документ.",
+    "uk-UA": "Змінилася сумісність фільтрів сцен. Перевірте відповідні сцени та явно збережіть цей документ.",
+    "de-DE": "Die Kompatibilität der Szenenfilter hat sich geändert. Prüfen Sie die betroffenen Szenen und speichern Sie dieses Dokument ausdrücklich."
+  }
+}

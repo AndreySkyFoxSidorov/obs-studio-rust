@@ -1,0 +1,176 @@
+{
+  "Add Browser Source": {
+    "es-ES": "Añadir fuente de navegador",
+    "ru-RU": "Добавить браузерный источник",
+    "uk-UA": "Додати браузерне джерело",
+    "de-DE": "Browserquelle hinzufügen"
+  },
+  "Properties: Browser Source": {
+    "es-ES": "Propiedades: fuente de navegador",
+    "ru-RU": "Свойства: браузерный источник",
+    "uk-UA": "Властивості: браузерне джерело",
+    "de-DE": "Eigenschaften: Browserquelle"
+  },
+  "Browser": {
+    "es-ES": "Navegador",
+    "ru-RU": "Браузер",
+    "uk-UA": "Браузер",
+    "de-DE": "Browser"
+  },
+  "Browser Source (CEF127 software OSR)": {
+    "es-ES": "Fuente de navegador (OSR por software de CEF127)",
+    "ru-RU": "Браузерный источник (программный OSR CEF127)",
+    "uk-UA": "Браузерне джерело (програмний OSR CEF127)",
+    "de-DE": "Browserquelle (CEF127-Software-OSR)"
+  },
+  "Name this Browser Source in the scene.": {
+    "es-ES": "Asigne un nombre a esta fuente de navegador en la escena.",
+    "ru-RU": "Задайте имя браузерного источника в сцене.",
+    "uk-UA": "Задайте назву браузерного джерела в сцені.",
+    "de-DE": "Benennen Sie diese Browserquelle in der Szene."
+  },
+  "Local HTML file": {
+    "es-ES": "Archivo HTML local",
+    "ru-RU": "Локальный HTML-файл",
+    "uk-UA": "Локальний HTML-файл",
+    "de-DE": "Lokale HTML-Datei"
+  },
+  "Load an explicitly chosen HTML file instead of an HTTP or HTTPS URL.": {
+    "es-ES": "Cargue un archivo HTML elegido expresamente en lugar de una URL HTTP o HTTPS.",
+    "ru-RU": "Загрузить явно указанный HTML-файл вместо адреса HTTP или HTTPS.",
+    "uk-UA": "Завантажити явно вказаний HTML-файл замість адреси HTTP або HTTPS.",
+    "de-DE": "Eine ausdrücklich gewählte HTML-Datei anstelle einer HTTP- oder HTTPS-URL laden."
+  },
+  "HTML file path": {
+    "es-ES": "Ruta del archivo HTML",
+    "ru-RU": "Путь к HTML-файлу",
+    "uk-UA": "Шлях до HTML-файлу",
+    "de-DE": "Pfad der HTML-Datei"
+  },
+  "Absolute HTML path. CEF resolves the page's relative image, script and CSS resources.": {
+    "es-ES": "Ruta absoluta del HTML. CEF resuelve las rutas relativas de imágenes, scripts y CSS de la página.",
+    "ru-RU": "Абсолютный путь к HTML. CEF загружает изображения, скрипты и CSS страницы по относительным путям.",
+    "uk-UA": "Абсолютний шлях до HTML. CEF завантажує зображення, скрипти та CSS сторінки за відносними шляхами.",
+    "de-DE": "Absoluter HTML-Pfad. CEF löst relative Bild-, Skript- und CSS-Pfade der Seite auf."
+  },
+  "HTTP or HTTPS page rendered by the matching CEF runtime; redirects and web animations use the actual browser engine.": {
+    "es-ES": "Página HTTP o HTTPS procesada por la versión compatible de CEF; las redirecciones y animaciones usan el motor real del navegador.",
+    "ru-RU": "Страница HTTP или HTTPS отображается совместимой версией CEF; перенаправления и веб-анимация работают в настоящем браузерном движке.",
+    "uk-UA": "Сторінка HTTP або HTTPS відображається сумісною версією CEF; переспрямування та вебанімація працюють у справжньому браузерному рушії.",
+    "de-DE": "HTTP- oder HTTPS-Seite, gerendert mit der passenden CEF-Laufzeit; Weiterleitungen und Webanimationen verwenden die tatsächliche Browser-Engine."
+  },
+  "Actual CEF offscreen viewport and maximum paint rate; total viewport is limited to 8.8 megapixels.": {
+    "es-ES": "Área real de renderizado de CEF fuera de pantalla y frecuencia máxima de pintado; el área total se limita a 8,8 megapíxeles.",
+    "ru-RU": "Реальный размер внеэкранного изображения CEF и максимальная частота отрисовки; площадь ограничена 8,8 мегапикселя.",
+    "uk-UA": "Фактичний розмір позаекранного зображення CEF і максимальна частота малювання; площу обмежено 8,8 мегапікселя.",
+    "de-DE": "Tatsächlicher CEF-Offscreen-Bildbereich und maximale Zeichenrate; insgesamt höchstens 8,8 Megapixel."
+  },
+  "Custom CSS": {
+    "es-ES": "CSS personalizado",
+    "ru-RU": "Пользовательский CSS",
+    "uk-UA": "Користувацький CSS",
+    "de-DE": "Benutzerdefiniertes CSS"
+  },
+  "Inject this CSS into the main document after loading. The page's own content policy can restrict inline styles.": {
+    "es-ES": "Inserte este CSS en el documento principal tras cargarlo. La política de contenido de la página puede restringir los estilos en línea.",
+    "ru-RU": "Вставить этот CSS в основной документ после загрузки. Политика безопасности страницы может ограничивать встроенные стили.",
+    "uk-UA": "Вставити цей CSS в основний документ після завантаження. Політика безпеки сторінки може обмежувати вбудовані стилі.",
+    "de-DE": "Dieses CSS nach dem Laden in das Hauptdokument einfügen. Die Inhaltsrichtlinie der Seite kann eingebettete Stile einschränken."
+  },
+  "Shutdown source when not visible": {
+    "es-ES": "Cerrar la fuente cuando no esté visible",
+    "ru-RU": "Выключать источник, когда он не виден",
+    "uk-UA": "Вимикати джерело, коли його не видно",
+    "de-DE": "Quelle schließen, wenn sie nicht sichtbar ist"
+  },
+  "Close the CEF page when no active video output shows this source; opening it again waits for a new real paint.": {
+    "es-ES": "Cierre la página CEF cuando ninguna salida de vídeo activa muestre esta fuente; al abrirla de nuevo se espera una nueva imagen real.",
+    "ru-RU": "Закрыть страницу CEF, когда её не показывает ни один активный видеовыход; при повторном открытии дождаться нового реального кадра.",
+    "uk-UA": "Закрити сторінку CEF, коли її не показує жоден активний відеовихід; під час повторного відкриття дочекатися нового справжнього кадру.",
+    "de-DE": "Die CEF-Seite schließen, wenn keine aktive Videoausgabe diese Quelle zeigt; beim erneuten Öffnen wird auf ein neues tatsächliches Bild gewartet."
+  },
+  "Refresh when Program becomes active": {
+    "es-ES": "Actualizar al activarse en Programa",
+    "ru-RU": "Обновлять при появлении в программе",
+    "uk-UA": "Оновлювати під час появи в програмі",
+    "de-DE": "Beim Aktivieren im Programm aktualisieren"
+  },
+  "Recreate this page on transition from inactive to Program-visible. Preview and virtual-camera-only visibility do not activate Program audio.": {
+    "es-ES": "Vuelva a crear la página cuando pase de inactiva a visible en Programa. La vista previa y la visibilidad solo en la cámara virtual no activan el audio del programa.",
+    "ru-RU": "Пересоздать страницу при переходе из неактивного состояния в видимое в программе. Предпросмотр и показ только в виртуальной камере не включают звук программы.",
+    "uk-UA": "Створити сторінку заново під час переходу з неактивного стану до видимого в програмі. Попередній перегляд і показ лише у віртуальній камері не вмикають звук програми.",
+    "de-DE": "Die Seite beim Wechsel von inaktiv zu im Programm sichtbar neu erstellen. Vorschau und ausschließliche Sichtbarkeit in der virtuellen Kamera aktivieren kein Programmaudio."
+  },
+  "Refresh Browser": {
+    "es-ES": "Actualizar navegador",
+    "ru-RU": "Обновить браузер",
+    "uk-UA": "Оновити браузер",
+    "de-DE": "Browser aktualisieren"
+  },
+  "Close and reload this page; old paints and inputs keep their old browser lease.": {
+    "es-ES": "Cierre y recargue esta página; las imágenes y entradas anteriores conservan su identidad de instancia anterior.",
+    "ru-RU": "Закрыть и перезагрузить страницу; старые кадры и ввод остаются привязанными к прежнему экземпляру браузера.",
+    "uk-UA": "Закрити та перезавантажити сторінку; старі кадри й введення залишаються прив’язаними до попереднього екземпляра браузера.",
+    "de-DE": "Diese Seite schließen und neu laden; bisherige Bilder und Eingaben bleiben an die frühere Browserinstanz gebunden."
+  },
+  "Apply or cancel changed browser settings before refreshing.": {
+    "es-ES": "Aplique o cancele los cambios del navegador antes de actualizarlo.",
+    "ru-RU": "Примените или отмените изменения настроек браузера перед обновлением.",
+    "uk-UA": "Застосуйте або скасуйте зміни налаштувань браузера перед оновленням.",
+    "de-DE": "Geänderte Browsereinstellungen vor dem Aktualisieren anwenden oder verwerfen."
+  },
+  "Requires the matching CEF 127.145.7 runtime and Rust browser helper on Windows x64. No browser DLL from OBS is loaded as a plugin.": {
+    "es-ES": "Requiere la versión compatible CEF 127.145.7 y el auxiliar de navegador en Rust para Windows x64. No carga ninguna DLL de navegador de OBS como complemento.",
+    "ru-RU": "Требуются совместимая среда CEF 127.145.7 и вспомогательный браузерный процесс на Rust для Windows x64. Браузерные DLL из OBS не загружаются как плагины.",
+    "uk-UA": "Потрібні сумісне середовище CEF 127.145.7 і допоміжний браузерний процес мовою Rust для Windows x64. Браузерні DLL з OBS не завантажуються як плагіни.",
+    "de-DE": "Erfordert die passende CEF-Laufzeit 127.145.7 und den Rust-Browser-Hilfsprozess unter Windows x64. Keine Browser-DLL aus OBS wird als Plugin geladen."
+  },
+  "This visual port mutes browser audio. OBS JavaScript bindings, browser docks and an interaction window are not included yet.": {
+    "es-ES": "Esta adaptación visual silencia el audio del navegador. Aún no incluye los enlaces JavaScript de OBS, los paneles de navegador ni una ventana de interacción.",
+    "ru-RU": "В этой визуальной версии звук браузера отключён. Привязки JavaScript OBS, браузерные панели и окно взаимодействия ещё не включены.",
+    "uk-UA": "У цій візуальній версії звук браузера вимкнено. Прив’язки JavaScript OBS, браузерні панелі та вікно взаємодії ще не включено.",
+    "de-DE": "Dieser visuelle Port schaltet Browseraudio stumm. OBS-JavaScript-Anbindungen, Browser-Docks und ein Interaktionsfenster sind noch nicht enthalten."
+  },
+  "New windows, external apps, downloads, native file dialogs and JavaScript modal dialogs are suppressed. HTML dropdown popups are composited within the source.": {
+    "es-ES": "Se bloquean las ventanas nuevas, aplicaciones externas, descargas, selectores de archivos nativos y diálogos modales JavaScript. Los menús desplegables HTML se componen dentro de la fuente.",
+    "ru-RU": "Новые окна, внешние приложения, загрузки, системные файловые диалоги и модальные диалоги JavaScript подавляются. Выпадающие HTML-меню отображаются внутри источника.",
+    "uk-UA": "Нові вікна, зовнішні програми, завантаження, системні файлові діалоги та модальні діалоги JavaScript пригнічуються. Розкривні HTML-меню відображаються всередині джерела.",
+    "de-DE": "Neue Fenster, externe Programme, Downloads, native Dateidialoge und modale JavaScript-Dialoge werden unterdrückt. HTML-Auswahllisten werden innerhalb der Quelle zusammengesetzt."
+  },
+  "Browser runtime: {error}": {
+    "es-ES": "Entorno del navegador: {error}",
+    "ru-RU": "Среда браузера: {error}",
+    "uk-UA": "Середовище браузера: {error}",
+    "de-DE": "Browser-Laufzeit: {error}"
+  },
+  "The Browser Source draft changed. Reopen its properties.": {
+    "es-ES": "El borrador de la fuente de navegador ha cambiado. Vuelva a abrir sus propiedades.",
+    "ru-RU": "Черновик браузерного источника изменился. Откройте его свойства заново.",
+    "uk-UA": "Чернетка браузерного джерела змінилася. Відкрийте його властивості знову.",
+    "de-DE": "Der Entwurf der Browserquelle wurde geändert. Öffnen Sie ihre Eigenschaften erneut."
+  },
+  "Browser refresh requested": {
+    "es-ES": "Se ha solicitado actualizar el navegador",
+    "ru-RU": "Запрошено обновление браузера",
+    "uk-UA": "Надіслано запит на оновлення браузера",
+    "de-DE": "Browseraktualisierung angefordert"
+  },
+  "Render a URL or local HTML with CEF offscreen browser pixels.": {
+    "es-ES": "Renderice una URL o HTML local con los píxeles del navegador CEF fuera de pantalla.",
+    "ru-RU": "Отображать URL или локальный HTML реальными внеэкранными кадрами CEF.",
+    "uk-UA": "Відображати URL або локальний HTML справжніми позаекранними кадрами CEF.",
+    "de-DE": "Eine URL oder lokales HTML mit tatsächlichen CEF-Offscreen-Browserbildern darstellen."
+  },
+  "Complete OBS parity remains unfinished. Browser Source requires its matching external CEF runtime. Recording uses the available native platform encoder.": {
+    "es-ES": "La compatibilidad completa con OBS aún no está terminada. La fuente de navegador requiere su versión externa compatible de CEF. La grabación usa el codificador nativo disponible de la plataforma.",
+    "ru-RU": "Полное соответствие OBS ещё не достигнуто. Браузерному источнику требуется совместимая внешняя среда CEF. Запись использует доступный системный кодировщик.",
+    "uk-UA": "Повної відповідності OBS ще не досягнуто. Браузерному джерелу потрібне сумісне зовнішнє середовище CEF. Запис використовує доступний системний кодувальник.",
+    "de-DE": "Die vollständige OBS-Funktionsgleichheit ist noch nicht erreicht. Die Browserquelle benötigt ihre passende externe CEF-Laufzeit. Die Aufnahme verwendet den verfügbaren nativen Plattform-Encoder."
+  },
+  "Windows x64 CEF127.145.7 software OSR through a Rust helper and C ABI: URL/local HTML, CSS, viewport/FPS, visibility/reload, BGRA alpha frames and bounded HTML popup overlays. Matching external CEF runtime is required. Browser audio is muted; OBS JS bridge, browser docks, interaction window and native OBS browser-plugin ABI are not implemented.": {
+    "es-ES": "OSR por software de CEF127.145.7 para Windows x64 mediante un auxiliar en Rust y la ABI de C: URL/HTML local, CSS, tamaño/FPS, visibilidad/recarga, imágenes BGRA con alfa y superposiciones acotadas de menús HTML. Requiere la versión externa compatible de CEF. El audio del navegador está silenciado; aún no se implementan el puente JavaScript de OBS, los paneles de navegador, la ventana de interacción ni la ABI nativa del complemento de navegador de OBS.",
+    "ru-RU": "Программный OSR CEF127.145.7 для Windows x64 через вспомогательный процесс на Rust и C ABI: URL/локальный HTML, CSS, размер/FPS, видимость/перезагрузка, кадры BGRA с альфа-каналом и ограниченные наложения HTML-меню. Требуется совместимая внешняя среда CEF. Звук браузера отключён; мост JavaScript OBS, браузерные панели, окно взаимодействия и нативный ABI браузерного плагина OBS не реализованы.",
+    "uk-UA": "Програмний OSR CEF127.145.7 для Windows x64 через допоміжний процес мовою Rust і C ABI: URL/локальний HTML, CSS, розмір/FPS, видимість/перезавантаження, кадри BGRA з альфа-каналом та обмежені накладення HTML-меню. Потрібне сумісне зовнішнє середовище CEF. Звук браузера вимкнено; міст JavaScript OBS, браузерні панелі, вікно взаємодії та нативний ABI браузерного плагіна OBS не реалізовано.",
+    "de-DE": "CEF127.145.7-Software-OSR für Windows x64 über einen Rust-Hilfsprozess und die C-ABI: URL/lokales HTML, CSS, Bildgröße/FPS, Sichtbarkeit/Neuladen, BGRA-Bilder mit Alpha und begrenzte HTML-Auswahllisten-Overlays. Die passende externe CEF-Laufzeit ist erforderlich. Browseraudio ist stummgeschaltet; OBS-JavaScript-Brücke, Browser-Docks, Interaktionsfenster und native OBS-Browserplugin-ABI sind nicht implementiert."
+  }
+}

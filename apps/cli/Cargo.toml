@@ -1,0 +1,18 @@
+[package]
+name = "skylive-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+default = ["gpu-filters"]
+gpu-filters = ["skylive-host/gpu-filters"]
+
+[dependencies]
+skylive-core.workspace = true
+skylive-host.workspace = true
+skylive-media.workspace = true
+serde.workspace = true
+serde_json.workspace = true

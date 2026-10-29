@@ -1,0 +1,62 @@
+{
+  "External CSV unavailable; embedded translations are in use. {error}": {
+    "es-ES": "El CSV externo no está disponible; se usan las traducciones integradas. {error}",
+    "ru-RU": "Внешний CSV недоступен; используются встроенные переводы. {error}",
+    "uk-UA": "Зовнішній CSV недоступний; використовуються вбудовані переклади. {error}",
+    "de-DE": "Externe CSV nicht verfügbar; integrierte Übersetzungen werden verwendet. {error}"
+  },
+  "Localization loaded: {} · {} missing translations use English": {
+    "es-ES": "Traducciones cargadas: {} · {} traducciones pendientes usan inglés",
+    "ru-RU": "Переводы загружены: {} · для {} отсутствующих переводов используется английский",
+    "uk-UA": "Переклади завантажено: {} · для {} відсутніх перекладів використовується англійська",
+    "de-DE": "Übersetzungen geladen: {} · {} fehlende Übersetzungen verwenden Englisch"
+  },
+  "Recording failed: {error}": {
+    "es-ES": "Error de grabación: {error}",
+    "ru-RU": "Ошибка записи: {error}",
+    "uk-UA": "Помилка запису: {error}",
+    "de-DE": "Aufnahmefehler: {error}"
+  },
+  "Recording failed: {error}. Recovery file: {path}": {
+    "es-ES": "Error de grabación: {error}. Archivo de recuperación: {path}",
+    "ru-RU": "Ошибка записи: {error}. Файл восстановления: {path}",
+    "uk-UA": "Помилка запису: {error}. Файл відновлення: {path}",
+    "de-DE": "Aufnahmefehler: {error}. Wiederherstellungsdatei: {path}"
+  },
+  "Recording saved: {path}": {
+    "es-ES": "Grabación guardada: {path}",
+    "ru-RU": "Запись сохранена: {path}",
+    "uk-UA": "Запис збережено: {path}",
+    "de-DE": "Aufnahme gespeichert: {path}"
+  },
+  "Recording stopped after an input error. Saved prefix: {path}. {error}": {
+    "es-ES": "La grabación se detuvo por un error de entrada. Parte guardada: {path}. {error}",
+    "ru-RU": "Запись остановлена из-за ошибки входных данных. Записанная часть сохранена: {path}. {error}",
+    "uk-UA": "Запис зупинено через помилку вхідних даних. Записану частину збережено: {path}. {error}",
+    "de-DE": "Aufnahme nach einem Eingabefehler gestoppt. Gespeicherter Teil: {path}. {error}"
+  },
+  "Revision {}": {
+    "es-ES": "Revisión {}",
+    "ru-RU": "Редакция {}",
+    "uk-UA": "Редакція {}",
+    "de-DE": "Revision {}"
+  },
+  "Streaming failed: {error}": {
+    "es-ES": "Error de transmisión: {error}",
+    "ru-RU": "Ошибка трансляции: {error}",
+    "uk-UA": "Помилка трансляції: {error}",
+    "de-DE": "Streaming fehlgeschlagen: {error}"
+  },
+  "Streaming failed; closing its output resources: {error}": {
+    "es-ES": "La transmisión falló; se están cerrando sus recursos de salida: {error}",
+    "ru-RU": "Ошибка трансляции; освобождение ресурсов вывода: {error}",
+    "uk-UA": "Помилка трансляції; звільнення ресурсів виводу: {error}",
+    "de-DE": "Streaming fehlgeschlagen; die Ausgaberessourcen werden geschlossen: {error}"
+  },
+  "The media file could not be checked. Verify its path, format and availability. Details: {error}": {
+    "es-ES": "No se pudo comprobar el archivo multimedia. Verifique su ruta, formato y disponibilidad. Detalles: {error}",
+    "ru-RU": "Не удалось проверить медиафайл. Проверьте его путь, формат и доступность. Подробности: {error}",
+    "uk-UA": "Не вдалося перевірити медіафайл. Перевірте його шлях, формат і доступність. Подробиці: {error}",
+    "de-DE": "Die Mediendatei konnte nicht geprüft werden. Prüfen Sie Pfad, Format und Verfügbarkeit. Details: {error}"
+  }
+}

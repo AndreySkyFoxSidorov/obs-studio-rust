@@ -1,0 +1,32 @@
+{
+  "Resize {left} / {right}": {
+    "es-ES": "Cambiar anchura: {left} / {right}",
+    "ru-RU": "Изменить ширину: {left} / {right}",
+    "uk-UA": "Змінити ширину: {left} / {right}",
+    "de-DE": "Breite ändern: {left} / {right}"
+  },
+  "Drag to resize dock columns. Left/Right adjusts width; Shift uses larger steps. Escape cancels a drag. Double-click or Home restores default widths.": {
+    "es-ES": "Arrastra para cambiar la anchura de las columnas. Izquierda/Derecha ajusta la anchura; Mayús usa pasos mayores. Escape cancela el arrastre. Un doble clic o Inicio restaura las anchuras predeterminadas.",
+    "ru-RU": "Перетащите разделитель для изменения ширины панелей. Стрелки влево/вправо меняют ширину; Shift увеличивает шаг. Escape отменяет перетаскивание. Двойной щелчок или Home восстанавливает ширину по умолчанию.",
+    "uk-UA": "Перетягніть роздільник, щоб змінити ширину панелей. Стрілки вліво/вправо змінюють ширину; Shift збільшує крок. Escape скасовує перетягування. Подвійний клік або Home відновлює стандартну ширину.",
+    "de-DE": "Ziehen, um die Dockspalten zu skalieren. Links/Rechts ändert die Breite; Umschalt vergrößert die Schritte. Escape bricht das Ziehen ab. Doppelklick oder Pos1 stellt die Standardbreiten wieder her."
+  },
+  "Show the {dock} dock.": {
+    "es-ES": "Mostrar el panel {dock}.",
+    "ru-RU": "Показать панель «{dock}».",
+    "uk-UA": "Показати панель «{dock}».",
+    "de-DE": "Das Dock {dock} anzeigen."
+  },
+  "Reset Layout": {
+    "es-ES": "Restablecer disposición",
+    "ru-RU": "Сбросить расположение",
+    "uk-UA": "Скинути розташування",
+    "de-DE": "Layout zurücksetzen"
+  },
+  "Restore default dock widths, visibility and compact selection.": {
+    "es-ES": "Restaura las anchuras y la visibilidad predeterminadas de los paneles y la selección del modo compacto.",
+    "ru-RU": "Восстановить ширину и видимость панелей по умолчанию и начальный выбор в компактном режиме.",
+    "uk-UA": "Відновити стандартну ширину й видимість панелей та початковий вибір у компактному режимі.",
+    "de-DE": "Standardbreiten, Sichtbarkeit und Auswahl der kompakten Dockansicht wiederherstellen."
+  }
+}

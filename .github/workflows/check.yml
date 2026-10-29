@@ -1,0 +1,60 @@
+name: Headless Rust checks
+
+# A recipe until a hosted run succeeds; these jobs never launch the desktop app.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        os: [windows-latest, macos-14, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_TERM_COLOR: always
+      RUSTFLAGS: -D warnings
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Linux desktop development libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libwayland-dev libxkbcommon-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libgl1-mesa-dev libudev-dev
+      - uses: dtolnay/rust-toolchain@1.88.0
+        with:
+          components: rustfmt, clippy
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+      - name: Enforce architecture layers
+        run: cargo xtask layers
+      - name: Check all workspace targets
+        run: cargo check --workspace --all-targets --locked
+      - name: Test headless contracts
+        run: cargo test --workspace --all-targets --locked
+      - name: Lint workspace
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Check resource packaging failure contracts
+        run: python tools/package_resources.py --self-test
+      - name: Check original English key normalization
+        run: python tools/localization_aliases.py --self-test
+      - name: Check bounded font audit parser
+        run: python tools/audit_localization_fonts.py --self-test
+      - name: Check actionable UI help coverage
+        run: python tools/ui_chrome_audit.py --check --summary
+      - name: Install both macOS compilation targets
+        if: runner.os == 'macOS'
+        run: rustup target add x86_64-apple-darwin aarch64-apple-darwin
+      - name: Check macOS Apple Silicon target
+        if: runner.os == 'macOS'
+        run: cargo check --workspace --all-targets --locked --target aarch64-apple-darwin
+      - name: Check macOS Intel target
+        if: runner.os == 'macOS'
+        run: cargo check --workspace --all-targets --locked --target x86_64-apple-darwin

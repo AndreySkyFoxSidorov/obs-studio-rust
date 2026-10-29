@@ -1,0 +1,68 @@
+{
+  "Gaussian Blur": {
+    "es-ES": "Desenfoque gaussiano",
+    "ru-RU": "Размытие по Гауссу",
+    "uk-UA": "Гаусове розмиття",
+    "de-DE": "Gaußscher Weichzeichner"
+  },
+  "EffectCraft Gaussian Blur · CPU": {
+    "es-ES": "Desenfoque gaussiano de EffectCraft · CPU",
+    "ru-RU": "Размытие по Гауссу EffectCraft · CPU",
+    "uk-UA": "Гаусове розмиття EffectCraft · CPU",
+    "de-DE": "EffectCraft Gaußscher Weichzeichner · CPU"
+  },
+  "Blurriness": {
+    "es-ES": "Desenfoque",
+    "ru-RU": "Степень размытия",
+    "uk-UA": "Ступінь розмиття",
+    "de-DE": "Unschärfe"
+  },
+  "Blur Dimensions": {
+    "es-ES": "Dirección del desenfoque",
+    "ru-RU": "Направление размытия",
+    "uk-UA": "Напрямок розмиття",
+    "de-DE": "Weichzeichnungsrichtung"
+  },
+  "Horizontal and Vertical": {
+    "es-ES": "Horizontal y vertical",
+    "ru-RU": "По горизонтали и вертикали",
+    "uk-UA": "По горизонталі та вертикалі",
+    "de-DE": "Horizontal und vertikal"
+  },
+  "Horizontal": {
+    "es-ES": "Horizontal",
+    "ru-RU": "По горизонтали",
+    "uk-UA": "По горизонталі",
+    "de-DE": "Horizontal"
+  },
+  "Vertical": {
+    "es-ES": "Vertical",
+    "ru-RU": "По вертикали",
+    "uk-UA": "По вертикалі",
+    "de-DE": "Vertikal"
+  },
+  "Repeat Edge Pixels": {
+    "es-ES": "Repetir píxeles del borde",
+    "ru-RU": "Повторять крайние пиксели",
+    "uk-UA": "Повторювати крайні пікселі",
+    "de-DE": "Randpixel wiederholen"
+  },
+  "Set blur in pixels. You can enter values up to 3000; large radii use more time and memory.": {
+    "es-ES": "Ajusta el desenfoque en píxeles. Se pueden introducir valores hasta 3000; los radios grandes requieren más tiempo y memoria.",
+    "ru-RU": "Задайте размытие в пикселях. Можно ввести значение до 3000; большие радиусы требуют больше времени и памяти.",
+    "uk-UA": "Задайте розмиття в пікселях. Можна ввести значення до 3000; великі радіуси потребують більше часу й пам’яті.",
+    "de-DE": "Unschärfe in Pixeln einstellen. Werte bis 3000 sind möglich; große Radien benötigen mehr Zeit und Speicher."
+  },
+  "Extend edge pixels instead of adding transparent padding around the source.": {
+    "es-ES": "Extiende los píxeles del borde en lugar de añadir un margen transparente.",
+    "ru-RU": "Продлить крайние пиксели вместо добавления прозрачного поля вокруг источника.",
+    "uk-UA": "Продовжити крайні пікселі замість додавання прозорого поля навколо джерела.",
+    "de-DE": "Randpixel erweitern, statt einen transparenten Rand um die Quelle hinzuzufügen."
+  },
+  "Blur the source using EffectCraft’s Gaussian algorithm. Large images and radii require more CPU time and memory.": {
+    "es-ES": "Desenfoca la fuente con el algoritmo gaussiano de EffectCraft. Las imágenes y radios grandes requieren más CPU y memoria.",
+    "ru-RU": "Размыть источник алгоритмом Гаусса из EffectCraft. Большие изображения и радиусы требуют больше времени CPU и памяти.",
+    "uk-UA": "Розмити джерело алгоритмом Гауса з EffectCraft. Великі зображення та радіуси потребують більше часу CPU і пам’яті.",
+    "de-DE": "Quelle mit dem Gauß-Algorithmus von EffectCraft weichzeichnen. Große Bilder und Radien benötigen mehr CPU-Zeit und Speicher."
+  }
+}

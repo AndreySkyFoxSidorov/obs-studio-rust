@@ -1,0 +1,13 @@
+{
+  "source": "doc/plugins/royshil--obs-backgroundremoval/data/models/selfie_segmentation.onnx",
+  "source_sha256": "1511ab5564cb0ae179cba9bcad6ad931003ccc71656f11fd270967023678c6a5",
+  "source_bytes": 447596,
+  "converted_sha256": "cab9018306a5f1fbfa1f0e9d29d32e86fdf2eb495bd439da5df6b8e63e2e7d1c",
+  "converted_bytes": 473216,
+  "conversion": "rten_convert.converter 0.21.0, original ONNX graph converted to RTen; no training/weight edits",
+  "input": "float32 NHWC [1,256,256,3], RGB [0,1]",
+  "output": "float32 NHWC [1,256,256,1], foreground probability",
+  "license": "Apache-2.0",
+  "execution": "Pure Rust RTen 0.21.0, built-in fixed graph only; no ONNXRuntime/OpenCV runtime",
+  "probability_mapping": "clamp((p-threshold)/softness+0.5,0,1); default threshold=.5,softness=1; no upstream per-frame minmax"
+}

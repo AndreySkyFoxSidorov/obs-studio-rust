@@ -1,0 +1,15 @@
+{
+  "policy": "Assistant-authored ES/RU/UK/DE UI translations; not native-linguist-reviewed. Existing nonempty catalog cells remain authoritative. No native device or runtime acceptance is implied.",
+  "source_files": [
+    "apps/desktop/src/views/global_audio_devices.rs",
+    "apps/desktop/src/app_audio_devices.rs",
+    "apps/desktop/src/views/dialogs.rs"
+  ],
+  "rows": 13,
+  "locales": [
+    "es-ES",
+    "ru-RU",
+    "uk-UA",
+    "de-DE"
+  ]
+}

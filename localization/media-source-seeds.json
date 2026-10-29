@@ -1,0 +1,152 @@
+{
+  "Add Media Source": {
+    "es-ES": "Añadir fuente multimedia",
+    "ru-RU": "Добавить медиаисточник",
+    "uk-UA": "Додати медіаджерело",
+    "de-DE": "Medienquelle hinzufügen"
+  },
+  "Properties: Media Source": {
+    "es-ES": "Propiedades: fuente multimedia",
+    "ru-RU": "Свойства: Медиаисточник",
+    "uk-UA": "Властивості: Медіаджерело",
+    "de-DE": "Eigenschaften: Medienquelle"
+  },
+  "Local File": {
+    "es-ES": "Archivo local",
+    "ru-RU": "Локальный файл",
+    "uk-UA": "Локальний файл",
+    "de-DE": "Lokale Datei"
+  },
+  "Loop": {
+    "es-ES": "Repetir",
+    "ru-RU": "Зациклить",
+    "uk-UA": "Зациклити",
+    "de-DE": "Wiederholen"
+  },
+  "Restart playback when source becomes active": {
+    "es-ES": "Reiniciar la reproducción al activarse la fuente",
+    "ru-RU": "Перезапускать воспроизведение при активации источника",
+    "uk-UA": "Перезапускати відтворення під час активації джерела",
+    "de-DE": "Wiedergabe bei Aktivierung der Quelle neu starten"
+  },
+  "Close file when inactive": {
+    "es-ES": "Cerrar el archivo cuando esté inactivo",
+    "ru-RU": "Закрывать файл при бездействии",
+    "uk-UA": "Закривати файл, коли джерело неактивне",
+    "de-DE": "Datei bei Inaktivität schließen"
+  },
+  "Show nothing when playback ends": {
+    "es-ES": "No mostrar nada al finalizar la reproducción",
+    "ru-RU": "Ничего не показывать по завершении воспроизведения",
+    "uk-UA": "Нічого не показувати після завершення відтворення",
+    "de-DE": "Nach Wiedergabeende nichts anzeigen"
+  },
+  "Name this media source so you can find it in Sources.": {
+    "es-ES": "Asigne un nombre a esta fuente multimedia para encontrarla en Fuentes.",
+    "ru-RU": "Назовите медиаисточник, чтобы находить его в списке источников.",
+    "uk-UA": "Назвіть медіаджерело, щоб знаходити його у списку джерел.",
+    "de-DE": "Benennen Sie diese Medienquelle, um sie in Quellen wiederzufinden."
+  },
+  "Choose a local MP4 or MOV file. The file is checked when you apply.": {
+    "es-ES": "Elija un archivo MP4 o MOV local. Se comprobará al aplicar.",
+    "ru-RU": "Выберите локальный файл MP4 или MOV. Он будет проверен при применении.",
+    "uk-UA": "Виберіть локальний файл MP4 або MOV. Його буде перевірено під час застосування.",
+    "de-DE": "Wählen Sie eine lokale MP4- oder MOV-Datei. Sie wird beim Anwenden geprüft."
+  },
+  "Play the media again when it reaches the end.": {
+    "es-ES": "Reproducir de nuevo el archivo al llegar al final.",
+    "ru-RU": "Повторно воспроизводить файл после достижения конца.",
+    "uk-UA": "Повторно відтворювати файл після досягнення кінця.",
+    "de-DE": "Die Mediendatei nach dem Ende erneut abspielen."
+  },
+  "Start from the beginning when this source becomes active in Program.": {
+    "es-ES": "Empezar desde el principio al activarse esta fuente en Programa.",
+    "ru-RU": "Начинать сначала при активации источника в Программе.",
+    "uk-UA": "Починати спочатку під час активації джерела у Програмі.",
+    "de-DE": "Von vorn beginnen, wenn diese Quelle im Programm aktiv wird."
+  },
+  "Release the media file when the source is no longer showing.": {
+    "es-ES": "Liberar el archivo cuando la fuente deje de mostrarse.",
+    "ru-RU": "Освобождать медиафайл, когда источник больше не отображается.",
+    "uk-UA": "Звільняти медіафайл, коли джерело більше не відображається.",
+    "de-DE": "Die Mediendatei freigeben, sobald die Quelle nicht mehr angezeigt wird."
+  },
+  "Clear the last video frame after playback reaches the end.": {
+    "es-ES": "Borrar el último fotograma al finalizar la reproducción.",
+    "ru-RU": "Убирать последний видеокадр после завершения воспроизведения.",
+    "uk-UA": "Прибирати останній відеокадр після завершення відтворення.",
+    "de-DE": "Das letzte Videobild nach Wiedergabeende ausblenden."
+  },
+  "Local MP4/MOV: progressive 8-bit H.264 video and AAC-LC mono/stereo audio. Unsupported files are rejected.": {
+    "es-ES": "MP4/MOV local: vídeo H.264 progresivo de 8 bits y audio AAC-LC mono/estéreo. Los archivos no compatibles se rechazan.",
+    "ru-RU": "Локальные MP4/MOV: прогрессивное 8-битное видео H.264 и звук AAC-LC моно/стерео. Неподдерживаемые файлы отклоняются.",
+    "uk-UA": "Локальні MP4/MOV: прогресивне 8-бітне відео H.264 і звук AAC-LC моно/стерео. Непідтримувані файли відхиляються.",
+    "de-DE": "Lokale MP4/MOV-Dateien: progressives 8-Bit-H.264-Video und AAC-LC-Audio in Mono/Stereo. Nicht unterstützte Dateien werden abgelehnt."
+  },
+  "Playback speed is 100%. Network media, hardware decoding and audio monitoring are not available yet.": {
+    "es-ES": "La velocidad es del 100 %. Aún no están disponibles los medios en red, la decodificación por hardware ni la monitorización de audio.",
+    "ru-RU": "Скорость воспроизведения — 100%. Сетевые медиа, аппаратное декодирование и прослушивание звука пока недоступны.",
+    "uk-UA": "Швидкість відтворення — 100%. Мережеві медіа, апаратне декодування та прослуховування звуку поки недоступні.",
+    "de-DE": "Die Wiedergabegeschwindigkeit beträgt 100 %. Netzwerkmedien, Hardware-Dekodierung und Audio-Monitoring sind noch nicht verfügbar."
+  },
+  "Checking media file…": {
+    "es-ES": "Comprobando archivo multimedia…",
+    "ru-RU": "Проверка медиафайла…",
+    "uk-UA": "Перевірка медіафайлу…",
+    "de-DE": "Mediendatei wird geprüft…"
+  },
+  "Choose a local media file path without control characters (up to 16384 UTF-8 bytes).": {
+    "es-ES": "Elija una ruta local sin caracteres de control (hasta 16384 bytes UTF-8).",
+    "ru-RU": "Укажите путь к локальному медиафайлу без управляющих символов (до 16384 байт UTF-8).",
+    "uk-UA": "Укажіть шлях до локального медіафайлу без керівних символів (до 16384 байтів UTF-8).",
+    "de-DE": "Geben Sie einen lokalen Mediendateipfad ohne Steuerzeichen an (bis zu 16384 UTF-8-Bytes)."
+  },
+  "Play a local MP4 or MOV file as a video or audio source.": {
+    "es-ES": "Reproducir un archivo MP4 o MOV local como fuente de vídeo o audio.",
+    "ru-RU": "Воспроизводить локальный файл MP4 или MOV как источник видео или звука.",
+    "uk-UA": "Відтворювати локальний файл MP4 або MOV як джерело відео чи звуку.",
+    "de-DE": "Eine lokale MP4- oder MOV-Datei als Video- oder Audioquelle abspielen."
+  },
+  "The document or media properties changed. Reopen this dialog before applying.": {
+    "es-ES": "El documento o las propiedades multimedia han cambiado. Abra de nuevo este diálogo antes de aplicar.",
+    "ru-RU": "Документ или свойства медиа изменились. Откройте диалог заново перед применением.",
+    "uk-UA": "Документ або властивості медіа змінилися. Відкрийте діалог знову перед застосуванням.",
+    "de-DE": "Das Dokument oder die Medieneigenschaften wurden geändert. Öffnen Sie diesen Dialog vor dem Anwenden erneut."
+  },
+  "Wait for the current media file check to finish.": {
+    "es-ES": "Espere a que termine la comprobación del archivo actual.",
+    "ru-RU": "Дождитесь завершения текущей проверки медиафайла.",
+    "uk-UA": "Дочекайтеся завершення поточної перевірки медіафайлу.",
+    "de-DE": "Warten Sie, bis die aktuelle Mediendateiprüfung abgeschlossen ist."
+  },
+  "The document changed while checking this file. Reopen the media properties and try again.": {
+    "es-ES": "El documento cambió durante la comprobación. Abra de nuevo las propiedades multimedia e inténtelo otra vez.",
+    "ru-RU": "Документ изменился во время проверки файла. Откройте свойства медиа заново и повторите попытку.",
+    "uk-UA": "Документ змінився під час перевірки файлу. Відкрийте властивості медіа знову й повторіть спробу.",
+    "de-DE": "Das Dokument wurde während der Dateiprüfung geändert. Öffnen Sie die Medieneigenschaften erneut und versuchen Sie es noch einmal."
+  },
+  "Media dialog identity exhausted": {
+    "es-ES": "Se agotaron los identificadores de diálogos multimedia",
+    "ru-RU": "Исчерпаны идентификаторы диалогов медиа",
+    "uk-UA": "Вичерпано ідентифікатори діалогів медіа",
+    "de-DE": "Keine weiteren Kennungen für Mediendialoge verfügbar"
+  },
+  "The media file could not be checked. Verify its path, format and availability. Details: {error}": {
+    "es-ES": "No se pudo comprobar el archivo multimedia. Verifique su ruta, formato y disponibilidad. Detalles: {error}",
+    "ru-RU": "Не удалось проверить медиафайл. Проверьте его путь, формат и доступность. Подробности: {error}",
+    "uk-UA": "Не вдалося перевірити медіафайл. Перевірте його шлях, формат і доступність. Подробиці: {error}",
+    "de-DE": "Die Mediendatei konnte nicht geprüft werden. Prüfen Sie Pfad, Format und Verfügbarkeit. Details: {error}"
+  },
+  "Wait for the current media operation to finish before applying.": {
+    "es-ES": "Espere a que termine la operación multimedia actual antes de aplicar.",
+    "ru-RU": "Дождитесь завершения текущей операции с медиа перед применением.",
+    "uk-UA": "Дочекайтеся завершення поточної операції з медіа перед застосуванням.",
+    "de-DE": "Warten Sie vor dem Anwenden, bis der aktuelle Medienvorgang abgeschlossen ist."
+  },
+  "Waiting for the current media operation…": {
+    "es-ES": "Esperando a que termine la operación multimedia actual…",
+    "ru-RU": "Ожидание завершения текущей операции с медиа…",
+    "uk-UA": "Очікування завершення поточної операції з медіа…",
+    "de-DE": "Warten auf den aktuellen Medienvorgang…"
+  }
+}

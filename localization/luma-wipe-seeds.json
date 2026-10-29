@@ -1,0 +1,56 @@
+{
+  "Search patterns…": {
+    "es-ES": "Buscar patrones…",
+    "ru-RU": "Поиск масок…",
+    "uk-UA": "Пошук масок…",
+    "de-DE": "Muster suchen…"
+  },
+  "Search standard OBS wipe patterns by translated name or filename.": {
+    "es-ES": "Buscar patrones de transición de OBS por su nombre traducido o nombre de archivo.",
+    "ru-RU": "Искать штатные маски перехода OBS по переведённому названию или имени файла.",
+    "uk-UA": "Шукати стандартні маски переходу OBS за перекладеною назвою або назвою файлу.",
+    "de-DE": "Standard-Wischmuster von OBS nach übersetztem Namen oder Dateinamen suchen."
+  },
+  "Reveal the incoming scene with this standard OBS grayscale mask.": {
+    "es-ES": "Revelar la escena entrante con esta máscara estándar de escala de grises de OBS.",
+    "ru-RU": "Раскрывать новую сцену с помощью этой штатной полутоновой маски OBS.",
+    "uk-UA": "Розкривати нову сцену за допомогою цієї стандартної напівтонової маски OBS.",
+    "de-DE": "Die neue Szene mit dieser Standard-Graustufenmaske von OBS aufdecken."
+  },
+  "Choose the grayscale pattern used to reveal the incoming scene.": {
+    "es-ES": "Elegir el patrón de escala de grises para revelar la escena entrante.",
+    "ru-RU": "Выбрать полутоновую маску, по которой раскрывается новая сцена.",
+    "uk-UA": "Вибрати напівтонову маску, за якою розкривається нова сцена.",
+    "de-DE": "Das Graustufenmuster zum Aufdecken der neuen Szene wählen."
+  },
+  "Widen the transition edge. Zero follows a hard boundary along the mask.": {
+    "es-ES": "Ampliar el borde de la transición. El valor cero produce un límite nítido a lo largo de la máscara.",
+    "ru-RU": "Расширить мягкую границу перехода. При нуле граница маски становится резкой.",
+    "uk-UA": "Розширити м’яку межу переходу. За нульового значення межа маски стає різкою.",
+    "de-DE": "Den weichen Übergangsrand verbreitern. Null erzeugt eine harte Grenze entlang der Maske."
+  },
+  "Reverse the dark and light portions of the wipe mask.": {
+    "es-ES": "Invertir las partes oscuras y claras de la máscara de transición.",
+    "ru-RU": "Поменять местами тёмные и светлые области маски перехода.",
+    "uk-UA": "Поміняти місцями темні та світлі ділянки маски переходу.",
+    "de-DE": "Die dunklen und hellen Bereiche der Wischmaske vertauschen."
+  },
+  "Reveal the incoming scene using a grayscale pattern and an adjustable soft edge.": {
+    "es-ES": "Revelar la escena entrante con un patrón de escala de grises y un borde suave ajustable.",
+    "ru-RU": "Раскрывать новую сцену по полутоновой маске с настраиваемой мягкостью границы.",
+    "uk-UA": "Розкривати нову сцену за напівтоновою маскою з налаштовуваною м’якістю межі.",
+    "de-DE": "Die neue Szene mit einem Graustufenmuster und einstellbar weichem Rand aufdecken."
+  },
+  "unknown stock Luma Wipe mask": {
+    "es-ES": "Máscara estándar de Luma Wipe desconocida",
+    "ru-RU": "Неизвестная штатная маска Luma Wipe",
+    "uk-UA": "Невідома стандартна маска Luma Wipe",
+    "de-DE": "Unbekannte Standardmaske für Luma Wipe"
+  },
+  "Luma Wipe softness must be finite0..1": {
+    "es-ES": "La suavidad de Luma Wipe debe ser un valor finito entre 0 y 1",
+    "ru-RU": "Мягкость Luma Wipe должна быть конечным числом от 0 до 1",
+    "uk-UA": "М’якість Luma Wipe має бути скінченним числом від 0 до 1",
+    "de-DE": "Die Weichheit von Luma Wipe muss ein endlicher Wert von 0 bis 1 sein"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "Preparing startup settings and the last native document…": {
+    "es-ES": "Preparando los ajustes de inicio y el último documento nativo…",
+    "ru-RU": "Загружаются настройки запуска и последний документ SkyLive…",
+    "uk-UA": "Завантажуються налаштування запуску й останній документ SkyLive…",
+    "de-DE": "Starteinstellungen und letztes natives Dokument werden vorbereitet…"
+  },
+  "Startup preparation failed": {
+    "es-ES": "No se pudo preparar el inicio",
+    "ru-RU": "Не удалось подготовить запуск",
+    "uk-UA": "Не вдалося підготувати запуск",
+    "de-DE": "Startvorbereitung fehlgeschlagen"
+  },
+  "Startup document choice was rejected": {
+    "es-ES": "Se rechazó la selección del documento de inicio",
+    "ru-RU": "Выбор стартового документа отклонён",
+    "uk-UA": "Вибір стартового документа відхилено",
+    "de-DE": "Auswahl des Startdokuments wurde abgelehnt"
+  },
+  "The newer document choice will run after startup I/O retires.": {
+    "es-ES": "La nueva selección se abrirá cuando finalice la operación de inicio.",
+    "ru-RU": "Новый выбор документа будет обработан после завершения стартовой операции ввода-вывода.",
+    "uk-UA": "Новий вибір документа буде оброблено після завершення стартової операції вводу-виводу.",
+    "de-DE": "Die neuere Dokumentauswahl wird nach Abschluss der Start-E/A ausgeführt."
+  },
+  "Startup cleanup reported a problem": {
+    "es-ES": "Se produjo un problema al liberar los datos de inicio",
+    "ru-RU": "Ошибка освобождения стартовых данных",
+    "uk-UA": "Помилка звільнення стартових даних",
+    "de-DE": "Problem beim Freigeben der Startdaten"
+  },
+  "The last native document could not be remembered": {
+    "es-ES": "No se pudo guardar la ruta del último documento nativo",
+    "ru-RU": "Не удалось запомнить последний документ SkyLive",
+    "uk-UA": "Не вдалося запам’ятати останній документ SkyLive",
+    "de-DE": "Das letzte native Dokument konnte nicht gespeichert werden"
+  },
+  "Remembered document metadata could not be read": {
+    "es-ES": "No se pudieron leer los datos del documento recordado",
+    "ru-RU": "Не удалось прочитать данные запомненного документа",
+    "uk-UA": "Не вдалося прочитати дані запам’ятованого документа",
+    "de-DE": "Die Daten des gemerkten Dokuments konnten nicht gelesen werden"
+  },
+  "Startup result was obsolete": {
+    "es-ES": "El resultado del inicio quedó desactualizado",
+    "ru-RU": "Результат стартовой загрузки устарел",
+    "uk-UA": "Результат стартового завантаження застарів",
+    "de-DE": "Das Startergebnis war veraltet"
+  },
+  "Installed preferences could not be applied": {
+    "es-ES": "No se pudieron aplicar las preferencias guardadas",
+    "ru-RU": "Не удалось применить сохранённые настройки",
+    "uk-UA": "Не вдалося застосувати збережені налаштування",
+    "de-DE": "Gespeicherte Einstellungen konnten nicht angewendet werden"
+  },
+  "Installed preferences could not be read": {
+    "es-ES": "No se pudieron leer las preferencias guardadas",
+    "ru-RU": "Не удалось прочитать сохранённые настройки",
+    "uk-UA": "Не вдалося прочитати збережені налаштування",
+    "de-DE": "Gespeicherte Einstellungen konnten nicht gelesen werden"
+  },
+  "External localization is unavailable; embedded translations are in use": {
+    "es-ES": "La traducción externa no está disponible; se usan las traducciones integradas",
+    "ru-RU": "Внешняя локализация недоступна; используются встроенные переводы",
+    "uk-UA": "Зовнішня локалізація недоступна; використовуються вбудовані переклади",
+    "de-DE": "Externe Übersetzungen sind nicht verfügbar; integrierte Übersetzungen werden verwendet"
+  },
+  "The last native document could not be reopened": {
+    "es-ES": "No se pudo volver a abrir el último documento nativo",
+    "ru-RU": "Не удалось открыть последний документ SkyLive",
+    "uk-UA": "Не вдалося відкрити останній документ SkyLive",
+    "de-DE": "Das letzte native Dokument konnte nicht erneut geöffnet werden"
+  },
+  "Waiting for startup I/O to retire…": {
+    "es-ES": "Esperando a que finalice la operación de inicio…",
+    "ru-RU": "Ожидание завершения стартовой операции ввода-вывода…",
+    "uk-UA": "Очікування завершення стартової операції вводу-виводу…",
+    "de-DE": "Warte auf Abschluss der Start-E/A…"
+  },
+  "Use an empty collection": {
+    "es-ES": "Usar una colección vacía",
+    "ru-RU": "Использовать пустую коллекцию",
+    "uk-UA": "Використати порожню колекцію",
+    "de-DE": "Leere Sammlung verwenden"
+  },
+  "Keep the saved file unchanged and use a new collection after startup I/O returns.": {
+    "es-ES": "Conservar el archivo guardado sin cambios y usar una colección nueva cuando finalice la operación de inicio.",
+    "ru-RU": "Сохранить файл без изменений и создать новую коллекцию после завершения стартовой операции ввода-вывода.",
+    "uk-UA": "Зберегти файл без змін і створити нову колекцію після завершення стартової операції вводу-виводу.",
+    "de-DE": "Die gespeicherte Datei unverändert lassen und nach Abschluss der Start-E/A eine neue Sammlung verwenden."
+  },
+  "Startup information": {
+    "es-ES": "Información de inicio",
+    "ru-RU": "Сведения о запуске",
+    "uk-UA": "Відомості про запуск",
+    "de-DE": "Startinformationen"
+  },
+  "Dismiss startup information": {
+    "es-ES": "Cerrar la información de inicio",
+    "ru-RU": "Закрыть сведения о запуске",
+    "uk-UA": "Закрити відомості про запуск",
+    "de-DE": "Startinformationen schließen"
+  },
+  "Startup preparation returned an unexpected receipt.": {
+    "es-ES": "La preparación del inicio devolvió una respuesta inesperada.",
+    "ru-RU": "Подготовка запуска вернула неожиданный ответ.",
+    "uk-UA": "Підготовка запуску повернула неочікувану відповідь.",
+    "de-DE": "Die Startvorbereitung lieferte eine unerwartete Bestätigung."
+  },
+  "Open another collection…": {
+    "es-ES": "Abrir otra colección…",
+    "ru-RU": "Открыть другую коллекцию…",
+    "uk-UA": "Відкрити іншу колекцію…",
+    "de-DE": "Andere Sammlung öffnen…"
+  },
+  "Choose a different native document after startup I/O returns.": {
+    "es-ES": "Elegir otro documento nativo cuando finalice la operación de inicio.",
+    "ru-RU": "Выбрать другой документ SkyLive после завершения стартовой операции ввода-вывода.",
+    "uk-UA": "Вибрати інший документ SkyLive після завершення стартової операції вводу-виводу.",
+    "de-DE": "Nach Abschluss der Start-E/A ein anderes natives Dokument auswählen."
+  },
+  "The I/O request has no identity.": {
+    "es-ES": "La solicitud de E/S no tiene identificador.",
+    "ru-RU": "У запроса ввода-вывода нет идентификатора.",
+    "uk-UA": "Запит вводу-виводу не має ідентифікатора.",
+    "de-DE": "Die E/A-Anforderung hat keine Kennung."
+  },
+  "The requested path exceeds 4096 characters.": {
+    "es-ES": "La ruta solicitada supera los 4096 caracteres.",
+    "ru-RU": "Запрошенный путь превышает 4096 символов.",
+    "uk-UA": "Запитаний шлях перевищує 4096 символів.",
+    "de-DE": "Der angeforderte Pfad überschreitet 4096 Zeichen."
+  },
+  "The metadata retirement acknowledgement was unavailable.": {
+    "es-ES": "No se recibió la confirmación de liberación de los metadatos.",
+    "ru-RU": "Подтверждение освобождения метаданных недоступно.",
+    "uk-UA": "Підтвердження звільнення метаданих недоступне.",
+    "de-DE": "Die Bestätigung der Metadatenfreigabe war nicht verfügbar."
+  },
+  "The I/O owner returned an unexpected receipt.": {
+    "es-ES": "El gestor de E/S devolvió una respuesta inesperada.",
+    "ru-RU": "Обработчик ввода-вывода вернул неожиданный ответ.",
+    "uk-UA": "Обробник вводу-виводу повернув неочікувану відповідь.",
+    "de-DE": "Der E/A-Dienst lieferte eine unerwartete Bestätigung."
+  },
+  "The current document and preferences were retained.": {
+    "es-ES": "Se conservaron el documento y las preferencias actuales.",
+    "ru-RU": "Текущий документ и настройки оставлены без изменений.",
+    "uk-UA": "Поточний документ і налаштування залишено без змін.",
+    "de-DE": "Das aktuelle Dokument und die Einstellungen wurden beibehalten."
+  },
+  "The current document was retained instead of prompting to discard it.": {
+    "es-ES": "Se conservó el documento actual sin solicitar que se descartara.",
+    "ru-RU": "Текущий документ сохранён; запрос на отмену его изменений не открывался.",
+    "uk-UA": "Поточний документ збережено; запит на скасування його змін не відкривався.",
+    "de-DE": "Das aktuelle Dokument wurde ohne Verwerfungsabfrage beibehalten."
+  },
+  "The installed startup metadata location is unavailable.": {
+    "es-ES": "La ubicación de los metadatos de inicio no está disponible.",
+    "ru-RU": "Каталог стартовых метаданных недоступен.",
+    "uk-UA": "Каталог стартових метаданих недоступний.",
+    "de-DE": "Der Speicherort der Startmetadaten ist nicht verfügbar."
+  },
+  "The I/O owner returned an unexpected startup receipt.": {
+    "es-ES": "El gestor de E/S devolvió una respuesta de inicio inesperada.",
+    "ru-RU": "Обработчик ввода-вывода вернул неожиданный стартовый ответ.",
+    "uk-UA": "Обробник вводу-виводу повернув неочікувану стартову відповідь.",
+    "de-DE": "Der E/A-Dienst lieferte eine unerwartete Startbestätigung."
+  }
+}

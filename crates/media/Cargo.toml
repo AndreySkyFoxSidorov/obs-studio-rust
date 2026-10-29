@@ -1,0 +1,10 @@
+[package]
+name = "skylive-media"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-2.0-or-later"
+publish = false
+
+[dependencies]
+# Worker-owned band-limited conversion; FFT/log features deliberately disabled.
+rubato = { version = "=5.0.1", default-features = false }

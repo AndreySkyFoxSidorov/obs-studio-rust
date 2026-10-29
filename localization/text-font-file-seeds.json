@@ -1,0 +1,188 @@
+{
+  "Font File": {
+    "es-ES": "Archivo de fuente",
+    "ru-RU": "Файл шрифта",
+    "uk-UA": "Файл шрифту",
+    "de-DE": "Schriftdatei"
+  },
+  "Font path": {
+    "es-ES": "Ruta de la fuente",
+    "ru-RU": "Путь к шрифту",
+    "uk-UA": "Шлях до шрифту",
+    "de-DE": "Schriftpfad"
+  },
+  "Load / Refresh Font": {
+    "es-ES": "Cargar / Actualizar fuente",
+    "ru-RU": "Загрузить / обновить шрифт",
+    "uk-UA": "Завантажити / оновити шрифт",
+    "de-DE": "Schrift laden / aktualisieren"
+  },
+  "Use Embedded Noto": {
+    "es-ES": "Usar Noto integrado",
+    "ru-RU": "Использовать встроенный Noto",
+    "uk-UA": "Використовувати вбудований Noto",
+    "de-DE": "Eingebettetes Noto verwenden"
+  },
+  "Font Face": {
+    "es-ES": "Variante de fuente",
+    "ru-RU": "Начертание шрифта",
+    "uk-UA": "Накреслення шрифту",
+    "de-DE": "Schriftschnitt"
+  },
+  "Static TrueType outlines (TTF / TTC)": {
+    "es-ES": "Fuentes estáticas de contorno (TTF / TTC)",
+    "ru-RU": "Статические контурные шрифты (TTF / TTC)",
+    "uk-UA": "Статичні контурні шрифти (TTF / TTC)",
+    "de-DE": "Statische Konturschriften (TTF / TTC)"
+  },
+  "Choose a static TrueType TTF or TTC file, then Load / Refresh. The exact file and face are saved; missing fonts never silently fall back.": {
+    "es-ES": "Elige un archivo TrueType TTF o TTC estático y pulsa Cargar / Actualizar. Se guardan el archivo y la variante exactos; las fuentes ausentes no se sustituyen silenciosamente.",
+    "ru-RU": "Выберите статический файл TrueType TTF или TTC и нажмите «Загрузить / обновить». Сохраняются точный файл и начертание; отсутствующий шрифт не подменяется автоматически.",
+    "uk-UA": "Виберіть статичний файл TrueType TTF або TTC й натисніть «Завантажити / оновити». Зберігаються точний файл і накреслення; відсутній шрифт не підміняється автоматично.",
+    "de-DE": "Wähle eine statische TrueType-TTF- oder TTC-Datei und dann Laden / Aktualisieren. Exakte Datei und Schriftschnitt werden gespeichert; fehlende Schriften werden nie still ersetzt."
+  },
+  "Prepare at most16 static outline faces from one font file on the background I/O worker.": {
+    "es-ES": "Prepara hasta16 variantes estáticas de contorno de un archivo en el proceso de E/S en segundo plano.",
+    "ru-RU": "Подготавливает до16 статических контурных начертаний из одного файла в фоновом потоке ввода-вывода.",
+    "uk-UA": "Готує до16 статичних контурних накреслень з одного файлу у фоновому потоці введення-виведення.",
+    "de-DE": "Bereitet bis zu16 statische Konturschnitte einer Schriftdatei im Hintergrund für E/A vor."
+  },
+  "Explicitly remove the linked font and restore the bundled Noto family; original text and style flags are retained.": {
+    "es-ES": "Quita explícitamente la fuente vinculada y restaura Noto integrado; se conservan el texto original y las opciones de estilo.",
+    "ru-RU": "Явно удаляет ссылку на файл шрифта и возвращает встроенный Noto; исходный текст и флаги стиля сохраняются.",
+    "uk-UA": "Явно видаляє посилання на файл шрифту й повертає вбудований Noto; початковий текст і прапорці стилю зберігаються.",
+    "de-DE": "Entfernt die verknüpfte Schrift ausdrücklich und stellt das mitgelieferte Noto wieder her; Originaltext und Stiloptionen bleiben erhalten."
+  },
+  "Select an actual prepared face. Custom fonts use this face's real weight and style; no sibling or system font is substituted.": {
+    "es-ES": "Selecciona una variante preparada real. Se usan su peso y estilo reales, sin sustituirla por otra variante o una fuente del sistema.",
+    "ru-RU": "Выберите реальное подготовленное начертание. Используются его собственные насыщенность и стиль, без подмены другим начертанием или системным шрифтом.",
+    "uk-UA": "Виберіть справжнє підготовлене накреслення. Використовуються його власні насиченість і стиль, без підміни іншим накресленням або системним шрифтом.",
+    "de-DE": "Wähle einen tatsächlich vorbereiteten Schriftschnitt. Dessen echtes Gewicht und Stil werden verwendet; kein anderer Schnitt und keine Systemschrift wird eingesetzt."
+  },
+  "Custom font: static unhinted TrueType outlines only. CFF OpenType, variable/color/bitmap fonts, system-font discovery and reading text from a file are not available.": {
+    "es-ES": "Fuente personalizada: solo contornos TrueType estáticos sin ajuste de píxeles. No se admiten OpenType CFF, fuentes variables, de color o de mapa de bits, búsqueda de fuentes del sistema ni texto desde archivo.",
+    "ru-RU": "Пользовательский шрифт: только статические контуры TrueType без хинтинга. OpenType CFF, вариативные, цветные и растровые шрифты, каталог системных шрифтов и чтение текста из файла пока недоступны.",
+    "uk-UA": "Власний шрифт: лише статичні контури TrueType без гінтингу. OpenType CFF, варіативні, кольорові й растрові шрифти, каталог системних шрифтів і читання тексту з файлу поки недоступні.",
+    "de-DE": "Eigene Schrift: nur statische TrueType-Konturen ohne Hinting. CFF-OpenType-, variable, Farb- und Bitmap-Schriften, Systemschrift-Suche und Text aus Dateien sind nicht verfügbar."
+  },
+  "Embedded Noto font; no system-font scanning.": {
+    "es-ES": "Fuente Noto integrada; sin búsqueda de fuentes del sistema.",
+    "ru-RU": "Встроенный шрифт Noto; системные шрифты не сканируются.",
+    "uk-UA": "Вбудований шрифт Noto; системні шрифти не скануються.",
+    "de-DE": "Eingebettete Noto-Schrift; keine Systemschrift-Suche."
+  },
+  "Custom font files use the selected face's actual weight and style. Choose a prepared bold or italic face, or switch to Embedded Noto.": {
+    "es-ES": "Los archivos de fuente usan el peso y estilo reales de la variante seleccionada. Elige una variante preparada en negrita o cursiva, o usa Noto integrado.",
+    "ru-RU": "Для файла шрифта используются насыщенность и стиль выбранного начертания. Выберите подготовленное полужирное или курсивное начертание либо встроенный Noto.",
+    "uk-UA": "Для файлу шрифту використовуються насиченість і стиль вибраного накреслення. Виберіть підготовлене напівжирне або курсивне накреслення чи вбудований Noto.",
+    "de-DE": "Schriftdateien verwenden das tatsächliche Gewicht und den Stil des gewählten Schnitts. Wähle einen vorbereiteten fetten oder kursiven Schnitt oder eingebettetes Noto."
+  },
+  "Font preparation: {detail}": {
+    "es-ES": "Preparación de fuente: {detail}",
+    "ru-RU": "Подготовка шрифта: {detail}",
+    "uk-UA": "Підготовка шрифту: {detail}",
+    "de-DE": "Schriftvorbereitung: {detail}"
+  },
+  "The text or font draft changed; prepare the current file again.": {
+    "es-ES": "Cambió el borrador del texto o la fuente; prepara de nuevo el archivo actual.",
+    "ru-RU": "Черновик текста или шрифта изменился; подготовьте текущий файл заново.",
+    "uk-UA": "Чернетка тексту або шрифту змінилася; підготуйте поточний файл знову.",
+    "de-DE": "Text- oder Schriftentwurf wurde geändert; bereite die aktuelle Datei erneut vor."
+  },
+  "The previously selected font face is unavailable. Choose an actual prepared face.": {
+    "es-ES": "La variante seleccionada antes no está disponible. Elige una variante preparada real.",
+    "ru-RU": "Ранее выбранное начертание недоступно. Выберите одно из реально подготовленных начертаний.",
+    "uk-UA": "Раніше вибране накреслення недоступне. Виберіть одне зі справді підготовлених накреслень.",
+    "de-DE": "Der zuvor gewählte Schriftschnitt ist nicht verfügbar. Wähle einen tatsächlich vorbereiteten Schnitt."
+  },
+  "Wait for font preparation to finish.": {
+    "es-ES": "Espera a que termine la preparación de la fuente.",
+    "ru-RU": "Дождитесь завершения подготовки шрифта.",
+    "uk-UA": "Дочекайтеся завершення підготовки шрифту.",
+    "de-DE": "Warte, bis die Schriftvorbereitung abgeschlossen ist."
+  },
+  "Load / Refresh the current font file before applying.": {
+    "es-ES": "Carga o actualiza el archivo de fuente actual antes de aplicar.",
+    "ru-RU": "Загрузите или обновите текущий файл шрифта перед применением.",
+    "uk-UA": "Завантажте або оновіть поточний файл шрифту перед застосуванням.",
+    "de-DE": "Lade oder aktualisiere die aktuelle Schriftdatei vor dem Anwenden."
+  },
+  "The document changed; prepare the font from its current Text Properties.": {
+    "es-ES": "El documento cambió; prepara la fuente desde las propiedades de texto actuales.",
+    "ru-RU": "Документ изменился; подготовьте шрифт в текущих свойствах текста.",
+    "uk-UA": "Документ змінився; підготуйте шрифт у поточних властивостях тексту.",
+    "de-DE": "Das Dokument wurde geändert; bereite die Schrift in den aktuellen Texteigenschaften vor."
+  },
+  "The document changed; reopen Text Properties.": {
+    "es-ES": "El documento cambió; vuelve a abrir las propiedades de texto.",
+    "ru-RU": "Документ изменился; откройте свойства текста заново.",
+    "uk-UA": "Документ змінився; відкрийте властивості тексту знову.",
+    "de-DE": "Das Dokument wurde geändert; öffne die Texteigenschaften erneut."
+  },
+  "Font preparation returned an unexpected receipt.": {
+    "es-ES": "La preparación de la fuente devolvió una respuesta inesperada.",
+    "ru-RU": "Подготовка шрифта вернула неожиданный результат.",
+    "uk-UA": "Підготовка шрифту повернула неочікуваний результат.",
+    "de-DE": "Die Schriftvorbereitung lieferte eine unerwartete Rückmeldung."
+  },
+  "Font preparation has no active matching request.": {
+    "es-ES": "La preparación de la fuente no tiene una solicitud activa coincidente.",
+    "ru-RU": "Для результата подготовки шрифта нет соответствующего активного запроса.",
+    "uk-UA": "Для результату підготовки шрифту немає відповідного активного запиту.",
+    "de-DE": "Für die Schriftvorbereitung gibt es keine passende aktive Anfrage."
+  },
+  "Text dialog identity exhausted": {
+    "es-ES": "Se agotó la identidad del diálogo de texto.",
+    "ru-RU": "Исчерпаны идентификаторы диалога текста.",
+    "uk-UA": "Вичерпано ідентифікатори діалогу тексту.",
+    "de-DE": "Die Textdialog-Identitäten sind ausgeschöpft."
+  },
+  "Font face metadata exceeds the supported static outline profile.": {
+    "es-ES": "Los metadatos de la variante de fuente superan el perfil de contorno estático admitido.",
+    "ru-RU": "Метаданные начертания выходят за пределы поддерживаемого профиля статических контуров.",
+    "uk-UA": "Метадані накреслення виходять за межі підтримуваного профілю статичних контурів.",
+    "de-DE": "Die Schriftschnitt-Metadaten überschreiten das unterstützte statische Konturprofil."
+  },
+  "Font file requires an absolute path of at most4096 UTF-8 bytes without controls.": {
+    "es-ES": "El archivo de fuente requiere una ruta absoluta de hasta4096 bytes UTF-8 sin caracteres de control.",
+    "ru-RU": "Для файла шрифта требуется абсолютный путь длиной до4096 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Для файлу шрифту потрібен абсолютний шлях завдовжки до4096 байтів UTF-8 без керувальних символів.",
+    "de-DE": "Die Schriftdatei benötigt einen absoluten Pfad mit höchstens4096 UTF-8-Bytes ohne Steuerzeichen."
+  },
+  "Font file exceeds16MiB or16 faces, or the selected face is invalid.": {
+    "es-ES": "El archivo de fuente supera16MiB o16 variantes, o la variante seleccionada no es válida.",
+    "ru-RU": "Файл шрифта превышает16МиБ или16 начертаний либо выбранное начертание некорректно.",
+    "uk-UA": "Файл шрифту перевищує16МіБ або16 накреслень, чи вибране накреслення некоректне.",
+    "de-DE": "Die Schriftdatei überschreitet16MiB oder16 Schnitte, oder der ausgewählte Schnitt ist ungültig."
+  },
+  "Text font files require native schema9": {
+    "es-ES": "Los archivos de fuente de texto requieren el esquema nativo 9.",
+    "ru-RU": "Для файлов шрифта текста требуется нативная схема 9.",
+    "uk-UA": "Для файлів шрифту тексту потрібна нативна схема 9.",
+    "de-DE": "Text-Schriftdateien erfordern das native Schema 9."
+  },
+  "Custom-font shaping is bounded; heavily fragmented or very long text may require shorter captions.": {
+    "es-ES": "La composición con fuentes externas tiene límites; el texto muy fragmentado o largo puede requerir subtítulos más breves.",
+    "ru-RU": "Обработка текста с внешним шрифтом ограничена; сильно раздробленный или очень длинный текст может потребовать более коротких подписей.",
+    "uk-UA": "Обробка тексту із зовнішнім шрифтом обмежена; дуже роздроблений або довгий текст може потребувати коротших підписів.",
+    "de-DE": "Die Verarbeitung externer Schriften ist begrenzt; stark fragmentierter oder sehr langer Text kann kürzere Beschriftungen erfordern."
+  },
+  "Custom-font text exceeds the bounded shaping profile. Reduce word, whitespace or bidirectional fragmentation, or shorten the text.": {
+    "es-ES": "El texto con fuente externa supera el perfil de composición limitado. Reduce la fragmentación por palabras, espacios o direcciones, o acorta el texto.",
+    "ru-RU": "Текст с внешним шрифтом превышает допустимый профиль обработки. Уменьшите число фрагментов слов, пробелов или направлений письма либо сократите текст.",
+    "uk-UA": "Текст із зовнішнім шрифтом перевищує допустимий профіль обробки. Зменште кількість фрагментів слів, пробілів або напрямків письма чи скоротіть текст.",
+    "de-DE": "Text mit externer Schrift überschreitet das begrenzte Verarbeitungsprofil. Verringere Wort-, Leerraum- oder Richtungsfragmente oder kürze den Text."
+  },
+  "Custom-font transient shaping and raster bytes exceed the admitted render budget.": {
+    "es-ES": "La memoria temporal de composición y rasterización de la fuente externa supera el presupuesto de renderizado.",
+    "ru-RU": "Временная память обработки и растеризации внешнего шрифта превышает допустимый бюджет рендера.",
+    "uk-UA": "Тимчасова пам’ять обробки й растеризації зовнішнього шрифту перевищує допустимий бюджет рендеру.",
+    "de-DE": "Temporäre Textverarbeitungs- und Rasterdaten der externen Schrift überschreiten das zugelassene Renderbudget."
+  },
+  "Custom-font paragraphs within one line require the same base direction. Insert a line break.": {
+    "es-ES": "Los párrafos con fuente externa dentro de una línea requieren la misma dirección base. Inserta un salto de línea.",
+    "ru-RU": "Абзацы с внешним шрифтом внутри одной строки должны иметь одинаковое основное направление письма. Вставьте перенос строки.",
+    "uk-UA": "Абзаци із зовнішнім шрифтом усередині одного рядка мають мати однаковий основний напрямок письма. Вставте розрив рядка.",
+    "de-DE": "Absätze mit externer Schrift innerhalb einer Zeile benötigen dieselbe Grundrichtung. Füge einen Zeilenumbruch ein."
+  }
+}

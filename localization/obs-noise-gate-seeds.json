@@ -1,0 +1,80 @@
+{
+  "Add OBS Noise Gate": {
+    "es-ES": "Añadir puerta de ruido OBS",
+    "ru-RU": "Добавить Noise Gate OBS",
+    "uk-UA": "Додати Noise Gate OBS",
+    "de-DE": "OBS-Rauschgate hinzufügen"
+  },
+  "OBS Noise Gate {}": {
+    "es-ES": "Puerta de ruido OBS {}",
+    "ru-RU": "Noise Gate OBS {}",
+    "uk-UA": "Noise Gate OBS {}",
+    "de-DE": "OBS-Rauschgate {}"
+  },
+  "Add the OBS noise gate with separate opening and closing thresholds, attack, hold and release.": {
+    "es-ES": "Añade la puerta de ruido OBS con umbrales de apertura y cierre separados, ataque, retención y liberación.",
+    "ru-RU": "Добавить Noise Gate OBS с отдельными порогами открытия и закрытия, временем атаки, удержания и спада.",
+    "uk-UA": "Додати Noise Gate OBS з окремими порогами відкриття й закриття, часом атаки, утримання та спаду.",
+    "de-DE": "OBS-Rauschgate mit getrennten Öffnungs- und Schließschwellen, Attack, Hold und Release hinzufügen."
+  },
+  "Bypass this noise gate while retaining its envelope. Changing parameters resets its history.": {
+    "es-ES": "Omite esta puerta de ruido conservando su envolvente. Cambiar parámetros reinicia su historial.",
+    "ru-RU": "Обойти Noise Gate с сохранением его огибающей. Изменение параметров сбрасывает историю.",
+    "uk-UA": "Обійти Noise Gate зі збереженням його обвідної. Зміна параметрів скидає історію.",
+    "de-DE": "Dieses Rauschgate unter Beibehaltung der Hüllkurve umgehen. Parameteränderungen setzen den Verlauf zurück."
+  },
+  "OBS Noise Gate links the channels with separate open and close thresholds. Zero attack or release changes the gain immediately.": {
+    "es-ES": "La puerta de ruido OBS vincula los canales con umbrales de apertura y cierre separados. Un ataque o liberación de cero cambia la ganancia inmediatamente.",
+    "ru-RU": "Noise Gate OBS связывает каналы и использует отдельные пороги открытия и закрытия. Нулевое время атаки или спада меняет усиление мгновенно.",
+    "uk-UA": "Noise Gate OBS пов’язує канали й використовує окремі пороги відкриття та закриття. Нульовий час атаки або спаду змінює підсилення миттєво.",
+    "de-DE": "Das OBS-Rauschgate koppelt die Kanäle mit getrennten Öffnungs- und Schließschwellen. Attack oder Release von null ändert die Verstärkung sofort."
+  },
+  "Close threshold (-96 to 0 dB)": {
+    "es-ES": "Umbral de cierre (-96 a 0 dB)",
+    "ru-RU": "Порог закрытия (от -96 до 0 дБ)",
+    "uk-UA": "Поріг закриття (від -96 до 0 дБ)",
+    "de-DE": "Schließschwelle (-96 bis 0 dB)"
+  },
+  "Open threshold (-96 to 0 dB)": {
+    "es-ES": "Umbral de apertura (-96 a 0 dB)",
+    "ru-RU": "Порог открытия (от -96 до 0 дБ)",
+    "uk-UA": "Поріг відкриття (від -96 до 0 дБ)",
+    "de-DE": "Öffnungsschwelle (-96 bis 0 dB)"
+  },
+  "Attack (0 to {} ms)": {
+    "es-ES": "Ataque (0 a {} ms)",
+    "ru-RU": "Атака (от 0 до {} мс)",
+    "uk-UA": "Атака (від 0 до {} мс)",
+    "de-DE": "Attack (0 bis {} ms)"
+  },
+  "Hold (0 to {} ms)": {
+    "es-ES": "Retención (0 a {} ms)",
+    "ru-RU": "Удержание (от 0 до {} мс)",
+    "uk-UA": "Утримання (від 0 до {} мс)",
+    "de-DE": "Hold (0 bis {} ms)"
+  },
+  "Release (0 to {} ms)": {
+    "es-ES": "Liberación (0 a {} ms)",
+    "ru-RU": "Спад (от 0 до {} мс)",
+    "uk-UA": "Спад (від 0 до {} мс)",
+    "de-DE": "Release (0 bis {} ms)"
+  },
+  "OBS Noise Gate requires thresholds -96..0 dB and integer times 0..10000 ms": {
+    "es-ES": "La puerta de ruido OBS requiere umbrales de -96 a 0 dB y tiempos enteros de 0 a 10000 ms.",
+    "ru-RU": "Noise Gate OBS требует пороги от -96 до 0 дБ и целое время от 0 до 10000 мс.",
+    "uk-UA": "Noise Gate OBS потребує пороги від -96 до 0 дБ та цілий час від 0 до 10000 мс.",
+    "de-DE": "Das OBS-Rauschgate erfordert Schwellen von -96 bis 0 dB und ganzzahlige Zeiten von 0 bis 10000 ms."
+  },
+  "Add Filter": {
+    "es-ES": "Añadir filtro",
+    "ru-RU": "Добавить фильтр",
+    "uk-UA": "Додати фільтр",
+    "de-DE": "Filter hinzufügen"
+  },
+  "Add an audio filter to the end of this source's chain.": {
+    "es-ES": "Añade un filtro de audio al final de la cadena de esta fuente.",
+    "ru-RU": "Добавить аудиофильтр в конец цепочки этого источника.",
+    "uk-UA": "Додати аудіофільтр наприкінці ланцюжка цього джерела.",
+    "de-DE": "Einen Audiofilter am Ende der Filterkette dieser Quelle hinzufügen."
+  }
+}

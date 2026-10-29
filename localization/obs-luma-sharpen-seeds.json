@@ -1,0 +1,98 @@
+{
+  "Remove pixels outside a luminance band using OBS Luma Key v2 on the CPU.": {
+    "es-ES": "Elimina los píxeles fuera de una banda de luminancia con Luma Key v2 de OBS.",
+    "ru-RU": "Удаляет пиксели вне диапазона яркости фильтром OBS Luma Key v2 на процессоре.",
+    "uk-UA": "Видаляє пікселі поза діапазоном яскравості фільтром OBS Luma Key v2 на процесорі.",
+    "de-DE": "Entfernt Pixel außerhalb eines Helligkeitsbereichs mit OBS Luma Key v2 ."
+  },
+  "Sharpen RGBA edges with OBS's gated 3×3 kernel, including transparency (CPU).": {
+    "es-ES": "Enfoca los bordes RGBA, incluida la transparencia, con el núcleo condicional 3×3 de OBS.",
+    "ru-RU": "Повышает резкость границ RGBA, включая прозрачность, условным ядром OBS 3×3 на процессоре.",
+    "uk-UA": "Підвищує різкість меж RGBA, включно з прозорістю, умовним ядром OBS 3×3 на процесорі.",
+    "de-DE": "Schärft RGBA-Kanten einschließlich Transparenz mit dem bedingten 3×3-Kernel von OBS."
+  },
+  "Set the upper luminance cutoff in linear light (0 to 1).": {
+    "es-ES": "Define el límite superior de luminancia en luz lineal (de 0 a 1).",
+    "ru-RU": "Задаёт верхнюю границу яркости в линейном свете от 0 до 1.",
+    "uk-UA": "Задає верхню межу яскравості в лінійному світлі від 0 до 1.",
+    "de-DE": "Legt die obere Helligkeitsgrenze im linearen Licht fest (0 bis 1)."
+  },
+  "Soften the upper luminance cutoff (0 is a hard edge).": {
+    "es-ES": "Suaviza el límite superior de luminancia (0 crea un borde duro).",
+    "ru-RU": "Смягчает верхнюю границу яркости; 0 задаёт резкий переход.",
+    "uk-UA": "Пом'якшує верхню межу яскравості; 0 задає різкий перехід.",
+    "de-DE": "Weicht die obere Helligkeitsgrenze auf (0 erzeugt eine harte Kante)."
+  },
+  "Set the lower luminance cutoff in linear light (0 to 1).": {
+    "es-ES": "Define el límite inferior de luminancia en luz lineal (de 0 a 1).",
+    "ru-RU": "Задаёт нижнюю границу яркости в линейном свете от 0 до 1.",
+    "uk-UA": "Задає нижню межу яскравості в лінійному світлі від 0 до 1.",
+    "de-DE": "Legt die untere Helligkeitsgrenze im linearen Licht fest (0 bis 1)."
+  },
+  "Soften the lower luminance cutoff (0 is a hard edge).": {
+    "es-ES": "Suaviza el límite inferior de luminancia (0 crea un borde duro).",
+    "ru-RU": "Смягчает нижнюю границу яркости; 0 задаёт резкий переход.",
+    "uk-UA": "Пом'якшує нижню межу яскравості; 0 задає різкий перехід.",
+    "de-DE": "Weicht die untere Helligkeitsgrenze auf (0 erzeugt eine harte Kante)."
+  },
+  "Set OBS edge sharpening strength from 0 to 1; the default is 0.08.": {
+    "es-ES": "Define la intensidad de enfoque de bordes de OBS de 0 a 1; el valor predeterminado es 0,08.",
+    "ru-RU": "Задаёт силу повышения резкости OBS от 0 до 1; значение по умолчанию — 0,08.",
+    "uk-UA": "Задає силу підвищення різкості OBS від 0 до 1; типове значення — 0,08.",
+    "de-DE": "Legt die OBS-Kantenschärfung von 0 bis 1 fest; der Standardwert beträgt 0,08."
+  },
+  "Luma Key": {
+    "es-ES": "Clave Luma",
+    "ru-RU": "Яркостный ключ",
+    "uk-UA": "Фільтр яскравості",
+    "de-DE": "Luminanzschlüssel"
+  },
+  "Sharpen": {
+    "es-ES": "Filtro de enfoque",
+    "ru-RU": "Увеличение резкости",
+    "uk-UA": "Різкість",
+    "de-DE": "Schärfung"
+  },
+  "Sharpness": {
+    "es-ES": "Nitidez",
+    "ru-RU": "Резкость",
+    "uk-UA": "Різкість",
+    "de-DE": "Schärfe"
+  },
+  "Luma Max": {
+    "es-ES": "Máx. Luma",
+    "ru-RU": "Максимум яркости",
+    "uk-UA": "Максимум яскравості",
+    "de-DE": "Max. Luma"
+  },
+  "Luma Max Smooth": {
+    "es-ES": "Suavizado Máximo Luma",
+    "ru-RU": "Сглаживание макс. яркости",
+    "uk-UA": "Згладжування макс. яскравості",
+    "de-DE": "Max. Luma-Glätte"
+  },
+  "Luma Min": {
+    "es-ES": "Min. Luma",
+    "ru-RU": "Минимум яркости",
+    "uk-UA": "Мінімум яскравості",
+    "de-DE": "Min. Luma"
+  },
+  "Luma Min Smooth": {
+    "es-ES": "Suavizado Mínimo Luma",
+    "ru-RU": "Сглаживание мин. яркости",
+    "uk-UA": "Згладжування мін. яскравості",
+    "de-DE": "Min. Luma-Glätte"
+  },
+  "Remove pixels outside a luminance band using OBS Luma Key v2.": {
+    "es-ES": "Elimina los píxeles fuera de una banda de luminancia con Luma Key v2 de OBS.",
+    "ru-RU": "Удаляет пиксели вне диапазона яркости фильтром OBS Luma Key v2.",
+    "uk-UA": "Видаляє пікселі поза діапазоном яскравості фільтром OBS Luma Key v2.",
+    "de-DE": "Entfernt Pixel außerhalb eines Helligkeitsbereichs mit OBS Luma Key v2."
+  },
+  "Sharpen RGBA edges with OBS's gated 3×3 kernel, including transparency.": {
+    "es-ES": "Enfoca los bordes RGBA, incluida la transparencia, con el núcleo condicional 3×3 de OBS.",
+    "ru-RU": "Повышает резкость границ RGBA, включая прозрачность, условным ядром OBS 3×3.",
+    "uk-UA": "Підвищує різкість меж RGBA, включно з прозорістю, умовним ядром OBS 3×3.",
+    "de-DE": "Schärft RGBA-Kanten einschließlich Transparenz mit dem bedingten 3×3-Kernel von OBS."
+  }
+}

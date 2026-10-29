@@ -1,0 +1,21 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "frontend/widgets/OBSBasic.cpp",
+      "sha256": "8e27372e77b8377844be6f9d591a23089d302bdf12abee39c629aff9b65279e9"
+    },
+    {
+      "path": "frontend/widgets/OBSBasic_SceneCollections.cpp",
+      "sha256": "a75a7048cbfea4d82b341353304e4eefa6317ac5fe9efd25d856662d4964fbf3"
+    },
+    {
+      "path": "frontend/OBSApp.cpp",
+      "sha256": "bc298358c9fd2b8e7e8ca7952108adfeafe6243df4718b854003e33e96372963"
+    }
+  ],
+  "scope": "Remember the last successfully published native document in independent per-user metadata; background startup loading uses current native Session publication and projector restoration. No source-name lookup, OBS profile-manager interchange or runtime/platform acceptance claim."
+}

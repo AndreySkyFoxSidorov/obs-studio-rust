@@ -1,0 +1,110 @@
+{
+  "This reference has no compiled Rust operations. It cannot add sources, filters or docks.": {
+    "es-ES": "Esta referencia no tiene operaciones Rust compiladas. No puede añadir fuentes, filtros ni paneles.",
+    "ru-RU": "Для этого референса нет скомпилированных операций Rust. Он не может добавлять источники, фильтры или панели.",
+    "uk-UA": "Для цього референсу немає скомпільованих операцій Rust. Він не може додавати джерела, фільтри чи панелі.",
+    "de-DE": "Diese Referenz enthält keine kompilierten Rust-Funktionen. Sie kann keine Quellen, Filter oder Docks hinzufügen."
+  },
+  "Read-only": {
+    "es-ES": "Solo lectura",
+    "ru-RU": "Только чтение",
+    "uk-UA": "Лише читання",
+    "de-DE": "Schreibgeschützt"
+  },
+  "Open the shared filter editor, then add one of the choices listed above. Enabling a module does not add filters automatically.": {
+    "es-ES": "Abre el editor de filtros compartido y añade una de las opciones indicadas arriba. Activar un módulo no añade filtros automáticamente.",
+    "ru-RU": "Откройте общий редактор фильтров и добавьте один из перечисленных выше вариантов. Включение модуля не добавляет фильтры автоматически.",
+    "uk-UA": "Відкрийте спільний редактор фільтрів і додайте один із наведених вище варіантів. Увімкнення модуля не додає фільтри автоматично.",
+    "de-DE": "Öffnen Sie den gemeinsamen Filtereditor und fügen Sie eine der oben aufgeführten Optionen hinzu. Das Aktivieren eines Moduls fügt nicht automatisch Filter hinzu."
+  },
+  "Scene: {name}": {
+    "es-ES": "Escena: {name}",
+    "ru-RU": "Сцена: {name}",
+    "uk-UA": "Сцена: {name}",
+    "de-DE": "Szene: {name}"
+  },
+  "No compatible target. Add an audio or video source, or create a scene first.": {
+    "es-ES": "No hay un destino compatible. Añade una fuente de audio o vídeo, o crea primero una escena.",
+    "ru-RU": "Нет совместимого объекта. Сначала добавьте аудио- или видеоисточник либо создайте сцену.",
+    "uk-UA": "Немає сумісного об’єкта. Спочатку додайте аудіо- чи відеоджерело або створіть сцену.",
+    "de-DE": "Kein kompatibles Ziel. Fügen Sie zuerst eine Audio- oder Videoquelle hinzu oder erstellen Sie eine Szene."
+  },
+  "Choose the existing source or scene to configure.": {
+    "es-ES": "Elige la fuente o escena existente que deseas configurar.",
+    "ru-RU": "Выберите существующий источник или сцену для настройки.",
+    "uk-UA": "Виберіть наявне джерело або сцену для налаштування.",
+    "de-DE": "Wählen Sie die vorhandene Quelle oder Szene zum Konfigurieren aus."
+  },
+  "Enable this module before opening its editor.": {
+    "es-ES": "Activa este módulo antes de abrir su editor.",
+    "ru-RU": "Включите этот модуль перед открытием редактора.",
+    "uk-UA": "Увімкніть цей модуль перед відкриттям редактора.",
+    "de-DE": "Aktivieren Sie dieses Modul, bevor Sie seinen Editor öffnen."
+  },
+  "Open Audio Filters": {
+    "es-ES": "Abrir filtros de audio",
+    "ru-RU": "Открыть аудиофильтры",
+    "uk-UA": "Відкрити аудіофільтри",
+    "de-DE": "Audiofilter öffnen"
+  },
+  "Open Video Filters": {
+    "es-ES": "Abrir filtros de vídeo",
+    "ru-RU": "Открыть видеофильтры",
+    "uk-UA": "Відкрити відеофільтри",
+    "de-DE": "Videofilter öffnen"
+  },
+  "Open Scene Notes": {
+    "es-ES": "Abrir notas de la escena",
+    "ru-RU": "Открыть заметки сцены",
+    "uk-UA": "Відкрити нотатки сцени",
+    "de-DE": "Szenennotizen öffnen"
+  },
+  "Reopen Plugin Manager before choosing an editor.": {
+    "es-ES": "Vuelve a abrir el gestor de complementos antes de elegir un editor.",
+    "ru-RU": "Снова откройте менеджер плагинов перед выбором редактора.",
+    "uk-UA": "Знову відкрийте менеджер плагінів перед вибором редактора.",
+    "de-DE": "Öffnen Sie die Plugin-Verwaltung erneut, bevor Sie einen Editor auswählen."
+  },
+  "The document changed. Choose the plugin target again.": {
+    "es-ES": "El documento ha cambiado. Vuelve a elegir el destino del complemento.",
+    "ru-RU": "Документ изменился. Снова выберите объект для плагина.",
+    "uk-UA": "Документ змінився. Знову виберіть об’єкт для плагіна.",
+    "de-DE": "Das Dokument wurde geändert. Wählen Sie das Plugin-Ziel erneut aus."
+  },
+  "This module has no enabled editor for this operation.": {
+    "es-ES": "Este módulo no tiene un editor activado para esta operación.",
+    "ru-RU": "У этого модуля нет включённого редактора для данной операции.",
+    "uk-UA": "Цей модуль не має увімкненого редактора для цієї операції.",
+    "de-DE": "Dieses Modul hat keinen aktivierten Editor für diesen Vorgang."
+  },
+  "This source or scene cannot use the selected plugin operation.": {
+    "es-ES": "Esta fuente o escena no admite la operación seleccionada del complemento.",
+    "ru-RU": "Этот источник или сцена не поддерживает выбранную операцию плагина.",
+    "uk-UA": "Це джерело або сцена не підтримує вибрану операцію плагіна.",
+    "de-DE": "Diese Quelle oder Szene unterstützt den ausgewählten Plugin-Vorgang nicht."
+  },
+  "Plugin manager identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del gestor de complementos",
+    "ru-RU": "Исчерпаны идентификаторы менеджера плагинов",
+    "uk-UA": "Вичерпано ідентифікатори менеджера плагінів",
+    "de-DE": "Keine weiteren Kennungen für die Plugin-Verwaltung verfügbar"
+  },
+  "Plugin settings changed. Reopen this editor before applying.": {
+    "es-ES": "La configuración del complemento ha cambiado. Vuelve a abrir este editor antes de aplicar.",
+    "ru-RU": "Настройки плагина изменились. Снова откройте редактор перед применением.",
+    "uk-UA": "Налаштування плагіна змінилися. Знову відкрийте редактор перед застосуванням.",
+    "de-DE": "Die Plugin-Einstellungen wurden geändert. Öffnen Sie diesen Editor vor dem Anwenden erneut."
+  },
+  "Plugin editor identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del editor de complementos",
+    "ru-RU": "Исчерпаны идентификаторы редактора плагинов",
+    "uk-UA": "Вичерпано ідентифікатори редактора плагінів",
+    "de-DE": "Keine weiteren Kennungen für den Plugin-Editor verfügbar"
+  },
+  "Target": {
+    "es-ES": "Destino",
+    "ru-RU": "Целевой объект",
+    "uk-UA": "Цільовий об’єкт",
+    "de-DE": "Ziel"
+  }
+}

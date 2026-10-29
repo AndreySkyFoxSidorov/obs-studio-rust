@@ -1,0 +1,146 @@
+{
+  "Finish the document operation before starting streaming": {
+    "es-ES": "Finalice la operación del documento antes de iniciar la transmisión",
+    "ru-RU": "Завершите операцию с документом перед запуском трансляции",
+    "uk-UA": "Завершіть операцію з документом перед запуском трансляції",
+    "de-DE": "Schließen Sie den Dokumentvorgang ab, bevor Sie den Stream starten"
+  },
+  "Streaming is unavailable on this platform": {
+    "es-ES": "La transmisión no está disponible en esta plataforma",
+    "ru-RU": "Трансляция недоступна на этой платформе",
+    "uk-UA": "Трансляція недоступна на цій платформі",
+    "de-DE": "Streaming ist auf dieser Plattform nicht verfügbar"
+  },
+  "Audio worker is busy; try streaming again": {
+    "es-ES": "El servicio de audio está ocupado; vuelva a iniciar la transmisión",
+    "ru-RU": "Обработчик аудио занят; повторите запуск трансляции",
+    "uk-UA": "Обробник аудіо зайнятий; повторіть запуск трансляції",
+    "de-DE": "Der Audiodienst ist beschäftigt; versuchen Sie den Streamstart erneut"
+  },
+  "Program output is unavailable for streaming": {
+    "es-ES": "La salida de programa no está disponible para transmitir",
+    "ru-RU": "Выход программы недоступен для трансляции",
+    "uk-UA": "Вихід програми недоступний для трансляції",
+    "de-DE": "Die Programmausgabe ist für den Stream nicht verfügbar"
+  },
+  "Starting streaming…": {
+    "es-ES": "Iniciando transmisión…",
+    "ru-RU": "Запуск трансляции…",
+    "uk-UA": "Запуск трансляції…",
+    "de-DE": "Stream wird gestartet…"
+  },
+  "Streaming started": {
+    "es-ES": "Transmisión iniciada",
+    "ru-RU": "Трансляция запущена",
+    "uk-UA": "Трансляцію запущено",
+    "de-DE": "Stream gestartet"
+  },
+  "Streaming stopped": {
+    "es-ES": "Transmisión detenida",
+    "ru-RU": "Трансляция остановлена",
+    "uk-UA": "Трансляцію зупинено",
+    "de-DE": "Stream beendet"
+  },
+  "Streaming failed: {error}": {
+    "es-ES": "Error de transmisión: {error}",
+    "ru-RU": "Ошибка трансляции: {error}",
+    "uk-UA": "Помилка трансляції: {error}",
+    "de-DE": "Streaming fehlgeschlagen: {error}"
+  },
+  "Unknown streaming failure": {
+    "es-ES": "Error de transmisión desconocido",
+    "ru-RU": "Неизвестная ошибка трансляции",
+    "uk-UA": "Невідома помилка трансляції",
+    "de-DE": "Unbekannter Streamingfehler"
+  },
+  "Streaming resource generation exhausted": {
+    "es-ES": "Se agotó el contador de versiones de recursos de transmisión",
+    "ru-RU": "Исчерпан счётчик версий ресурсов трансляции",
+    "uk-UA": "Вичерпано лічильник версій ресурсів трансляції",
+    "de-DE": "Der Versionszähler für Streamingressourcen ist ausgeschöpft"
+  },
+  "Streaming clock moved backwards": {
+    "es-ES": "El reloj de transmisión retrocedió",
+    "ru-RU": "Время трансляции переместилось назад",
+    "uk-UA": "Час трансляції перемістився назад",
+    "de-DE": "Die Streamingzeit ist rückwärts gesprungen"
+  },
+  "Stop streaming before changing the output settings, audio/video format or active profile": {
+    "es-ES": "Detenga la transmisión antes de cambiar los ajustes de salida, el formato de audio o vídeo o el perfil activo",
+    "ru-RU": "Остановите трансляцию перед изменением настроек вывода, формата аудио/видео или активного профиля",
+    "uk-UA": "Зупиніть трансляцію перед зміною налаштувань виводу, формату аудіо/відео або активного профілю",
+    "de-DE": "Beenden Sie den Stream, bevor Sie Ausgabeeinstellungen, Audio-/Videoformat oder aktives Profil ändern"
+  },
+  "Stop streaming before replacing the scene collection": {
+    "es-ES": "Detenga la transmisión antes de reemplazar la colección de escenas",
+    "ru-RU": "Остановите трансляцию перед заменой коллекции сцен",
+    "uk-UA": "Зупиніть трансляцію перед заміною колекції сцен",
+    "de-DE": "Beenden Sie den Stream, bevor Sie die Szenensammlung ersetzen"
+  },
+  "Stopping streaming…": {
+    "es-ES": "Deteniendo transmisión…",
+    "ru-RU": "Остановка трансляции…",
+    "uk-UA": "Зупинка трансляції…",
+    "de-DE": "Stream wird beendet…"
+  },
+  "Cancel Streaming Start": {
+    "es-ES": "Cancelar inicio de transmisión",
+    "ru-RU": "Отменить запуск трансляции",
+    "uk-UA": "Скасувати запуск трансляції",
+    "de-DE": "Streamstart abbrechen"
+  },
+  "Stop Streaming": {
+    "es-ES": "Detener transmisión",
+    "ru-RU": "Остановить трансляцию",
+    "uk-UA": "Зупинити трансляцію",
+    "de-DE": "Stream beenden"
+  },
+  "Configure the server and stream key in Settings > Stream first.": {
+    "es-ES": "Configure primero el servidor y la clave en Ajustes > Emisión.",
+    "ru-RU": "Сначала укажите сервер и ключ трансляции в разделе «Настройки > Трансляция».",
+    "uk-UA": "Спочатку вкажіть сервер і ключ трансляції в розділі «Налаштування > Трансляція».",
+    "de-DE": "Richten Sie zuerst Server und Streamschlüssel unter Einstellungen > Stream ein."
+  },
+  "Stop this stream and drain its audio, video and connection. Recording continues independently.": {
+    "es-ES": "Detenga esta transmisión y termine de enviar el audio y el vídeo pendientes antes de cerrar la conexión. La grabación continúa de forma independiente.",
+    "ru-RU": "Остановите трансляцию, отправив оставшиеся аудио и видео перед закрытием соединения. Запись продолжается независимо.",
+    "uk-UA": "Зупиніть трансляцію, надіславши решту аудіо та відео перед закриттям з’єднання. Запис триває незалежно.",
+    "de-DE": "Beenden Sie diesen Stream nach der Übertragung ausstehender Audio- und Videodaten und schließen Sie die Verbindung. Die Aufnahme läuft unabhängig weiter."
+  },
+  "Publish the current Program as H.264 and optional AAC to the configured RTMP server.": {
+    "es-ES": "Transmita el programa actual en H.264 y audio AAC opcional al servidor RTMP configurado.",
+    "ru-RU": "Передавайте текущий выход программы в H.264 с необязательным звуком AAC на указанный RTMP-сервер.",
+    "uk-UA": "Передавайте поточний вихід програми в H.264 з необов’язковим звуком AAC на вказаний RTMP-сервер.",
+    "de-DE": "Übertragen Sie das aktuelle Programm mit H.264 und optionalem AAC-Audio an den eingestellten RTMP-Server."
+  },
+  "Streaming source warnings": {
+    "es-ES": "Advertencias de fuentes de transmisión",
+    "ru-RU": "Предупреждения об источниках трансляции",
+    "uk-UA": "Попередження про джерела трансляції",
+    "de-DE": "Warnungen zu Streamquellen"
+  },
+  "Streaming continues with unavailable sources": {
+    "es-ES": "La transmisión continúa con fuentes no disponibles",
+    "ru-RU": "Трансляция продолжается с недоступными источниками",
+    "uk-UA": "Трансляція триває з недоступними джерелами",
+    "de-DE": "Der Stream läuft mit nicht verfügbaren Quellen weiter"
+  },
+  "Streaming start cancelled": {
+    "es-ES": "Inicio de transmisión cancelado",
+    "ru-RU": "Запуск трансляции отменён",
+    "uk-UA": "Запуск трансляції скасовано",
+    "de-DE": "Streamstart abgebrochen"
+  },
+  "Streaming failed; closing its output resources: {error}": {
+    "es-ES": "La transmisión falló; se están cerrando sus recursos de salida: {error}",
+    "ru-RU": "Ошибка трансляции; освобождение ресурсов вывода: {error}",
+    "uk-UA": "Помилка трансляції; звільнення ресурсів виводу: {error}",
+    "de-DE": "Streaming fehlgeschlagen; die Ausgaberessourcen werden geschlossen: {error}"
+  },
+  "Ready": {
+    "es-ES": "Listo",
+    "ru-RU": "Готово",
+    "uk-UA": "Готово",
+    "de-DE": "Bereit"
+  }
+}

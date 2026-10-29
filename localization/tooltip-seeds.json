@@ -1,0 +1,1478 @@
+{
+  "Not ported: requires source packet discard/readiness and separate MuteByUI resume timing, not just zero samples.": {
+    "es-ES": "Sin adaptación: requiere descartar paquetes y gestionar la disponibilidad del audio de origen, además del tiempo de reanudación de MuteByUI; no basta con poner las muestras a cero.",
+    "ru-RU": "Не перенесён: нужны отбрасывание пакетов и учёт готовности звука источника, а также отдельное время возобновления MuteByUI; одного обнуления отсчётов недостаточно.",
+    "uk-UA": "Не перенесено: потрібні відкидання пакетів і врахування готовності звуку джерела, а також окремий час відновлення MuteByUI; самого обнулення відліків недостатньо.",
+    "de-DE": "Nicht portiert: Erfordert das Verwerfen von Quellpaketen, die Prüfung der Audiobereitschaft und eine eigene Wiederaufnahmezeit für MuteByUI; Nullsetzen der Samples reicht nicht."
+  },
+  "Add a microphone or another audio input.": {
+    "es-ES": "Añadir un micrófono u otra entrada de audio.",
+    "ru-RU": "Добавить микрофон или другой аудиовход.",
+    "uk-UA": "Додати мікрофон або інший аудіовхід.",
+    "de-DE": "Ein Mikrofon oder einen anderen Audioeingang hinzufügen."
+  },
+  "Add a new scene to the current collection.": {
+    "es-ES": "Añadir una escena nueva a la colección actual.",
+    "ru-RU": "Добавить новую сцену в текущую коллекцию.",
+    "uk-UA": "Додати нову сцену до поточної колекції.",
+    "de-DE": "Eine neue Szene zur aktuellen Sammlung hinzufügen."
+  },
+  "Add a quick transition button with its own transition and duration.": {
+    "es-ES": "Añadir un botón de transición rápida con su propia transición y duración.",
+    "ru-RU": "Добавить кнопку быстрого перехода с собственным переходом и длительностью.",
+    "uk-UA": "Додати кнопку швидкого переходу з власним переходом і тривалістю.",
+    "de-DE": "Eine Schnellübergangsschaltfläche mit eigenem Übergang und eigener Dauer hinzufügen."
+  },
+  "Add a solid RGBA color source to the current scene.": {
+    "es-ES": "Añadir una fuente de color RGBA uniforme a la escena actual.",
+    "ru-RU": "Добавить источник сплошного цвета RGBA в текущую сцену.",
+    "uk-UA": "Додати джерело суцільного кольору RGBA до поточної сцени.",
+    "de-DE": "Eine einfarbige RGBA-Quelle zur aktuellen Szene hinzufügen."
+  },
+  "Add an image from a file.": {
+    "es-ES": "Añadir una imagen desde un archivo.",
+    "ru-RU": "Добавить изображение из файла.",
+    "uk-UA": "Додати зображення з файлу.",
+    "de-DE": "Ein Bild aus einer Datei hinzufügen."
+  },
+  "Add an item to this list.": {
+    "es-ES": "Añadir un elemento a esta lista.",
+    "ru-RU": "Добавить элемент в этот список.",
+    "uk-UA": "Додати елемент до цього списку.",
+    "de-DE": "Ein Element zu dieser Liste hinzufügen."
+  },
+  "Add stereo pan controls for the left and right inputs.": {
+    "es-ES": "Añadir controles de panorama estéreo para las entradas izquierda y derecha.",
+    "ru-RU": "Добавить управление стереопанорамой левого и правого входов.",
+    "uk-UA": "Додати керування стереопанорамою лівого й правого входів.",
+    "de-DE": "Stereopanorama-Regler für den linken und rechten Eingang hinzufügen."
+  },
+  "Add system audio or another audio output.": {
+    "es-ES": "Añadir el audio del sistema u otra salida de audio.",
+    "ru-RU": "Добавить системный звук или другой аудиовыход.",
+    "uk-UA": "Додати системний звук або інший аудіовихід.",
+    "de-DE": "Systemaudio oder einen anderen Audioausgang hinzufügen."
+  },
+  "Additional accessibility settings are not implemented yet.": {
+    "es-ES": "Los ajustes adicionales de accesibilidad aún no están implementados.",
+    "ru-RU": "Дополнительные настройки специальных возможностей пока не реализованы.",
+    "uk-UA": "Додаткові налаштування доступності ще не реалізовано.",
+    "de-DE": "Zusätzliche Einstellungen zur Barrierefreiheit sind noch nicht implementiert."
+  },
+  "Additional advanced settings are not implemented yet.": {
+    "es-ES": "Los ajustes avanzados adicionales aún no están implementados.",
+    "ru-RU": "Дополнительные расширенные настройки пока не реализованы.",
+    "uk-UA": "Додаткові розширені налаштування ще не реалізовано.",
+    "de-DE": "Weitere erweiterte Einstellungen sind noch nicht implementiert."
+  },
+  "Additional transition providers are not implemented yet.": {
+    "es-ES": "Los proveedores de transiciones adicionales aún no están implementados.",
+    "ru-RU": "Дополнительные поставщики переходов пока не реализованы.",
+    "uk-UA": "Додаткових постачальників переходів ще не реалізовано.",
+    "de-DE": "Zusätzliche Übergangsanbieter sind noch nicht implementiert."
+  },
+  "Adjust the source volume. Release, press Enter or leave the control to apply.": {
+    "es-ES": "Ajustar el volumen de la fuente. Soltar el control, pulsar Intro o salir de él para aplicar.",
+    "ru-RU": "Изменить громкость источника. Отпустите регулятор, нажмите Enter или покиньте его, чтобы применить изменение.",
+    "uk-UA": "Змінити гучність джерела. Відпустіть регулятор, натисніть Enter або залиште його, щоб застосувати зміну.",
+    "de-DE": "Die Quellenlautstärke einstellen. Zum Anwenden loslassen, Enter drücken oder das Steuerelement verlassen."
+  },
+  "Adjust this value with the pointer or keyboard.": {
+    "es-ES": "Ajustar este valor con el puntero o el teclado.",
+    "ru-RU": "Изменить это значение указателем или с клавиатуры.",
+    "uk-UA": "Змінити це значення вказівником або з клавіатури.",
+    "de-DE": "Diesen Wert mit dem Zeiger oder der Tastatur einstellen."
+  },
+  "Advanced audio routing and monitoring controls are not implemented yet.": {
+    "es-ES": "Los controles avanzados de enrutamiento y monitorización de audio aún no están implementados.",
+    "ru-RU": "Расширенное управление маршрутизацией и мониторингом звука пока не реализовано.",
+    "uk-UA": "Розширене керування маршрутизацією й моніторингом звуку ще не реалізовано.",
+    "de-DE": "Erweiterte Steuerungen für Audiorouting und Monitoring sind noch nicht implementiert."
+  },
+  "Appearance settings beyond the current visual profile are not implemented yet.": {
+    "es-ES": "Los ajustes de apariencia adicionales al perfil visual actual aún no están implementados.",
+    "ru-RU": "Настройки внешнего вида за пределами текущего визуального профиля пока не реализованы.",
+    "uk-UA": "Налаштування вигляду поза поточним візуальним профілем ще не реалізовано.",
+    "de-DE": "Darstellungseinstellungen über das aktuelle visuelle Profil hinaus sind noch nicht implementiert."
+  },
+  "Apply the transition duration.": {
+    "es-ES": "Aplicar la duración de la transición.",
+    "ru-RU": "Применить длительность перехода.",
+    "uk-UA": "Застосувати тривалість переходу.",
+    "de-DE": "Die Übergangsdauer anwenden."
+  },
+  "Apply these settings and close the dialog.": {
+    "es-ES": "Aplicar estos ajustes y cerrar el diálogo.",
+    "ru-RU": "Применить эти настройки и закрыть диалог.",
+    "uk-UA": "Застосувати ці налаштування й закрити діалог.",
+    "de-DE": "Diese Einstellungen anwenden und den Dialog schließen."
+  },
+  "Blend between scenes over the configured duration.": {
+    "es-ES": "Fundir las escenas durante el tiempo configurado.",
+    "ru-RU": "Выполнить смешивание сцен за заданное время.",
+    "uk-UA": "Виконати змішування сцен за заданий час.",
+    "de-DE": "Die Szenen während der eingestellten Dauer überblenden."
+  },
+  "Browse modules and turn on available features.": {
+    "es-ES": "Explorar los módulos y activar las funciones disponibles.",
+    "ru-RU": "Просмотреть модули и включить доступные функции.",
+    "uk-UA": "Переглянути модулі й увімкнути доступні функції.",
+    "de-DE": "Module durchsuchen und verfügbare Funktionen aktivieren."
+  },
+  "Browse your named transitions.": {
+    "es-ES": "Explorar las transiciones con nombre.",
+    "ru-RU": "Просмотреть именованные переходы.",
+    "uk-UA": "Переглянути іменовані переходи.",
+    "de-DE": "Die benannten Übergänge durchsuchen."
+  },
+  "Capture supported system audio through the macOS provider.": {
+    "es-ES": "Capturar el audio del sistema compatible mediante el proveedor de macOS.",
+    "ru-RU": "Захватить поддерживаемый системный звук через поставщика macOS.",
+    "uk-UA": "Захопити підтримуваний системний звук через постачальника macOS.",
+    "de-DE": "Unterstütztes Systemaudio über den macOS-Anbieter erfassen."
+  },
+  "Center the selected video item horizontally and vertically in the canvas.": {
+    "es-ES": "Centrar el elemento de vídeo seleccionado horizontal y verticalmente en el lienzo.",
+    "ru-RU": "Разместить выбранный видеоэлемент по центру холста по горизонтали и вертикали.",
+    "uk-UA": "Розташувати вибраний відеоелемент у центрі полотна по горизонталі й вертикалі.",
+    "de-DE": "Das ausgewählte Videoelement horizontal und vertikal auf der Leinwand zentrieren."
+  },
+  "Center the selected video item horizontally in the canvas.": {
+    "es-ES": "Centrar el elemento de vídeo seleccionado horizontalmente en el lienzo.",
+    "ru-RU": "Разместить выбранный видеоэлемент по центру холста по горизонтали.",
+    "uk-UA": "Розташувати вибраний відеоелемент у центрі полотна по горизонталі.",
+    "de-DE": "Das ausgewählte Videoelement horizontal auf der Leinwand zentrieren."
+  },
+  "Center the selected video item vertically in the canvas.": {
+    "es-ES": "Centrar el elemento de vídeo seleccionado verticalmente en el lienzo.",
+    "ru-RU": "Разместить выбранный видеоэлемент по центру холста по вертикали.",
+    "uk-UA": "Розташувати вибраний відеоелемент у центрі полотна по вертикалі.",
+    "de-DE": "Das ausgewählte Videoelement vertikal auf der Leinwand zentrieren."
+  },
+  "Change the current scene collection display name.": {
+    "es-ES": "Cambiar el nombre visible de la colección de escenas actual.",
+    "ru-RU": "Изменить отображаемое имя текущей коллекции сцен.",
+    "uk-UA": "Змінити відображувану назву поточної колекції сцен.",
+    "de-DE": "Den Anzeigenamen der aktuellen Szenensammlung ändern."
+  },
+  "Check for an application update when an updater is implemented.": {
+    "es-ES": "Buscar actualizaciones de la aplicación cuando se implemente el actualizador.",
+    "ru-RU": "Проверить обновления приложения, когда будет реализовано средство обновления.",
+    "uk-UA": "Перевірити оновлення програми, коли буде реалізовано засіб оновлення.",
+    "de-DE": "Nach Anwendungsupdates suchen, sobald ein Aktualisierungsprogramm implementiert ist."
+  },
+  "Check installed files when installation integrity checks are implemented.": {
+    "es-ES": "Verificar los archivos instalados cuando se implementen las comprobaciones de integridad.",
+    "ru-RU": "Проверить установленные файлы, когда будет реализована проверка целостности установки.",
+    "uk-UA": "Перевірити встановлені файли, коли буде реалізовано перевірку цілісності встановлення.",
+    "de-DE": "Installierte Dateien prüfen, sobald Integritätsprüfungen der Installation implementiert sind."
+  },
+  "Choose a color.": {
+    "es-ES": "Elegir un color.",
+    "ru-RU": "Выбрать цвет.",
+    "uk-UA": "Вибрати колір.",
+    "de-DE": "Eine Farbe auswählen."
+  },
+  "Choose a different transition for this scene.": {
+    "es-ES": "Elegir una transición diferente para esta escena.",
+    "ru-RU": "Выбрать другой переход для этой сцены.",
+    "uk-UA": "Вибрати інший перехід для цієї сцени.",
+    "de-DE": "Einen anderen Übergang für diese Szene auswählen."
+  },
+  "Choose a display to capture and whether to include the cursor.": {
+    "es-ES": "Elegir la pantalla que se capturará y si se incluirá el cursor.",
+    "ru-RU": "Выбрать экран для захвата и включение курсора.",
+    "uk-UA": "Вибрати екран для захоплення та чи включати курсор.",
+    "de-DE": "Den aufzunehmenden Bildschirm auswählen und festlegen, ob der Mauszeiger enthalten ist."
+  },
+  "Choose a source type to add to the current scene.": {
+    "es-ES": "Elegir un tipo de fuente para añadir a la escena actual.",
+    "ru-RU": "Выбрать тип источника для добавления в текущую сцену.",
+    "uk-UA": "Вибрати тип джерела для додавання до поточної сцени.",
+    "de-DE": "Einen Quellentyp zum Hinzufügen zur aktuellen Szene auswählen."
+  },
+  "Choose an available audio device.": {
+    "es-ES": "Elegir un dispositivo de audio disponible.",
+    "ru-RU": "Выбрать доступное аудиоустройство.",
+    "uk-UA": "Вибрати доступний аудіопристрій.",
+    "de-DE": "Ein verfügbares Audiogerät auswählen."
+  },
+  "Choose how the incoming scene is revealed during Swipe.": {
+    "es-ES": "Elegir cómo se revela la escena entrante durante «Deslizar».",
+    "ru-RU": "Выбрать способ раскрытия входящей сцены при переходе «Перемещение».",
+    "uk-UA": "Вибрати спосіб розкриття вхідної сцени під час переходу «Переміщення».",
+    "de-DE": "Festlegen, wie die neue Szene beim Übergang „Wischen“ eingeblendet wird."
+  },
+  "Choose the audio device to capture.": {
+    "es-ES": "Elegir el dispositivo de audio que se capturará.",
+    "ru-RU": "Выбрать аудиоустройство для захвата.",
+    "uk-UA": "Вибрати аудіопристрій для захоплення.",
+    "de-DE": "Das zu erfassende Audiogerät auswählen."
+  },
+  "Choose the display to capture.": {
+    "es-ES": "Elegir la pantalla que se capturará.",
+    "ru-RU": "Выбрать экран для захвата.",
+    "uk-UA": "Вибрати екран для захоплення.",
+    "de-DE": "Den aufzunehmenden Bildschirm auswählen."
+  },
+  "Choose the global desktop and microphone audio sources.": {
+    "es-ES": "Elegir las fuentes globales de audio del escritorio y del micrófono.",
+    "ru-RU": "Выбрать глобальные источники звука рабочего стола и микрофона.",
+    "uk-UA": "Вибрати глобальні джерела звуку стільниці й мікрофона.",
+    "de-DE": "Die globalen Desktop- und Mikrofon-Audioquellen auswählen."
+  },
+  "Choose the interface language.": {
+    "es-ES": "Elegir el idioma de la interfaz.",
+    "ru-RU": "Выбрать язык интерфейса.",
+    "uk-UA": "Вибрати мову інтерфейсу.",
+    "de-DE": "Die Sprache der Benutzeroberfläche auswählen."
+  },
+  "Choose the interface language and reload edited translations.": {
+    "es-ES": "Elegir el idioma de la interfaz y recargar las traducciones editadas.",
+    "ru-RU": "Выбрать язык интерфейса и перезагрузить изменённые переводы.",
+    "uk-UA": "Вибрати мову інтерфейсу й перезавантажити змінені переклади.",
+    "de-DE": "Die Oberflächensprache auswählen und bearbeitete Übersetzungen neu laden."
+  },
+  "Choose the percentage at which Fade to Color changes from the old scene to the new one.": {
+    "es-ES": "Elegir el porcentaje en el que «Desvanecer a Color» cambia de la escena anterior a la nueva.",
+    "ru-RU": "Выбрать процент, при котором переход «Затухание в цвет» переключается со старой сцены на новую.",
+    "uk-UA": "Вибрати відсоток, за якого «Перехід до кольору» перемикається зі старої сцени на нову.",
+    "de-DE": "Den Prozentwert festlegen, bei dem die „Farbüberblende“ von der alten zur neuen Szene wechselt."
+  },
+  "Choose the source color and opacity.": {
+    "es-ES": "Elegir el color y la opacidad de la fuente.",
+    "ru-RU": "Выбрать цвет и непрозрачность источника.",
+    "uk-UA": "Вибрати колір і непрозорість джерела.",
+    "de-DE": "Farbe und Deckkraft der Quelle auswählen."
+  },
+  "Choose this named transition.": {
+    "es-ES": "Elegir esta transición con nombre.",
+    "ru-RU": "Выбрать этот именованный переход.",
+    "uk-UA": "Вибрати цей іменований перехід.",
+    "de-DE": "Diesen benannten Übergang auswählen."
+  },
+  "Choose this scene for Preview.": {
+    "es-ES": "Elegir esta escena para Vista previa.",
+    "ru-RU": "Выбрать эту сцену для предпросмотра.",
+    "uk-UA": "Вибрати цю сцену для попереднього перегляду.",
+    "de-DE": "Diese Szene für die Vorschau auswählen."
+  },
+  "Close SkyLive. You can save unsaved changes first.": {
+    "es-ES": "Cerrar SkyLive. Primero se pueden guardar los cambios pendientes.",
+    "ru-RU": "Закрыть SkyLive. Перед этим можно сохранить изменения.",
+    "uk-UA": "Закрити SkyLive. Перед цим можна зберегти зміни.",
+    "de-DE": "SkyLive schließen. Ungespeicherte Änderungen können vorher gespeichert werden."
+  },
+  "Close this panel.": {
+    "es-ES": "Cerrar este panel.",
+    "ru-RU": "Закрыть эту панель.",
+    "uk-UA": "Закрити цю панель.",
+    "de-DE": "Dieses Dock schließen."
+  },
+  "Close without saving changes made in this dialog.": {
+    "es-ES": "Cerrar sin guardar los cambios realizados en este diálogo.",
+    "ru-RU": "Закрыть без сохранения изменений из этого диалога.",
+    "uk-UA": "Закрити без збереження змін із цього діалогу.",
+    "de-DE": "Schließen, ohne die Änderungen in diesem Dialog zu speichern."
+  },
+  "Close without saving your changes.": {
+    "es-ES": "Cerrar sin guardar los cambios.",
+    "ru-RU": "Закрыть без сохранения изменений.",
+    "uk-UA": "Закрити без збереження змін.",
+    "de-DE": "Schließen, ohne die Änderungen zu speichern."
+  },
+  "Confirm the removal described in this dialog.": {
+    "es-ES": "Confirmar la eliminación descrita en este diálogo.",
+    "ru-RU": "Подтвердить удаление, описанное в этом диалоге.",
+    "uk-UA": "Підтвердити видалення, описане в цьому діалозі.",
+    "de-DE": "Die in diesem Dialog beschriebene Entfernung bestätigen."
+  },
+  "Convert a recording container without re-encoding when remuxing is implemented.": {
+    "es-ES": "Convertir el contenedor de una grabación sin recodificar cuando se implemente el remultiplexado.",
+    "ru-RU": "Преобразовать контейнер записи без перекодирования, когда будет реализован ремультиплексор.",
+    "uk-UA": "Перетворити контейнер запису без перекодування, коли буде реалізовано ремультиплексування.",
+    "de-DE": "Den Aufnahmecontainer ohne Neukodierung umwandeln, sobald Remuxing implementiert ist."
+  },
+  "Copy filter settings from the selected source.": {
+    "es-ES": "Copiar los ajustes de filtros de la fuente seleccionada.",
+    "ru-RU": "Скопировать настройки фильтров выбранного источника.",
+    "uk-UA": "Скопіювати налаштування фільтрів вибраного джерела.",
+    "de-DE": "Filtereinstellungen der ausgewählten Quelle kopieren."
+  },
+  "Copy the selected profile under a new name.": {
+    "es-ES": "Copiar el perfil seleccionado con un nombre nuevo.",
+    "ru-RU": "Скопировать выбранный профиль под новым именем.",
+    "uk-UA": "Скопіювати вибраний профіль під новою назвою.",
+    "de-DE": "Das ausgewählte Profil unter einem neuen Namen kopieren."
+  },
+  "Copy the selected source for a later paste.": {
+    "es-ES": "Copiar la fuente seleccionada para pegarla más tarde.",
+    "ru-RU": "Скопировать выбранный источник для последующей вставки.",
+    "uk-UA": "Скопіювати вибране джерело для подальшого вставлення.",
+    "de-DE": "Die ausgewählte Quelle zum späteren Einfügen kopieren."
+  },
+  "Copy the selected video item transform when this action is implemented.": {
+    "es-ES": "Copiar la transformación del elemento de vídeo seleccionado cuando se implemente esta acción.",
+    "ru-RU": "Скопировать преобразование выбранного видеоэлемента, когда это действие будет реализовано.",
+    "uk-UA": "Скопіювати перетворення вибраного відеоелемента, коли цю дію буде реалізовано.",
+    "de-DE": "Die Transformation des ausgewählten Videoelements kopieren, sobald diese Aktion implementiert ist."
+  },
+  "Create a copy of the selected item.": {
+    "es-ES": "Crear una copia del elemento seleccionado.",
+    "ru-RU": "Создать копию выбранного элемента.",
+    "uk-UA": "Створити копію вибраного елемента.",
+    "de-DE": "Eine Kopie des ausgewählten Elements erstellen."
+  },
+  "Create a named transition. You can select it after adding it.": {
+    "es-ES": "Crear una transición con nombre. Se podrá seleccionar después de añadirla.",
+    "ru-RU": "Создать именованный переход. После добавления его можно будет выбрать.",
+    "uk-UA": "Створити іменований перехід. Після додавання його можна буде вибрати.",
+    "de-DE": "Einen benannten Übergang erstellen. Nach dem Hinzufügen kann er ausgewählt werden."
+  },
+  "Create a profile with default settings. Your scenes are kept.": {
+    "es-ES": "Crear un perfil con los ajustes predeterminados. Las escenas se conservan.",
+    "ru-RU": "Создать профиль с настройками по умолчанию. Сцены сохраняются.",
+    "uk-UA": "Створити профіль із типовими налаштуваннями. Сцени зберігаються.",
+    "de-DE": "Ein Profil mit Standardeinstellungen erstellen. Die Szenen bleiben erhalten."
+  },
+  "Create an audio source for this global slot.": {
+    "es-ES": "Crear una fuente de audio para esta posición global.",
+    "ru-RU": "Создать аудиоисточник для этого глобального слота.",
+    "uk-UA": "Створити аудіоджерело для цього глобального слота.",
+    "de-DE": "Eine Audioquelle für diesen globalen Platz erstellen."
+  },
+  "Create an empty scene collection. Profiles and preferences are kept.": {
+    "es-ES": "Crear una colección de escenas vacía. Los perfiles y las preferencias se conservan.",
+    "ru-RU": "Создать пустую коллекцию сцен. Профили и предпочтения сохраняются.",
+    "uk-UA": "Створити порожню колекцію сцен. Профілі й уподобання зберігаються.",
+    "de-DE": "Eine leere Szenensammlung erstellen. Profile und Benutzereinstellungen bleiben erhalten."
+  },
+  "Create, edit or remove named transitions.": {
+    "es-ES": "Crear, editar o eliminar transiciones con nombre.",
+    "ru-RU": "Создать, изменить или удалить именованные переходы.",
+    "uk-UA": "Створити, змінити або видалити іменовані переходи.",
+    "de-DE": "Benannte Übergänge erstellen, bearbeiten oder entfernen."
+  },
+  "Decrease preview display zoom when explicit zoom controls are implemented.": {
+    "es-ES": "Reducir el zoom de Vista previa cuando se implementen controles de zoom específicos.",
+    "ru-RU": "Уменьшить масштаб предпросмотра, когда будут реализованы отдельные регуляторы масштаба.",
+    "uk-UA": "Зменшити масштаб попереднього перегляду, коли буде реалізовано окремі регулятори масштабу.",
+    "de-DE": "Die Vorschau verkleinern, sobald eigene Zoom-Steuerelemente implementiert sind."
+  },
+  "Drag to blend Preview into Program. Release near an end to cancel or finish; release in the middle to hold.": {
+    "es-ES": "Arrastrar para fundir Vista previa con Programa. Soltar cerca de un extremo para cancelar o finalizar; soltar en el centro para mantener la mezcla.",
+    "ru-RU": "Перетащить для смешивания предпросмотра с программой. Отпустите у края для отмены или завершения, а в середине — для удержания.",
+    "uk-UA": "Перетягнути для змішування попереднього перегляду з програмою. Відпустіть біля краю для скасування чи завершення, а посередині — для утримання.",
+    "de-DE": "Ziehen, um die Vorschau in das Programm zu überblenden. Nahe einem Ende zum Abbrechen oder Abschließen loslassen; in der Mitte zum Halten loslassen."
+  },
+  "Duplicate the current collection when this action is implemented.": {
+    "es-ES": "Duplicar la colección actual cuando se implemente esta acción.",
+    "ru-RU": "Дублировать текущую коллекцию, когда это действие будет реализовано.",
+    "uk-UA": "Дублювати поточну колекцію, коли цю дію буде реалізовано.",
+    "de-DE": "Die aktuelle Sammlung duplizieren, sobald diese Aktion implementiert ist."
+  },
+  "Edit plain-text notes for this scene. Formatting, linked files, automatic scrolling and hotkeys are not available yet.": {
+    "es-ES": "Editar notas de texto sin formato para esta escena. El formato, los archivos vinculados, el desplazamiento automático y los atajos aún no están disponibles.",
+    "ru-RU": "Изменить текстовые заметки этой сцены. Форматирование, связанные файлы, автоматическая прокрутка и горячие клавиши пока недоступны.",
+    "uk-UA": "Змінити текстові нотатки цієї сцени. Форматування, пов'язані файли, автоматичне прокручування й гарячі клавіші ще недоступні.",
+    "de-DE": "Klartextnotizen für diese Szene bearbeiten. Formatierung, verknüpfte Dateien, automatisches Scrollen und Tastenkürzel sind noch nicht verfügbar."
+  },
+  "Edit position, size, crop, rotation, reflection and opacity for the selected video item.": {
+    "es-ES": "Editar la posición, el tamaño, el recorte, la rotación, el reflejo y la opacidad del elemento de vídeo seleccionado.",
+    "ru-RU": "Изменить положение, размер, обрезку, поворот, отражение и непрозрачность выбранного видеоэлемента.",
+    "uk-UA": "Змінити положення, розмір, обрізання, поворот, віддзеркалення й непрозорість вибраного відеоелемента.",
+    "de-DE": "Position, Größe, Zuschnitt, Drehung, Spiegelung und Deckkraft des ausgewählten Videoelements bearbeiten."
+  },
+  "Edit the properties shared by every reference to the selected source.": {
+    "es-ES": "Editar las propiedades compartidas por todas las referencias a la fuente seleccionada.",
+    "ru-RU": "Изменить общие свойства всех ссылок на выбранный источник.",
+    "uk-UA": "Змінити спільні властивості всіх посилань на вибране джерело.",
+    "de-DE": "Die gemeinsamen Eigenschaften aller Verweise auf die ausgewählte Quelle bearbeiten."
+  },
+  "Edit the selected item's properties in a dialog.": {
+    "es-ES": "Editar las propiedades del elemento seleccionado en un diálogo.",
+    "ru-RU": "Изменить свойства выбранного элемента в диалоге.",
+    "uk-UA": "Змінити властивості вибраного елемента в діалозі.",
+    "de-DE": "Die Eigenschaften des ausgewählten Elements in einem Dialog bearbeiten."
+  },
+  "Edit the selected profile's audio format and the user's global buffering preference.": {
+    "es-ES": "Editar el formato de audio del perfil seleccionado y la preferencia global de almacenamiento en búfer del usuario.",
+    "ru-RU": "Изменить аудиоформат выбранного профиля и глобальные пользовательские настройки буферизации.",
+    "uk-UA": "Змінити аудіоформат вибраного профілю й глобальні користувацькі налаштування буферизації.",
+    "de-DE": "Das Audioformat des ausgewählten Profils und die globale Pufferungseinstellung bearbeiten."
+  },
+  "Edit the selected profile's canvas size and frame-rate format.": {
+    "es-ES": "Editar el tamaño del lienzo y el formato de frecuencia de fotogramas del perfil seleccionado.",
+    "ru-RU": "Изменить размер холста и формат частоты кадров выбранного профиля.",
+    "uk-UA": "Змінити розмір полотна й формат частоти кадрів вибраного профілю.",
+    "de-DE": "Leinwandgröße und Bildratenformat des ausgewählten Profils bearbeiten."
+  },
+  "Edit the source position, size, crop, rotation, reflection and opacity.": {
+    "es-ES": "Editar la posición, el tamaño, el recorte, la rotación, el reflejo y la opacidad de la fuente.",
+    "ru-RU": "Изменить положение, размер, обрезку, поворот, отражение и непрозрачность источника.",
+    "uk-UA": "Змінити положення, розмір, обрізання, поворот, віддзеркалення й непрозорість джерела.",
+    "de-DE": "Position, Größe, Zuschnitt, Drehung, Spiegelung und Deckkraft der Quelle bearbeiten."
+  },
+  "Edit this audio source’s properties.": {
+    "es-ES": "Editar las propiedades de esta fuente de audio.",
+    "ru-RU": "Изменить свойства этого аудиоисточника.",
+    "uk-UA": "Змінити властивості цього аудіоджерела.",
+    "de-DE": "Die Eigenschaften dieser Audioquelle bearbeiten."
+  },
+  "Edit this named transition. Changes affect every place that uses it.": {
+    "es-ES": "Editar esta transición con nombre. Los cambios afectan a todos los lugares donde se utiliza.",
+    "ru-RU": "Изменить этот именованный переход. Изменения действуют везде, где он используется.",
+    "uk-UA": "Змінити цей іменований перехід. Зміни діють усюди, де він використовується.",
+    "de-DE": "Diesen benannten Übergang bearbeiten. Änderungen wirken überall, wo er verwendet wird."
+  },
+  "Edit this quick transition button.": {
+    "es-ES": "Editar este botón de transición rápida.",
+    "ru-RU": "Изменить эту кнопку быстрого перехода.",
+    "uk-UA": "Змінити цю кнопку швидкого переходу.",
+    "de-DE": "Diese Schnellübergangsschaltfläche bearbeiten."
+  },
+  "Edit this source’s audio filters. Filters run from bottom to top.": {
+    "es-ES": "Editar los filtros de audio de esta fuente. Los filtros se ejecutan de abajo arriba.",
+    "ru-RU": "Изменить аудиофильтры этого источника. Фильтры выполняются снизу вверх.",
+    "uk-UA": "Змінити аудіофільтри цього джерела. Фільтри виконуються знизу вгору.",
+    "de-DE": "Die Audiofilter dieser Quelle bearbeiten. Filter werden von unten nach oben ausgeführt."
+  },
+  "Encoder and output settings are not available yet.": {
+    "es-ES": "Los ajustes del codificador y de salida aún no están disponibles.",
+    "ru-RU": "Настройки кодировщика и вывода пока недоступны.",
+    "uk-UA": "Налаштування кодувальника й виведення ще недоступні.",
+    "de-DE": "Encoder- und Ausgabeeinstellungen sind noch nicht verfügbar."
+  },
+  "Enter a name for the audio source.": {
+    "es-ES": "Introducir un nombre para la fuente de audio.",
+    "ru-RU": "Ввести имя аудиоисточника.",
+    "uk-UA": "Ввести назву аудіоджерела.",
+    "de-DE": "Einen Namen für die Audioquelle eingeben."
+  },
+  "Enter a name for the display capture source.": {
+    "es-ES": "Introducir un nombre para la fuente de captura de pantalla.",
+    "ru-RU": "Ввести имя источника захвата экрана.",
+    "uk-UA": "Ввести назву джерела захоплення екрана.",
+    "de-DE": "Einen Namen für die Bildschirmaufnahmequelle eingeben."
+  },
+  "Enter a name for the image source.": {
+    "es-ES": "Introducir un nombre para la fuente de imagen.",
+    "ru-RU": "Ввести имя источника изображения.",
+    "uk-UA": "Ввести назву джерела зображення.",
+    "de-DE": "Einen Namen für die Bildquelle eingeben."
+  },
+  "Enter a name for this profile.": {
+    "es-ES": "Introducir un nombre para este perfil.",
+    "ru-RU": "Ввести имя этого профиля.",
+    "uk-UA": "Ввести назву цього профілю.",
+    "de-DE": "Einen Namen für dieses Profil eingeben."
+  },
+  "Enter a number. See the label for its units and valid range.": {
+    "es-ES": "Introducir un número. La etiqueta indica sus unidades y el intervalo válido.",
+    "ru-RU": "Ввести число. Единицы измерения и допустимый диапазон указаны в подписи.",
+    "uk-UA": "Ввести число. Одиниці вимірювання й допустимий діапазон зазначено в підписі.",
+    "de-DE": "Eine Zahl eingeben. Einheit und gültiger Bereich stehen in der Beschriftung."
+  },
+  "Enter a unique name for this transition.": {
+    "es-ES": "Introducir un nombre único para esta transición.",
+    "ru-RU": "Ввести уникальное имя этого перехода.",
+    "uk-UA": "Ввести унікальну назву цього переходу.",
+    "de-DE": "Einen eindeutigen Namen für diesen Übergang eingeben."
+  },
+  "Enter a value for this field.": {
+    "es-ES": "Introducir un valor para este campo.",
+    "ru-RU": "Ввести значение этого поля.",
+    "uk-UA": "Ввести значення цього поля.",
+    "de-DE": "Einen Wert für dieses Feld eingeben."
+  },
+  "Enter clockwise rotation in degrees.": {
+    "es-ES": "Introducir la rotación en grados en sentido horario.",
+    "ru-RU": "Ввести поворот по часовой стрелке в градусах.",
+    "uk-UA": "Ввести поворот за годинниковою стрілкою в градусах.",
+    "de-DE": "Die Drehung im Uhrzeigersinn in Grad eingeben."
+  },
+  "Enter the OBS collection file path. Native documents use a separate path.": {
+    "es-ES": "Introducir la ruta del archivo de colección de OBS. Los documentos nativos usan una ruta independiente.",
+    "ru-RU": "Ввести путь к файлу коллекции OBS. У собственных документов отдельный путь.",
+    "uk-UA": "Ввести шлях до файлу колекції OBS. Власні документи мають окремий шлях.",
+    "de-DE": "Den Pfad zur OBS-Sammlungsdatei eingeben. Native Dokumente verwenden einen eigenen Pfad."
+  },
+  "Enter the exact device ID or DeviceUID, rather than its display name.": {
+    "es-ES": "Introducir el ID exacto del dispositivo o DeviceUID, no su nombre visible.",
+    "ru-RU": "Ввести точный ID устройства или DeviceUID, а не отображаемое имя.",
+    "uk-UA": "Ввести точний ID пристрою або DeviceUID, а не відображувану назву.",
+    "de-DE": "Die genaue Geräte-ID oder DeviceUID statt des Anzeigenamens eingeben."
+  },
+  "Enter the image file path.": {
+    "es-ES": "Introducir la ruta del archivo de imagen.",
+    "ru-RU": "Ввести путь к файлу изображения.",
+    "uk-UA": "Ввести шлях до файлу зображення.",
+    "de-DE": "Den Pfad zur Bilddatei eingeben."
+  },
+  "Enter the item’s name.": {
+    "es-ES": "Introducir el nombre del elemento.",
+    "ru-RU": "Ввести имя элемента.",
+    "uk-UA": "Ввести назву елемента.",
+    "de-DE": "Den Namen des Elements eingeben."
+  },
+  "Enter this scene’s note, up to 16384 UTF-8 bytes.": {
+    "es-ES": "Introducir la nota de esta escena, hasta 16384 bytes UTF-8.",
+    "ru-RU": "Ввести заметку этой сцены размером до 16384 байт UTF-8.",
+    "uk-UA": "Ввести нотатку цієї сцени розміром до 16384 байтів UTF-8.",
+    "de-DE": "Eine Notiz für diese Szene mit bis zu 16384 UTF-8-Bytes eingeben."
+  },
+  "Exclude SkyLive's own audio when the selected output provider supports it.": {
+    "es-ES": "Excluir el audio del propio SkyLive cuando el proveedor de salida seleccionado lo permita.",
+    "ru-RU": "Исключить собственный звук SkyLive, если выбранный поставщик вывода это поддерживает.",
+    "uk-UA": "Виключити власний звук SkyLive, якщо вибраний постачальник виведення це підтримує.",
+    "de-DE": "SkyLives eigenes Audio ausschließen, sofern der ausgewählte Ausgabeanbieter dies unterstützt."
+  },
+  "Export supported scene collection features to OBS format.": {
+    "es-ES": "Exportar las funciones compatibles de la colección de escenas al formato OBS.",
+    "ru-RU": "Экспортировать поддерживаемые возможности коллекции сцен в формат OBS.",
+    "uk-UA": "Експортувати підтримувані можливості колекції сцен у формат OBS.",
+    "de-DE": "Die unterstützten Funktionen der Szenensammlung im OBS-Format exportieren."
+  },
+  "Export the selected profile when profile interchange is implemented.": {
+    "es-ES": "Exportar el perfil seleccionado cuando se implemente el intercambio de perfiles.",
+    "ru-RU": "Экспортировать выбранный профиль, когда будет реализован обмен профилями.",
+    "uk-UA": "Експортувати вибраний профіль, коли буде реалізовано обмін профілями.",
+    "de-DE": "Das ausgewählte Profil exportieren, sobald der Profilaustausch implementiert ist."
+  },
+  "Export the supported scene collection features to OBS format.": {
+    "es-ES": "Exportar las funciones compatibles de la colección de escenas al formato OBS.",
+    "ru-RU": "Экспортировать поддерживаемые возможности коллекции сцен в формат OBS.",
+    "uk-UA": "Експортувати підтримувані можливості колекції сцен у формат OBS.",
+    "de-DE": "Die unterstützten Funktionen der Szenensammlung im OBS-Format exportieren."
+  },
+  "Export to the specified path.": {
+    "es-ES": "Exportar a la ruta especificada.",
+    "ru-RU": "Экспортировать по указанному пути.",
+    "uk-UA": "Експортувати за вказаним шляхом.",
+    "de-DE": "In den angegebenen Pfad exportieren."
+  },
+  "Fade through the chosen color while changing scenes.": {
+    "es-ES": "Fundir a través del color elegido al cambiar de escena.",
+    "ru-RU": "Выполнить переход между сценами через выбранный цвет.",
+    "uk-UA": "Виконати перехід між сценами через вибраний колір.",
+    "de-DE": "Beim Szenenwechsel über die ausgewählte Farbe überblenden."
+  },
+  "Fade to black and keep the prepared scene ready for the return transition.": {
+    "es-ES": "Fundir a negro y mantener la escena preparada para la transición de regreso.",
+    "ru-RU": "Выполнить затухание в чёрный и сохранить подготовленную сцену для обратного перехода.",
+    "uk-UA": "Виконати згасання в чорний і зберегти підготовлену сцену для зворотного переходу.",
+    "de-DE": "Zu Schwarz überblenden und die vorbereitete Szene für den Rückübergang bereithalten."
+  },
+  "Fit the preview display to its available window area.": {
+    "es-ES": "Ajustar Vista previa al área disponible de su ventana.",
+    "ru-RU": "Вписать предпросмотр в доступную область окна.",
+    "uk-UA": "Вписати попередній перегляд у доступну область вікна.",
+    "de-DE": "Die Vorschau an den verfügbaren Fensterbereich anpassen."
+  },
+  "Fit the selected video item inside the canvas while preserving its aspect ratio.": {
+    "es-ES": "Ajustar el elemento de vídeo seleccionado dentro del lienzo conservando su relación de aspecto.",
+    "ru-RU": "Вписать выбранный видеоэлемент в холст с сохранением пропорций.",
+    "uk-UA": "Вписати вибраний відеоелемент у полотно зі збереженням пропорцій.",
+    "de-DE": "Das ausgewählte Videoelement unter Beibehaltung des Seitenverhältnisses in die Leinwand einpassen."
+  },
+  "Follow the system's default device for this audio flow.": {
+    "es-ES": "Seguir el dispositivo predeterminado del sistema para este flujo de audio.",
+    "ru-RU": "Использовать системное устройство по умолчанию для этого направления звука.",
+    "uk-UA": "Використовувати типовий системний пристрій для цього напрямку звуку.",
+    "de-DE": "Dem Standardgerät des Systems für diesen Audiofluss folgen."
+  },
+  "Hotkey configuration is not implemented yet.": {
+    "es-ES": "La configuración de atajos de teclado aún no está implementada.",
+    "ru-RU": "Настройка горячих клавиш пока не реализована.",
+    "uk-UA": "Налаштування гарячих клавіш ще не реалізовано.",
+    "de-DE": "Die Konfiguration von Tastenkürzeln ist noch nicht implementiert."
+  },
+  "Immediately mute or unmute this shared source without changing its gain.": {
+    "es-ES": "Silenciar o reactivar de inmediato esta fuente compartida sin cambiar su ganancia.",
+    "ru-RU": "Сразу выключить или включить звук этого общего источника без изменения усиления.",
+    "uk-UA": "Одразу вимкнути або ввімкнути звук цього спільного джерела без зміни підсилення.",
+    "de-DE": "Diese gemeinsam genutzte Quelle sofort stummschalten oder freigeben, ohne ihre Verstärkung zu ändern."
+  },
+  "Import a profile when profile interchange is implemented.": {
+    "es-ES": "Importar un perfil cuando se implemente el intercambio de perfiles.",
+    "ru-RU": "Импортировать профиль, когда будет реализован обмен профилями.",
+    "uk-UA": "Імпортувати профіль, коли буде реалізовано обмін профілями.",
+    "de-DE": "Ein Profil importieren, sobald der Profilaustausch implementiert ist."
+  },
+  "Import a supported OBS scene collection.": {
+    "es-ES": "Importar una colección de escenas de OBS compatible.",
+    "ru-RU": "Импортировать поддерживаемую коллекцию сцен OBS.",
+    "uk-UA": "Імпортувати підтримувану колекцію сцен OBS.",
+    "de-DE": "Eine unterstützte OBS-Szenensammlung importieren."
+  },
+  "Import the file at the specified path.": {
+    "es-ES": "Importar el archivo de la ruta especificada.",
+    "ru-RU": "Импортировать файл по указанному пути.",
+    "uk-UA": "Імпортувати файл за вказаним шляхом.",
+    "de-DE": "Die Datei aus dem angegebenen Pfad importieren."
+  },
+  "Include the pointer in frames captured from this display.": {
+    "es-ES": "Incluir el puntero en los fotogramas capturados de esta pantalla.",
+    "ru-RU": "Включить указатель в кадры захвата этого экрана.",
+    "uk-UA": "Включити вказівник до кадрів захоплення цього екрана.",
+    "de-DE": "Den Mauszeiger in die aufgenommenen Bilder dieses Bildschirms einschließen."
+  },
+  "Increase preview display zoom when explicit zoom controls are implemented.": {
+    "es-ES": "Aumentar el zoom de Vista previa cuando se implementen controles de zoom específicos.",
+    "ru-RU": "Увеличить масштаб предпросмотра, когда будут реализованы отдельные регуляторы масштаба.",
+    "uk-UA": "Збільшити масштаб попереднього перегляду, коли буде реалізовано окремі регулятори масштабу.",
+    "de-DE": "Die Vorschau vergrößern, sobald eigene Zoom-Steuerelemente implementiert sind."
+  },
+  "Inspect recorded crash reports when crash reporting is implemented.": {
+    "es-ES": "Consultar los informes de fallos guardados cuando se implemente el registro de fallos.",
+    "ru-RU": "Просмотреть сохранённые отчёты о сбоях, когда будет реализован сбор отчётов.",
+    "uk-UA": "Переглянути збережені звіти про збої, коли буде реалізовано збирання звітів.",
+    "de-DE": "Gespeicherte Absturzberichte prüfen, sobald die Absturzberichterstattung implementiert ist."
+  },
+  "Inspect the application log when log viewing is implemented.": {
+    "es-ES": "Consultar el registro de la aplicación cuando se implemente su visor.",
+    "ru-RU": "Просмотреть журнал приложения, когда будет реализован просмотр журналов.",
+    "uk-UA": "Переглянути журнал програми, коли буде реалізовано перегляд журналів.",
+    "de-DE": "Das Anwendungsprotokoll prüfen, sobald eine Protokollansicht implementiert ist."
+  },
+  "Inspect unavailable linked resources when the missing-files view is implemented.": {
+    "es-ES": "Consultar los recursos vinculados no disponibles cuando se implemente la vista de archivos ausentes.",
+    "ru-RU": "Просмотреть недоступные связанные ресурсы, когда будет реализован список отсутствующих файлов.",
+    "uk-UA": "Переглянути недоступні пов'язані ресурси, коли буде реалізовано список відсутніх файлів.",
+    "de-DE": "Nicht verfügbare verknüpfte Ressourcen prüfen, sobald die Ansicht fehlender Dateien implementiert ist."
+  },
+  "Interact with the selected interactive source when its provider is implemented.": {
+    "es-ES": "Interactuar con la fuente interactiva seleccionada cuando se implemente su proveedor.",
+    "ru-RU": "Взаимодействовать с выбранным интерактивным источником, когда его поставщик будет реализован.",
+    "uk-UA": "Взаємодіяти з вибраним інтерактивним джерелом, коли його постачальника буде реалізовано.",
+    "de-DE": "Mit der ausgewählten interaktiven Quelle interagieren, sobald ihr Anbieter implementiert ist."
+  },
+  "Invert the polarity of the left input for this filter.": {
+    "es-ES": "Invertir la polaridad de la entrada izquierda de este filtro.",
+    "ru-RU": "Инвертировать полярность левого входа этого фильтра.",
+    "uk-UA": "Інвертувати полярність лівого входу цього фільтра.",
+    "de-DE": "Die Polarität des linken Eingangs dieses Filters umkehren."
+  },
+  "Invert the polarity of the right input for this filter.": {
+    "es-ES": "Invertir la polaridad de la entrada derecha de este filtro.",
+    "ru-RU": "Инвертировать полярность правого входа этого фильтра.",
+    "uk-UA": "Інвертувати полярність правого входу цього фільтра.",
+    "de-DE": "Die Polarität des rechten Eingangs dieses Filters umkehren."
+  },
+  "Keep a recovery copy of your changes, then close.": {
+    "es-ES": "Guardar una copia de recuperación de los cambios y después cerrar.",
+    "ru-RU": "Сохранить восстановительную копию изменений и закрыть приложение.",
+    "uk-UA": "Зберегти відновлювальну копію змін і закрити програму.",
+    "de-DE": "Eine Wiederherstellungskopie der Änderungen speichern und anschließend schließen."
+  },
+  "Keep the application window above others when this window action is supported.": {
+    "es-ES": "Mantener la ventana de la aplicación sobre las demás cuando esta acción esté disponible.",
+    "ru-RU": "Держать окно приложения поверх других, когда это действие будет поддерживаться.",
+    "uk-UA": "Тримати вікно програми поверх інших, коли цю дію буде підтримано.",
+    "de-DE": "Das Anwendungsfenster über anderen Fenstern halten, sobald diese Fensteraktion unterstützt wird."
+  },
+  "Leave this slot or override without an assigned provider.": {
+    "es-ES": "Dejar esta posición o sustitución sin un proveedor asignado.",
+    "ru-RU": "Оставить этот слот или переопределение без назначенного поставщика.",
+    "uk-UA": "Залишити цей слот або перевизначення без призначеного постачальника.",
+    "de-DE": "Diesem Platz oder dieser Überschreibung keinen Anbieter zuweisen."
+  },
+  "Lock dock rearrangement when movable docks are implemented.": {
+    "es-ES": "Bloquear la reorganización de paneles cuando se implementen los paneles móviles.",
+    "ru-RU": "Заблокировать перестановку панелей, когда будут реализованы перемещаемые панели.",
+    "uk-UA": "Заблокувати переставляння панелей, коли буде реалізовано рухомі панелі.",
+    "de-DE": "Das Umordnen der Docks sperren, sobald verschiebbare Docks implementiert sind."
+  },
+  "Lock preview editing when that preview interaction mode is implemented.": {
+    "es-ES": "Bloquear la edición en Vista previa cuando se implemente este modo de interacción.",
+    "ru-RU": "Заблокировать редактирование в предпросмотре, когда этот режим взаимодействия будет реализован.",
+    "uk-UA": "Заблокувати редагування в попередньому перегляді, коли цей режим взаємодії буде реалізовано.",
+    "de-DE": "Die Vorschaubearbeitung sperren, sobald dieser Interaktionsmodus implementiert ist."
+  },
+  "Move between scenes using a directional wipe.": {
+    "es-ES": "Cambiar de escena mediante un barrido direccional.",
+    "ru-RU": "Перейти между сценами с помощью направленного вытеснения.",
+    "uk-UA": "Перейти між сценами за допомогою напрямленого витіснення.",
+    "de-DE": "Mit einer gerichteten Wischblende zwischen Szenen wechseln."
+  },
+  "Move the selected item one position downward in its list.": {
+    "es-ES": "Mover el elemento seleccionado una posición hacia abajo en su lista.",
+    "ru-RU": "Переместить выбранный элемент на одну позицию вниз в списке.",
+    "uk-UA": "Перемістити вибраний елемент на одну позицію вниз у списку.",
+    "de-DE": "Das ausgewählte Element in seiner Liste um eine Position nach unten verschieben."
+  },
+  "Move the selected item one position toward the bottom of the list.": {
+    "es-ES": "Mover el elemento seleccionado una posición hacia el final de la lista.",
+    "ru-RU": "Переместить выбранный элемент на одну позицию ближе к концу списка.",
+    "uk-UA": "Перемістити вибраний елемент на одну позицію ближче до кінця списку.",
+    "de-DE": "Das ausgewählte Element um eine Position zum Ende der Liste verschieben."
+  },
+  "Move the selected item one position toward the top of the list.": {
+    "es-ES": "Mover el elemento seleccionado una posición hacia el principio de la lista.",
+    "ru-RU": "Переместить выбранный элемент на одну позицию ближе к началу списка.",
+    "uk-UA": "Перемістити вибраний елемент на одну позицію ближче до початку списку.",
+    "de-DE": "Das ausgewählte Element um eine Position zum Anfang der Liste verschieben."
+  },
+  "Move the selected item one position upward in its list.": {
+    "es-ES": "Mover el elemento seleccionado una posición hacia arriba en su lista.",
+    "ru-RU": "Переместить выбранный элемент на одну позицию вверх в списке.",
+    "uk-UA": "Перемістити вибраний елемент на одну позицію вгору в списку.",
+    "de-DE": "Das ausgewählte Element in seiner Liste um eine Position nach oben verschieben."
+  },
+  "Move the selected item to the bottom of its list.": {
+    "es-ES": "Mover el elemento seleccionado al final de su lista.",
+    "ru-RU": "Переместить выбранный элемент в конец списка.",
+    "uk-UA": "Перемістити вибраний елемент у кінець списку.",
+    "de-DE": "Das ausgewählte Element an das Ende seiner Liste verschieben."
+  },
+  "Move the selected item to the top of its list.": {
+    "es-ES": "Mover el elemento seleccionado al principio de su lista.",
+    "ru-RU": "Переместить выбранный элемент в начало списка.",
+    "uk-UA": "Перемістити вибраний елемент на початок списку.",
+    "de-DE": "Das ausgewählte Element an den Anfang seiner Liste verschieben."
+  },
+  "Move this filter down in the list. Filters run from bottom to top.": {
+    "es-ES": "Bajar este filtro en la lista. Los filtros se ejecutan de abajo arriba.",
+    "ru-RU": "Переместить этот фильтр ниже в списке. Фильтры выполняются снизу вверх.",
+    "uk-UA": "Перемістити цей фільтр нижче в списку. Фільтри виконуються знизу вгору.",
+    "de-DE": "Diesen Filter in der Liste nach unten verschieben. Filter werden von unten nach oben ausgeführt."
+  },
+  "Move this filter up in the list. Filters run from bottom to top.": {
+    "es-ES": "Subir este filtro en la lista. Los filtros se ejecutan de abajo arriba.",
+    "ru-RU": "Переместить этот фильтр выше в списке. Фильтры выполняются снизу вверх.",
+    "uk-UA": "Перемістити цей фільтр вище в списку. Фільтри виконуються знизу вгору.",
+    "de-DE": "Diesen Filter in der Liste nach oben verschieben. Filter werden von unten nach oben ausgeführt."
+  },
+  "Numeric value": {
+    "es-ES": "Valor numérico",
+    "ru-RU": "Числовое значение",
+    "uk-UA": "Числове значення",
+    "de-DE": "Numerischer Wert"
+  },
+  "Open General settings and the available settings pages.": {
+    "es-ES": "Abrir los ajustes generales y las páginas de ajustes disponibles.",
+    "ru-RU": "Открыть общие настройки и доступные страницы настроек.",
+    "uk-UA": "Відкрити загальні налаштування й доступні сторінки налаштувань.",
+    "de-DE": "Die allgemeinen Einstellungen und die verfügbaren Einstellungsseiten öffnen."
+  },
+  "Open actions for this item.": {
+    "es-ES": "Abrir las acciones de este elemento.",
+    "ru-RU": "Открыть действия для этого элемента.",
+    "uk-UA": "Відкрити дії для цього елемента.",
+    "de-DE": "Die Aktionen für dieses Element öffnen."
+  },
+  "Open advanced audio routing and monitoring controls when implemented.": {
+    "es-ES": "Abrir los controles avanzados de enrutamiento y monitorización de audio cuando estén implementados.",
+    "ru-RU": "Открыть расширенное управление маршрутизацией и мониторингом звука, когда оно будет реализовано.",
+    "uk-UA": "Відкрити розширене керування маршрутизацією й моніторингом звуку, коли його буде реалізовано.",
+    "de-DE": "Die erweiterten Steuerungen für Audiorouting und Monitoring öffnen, sobald sie implementiert sind."
+  },
+  "Open application settings. Only implemented settings pages are available.": {
+    "es-ES": "Abrir los ajustes de la aplicación. Solo están disponibles las páginas implementadas.",
+    "ru-RU": "Открыть настройки приложения. Доступны только реализованные страницы.",
+    "uk-UA": "Відкрити налаштування програми. Доступні лише реалізовані сторінки.",
+    "de-DE": "Die Anwendungseinstellungen öffnen. Nur implementierte Einstellungsseiten sind verfügbar."
+  },
+  "Open runtime statistics when that statistics view is implemented.": {
+    "es-ES": "Abrir las estadísticas de ejecución cuando se implemente esa vista.",
+    "ru-RU": "Открыть статистику работы, когда будет реализована эта панель.",
+    "uk-UA": "Відкрити статистику роботи, коли буде реалізовано цю панель.",
+    "de-DE": "Die Laufzeitstatistik öffnen, sobald diese Statistikansicht implementiert ist."
+  },
+  "Open scene filters when scene-level filter processing is implemented.": {
+    "es-ES": "Abrir los filtros de escena cuando se implemente el procesamiento de filtros a nivel de escena.",
+    "ru-RU": "Открыть фильтры сцены, когда будет реализована обработка фильтров уровня сцены.",
+    "uk-UA": "Відкрити фільтри сцени, коли буде реалізовано обробку фільтрів рівня сцени.",
+    "de-DE": "Die Szenenfilter öffnen, sobald die Filterverarbeitung auf Szenenebene implementiert ist."
+  },
+  "Open the application settings directory when that platform integration is available.": {
+    "es-ES": "Abrir la carpeta de ajustes de la aplicación cuando esté disponible esta integración de plataforma.",
+    "ru-RU": "Открыть каталог настроек приложения, когда эта платформенная интеграция будет доступна.",
+    "uk-UA": "Відкрити каталог налаштувань програми, коли ця платформна інтеграція буде доступна.",
+    "de-DE": "Das Einstellungsverzeichnis der Anwendung öffnen, sobald diese Plattformintegration verfügbar ist."
+  },
+  "Open the community link when this external-link action is implemented.": {
+    "es-ES": "Abrir el enlace de la comunidad cuando se implemente esta acción de enlace externo.",
+    "ru-RU": "Открыть ссылку на сообщество, когда это действие для внешних ссылок будет реализовано.",
+    "uk-UA": "Відкрити посилання на спільноту, коли цю дію для зовнішніх посилань буде реалізовано.",
+    "de-DE": "Den Community-Link öffnen, sobald diese Aktion für externe Links implementiert ist."
+  },
+  "Open the help portal when this external-link action is implemented.": {
+    "es-ES": "Abrir el portal de ayuda cuando se implemente esta acción de enlace externo.",
+    "ru-RU": "Открыть портал помощи, когда это действие для внешних ссылок будет реализовано.",
+    "uk-UA": "Відкрити портал довідки, коли цю дію для зовнішніх посилань буде реалізовано.",
+    "de-DE": "Das Hilfeportal öffnen, sobald diese Aktion für externe Links implementiert ist."
+  },
+  "Open the optional Idian provider when it has a reviewed implementation.": {
+    "es-ES": "Abrir el proveedor opcional Idian cuando disponga de una implementación revisada.",
+    "ru-RU": "Открыть необязательного поставщика Idian, когда будет готова проверенная реализация.",
+    "uk-UA": "Відкрити необов'язкового постачальника Idian, коли буде готова перевірена реалізація.",
+    "de-DE": "Den optionalen Idian-Anbieter öffnen, sobald eine geprüfte Implementierung vorliegt."
+  },
+  "Open the project website when this external-link action is implemented.": {
+    "es-ES": "Abrir el sitio web del proyecto cuando se implemente esta acción de enlace externo.",
+    "ru-RU": "Открыть сайт проекта, когда это действие для внешних ссылок будет реализовано.",
+    "uk-UA": "Відкрити сайт проєкту, коли цю дію для зовнішніх посилань буде реалізовано.",
+    "de-DE": "Die Projektwebsite öffnen, sobald diese Aktion für externe Links implementiert ist."
+  },
+  "Open the recordings location when the recording feature is available.": {
+    "es-ES": "Abrir la carpeta de grabaciones cuando esté disponible la función de grabación.",
+    "ru-RU": "Открыть папку записей, когда станет доступна запись.",
+    "uk-UA": "Відкрити теку записів, коли стане доступним запис.",
+    "de-DE": "Den Aufnahmeordner öffnen, sobald die Aufnahmefunktion verfügbar ist."
+  },
+  "Open the recovery copy at the specified path.": {
+    "es-ES": "Abrir la copia de recuperación de la ruta especificada.",
+    "ru-RU": "Открыть восстановительную копию по указанному пути.",
+    "uk-UA": "Відкрити відновлювальну копію за вказаним шляхом.",
+    "de-DE": "Die Wiederherstellungskopie aus dem angegebenen Pfad öffnen."
+  },
+  "Open the selected profile directory when directory-based profiles are implemented.": {
+    "es-ES": "Abrir la carpeta del perfil seleccionado cuando se implementen los perfiles basados en carpetas.",
+    "ru-RU": "Открыть каталог выбранного профиля, когда будут реализованы профили на основе каталогов.",
+    "uk-UA": "Відкрити каталог вибраного профілю, коли буде реалізовано профілі на основі каталогів.",
+    "de-DE": "Das Verzeichnis des ausgewählten Profils öffnen, sobald verzeichnisbasierte Profile implementiert sind."
+  },
+  "Open the specified document.": {
+    "es-ES": "Abrir el documento especificado.",
+    "ru-RU": "Открыть указанный документ.",
+    "uk-UA": "Відкрити вказаний документ.",
+    "de-DE": "Das angegebene Dokument öffnen."
+  },
+  "Open this menu to inspect its available actions.": {
+    "es-ES": "Abrir este menú para ver las acciones disponibles.",
+    "ru-RU": "Открыть это меню для просмотра доступных действий.",
+    "uk-UA": "Відкрити це меню для перегляду доступних дій.",
+    "de-DE": "Dieses Menü öffnen, um die verfügbaren Aktionen anzuzeigen."
+  },
+  "Pan the left input from -100 to +100 percent.": {
+    "es-ES": "Ajustar el panorama de la entrada izquierda entre -100 y +100 por ciento.",
+    "ru-RU": "Задать панораму левого входа от -100 до +100 процентов.",
+    "uk-UA": "Задати панораму лівого входу від -100 до +100 відсотків.",
+    "de-DE": "Das Panorama des linken Eingangs von -100 bis +100 Prozent einstellen."
+  },
+  "Pan the right input from -100 to +100 percent.": {
+    "es-ES": "Ajustar el panorama de la entrada derecha entre -100 y +100 por ciento.",
+    "ru-RU": "Задать панораму правого входа от -100 до +100 процентов.",
+    "uk-UA": "Задати панораму правого входу від -100 до +100 відсотків.",
+    "de-DE": "Das Panorama des rechten Eingangs von -100 bis +100 Prozent einstellen."
+  },
+  "Paste a copied transform onto the selected video item when supported.": {
+    "es-ES": "Pegar una transformación copiada en el elemento de vídeo seleccionado cuando se admita.",
+    "ru-RU": "Вставить скопированное преобразование в выбранный видеоэлемент, когда это будет поддерживаться.",
+    "uk-UA": "Вставити скопійоване перетворення у вибраний відеоелемент, коли це буде підтримано.",
+    "de-DE": "Eine kopierte Transformation auf das ausgewählte Videoelement anwenden, sobald dies unterstützt wird."
+  },
+  "Paste an independent copy of the source.": {
+    "es-ES": "Pegar una copia independiente de la fuente.",
+    "ru-RU": "Вставить независимую копию источника.",
+    "uk-UA": "Вставити незалежну копію джерела.",
+    "de-DE": "Eine unabhängige Kopie der Quelle einfügen."
+  },
+  "Paste another reference to the copied source, sharing its properties.": {
+    "es-ES": "Pegar otra referencia a la fuente copiada que comparta sus propiedades.",
+    "ru-RU": "Вставить ещё одну ссылку на скопированный источник с общими свойствами.",
+    "uk-UA": "Вставити ще одне посилання на скопійоване джерело зі спільними властивостями.",
+    "de-DE": "Einen weiteren Verweis auf die kopierte Quelle mit gemeinsamen Eigenschaften einfügen."
+  },
+  "Paste copied filter settings onto the selected source when supported.": {
+    "es-ES": "Pegar los ajustes de filtros copiados en la fuente seleccionada cuando se admita.",
+    "ru-RU": "Вставить скопированные настройки фильтров в выбранный источник, когда это будет поддерживаться.",
+    "uk-UA": "Вставити скопійовані налаштування фільтрів у вибране джерело, коли це буде підтримано.",
+    "de-DE": "Kopierte Filtereinstellungen auf die ausgewählte Quelle anwenden, sobald dies unterstützt wird."
+  },
+  "Path used to save, open or recover a SkyLive scene collection.": {
+    "es-ES": "Ruta para guardar, abrir o recuperar una colección de escenas de SkyLive.",
+    "ru-RU": "Путь для сохранения, открытия или восстановления коллекции сцен SkyLive.",
+    "uk-UA": "Шлях для збереження, відкриття або відновлення колекції сцен SkyLive.",
+    "de-DE": "Pfad zum Speichern, Öffnen oder Wiederherstellen einer SkyLive-Szenensammlung."
+  },
+  "Prepare scenes in Preview before sending them to Program.": {
+    "es-ES": "Preparar las escenas en Vista previa antes de enviarlas a Programa.",
+    "ru-RU": "Подготовить сцены в предпросмотре перед отправкой в программу.",
+    "uk-UA": "Підготувати сцени в попередньому перегляді перед надсиланням до програми.",
+    "de-DE": "Szenen in der Vorschau vorbereiten, bevor sie an das Programm gesendet werden."
+  },
+  "Prevent transform and ordering edits to this scene item.": {
+    "es-ES": "Impedir cambios en la transformación y el orden de este elemento de escena.",
+    "ru-RU": "Запретить изменение преобразования и порядка этого элемента сцены.",
+    "uk-UA": "Заборонити зміну перетворення й порядку цього елемента сцени.",
+    "de-DE": "Änderungen an Transformation und Reihenfolge dieses Szenenelements verhindern."
+  },
+  "Preview shows the selected scene. In Studio Mode, use Transition to send it to Program.": {
+    "es-ES": "Vista previa muestra la escena seleccionada. En el modo de estudio, usar Transición para enviarla a Programa.",
+    "ru-RU": "Предпросмотр показывает выбранную сцену. В студийном режиме используйте переход для отправки в программу.",
+    "uk-UA": "Попередній перегляд показує вибрану сцену. У студійному режимі використовуйте перехід для надсилання до програми.",
+    "de-DE": "Die Vorschau zeigt die ausgewählte Szene. Im Studiomodus wird sie mit Übergang an das Programm gesendet."
+  },
+  "Program shows the current scene composition. Streaming and camera output are unavailable in this build.": {
+    "es-ES": "Programa muestra la composición de escena actual. La transmisión y la salida de cámara no están disponibles en esta versión.",
+    "ru-RU": "Программа показывает текущую композицию сцены. Трансляция и вывод камеры в этой сборке недоступны.",
+    "uk-UA": "Програма показує поточну композицію сцени. Трансляція й виведення камери в цій збірці недоступні.",
+    "de-DE": "Das Programm zeigt die aktuelle Szenenkomposition. Streaming und Kameraausgabe sind in diesem Build nicht verfügbar."
+  },
+  "Redo the last undone scene collection change. Profiles and preferences are kept.": {
+    "es-ES": "Rehacer el último cambio deshecho de la colección de escenas. Los perfiles y las preferencias se conservan.",
+    "ru-RU": "Повторить последнее отменённое изменение коллекции сцен. Профили и предпочтения сохраняются.",
+    "uk-UA": "Повторити останню скасовану зміну колекції сцен. Профілі й уподобання зберігаються.",
+    "de-DE": "Die zuletzt rückgängig gemachte Änderung der Szenensammlung wiederholen. Profile und Benutzereinstellungen bleiben erhalten."
+  },
+  "Reduce audio buffering for lower latency. Turn this off if audio becomes unreliable.": {
+    "es-ES": "Reducir el almacenamiento de audio en búfer para disminuir la latencia. Desactivar si el audio pierde estabilidad.",
+    "ru-RU": "Уменьшить буферизацию звука для снижения задержки. Отключите, если звук станет нестабильным.",
+    "uk-UA": "Зменшити буферизацію звуку для зниження затримки. Вимкніть, якщо звук стане нестабільним.",
+    "de-DE": "Die Audiopufferung für geringere Latenz reduzieren. Bei unzuverlässigem Audio wieder ausschalten."
+  },
+  "Reflect the selected video item horizontally.": {
+    "es-ES": "Reflejar horizontalmente el elemento de vídeo seleccionado.",
+    "ru-RU": "Отразить выбранный видеоэлемент по горизонтали.",
+    "uk-UA": "Віддзеркалити вибраний відеоелемент по горизонталі.",
+    "de-DE": "Das ausgewählte Videoelement horizontal spiegeln."
+  },
+  "Reflect the selected video item vertically.": {
+    "es-ES": "Reflejar verticalmente el elemento de vídeo seleccionado.",
+    "ru-RU": "Отразить выбранный видеоэлемент по вертикали.",
+    "uk-UA": "Віддзеркалити вибраний відеоелемент по вертикалі.",
+    "de-DE": "Das ausgewählte Videoelement vertikal spiegeln."
+  },
+  "Reflect the source horizontally within its transform.": {
+    "es-ES": "Reflejar horizontalmente la fuente dentro de su transformación.",
+    "ru-RU": "Отразить источник по горизонтали в пределах его преобразования.",
+    "uk-UA": "Віддзеркалити джерело по горизонталі в межах його перетворення.",
+    "de-DE": "Die Quelle innerhalb ihrer Transformation horizontal spiegeln."
+  },
+  "Reflect the source vertically within its transform.": {
+    "es-ES": "Reflejar verticalmente la fuente dentro de su transformación.",
+    "ru-RU": "Отразить источник по вертикали в пределах его преобразования.",
+    "uk-UA": "Віддзеркалити джерело по вертикалі в межах його перетворення.",
+    "de-DE": "Die Quelle innerhalb ihrer Transformation vertikal spiegeln."
+  },
+  "Refresh the list of available audio devices.": {
+    "es-ES": "Actualizar la lista de dispositivos de audio disponibles.",
+    "ru-RU": "Обновить список доступных аудиоустройств.",
+    "uk-UA": "Оновити список доступних аудіопристроїв.",
+    "de-DE": "Die Liste verfügbarer Audiogeräte aktualisieren."
+  },
+  "Refresh the list of available displays.": {
+    "es-ES": "Actualizar la lista de pantallas disponibles.",
+    "ru-RU": "Обновить список доступных экранов.",
+    "uk-UA": "Оновити список доступних екранів.",
+    "de-DE": "Die Liste verfügbarer Bildschirme aktualisieren."
+  },
+  "Release the current position to cancel, hold or finish the transition.": {
+    "es-ES": "Soltar la posición actual para cancelar, mantener o finalizar la transición.",
+    "ru-RU": "Отпустить текущую позицию для отмены, удержания или завершения перехода.",
+    "uk-UA": "Відпустити поточну позицію для скасування, утримання або завершення переходу.",
+    "de-DE": "Die aktuelle Position loslassen, um den Übergang abzubrechen, zu halten oder abzuschließen."
+  },
+  "Reload the edited translation file. The current language remains available if the file contains errors.": {
+    "es-ES": "Recargar el archivo de traducciones editado. El idioma actual se conserva si el archivo contiene errores.",
+    "ru-RU": "Перезагрузить изменённый файл переводов. При ошибках в файле текущий язык сохранится.",
+    "uk-UA": "Перезавантажити змінений файл перекладів. Якщо файл містить помилки, поточна мова збережеться.",
+    "de-DE": "Die bearbeitete Übersetzungsdatei neu laden. Bei Fehlern in der Datei bleibt die aktuelle Sprache verfügbar."
+  },
+  "Remove a scene collection when collection management is implemented.": {
+    "es-ES": "Eliminar una colección de escenas cuando se implemente la gestión de colecciones.",
+    "ru-RU": "Удалить коллекцию сцен, когда будет реализовано управление коллекциями.",
+    "uk-UA": "Видалити колекцію сцен, коли буде реалізовано керування колекціями.",
+    "de-DE": "Eine Szenensammlung entfernen, sobald die Sammlungsverwaltung implementiert ist."
+  },
+  "Remove the selected item.": {
+    "es-ES": "Eliminar el elemento seleccionado.",
+    "ru-RU": "Удалить выбранный элемент.",
+    "uk-UA": "Видалити вибраний елемент.",
+    "de-DE": "Das ausgewählte Element entfernen."
+  },
+  "Remove the selected scene item and prune an unreferenced source.": {
+    "es-ES": "Eliminar el elemento de escena seleccionado y la fuente si ya no tiene referencias.",
+    "ru-RU": "Удалить выбранный элемент сцены и источник, если он больше нигде не используется.",
+    "uk-UA": "Видалити вибраний елемент сцени й джерело, якщо воно більше ніде не використовується.",
+    "de-DE": "Das ausgewählte Szenenelement und eine nicht mehr referenzierte Quelle entfernen."
+  },
+  "Remove the selected scene while retaining at least one scene.": {
+    "es-ES": "Eliminar la escena seleccionada conservando al menos una escena.",
+    "ru-RU": "Удалить выбранную сцену, оставив хотя бы одну сцену.",
+    "uk-UA": "Видалити вибрану сцену, залишивши принаймні одну сцену.",
+    "de-DE": "Die ausgewählte Szene entfernen und dabei mindestens eine Szene behalten."
+  },
+  "Remove this filter.": {
+    "es-ES": "Eliminar este filtro.",
+    "ru-RU": "Удалить этот фильтр.",
+    "uk-UA": "Видалити цей фільтр.",
+    "de-DE": "Diesen Filter entfernen."
+  },
+  "Remove this quick transition button.": {
+    "es-ES": "Eliminar este botón de transición rápida.",
+    "ru-RU": "Удалить эту кнопку быстрого перехода.",
+    "uk-UA": "Видалити цю кнопку швидкого переходу.",
+    "de-DE": "Diese Schnellübergangsschaltfläche entfernen."
+  },
+  "Rename the selected item.": {
+    "es-ES": "Cambiar el nombre del elemento seleccionado.",
+    "ru-RU": "Переименовать выбранный элемент.",
+    "uk-UA": "Перейменувати вибраний елемент.",
+    "de-DE": "Das ausgewählte Element umbenennen."
+  },
+  "Rename the selected profile.": {
+    "es-ES": "Cambiar el nombre del perfil seleccionado.",
+    "ru-RU": "Переименовать выбранный профиль.",
+    "uk-UA": "Перейменувати вибраний профіль.",
+    "de-DE": "Das ausgewählte Profil umbenennen."
+  },
+  "Reset imported base-resolution metadata when migration support is implemented.": {
+    "es-ES": "Restablecer los metadatos de resolución base importados cuando se implemente la migración.",
+    "ru-RU": "Сбросить импортированные метаданные базового разрешения, когда будет реализована миграция.",
+    "uk-UA": "Скинути імпортовані метадані базової роздільності, коли буде реалізовано міграцію.",
+    "de-DE": "Importierte Metadaten der Basisauflösung zurücksetzen, sobald die Migration unterstützt wird."
+  },
+  "Reset the selected video item to its native size and default transform.": {
+    "es-ES": "Restablecer el elemento de vídeo seleccionado a su tamaño nativo y transformación predeterminada.",
+    "ru-RU": "Вернуть выбранному видеоэлементу исходный размер и преобразование по умолчанию.",
+    "uk-UA": "Повернути вибраному відеоелементу початковий розмір і типове перетворення.",
+    "de-DE": "Das ausgewählte Videoelement auf seine native Größe und Standardtransformation zurücksetzen."
+  },
+  "Resolve unsaved document changes and close SkyLive.": {
+    "es-ES": "Resolver los cambios no guardados del documento y cerrar SkyLive.",
+    "ru-RU": "Выбрать, как поступить с несохранёнными изменениями документа, и закрыть SkyLive.",
+    "uk-UA": "Вирішити, що робити з незбереженими змінами документа, і закрити SkyLive.",
+    "de-DE": "Ungespeicherte Dokumentänderungen behandeln und SkyLive schließen."
+  },
+  "Restart with optional integrations disabled when safe restart is available.": {
+    "es-ES": "Reiniciar con las integraciones opcionales desactivadas cuando esté disponible el reinicio seguro.",
+    "ru-RU": "Перезапустить с отключёнными необязательными интеграциями, когда станет доступен безопасный перезапуск.",
+    "uk-UA": "Перезапустити з вимкненими необов'язковими інтеграціями, коли стане доступним безпечний перезапуск.",
+    "de-DE": "Mit deaktivierten optionalen Integrationen neu starten, sobald ein sicherer Neustart verfügbar ist."
+  },
+  "Restore preview display zoom when explicit zoom controls are implemented.": {
+    "es-ES": "Restablecer el zoom de Vista previa cuando se implementen controles de zoom específicos.",
+    "ru-RU": "Восстановить масштаб предпросмотра, когда будут реализованы отдельные регуляторы масштаба.",
+    "uk-UA": "Відновити масштаб попереднього перегляду, коли буде реалізовано окремі регулятори масштабу.",
+    "de-DE": "Den Vorschauzoom wiederherstellen, sobald eigene Zoom-Steuerelemente implementiert sind."
+  },
+  "Restore the default dock layout without changing scene content.": {
+    "es-ES": "Restablecer la disposición predeterminada de los paneles sin cambiar el contenido de las escenas.",
+    "ru-RU": "Восстановить расположение панелей по умолчанию без изменения содержимого сцен.",
+    "uk-UA": "Відновити типове розташування панелей без зміни вмісту сцен.",
+    "de-DE": "Die Standardanordnung der Docks wiederherstellen, ohne den Szeneninhalt zu ändern."
+  },
+  "Review removal of the selected profile; the last profile cannot be removed.": {
+    "es-ES": "Revisar la eliminación del perfil seleccionado; el último perfil no se puede eliminar.",
+    "ru-RU": "Проверить удаление выбранного профиля; последний профиль удалить нельзя.",
+    "uk-UA": "Переглянути видалення вибраного профілю; останній профіль видалити не можна.",
+    "de-DE": "Das Entfernen des ausgewählten Profils prüfen; das letzte Profil kann nicht entfernt werden."
+  },
+  "Review the native capture permissions when this integration is available.": {
+    "es-ES": "Revisar los permisos de captura del sistema cuando esté disponible esta integración.",
+    "ru-RU": "Проверить системные разрешения захвата, когда эта интеграция станет доступна.",
+    "uk-UA": "Перевірити системні дозволи захоплення, коли ця інтеграція стане доступною.",
+    "de-DE": "Die systemeigenen Aufnahmeberechtigungen prüfen, sobald diese Integration verfügbar ist."
+  },
+  "Review what uses this transition before deleting it.": {
+    "es-ES": "Revisar dónde se utiliza esta transición antes de eliminarla.",
+    "ru-RU": "Перед удалением проверить, где используется этот переход.",
+    "uk-UA": "Перед видаленням перевірити, де використовується цей перехід.",
+    "de-DE": "Vor dem Löschen prüfen, wo dieser Übergang verwendet wird."
+  },
+  "Rotate the selected video item 180 degrees.": {
+    "es-ES": "Girar el elemento de vídeo seleccionado 180 grados.",
+    "ru-RU": "Повернуть выбранный видеоэлемент на 180 градусов.",
+    "uk-UA": "Повернути вибраний відеоелемент на 180 градусів.",
+    "de-DE": "Das ausgewählte Videoelement um 180 Grad drehen."
+  },
+  "Rotate the selected video item 90 degrees clockwise, preserving OBS top-left bounds.": {
+    "es-ES": "Girar el elemento de vídeo seleccionado 90 grados en sentido horario conservando los límites superiores e izquierdos de OBS.",
+    "ru-RU": "Повернуть выбранный видеоэлемент на 90 градусов по часовой стрелке с сохранением верхней и левой границ OBS.",
+    "uk-UA": "Повернути вибраний відеоелемент на 90 градусів за годинниковою стрілкою зі збереженням верхньої й лівої меж OBS.",
+    "de-DE": "Das ausgewählte Videoelement um 90 Grad im Uhrzeigersinn drehen und die oberen/linken OBS-Grenzen beibehalten."
+  },
+  "Rotate the selected video item 90 degrees counterclockwise, preserving OBS top-left bounds.": {
+    "es-ES": "Girar el elemento de vídeo seleccionado 90 grados en sentido antihorario conservando los límites superiores e izquierdos de OBS.",
+    "ru-RU": "Повернуть выбранный видеоэлемент на 90 градусов против часовой стрелки с сохранением верхней и левой границ OBS.",
+    "uk-UA": "Повернути вибраний відеоелемент на 90 градусів проти годинникової стрілки зі збереженням верхньої й лівої меж OBS.",
+    "de-DE": "Das ausgewählte Videoelement um 90 Grad gegen den Uhrzeigersinn drehen und die oberen/linken OBS-Grenzen beibehalten."
+  },
+  "Run automatic configuration only when the configuration workflow is implemented.": {
+    "es-ES": "Ejecutar la configuración automática solo cuando se implemente ese procedimiento.",
+    "ru-RU": "Запустить автоматическую настройку только после реализации этого процесса.",
+    "uk-UA": "Запустити автоматичне налаштування лише після реалізації цього процесу.",
+    "de-DE": "Die automatische Konfiguration erst ausführen, wenn der Konfigurationsablauf implementiert ist."
+  },
+  "Run this quick transition with its own settings and duration.": {
+    "es-ES": "Ejecutar esta transición rápida con sus propios ajustes y duración.",
+    "ru-RU": "Запустить этот быстрый переход с собственными настройками и длительностью.",
+    "uk-UA": "Запустити цей швидкий перехід із власними налаштуваннями й тривалістю.",
+    "de-DE": "Diesen Schnellübergang mit eigenen Einstellungen und eigener Dauer ausführen."
+  },
+  "Save changes to the scene collection at the specified path.": {
+    "es-ES": "Guardar los cambios de la colección de escenas en la ruta especificada.",
+    "ru-RU": "Сохранить изменения коллекции сцен по указанному пути.",
+    "uk-UA": "Зберегти зміни колекції сцен за вказаним шляхом.",
+    "de-DE": "Änderungen an der Szenensammlung im angegebenen Pfad speichern."
+  },
+  "Save your changes, then close SkyLive.": {
+    "es-ES": "Guardar los cambios y después cerrar SkyLive.",
+    "ru-RU": "Сохранить изменения и закрыть SkyLive.",
+    "uk-UA": "Зберегти зміни й закрити SkyLive.",
+    "de-DE": "Änderungen speichern und anschließend SkyLive schließen."
+  },
+  "Search module names, IDs, descriptions and supported features.": {
+    "es-ES": "Buscar nombres, ID y descripciones de módulos, así como sus funciones compatibles.",
+    "ru-RU": "Искать по именам, ID, описаниям модулей и поддерживаемым функциям.",
+    "uk-UA": "Шукати за назвами, ID, описами модулів і підтримуваними функціями.",
+    "de-DE": "Modulnamen, IDs, Beschreibungen und unterstützte Funktionen durchsuchen."
+  },
+  "Select this item.": {
+    "es-ES": "Seleccionar este elemento.",
+    "ru-RU": "Выбрать этот элемент.",
+    "uk-UA": "Вибрати цей елемент.",
+    "de-DE": "Dieses Element auswählen."
+  },
+  "Select this item to edit its properties.": {
+    "es-ES": "Seleccionar este elemento para editar sus propiedades.",
+    "ru-RU": "Выбрать этот элемент для изменения свойств.",
+    "uk-UA": "Вибрати цей елемент для зміни властивостей.",
+    "de-DE": "Dieses Element zum Bearbeiten seiner Eigenschaften auswählen."
+  },
+  "Select this source address to copy it.": {
+    "es-ES": "Seleccionar esta dirección de origen para copiarla.",
+    "ru-RU": "Выделить этот адрес источника для копирования.",
+    "uk-UA": "Виділити цю адресу джерела для копіювання.",
+    "de-DE": "Diese Quelladresse zum Kopieren markieren."
+  },
+  "Send Preview to Program immediately.": {
+    "es-ES": "Enviar Vista previa a Programa de inmediato.",
+    "ru-RU": "Сразу отправить предпросмотр в программу.",
+    "uk-UA": "Одразу надіслати попередній перегляд до програми.",
+    "de-DE": "Die Vorschau sofort an das Programm senden."
+  },
+  "Send Preview to Program using the selected transition.": {
+    "es-ES": "Enviar Vista previa a Programa con la transición seleccionada.",
+    "ru-RU": "Отправить предпросмотр в программу с выбранным переходом.",
+    "uk-UA": "Надіслати попередній перегляд до програми з вибраним переходом.",
+    "de-DE": "Die Vorschau mit dem ausgewählten Übergang an das Programm senden."
+  },
+  "Set left input gain from -80 to +30 dB before stereo pan mixing.": {
+    "es-ES": "Ajustar la ganancia de la entrada izquierda de -80 a +30 dB antes de la mezcla de panorama estéreo.",
+    "ru-RU": "Задать усиление левого входа от -80 до +30 dB перед смешиванием стереопанорамы.",
+    "uk-UA": "Задати підсилення лівого входу від -80 до +30 dB перед змішуванням стереопанорами.",
+    "de-DE": "Die Verstärkung des linken Eingangs vor der Stereopanorama-Mischung von -80 bis +30 dB einstellen."
+  },
+  "Set right input gain from -80 to +30 dB before stereo pan mixing.": {
+    "es-ES": "Ajustar la ganancia de la entrada derecha de -80 a +30 dB antes de la mezcla de panorama estéreo.",
+    "ru-RU": "Задать усиление правого входа от -80 до +30 dB перед смешиванием стереопанорамы.",
+    "uk-UA": "Задати підсилення правого входу від -80 до +30 dB перед змішуванням стереопанорами.",
+    "de-DE": "Die Verstärkung des rechten Eingangs vor der Stereopanorama-Mischung von -80 bis +30 dB einstellen."
+  },
+  "Set source opacity from 0 to 1.": {
+    "es-ES": "Ajustar la opacidad de la fuente de 0 a 1.",
+    "ru-RU": "Задать непрозрачность источника от 0 до 1.",
+    "uk-UA": "Задати непрозорість джерела від 0 до 1.",
+    "de-DE": "Die Deckkraft der Quelle von 0 bis 1 einstellen."
+  },
+  "Set the directional transition downward.": {
+    "es-ES": "Dirigir la transición hacia abajo.",
+    "ru-RU": "Задать направление перехода вниз.",
+    "uk-UA": "Задати напрямок переходу вниз.",
+    "de-DE": "Den gerichteten Übergang nach unten einstellen."
+  },
+  "Set the directional transition toward the left.": {
+    "es-ES": "Dirigir la transición hacia la izquierda.",
+    "ru-RU": "Задать направление перехода влево.",
+    "uk-UA": "Задати напрямок переходу ліворуч.",
+    "de-DE": "Den gerichteten Übergang nach links einstellen."
+  },
+  "Set the directional transition toward the right.": {
+    "es-ES": "Dirigir la transición hacia la derecha.",
+    "ru-RU": "Задать направление перехода вправо.",
+    "uk-UA": "Задати напрямок переходу праворуч.",
+    "de-DE": "Den gerichteten Übergang nach rechts einstellen."
+  },
+  "Set the directional transition upward.": {
+    "es-ES": "Dirigir la transición hacia arriba.",
+    "ru-RU": "Задать направление перехода вверх.",
+    "uk-UA": "Задати напрямок переходу вгору.",
+    "de-DE": "Den gerichteten Übergang nach oben einstellen."
+  },
+  "Set the transition length in milliseconds, from 50 to 20000.": {
+    "es-ES": "Ajustar la duración de la transición en milisegundos, de 50 a 20000.",
+    "ru-RU": "Задать длительность перехода в миллисекундах от 50 до 20000.",
+    "uk-UA": "Задати тривалість переходу в мілісекундах від 50 до 20000.",
+    "de-DE": "Die Übergangsdauer in Millisekunden von 50 bis 20000 einstellen."
+  },
+  "Show or hide context-specific source controls when supported.": {
+    "es-ES": "Mostrar u ocultar los controles de fuente específicos del contexto cuando se admita.",
+    "ru-RU": "Показать или скрыть контекстные элементы управления источником, когда это будет поддерживаться.",
+    "uk-UA": "Показати або приховати контекстні елементи керування джерелом, коли це буде підтримано.",
+    "de-DE": "Kontextabhängige Quellensteuerungen anzeigen oder ausblenden, sofern unterstützt."
+  },
+  "Show or hide list dock toolbars when layout customization is implemented.": {
+    "es-ES": "Mostrar u ocultar las barras de herramientas de los paneles de listas cuando se implemente la personalización de la disposición.",
+    "ru-RU": "Показать или скрыть панели инструментов списков, когда будет реализована настройка расположения.",
+    "uk-UA": "Показати або приховати панелі інструментів списків, коли буде реалізовано налаштування розташування.",
+    "de-DE": "Werkzeugleisten der Listendocks anzeigen oder ausblenden, sobald die Layoutanpassung implementiert ist."
+  },
+  "Show or hide the Audio Mixer panel.": {
+    "es-ES": "Mostrar u ocultar el panel Mezclador de audio.",
+    "ru-RU": "Показать или скрыть панель аудиомикшера.",
+    "uk-UA": "Показати або приховати панель аудіомікшера.",
+    "de-DE": "Das Audiomischer-Dock anzeigen oder ausblenden."
+  },
+  "Show or hide the Controls panel.": {
+    "es-ES": "Mostrar u ocultar el panel Controles.",
+    "ru-RU": "Показать или скрыть панель управления.",
+    "uk-UA": "Показати або приховати панель керування.",
+    "de-DE": "Das Steuerungsdock anzeigen oder ausblenden."
+  },
+  "Show or hide the Scene Transitions panel.": {
+    "es-ES": "Mostrar u ocultar el panel Transiciones de escena.",
+    "ru-RU": "Показать или скрыть панель переходов сцен.",
+    "uk-UA": "Показати або приховати панель переходів сцен.",
+    "de-DE": "Das Dock für Szenenübergänge anzeigen oder ausblenden."
+  },
+  "Show or hide the Scenes panel.": {
+    "es-ES": "Mostrar u ocultar el panel Escenas.",
+    "ru-RU": "Показать или скрыть панель сцен.",
+    "uk-UA": "Показати або приховати панель сцен.",
+    "de-DE": "Das Szenendock anzeigen oder ausblenden."
+  },
+  "Show or hide the Sources panel.": {
+    "es-ES": "Mostrar u ocultar el panel Fuentes.",
+    "ru-RU": "Показать или скрыть панель источников.",
+    "uk-UA": "Показати або приховати панель джерел.",
+    "de-DE": "Das Quellendock anzeigen oder ausblenden."
+  },
+  "Show or hide the application status bar when supported.": {
+    "es-ES": "Mostrar u ocultar la barra de estado de la aplicación cuando se admita.",
+    "ru-RU": "Показать или скрыть строку состояния приложения, когда это будет поддерживаться.",
+    "uk-UA": "Показати або приховати рядок стану програми, коли це буде підтримано.",
+    "de-DE": "Die Statusleiste der Anwendung anzeigen oder ausblenden, sofern unterstützt."
+  },
+  "Show preview at a canvas-based scale when explicit preview zoom is supported.": {
+    "es-ES": "Mostrar Vista previa a una escala basada en el lienzo cuando se admita el zoom específico.",
+    "ru-RU": "Показать предпросмотр в масштабе холста, когда будут поддерживаться отдельные регуляторы масштаба.",
+    "uk-UA": "Показати попередній перегляд у масштабі полотна, коли буде підтримано окремі регулятори масштабу.",
+    "de-DE": "Die Vorschau im Leinwandmaßstab anzeigen, sobald ein eigener Vorschauzoom unterstützt wird."
+  },
+  "Show preview at an output-based scale when explicit preview zoom is supported.": {
+    "es-ES": "Mostrar Vista previa a una escala basada en la salida cuando se admita el zoom específico.",
+    "ru-RU": "Показать предпросмотр в масштабе вывода, когда будут поддерживаться отдельные регуляторы масштаба.",
+    "uk-UA": "Показати попередній перегляд у масштабі виведення, коли буде підтримано окремі регулятори масштабу.",
+    "de-DE": "Die Vorschau im Ausgabemaßstab anzeigen, sobald ein eigener Vorschauzoom unterstützt wird."
+  },
+  "Show source icons when this appearance option is implemented.": {
+    "es-ES": "Mostrar los iconos de las fuentes cuando se implemente esta opción de apariencia.",
+    "ru-RU": "Показать значки источников, когда этот параметр оформления будет реализован.",
+    "uk-UA": "Показати значки джерел, коли цей параметр оформлення буде реалізовано.",
+    "de-DE": "Quellensymbole anzeigen, sobald diese Darstellungsoption implementiert ist."
+  },
+  "Show the application version, license and available features.": {
+    "es-ES": "Mostrar la versión, la licencia y las funciones disponibles de la aplicación.",
+    "ru-RU": "Показать версию, лицензию и доступные функции приложения.",
+    "uk-UA": "Показати версію, ліцензію й доступні функції програми.",
+    "de-DE": "Version, Lizenz und verfügbare Funktionen der Anwendung anzeigen."
+  },
+  "Slide one scene over the other in the selected direction.": {
+    "es-ES": "Deslizar una escena sobre la otra en la dirección seleccionada.",
+    "ru-RU": "Сдвинуть одну сцену поверх другой в выбранном направлении.",
+    "uk-UA": "Зсунути одну сцену поверх іншої у вибраному напрямку.",
+    "de-DE": "Eine Szene in der ausgewählten Richtung über die andere schieben."
+  },
+  "Streaming-service settings are not available yet.": {
+    "es-ES": "Los ajustes del servicio de transmisión aún no están disponibles.",
+    "ru-RU": "Настройки сервиса трансляции пока недоступны.",
+    "uk-UA": "Налаштування сервісу трансляції ще недоступні.",
+    "de-DE": "Einstellungen für Streamingdienste sind noch nicht verfügbar."
+  },
+  "Stretch the selected video item to fill the canvas.": {
+    "es-ES": "Estirar el elemento de vídeo seleccionado hasta llenar el lienzo.",
+    "ru-RU": "Растянуть выбранный видеоэлемент на весь холст.",
+    "uk-UA": "Розтягнути вибраний відеоелемент на все полотно.",
+    "de-DE": "Das ausgewählte Videoelement auf die gesamte Leinwand strecken."
+  },
+  "Switch directly between scenes without a timed blend.": {
+    "es-ES": "Cambiar directamente entre escenas sin una mezcla gradual.",
+    "ru-RU": "Переключиться между сценами сразу, без плавного смешивания.",
+    "uk-UA": "Перемкнутися між сценами одразу, без плавного змішування.",
+    "de-DE": "Ohne zeitgesteuerte Überblendung direkt zwischen Szenen wechseln."
+  },
+  "Switch to this profile’s video and audio settings.": {
+    "es-ES": "Cambiar a los ajustes de vídeo y audio de este perfil.",
+    "ru-RU": "Переключиться на настройки видео и звука этого профиля.",
+    "uk-UA": "Перемкнутися на налаштування відео й звуку цього профілю.",
+    "de-DE": "Zu den Video- und Audioeinstellungen dieses Profils wechseln."
+  },
+  "This menu has no implemented dynamic provider.": {
+    "es-ES": "Este menú no tiene ningún proveedor dinámico implementado.",
+    "ru-RU": "Для этого меню нет реализованного динамического поставщика.",
+    "uk-UA": "Для цього меню немає реалізованого динамічного постачальника.",
+    "de-DE": "Für dieses Menü ist kein dynamischer Anbieter implementiert."
+  },
+  "Toggle the interface fullscreen mode when supported.": {
+    "es-ES": "Alternar el modo de pantalla completa de la interfaz cuando se admita.",
+    "ru-RU": "Переключить полноэкранный режим интерфейса, когда это будет поддерживаться.",
+    "uk-UA": "Перемкнути повноекранний режим інтерфейсу, коли це буде підтримано.",
+    "de-DE": "Den Vollbildmodus der Oberfläche umschalten, sofern unterstützt."
+  },
+  "Toggle the preview display when this visibility action is implemented.": {
+    "es-ES": "Alternar la visualización de Vista previa cuando se implemente esta acción de visibilidad.",
+    "ru-RU": "Переключить отображение предпросмотра, когда это действие видимости будет реализовано.",
+    "uk-UA": "Перемкнути відображення попереднього перегляду, коли цю дію видимості буде реалізовано.",
+    "de-DE": "Die Vorschauanzeige umschalten, sobald diese Sichtbarkeitsaktion implementiert ist."
+  },
+  "Toggle this scene item's visibility and activation.": {
+    "es-ES": "Alternar la visibilidad y activación de este elemento de escena.",
+    "ru-RU": "Переключить видимость и активность этого элемента сцены.",
+    "uk-UA": "Перемкнути видимість і активність цього елемента сцени.",
+    "de-DE": "Sichtbarkeit und Aktivierung dieses Szenenelements umschalten."
+  },
+  "Turn this module on or off. Its description lists the supported features.": {
+    "es-ES": "Activar o desactivar este módulo. Su descripción indica las funciones compatibles.",
+    "ru-RU": "Включить или выключить этот модуль. Поддерживаемые функции указаны в его описании.",
+    "uk-UA": "Увімкнути або вимкнути цей модуль. Підтримувані функції зазначено в його описі.",
+    "de-DE": "Dieses Modul ein- oder ausschalten. Seine Beschreibung nennt die unterstützten Funktionen."
+  },
+  "Undo the last scene collection change. Profiles and preferences are kept.": {
+    "es-ES": "Deshacer el último cambio de la colección de escenas. Los perfiles y las preferencias se conservan.",
+    "ru-RU": "Отменить последнее изменение коллекции сцен. Профили и предпочтения сохраняются.",
+    "uk-UA": "Скасувати останню зміну колекції сцен. Профілі й уподобання зберігаються.",
+    "de-DE": "Die letzte Änderung der Szenensammlung rückgängig machen. Profile und Benutzereinstellungen bleiben erhalten."
+  },
+  "Upload a crash report only through an available upload action.": {
+    "es-ES": "Subir un informe de fallos solo mediante una acción de envío disponible.",
+    "ru-RU": "Отправить отчёт о сбое только через доступное действие отправки.",
+    "uk-UA": "Надіслати звіт про збій лише через доступну дію надсилання.",
+    "de-DE": "Einen Absturzbericht nur über eine verfügbare Upload-Aktion hochladen."
+  },
+  "Upload the selected diagnostic log only through an available upload action.": {
+    "es-ES": "Subir el registro de diagnóstico seleccionado solo mediante una acción de envío disponible.",
+    "ru-RU": "Отправить выбранный диагностический журнал только через доступное действие отправки.",
+    "uk-UA": "Надіслати вибраний діагностичний журнал лише через доступну дію надсилання.",
+    "de-DE": "Das ausgewählte Diagnoseprotokoll nur über eine verfügbare Upload-Aktion hochladen."
+  },
+  "Use a scene grid when that scene view is implemented.": {
+    "es-ES": "Usar una cuadrícula de escenas cuando se implemente esa vista.",
+    "ru-RU": "Использовать сетку сцен, когда этот вид будет реализован.",
+    "uk-UA": "Використовувати сітку сцен, коли цей вигляд буде реалізовано.",
+    "de-DE": "Ein Szenenraster verwenden, sobald diese Szenenansicht implementiert ist."
+  },
+  "Use a scene list when scene-view switching is implemented.": {
+    "es-ES": "Usar una lista de escenas cuando se implemente el cambio de vista.",
+    "ru-RU": "Использовать список сцен, когда будет реализовано переключение вида сцен.",
+    "uk-UA": "Використовувати список сцен, коли буде реалізовано перемикання вигляду сцен.",
+    "de-DE": "Eine Szenenliste verwenden, sobald das Umschalten der Szenenansicht implementiert ist."
+  },
+  "Use a separate transition for this scene. Turning this off remembers its duration.": {
+    "es-ES": "Usar una transición independiente para esta escena. Al desactivarla, se conserva su duración.",
+    "ru-RU": "Использовать отдельный переход для этой сцены. При отключении его длительность сохраняется.",
+    "uk-UA": "Використовувати окремий перехід для цієї сцени. Після вимкнення його тривалість зберігається.",
+    "de-DE": "Einen eigenen Übergang für diese Szene verwenden. Beim Ausschalten bleibt seine Dauer gespeichert."
+  },
+  "Use an existing source in this scene. Changes to its properties affect every scene that uses it.": {
+    "es-ES": "Usar una fuente existente en esta escena. Los cambios en sus propiedades afectan a todas las escenas que la utilizan.",
+    "ru-RU": "Использовать существующий источник в этой сцене. Изменения его свойств действуют во всех сценах, где он используется.",
+    "uk-UA": "Використовувати наявне джерело в цій сцені. Зміни його властивостей діють у всіх сценах, де воно використовується.",
+    "de-DE": "Eine vorhandene Quelle in dieser Szene verwenden. Änderungen ihrer Eigenschaften wirken auf alle Szenen, die sie nutzen."
+  },
+  "Use full-height side docks when that layout mode is implemented.": {
+    "es-ES": "Usar paneles laterales de altura completa cuando se implemente ese modo de disposición.",
+    "ru-RU": "Использовать боковые панели во всю высоту, когда этот режим расположения будет реализован.",
+    "uk-UA": "Використовувати бічні панелі на всю висоту, коли цей режим розташування буде реалізовано.",
+    "de-DE": "Seitliche Docks über die volle Höhe verwenden, sobald dieser Layoutmodus implementiert ist."
+  },
+  "Use the device’s audio timing instead of estimating when sound arrives.": {
+    "es-ES": "Usar la temporización de audio del dispositivo en vez de estimar cuándo llega el sonido.",
+    "ru-RU": "Использовать временные метки устройства вместо оценки времени поступления звука.",
+    "uk-UA": "Використовувати часові позначки пристрою замість оцінювання часу надходження звуку.",
+    "de-DE": "Die Audiozeitangaben des Geräts verwenden, statt die Ankunft des Tons zu schätzen."
+  },
+  "Use the exact Windows endpoint identifier entered below.": {
+    "es-ES": "Usar el identificador exacto del dispositivo de audio de Windows introducido abajo.",
+    "ru-RU": "Использовать точный идентификатор конечной точки Windows, введённый ниже.",
+    "uk-UA": "Використовувати точний ідентифікатор кінцевої точки Windows, введений нижче.",
+    "de-DE": "Die unten eingegebene genaue Windows-Endpunktkennung verwenden."
+  },
+  "Use the exact macOS audio DeviceUID entered below.": {
+    "es-ES": "Usar el DeviceUID exacto del dispositivo de audio de macOS introducido abajo.",
+    "ru-RU": "Использовать точный DeviceUID аудиоустройства macOS, введённый ниже.",
+    "uk-UA": "Використовувати точний DeviceUID аудіопристрою macOS, введений нижче.",
+    "de-DE": "Die unten eingegebene genaue Audio-DeviceUID von macOS verwenden."
+  },
+  "View Program audio levels and buffering problems. Speaker monitoring is off.": {
+    "es-ES": "Ver los niveles de audio de Programa y los problemas de búfer. La monitorización por altavoces está desactivada.",
+    "ru-RU": "Просмотреть уровни звука программы и проблемы буферизации. Прослушивание через динамики отключено.",
+    "uk-UA": "Переглянути рівні звуку програми й проблеми буферизації. Прослуховування через динаміки вимкнено.",
+    "de-DE": "Audiopegel des Programms und Pufferprobleme anzeigen. Die Lautsprecherüberwachung ist ausgeschaltet."
+  },
+  "View release information when this integration is available.": {
+    "es-ES": "Ver la información de la versión cuando esté disponible esta integración.",
+    "ru-RU": "Просмотреть сведения о выпуске, когда эта интеграция станет доступна.",
+    "uk-UA": "Переглянути відомості про випуск, коли ця інтеграція стане доступною.",
+    "de-DE": "Versionsinformationen anzeigen, sobald diese Integration verfügbar ist."
+  },
+  "mute rect={:?} clip={:?} pointer={:?} enabled={} clicked={} changed={} contains={} hovered={}": {
+    "es-ES": "silencio rectángulo={:?} recorte={:?} puntero={:?} habilitado={} pulsado={} cambiado={} contiene={} señalado={}",
+    "ru-RU": "звук выключен прямоугольник={:?} обрезка={:?} указатель={:?} доступно={} нажато={} изменено={} содержит={} наведение={}",
+    "uk-UA": "звук вимкнено прямокутник={:?} обрізання={:?} вказівник={:?} доступно={} натиснуто={} змінено={} містить={} наведення={}",
+    "de-DE": "Stummschaltung Rechteck={:?} Zuschnitt={:?} Zeiger={:?} aktiviert={} geklickt={} geändert={} enthält={} Maus-darüber={}"
+  },
+  "Open the reference OBS Studio 32.2.2 release notes in your default browser.": {
+    "es-ES": "Abre en el navegador las notas de la versión de referencia OBS Studio 32.2.2.",
+    "ru-RU": "Открыть в браузере описание эталонного выпуска OBS Studio 32.2.2.",
+    "uk-UA": "Відкрити в браузері опис еталонного випуску OBS Studio 32.2.2.",
+    "de-DE": "Die Versionshinweise der OBS-Studio-Referenzversion 32.2.2 im Standardbrowser öffnen."
+  },
+  "{rate} FPS": {
+    "es-ES": "{rate} FPS",
+    "ru-RU": "{rate} кадр/с",
+    "uk-UA": "{rate} кадр/с",
+    "de-DE": "{rate} FPS"
+  },
+  "Recording is unavailable on this platform.": {
+    "es-ES": "La grabación no está disponible en esta plataforma.",
+    "ru-RU": "Запись недоступна на этой платформе.",
+    "uk-UA": "Запис недоступний на цій платформі.",
+    "de-DE": "Die Aufnahme ist auf dieser Plattform nicht verfügbar."
+  },
+  "Stop recording and finish the current file.": {
+    "es-ES": "Detiene la grabación y finaliza el archivo actual.",
+    "ru-RU": "Остановить запись и завершить текущий файл.",
+    "uk-UA": "Зупинити запис і завершити поточний файл.",
+    "de-DE": "Die Aufnahme stoppen und die aktuelle Datei abschließen."
+  },
+  "Record the Program output using the selected recording format.": {
+    "es-ES": "Graba la salida de programa en el formato seleccionado.",
+    "ru-RU": "Записать выход программы в выбранном формате.",
+    "uk-UA": "Записати вихід програми у вибраному форматі.",
+    "de-DE": "Die Programmausgabe im gewählten Aufnahmeformat aufzeichnen."
+  },
+  "Pause recording while streaming, replay, virtual camera and Preview continue.": {
+    "es-ES": "Pausa la grabación mientras continúan la transmisión, la repetición, la cámara virtual y la vista previa.",
+    "ru-RU": "Приостановить запись, не прерывая стрим, буфер повтора, виртуальную камеру и предпросмотр.",
+    "uk-UA": "Призупинити запис, не перериваючи стрім, буфер повтору, віртуальну камеру та попередній перегляд.",
+    "de-DE": "Die Aufnahme pausieren, während Stream, Replay, virtuelle Kamera und Vorschau weiterlaufen."
+  },
+  "Open the OBS Studio website in your default browser.": {
+    "es-ES": "Abrir el sitio web de OBS Studio en el navegador predeterminado.",
+    "ru-RU": "Открыть сайт OBS Studio в браузере по умолчанию.",
+    "uk-UA": "Відкрити сайт OBS Studio в браузері за замовчуванням.",
+    "de-DE": "Die Website von OBS Studio im Standardbrowser öffnen."
+  },
+  "Open the OBS Studio help portal in your default browser.": {
+    "es-ES": "Abrir el portal de ayuda de OBS Studio en el navegador predeterminado.",
+    "ru-RU": "Открыть справочный портал OBS Studio в браузере по умолчанию.",
+    "uk-UA": "Відкрити довідковий портал OBS Studio в браузері за замовчуванням.",
+    "de-DE": "Das Hilfeportal von OBS Studio im Standardbrowser öffnen."
+  },
+  "Open the OBS Studio Discord community in your default browser.": {
+    "es-ES": "Abrir la comunidad de OBS Studio en Discord en el navegador predeterminado.",
+    "ru-RU": "Открыть сообщество OBS Studio в Discord в браузере по умолчанию.",
+    "uk-UA": "Відкрити спільноту OBS Studio в Discord у браузері за замовчуванням.",
+    "de-DE": "Die Discord-Community von OBS Studio im Standardbrowser öffnen."
+  },
+  "Choose an effect to add it to a draft, or open the existing chain. Apply saves changes; Cancel discards the draft. Enabling a module does not add filters automatically.": {
+    "es-ES": "Elija un efecto para añadirlo a un borrador o abra la cadena existente. Aplicar guarda los cambios; Cancelar descarta el borrador. Activar un módulo no añade filtros automáticamente.",
+    "ru-RU": "Выберите эффект для добавления в черновик или откройте существующую цепочку. «Применить» сохраняет изменения, «Отмена» отменяет черновик. Включение модуля не добавляет фильтры автоматически.",
+    "uk-UA": "Виберіть ефект, щоб додати його до чернетки, або відкрийте наявний ланцюжок. «Застосувати» зберігає зміни, «Скасувати» відкидає чернетку. Увімкнення модуля не додає фільтри автоматично.",
+    "de-DE": "Wählen Sie einen Effekt für einen Entwurf oder öffnen Sie die bestehende Kette. Anwenden speichert Änderungen; Abbrechen verwirft den Entwurf. Das Aktivieren eines Moduls fügt keine Filter automatisch hinzu."
+  }
+}

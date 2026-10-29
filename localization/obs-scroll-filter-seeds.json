@@ -1,0 +1,116 @@
+{
+  "Scroll": {
+    "es-ES": "Desplazamiento",
+    "ru-RU": "Прокрутка",
+    "uk-UA": "Прокручування",
+    "de-DE": "Scrollen"
+  },
+  "Horizontal Speed": {
+    "es-ES": "Velocidad horizontal",
+    "ru-RU": "Горизонтальная скорость",
+    "uk-UA": "Горизонтальна швидкість",
+    "de-DE": "Horizontale Geschwindigkeit"
+  },
+  "Vertical Speed": {
+    "es-ES": "Velocidad vertical",
+    "ru-RU": "Вертикальная скорость",
+    "uk-UA": "Вертикальна швидкість",
+    "de-DE": "Vertikale Geschwindigkeit"
+  },
+  "Limit Width": {
+    "es-ES": "Limitar anchura",
+    "ru-RU": "Ограничить ширину",
+    "uk-UA": "Обмежити ширину",
+    "de-DE": "Breite begrenzen"
+  },
+  "Limit Height": {
+    "es-ES": "Limitar altura",
+    "ru-RU": "Ограничить высоту",
+    "uk-UA": "Обмежити висоту",
+    "de-DE": "Höhe begrenzen"
+  },
+  "Move the source continuously with linear sampling, looping or transparent borders, and optional output dimensions.": {
+    "es-ES": "Mover la fuente de forma continua con muestreo lineal, repetición o bordes transparentes y dimensiones de salida opcionales.",
+    "ru-RU": "Непрерывно перемещать источник с линейной выборкой, повторением или прозрачными границами и настраиваемым размером результата.",
+    "uk-UA": "Безперервно переміщувати джерело з лінійною вибіркою, повторенням або прозорими межами й налаштовуваним розміром результату.",
+    "de-DE": "Quelle kontinuierlich mit linearer Abtastung, Wiederholung oder transparenten Rändern und optionalen Ausgabeabmessungen bewegen."
+  },
+  "Horizontal Scroll speed in pixels per second. Positive values move source content left; zero resets this axis.": {
+    "es-ES": "Velocidad horizontal en píxeles por segundo. Los valores positivos mueven el contenido hacia la izquierda; cero restablece este eje.",
+    "ru-RU": "Горизонтальная скорость в пикселях в секунду. Положительные значения сдвигают содержимое влево; ноль сбрасывает эту ось.",
+    "uk-UA": "Горизонтальна швидкість у пікселях за секунду. Додатні значення зсувають вміст ліворуч; нуль скидає цю вісь.",
+    "de-DE": "Horizontale Geschwindigkeit in Pixeln pro Sekunde. Positive Werte bewegen den Inhalt nach links; Null setzt diese Achse zurück."
+  },
+  "Vertical Scroll speed in pixels per second. Positive values move source content up; zero resets this axis.": {
+    "es-ES": "Velocidad vertical en píxeles por segundo. Los valores positivos mueven el contenido hacia arriba; cero restablece este eje.",
+    "ru-RU": "Вертикальная скорость в пикселях в секунду. Положительные значения сдвигают содержимое вверх; ноль сбрасывает эту ось.",
+    "uk-UA": "Вертикальна швидкість у пікселях за секунду. Додатні значення зсувають вміст угору; нуль скидає цю вісь.",
+    "de-DE": "Vertikale Geschwindigkeit in Pixeln pro Sekunde. Positive Werte bewegen den Inhalt nach oben; Null setzt diese Achse zurück."
+  },
+  "Override the Scroll output width without resizing the input. Other filters receive this width.": {
+    "es-ES": "Cambiar la anchura de salida sin redimensionar la entrada. Los demás filtros reciben esta anchura.",
+    "ru-RU": "Задать ширину результата без масштабирования входа. Следующие фильтры получают эту ширину.",
+    "uk-UA": "Задати ширину результату без масштабування входу. Наступні фільтри отримують цю ширину.",
+    "de-DE": "Ausgabebreite ohne Skalierung der Eingabe festlegen. Folgende Filter erhalten diese Breite."
+  },
+  "Override the Scroll output height without resizing the input. Other filters receive this height.": {
+    "es-ES": "Cambiar la altura de salida sin redimensionar la entrada. Los demás filtros reciben esta altura.",
+    "ru-RU": "Задать высоту результата без масштабирования входа. Следующие фильтры получают эту высоту.",
+    "uk-UA": "Задати висоту результату без масштабування входу. Наступні фільтри отримують цю висоту.",
+    "de-DE": "Ausgabehöhe ohne Skalierung der Eingabe festlegen. Folgende Filter erhalten diese Höhe."
+  },
+  "Set the Scroll output width from 1 to 8192 pixels.": {
+    "es-ES": "Fijar la anchura de salida entre 1 y 8192 píxeles.",
+    "ru-RU": "Задать ширину результата от 1 до 8192 пикселей.",
+    "uk-UA": "Задати ширину результату від 1 до 8192 пікселів.",
+    "de-DE": "Ausgabebreite von 1 bis 8192 Pixeln festlegen."
+  },
+  "Set the Scroll output height from 1 to 8192 pixels.": {
+    "es-ES": "Fijar la altura de salida entre 1 y 8192 píxeles.",
+    "ru-RU": "Задать высоту результата от 1 до 8192 пикселей.",
+    "uk-UA": "Задати висоту результату від 1 до 8192 пікселів.",
+    "de-DE": "Ausgabehöhe von 1 bis 8192 Pixeln festlegen."
+  },
+  "Wrap both source axes while scrolling. When disabled, pixels outside the source are transparent.": {
+    "es-ES": "Repetir ambos ejes al desplazar. Al desactivarlo, los píxeles fuera de la fuente son transparentes.",
+    "ru-RU": "Повторять источник по обеим осям. При отключении пиксели за границами источника прозрачны.",
+    "uk-UA": "Повторювати джерело вздовж обох осей. Після вимкнення пікселі за межами джерела прозорі.",
+    "de-DE": "Beide Quellachsen beim Scrollen wiederholen. Andernfalls sind Pixel außerhalb der Quelle transparent."
+  },
+  "Scroll · CPU · SDR · linear sampling": {
+    "es-ES": "Desplazamiento · CPU · SDR · muestreo lineal",
+    "ru-RU": "Прокрутка · CPU · SDR · линейная выборка",
+    "uk-UA": "Прокручування · CPU · SDR · лінійна вибірка",
+    "de-DE": "Scrollen · CPU · SDR · lineare Abtastung"
+  },
+  "Showing the source restarts Scroll. Speed edits retain phase; zero resets an axis. Media seeking keeps Scroll independent.": {
+    "es-ES": "Mostrar de nuevo la fuente reinicia el desplazamiento. Cambiar la velocidad conserva la fase; cero restablece un eje. Buscar en un medio no reinicia este efecto.",
+    "ru-RU": "Повторное появление источника запускает прокрутку заново. Смена скорости сохраняет фазу; ноль сбрасывает ось. Перемотка медиа не сбрасывает эффект.",
+    "uk-UA": "Повторна поява джерела запускає прокручування заново. Зміна швидкості зберігає фазу; нуль скидає вісь. Перемотування медіа не скидає ефект.",
+    "de-DE": "Erneutes Anzeigen startet Scrollen neu. Geschwindigkeitsänderungen erhalten die Phase; Null setzt eine Achse zurück. Medien-Suchen setzt den Effekt nicht zurück."
+  },
+  "Scroll and Apply LUT currently require CPU processing": {
+    "es-ES": "Desplazamiento y Aplicar LUT requieren actualmente procesamiento en CPU",
+    "ru-RU": "Прокрутка и применение LUT сейчас обрабатываются на CPU",
+    "uk-UA": "Прокручування та застосування LUT наразі обробляються на CPU",
+    "de-DE": "Scrollen und LUT anwenden erfordern derzeit CPU-Verarbeitung"
+  },
+  "Scroll speeds require finite values in -500..500 pixels per second": {
+    "es-ES": "Las velocidades requieren valores finitos entre -500 y 500 píxeles por segundo",
+    "ru-RU": "Скорость должна быть конечной в диапазоне от -500 до 500 пикселей в секунду",
+    "uk-UA": "Швидкість має бути скінченною в діапазоні від -500 до 500 пікселів за секунду",
+    "de-DE": "Geschwindigkeiten erfordern endliche Werte von -500 bis 500 Pixeln pro Sekunde"
+  },
+  "Scroll dimensions require integers in 1..8192": {
+    "es-ES": "Las dimensiones requieren enteros entre 1 y 8192",
+    "ru-RU": "Размеры требуют целых значений от 1 до 8192",
+    "uk-UA": "Розміри потребують цілих значень від 1 до 8192",
+    "de-DE": "Abmessungen erfordern ganze Zahlen von 1 bis 8192"
+  },
+  "OBS Color Correction v2, Color Key v2, Chroma Key v2, Luma Key v2 and Sharpen v2 (SDR; Luma/Sharpen on CPU), Crop/Pad (signed relative crop or absolute dimensions with transparent padding), Image Mask/Blend v2 (five SDR methods, static PNG/JPEG/BMP/TGA/WebP, CPU; animated masks unsupported), Scroll (CPU SDR, normalized source/filter phase, linear wrap/transparent border and independent output limits), Apply LUT (CPU SDR, independent CUBE 1D 2..65536/CUBE 3D 2..128 with finite domains, static 512×512 OBS 64-cube PNG, original amount/alpha branches; no combined shaper/HDR/animation/GPU LUT), Gain, Invert Polarity, Noise Gate, 3-Band Equalizer, Limiter, Compressor, Upward Compressor and Expander. Dynamics use admitted source-block callback boundaries; external sidechain, RNNoise/Speex noise suppression, VST hosting, HDR, legacy v1 and remaining standard filters are not implemented.": {
+    "es-ES": "Corrección de color v2, clave de color v2, clave cromática v2, clave de luminancia v2 y nitidez v2 de OBS (SDR; luminancia/nitidez en CPU), recorte/relleno (recorte relativo con signo o dimensiones absolutas con relleno transparente), máscara/mezcla de imagen v2 (cinco métodos SDR, PNG/JPEG/BMP/TGA/WebP estáticos, CPU; sin máscaras animadas), desplazamiento (CPU SDR, fase normalizada por fuente/filtro, muestreo lineal con repetición/borde transparente y límites de salida independientes), Aplicar LUT (CPU SDR, CUBE 1D 2..65536/CUBE 3D 2..128 independientes con dominios finitos, PNG OBS de cubo 64 en atlas estático 512×512, variantes originales de intensidad/alfa; sin shaper combinado, HDR, animación ni LUT en GPU), ganancia, inversión de polaridad, puerta de ruido, ecualizador de tres bandas, limitador, compresor, compresor ascendente y expansor. La dinámica usa los límites de devolución de llamada de bloques de fuente admitidos; no se implementan cadena lateral externa, supresión RNNoise/Speex, alojamiento VST, HDR, v1 heredado ni los demás filtros estándar.",
+    "ru-RU": "Цветокоррекция v2, цветовой ключ v2, хромакей v2, яркостный ключ v2 и резкость v2 OBS (SDR; яркостный ключ/резкость на CPU), обрезка/поля (относительная обрезка со знаком или абсолютный размер с прозрачными полями), маска/смешивание изображения v2 (пять SDR-режимов, статические PNG/JPEG/BMP/TGA/WebP, CPU; без анимированных масок), прокрутка (CPU SDR, нормализованная фаза источника/фильтра, линейная выборка с повторением или прозрачной границей и независимые размеры результата), применение LUT (CPU SDR, отдельные CUBE 1D 2..65536/CUBE 3D 2..128 с конечными диапазонами, статический PNG-атлас OBS 512×512 для куба 64, исходные режимы интенсивности/альфа-канала; без комбинированного shaper, HDR, анимации и LUT на GPU), усиление, инверсия полярности, шумовой гейт, трёхполосный эквалайзер, лимитер, компрессор, повышающий компрессор и экспандер. Динамическая обработка использует границы допущенных блоков источника; внешний сайдчейн, подавление шума RNNoise/Speex, VST, HDR, устаревшие v1 и остальные стандартные фильтры не реализованы.",
+    "uk-UA": "Корекція кольору v2, колірний ключ v2, хромакей v2, яскравісний ключ v2 і різкість v2 OBS (SDR; яскравісний ключ/різкість на CPU), обрізання/поля (відносне обрізання зі знаком або абсолютний розмір із прозорими полями), маска/змішування зображення v2 (п’ять SDR-режимів, статичні PNG/JPEG/BMP/TGA/WebP, CPU; без анімованих масок), прокручування (CPU SDR, нормалізована фаза джерела/фільтра, лінійна вибірка з повторенням або прозорою межею й незалежні розміри результату), застосування LUT (CPU SDR, окремі CUBE 1D 2..65536/CUBE 3D 2..128 зі скінченними діапазонами, статичний PNG-атлас OBS 512×512 для куба 64, оригінальні режими інтенсивності/альфа-каналу; без комбінованого shaper, HDR, анімації та LUT на GPU), підсилення, інверсія полярності, шумовий гейт, трисмуговий еквалайзер, лімітер, компресор, підвищувальний компресор і експандер. Динамічна обробка використовує межі допущених блоків джерела; зовнішній сайдчейн, приглушення шуму RNNoise/Speex, VST, HDR, застарілі v1 та решта стандартних фільтрів не реалізовані.",
+    "de-DE": "OBS-Farbkorrektur v2, Color-Key v2, Chroma-Key v2, Luma-Key v2 und Schärfe v2 (SDR; Luma/Schärfe auf CPU), Zuschneiden/Auffüllen (relative Werte mit Vorzeichen oder absolute Abmessungen mit transparentem Rand), Bildmaske/-mischung v2 (fünf SDR-Verfahren, statische PNG/JPEG/BMP/TGA/WebP, CPU; keine animierten Masken), Scrollen (CPU SDR, normalisierte Quellen-/Filterphase, lineare Abtastung mit Wiederholung oder transparentem Rand und unabhängige Ausgabegrenzen), LUT anwenden (CPU SDR, getrennte CUBE 1D 2..65536/CUBE 3D 2..128 mit endlichen Bereichen, statischer OBS-PNG-Atlas 512×512 für 64er-Würfel, originale Stärke-/Alphazweige; kein kombinierter Shaper, HDR, Animation oder GPU-LUT), Verstärkung, Polaritätsumkehr, Noise Gate, Dreiband-Equalizer, Limiter, Kompressor, Aufwärtskompressor und Expander. Dynamik nutzt die zugelassenen Quellblock-Callbackgrenzen; externe Sidechain, RNNoise-/Speex-Rauschunterdrückung, VST-Hosting, HDR, ältere v1 und übrige Standardfilter sind nicht implementiert."
+  }
+}

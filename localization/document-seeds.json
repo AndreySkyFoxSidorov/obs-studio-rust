@@ -1,0 +1,230 @@
+{
+  "Unsaved document changes": {
+    "es-ES": "Cambios del documento sin guardar",
+    "ru-RU": "Несохранённые изменения документа",
+    "uk-UA": "Незбережені зміни документа",
+    "de-DE": "Ungespeicherte Dokumentänderungen"
+  },
+  "Save and continue": {
+    "es-ES": "Guardar y continuar",
+    "ru-RU": "Сохранить и продолжить",
+    "uk-UA": "Зберегти й продовжити",
+    "de-DE": "Speichern und fortfahren"
+  },
+  "Save the current native document before replacing it.": {
+    "es-ES": "Guarda el documento actual de SkyLive antes de sustituirlo.",
+    "ru-RU": "Сохранить текущий документ SkyLive перед его заменой.",
+    "uk-UA": "Зберегти поточний документ SkyLive перед його заміною.",
+    "de-DE": "Das aktuelle SkyLive-Dokument vor dem Ersetzen speichern."
+  },
+  "Discard and continue": {
+    "es-ES": "Descartar y continuar",
+    "ru-RU": "Не сохранять и продолжить",
+    "uk-UA": "Не зберігати й продовжити",
+    "de-DE": "Verwerfen und fortfahren"
+  },
+  "Replace the current document without saving its changes.": {
+    "es-ES": "Sustituye el documento actual sin guardar sus cambios.",
+    "ru-RU": "Заменить текущий документ без сохранения его изменений.",
+    "uk-UA": "Замінити поточний документ без збереження його змін.",
+    "de-DE": "Das aktuelle Dokument ersetzen, ohne seine Änderungen zu speichern."
+  },
+  "Keep the current document and cancel replacement.": {
+    "es-ES": "Mantiene el documento actual y cancela la sustitución.",
+    "ru-RU": "Оставить текущий документ и отменить замену.",
+    "uk-UA": "Залишити поточний документ і скасувати заміну.",
+    "de-DE": "Das aktuelle Dokument beibehalten und das Ersetzen abbrechen."
+  },
+  "The candidate document is validated. Your current Program remains active until you choose an action.": {
+    "es-ES": "El documento nuevo está validado. El Programa actual permanece activo hasta que elijas una acción.",
+    "ru-RU": "Новый документ проверен. Текущая Программа остаётся активной, пока вы не выберете действие.",
+    "uk-UA": "Новий документ перевірено. Поточна Програма залишається активною, доки ви не виберете дію.",
+    "de-DE": "Das neue Dokument wurde geprüft. Die aktuelle Programmausgabe bleibt aktiv, bis Sie eine Aktion wählen."
+  },
+  "Replacement: {path}": {
+    "es-ES": "Sustitución: {path}",
+    "ru-RU": "Замена: {path}",
+    "uk-UA": "Заміна: {path}",
+    "de-DE": "Ersatz: {path}"
+  },
+  "Save native document as": {
+    "es-ES": "Guardar documento de SkyLive como",
+    "ru-RU": "Сохранить документ SkyLive как",
+    "uk-UA": "Зберегти документ SkyLive як",
+    "de-DE": "SkyLive-Dokument speichern unter"
+  },
+  "Save to this path": {
+    "es-ES": "Guardar en esta ruta",
+    "ru-RU": "Сохранить по этому пути",
+    "uk-UA": "Зберегти за цим шляхом",
+    "de-DE": "Unter diesem Pfad speichern"
+  },
+  "Confirm this exact native destination, including replacement of an existing file.": {
+    "es-ES": "Confirma este destino exacto de SkyLive, incluida la sustitución de un archivo existente.",
+    "ru-RU": "Подтвердить именно этот путь сохранения SkyLive, включая замену существующего файла.",
+    "uk-UA": "Підтвердити саме цей шлях збереження SkyLive, включно із заміною наявного файлу.",
+    "de-DE": "Genau dieses SkyLive-Speicherziel bestätigen, einschließlich des Ersetzens einer vorhandenen Datei."
+  },
+  "Cancel this save and keep the current document.": {
+    "es-ES": "Cancela este guardado y mantiene el documento actual.",
+    "ru-RU": "Отменить это сохранение и оставить текущий документ.",
+    "uk-UA": "Скасувати це збереження й залишити поточний документ.",
+    "de-DE": "Diesen Speichervorgang abbrechen und das aktuelle Dokument beibehalten."
+  },
+  "Native save destination": {
+    "es-ES": "Destino de guardado de SkyLive",
+    "ru-RU": "Путь сохранения SkyLive",
+    "uk-UA": "Шлях збереження SkyLive",
+    "de-DE": "SkyLive-Speicherziel"
+  },
+  "Choose a native SkyLive filename. This path is separate from the Open target.": {
+    "es-ES": "Elige un nombre de archivo de SkyLive. Esta ruta es independiente del destino de Abrir.",
+    "ru-RU": "Выберите имя файла SkyLive. Этот путь не связан с путём открытия документа.",
+    "uk-UA": "Виберіть ім’я файлу SkyLive. Цей шлях не пов’язаний зі шляхом відкриття документа.",
+    "de-DE": "Wählen Sie einen SkyLive-Dateinamen. Dieser Pfad ist unabhängig vom Ziel für Öffnen."
+  },
+  "Confirming Save to this path may replace an existing file at this exact destination. The Open target and original OBS reference are never selected automatically.": {
+    "es-ES": "Al confirmar Guardar en esta ruta se puede sustituir un archivo existente en ese destino exacto. El destino de Abrir y el archivo OBS original nunca se seleccionan automáticamente.",
+    "ru-RU": "Подтверждение «Сохранить по этому пути» может заменить существующий файл именно по этому адресу. Путь открытия и исходный файл OBS никогда не выбираются автоматически.",
+    "uk-UA": "Підтвердження «Зберегти за цим шляхом» може замінити наявний файл саме за цією адресою. Шлях відкриття та початковий файл OBS ніколи не вибираються автоматично.",
+    "de-DE": "Die Bestätigung von „Unter diesem Pfad speichern“ kann eine vorhandene Datei an genau diesem Ziel ersetzen. Das Ziel für Öffnen und die ursprüngliche OBS-Datei werden nie automatisch ausgewählt."
+  },
+  "Finish or cancel the current document operation first": {
+    "es-ES": "Primero termina o cancela la operación actual del documento",
+    "ru-RU": "Сначала завершите или отмените текущую операцию с документом",
+    "uk-UA": "Спочатку завершіть або скасуйте поточну операцію з документом",
+    "de-DE": "Beenden Sie zuerst den aktuellen Dokumentvorgang oder brechen Sie ihn ab"
+  },
+  "New collection": {
+    "es-ES": "Nueva colección",
+    "ru-RU": "Новая коллекция",
+    "uk-UA": "Нова колекція",
+    "de-DE": "Neue Sammlung"
+  },
+  "Reading and validating replacement document…": {
+    "es-ES": "Leyendo y validando el documento de sustitución…",
+    "ru-RU": "Чтение и проверка нового документа…",
+    "uk-UA": "Читання та перевірка нового документа…",
+    "de-DE": "Neues Dokument wird gelesen und geprüft…"
+  },
+  "Replacement result is obsolete; the current document was retained": {
+    "es-ES": "El resultado de la sustitución está obsoleto; se ha mantenido el documento actual",
+    "ru-RU": "Результат замены устарел; текущий документ оставлен без изменений",
+    "uk-UA": "Результат заміни застарів; поточний документ залишено без змін",
+    "de-DE": "Das Ersatzergebnis ist veraltet; das aktuelle Dokument wurde beibehalten"
+  },
+  "Unexpected replacement result; the current document was retained": {
+    "es-ES": "Resultado de sustitución inesperado; se ha mantenido el documento actual",
+    "ru-RU": "Неожиданный результат замены; текущий документ оставлен без изменений",
+    "uk-UA": "Неочікуваний результат заміни; поточний документ залишено без змін",
+    "de-DE": "Unerwartetes Ersatzergebnis; das aktuelle Dokument wurde beibehalten"
+  },
+  "Enter a native save destination": {
+    "es-ES": "Introduce un destino de guardado de SkyLive",
+    "ru-RU": "Введите путь сохранения SkyLive",
+    "uk-UA": "Введіть шлях збереження SkyLive",
+    "de-DE": "Geben Sie ein SkyLive-Speicherziel ein"
+  },
+  "Document operation in progress…": {
+    "es-ES": "Operación del documento en curso…",
+    "ru-RU": "Выполняется операция с документом…",
+    "uk-UA": "Виконується операція з документом…",
+    "de-DE": "Dokumentvorgang läuft…"
+  },
+  "Save result is obsolete; native binding was not changed": {
+    "es-ES": "El resultado del guardado está obsoleto; no se ha cambiado el archivo asociado de SkyLive",
+    "ru-RU": "Результат сохранения устарел; привязка к файлу SkyLive не изменена",
+    "uk-UA": "Результат збереження застарів; прив’язку до файлу SkyLive не змінено",
+    "de-DE": "Das Speicherergebnis ist veraltet; die SkyLive-Dateizuordnung wurde nicht geändert"
+  },
+  "Older revision saved; current edits remain unsaved": {
+    "es-ES": "Se ha guardado una versión anterior; los cambios actuales siguen sin guardar",
+    "ru-RU": "Сохранена предыдущая версия; текущие изменения остаются несохранёнными",
+    "uk-UA": "Збережено попередню версію; поточні зміни залишаються незбереженими",
+    "de-DE": "Eine ältere Version wurde gespeichert; die aktuellen Änderungen sind weiterhin ungespeichert"
+  },
+  "Native document saved; OBS identity sidecar remains session-only": {
+    "es-ES": "Documento de SkyLive guardado; los datos adicionales de identidad OBS solo se conservan durante esta sesión",
+    "ru-RU": "Документ SkyLive сохранён; дополнительные идентификаторы OBS остаются только в текущем сеансе",
+    "uk-UA": "Документ SkyLive збережено; додаткові ідентифікатори OBS залишаються лише в поточному сеансі",
+    "de-DE": "SkyLive-Dokument gespeichert; die zusätzlichen OBS-Identitätsdaten bleiben auf diese Sitzung beschränkt"
+  },
+  "Document saved": {
+    "es-ES": "Documento guardado",
+    "ru-RU": "Документ сохранён",
+    "uk-UA": "Документ збережено",
+    "de-DE": "Dokument gespeichert"
+  },
+  "OBS subset imported as an unsaved collection. Original OBS identities are retained only for this session": {
+    "es-ES": "La parte compatible de OBS se ha importado como una colección sin guardar. Las identidades OBS originales solo se conservan durante esta sesión",
+    "ru-RU": "Поддерживаемая часть OBS импортирована как несохранённая коллекция. Исходные идентификаторы OBS сохраняются только в текущем сеансе",
+    "uk-UA": "Підтримувану частину OBS імпортовано як незбережену колекцію. Початкові ідентифікатори OBS зберігаються лише в поточному сеансі",
+    "de-DE": "Der unterstützte OBS-Teil wurde als ungespeicherte Sammlung importiert. Die ursprünglichen OBS-Identitäten bleiben nur für diese Sitzung erhalten"
+  },
+  "Document replaced; the previous document was retained until validation completed": {
+    "es-ES": "Documento sustituido; el documento anterior se mantuvo hasta completar la validación",
+    "ru-RU": "Документ заменён; предыдущий документ оставался открытым до завершения проверки",
+    "uk-UA": "Документ замінено; попередній документ залишався відкритим до завершення перевірки",
+    "de-DE": "Dokument ersetzt; das vorherige Dokument wurde bis zum Abschluss der Prüfung beibehalten"
+  },
+  "Open / Recover target": {
+    "es-ES": "Destino de Abrir / Recuperar",
+    "ru-RU": "Путь открытия / восстановления",
+    "uk-UA": "Шлях відкриття / відновлення",
+    "de-DE": "Ziel für Öffnen / Wiederherstellen"
+  },
+  "Choose a document to open or recover. Save uses the active native document binding.": {
+    "es-ES": "Elige un documento para abrir o recuperar. Guardar utiliza el archivo de SkyLive asociado al documento activo.",
+    "ru-RU": "Выберите документ для открытия или восстановления. «Сохранить» использует файл, привязанный к активному документу SkyLive.",
+    "uk-UA": "Виберіть документ для відкриття або відновлення. «Зберегти» використовує файл, прив’язаний до активного документа SkyLive.",
+    "de-DE": "Wählen Sie ein Dokument zum Öffnen oder Wiederherstellen. Speichern verwendet die Dateizuordnung des aktiven SkyLive-Dokuments."
+  },
+  "Save As": {
+    "es-ES": "Guardar como",
+    "ru-RU": "Сохранить как",
+    "uk-UA": "Зберегти як",
+    "de-DE": "Speichern unter"
+  },
+  "Choose and explicitly confirm a different native save destination.": {
+    "es-ES": "Elige y confirma expresamente otro destino de guardado de SkyLive.",
+    "ru-RU": "Выбрать и явно подтвердить другой путь сохранения SkyLive.",
+    "uk-UA": "Вибрати й явно підтвердити інший шлях збереження SkyLive.",
+    "de-DE": "Ein anderes SkyLive-Speicherziel wählen und ausdrücklich bestätigen."
+  },
+  "Active native document: {path}": {
+    "es-ES": "Documento activo de SkyLive: {path}",
+    "ru-RU": "Активный документ SkyLive: {path}",
+    "uk-UA": "Активний документ SkyLive: {path}",
+    "de-DE": "Aktives SkyLive-Dokument: {path}"
+  },
+  "Document request identity exhausted": {
+    "es-ES": "Se han agotado los identificadores de solicitudes de documentos",
+    "ru-RU": "Исчерпаны идентификаторы запросов документов",
+    "uk-UA": "Вичерпано ідентифікатори запитів документів",
+    "de-DE": "Die Kennungen für Dokumentanforderungen sind ausgeschöpft"
+  },
+  "Recovery needs a native document filename": {
+    "es-ES": "La recuperación necesita un nombre de archivo de documento de SkyLive",
+    "ru-RU": "Для восстановления нужно имя файла документа SkyLive",
+    "uk-UA": "Для відновлення потрібне ім’я файлу документа SkyLive",
+    "de-DE": "Für die Wiederherstellung ist ein SkyLive-Dokumentdateiname erforderlich"
+  },
+  "Recovery needs a parent directory": {
+    "es-ES": "La recuperación necesita un directorio padre",
+    "ru-RU": "Для восстановления нужен родительский каталог",
+    "uk-UA": "Для відновлення потрібен батьківський каталог",
+    "de-DE": "Für die Wiederherstellung ist ein übergeordnetes Verzeichnis erforderlich"
+  },
+  "Replacement result has no active request; the current document was retained": {
+    "es-ES": "El resultado de sustitución no tiene una solicitud activa; se ha mantenido el documento actual",
+    "ru-RU": "Для результата замены нет активного запроса; текущий документ оставлен без изменений",
+    "uk-UA": "Для результату заміни немає активного запиту; поточний документ залишено без змін",
+    "de-DE": "Für das Ersatzergebnis liegt keine aktive Anforderung vor; das aktuelle Dokument wurde beibehalten"
+  },
+  "Not yet saved": {
+    "es-ES": "Aún sin guardar",
+    "ru-RU": "Ещё не сохранён",
+    "uk-UA": "Ще не збережено",
+    "de-DE": "Noch nicht gespeichert"
+  }
+}

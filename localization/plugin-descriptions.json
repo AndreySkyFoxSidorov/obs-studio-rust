@@ -1,0 +1,1017 @@
+{
+  "Plugin.exeldro/obs-shaderfilter.Description": {
+    "en-US": "Custom shaders and ready-made effects",
+    "es-ES": "Sombreadores personalizados y efectos predefinidos",
+    "ru-RU": "Пользовательские шейдеры и готовые эффекты",
+    "uk-UA": "Користувацькі шейдери та готові ефекти",
+    "de-DE": "Benutzerdefinierte Shader und fertige Effekte"
+  },
+  "Plugin.xurei/shadertastic.Description": {
+    "en-US": "Shader filters and transitions",
+    "es-ES": "Filtros de sombreado y transiciones",
+    "ru-RU": "Шейдерные фильтры и переходы",
+    "uk-UA": "Шейдерні фільтри та переходи",
+    "de-DE": "Shaderfilter und Übergänge"
+  },
+  "Plugin.finitesingularity/obs-composite-blur.Description": {
+    "en-US": "Various blur algorithms",
+    "es-ES": "Diversos algoritmos de desenfoque",
+    "ru-RU": "Разные алгоритмы размытия",
+    "uk-UA": "Різні алгоритми розмиття",
+    "de-DE": "Verschiedene Weichzeichnungsalgorithmen"
+  },
+  "Plugin.finitesingularity/obs-advanced-masks.Description": {
+    "en-US": "Advanced masks",
+    "es-ES": "Máscaras avanzadas",
+    "ru-RU": "Расширенные маски",
+    "uk-UA": "Розширені маски",
+    "de-DE": "Erweiterte Masken"
+  },
+  "Plugin.finitesingularity/obs-stroke-glow-shadow.Description": {
+    "en-US": "Outlines, glow and shadows",
+    "es-ES": "Contornos, resplandor y sombras",
+    "ru-RU": "Обводка, свечение и тени",
+    "uk-UA": "Обведення, світіння й тіні",
+    "de-DE": "Konturen, Leuchten und Schatten"
+  },
+  "Plugin.finitesingularity/obs-retro-effects.Description": {
+    "en-US": "CRT, VHS and other retro effects",
+    "es-ES": "CRT, VHS y otros efectos retro",
+    "ru-RU": "CRT, VHS и другие ретроэффекты",
+    "uk-UA": "CRT, VHS та інші ретроефекти",
+    "de-DE": "CRT, VHS und andere Retroeffekte"
+  },
+  "Plugin.exeldro/obs-3d-effect.Description": {
+    "en-US": "3D source transformations",
+    "es-ES": "Transformaciones de fuentes en 3D",
+    "ru-RU": "Преобразования источника в 3D",
+    "uk-UA": "Перетворення джерела в 3D",
+    "de-DE": "3D-Transformationen von Quellen"
+  },
+  "Plugin.exeldro/obs-freeze-filter.Description": {
+    "en-US": "Freeze frame",
+    "es-ES": "Congelar fotograma",
+    "ru-RU": "Стоп-кадр",
+    "uk-UA": "Стоп-кадр",
+    "de-DE": "Standbild"
+  },
+  "Plugin.exeldro/obs-dynamic-delay.Description": {
+    "en-US": "Adjustable source delay",
+    "es-ES": "Retardo ajustable de la fuente",
+    "ru-RU": "Управляемая задержка источника",
+    "uk-UA": "Керована затримка джерела",
+    "de-DE": "Einstellbare Quellenverzögerung"
+  },
+  "Plugin.exeldro/obs-recursion-effect.Description": {
+    "en-US": "Recursive imagery",
+    "es-ES": "Imagen recursiva",
+    "ru-RU": "Рекурсивное изображение",
+    "uk-UA": "Рекурсивне зображення",
+    "de-DE": "Rekursive Bilder"
+  },
+  "Plugin.exeldro/obs-time-warp-scan.Description": {
+    "en-US": "Time-warp scan effect",
+    "es-ES": "Efecto de barrido temporal",
+    "ru-RU": "Эффект временного сканирования",
+    "uk-UA": "Ефект часового сканування",
+    "de-DE": "Zeitverzerrter Scaneffekt"
+  },
+  "Plugin.ashmanix/blur-filter-obs-plugin.Description": {
+    "en-US": "Blur",
+    "es-ES": "Desenfoque",
+    "ru-RU": "Размытие",
+    "uk-UA": "Розмиття",
+    "de-DE": "Weichzeichnung"
+  },
+  "Plugin.horaichan/obs-adjustment-layer.Description": {
+    "en-US": "Shared effects for sources underneath",
+    "es-ES": "Efectos comunes para las fuentes situadas debajo",
+    "ru-RU": "Общие эффекты для расположенных ниже источников",
+    "uk-UA": "Спільні ефекти для розташованих нижче джерел",
+    "de-DE": "Gemeinsame Effekte für darunterliegende Quellen"
+  },
+  "Plugin.norihiro/obs-multisource-effect.Description": {
+    "en-US": "Mix sources using a shader",
+    "es-ES": "Mezcla de fuentes mediante un sombreador",
+    "ru-RU": "Смешивание источников через шейдер",
+    "uk-UA": "Змішування джерел за допомогою шейдера",
+    "de-DE": "Quellen mit einem Shader mischen"
+  },
+  "Plugin.cmdwtf/filter-9slice.Description": {
+    "en-US": "Scaling that preserves corners and edges",
+    "es-ES": "Escalado que conserva las esquinas y los bordes",
+    "ru-RU": "Масштабирование с сохранением углов и краёв",
+    "uk-UA": "Масштабування зі збереженням кутів і країв",
+    "de-DE": "Skalierung unter Beibehaltung von Ecken und Kanten"
+  },
+  "Plugin.mirkonz/smart-gamma.Description": {
+    "en-US": "Dynamic gamma correction",
+    "es-ES": "Corrección dinámica de gamma",
+    "ru-RU": "Динамическая коррекция гаммы",
+    "uk-UA": "Динамічна корекція гами",
+    "de-DE": "Dynamische Gammakorrektur"
+  },
+  "Plugin.bemjo/obs-rtx-superresolution.Description": {
+    "en-US": "Upscaling and artifact reduction using NVIDIA RTX",
+    "es-ES": "Ampliación de resolución y reducción de artefactos mediante NVIDIA RTX",
+    "ru-RU": "Апскейл и уменьшение артефактов через NVIDIA RTX",
+    "uk-UA": "Масштабування та зменшення артефактів за допомогою NVIDIA RTX",
+    "de-DE": "Hochskalierung und Artefaktreduzierung mit NVIDIA RTX"
+  },
+  "Plugin.halsu/halsu-plugins-for-streaming.Description": {
+    "en-US": "Keying, alpha and lighting",
+    "es-ES": "Incrustación, alfa e iluminación",
+    "ru-RU": "Кеинг, альфа и освещение",
+    "uk-UA": "Кеїнг, альфа й освітлення",
+    "de-DE": "Keying, Alpha und Beleuchtung"
+  },
+  "Plugin.crowsinc/livevisionkit.Description": {
+    "en-US": "Video stabilization and processing. Archived",
+    "es-ES": "Estabilización y procesamiento de vídeo. Archivado",
+    "ru-RU": "Стабилизация и обработка видео. Архивирован",
+    "uk-UA": "Стабілізація й обробка відео. Архівовано",
+    "de-DE": "Videostabilisierung und -verarbeitung. Archiviert"
+  },
+  "Plugin.vhonowslend/streamfx-public.Description": {
+    "en-US": "Public version of the StreamFX effects suite",
+    "es-ES": "Versión pública del conjunto de efectos StreamFX",
+    "ru-RU": "Публичная версия набора эффектов StreamFX",
+    "uk-UA": "Публічна версія набору ефектів StreamFX",
+    "de-DE": "Öffentliche Version der StreamFX-Effektsammlung"
+  },
+  "Plugin.xoxfaby/obs-streamfx.Description": {
+    "en-US": "StreamFX fork",
+    "es-ES": "Bifurcación de StreamFX",
+    "ru-RU": "Форк StreamFX",
+    "uk-UA": "Відгалуження StreamFX",
+    "de-DE": "Abspaltung von StreamFX"
+  },
+  "Plugin.warmuptill/sceneswitcher.Description": {
+    "en-US": "Macros, conditions and automatic control",
+    "es-ES": "Macros, condiciones y control automático",
+    "ru-RU": "Макросы, условия и автоматическое управление",
+    "uk-UA": "Макроси, умови й автоматичне керування",
+    "de-DE": "Makros, Bedingungen und automatische Steuerung"
+  },
+  "Plugin.exeldro/obs-move-transition.Description": {
+    "en-US": "Animate position, size and parameters",
+    "es-ES": "Animación de la posición, el tamaño y los parámetros",
+    "ru-RU": "Анимация положения, размера и параметров",
+    "uk-UA": "Анімація положення, розміру й параметрів",
+    "de-DE": "Animation von Position, Größe und Parametern"
+  },
+  "Plugin.dizzybhigh/move-workflow.Description": {
+    "en-US": "Action sequences for Move",
+    "es-ES": "Secuencias de acciones para Move",
+    "ru-RU": "Последовательности действий для Move",
+    "uk-UA": "Послідовності дій для Move",
+    "de-DE": "Aktionsfolgen für Move"
+  },
+  "Plugin.exeldro/obs-transition-table.Description": {
+    "en-US": "Transitions between scene pairs",
+    "es-ES": "Transiciones entre pares de escenas",
+    "ru-RU": "Переходы между парами сцен",
+    "uk-UA": "Переходи між парами сцен",
+    "de-DE": "Übergänge zwischen Szenenpaaren"
+  },
+  "Plugin.streamuptips/obs-streamup-scene-as-transition.Description": {
+    "en-US": "Use a scene as a transition",
+    "es-ES": "Usar una escena como transición",
+    "ru-RU": "Сцена как переход",
+    "uk-UA": "Сцена як перехід",
+    "de-DE": "Eine Szene als Übergang verwenden"
+  },
+  "Plugin.exeldro/obs-browser-transition.Description": {
+    "en-US": "Browser source during a transition",
+    "es-ES": "Fuente de navegador durante una transición",
+    "ru-RU": "Браузерный источник во время перехода",
+    "uk-UA": "Джерело браузера під час переходу",
+    "de-DE": "Browserquelle während eines Übergangs"
+  },
+  "Plugin.exeldro/obs-source-switcher.Description": {
+    "en-US": "Switch between sources",
+    "es-ES": "Cambio entre fuentes",
+    "ru-RU": "Переключение между источниками",
+    "uk-UA": "Перемикання між джерелами",
+    "de-DE": "Zwischen Quellen wechseln"
+  },
+  "Plugin.exeldro/obs-source-clone.Description": {
+    "en-US": "Clones with independent filters",
+    "es-ES": "Clones con filtros independientes",
+    "ru-RU": "Клоны с отдельными фильтрами",
+    "uk-UA": "Клони з окремими фільтрами",
+    "de-DE": "Klone mit eigenen Filtern"
+  },
+  "Plugin.exeldro/obs-source-copy.Description": {
+    "en-US": "Additional copying features",
+    "es-ES": "Funciones adicionales de copia",
+    "ru-RU": "Дополнительные возможности копирования",
+    "uk-UA": "Додаткові можливості копіювання",
+    "de-DE": "Zusätzliche Kopierfunktionen"
+  },
+  "Plugin.codeyan01/source-defaults.Description": {
+    "en-US": "Default settings for new sources",
+    "es-ES": "Ajustes predeterminados de las fuentes nuevas",
+    "ru-RU": "Настройки новых источников по умолчанию",
+    "uk-UA": "Типові налаштування нових джерел",
+    "de-DE": "Standardeinstellungen für neue Quellen"
+  },
+  "Plugin.exeldro/obs-scene-collection-manager.Description": {
+    "en-US": "Collection management and backups",
+    "es-ES": "Gestión y copias de seguridad de colecciones",
+    "ru-RU": "Управление и резервирование коллекций",
+    "uk-UA": "Керування колекціями та резервне копіювання",
+    "de-DE": "Sammlungen verwalten und sichern"
+  },
+  "Plugin.digitotter/obs_scene_tree_view.Description": {
+    "en-US": "Folder tree for scenes",
+    "es-ES": "Árbol de carpetas para escenas",
+    "ru-RU": "Дерево папок для сцен",
+    "uk-UA": "Дерево тек для сцен",
+    "de-DE": "Ordnerbaum für Szenen"
+  },
+  "Plugin.rockbenben/scene-anchor.Description": {
+    "en-US": "Organize scenes in folders",
+    "es-ES": "Organización de escenas en carpetas",
+    "ru-RU": "Организация сцен по папкам",
+    "uk-UA": "Упорядкування сцен за теками",
+    "de-DE": "Szenen in Ordnern organisieren"
+  },
+  "Plugin.norihiro/obs-command-source.Description": {
+    "en-US": "Execute commands through a source",
+    "es-ES": "Ejecución de comandos mediante una fuente",
+    "ru-RU": "Выполнение команд через источник",
+    "uk-UA": "Виконання команд через джерело",
+    "de-DE": "Befehle über eine Quelle ausführen"
+  },
+  "Plugin.nhielost/obs-midi-mg.Description": {
+    "en-US": "Control using MIDI devices",
+    "es-ES": "Control mediante dispositivos MIDI",
+    "ru-RU": "Управление с MIDI-устройств",
+    "uk-UA": "Керування з MIDI-пристроїв",
+    "de-DE": "Steuerung über MIDI-Geräte"
+  },
+  "Plugin.cpyarger/obs-midi.Description": {
+    "en-US": "Exchange events between OBS and MIDI",
+    "es-ES": "Intercambio de eventos entre OBS y MIDI",
+    "ru-RU": "Обмен событиями между OBS и MIDI",
+    "uk-UA": "Обмін подіями між OBS і MIDI",
+    "de-DE": "Ereignisaustausch zwischen OBS und MIDI"
+  },
+  "Plugin.exeldro/obs-source-dock.Description": {
+    "en-US": "Source in a separate dock",
+    "es-ES": "Fuente en un panel independiente",
+    "ru-RU": "Источник в отдельной панели",
+    "uk-UA": "Джерело в окремій панелі",
+    "de-DE": "Quelle in einem eigenen Dock"
+  },
+  "Plugin.exeldro/obs-scene-notes-dock.Description": {
+    "en-US": "Scene notes",
+    "es-ES": "Notas para escenas",
+    "ru-RU": "Заметки для сцен",
+    "uk-UA": "Нотатки до сцен",
+    "de-DE": "Szenennotizen"
+  },
+  "Plugin.exeldro/obs-downstream-keyer.Description": {
+    "en-US": "Shared overlays above changing scenes",
+    "es-ES": "Superposiciones comunes sobre las escenas que se cambian",
+    "ru-RU": "Общие оверлеи поверх переключаемых сцен",
+    "uk-UA": "Спільні накладення поверх перемикання сцен",
+    "de-DE": "Gemeinsame Overlays über wechselnden Szenen"
+  },
+  "Plugin.exeldro/obs-media-controls.Description": {
+    "en-US": "Playback control dock",
+    "es-ES": "Panel de control de reproducción",
+    "ru-RU": "Панель управления воспроизведением",
+    "uk-UA": "Панель керування відтворенням",
+    "de-DE": "Dock zur Wiedergabesteuerung"
+  },
+  "Plugin.exeldro/obs-setting-docks.Description": {
+    "en-US": "Settings docks",
+    "es-ES": "Paneles de ajustes",
+    "ru-RU": "Панели настроек",
+    "uk-UA": "Панелі налаштувань",
+    "de-DE": "Einstellungsdocks"
+  },
+  "Plugin.xurei/compact-stats-for-obs.Description": {
+    "en-US": "Compact statistics",
+    "es-ES": "Estadísticas compactas",
+    "ru-RU": "Компактная статистика",
+    "uk-UA": "Компактна статистика",
+    "de-DE": "Kompakte Statistik"
+  },
+  "Plugin.exeldro/obs-draw.Description": {
+    "en-US": "Draw over the image",
+    "es-ES": "Dibujar sobre la imagen",
+    "ru-RU": "Рисование поверх изображения",
+    "uk-UA": "Малювання поверх зображення",
+    "de-DE": "Über das Bild zeichnen"
+  },
+  "Plugin.mmltools/draw-source.Description": {
+    "en-US": "Arrows, shapes and highlights",
+    "es-ES": "Flechas, formas y resaltados",
+    "ru-RU": "Стрелки, фигуры и выделения",
+    "uk-UA": "Стрілки, фігури й виділення",
+    "de-DE": "Pfeile, Formen und Hervorhebungen"
+  },
+  "Plugin.andersama/obs-asio.Description": {
+    "en-US": "ASIO support",
+    "es-ES": "Compatibilidad con ASIO",
+    "ru-RU": "Поддержка ASIO",
+    "uk-UA": "Підтримка ASIO",
+    "de-DE": "ASIO-Unterstützung"
+  },
+  "Plugin.bozbez/win-capture-audio.Description": {
+    "en-US": "Capture audio from individual Windows applications",
+    "es-ES": "Captura del audio de aplicaciones individuales de Windows",
+    "ru-RU": "Захват звука отдельных приложений Windows",
+    "uk-UA": "Захоплення звуку окремих програм Windows",
+    "de-DE": "Audio einzelner Windows-Anwendungen erfassen"
+  },
+  "Plugin.exeldro/obs-audio-monitor.Description": {
+    "en-US": "Output audio to selected devices",
+    "es-ES": "Salida de audio a los dispositivos seleccionados",
+    "ru-RU": "Вывод звука на выбранные устройства",
+    "uk-UA": "Виведення звуку на вибрані пристрої",
+    "de-DE": "Audio auf ausgewählten Geräten ausgeben"
+  },
+  "Plugin.phandasm/waveform.Description": {
+    "en-US": "Spectrum visualization",
+    "es-ES": "Visualización del espectro",
+    "ru-RU": "Спектральная визуализация",
+    "uk-UA": "Спектральна візуалізація",
+    "de-DE": "Spektrumanzeige"
+  },
+  "Plugin.univrsal/spectralizer.Description": {
+    "en-US": "Audio visualizer",
+    "es-ES": "Visualizador de audio",
+    "ru-RU": "Аудиовизуализатор",
+    "uk-UA": "Аудіовізуалізатор",
+    "de-DE": "Audiovisualisierung"
+  },
+  "Plugin.mmltools/audio-wave.Description": {
+    "en-US": "Audio visualization waves and bars",
+    "es-ES": "Ondas y barras de visualización de audio",
+    "ru-RU": "Волны и полосы аудиовизуализации",
+    "uk-UA": "Хвилі та смуги аудіовізуалізації",
+    "de-DE": "Wellen und Balken zur Audiovisualisierung"
+  },
+  "Plugin.univrsal/tuna.Description": {
+    "en-US": "Current track information",
+    "es-ES": "Información de la pista actual",
+    "ru-RU": "Информация о текущей композиции",
+    "uk-UA": "Відомості про поточну композицію",
+    "de-DE": "Informationen zum aktuellen Titel"
+  },
+  "Plugin.shmknd/masterlevelmeter.Description": {
+    "en-US": "Master track levels",
+    "es-ES": "Niveles de las pistas maestras",
+    "ru-RU": "Уровни мастер-дорожек",
+    "uk-UA": "Рівні головних доріжок",
+    "de-DE": "Pegel der Masterspuren"
+  },
+  "Plugin.norihiro/obs-loudness-dock.Description": {
+    "en-US": "EBU R128 loudness",
+    "es-ES": "Sonoridad EBU R128",
+    "ru-RU": "Громкость EBU R128",
+    "uk-UA": "Гучність EBU R128",
+    "de-DE": "Lautheit nach EBU R128"
+  },
+  "Plugin.semnil/mixtrack2source.Description": {
+    "en-US": "Use a mix as a source for processing",
+    "es-ES": "Mezcla como fuente para su procesamiento",
+    "ru-RU": "Микс как источник для обработки",
+    "uk-UA": "Мікс як джерело для обробки",
+    "de-DE": "Einen Mix als Quelle verarbeiten"
+  },
+  "Plugin.thetomcanuck/reorderable-audio-mixer.Description": {
+    "en-US": "Reorder mixer items",
+    "es-ES": "Cambiar el orden de los elementos del mezclador",
+    "ru-RU": "Изменение порядка элементов микшера",
+    "uk-UA": "Зміна порядку елементів мікшера",
+    "de-DE": "Mischerelemente neu anordnen"
+  },
+  "Plugin.norihiro/obs-vban.Description": {
+    "en-US": "Transmit audio over the network",
+    "es-ES": "Transmisión de audio por la red",
+    "ru-RU": "Передача звука по сети",
+    "uk-UA": "Передавання звуку мережею",
+    "de-DE": "Audio über das Netzwerk übertragen"
+  },
+  "Plugin.norihiro/obs-audio-pan-filter.Description": {
+    "en-US": "Stereo panning",
+    "es-ES": "Panorama estéreo",
+    "ru-RU": "Стереопанорама",
+    "uk-UA": "Стереопанорама",
+    "de-DE": "Stereopanorama"
+  },
+  "Plugin.norihiro/obs-mute-filter.Description": {
+    "en-US": "Mute audio using a filter",
+    "es-ES": "Silenciar el audio mediante un filtro",
+    "ru-RU": "Отключение звука фильтром",
+    "uk-UA": "Вимкнення звуку фільтром",
+    "de-DE": "Audio mit einem Filter stummschalten"
+  },
+  "Plugin.norihiro/obs-async-audio-filter.Description": {
+    "en-US": "Handle asynchronous audio issues",
+    "es-ES": "Gestión de problemas de audio asíncrono",
+    "ru-RU": "Обработка проблем асинхронного звука",
+    "uk-UA": "Опрацювання проблем асинхронного звуку",
+    "de-DE": "Probleme mit asynchronem Audio behandeln"
+  },
+  "Plugin.mmltools/audio-stems-recorder.Description": {
+    "en-US": "Record audio sources separately",
+    "es-ES": "Grabación independiente de fuentes de audio",
+    "ru-RU": "Раздельная запись аудиоисточников",
+    "uk-UA": "Окремий запис аудіоджерел",
+    "de-DE": "Audioquellen getrennt aufnehmen"
+  },
+  "Plugin.cg2121/obs-soundboard.Description": {
+    "en-US": "Sound playback dock",
+    "es-ES": "Panel de reproducción de sonidos",
+    "ru-RU": "Панель воспроизведения звуков",
+    "uk-UA": "Панель відтворення звуків",
+    "de-DE": "Dock zur Tonwiedergabe"
+  },
+  "Plugin.norihiro/obs-audio-video-sync-dock.Description": {
+    "en-US": "Measure audio/video desynchronization",
+    "es-ES": "Medición de la desincronización de audio y vídeo",
+    "ru-RU": "Измерение рассинхронизации",
+    "uk-UA": "Вимірювання розсинхронізації",
+    "de-DE": "Audio-/Video-Versatz messen"
+  },
+  "Plugin.royshil/obs-backgroundremoval.Description": {
+    "en-US": "Background removal",
+    "es-ES": "Eliminación del fondo",
+    "ru-RU": "Удаление фона",
+    "uk-UA": "Видалення тла",
+    "de-DE": "Hintergrundentfernung"
+  },
+  "Plugin.kaito-tokyo/live-backgroundremoval-lite.Description": {
+    "en-US": "Background removal",
+    "es-ES": "Eliminación del fondo",
+    "ru-RU": "Удаление фона",
+    "uk-UA": "Видалення тла",
+    "de-DE": "Hintergrundentfernung"
+  },
+  "Plugin.kounoike/obs-virtualbg.Description": {
+    "en-US": "Virtual background",
+    "es-ES": "Fondo virtual",
+    "ru-RU": "Виртуальный фон",
+    "uk-UA": "Віртуальне тло",
+    "de-DE": "Virtueller Hintergrund"
+  },
+  "Plugin.royshil/obs-localvocal.Description": {
+    "en-US": "Speech recognition, captions and translation",
+    "es-ES": "Reconocimiento de voz, subtítulos y traducción",
+    "ru-RU": "Распознавание речи, субтитры и перевод",
+    "uk-UA": "Розпізнавання мовлення, субтитри й переклад",
+    "de-DE": "Spracherkennung, Untertitel und Übersetzung"
+  },
+  "Plugin.royshil/cloudvocal.Description": {
+    "en-US": "Cloud speech recognition and translation",
+    "es-ES": "Reconocimiento de voz y traducción en la nube",
+    "ru-RU": "Облачное распознавание и перевод",
+    "uk-UA": "Хмарне розпізнавання мовлення й переклад",
+    "de-DE": "Spracherkennung und Übersetzung in der Cloud"
+  },
+  "Plugin.ratwithacompiler/obs-captions-plugin.Description": {
+    "en-US": "Captions using Google Speech Recognition",
+    "es-ES": "Subtítulos mediante Google Speech Recognition",
+    "ru-RU": "Субтитры через Google Speech Recognition",
+    "uk-UA": "Субтитри через Google Speech Recognition",
+    "de-DE": "Untertitel mit Google Speech Recognition"
+  },
+  "Plugin.royshil/obs-cleanstream.Description": {
+    "en-US": "Filter unwanted words",
+    "es-ES": "Filtrado de palabras no deseadas",
+    "ru-RU": "Фильтрация нежелательных слов",
+    "uk-UA": "Фільтрування небажаних слів",
+    "de-DE": "Unerwünschte Wörter filtern"
+  },
+  "Plugin.norihiro/obs-face-tracker.Description": {
+    "en-US": "Face tracking",
+    "es-ES": "Seguimiento facial",
+    "ru-RU": "Отслеживание лица",
+    "uk-UA": "Відстеження обличчя",
+    "de-DE": "Gesichtsverfolgung"
+  },
+  "Plugin.royshil/obs-detect.Description": {
+    "en-US": "Object detection. Archived",
+    "es-ES": "Detección de objetos. Archivado",
+    "ru-RU": "Детекция объектов. Архивирован",
+    "uk-UA": "Виявлення об'єктів. Архівовано",
+    "de-DE": "Objekterkennung. Archiviert"
+  },
+  "Plugin.royshil/obs-ocr.Description": {
+    "en-US": "Text recognition using Tesseract",
+    "es-ES": "Reconocimiento de texto mediante Tesseract",
+    "ru-RU": "Распознавание текста через Tesseract",
+    "uk-UA": "Розпізнавання тексту через Tesseract",
+    "de-DE": "Texterkennung mit Tesseract"
+  },
+  "Plugin.royshil/obs-squawk.Description": {
+    "en-US": "Speech synthesis",
+    "es-ES": "Síntesis de voz",
+    "ru-RU": "Синтез речи",
+    "uk-UA": "Синтез мовлення",
+    "de-DE": "Sprachsynthese"
+  },
+  "Plugin.royshil/obs-polyglot.Description": {
+    "en-US": "Local machine translation",
+    "es-ES": "Traducción automática local",
+    "ru-RU": "Локальный машинный перевод",
+    "uk-UA": "Локальний машинний переклад",
+    "de-DE": "Lokale maschinelle Übersetzung"
+  },
+  "Plugin.royshil/obs-brain.Description": {
+    "en-US": "LLM integration and text processing",
+    "es-ES": "Integración de LLM y procesamiento de texto",
+    "ru-RU": "Интеграция LLM и обработка текста",
+    "uk-UA": "Інтеграція LLM та обробка тексту",
+    "de-DE": "LLM-Integration und Textverarbeitung"
+  },
+  "Plugin.mvolpe94/aruco-source-move.Description": {
+    "en-US": "Anchor a source to an ArUco marker",
+    "es-ES": "Vincular una fuente a un marcador ArUco",
+    "ru-RU": "Привязка источника к ArUco-маркеру",
+    "uk-UA": "Прив'язування джерела до маркера ArUco",
+    "de-DE": "Eine Quelle an einen ArUco-Marker binden"
+  },
+  "Plugin.maciejrytlewski/streammyheart.Description": {
+    "en-US": "Estimate heart rate from webcam images",
+    "es-ES": "Estimación del pulso a partir de imágenes de la cámara web",
+    "ru-RU": "Оценка пульса по изображению веб-камеры",
+    "uk-UA": "Оцінювання пульсу за зображенням вебкамери",
+    "de-DE": "Puls anhand von Webcam-Bildern schätzen"
+  },
+  "Plugin.sorayuki/obs-multi-rtmp.Description": {
+    "en-US": "Stream to multiple servers",
+    "es-ES": "Transmisión a varios servidores",
+    "ru-RU": "Трансляция на несколько серверов",
+    "uk-UA": "Трансляція на кілька серверів",
+    "de-DE": "Auf mehrere Server streamen"
+  },
+  "Plugin.aitum/obs-aitum-multistream.Description": {
+    "en-US": "Multistreaming",
+    "es-ES": "Transmisión simultánea a varios destinos",
+    "ru-RU": "Мультистриминг",
+    "uk-UA": "Мультистримінг",
+    "de-DE": "Gleichzeitig auf mehrere Ziele streamen"
+  },
+  "Plugin.aitum/obs-vertical-canvas.Description": {
+    "en-US": "Separate vertical canvas",
+    "es-ES": "Lienzo vertical independiente",
+    "ru-RU": "Отдельный вертикальный холст",
+    "uk-UA": "Окреме вертикальне полотно",
+    "de-DE": "Separate vertikale Leinwand"
+  },
+  "Plugin.aitum/obs-aitum-stream-suite.Description": {
+    "en-US": "Aitum tool suite",
+    "es-ES": "Conjunto de herramientas Aitum",
+    "ru-RU": "Набор инструментов Aitum",
+    "uk-UA": "Набір інструментів Aitum",
+    "de-DE": "Aitum-Werkzeugsammlung"
+  },
+  "Plugin.exeldro/obs-source-record.Description": {
+    "en-US": "Record sources separately",
+    "es-ES": "Grabación independiente de fuentes",
+    "ru-RU": "Раздельная запись источников",
+    "uk-UA": "Окремий запис джерел",
+    "de-DE": "Quellen getrennt aufnehmen"
+  },
+  "Plugin.opensphere-inc/branch-output.Description": {
+    "en-US": "Record and stream sources independently",
+    "es-ES": "Grabación y transmisión independientes de fuentes",
+    "ru-RU": "Отдельная запись и трансляция источников",
+    "uk-UA": "Окремий запис і трансляція джерел",
+    "de-DE": "Quellen getrennt aufnehmen und streamen"
+  },
+  "Plugin.exeldro/obs-replay-source.Description": {
+    "en-US": "Replays from the buffer",
+    "es-ES": "Repeticiones desde el búfer",
+    "ru-RU": "Повторы из буфера",
+    "uk-UA": "Повтори з буфера",
+    "de-DE": "Wiederholungen aus dem Puffer"
+  },
+  "Plugin.distroav/distroav.Description": {
+    "en-US": "Transmit audio and video using NDI",
+    "es-ES": "Transmisión de audio y vídeo mediante NDI",
+    "ru-RU": "Передача аудио и видео через NDI",
+    "uk-UA": "Передавання аудіо й відео через NDI",
+    "de-DE": "Audio und Video mit NDI übertragen"
+  },
+  "Plugin.fzwoch/obs-teleport.Description": {
+    "en-US": "Transmit between OBS instances over a local network",
+    "es-ES": "Transmisión entre instancias de OBS por la red local",
+    "ru-RU": "Передача между OBS по локальной сети",
+    "uk-UA": "Передавання між примірниками OBS локальною мережею",
+    "de-DE": "Übertragung zwischen OBS-Instanzen im lokalen Netzwerk"
+  },
+  "Plugin.yorvex/xobsbeam.Description": {
+    "en-US": "Network video and audio transport",
+    "es-ES": "Transporte de vídeo y audio por la red",
+    "ru-RU": "Сетевая передача видео и аудио",
+    "uk-UA": "Мережеве передавання відео й аудіо",
+    "de-DE": "Video und Audio über das Netzwerk übertragen"
+  },
+  "Plugin.openmediatransport/omtplugin.Description": {
+    "en-US": "Open Media Transport",
+    "es-ES": "Open Media Transport",
+    "ru-RU": "Open Media Transport",
+    "uk-UA": "Open Media Transport",
+    "de-DE": "Open Media Transport"
+  },
+  "Plugin.iamscottxu/obs-rtspserver.Description": {
+    "en-US": "Publish an RTSP stream",
+    "es-ES": "Publicación de un flujo RTSP",
+    "ru-RU": "Публикация RTSP-потока",
+    "uk-UA": "Публікація потоку RTSP",
+    "de-DE": "Einen RTSP-Stream bereitstellen"
+  },
+  "Plugin.fzwoch/obs-gstreamer.Description": {
+    "en-US": "GStreamer integration",
+    "es-ES": "Integración de GStreamer",
+    "ru-RU": "Интеграция GStreamer",
+    "uk-UA": "Інтеграція GStreamer",
+    "de-DE": "GStreamer-Integration"
+  },
+  "Plugin.exeldro/obs-record-rename.Description": {
+    "en-US": "Rename recordings",
+    "es-ES": "Cambio de nombre de las grabaciones",
+    "ru-RU": "Переименование записей",
+    "uk-UA": "Перейменування записів",
+    "de-DE": "Aufnahmen umbenennen"
+  },
+  "Plugin.dev47apps/droidcam-obs-virtual-output.Description": {
+    "en-US": "Alternative virtual camera",
+    "es-ES": "Cámara virtual alternativa",
+    "ru-RU": "Альтернативная виртуальная камера",
+    "uk-UA": "Альтернативна віртуальна камера",
+    "de-DE": "Alternative virtuelle Kamera"
+  },
+  "Plugin.catxfish/obs-v4l2sink.Description": {
+    "en-US": "Output to Video4Linux2",
+    "es-ES": "Salida a Video4Linux2",
+    "ru-RU": "Вывод в Video4Linux2",
+    "uk-UA": "Виведення у Video4Linux2",
+    "de-DE": "Ausgabe an Video4Linux2"
+  },
+  "Plugin.cg2121/obs-decklink-output-filter.Description": {
+    "en-US": "Output a source using DeckLink",
+    "es-ES": "Salida de una fuente mediante DeckLink",
+    "ru-RU": "Вывод источника через DeckLink",
+    "uk-UA": "Виведення джерела через DeckLink",
+    "de-DE": "Eine Quelle über DeckLink ausgeben"
+  },
+  "Plugin.norihiro/obs-aja-output-filter.Description": {
+    "en-US": "Output using AJA devices",
+    "es-ES": "Salida mediante dispositivos AJA",
+    "ru-RU": "Вывод через устройства AJA",
+    "uk-UA": "Виведення через пристрої AJA",
+    "de-DE": "Ausgabe über AJA-Geräte"
+  },
+  "Plugin.dev47apps/droidcam-obs-plugin.Description": {
+    "en-US": "Use a phone as a camera. OBS plugin source code",
+    "es-ES": "Teléfono como cámara. Código fuente del complemento de OBS",
+    "ru-RU": "Телефон как камера. Исходники OBS-плагина",
+    "uk-UA": "Телефон як камера. Вихідний код плагіна OBS",
+    "de-DE": "Telefon als Kamera. Quellcode des OBS-Plugins"
+  },
+  "Plugin.off-world-live/obs-spout2-plugin.Description": {
+    "en-US": "Share GPU textures between Windows applications",
+    "es-ES": "Intercambio de texturas de GPU entre aplicaciones de Windows",
+    "ru-RU": "Обмен GPU-текстурами между приложениями Windows",
+    "uk-UA": "Обмін GPU-текстурами між програмами Windows",
+    "de-DE": "GPU-Texturen zwischen Windows-Anwendungen austauschen"
+  },
+  "Plugin.sirlynix/obs-kinect.Description": {
+    "en-US": "Kinect, depth and background removal",
+    "es-ES": "Kinect, profundidad y eliminación del fondo",
+    "ru-RU": "Kinect, глубина и удаление фона",
+    "uk-UA": "Kinect, глибина й видалення тла",
+    "de-DE": "Kinect, Tiefeninformationen und Hintergrundentfernung"
+  },
+  "Plugin.baffler/obs-openvr-input-plugin.Description": {
+    "en-US": "OpenVR / SteamVR capture",
+    "es-ES": "Captura de OpenVR / SteamVR",
+    "ru-RU": "Захват OpenVR / SteamVR",
+    "uk-UA": "Захоплення OpenVR / SteamVR",
+    "de-DE": "OpenVR / SteamVR erfassen"
+  },
+  "Plugin.glikely/obs-ptz.Description": {
+    "en-US": "PTZ camera control",
+    "es-ES": "Control de cámaras PTZ",
+    "ru-RU": "Управление PTZ-камерами",
+    "uk-UA": "Керування PTZ-камерами",
+    "de-DE": "PTZ-Kameras steuern"
+  },
+  "Plugin.norihiro/obs-vnc.Description": {
+    "en-US": "Remote desktop as a source",
+    "es-ES": "Escritorio remoto como fuente",
+    "ru-RU": "Удалённый рабочий стол как источник",
+    "uk-UA": "Віддалений робочий стіл як джерело",
+    "de-DE": "Remotedesktop als Quelle"
+  },
+  "Plugin.dd-center/obs-streamlink.Description": {
+    "en-US": "Receive streams using Streamlink",
+    "es-ES": "Recepción de flujos mediante Streamlink",
+    "ru-RU": "Получение потоков через Streamlink",
+    "uk-UA": "Отримання потоків через Streamlink",
+    "de-DE": "Streams über Streamlink empfangen"
+  },
+  "Plugin.norihiro/obs-async-source-duplication.Description": {
+    "en-US": "Duplicate asynchronous sources",
+    "es-ES": "Duplicación de fuentes asíncronas",
+    "ru-RU": "Дублирование асинхронных источников",
+    "uk-UA": "Дублювання асинхронних джерел",
+    "de-DE": "Asynchrone Quellen duplizieren"
+  },
+  "Plugin.norihiro/obs-main-view-source.Description": {
+    "en-US": "Use the main OBS output as a source",
+    "es-ES": "Salida principal de OBS como fuente",
+    "ru-RU": "Основной вывод OBS как источник",
+    "uk-UA": "Основне виведення OBS як джерело",
+    "de-DE": "Hauptausgabe von OBS als Quelle verwenden"
+  },
+  "Plugin.univrsal/input-overlay.Description": {
+    "en-US": "Display keyboard, mouse and gamepad input",
+    "es-ES": "Visualización de entradas de teclado, ratón y mando",
+    "ru-RU": "Отображение клавиатуры, мыши и геймпада",
+    "uk-UA": "Відображення введення з клавіатури, миші й геймпада",
+    "de-DE": "Tastatur-, Maus- und Gamepad-Eingaben anzeigen"
+  },
+  "Plugin.justflood/flood-tuber.Description": {
+    "en-US": "PNGTuber animations",
+    "es-ES": "Animaciones PNGTuber",
+    "ru-RU": "PNGTuber-анимации",
+    "uk-UA": "PNGTuber-анімації",
+    "de-DE": "PNGTuber-Animationen"
+  },
+  "Plugin.royshil/obs-urlsource.Description": {
+    "en-US": "Data from URLs, APIs and files",
+    "es-ES": "Datos de URL, API y archivos",
+    "ru-RU": "Данные из URL, API и файлов",
+    "uk-UA": "Дані з URL, API та файлів",
+    "de-DE": "Daten aus URLs, APIs und Dateien"
+  },
+  "Plugin.exeldro/obs-markdown.Description": {
+    "en-US": "Markdown as a source",
+    "es-ES": "Markdown como fuente",
+    "ru-RU": "Markdown как источник",
+    "uk-UA": "Markdown як джерело",
+    "de-DE": "Markdown als Quelle"
+  },
+  "Plugin.exeldro/obs-html-source.Description": {
+    "en-US": "HTML as a source",
+    "es-ES": "HTML como fuente",
+    "ru-RU": "HTML как источник",
+    "uk-UA": "HTML як джерело",
+    "de-DE": "HTML als Quelle"
+  },
+  "Plugin.finitesingularity/svg-source.Description": {
+    "en-US": "SVG graphics",
+    "es-ES": "Gráficos SVG",
+    "ru-RU": "SVG-графика",
+    "uk-UA": "SVG-графіка",
+    "de-DE": "SVG-Grafiken"
+  },
+  "Plugin.exeldro/obs-gradient-source.Description": {
+    "en-US": "Generate gradients",
+    "es-ES": "Generación de degradados",
+    "ru-RU": "Генерация градиентов",
+    "uk-UA": "Створення градієнтів",
+    "de-DE": "Farbverläufe erzeugen"
+  },
+  "Plugin.jbwong05/obs-text-slideshow.Description": {
+    "en-US": "Text slideshow",
+    "es-ES": "Presentación de diapositivas de texto",
+    "ru-RU": "Слайд-шоу из текста",
+    "uk-UA": "Показ слайдів із тексту",
+    "de-DE": "Text-Diashow"
+  },
+  "Plugin.marktheminer/text-freetype2-mustache.Description": {
+    "en-US": "Text with Mustache templates",
+    "es-ES": "Texto con plantillas Mustache",
+    "ru-RU": "Текст с шаблонами Mustache",
+    "uk-UA": "Текст із шаблонами Mustache",
+    "de-DE": "Text mit Mustache-Vorlagen"
+  },
+  "Plugin.codeyan01/media-playlist-source.Description": {
+    "en-US": "Media file playlists",
+    "es-ES": "Listas de reproducción de archivos multimedia",
+    "ru-RU": "Плейлисты медиафайлов",
+    "uk-UA": "Списки відтворення медіафайлів",
+    "de-DE": "Wiedergabelisten für Mediendateien"
+  },
+  "Plugin.exeldro/obs-dir-watch-media.Description": {
+    "en-US": "Automatically pick up media files from a folder",
+    "es-ES": "Incorporación automática de archivos multimedia desde una carpeta",
+    "ru-RU": "Подхват медиафайлов из папки",
+    "uk-UA": "Автоматичне підхоплення медіафайлів із теки",
+    "de-DE": "Mediendateien automatisch aus einem Ordner übernehmen"
+  },
+  "Plugin.exeldro/obs-playout-source.Description": {
+    "en-US": "Media file playback",
+    "es-ES": "Reproducción de archivos multimedia",
+    "ru-RU": "Воспроизведение медиафайлов",
+    "uk-UA": "Відтворення медіафайлів",
+    "de-DE": "Wiedergabe von Mediendateien"
+  },
+  "Plugin.grandmastersonline/obs-lottie.Description": {
+    "en-US": "Lottie animations",
+    "es-ES": "Animaciones Lottie",
+    "ru-RU": "Lottie-анимации",
+    "uk-UA": "Lottie-анімації",
+    "de-DE": "Lottie-Animationen"
+  },
+  "Plugin.petercang/flip-clock.Description": {
+    "en-US": "Clock, timer and stopwatch",
+    "es-ES": "Reloj, temporizador y cronómetro",
+    "ru-RU": "Часы, таймер и секундомер",
+    "uk-UA": "Годинник, таймер і секундомір",
+    "de-DE": "Uhr, Timer und Stoppuhr"
+  },
+  "Plugin.synap5e/obs-screenshot-plugin.Description": {
+    "en-US": "Source or scene screenshots",
+    "es-ES": "Capturas de pantalla de una fuente o escena",
+    "ru-RU": "Скриншоты источника или сцены",
+    "uk-UA": "Знімки екрана джерела або сцени",
+    "de-DE": "Screenshots einer Quelle oder Szene"
+  },
+  "Plugin.mmltools/better-screenshot.Description": {
+    "en-US": "Additional screenshot features",
+    "es-ES": "Funciones adicionales de captura de pantalla",
+    "ru-RU": "Дополнительные возможности скриншотов",
+    "uk-UA": "Додаткові можливості створення знімків екрана",
+    "de-DE": "Zusätzliche Screenshot-Funktionen"
+  },
+  "Plugin.partouf/obsinfowriter.Description": {
+    "en-US": "Write timestamps",
+    "es-ES": "Registro de marcas de tiempo",
+    "ru-RU": "Запись временных отметок",
+    "uk-UA": "Запис часових позначок",
+    "de-DE": "Zeitstempel aufzeichnen"
+  },
+  "Plugin.davidj361/obs-chaptermarker.Description": {
+    "en-US": "Chapter markers",
+    "es-ES": "Marcadores de capítulos",
+    "ru-RU": "Маркеры глав",
+    "uk-UA": "Маркери розділів",
+    "de-DE": "Kapitelmarkierungen"
+  },
+  "Plugin.streamuptips/obs-streamup-chapter-marker-manager.Description": {
+    "en-US": "Chapter marker management",
+    "es-ES": "Gestión de marcadores de capítulos",
+    "ru-RU": "Управление маркерами глав",
+    "uk-UA": "Керування маркерами розділів",
+    "de-DE": "Kapitelmarkierungen verwalten"
+  },
+  "Plugin.norihiro/obs-color-monitor.Description": {
+    "en-US": "Histogram, waveform and vectorscope",
+    "es-ES": "Histograma, forma de onda y vectorscopio",
+    "ru-RU": "Гистограмма, waveform и вектороскоп",
+    "uk-UA": "Гістограма, форма хвилі й вектороскоп",
+    "de-DE": "Histogramm, Wellenform und Vektorskop"
+  },
+  "Plugin.derrod/obs-roi-ui.Description": {
+    "en-US": "Regions of interest for encoding",
+    "es-ES": "Regiones de interés para la codificación",
+    "ru-RU": "Области интереса для кодирования",
+    "uk-UA": "Області інтересу для кодування",
+    "de-DE": "Interessenbereiche für die Kodierung"
+  },
+  "Plugin.norihiro/obs-frame-interleave-filter.Description": {
+    "en-US": "Frame interleaving",
+    "es-ES": "Intercalación de fotogramas",
+    "ru-RU": "Чередование кадров",
+    "uk-UA": "Чергування кадрів",
+    "de-DE": "Bildverschachtelung"
+  },
+  "Plugin.obsproject/obs-browser.Description": {
+    "en-US": "CEF-based browser sources",
+    "es-ES": "Fuentes de navegador basadas en CEF",
+    "ru-RU": "Браузерные источники на CEF",
+    "uk-UA": "Джерела браузера на основі CEF",
+    "de-DE": "CEF-basierte Browserquellen"
+  },
+  "Plugin.obsproject/obs-websocket.Description": {
+    "en-US": "Remote control and automation",
+    "es-ES": "Control remoto y automatización",
+    "ru-RU": "Удалённое управление и автоматизация",
+    "uk-UA": "Дистанційне керування й автоматизація",
+    "de-DE": "Fernsteuerung und Automatisierung"
+  },
+  "Plugin.obsproject/obs-vst.Description": {
+    "en-US": "VST plugin support",
+    "es-ES": "Compatibilidad con complementos VST",
+    "ru-RU": "Подключение VST",
+    "uk-UA": "Підключення VST",
+    "de-DE": "VST-Plugins einbinden"
+  },
+  "Plugin.obsproject/obs-studio:obs-filters.Description": {
+    "en-US": "Standard audio and video filters",
+    "es-ES": "Filtros estándar de audio y vídeo",
+    "ru-RU": "Стандартные аудио- и видеофильтры",
+    "uk-UA": "Стандартні аудіо- й відеофільтри",
+    "de-DE": "Standard-Audio- und Videofilter"
+  },
+  "Plugin.obsproject/obs-studio:obs-ffmpeg.Description": {
+    "en-US": "Media sources, encoding and output using FFmpeg",
+    "es-ES": "Fuentes multimedia, codificación y salida mediante FFmpeg",
+    "ru-RU": "Медиаисточники, кодирование и вывод через FFmpeg",
+    "uk-UA": "Медіаджерела, кодування й виведення через FFmpeg",
+    "de-DE": "Medienquellen, Kodierung und Ausgabe mit FFmpeg"
+  },
+  "Plugin.obsproject/obs-studio:obs-outputs.Description": {
+    "en-US": "Standard output modules",
+    "es-ES": "Módulos estándar de salida",
+    "ru-RU": "Стандартные модули вывода",
+    "uk-UA": "Стандартні модулі виведення",
+    "de-DE": "Standard-Ausgabemodule"
+  },
+  "Plugin.obsproject/obs-studio:obs-nvenc.Description": {
+    "en-US": "NVIDIA NVENC",
+    "es-ES": "NVIDIA NVENC",
+    "ru-RU": "NVIDIA NVENC",
+    "uk-UA": "NVIDIA NVENC",
+    "de-DE": "NVIDIA NVENC"
+  },
+  "Plugin.obsproject/obs-studio:obs-qsv11.Description": {
+    "en-US": "Intel Quick Sync",
+    "es-ES": "Intel Quick Sync",
+    "ru-RU": "Intel Quick Sync",
+    "uk-UA": "Intel Quick Sync",
+    "de-DE": "Intel Quick Sync"
+  },
+  "Plugin.obsproject/obs-studio:image-source.Description": {
+    "en-US": "Images and slideshows",
+    "es-ES": "Imágenes y presentaciones de diapositivas",
+    "ru-RU": "Изображения и слайд-шоу",
+    "uk-UA": "Зображення й показ слайдів",
+    "de-DE": "Bilder und Diashows"
+  },
+  "Plugin.obsproject/obs-studio:linux-pipewire.Description": {
+    "en-US": "Capture using PipeWire",
+    "es-ES": "Captura mediante PipeWire",
+    "ru-RU": "Захват через PipeWire",
+    "uk-UA": "Захоплення через PipeWire",
+    "de-DE": "Aufnahme über PipeWire"
+  },
+  "Plugin.obsproject/obs-studio:linux-v4l2.Description": {
+    "en-US": "Video4Linux2 cameras",
+    "es-ES": "Cámaras Video4Linux2",
+    "ru-RU": "Камеры Video4Linux2",
+    "uk-UA": "Камери Video4Linux2",
+    "de-DE": "Video4Linux2-Kameras"
+  },
+  "Plugin.obsproject/obs-studio:mac-avcapture.Description": {
+    "en-US": "macOS cameras",
+    "es-ES": "Cámaras de macOS",
+    "ru-RU": "Камеры macOS",
+    "uk-UA": "Камери macOS",
+    "de-DE": "macOS-Kameras"
+  },
+  "Plugin.obsproject/obs-studio:mac-syphon.Description": {
+    "en-US": "Image sharing using Syphon",
+    "es-ES": "Intercambio de imágenes mediante Syphon",
+    "ru-RU": "Обмен изображением через Syphon",
+    "uk-UA": "Обмін зображеннями через Syphon",
+    "de-DE": "Bildaustausch über Syphon"
+  },
+  "Plugin.obsproject/obs-studio:mac-videotoolbox.Description": {
+    "en-US": "Apple VideoToolbox",
+    "es-ES": "Apple VideoToolbox",
+    "ru-RU": "Apple VideoToolbox",
+    "uk-UA": "Apple VideoToolbox",
+    "de-DE": "Apple VideoToolbox"
+  },
+  "Plugin.obsproject/obs-studio:decklink.Description": {
+    "en-US": "Blackmagic DeckLink",
+    "es-ES": "Blackmagic DeckLink",
+    "ru-RU": "Blackmagic DeckLink",
+    "uk-UA": "Blackmagic DeckLink",
+    "de-DE": "Blackmagic DeckLink"
+  },
+  "Plugin.obsproject/obs-studio:aja.Description": {
+    "en-US": "AJA devices",
+    "es-ES": "Dispositivos AJA",
+    "ru-RU": "Устройства AJA",
+    "uk-UA": "Пристрої AJA",
+    "de-DE": "AJA-Geräte"
+  },
+  "Plugin.skylive/craft-audio-effects.Description": {
+    "en-US": "Bundled FilmCraft-derived compressor; additional Craft audio effects are pending.",
+    "es-ES": "Compresor integrado adaptado de FilmCraft; los demás efectos de audio Craft están pendientes.",
+    "ru-RU": "Встроенный компрессор на основе FilmCraft; остальные звуковые эффекты Craft ещё не перенесены.",
+    "uk-UA": "Вбудований компресор на основі FilmCraft; решту звукових ефектів Craft ще не перенесено.",
+    "de-DE": "Integrierter, aus FilmCraft übernommener Kompressor; weitere Craft-Audioeffekte stehen noch aus."
+  },
+  "Plugin.skylive/craft-video-effects.Description": {
+    "en-US": "Bundled SDR color key and color correction kernels adapted from EffectCraft.",
+    "es-ES": "Algoritmos integrados de clave de color y corrección de color SDR adaptados de EffectCraft.",
+    "ru-RU": "Встроенные SDR-фильтры удаления фона по цвету и цветокоррекции на основе EffectCraft.",
+    "uk-UA": "Вбудовані SDR-фільтри видалення тла за кольором і кольорокорекції на основі EffectCraft.",
+    "de-DE": "Integrierte SDR-Farbfreistellung und Farbkorrektur, übernommen aus EffectCraft."
+  }
+}

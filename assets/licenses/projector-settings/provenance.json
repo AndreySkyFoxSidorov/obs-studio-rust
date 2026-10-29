@@ -1,0 +1,37 @@
+{
+  "reference_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "repository": "https://github.com/obsproject/obs-studio",
+  "license": "GPL-2.0-or-later",
+  "license_file": "../projectors-multiview/OBS-GPL-2.0-or-later.txt",
+  "sources": [
+    {
+      "path": "frontend/forms/OBSBasicSettings.ui",
+      "sha256": "833391d0138c4306be7cc7ce5d04017044e36054806b64a6098b149424bcd828"
+    },
+    {
+      "path": "frontend/OBSApp.cpp",
+      "sha256": "bc298358c9fd2b8e7e8ca7952108adfeafe6243df4718b854003e33e96372963"
+    },
+    {
+      "path": "frontend/settings/OBSBasicSettings.cpp",
+      "sha256": "c90a686b33a5966aab71b9548cb9ffe0f51fa9377bf4bec24593c8dff66317d6"
+    },
+    {
+      "path": "frontend/widgets/OBSBasic_Projectors.cpp",
+      "sha256": "6d1f4bdc47bc4b2f1a9bf7305163cabfee0e6c901a314ee0bc5ac415b08ee6bf"
+    },
+    {
+      "path": "frontend/widgets/OBSBasic_Scenes.cpp",
+      "sha256": "d0f9bea2250c2dea24407d61b1b61d1d9da4aea12e9f725bb55526b95faf1cd0"
+    },
+    {
+      "path": "frontend/widgets/OBSProjector.cpp",
+      "sha256": "eddf581b8b9a380a654894575ab3139cfe4edd054616663040ad4b654d21d003"
+    },
+    {
+      "path": "frontend/components/Multiview.cpp",
+      "sha256": "6a49176e0422ea053b9e4b815d8d34db5e6f62150149297778537e036bf9d4fc"
+    }
+  ],
+  "scope": "Rust original General projector/Multiview defaults, per-scene visibility and intrinsic scene rendering adaptation; source-only, no runtime/visual/performance acceptance."
+}

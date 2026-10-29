@@ -1,0 +1,42 @@
+//! File queue presentation only: paths are drafts, never opened by egui.
+use eframe::egui;
+use skylive_host::remux::{self,Job,Key,Phase,Status};
+use super::Intent;
+#[derive(Clone)]pub struct Row{pub id:u64,pub source:String,pub destination:String,pub result:Option<remux::Receipt>}
+pub enum Action{Start,Cancel(Key),Close}
+#[derive(Default)]pub struct Panel{pub open:bool,pub generation:u64,pub rows:Vec<Row>,pub status:Status,pub submitted:Vec<u64>,pub key:Option<Key>,pub closing:bool,next:u64}
+impl Panel{
+    pub fn active(&self)->bool{self.status.active&&!self.status.retired}
+    pub fn add_paths(&mut self,paths:Vec<String>)->Result<(),String>{if self.active()||self.rows.len().saturating_add(paths.len())>remux::MAX_JOBS{return Err("Remux queue is active or exceeds32jobs".into());}if paths.iter().any(|s|s.len()>remux::MAX_PATH_BYTES||s.chars().any(char::is_control)){return Err("Remux path exceeds4096bytes".into());}for source in paths{self.next=self.next.checked_add(1).ok_or("Remux row identity exhausted")?;let destination=std::path::Path::new(&source).with_extension("mp4").to_string_lossy().into_owned();self.rows.push(Row{id:self.next,source,destination,result:None});}self.changed()?;Ok(())}
+    fn changed(&mut self)->Result<(),String>{self.key=None;self.submitted.clear();self.status=Status::default();self.generation=self.generation.checked_add(1).ok_or("Remux draft generation exhausted")?;Ok(())}
+    pub fn jobs(&mut self)->Vec<Job>{self.key=None;self.status=Status::default();let mut jobs=Vec::with_capacity(self.rows.len());self.submitted.clear();for row in &mut self.rows{if row.result.as_ref().is_some_and(|r|r.published){continue;}row.result=None;self.submitted.push(row.id);jobs.push(Job{source:row.source.clone().into(),destination:row.destination.clone().into()});}jobs}
+    pub fn update(&mut self,status:Status){if status.key==self.key&&self.key.is_some(){for receipt in &status.receipts{if let Some(id)=self.submitted.get(receipt.job){if let Some(row)=self.rows.iter_mut().find(|r|r.id==*id){row.result=Some(receipt.clone());}}}self.status=status;}if self.closing&&!self.active(){self.open=false;self.closing=false;}}
+    pub fn show(&mut self,ctx:&egui::Context,intents:&mut Vec<Intent>,enabled:bool){if !self.open{return;}let active=self.active();let mut remove=None;let mut swap=None;let mut edited=false;
+        let response=egui::Modal::new(egui::Id::new("recording-remux-modal")).show(ctx,|ui|{
+            ui.set_width(940.0_f32.min((ctx.screen_rect().width()-48.0).max(180.0)));ui.heading(crate::i18n::tr(ui,"Remux Recordings"));
+            ui.label(crate::i18n::tr(ui,"Convert finalized SkyLive MKV recordings to MP4 without re-encoding. Supported: progressive SDR H.264 without B-frames and optional AAC-LC. Source files stay unchanged; destinations are never overwritten."));
+            egui::ScrollArea::both().id_salt("remux-queue").max_height((ctx.screen_rect().height()-270.0).max(80.0)).show(ui,|ui|{
+                egui::Grid::new("remux-rows").striped(true).num_columns(4).min_col_width(60.0).show(ui,|ui|{
+                    for heading in ["Status","Source recording","Target file","Order"]{ui.strong(crate::i18n::tr(ui,heading));}ui.end_row();
+                    let row_count=self.rows.len();for(index,row)in self.rows.iter_mut().enumerate(){ui.push_id(row.id,|ui|{ui.label(crate::i18n::tr(ui,row.result.as_ref().map_or("Ready",|r|phase(r.phase))));});
+                        ui.push_id((row.id,"source"),|ui|{let r=ui.add_enabled(!active&&enabled,egui::TextEdit::singleline(&mut row.source).desired_width(280.0).char_limit(remux::MAX_PATH_BYTES)).on_hover_text(crate::i18n::tr(ui,"Path to a finalized supported .mkv recording."));if r.changed(){row.result=None;edited=true;}});
+                        ui.push_id((row.id,"destination"),|ui|{if ui.add_enabled(!active&&enabled,egui::TextEdit::singleline(&mut row.destination).desired_width(280.0).char_limit(remux::MAX_PATH_BYTES)).on_hover_text(crate::i18n::tr(ui,"Choose a new .mp4 path. Existing files are retained and reported as a collision.")).changed(){row.result=None;edited=true;}});
+                        ui.horizontal(|ui|{if ui.add_enabled(!active&&enabled&&index>0,egui::Button::new("↑")).on_hover_text(crate::i18n::tr(ui,"Move up")).clicked(){swap=Some((index,index-1));}if ui.add_enabled(!active&&enabled&&index+1<row_count,egui::Button::new("↓")).on_hover_text(crate::i18n::tr(ui,"Move down")).clicked(){swap=Some((index,index+1));}if ui.add_enabled(!active&&enabled,egui::Button::new("×")).on_hover_text(crate::i18n::tr(ui,"Remove this remux job.")).clicked(){remove=Some(index);}});ui.end_row();
+                        if let Some(result)=&row.result{if let Some(error)=&result.error{ui.colored_label(egui::Color32::LIGHT_RED,error);ui.end_row();}if result.private_output.is_some()&&result.phase!=Phase::Complete{ui.label(crate::i18n::tr(ui,"Private recovery file"));ui.monospace(result.private_output.as_ref().map(|p|p.display().to_string()).unwrap_or_default());ui.end_row();}}
+                    }
+                });
+            });
+            ui.horizontal_wrapped(|ui|{if let Some(intent)=crate::native_browse::button(ui,"Add recordings…",crate::native_browse::Target::RemuxFiles,!active&&enabled&&self.rows.len()<remux::MAX_JOBS){intents.push(intent);}if ui.add_enabled(!active&&enabled&&self.rows.len()<remux::MAX_JOBS,egui::Button::new(crate::i18n::tr(ui,"Add path"))).on_hover_text(crate::i18n::tr(ui,"Add one editable source and target row.")).clicked(){if let Err(error)=self.add_paths(vec![String::new()]){intents.push(Intent::DialogError(error));}}
+                if ui.add_enabled(!active&&enabled,egui::Button::new(crate::i18n::tr(ui,"Clear finished"))).on_hover_text(crate::i18n::tr(ui,"Remove only successfully published jobs from the queue.")).clicked(){self.rows.retain(|r|!r.result.as_ref().is_some_and(|r|r.published));edited=true;}if ui.add_enabled(!active&&enabled,egui::Button::new(crate::i18n::tr(ui,"Clear all"))).on_hover_text(crate::i18n::tr(ui,"Clear the idle remux queue without deleting any file.")).clicked(){self.rows.clear();edited=true;}});
+            if let Some(current)=self.status.current.and_then(|n|self.status.receipts.get(n)){let fraction=if current.input_bytes==0{0.0}else{current.processed_bytes as f32/current.input_bytes as f32};ui.add(egui::ProgressBar::new(fraction).show_percentage()).on_hover_text(crate::i18n::tr(ui,"Input-copy progress. Final MP4 table scans and publication still run after 100%."));ui.label(crate::i18n::tr(ui,phase(current.phase)));}
+            if let Some(error)=&self.status.failure{ui.colored_label(egui::Color32::LIGHT_RED,error);}
+            let has_ready=self.rows.iter().any(|r|!r.source.trim().is_empty()&&!r.destination.trim().is_empty()&&!r.result.as_ref().is_some_and(|r|r.published));let buttons=[super::modal_footer::Action::new(if active{"Cancel remux"}else{"Remux"},if active{!self.status.cancel_requested}else{enabled&&has_ready},"Start the ordered remux queue, or request cancellation and wait for actual file-worker retirement."),super::modal_footer::Action::new("Close",true,"Close the remux window; active work is canceled and retired first.")];
+            if let Some(index)=super::modal_footer::show(ui,&buttons){intents.push(Intent::Remux(if index==1{Action::Close}else if let Some(key)=self.key.filter(|_|active){Action::Cancel(key)}else{Action::Start}));}
+            if self.status.cancel_requested&&active{ui.label(crate::i18n::tr(ui,"Cancel requested; waiting for the file worker to retire. A publication already committed may finish."));}
+        });
+        if let Some(index)=remove{self.rows.remove(index);edited=true;}if let Some((a,b))=swap{self.rows.swap(a,b);edited=true;}if edited{if let Err(error)=self.changed(){intents.push(Intent::DialogError(error));}}
+        if response.should_close(){intents.push(Intent::Remux(Action::Close));}
+        if !active&&enabled{let paths=ctx.input(|i|i.raw.dropped_files.iter().filter_map(|f|f.path.as_ref().and_then(|p|p.to_str()).map(str::to_owned)).take(remux::MAX_JOBS+1).collect::<Vec<_>>());if !paths.is_empty(){if let Err(error)=self.add_paths(paths){intents.push(Intent::DialogError(error));}}}
+    }
+}
+fn phase(p:Phase)->&'static str{match p{Phase::Queued=>"Ready",Phase::Opening=>"Opening recording…",Phase::Reading=>"Remuxing…",Phase::Finalizing=>"Finalizing MP4 tables…",Phase::Publishing=>"Publishing MP4…",Phase::Complete=>"Complete",Phase::Canceled=>"Canceled",Phase::Failed=>"Error",Phase::NotStarted=>"Not started"}}

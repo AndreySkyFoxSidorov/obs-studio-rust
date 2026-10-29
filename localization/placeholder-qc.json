@@ -1,0 +1,15 @@
+{
+  "scope": "All current generated/provenance-matched cells plus separate assistant dictionaries; original upstream values preserved, not silently repaired",
+  "matched_current_methods": {
+    "same_language_English_variant": 3073,
+    "official_unambiguous_reuse": 3943,
+    "machine_unreviewed": 5672,
+    "invariant_not_translated": 9716,
+    "assistant_reviewed_required_source": 311
+  },
+  "violations": [],
+  "unreviewed_unchanged_machine_values": [],
+  "owned_machine_format_repairs": 7,
+  "owned_fake_translation_rejections": 1,
+  "csv_sha256": "c89574a37b4b52ea7ddd93b92ccde310a2cbdbdae34de3071441cf7b1f897eb2"
+}

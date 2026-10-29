@@ -1,0 +1,200 @@
+{
+  "Image Files and Folders": {
+    "es-ES": "Archivos y carpetas de imágenes",
+    "ru-RU": "Файлы и папки изображений",
+    "uk-UA": "Файли та папки зображень",
+    "de-DE": "Bilddateien und Ordner"
+  },
+  "Select 1..=256 file or folder entries": {
+    "es-ES": "Seleccione de 1 a 256 archivos o carpetas",
+    "ru-RU": "Выберите от 1 до 256 файлов или папок",
+    "uk-UA": "Виберіть від1 до 256 файлів або папок",
+    "de-DE": "1 bis 256 Datei- oder Ordnereinträge wählen"
+  },
+  "A folder contributes supported images from its immediate children, in native enumeration order. Subfolders are not included.": {
+    "es-ES": "Una carpeta aporta imágenes admitidas de sus hijos directos, en el orden nativo. No se incluyen subcarpetas.",
+    "ru-RU": "Папка добавляет поддерживаемые изображения из непосредственных дочерних файлов в системном порядке перечисления. Вложенные папки не включаются.",
+    "uk-UA": "Папка додає підтримувані зображення з безпосередніх дочірніх файлів у системному порядку переліку. Вкладені папки не включаються.",
+    "de-DE": "Ein Ordner liefert unterstützte Bilder aus seinen direkten Dateien in nativer Aufzählungsreihenfolge. Unterordner werden nicht einbezogen."
+  },
+  "Choose File or Folder; Apply validates the actual path type on the background owner.": {
+    "es-ES": "Elija Archivo o Carpeta; Aplicar valida el tipo real en segundo plano.",
+    "ru-RU": "Выберите «Файл» или «Папка»; «Применить» проверит фактический тип пути в фоновом обработчике.",
+    "uk-UA": "Виберіть «Файл» або «Папка»; «Застосувати» перевірить фактичний тип шляху у фоновому обробнику.",
+    "de-DE": "Datei oder Ordner wählen; Anwenden prüft den tatsächlichen Pfadtyp im Hintergrund."
+  },
+  "Exact file or folder path; Apply enumerates folders and prepares every resolved image": {
+    "es-ES": "Ruta exacta de archivo o carpeta; Aplicar enumera carpetas y prepara cada imagen resuelta",
+    "ru-RU": "Точный путь к файлу или папке; «Применить» перечислит папки и подготовит каждое найденное изображение",
+    "uk-UA": "Точний шлях до файла або папки; «Застосувати» перелічить папки та підготує кожне знайдене зображення",
+    "de-DE": "Exakter Datei- oder Ordnerpfad; Anwenden listet Ordner auf und bereitet jedes aufgelöste Bild vor"
+  },
+  "Remove this file or folder entry from the draft playlist": {
+    "es-ES": "Quite este archivo o carpeta del borrador",
+    "ru-RU": "Удалить эту запись файла или папки из черновика списка",
+    "uk-UA": "Видалити цей запис файла або папки з чернетки списку",
+    "de-DE": "Diesen Datei- oder Ordnereintrag aus dem Entwurf entfernen"
+  },
+  "Move entry earlier": {
+    "es-ES": "Mover entrada antes",
+    "ru-RU": "Переместить запись раньше",
+    "uk-UA": "Перемістити запис раніше",
+    "de-DE": "Eintrag nach vorne verschieben"
+  },
+  "Move entry later": {
+    "es-ES": "Mover entrada después",
+    "ru-RU": "Переместить запись позже",
+    "uk-UA": "Перемістити запис пізніше",
+    "de-DE": "Eintrag nach hinten verschieben"
+  },
+  "Select the type of the entry to add; no filesystem access occurs until Apply.": {
+    "es-ES": "Seleccione el tipo de entrada; no se accede al sistema de archivos hasta Aplicar.",
+    "ru-RU": "Выберите тип добавляемой записи; доступ к файловой системе начнётся только после «Применить».",
+    "uk-UA": "Виберіть тип додаваного запису; доступ до файлової системи почнеться лише після «Застосувати».",
+    "de-DE": "Den Typ des neuen Eintrags wählen; erst Anwenden greift auf das Dateisystem zu."
+  },
+  "Image file or folder path": {
+    "es-ES": "Ruta de imagen o carpeta",
+    "ru-RU": "Путь к изображению или папке",
+    "uk-UA": "Шлях до зображення або папки",
+    "de-DE": "Bilddatei- oder Ordnerpfad"
+  },
+  "Enter a supported image file or a folder path; folders are not scanned recursively": {
+    "es-ES": "Introduzca una imagen admitida o carpeta; no se exploran subcarpetas",
+    "ru-RU": "Введите путь к поддерживаемому изображению или папке; вложенные папки не сканируются",
+    "uk-UA": "Введіть шлях до підтримуваного зображення або папки; вкладені папки не скануються",
+    "de-DE": "Unterstützte Bilddatei oder Ordnerpfad eingeben; Unterordner werden nicht durchsucht"
+  },
+  "Append this typed file or folder entry to the draft playlist": {
+    "es-ES": "Añada este archivo o carpeta con tipo al borrador",
+    "ru-RU": "Добавить эту запись файла или папки с указанным типом в черновик списка",
+    "uk-UA": "Додати цей запис файла або папки із зазначеним типом до чернетки списку",
+    "de-DE": "Diesen typisierten Datei- oder Ordnereintrag an den Entwurf anhängen"
+  },
+  "Enter a path; maximum 256 entries and 256 resolved images": {
+    "es-ES": "Introduzca una ruta; máximo 256 entradas y256 imágenes resueltas",
+    "ru-RU": "Введите путь; максимум 256 записей и256 найденных изображений",
+    "uk-UA": "Введіть шлях; максимум 256 записів і256 знайдених зображень",
+    "de-DE": "Pfad eingeben; höchstens 256 Einträge und256 aufgelöste Bilder"
+  },
+  "Prepared playlist: {images} images from {entries} file/folder entries": {
+    "es-ES": "Lista preparada: {images} imágenes de {entries} entradas de archivo/carpeta",
+    "ru-RU": "Подготовленный список: {images} изображений из {entries} записей файлов/папок",
+    "uk-UA": "Підготовлений список: {images} зображень із {entries} записів файлів/папок",
+    "de-DE": "Vorbereitete Liste: {images} Bilder aus {entries} Datei-/Ordnereinträgen"
+  },
+  "Apply refreshes folder contents once. Loading a project also refreshes folders on the filesystem worker. Playback controls never scan folders; there is no watcher.": {
+    "es-ES": "Aplicar actualiza una vez el contenido de carpetas. Cargar un proyecto también lo actualiza en el trabajador de archivos. Los controles nunca exploran carpetas; no hay vigilancia.",
+    "ru-RU": "«Применить» однократно обновляет содержимое папок. Загрузка проекта также обновляет папки в фоновом файловом обработчике. Команды воспроизведения не сканируют папки; наблюдателя нет.",
+    "uk-UA": "«Застосувати» одноразово оновлює вміст папок. Завантаження проєкту також оновлює папки у фоновому файловому обробнику. Команди відтворення не сканують папки; спостерігача немає.",
+    "de-DE": "Anwenden aktualisiert Ordnerinhalte einmal. Das Laden eines Projekts aktualisiert Ordner ebenfalls im Dateisystem-Worker. Wiedergabetasten durchsuchen keine Ordner; es gibt keinen Beobachter."
+  },
+  "Refresh and Apply Playlist": {
+    "es-ES": "Actualizar y aplicar lista",
+    "ru-RU": "Обновить и применить список",
+    "uk-UA": "Оновити та застосувати список",
+    "de-DE": "Liste aktualisieren und anwenden"
+  },
+  "Prepare this captured draft again, including changed folder contents, and apply it atomically. Cancel or a stale receipt keeps the current source.": {
+    "es-ES": "Prepare de nuevo el borrador capturado, incluidos cambios de carpetas, y aplíquelo de forma atómica. Cancelar o un resultado obsoleto conserva la fuente.",
+    "ru-RU": "Повторно подготовить захваченный черновик, включая изменения папок, и применить атомарно. Отмена или устаревший результат сохранят текущий источник.",
+    "uk-UA": "Повторно підготувати зафіксовану чернетку, включно зі змінами папок, і застосувати атомарно. Скасування або застарілий результат збережуть поточне джерело.",
+    "de-DE": "Diesen erfassten Entwurf samt geänderten Ordnerinhalten erneut vorbereiten und atomar anwenden. Abbrechen oder ein veraltetes Ergebnis behält die aktuelle Quelle."
+  },
+  "Wait for the current slideshow preparation to retire.": {
+    "es-ES": "Espere a que finalice la preparación actual.",
+    "ru-RU": "Дождитесь фактического завершения текущей подготовки слайд-шоу.",
+    "uk-UA": "Дочекайтеся фактичного завершення поточної підготовки слайд-шоу.",
+    "de-DE": "Auf das tatsächliche Ende der aktuellen Diashow-Vorbereitung warten."
+  },
+  "Slideshow entry kinds are incomplete": {
+    "es-ES": "Los tipos de entrada están incompletos",
+    "ru-RU": "Типы записей слайд-шоу не заполнены",
+    "uk-UA": "Типи записів слайд-шоу не заповнені",
+    "de-DE": "Typen der Diashow-Einträge sind unvollständig"
+  },
+  "Slideshow preparation does not match the captured file and folder entries": {
+    "es-ES": "La preparación no coincide con los archivos y carpetas capturados",
+    "ru-RU": "Подготовка слайд-шоу не соответствует захваченным записям файлов и папок",
+    "uk-UA": "Підготовка слайд-шоу не відповідає зафіксованим записам файлів і папок",
+    "de-DE": "Diashow-Vorbereitung passt nicht zu den erfassten Datei- und Ordnereinträgen"
+  },
+  "The slideshow can contain at most 256 file/folder entries and 256 resolved images; the draft was retained.": {
+    "es-ES": "El pase admite como máximo 256 entradas y256 imágenes; se conservó el borrador.",
+    "ru-RU": "Слайд-шоу допускает максимум 256 записей файлов/папок и256 найденных изображений; черновик сохранён.",
+    "uk-UA": "Слайд-шоу допускає максимум 256 записів файлів/папок і256 знайдених зображень; чернетку збережено.",
+    "de-DE": "Die Diashow erlaubt höchstens 256 Datei-/Ordnereinträge und256 aufgelöste Bilder; der Entwurf blieb erhalten."
+  },
+  "slideshow entry requires 1..=4096 UTF-8 path bytes without controls": {
+    "es-ES": "la entrada requiere1..=4096 bytes UTF-8 de ruta sin controles",
+    "ru-RU": "запись слайд-шоу требует1..=4096 байтов пути UTF-8 без управляющих символов",
+    "uk-UA": "запис слайд-шоу потребує1..=4096 байтів шляху UTF-8 без керівних символів",
+    "de-DE": "Diashow-Eintrag erfordert1..=4096 UTF-8-Pfadbytes ohne Steuerzeichen"
+  },
+  "slideshow entry counts require authored entries": {
+    "es-ES": "los recuentos requieren entradas guardadas",
+    "ru-RU": "счётчики записей слайд-шоу требуют заданных записей",
+    "uk-UA": "лічильники записів слайд-шоу потребують заданих записів",
+    "de-DE": "Diashow-Eintragszahlen benötigen verfasste Einträge"
+  },
+  "slideshow requires at most 256 entries with matching resolved counts": {
+    "es-ES": "el pase requiere como máximo 256 entradas con recuentos coincidentes",
+    "ru-RU": "слайд-шоу требует не более 256 записей с соответствующими счётчиками найденных изображений",
+    "uk-UA": "слайд-шоу потребує не більше 256 записів із відповідними лічильниками знайдених зображень",
+    "de-DE": "Diashow erlaubt höchstens 256 Einträge mit passenden Auflösungszahlen"
+  },
+  "slideshow entry image counts exceed the prepared playlist": {
+    "es-ES": "los recuentos superan la lista preparada",
+    "ru-RU": "счётчики изображений записей превышают подготовленный список",
+    "uk-UA": "лічильники зображень записів перевищують підготовлений список",
+    "de-DE": "Bildzahlen der Diashow-Einträge überschreiten die vorbereitete Liste"
+  },
+  "slideshow file entry does not match its prepared image": {
+    "es-ES": "la entrada de archivo no coincide con su imagen preparada",
+    "ru-RU": "запись файла слайд-шоу не соответствует подготовленному изображению",
+    "uk-UA": "запис файла слайд-шоу не відповідає підготовленому зображенню",
+    "de-DE": "Diashow-Dateieintrag passt nicht zu seinem vorbereiteten Bild"
+  },
+  "slideshow folder image is outside its immediate directory": {
+    "es-ES": "la imagen de carpeta queda fuera de su directorio directo",
+    "ru-RU": "изображение папки слайд-шоу находится вне непосредственного каталога",
+    "uk-UA": "зображення папки слайд-шоу розташоване поза безпосереднім каталогом",
+    "de-DE": "Diashow-Ordnerbild liegt außerhalb seines unmittelbaren Ordners"
+  },
+  "slideshow folder expansion must be nonrecursive": {
+    "es-ES": "la expansión de carpetas no debe ser recursiva",
+    "ru-RU": "раскрытие папок слайд-шоу не должно быть рекурсивным",
+    "uk-UA": "розгортання папок слайд-шоу не має бути рекурсивним",
+    "de-DE": "Diashow-Ordnererweiterung darf nicht rekursiv sein"
+  },
+  "slideshow prepared images are not fully owned by authored entries": {
+    "es-ES": "las imágenes preparadas no pertenecen totalmente a las entradas",
+    "ru-RU": "подготовленные изображения слайд-шоу не полностью связаны с заданными записями",
+    "uk-UA": "підготовлені зображення слайд-шоу не повністю пов’язані із заданими записами",
+    "de-DE": "Vorbereitete Diashow-Bilder gehören nicht vollständig zu den verfassten Einträgen"
+  },
+  "slideshow file and folder entries require native schema9": {
+    "es-ES": "los archivos y carpetas requieren el esquema nativo9",
+    "ru-RU": "записи файлов и папок слайд-шоу требуют собственной схемы9",
+    "uk-UA": "записи файлів і папок слайд-шоу потребують власної схеми9",
+    "de-DE": "Datei- und Ordnereinträge der Diashow erfordern das native Schema9"
+  },
+  "Images use centered aspect fit in the selected canvas. Playback follows the selected visibility behavior. Use the source playback controls to change slides or playback state. Folders expand their immediate supported files when applied or loaded.": {
+    "es-ES": "Las imágenes se centran sin deformarse en el lienzo elegido. La reproducción sigue la visibilidad seleccionada. Use los controles de la fuente para cambiar diapositivas o estado. Las carpetas aportan sus archivos directos admitidos al aplicar o cargar.",
+    "ru-RU": "Изображения вписываются по центру выбранного холста с сохранением пропорций. Воспроизведение следует выбранному поведению видимости. Команды источника меняют слайды и состояние. Папки раскрывают поддерживаемые непосредственные файлы при применении или загрузке.",
+    "uk-UA": "Зображення вписуються по центру вибраного полотна зі збереженням пропорцій. Відтворення відповідає вибраній поведінці видимості. Команди джерела змінюють слайди та стан. Папки розгортають підтримувані безпосередні файли при застосуванні або завантаженні.",
+    "de-DE": "Bilder werden proportional zentriert in die gewählte Leinwand eingepasst. Wiedergabe folgt dem gewählten Sichtbarkeitsverhalten. Quellensteuerung ändert Bilder und Zustand. Ordner liefern ihre direkten unterstützten Dateien beim Anwenden oder Laden."
+  },
+  "Static BMP/TGA/PNG/JPEG/WebP and animated GIF images; timed slideshows with four stock transitions, custom canvas, three visibility behaviors, manual/shared transport and explicit legacy/modern random policies. Authored file/folder entries survive native and strict OBS interchange; worker-only nonrecursive expansion/refresh preserves native listing order and actual image metadata, with bounded work and no watcher. Missing, changed, unsupported or all-empty candidates reject before publication. JXR decoding, empty playlists and complete image-source parity are not implemented; source hotkeys use their separate host capability.": {
+    "es-ES": "Imágenes BMP/TGA/PNG/JPEG/WebP estáticas y GIF animados; pases con cuatro cambios estándar, lienzo propio, tres comportamientos de visibilidad, control manual/compartido y políticas aleatorias antigua/moderna explícitas. Archivos y carpetas conservan su autoría en el intercambio nativo y estricto OBS; expansión/actualización no recursiva en el trabajador mantiene el orden nativo y los metadatos reales con límites y sin vigilancia. Candidatos ausentes, cambiados, no admitidos o totalmente vacíos se rechazan antes de publicar. No se implementan JXR, listas vacías ni paridad completa; las teclas por fuente usan una capacidad separada.",
+    "ru-RU": "Статичные BMP/TGA/PNG/JPEG/WebP и анимированные GIF; слайд-шоу с четырьмя стандартными переходами, собственным холстом, тремя режимами видимости, ручным/общим управлением и явной старой/современной случайной политикой. Записи файлов/папок сохраняются в собственном формате и строгом обмене OBS; нерекурсивное раскрытие/обновление в обработчике сохраняет системный порядок и реальные метаданные с ограничениями и без наблюдателя. Отсутствующие, изменившиеся, неподдерживаемые или полностью пустые кандидаты отклоняются до публикации. JXR, пустые списки и полное соответствие image-source не реализованы; горячие клавиши источника относятся к отдельной возможности Host.",
+    "uk-UA": "Статичні BMP/TGA/PNG/JPEG/WebP та анімовані GIF; слайд-шоу з чотирма стандартними переходами, власним полотном, трьома режимами видимості, ручним/спільним керуванням і явною старою/сучасною випадковою політикою. Записи файлів/папок зберігаються у власному форматі та суворому обміні OBS; нерекурсивне розгортання/оновлення в обробнику зберігає системний порядок і реальні метадані з обмеженнями та без спостерігача. Відсутні, змінені, непідтримувані або повністю порожні кандидати відхиляються до публікації. JXR, порожні списки та повну відповідність image-source не реалізовано; гарячі клавіші джерела належать до окремої можливості Host.",
+    "de-DE": "Statische BMP/TGA/PNG/JPEG/WebP und animierte GIFs; Diashows mit vier Standardübergängen, eigener Leinwand, drei Sichtbarkeitsmodi, manueller/gemeinsamer Steuerung und expliziten älteren/modernen Zufallsrichtlinien. Verfasste Datei-/Ordnereinträge bleiben im nativen und strikten OBS-Austausch erhalten; nichtrekursive Erweiterung/Aktualisierung im Worker bewahrt native Reihenfolge und echte Bildmetadaten mit Grenzen und ohne Beobachter. Fehlende, geänderte, nicht unterstützte oder ganz leere Kandidaten werden vor Veröffentlichung abgelehnt. JXR, leere Listen und vollständige image-source-Parität sind nicht implementiert; Quellen-Tastenkürzel verwenden eine separate Host-Fähigkeit."
+  },
+"Slideshow preparation failed; current source retained. {detail}": {
+  "es-ES": "La preparación del pase falló; se conservó la fuente actual. {detail}",
+  "ru-RU": "Подготовка слайд-шоу не удалась; текущий источник сохранён. {detail}",
+  "uk-UA": "Підготовка слайд-шоу не вдалася; поточне джерело збережено. {detail}",
+  "de-DE": "Diashow-Vorbereitung fehlgeschlagen; aktuelle Quelle blieb erhalten. {detail}"
+}
+}

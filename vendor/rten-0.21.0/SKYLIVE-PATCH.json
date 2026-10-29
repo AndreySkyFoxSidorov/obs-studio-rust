@@ -1,0 +1,31 @@
+{
+  "upstream": "rten 0.21.0 crates.io archive",
+  "archive_sha256": "799b4e781c9fe47504154fcdcee3c5924544b3cc7821cb87506d95167d2b149d",
+  "license": "MIT OR Apache-2.0",
+  "model_operators": "fixed trusted converted Selfie graph only; no custom/native operators",
+  "changes": [
+    {
+      "file": "src/graph.rs",
+      "before": ".unwrap_or(threading::thread_pool())",
+      "after": ".unwrap_or_else(|| threading::thread_pool())",
+      "reason": "An explicit owned two-thread pool must not initialize the unused global physical-core pool."
+    },
+    {
+      "file": "src/threading.rs",
+      "change": "Add explicitly owned with_num_threads_owned constructor with std JoinHandles from documented Rayon spawn_handler; join after termination, including partial creation failure/unwind. Existing constructor preserved.",
+      "invariant": "SkyLive runtime drops on external background/headless owner after synchronous inference; own-worker library use remains unsupported/detaching."
+    },
+    {
+      "file": "src/model.rs",
+      "change": "Allow explicit model-load pool; forward the same owned pool to optimization and optional recursive prepacking."
+    },
+    {
+      "file": "src/optimize.rs",
+      "change": "Use explicit RunOptions pool during constant-fold partial evaluation."
+    },
+    {
+      "file": "src/graph.rs",
+      "change": "Add explicit-pool recursive prepack entry point while preserving upstream default entry point."
+    }
+  ]
+}

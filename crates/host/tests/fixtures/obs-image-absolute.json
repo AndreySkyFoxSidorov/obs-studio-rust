@@ -1,0 +1,55 @@
+{
+  "name": "Source-derived OBS static image fixture",
+  "version": 1,
+  "current_scene": "Images",
+  "current_program_scene": "Images",
+  "scene_order": [{"name": "Images"}],
+  "groups": [],
+  "sources": [
+    {
+      "name": "Shared Image",
+      "uuid": "e738fa7b-3c4d-441e-b629-3ca952d8db01",
+      "id": "image_source",
+      "versioned_id": "image_source",
+      "settings": {"file": "tiny.png", "unload": false, "linear_alpha": false, "is_slide": false}
+    },
+    {
+      "name": "Images",
+      "uuid": "e738fa7b-3c4d-441e-b629-3ca952d8db02",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "custom_size": false,
+        "id_counter": 4,
+        "items": [
+          {
+            "name": "Shared Image",
+            "source_uuid": "e738fa7b-3c4d-441e-b629-3ca952d8db01",
+            "id": 3,
+            "visible": true,
+            "locked": false,
+            "pos": {"x": 30.0, "y": 20.0},
+            "scale": {"x": -2.0, "y": 3.0},
+            "rot": 90.0,
+            "align": 5,
+            "crop_left": 1,
+            "crop_right": 1,
+            "crop_top": 0,
+            "crop_bottom": 0
+          },
+          {
+            "name": "Shared Image",
+            "source_uuid": "e738fa7b-3c4d-441e-b629-3ca952d8db01",
+            "id": 4,
+            "visible": false,
+            "locked": true,
+            "pos": {"x": 100.0, "y": 50.0},
+            "scale": {"x": 1.0, "y": 1.0},
+            "rot": 0.0,
+            "align": 5
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "utc": "2026-10-26T05:11:32.925775+00:00",
+  "files": [
+    {
+      "file": "streaming-settings-seeds.json",
+      "sha256": "3dd756e3439ea3efdf899d3c1480cb468dc545ad8fef0a3300673184a9e5942c",
+      "english_entries": 46,
+      "locales": [
+        "es-ES",
+        "ru-RU",
+        "uk-UA",
+        "de-DE"
+      ],
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "file": "streaming-runtime-seeds.json",
+      "sha256": "d94c586f4a2e5e5a5ec09b62269cb198aeb4eded5331b8265b4bf5b3be76f354",
+      "english_entries": 24,
+      "locales": [
+        "es-ES",
+        "ru-RU",
+        "uk-UA",
+        "de-DE"
+      ],
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "file": "color-properties-seeds.json",
+      "sha256": "8c5f82acf351a8f10a98c21d1e89c8bd006cf63757e56d886c28d2223b370eef",
+      "english_entries": 11,
+      "locales": [
+        "es-ES",
+        "ru-RU",
+        "uk-UA",
+        "de-DE"
+      ],
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    },
+    {
+      "file": "obs-file-ui-seeds.json",
+      "sha256": "7eb39495d57cb031ab163d3673293668a35a1d34d184da07d779d555eed7e73a",
+      "english_entries": 34,
+      "locales": [
+        "es-ES",
+        "ru-RU",
+        "uk-UA",
+        "de-DE"
+      ],
+      "source": "assistant_authored",
+      "human_linguist_review": "pending"
+    }
+  ]
+}

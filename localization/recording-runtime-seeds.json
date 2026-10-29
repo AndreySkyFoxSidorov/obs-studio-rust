@@ -1,0 +1,80 @@
+{
+  "Recording failed: {error}": {
+    "es-ES": "Error de grabación: {error}",
+    "ru-RU": "Ошибка записи: {error}",
+    "uk-UA": "Помилка запису: {error}",
+    "de-DE": "Aufnahmefehler: {error}"
+  },
+  "Recording failed: {error}. Recovery file: {path}": {
+    "es-ES": "Error de grabación: {error}. Archivo de recuperación: {path}",
+    "ru-RU": "Ошибка записи: {error}. Файл восстановления: {path}",
+    "uk-UA": "Помилка запису: {error}. Файл відновлення: {path}",
+    "de-DE": "Aufnahmefehler: {error}. Wiederherstellungsdatei: {path}"
+  },
+  "Starting recording…": {
+    "es-ES": "Iniciando la grabación…",
+    "ru-RU": "Запуск записи…",
+    "uk-UA": "Початок запису…",
+    "de-DE": "Aufnahme wird gestartet…"
+  },
+  "Finishing recording…": {
+    "es-ES": "Finalizando la grabación…",
+    "ru-RU": "Завершение записи…",
+    "uk-UA": "Завершення запису…",
+    "de-DE": "Aufnahme wird abgeschlossen…"
+  },
+  "Recording saved: {path}": {
+    "es-ES": "Grabación guardada: {path}",
+    "ru-RU": "Запись сохранена: {path}",
+    "uk-UA": "Запис збережено: {path}",
+    "de-DE": "Aufnahme gespeichert: {path}"
+  },
+  "Recording stopped after an input error. Saved prefix: {path}. {error}": {
+    "es-ES": "La grabación se detuvo por un error de entrada. Parte guardada: {path}. {error}",
+    "ru-RU": "Запись остановлена из-за ошибки входных данных. Записанная часть сохранена: {path}. {error}",
+    "uk-UA": "Запис зупинено через помилку вхідних даних. Записану частину збережено: {path}. {error}",
+    "de-DE": "Aufnahme nach einem Eingabefehler gestoppt. Gespeicherter Teil: {path}. {error}"
+  },
+  "Recording is unavailable on this platform": {
+    "es-ES": "La grabación no está disponible en esta plataforma",
+    "ru-RU": "Запись недоступна на этой платформе",
+    "uk-UA": "Запис недоступний на цій платформі",
+    "de-DE": "Aufnahme ist auf dieser Plattform nicht verfügbar"
+  },
+  "Stop recording before changing the audio/video format or active profile": {
+    "es-ES": "Detenga la grabación antes de cambiar el formato de audio/vídeo o el perfil activo",
+    "ru-RU": "Остановите запись перед изменением формата аудио/видео или активного профиля",
+    "uk-UA": "Зупиніть запис перед зміною формату аудіо/відео або активного профілю",
+    "de-DE": "Beenden Sie die Aufnahme, bevor Sie das Audio-/Videoformat oder das aktive Profil ändern"
+  },
+  "Stop recording before replacing the scene collection": {
+    "es-ES": "Detenga la grabación antes de sustituir la colección de escenas",
+    "ru-RU": "Остановите запись перед заменой коллекции сцен",
+    "uk-UA": "Зупиніть запис перед заміною колекції сцен",
+    "de-DE": "Beenden Sie die Aufnahme, bevor Sie die Szenensammlung ersetzen"
+  },
+  "Recording clock moved backwards": {
+    "es-ES": "El reloj de grabación retrocedió",
+    "ru-RU": "Часы записи переведены назад",
+    "uk-UA": "Годинник запису переведено назад",
+    "de-DE": "Die Aufnahmeuhr ist rückwärts gesprungen"
+  },
+  "Recording resource generation exhausted": {
+    "es-ES": "Se agotó el contador de versiones de los recursos de grabación",
+    "ru-RU": "Исчерпан счётчик версий ресурсов записи",
+    "uk-UA": "Вичерпано лічильник версій ресурсів запису",
+    "de-DE": "Der Versionszähler der Aufnahmeressourcen ist erschöpft"
+  },
+  "Record the Program output as MP4 with H.264 video and optional AAC audio.": {
+    "es-ES": "Grabar la salida de Programa en MP4 con vídeo H.264 y audio AAC opcional.",
+    "ru-RU": "Записать итоговый выход Program в MP4 с видео H.264 и необязательным звуком AAC.",
+    "uk-UA": "Записати підсумковий вихід Program у MP4 з відео H.264 та необов’язковим звуком AAC.",
+    "de-DE": "Die Programmausgabe als MP4 mit H.264-Video und optionalem AAC-Audio aufnehmen."
+  },
+  "Stop recording and finish the MP4 file before closing.": {
+    "es-ES": "Detener la grabación y finalizar el archivo MP4 antes de cerrar.",
+    "ru-RU": "Остановить запись и завершить файл MP4 перед закрытием.",
+    "uk-UA": "Зупинити запис і завершити файл MP4 перед закриттям.",
+    "de-DE": "Die Aufnahme stoppen und die MP4-Datei vor dem Schließen abschließen."
+  }
+}

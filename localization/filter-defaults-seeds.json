@@ -1,0 +1,20 @@
+{
+  "Restore this filter's default settings in the draft. Apply saves them; Cancel keeps the original settings. The filter name and enabled state are preserved.": {
+    "es-ES": "Restaurar los valores del filtro en el borrador. Aplicar los guarda; Cancelar conserva los originales. Se mantienen el nombre y el estado del filtro.",
+    "ru-RU": "Восстановить настройки фильтра по умолчанию в черновике. «Применить» сохранит их, «Отмена» оставит исходные. Имя и включённость фильтра сохраняются.",
+    "uk-UA": "Відновити типові налаштування фільтра в чернетці. «Застосувати» збереже їх, «Скасувати» залишить початкові. Назва й стан увімкнення фільтра зберігаються.",
+    "de-DE": "Standardwerte im Entwurf wiederherstellen. Anwenden speichert sie; Abbrechen behält die ursprünglichen Einstellungen. Name und Aktivierungsstatus bleiben erhalten."
+  },
+  "Wait for mask preparation before resetting this filter.": {
+    "es-ES": "Espera a que termine la preparación de la máscara.",
+    "ru-RU": "Дождитесь подготовки маски перед сбросом фильтра.",
+    "uk-UA": "Дочекайтеся підготовки маски перед скиданням фільтра.",
+    "de-DE": "Vor dem Zurücksetzen auf die Maskenvorbereitung warten."
+  },
+  "Enable this filter's module in Tools > Plugins before resetting it.": {
+    "es-ES": "Activa el módulo en Herramientas > Complementos antes de restablecerlo.",
+    "ru-RU": "Перед сбросом включите модуль фильтра в «Инструменты > Плагины».",
+    "uk-UA": "Перед скиданням увімкніть модуль фільтра в «Інструменти > Плагіни».",
+    "de-DE": "Vor dem Zurücksetzen das Filtermodul unter Werkzeuge > Plugins aktivieren."
+  }
+}

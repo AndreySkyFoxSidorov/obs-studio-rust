@@ -1,0 +1,1904 @@
+{
+  "Add Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät hinzufügen",
+    "es-ES": "Añadir dispositivo de captura de vídeo",
+    "ru-RU": "Добавить устройство видеозахвата",
+    "uk-UA": "Додати пристрій відеозахоплення"
+  },
+  "Apply binds and starts camera video. Audio, compressed formats and vendor configuration dialogs are not connected. Cancel changes no source.": {
+    "de-DE": "Anwenden bindet die Kamera ein und startet das Kameravideo. Audio, komprimierte Formate und Hersteller-Konfigurationsdialoge sind nicht angebunden. Abbrechen ändert keine Quelle.",
+    "es-ES": "Aplicar vincula e inicia el vídeo de la cámara. El audio, los formatos comprimidos y los diálogos de configuración del fabricante no están conectados. Cancelar no modifica ninguna fuente.",
+    "ru-RU": "Применение привязывает камеру и запускает видеозахват. Звук, сжатые форматы и диалоги настройки производителя не подключены. Отмена не изменяет источники.",
+    "uk-UA": "Застосування прив’язує камеру й запускає відеозахоплення. Звук, стиснені формати та діалоги налаштування виробника не підключені. Скасування не змінює джерела."
+  },
+  "Camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "La captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "Захват камеры недоступен на этой платформе",
+    "uk-UA": "Захоплення камери недоступне на цій платформі"
+  },
+  "Camera draft belongs to another document": {
+    "de-DE": "Der Kameraentwurf gehört zu einem anderen Dokument",
+    "es-ES": "El borrador de la cámara pertenece a otro documento",
+    "ru-RU": "Черновик настройки камеры относится к другому документу",
+    "uk-UA": "Чернетка налаштування камери належить іншому документу"
+  },
+  "Camera picker identity exhausted": {
+    "de-DE": "Die Kennungen der Kameraauswahl sind ausgeschöpft",
+    "es-ES": "Se han agotado los identificadores del selector de cámaras",
+    "ru-RU": "Исчерпаны идентификаторы диалога выбора камеры",
+    "uk-UA": "Вичерпано ідентифікатори діалогу вибору камери"
+  },
+  "Camera streams stopped": {
+    "de-DE": "Kamerastreams gestoppt",
+    "es-ES": "Flujos de cámara detenidos",
+    "ru-RU": "Потоки камер остановлены",
+    "uk-UA": "Потоки камер зупинено"
+  },
+  "Camera: {error}": {
+    "de-DE": "Kamera: {error}",
+    "es-ES": "Cámara: {error}",
+    "ru-RU": "Камера: {error}",
+    "uk-UA": "Камера: {error}"
+  },
+  "Choose a camera and query its actual supported native modes": {
+    "de-DE": "Eine Kamera auswählen und ihre tatsächlich unterstützten nativen Modi abfragen",
+    "es-ES": "Elige una cámara y consulta los modos nativos que realmente admite",
+    "ru-RU": "Выберите камеру и запросите реально поддерживаемые ею собственные режимы",
+    "uk-UA": "Виберіть камеру й запитайте власні режими, які вона насправді підтримує"
+  },
+  "Choose exact native resolution, frame rate and pixel format": {
+    "de-DE": "Die genaue native Auflösung, Bildrate und das Pixelformat auswählen",
+    "es-ES": "Elige la resolución nativa, la frecuencia de fotogramas y el formato de píxel exactos",
+    "ru-RU": "Выберите точные собственные разрешение, частоту кадров и формат пикселей",
+    "uk-UA": "Виберіть точні власні роздільність, частоту кадрів і формат пікселів"
+  },
+  "Choose the video capture device": {
+    "de-DE": "Das Videoaufnahmegerät auswählen",
+    "es-ES": "Elige el dispositivo de captura de vídeo",
+    "ru-RU": "Выберите устройство видеозахвата",
+    "uk-UA": "Виберіть пристрій відеозахоплення"
+  },
+  "Chroma centered": {
+    "de-DE": "Chroma zentriert",
+    "es-ES": "Croma centrado",
+    "ru-RU": "Цветность по центру",
+    "uk-UA": "Колірність по центру"
+  },
+  "Chroma left": {
+    "de-DE": "Chroma links",
+    "es-ES": "Croma a la izquierda",
+    "ru-RU": "Цветность слева",
+    "uk-UA": "Колірність зліва"
+  },
+  "Deactivate when not showing": {
+    "de-DE": "Deaktivieren, wenn nicht sichtbar",
+    "es-ES": "Desactivar cuando no se muestre",
+    "ru-RU": "Деактивировать, когда не отображается",
+    "uk-UA": "Деактивувати, коли не відображається"
+  },
+  "Exact native RGB24/RGB32/ARGB32, YUY2 and NV12 modes; compressed formats and unsupported color metadata are reported explicitly": {
+    "de-DE": "Exakte native RGB24/RGB32/ARGB32-, YUY2- und NV12-Modi; komprimierte Formate und nicht unterstützte Farbmetadaten werden ausdrücklich angezeigt",
+    "es-ES": "Modos nativos exactos RGB24/RGB32/ARGB32, YUY2 y NV12; los formatos comprimidos y los metadatos de color no admitidos se indican explícitamente",
+    "ru-RU": "Точные нативные режимы RGB24/RGB32/ARGB32, YUY2 и NV12; сжатые форматы и неподдерживаемые метаданные цвета явно отмечаются",
+    "uk-UA": "Точні нативні режими RGB24/RGB32/ARGB32, YUY2 та NV12; стиснені формати й непідтримувані метадані кольору явно позначаються"
+  },
+  "Full range": {
+    "de-DE": "Voller Bereich",
+    "es-ES": "Rango completo",
+    "ru-RU": "Полный диапазон",
+    "uk-UA": "Повний діапазон"
+  },
+  "Limited range": {
+    "de-DE": "Begrenzter Bereich",
+    "es-ES": "Rango limitado",
+    "ru-RU": "Ограниченный диапазон",
+    "uk-UA": "Обмежений діапазон"
+  },
+  "Name of this video capture source": {
+    "de-DE": "Name dieser Videoaufnahmequelle",
+    "es-ES": "Nombre de esta fuente de captura de vídeo",
+    "ru-RU": "Имя этого источника видеозахвата",
+    "uk-UA": "Назва цього джерела відеозахоплення"
+  },
+  "Native camera modes": {
+    "de-DE": "Native Kameramodi",
+    "es-ES": "Modos nativos de la cámara",
+    "ru-RU": "Собственные режимы камеры",
+    "uk-UA": "Власні режими камери"
+  },
+  "Properties: Video Capture Device": {
+    "de-DE": "Eigenschaften: Videoaufnahmegerät",
+    "es-ES": "Propiedades: dispositivo de captura de vídeo",
+    "ru-RU": "Свойства: устройство видеозахвата",
+    "uk-UA": "Властивості: пристрій відеозахоплення"
+  },
+  "Query Modes": {
+    "de-DE": "Modi abfragen",
+    "es-ES": "Consultar modos",
+    "ru-RU": "Запросить режимы",
+    "uk-UA": "Запитати режими"
+  },
+  "Query and select a supported native camera mode": {
+    "de-DE": "Einen unterstützten nativen Kameramodus abfragen und auswählen",
+    "es-ES": "Consulta y selecciona un modo nativo de cámara compatible",
+    "ru-RU": "Запросите и выберите поддерживаемый собственный режим камеры",
+    "uk-UA": "Запитайте й виберіть підтримуваний власний режим камери"
+  },
+  "Querying camera capabilities…": {
+    "de-DE": "Kamerafunktionen werden abgefragt…",
+    "es-ES": "Consultando las capacidades de la cámara…",
+    "ru-RU": "Запрос возможностей камеры…",
+    "uk-UA": "Запит можливостей камери…"
+  },
+  "Querying modes may briefly activate the selected camera driver": {
+    "de-DE": "Die Modusabfrage kann den Treiber der ausgewählten Kamera kurzzeitig aktivieren",
+    "es-ES": "La consulta de modos puede activar brevemente el controlador de la cámara seleccionada",
+    "ru-RU": "Запрос режимов может ненадолго активировать драйвер выбранной камеры",
+    "uk-UA": "Запит режимів може ненадовго активувати драйвер вибраної камери"
+  },
+  "Refresh Cameras": {
+    "de-DE": "Kameraliste aktualisieren",
+    "es-ES": "Actualizar cámaras",
+    "ru-RU": "Обновить список камер",
+    "uk-UA": "Оновити список камер"
+  },
+  "Refresh device names without starting video capture": {
+    "de-DE": "Gerätenamen aktualisieren, ohne die Videoaufnahme zu starten",
+    "es-ES": "Actualiza los nombres de los dispositivos sin iniciar la captura de vídeo",
+    "ru-RU": "Обновить имена устройств без запуска видеозахвата",
+    "uk-UA": "Оновити назви пристроїв без запуску відеозахоплення"
+  },
+  "Release the camera while no active scene or Studio Preview shows this source": {
+    "de-DE": "Die Kamera freigeben, solange keine aktive Szene und keine Studio-Vorschau diese Quelle zeigt",
+    "es-ES": "Libera la cámara mientras ninguna escena activa ni la vista previa del estudio muestre esta fuente",
+    "ru-RU": "Освободить камеру, пока этот источник не отображается ни в активной сцене, ни в предпросмотре студии",
+    "uk-UA": "Звільнити камеру, поки це джерело не відображається ні в активній сцені, ні в попередньому перегляді студії"
+  },
+  "Saved mode; the device will verify it when capture starts.": {
+    "de-DE": "Gespeicherter Modus; das Gerät überprüft ihn beim Start der Aufnahme.",
+    "es-ES": "Modo guardado; el dispositivo lo verificará al iniciar la captura.",
+    "ru-RU": "Сохранённый режим; устройство проверит его при запуске захвата.",
+    "uk-UA": "Збережений режим; пристрій перевірить його під час запуску захоплення."
+  },
+  "Select a camera": {
+    "de-DE": "Eine Kamera auswählen",
+    "es-ES": "Selecciona una cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select an actual supported camera mode": {
+    "de-DE": "Einen tatsächlich unterstützten Kameramodus auswählen",
+    "es-ES": "Selecciona un modo que la cámara realmente admita",
+    "ru-RU": "Выберите реально поддерживаемый режим камеры",
+    "uk-UA": "Виберіть режим, який камера насправді підтримує"
+  },
+  "Select camera": {
+    "de-DE": "Kamera auswählen",
+    "es-ES": "Seleccionar cámara",
+    "ru-RU": "Выберите камеру",
+    "uk-UA": "Виберіть камеру"
+  },
+  "Select mode": {
+    "de-DE": "Modus auswählen",
+    "es-ES": "Seleccionar modo",
+    "ru-RU": "Выберите режим",
+    "uk-UA": "Виберіть режим"
+  },
+  "Select this exact native capture mode": {
+    "es-ES": "Seleccionar exactamente este modo de captura nativo",
+    "ru-RU": "Выбрать именно этот нативный режим захвата",
+    "uk-UA": "Вибрати саме цей нативний режим захоплення",
+    "de-DE": "Genau diesen nativen Aufnahmemodus wählen"
+  },
+  "Stop Camera Capture": {
+    "de-DE": "Kameraaufnahme stoppen",
+    "es-ES": "Detener la captura de cámara",
+    "ru-RU": "Остановить захват камер",
+    "uk-UA": "Зупинити захоплення камер"
+  },
+  "Stop all camera streams; device shutdown is acknowledged separately": {
+    "de-DE": "Alle Kamerastreams stoppen; das Herunterfahren der Geräte wird gesondert bestätigt",
+    "es-ES": "Detiene todos los flujos de cámara; el cierre de los dispositivos se confirma por separado",
+    "ru-RU": "Остановить все потоки камер; завершение работы устройств подтверждается отдельно",
+    "uk-UA": "Зупинити всі потоки камер; завершення роботи пристроїв підтверджується окремо"
+  },
+  "The document changed. Reopen this dialog to bind a camera.": {
+    "de-DE": "Das Dokument wurde geändert. Diesen Dialog erneut öffnen, um eine Kamera einzubinden.",
+    "es-ES": "El documento ha cambiado. Vuelve a abrir este diálogo para vincular una cámara.",
+    "ru-RU": "Документ изменился. Откройте этот диалог заново, чтобы привязать камеру.",
+    "uk-UA": "Документ змінився. Відкрийте цей діалог знову, щоб прив’язати камеру."
+  },
+  "The selected camera is unavailable": {
+    "de-DE": "Die ausgewählte Kamera ist nicht verfügbar",
+    "es-ES": "La cámara seleccionada no está disponible",
+    "ru-RU": "Выбранная камера недоступна",
+    "uk-UA": "Вибрана камера недоступна"
+  },
+  "This camera has no modes supported by the current uncompressed capture profile.": {
+    "de-DE": "Diese Kamera bietet keine vom aktuellen unkomprimierten Aufnahmeprofil unterstützten Modi.",
+    "es-ES": "Esta cámara no tiene modos compatibles con el perfil actual de captura sin compresión.",
+    "ru-RU": "У этой камеры нет режимов, поддерживаемых текущим профилем несжатого захвата.",
+    "uk-UA": "Ця камера не має режимів, підтримуваних поточним профілем захоплення без стиснення."
+  },
+  "Unsupported native camera mode": {
+    "es-ES": "Modo nativo de cámara no compatible",
+    "ru-RU": "Неподдерживаемый нативный режим камеры",
+    "uk-UA": "Непідтримуваний нативний режим камери",
+    "de-DE": "Nicht unterstützter nativer Kameramodus"
+  },
+  "Video Capture Device": {
+    "de-DE": "Videoaufnahmegerät",
+    "es-ES": "Dispositivo de captura de vídeo",
+    "ru-RU": "Устройство видеозахвата",
+    "uk-UA": "Пристрій відеозахоплення"
+  },
+  "Wait for camera enumeration before applying": {
+    "de-DE": "Vor dem Anwenden auf den Abschluss der Kameraerfassung warten",
+    "es-ES": "Espera a que termine la enumeración de cámaras antes de aplicar",
+    "ru-RU": "Дождитесь завершения поиска камер перед применением",
+    "uk-UA": "Дочекайтеся завершення пошуку камер перед застосуванням"
+  },
+  "camera capture is unavailable on this platform": {
+    "de-DE": "Kameraaufnahme ist auf dieser Plattform nicht verfügbar",
+    "es-ES": "la captura de cámara no está disponible en esta plataforma",
+    "ru-RU": "захват камеры недоступен на этой платформе",
+    "uk-UA": "захоплення камери недоступне на цій платформі"
+  },
+  "macOS 14+, existing Camera permission; exact native BGRA mode; no camera audio": {
+    "de-DE": "macOS 14+, bereits erteilte Kameraberechtigung; exakter nativer BGRA-Modus; kein Kamera-Audio",
+    "es-ES": "macOS 14+, permiso de cámara ya concedido; modo nativo BGRA exacto; sin audio de cámara",
+    "ru-RU": "macOS 14+, уже выданное разрешение на камеру; точный собственный режим BGRA; без звука камеры",
+    "uk-UA": "macOS 14+, уже наданий дозвіл на камеру; точний власний режим BGRA; без звуку камери"
+  },
+  "native camera format is outside the BGRA profile; no implicit conversion": {
+    "de-DE": "Natives Kameraformat liegt außerhalb des BGRA-Profils; keine implizite Konvertierung",
+    "es-ES": "el formato nativo de la cámara queda fuera del perfil BGRA; no se realiza conversión implícita",
+    "ru-RU": "собственный формат камеры не входит в профиль BGRA; неявное преобразование не выполняется",
+    "uk-UA": "власний формат камери не входить до профілю BGRA; неявне перетворення не виконується"
+  },
+  "native format or mode is outside the supported RGB camera profile": {
+    "de-DE": "Natives Format oder nativer Modus liegt außerhalb des unterstützten RGB-Kameraprofils",
+    "es-ES": "el formato o modo nativo queda fuera del perfil de cámara RGB compatible",
+    "ru-RU": "собственный формат или режим не входит в поддерживаемый профиль камеры RGB",
+    "uk-UA": "власний формат або режим не входить до підтримуваного профілю камери RGB"
+  },
+  "Use recommended mode": {
+    "es-ES": "Usar modo recomendado",
+    "ru-RU": "Рекомендуемый режим",
+    "uk-UA": "Рекомендований режим",
+    "de-DE": "Empfohlenen Modus verwenden"
+  },
+  "Use Full HD": {
+    "es-ES": "Usar Full HD",
+    "ru-RU": "Использовать Full HD",
+    "uk-UA": "Використати Full HD",
+    "de-DE": "Full HD verwenden"
+  },
+  "Choose a reported Full HD mode near 30 FPS when available; otherwise use the best supported streaming resolution. This changes the draft only.": {
+    "es-ES": "Elige un modo Full HD anunciado cercano a 30 FPS si está disponible; si no, usa la mejor resolución de transmisión compatible. Solo cambia el borrador.",
+    "ru-RU": "Выбрать заявленный режим Full HD с частотой около 30 кадр/с, если он доступен; иначе — лучшее поддерживаемое разрешение для трансляции. Меняется только черновик.",
+    "uk-UA": "Вибрати заявлений режим Full HD із частотою близько 30 кадр/с, якщо він доступний; інакше — найкращу підтримувану роздільність для трансляції. Змінюється лише чернетка.",
+    "de-DE": "Wenn verfügbar einen gemeldeten Full-HD-Modus nahe 30 FPS wählen, sonst die beste unterstützte Streamingauflösung. Nur der Entwurf wird geändert."
+  },
+  "Select an actual reported 1920 × 1080 mode with its exact frame rate and format. No resolution or frame rate is invented.": {
+    "es-ES": "Selecciona un modo 1920 × 1080 realmente anunciado, con su frecuencia y formato exactos. No se inventa ninguna resolución ni frecuencia.",
+    "ru-RU": "Выбрать реально заявленный режим 1920 × 1080 с его точной частотой кадров и форматом. Разрешение и частота кадров не выдумываются.",
+    "uk-UA": "Вибрати реально заявлений режим 1920 × 1080 із його точною частотою кадрів і форматом. Роздільність і частота кадрів не вигадуються.",
+    "de-DE": "Einen tatsächlich gemeldeten Modus mit 1920 × 1080 und seiner genauen Bildrate und seinem Format wählen. Auflösung und Bildrate werden nicht erfunden."
+  },
+  "Full HD available: {mode}": {
+    "es-ES": "Full HD disponible: {mode}",
+    "ru-RU": "Доступен Full HD: {mode}",
+    "uk-UA": "Доступний Full HD: {mode}",
+    "de-DE": "Full HD verfügbar: {mode}"
+  },
+  "No supported 1920 × 1080 mode was reported. Unsupported compressed modes remain visible in the full list.": {
+    "es-ES": "No se anunció ningún modo 1920 × 1080 compatible. Los modos comprimidos no compatibles siguen visibles en la lista completa.",
+    "ru-RU": "Поддерживаемый режим 1920 × 1080 не заявлен. Неподдерживаемые сжатые режимы остаются видны в полном списке.",
+    "uk-UA": "Підтримуваний режим 1920 × 1080 не заявлено. Непідтримувані стиснені режими залишаються видимими в повному списку.",
+    "de-DE": "Es wurde kein unterstützter Modus mit 1920 × 1080 gemeldet. Nicht unterstützte komprimierte Modi bleiben in der vollständigen Liste sichtbar."
+  },
+  "All reported native modes": {
+    "es-ES": "Todos los modos nativos anunciados",
+    "ru-RU": "Все заявленные нативные режимы",
+    "uk-UA": "Усі заявлені нативні режими",
+    "de-DE": "Alle gemeldeten nativen Modi"
+  },
+  "The selected camera mode is not reported by this device. Choose an available mode; the saved selection has not been downgraded.": {
+    "es-ES": "Este dispositivo no anuncia el modo seleccionado. Elige un modo disponible; la selección guardada no se ha reducido.",
+    "ru-RU": "Это устройство не заявляет выбранный режим камеры. Выберите доступный режим; сохранённый вариант не был понижен.",
+    "uk-UA": "Цей пристрій не заявляє вибраний режим камери. Виберіть доступний режим; збережений варіант не було понижено.",
+    "de-DE": "Das Gerät meldet den ausgewählten Kameramodus nicht. Einen verfügbaren Modus wählen; die gespeicherte Auswahl wurde nicht herabgesetzt."
+  },
+  "Select resolution": {
+    "es-ES": "Seleccionar resolución",
+    "ru-RU": "Выберите разрешение",
+    "uk-UA": "Виберіть роздільність",
+    "de-DE": "Auflösung wählen"
+  },
+  "Select a resolution actually reported by this camera. The best available rate for it is selected.": {
+    "es-ES": "Selecciona una resolución realmente anunciada por esta cámara. Se elige su mejor frecuencia disponible.",
+    "ru-RU": "Выбрать разрешение, реально заявленное этой камерой. Для него будет выбрана лучшая доступная частота кадров.",
+    "uk-UA": "Вибрати роздільність, реально заявлену цією камерою. Для неї буде вибрано найкращу доступну частоту кадрів.",
+    "de-DE": "Eine von dieser Kamera tatsächlich gemeldete Auflösung wählen. Die beste verfügbare Bildrate dafür wird ausgewählt."
+  },
+  "Choose an actual supported native capture resolution.": {
+    "es-ES": "Elige una resolución nativa de captura realmente compatible.",
+    "ru-RU": "Выбрать реально поддерживаемое нативное разрешение захвата.",
+    "uk-UA": "Вибрати реально підтримувану нативну роздільність захоплення.",
+    "de-DE": "Eine tatsächlich unterstützte native Aufnahmeauflösung wählen."
+  },
+  "Query camera modes before choosing a capture format.": {
+    "es-ES": "Consulta los modos de la cámara antes de elegir el formato de captura.",
+    "ru-RU": "Запросите режимы камеры перед выбором формата захвата.",
+    "uk-UA": "Запитайте режими камери перед вибором формату захоплення.",
+    "de-DE": "Vor dem Wählen eines Aufnahmeformats die Kameramodi abfragen."
+  },
+  "Frame rate": {
+    "es-ES": "Frecuencia de imagen",
+    "ru-RU": "Частота кадров",
+    "uk-UA": "Частота кадрів",
+    "de-DE": "Bildrate"
+  },
+  "Select frame rate": {
+    "es-ES": "Seleccionar frecuencia de imagen",
+    "ru-RU": "Выберите частоту кадров",
+    "uk-UA": "Виберіть частоту кадрів",
+    "de-DE": "Bildrate wählen"
+  },
+  "Choose an exact reported frame rate for the selected resolution.": {
+    "es-ES": "Elige una frecuencia de imagen exacta anunciada para la resolución seleccionada.",
+    "ru-RU": "Выбрать точную заявленную частоту кадров для выбранного разрешения.",
+    "uk-UA": "Вибрати точну заявлену частоту кадрів для вибраної роздільності.",
+    "de-DE": "Eine genau gemeldete Bildrate für die ausgewählte Auflösung wählen."
+  },
+  "Video format": {
+    "es-ES": "Formato de vídeo",
+    "ru-RU": "Формат видео",
+    "uk-UA": "Формат відео",
+    "de-DE": "Videoformat"
+  },
+  "Select an actual native pixel format and its reported color metadata.": {
+    "es-ES": "Selecciona un formato de píxel nativo real y sus metadatos de color anunciados.",
+    "ru-RU": "Выбрать реальный нативный формат пикселей и заявленные данные о цвете.",
+    "uk-UA": "Вибрати реальний нативний формат пікселів і заявлені дані про колір.",
+    "de-DE": "Ein tatsächliches natives Pixelformat mit seinen gemeldeten Farbmetadaten wählen."
+  },
+  "{num}/{den} FPS": {
+    "es-ES": "{num}/{den} FPS",
+    "ru-RU": "{num}/{den} кадр/с",
+    "uk-UA": "{num}/{den} кадр/с",
+    "de-DE": "{num}/{den} FPS"
+  },
+  "{w} × {h}": {
+    "es-ES": "{w} × {h}",
+    "ru-RU": "{w} × {h}",
+    "uk-UA": "{w} × {h}",
+    "de-DE": "{w} × {h}"
+  },
+  "{width} × {height}": {
+    "es-ES": "{width} × {height}",
+    "ru-RU": "{width} × {height}",
+    "uk-UA": "{width} × {height}",
+    "de-DE": "{width} × {height}"
+  },
+  "OBS video filters": {
+    "es-ES": "Filtros de vídeo OBS",
+    "ru-RU": "Видеофильтры OBS",
+    "uk-UA": "Відеофільтри OBS",
+    "de-DE": "OBS-Videofilter"
+  },
+  "Craft video effects · enabled": {
+    "es-ES": "Efectos de vídeo Craft · activados",
+    "ru-RU": "Видеоэффекты Craft · включены",
+    "uk-UA": "Відеоефекти Craft · увімкнено",
+    "de-DE": "Craft-Videoeffekte · aktiviert"
+  },
+  "Craft video effects · disabled": {
+    "es-ES": "Efectos de vídeo Craft · desactivados",
+    "ru-RU": "Видеоэффекты Craft · отключены",
+    "uk-UA": "Відеоефекти Craft · вимкнено",
+    "de-DE": "Craft-Videoeffekte · deaktiviert"
+  },
+  "Enable Craft video effects in Tools > Plugins before adding this filter.": {
+    "es-ES": "Activa los efectos de vídeo Craft en Herramientas > Complementos antes de añadir este filtro.",
+    "ru-RU": "Включите видеоэффекты Craft в меню Инструменты > Плагины перед добавлением этого фильтра.",
+    "uk-UA": "Увімкніть відеоефекти Craft у меню Інструменти > Плагіни перед додаванням цього фільтра.",
+    "de-DE": "Aktivieren Sie Craft-Videoeffekte unter Werkzeuge > Plugins, bevor Sie diesen Filter hinzufügen."
+  },
+  "Invert Colors": {
+    "es-ES": "Invertir colores",
+    "ru-RU": "Инверсия цветов",
+    "uk-UA": "Інверсія кольорів",
+    "de-DE": "Farben invertieren"
+  },
+  "Grayscale": {
+    "es-ES": "Escala de grises",
+    "ru-RU": "Оттенки серого",
+    "uk-UA": "Відтінки сірого",
+    "de-DE": "Graustufen"
+  },
+  "Posterize": {
+    "es-ES": "Posterizar",
+    "ru-RU": "Постеризация",
+    "uk-UA": "Постеризація",
+    "de-DE": "Tontrennung"
+  },
+  "Exposure": {
+    "es-ES": "Exposición",
+    "ru-RU": "Экспозиция",
+    "uk-UA": "Експозиція",
+    "de-DE": "Belichtung"
+  },
+  "Temperature & Tint": {
+    "es-ES": "Temperatura y matiz",
+    "ru-RU": "Температура и оттенок",
+    "uk-UA": "Температура й відтінок",
+    "de-DE": "Temperatur und Farbton"
+  },
+  "Threshold": {
+    "es-ES": "Umbral",
+    "ru-RU": "Порог",
+    "uk-UA": "Поріг",
+    "de-DE": "Schwellenwert"
+  },
+  "Levels": {
+    "es-ES": "Niveles",
+    "ru-RU": "Уровни",
+    "uk-UA": "Рівні",
+    "de-DE": "Stufen"
+  },
+  "Threshold Level": {
+    "es-ES": "Nivel de umbral",
+    "ru-RU": "Пороговый уровень",
+    "uk-UA": "Пороговий рівень",
+    "de-DE": "Schwellenwertstufe"
+  },
+  "Exposure Stops": {
+    "es-ES": "Pasos de exposición",
+    "ru-RU": "Ступени экспозиции",
+    "uk-UA": "Ступені експозиції",
+    "de-DE": "Belichtungsstufen"
+  },
+  "Exposure Offset": {
+    "es-ES": "Desplazamiento de exposición",
+    "ru-RU": "Смещение экспозиции",
+    "uk-UA": "Зсув експозиції",
+    "de-DE": "Belichtungsversatz"
+  },
+  "Exposure Gamma": {
+    "es-ES": "Gamma de exposición",
+    "ru-RU": "Гамма экспозиции",
+    "uk-UA": "Гама експозиції",
+    "de-DE": "Belichtungsgamma"
+  },
+  "Bypass Linear Light Conversion": {
+    "es-ES": "Omitir conversión a luz lineal",
+    "ru-RU": "Не выполнять преобразование в линейный свет",
+    "uk-UA": "Не виконувати перетворення в лінійне світло",
+    "de-DE": "Umwandlung in lineares Licht umgehen"
+  },
+  "Temperature": {
+    "es-ES": "Temperatura",
+    "ru-RU": "Температура",
+    "uk-UA": "Температура",
+    "de-DE": "Temperatur"
+  },
+  "Tint": {
+    "es-ES": "Matiz",
+    "ru-RU": "Оттенок",
+    "uk-UA": "Відтінок",
+    "de-DE": "Farbton"
+  },
+  "Set the effect blend from the original source to the full result.": {
+    "es-ES": "Mezclar entre la fuente original y el resultado completo.",
+    "ru-RU": "Настроить смешивание исходного изображения с полным результатом эффекта.",
+    "uk-UA": "Налаштувати змішування початкового зображення з повним результатом ефекту.",
+    "de-DE": "Zwischen Originalquelle und vollständigem Effektergebnis mischen."
+  },
+  "Choose how many discrete RGB levels remain.": {
+    "es-ES": "Elegir cuántos niveles RGB discretos permanecen.",
+    "ru-RU": "Выбрать количество оставшихся дискретных уровней RGB.",
+    "uk-UA": "Вибрати кількість дискретних рівнів RGB, що залишаться.",
+    "de-DE": "Anzahl der verbleibenden diskreten RGB-Stufen wählen."
+  },
+  "Set the luminosity level separating black and white.": {
+    "es-ES": "Establecer la luminosidad que separa blanco y negro.",
+    "ru-RU": "Установить уровень яркости, разделяющий чёрное и белое.",
+    "uk-UA": "Установити рівень яскравості, що розділяє чорне й біле.",
+    "de-DE": "Helligkeitsschwelle zwischen Schwarz und Weiß festlegen."
+  },
+  "One stop doubles or halves linear-light exposure.": {
+    "es-ES": "Un paso duplica o divide por dos la exposición lineal.",
+    "ru-RU": "Одна ступень удваивает или вдвое уменьшает экспозицию в линейном свете.",
+    "uk-UA": "Один ступінь подвоює або вдвічі зменшує експозицію в лінійному світлі.",
+    "de-DE": "Eine Stufe verdoppelt oder halbiert die Belichtung im linearen Licht."
+  },
+  "Add an offset before exposure gamma correction.": {
+    "es-ES": "Añadir un desplazamiento antes de corregir la gamma.",
+    "ru-RU": "Добавить смещение перед гамма-коррекцией экспозиции.",
+    "uk-UA": "Додати зсув перед гама-корекцією експозиції.",
+    "de-DE": "Vor der Gammakorrektur einen Belichtungsversatz hinzufügen."
+  },
+  "Adjust gamma after exposure and offset.": {
+    "es-ES": "Ajustar la gamma después de exposición y desplazamiento.",
+    "ru-RU": "Настроить гамму после экспозиции и смещения.",
+    "uk-UA": "Налаштувати гаму після експозиції та зсуву.",
+    "de-DE": "Gamma nach Belichtung und Versatz einstellen."
+  },
+  "Balance red and blue channels toward warm or cool colors.": {
+    "es-ES": "Equilibrar rojo y azul hacia colores cálidos o fríos.",
+    "ru-RU": "Сбалансировать красный и синий каналы для тёплого или холодного оттенка.",
+    "uk-UA": "Збалансувати червоний і синій канали для теплого або холодного відтінку.",
+    "de-DE": "Rot und Blau für wärmere oder kühlere Farben ausgleichen."
+  },
+  "Balance the green channel toward green or magenta.": {
+    "es-ES": "Equilibrar el verde hacia verde o magenta.",
+    "ru-RU": "Сбалансировать зелёный канал между зелёным и пурпурным оттенками.",
+    "uk-UA": "Збалансувати зелений канал між зеленим і пурпуровим відтінками.",
+    "de-DE": "Grünkanal zwischen Grün und Magenta ausgleichen."
+  },
+  "Select a source to show its properties, filters and playback controls.": {
+    "es-ES": "Selecciona una fuente para ver sus propiedades, filtros y controles de reproducción.",
+    "ru-RU": "Выберите источник, чтобы открыть его свойства, фильтры и управление воспроизведением.",
+    "uk-UA": "Виберіть джерело, щоб відкрити його властивості, фільтри та керування відтворенням.",
+    "de-DE": "Wähle eine Quelle, um ihre Eigenschaften, Filter und Wiedergabesteuerung anzuzeigen."
+  },
+  "Right-click the dock heading for Add and other scene actions.": {
+    "es-ES": "Haz clic derecho en el encabezado del panel para añadir escenas y acceder a sus acciones.",
+    "ru-RU": "Нажмите правой кнопкой по заголовку панели, чтобы добавить сцену или открыть её действия.",
+    "uk-UA": "Натисніть правою кнопкою на заголовку панелі, щоб додати сцену або відкрити її дії.",
+    "de-DE": "Rechtsklick auf den Docktitel öffnet Hinzufügen und weitere Szenenaktionen."
+  },
+  "Right-click the dock heading for Add and other source actions.": {
+    "es-ES": "Haz clic derecho en el encabezado del panel para añadir fuentes y acceder a sus acciones.",
+    "ru-RU": "Нажмите правой кнопкой по заголовку панели, чтобы добавить источник или открыть его действия.",
+    "uk-UA": "Натисніть правою кнопкою на заголовку панелі, щоб додати джерело або відкрити його дії.",
+    "de-DE": "Rechtsklick auf den Docktitel öffnet Hinzufügen und weitere Quellenaktionen."
+  },
+  "Show or hide the Scenes and Sources dock toolbars. Right-click a dock heading or item to keep using its actions.": {
+    "es-ES": "Muestra u oculta las barras de los paneles Escenas y Fuentes. Sus acciones siguen disponibles al hacer clic derecho en el encabezado o en un elemento.",
+    "ru-RU": "Показать или скрыть панели инструментов сцен и источников. Действия остаются доступны через правую кнопку мыши на заголовке или элементе.",
+    "uk-UA": "Показати або приховати панелі інструментів сцен і джерел. Дії залишаються доступними через праву кнопку миші на заголовку або елементі.",
+    "de-DE": "Zeigt oder verbirgt die Werkzeugleisten der Szenen- und Quellen-Docks. Aktionen bleiben per Rechtsklick auf Titel oder Eintrag erreichbar."
+  },
+  "Show or hide the selected source toolbar with properties, filters and media playback controls.": {
+    "es-ES": "Muestra u oculta la barra de la fuente seleccionada con propiedades, filtros y controles de reproducción.",
+    "ru-RU": "Показать или скрыть панель выбранного источника со свойствами, фильтрами и управлением воспроизведением.",
+    "uk-UA": "Показати або приховати панель вибраного джерела з властивостями, фільтрами та керуванням відтворенням.",
+    "de-DE": "Zeigt oder verbirgt die Werkzeugleiste der ausgewählten Quelle mit Eigenschaften, Filtern und Wiedergabesteuerung."
+  },
+  "Browse…": {
+    "es-ES": "Examinar…",
+    "ru-RU": "Обзор…",
+    "uk-UA": "Огляд…",
+    "de-DE": "Durchsuchen…"
+  },
+  "Add folder…": {
+    "es-ES": "Añadir carpeta…",
+    "ru-RU": "Добавить папку…",
+    "uk-UA": "Додати папку…",
+    "de-DE": "Ordner hinzufügen…"
+  },
+  "JSON files": {
+    "es-ES": "Archivos JSON",
+    "ru-RU": "Файлы JSON",
+    "uk-UA": "Файли JSON",
+    "de-DE": "JSON-Dateien"
+  },
+  "All files": {
+    "es-ES": "Todos los archivos",
+    "ru-RU": "Все файлы",
+    "uk-UA": "Усі файли",
+    "de-DE": "Alle Dateien"
+  },
+  "Choose a path using the Windows file dialog. Cancel keeps this draft unchanged.": {
+    "es-ES": "Elige una ruta con el diálogo de archivos de Windows. Cancelar conserva el borrador.",
+    "ru-RU": "Выберите путь в диалоге Windows. Отмена оставляет черновик без изменений.",
+    "uk-UA": "Виберіть шлях у діалозі Windows. Скасування залишає чернетку без змін.",
+    "de-DE": "Wähle einen Pfad im Windows-Dateidialog. Abbrechen lässt den Entwurf unverändert."
+  },
+  "Wait for the active operation and keep the application window available before browsing.": {
+    "es-ES": "Espera a que termine la operación en curso y mantén disponible la ventana de la aplicación.",
+    "ru-RU": "Дождитесь завершения текущей операции; окно приложения должно оставаться доступным.",
+    "uk-UA": "Дочекайтеся завершення поточної операції; вікно програми має залишатися доступним.",
+    "de-DE": "Warte auf den laufenden Vorgang und halte das Anwendungsfenster verfügbar."
+  },
+  "The file chooser target changed. Click Browse again.": {
+    "es-ES": "El destino del selector cambió. Pulsa Examinar de nuevo.",
+    "ru-RU": "Цель выбора файла изменилась. Нажмите Обзор ещё раз.",
+    "uk-UA": "Ціль вибору файлу змінилася. Натисніть Огляд ще раз.",
+    "de-DE": "Das Ziel der Dateiauswahl hat sich geändert. Klicke erneut auf Durchsuchen."
+  },
+  "The file chooser target changed; selected paths were discarded.": {
+    "es-ES": "El destino del selector cambió; se descartaron las rutas seleccionadas.",
+    "ru-RU": "Цель выбора файла изменилась; выбранные пути не применены.",
+    "uk-UA": "Ціль вибору файлу змінилася; вибрані шляхи не застосовано.",
+    "de-DE": "Das Ziel der Dateiauswahl hat sich geändert; die ausgewählten Pfade wurden verworfen."
+  },
+  "The native file chooser has no application window owner.": {
+    "es-ES": "El selector de archivos no tiene una ventana de aplicación asociada.",
+    "ru-RU": "У системного диалога выбора файлов нет родительского окна приложения.",
+    "uk-UA": "Системний діалог вибору файлів не має батьківського вікна програми.",
+    "de-DE": "Der native Dateidialog hat kein zugeordnetes Anwendungsfenster."
+  },
+  "The slideshow can contain at most 256 images; the draft was retained.": {
+    "es-ES": "La presentación admite hasta 256 imágenes; se conservó el borrador.",
+    "ru-RU": "Слайд-шоу может содержать не более 256 изображений; черновик сохранён.",
+    "uk-UA": "Слайд-шоу може містити щонайбільше 256 зображень; чернетку збережено.",
+    "de-DE": "Die Diashow kann höchstens 256 Bilder enthalten; der Entwurf wurde beibehalten."
+  },
+  "Choose exactly one file for this source or document.": {
+    "es-ES": "Elige exactamente un archivo para esta fuente o documento.",
+    "ru-RU": "Выберите ровно один файл для этого источника или документа.",
+    "uk-UA": "Виберіть рівно один файл для цього джерела або документа.",
+    "de-DE": "Wähle genau eine Datei für diese Quelle oder dieses Dokument."
+  },
+  "The selected folder contains no supported image files.": {
+    "es-ES": "La carpeta seleccionada no contiene imágenes compatibles.",
+    "ru-RU": "В выбранной папке нет поддерживаемых файлов изображений.",
+    "uk-UA": "У вибраній папці немає підтримуваних файлів зображень.",
+    "de-DE": "Der ausgewählte Ordner enthält keine unterstützten Bilddateien."
+  },
+  "The selected folder contains more than 256 supported images.": {
+    "es-ES": "La carpeta seleccionada contiene más de 256 imágenes compatibles.",
+    "ru-RU": "В выбранной папке более 256 поддерживаемых изображений.",
+    "uk-UA": "У вибраній папці понад 256 підтримуваних зображень.",
+    "de-DE": "Der ausgewählte Ordner enthält mehr als 256 unterstützte Bilder."
+  },
+  "The selected image folder exceeds 4096 entries; choose a smaller folder.": {
+    "es-ES": "La carpeta de imágenes contiene más de 4096 elementos; elige una más pequeña.",
+    "ru-RU": "В папке изображений более 4096 элементов; выберите папку меньшего размера.",
+    "uk-UA": "У папці зображень понад 4096 елементів; виберіть меншу папку.",
+    "de-DE": "Der Bildordner enthält mehr als 4096 Einträge; wähle einen kleineren Ordner."
+  },
+  "This reference has no compiled Rust operations. It cannot add sources, filters or docks.": {
+    "es-ES": "Esta referencia no tiene operaciones Rust compiladas. No puede añadir fuentes, filtros ni paneles.",
+    "ru-RU": "Для этого референса нет скомпилированных операций Rust. Он не может добавлять источники, фильтры или панели.",
+    "uk-UA": "Для цього референсу немає скомпільованих операцій Rust. Він не може додавати джерела, фільтри чи панелі.",
+    "de-DE": "Diese Referenz enthält keine kompilierten Rust-Funktionen. Sie kann keine Quellen, Filter oder Docks hinzufügen."
+  },
+  "Read-only": {
+    "es-ES": "Solo lectura",
+    "ru-RU": "Только чтение",
+    "uk-UA": "Лише читання",
+    "de-DE": "Schreibgeschützt"
+  },
+  "Open the shared filter editor, then add one of the choices listed above. Enabling a module does not add filters automatically.": {
+    "es-ES": "Abre el editor de filtros compartido y añade una de las opciones indicadas arriba. Activar un módulo no añade filtros automáticamente.",
+    "ru-RU": "Откройте общий редактор фильтров и добавьте один из перечисленных выше вариантов. Включение модуля не добавляет фильтры автоматически.",
+    "uk-UA": "Відкрийте спільний редактор фільтрів і додайте один із наведених вище варіантів. Увімкнення модуля не додає фільтри автоматично.",
+    "de-DE": "Öffnen Sie den gemeinsamen Filtereditor und fügen Sie eine der oben aufgeführten Optionen hinzu. Das Aktivieren eines Moduls fügt nicht automatisch Filter hinzu."
+  },
+  "Scene: {name}": {
+    "es-ES": "Escena: {name}",
+    "ru-RU": "Сцена: {name}",
+    "uk-UA": "Сцена: {name}",
+    "de-DE": "Szene: {name}"
+  },
+  "No compatible target. Add an audio or video source, or create a scene first.": {
+    "es-ES": "No hay un destino compatible. Añade una fuente de audio o vídeo, o crea primero una escena.",
+    "ru-RU": "Нет совместимого объекта. Сначала добавьте аудио- или видеоисточник либо создайте сцену.",
+    "uk-UA": "Немає сумісного об’єкта. Спочатку додайте аудіо- чи відеоджерело або створіть сцену.",
+    "de-DE": "Kein kompatibles Ziel. Fügen Sie zuerst eine Audio- oder Videoquelle hinzu oder erstellen Sie eine Szene."
+  },
+  "Choose the existing source or scene to configure.": {
+    "es-ES": "Elige la fuente o escena existente que deseas configurar.",
+    "ru-RU": "Выберите существующий источник или сцену для настройки.",
+    "uk-UA": "Виберіть наявне джерело або сцену для налаштування.",
+    "de-DE": "Wählen Sie die vorhandene Quelle oder Szene zum Konfigurieren aus."
+  },
+  "Enable this module before opening its editor.": {
+    "es-ES": "Activa este módulo antes de abrir su editor.",
+    "ru-RU": "Включите этот модуль перед открытием редактора.",
+    "uk-UA": "Увімкніть цей модуль перед відкриттям редактора.",
+    "de-DE": "Aktivieren Sie dieses Modul, bevor Sie seinen Editor öffnen."
+  },
+  "Open Audio Filters": {
+    "es-ES": "Abrir filtros de audio",
+    "ru-RU": "Открыть аудиофильтры",
+    "uk-UA": "Відкрити аудіофільтри",
+    "de-DE": "Audiofilter öffnen"
+  },
+  "Open Video Filters": {
+    "es-ES": "Abrir filtros de vídeo",
+    "ru-RU": "Открыть видеофильтры",
+    "uk-UA": "Відкрити відеофільтри",
+    "de-DE": "Videofilter öffnen"
+  },
+  "Open Scene Notes": {
+    "es-ES": "Abrir notas de la escena",
+    "ru-RU": "Открыть заметки сцены",
+    "uk-UA": "Відкрити нотатки сцени",
+    "de-DE": "Szenennotizen öffnen"
+  },
+  "Reopen Plugin Manager before choosing an editor.": {
+    "es-ES": "Vuelve a abrir el gestor de complementos antes de elegir un editor.",
+    "ru-RU": "Снова откройте менеджер плагинов перед выбором редактора.",
+    "uk-UA": "Знову відкрийте менеджер плагінів перед вибором редактора.",
+    "de-DE": "Öffnen Sie die Plugin-Verwaltung erneut, bevor Sie einen Editor auswählen."
+  },
+  "The document changed. Choose the plugin target again.": {
+    "es-ES": "El documento ha cambiado. Vuelve a elegir el destino del complemento.",
+    "ru-RU": "Документ изменился. Снова выберите объект для плагина.",
+    "uk-UA": "Документ змінився. Знову виберіть об’єкт для плагіна.",
+    "de-DE": "Das Dokument wurde geändert. Wählen Sie das Plugin-Ziel erneut aus."
+  },
+  "This module has no enabled editor for this operation.": {
+    "es-ES": "Este módulo no tiene un editor activado para esta operación.",
+    "ru-RU": "У этого модуля нет включённого редактора для данной операции.",
+    "uk-UA": "Цей модуль не має увімкненого редактора для цієї операції.",
+    "de-DE": "Dieses Modul hat keinen aktivierten Editor für diesen Vorgang."
+  },
+  "This source or scene cannot use the selected plugin operation.": {
+    "es-ES": "Esta fuente o escena no admite la operación seleccionada del complemento.",
+    "ru-RU": "Этот источник или сцена не поддерживает выбранную операцию плагина.",
+    "uk-UA": "Це джерело або сцена не підтримує вибрану операцію плагіна.",
+    "de-DE": "Diese Quelle oder Szene unterstützt den ausgewählten Plugin-Vorgang nicht."
+  },
+  "Plugin manager identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del gestor de complementos",
+    "ru-RU": "Исчерпаны идентификаторы менеджера плагинов",
+    "uk-UA": "Вичерпано ідентифікатори менеджера плагінів",
+    "de-DE": "Keine weiteren Kennungen für die Plugin-Verwaltung verfügbar"
+  },
+  "Plugin settings changed. Reopen this editor before applying.": {
+    "es-ES": "La configuración del complemento ha cambiado. Vuelve a abrir este editor antes de aplicar.",
+    "ru-RU": "Настройки плагина изменились. Снова откройте редактор перед применением.",
+    "uk-UA": "Налаштування плагіна змінилися. Знову відкрийте редактор перед застосуванням.",
+    "de-DE": "Die Plugin-Einstellungen wurden geändert. Öffnen Sie diesen Editor vor dem Anwenden erneut."
+  },
+  "Plugin editor identity exhausted": {
+    "es-ES": "Se agotaron los identificadores del editor de complementos",
+    "ru-RU": "Исчерпаны идентификаторы редактора плагинов",
+    "uk-UA": "Вичерпано ідентифікатори редактора плагінів",
+    "de-DE": "Keine weiteren Kennungen für den Plugin-Editor verfügbar"
+  },
+  "Target": {
+    "es-ES": "Destino",
+    "ru-RU": "Целевой объект",
+    "uk-UA": "Цільовий об’єкт",
+    "de-DE": "Ziel"
+  },
+  "Virtual Camera Settings": {
+    "es-ES": "Ajustes de cámara virtual",
+    "ru-RU": "Настройки виртуальной камеры",
+    "uk-UA": "Налаштування віртуальної камери",
+    "de-DE": "Einstellungen der virtuellen Kamera"
+  },
+  "Start Virtual Camera": {
+    "es-ES": "Iniciar cámara virtual",
+    "ru-RU": "Запустить виртуальную камеру",
+    "uk-UA": "Запустити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera starten"
+  },
+  "Stop Virtual Camera": {
+    "es-ES": "Detener cámara virtual",
+    "ru-RU": "Остановить виртуальную камеру",
+    "uk-UA": "Зупинити віртуальну камеру",
+    "de-DE": "Virtuelle Kamera stoppen"
+  },
+  "Cancel Virtual Camera Start": {
+    "es-ES": "Cancelar inicio de cámara virtual",
+    "ru-RU": "Отменить запуск виртуальной камеры",
+    "uk-UA": "Скасувати запуск віртуальної камери",
+    "de-DE": "Start der virtuellen Kamera abbrechen"
+  },
+  "Starting virtual camera…": {
+    "es-ES": "Iniciando cámara virtual…",
+    "ru-RU": "Запуск виртуальной камеры…",
+    "uk-UA": "Запуск віртуальної камери…",
+    "de-DE": "Virtuelle Kamera wird gestartet…"
+  },
+  "Stopping virtual camera…": {
+    "es-ES": "Deteniendo cámara virtual…",
+    "ru-RU": "Остановка виртуальной камеры…",
+    "uk-UA": "Зупинення віртуальної камери…",
+    "de-DE": "Virtuelle Kamera wird gestoppt…"
+  },
+  "Virtual camera is stopped.": {
+    "es-ES": "La cámara virtual está detenida.",
+    "ru-RU": "Виртуальная камера остановлена.",
+    "uk-UA": "Віртуальну камеру зупинено.",
+    "de-DE": "Die virtuelle Kamera ist gestoppt."
+  },
+  "Virtual camera started.": {
+    "es-ES": "La cámara virtual se ha iniciado.",
+    "ru-RU": "Виртуальная камера запущена.",
+    "uk-UA": "Віртуальну камеру запущено.",
+    "de-DE": "Die virtuelle Kamera wurde gestartet."
+  },
+  "Virtual camera started; waiting for a receiving application.": {
+    "es-ES": "Cámara virtual iniciada; esperando una aplicación receptora.",
+    "ru-RU": "Виртуальная камера запущена; ожидание принимающего приложения.",
+    "uk-UA": "Віртуальну камеру запущено; очікування програми-одержувача.",
+    "de-DE": "Virtuelle Kamera gestartet; Warten auf eine empfangende Anwendung."
+  },
+  "Virtual camera is active; a receiving application is connected.": {
+    "es-ES": "La cámara virtual está activa; hay una aplicación receptora conectada.",
+    "ru-RU": "Виртуальная камера активна; принимающее приложение подключено.",
+    "uk-UA": "Віртуальна камера активна; програму-одержувач підключено.",
+    "de-DE": "Die virtuelle Kamera ist aktiv; eine empfangende Anwendung ist verbunden."
+  },
+  "Output: Program (including scene transitions)": {
+    "es-ES": "Salida: Programa (con transiciones de escena)",
+    "ru-RU": "Вывод: Program (с переходами сцен)",
+    "uk-UA": "Вивід: Program (із переходами сцен)",
+    "de-DE": "Ausgabe: Programm (mit Szenenübergängen)"
+  },
+  "The current scene canvas is resized to the selected camera format. Preview-only, individual scene and individual source routing are not available yet.": {
+    "es-ES": "El lienzo actual se adapta al formato de cámara elegido. Aún no se puede enviar solo la vista previa, una escena o una fuente.",
+    "ru-RU": "Текущий холст масштабируется под выбранный формат камеры. Отдельный вывод Preview, сцены или источника пока недоступен.",
+    "uk-UA": "Поточне полотно масштабується під вибраний формат камери. Окремий вивід Preview, сцени або джерела поки недоступний.",
+    "de-DE": "Die aktuelle Szenenfläche wird an das Kameraformat angepasst. Separate Vorschau-, Szenen- oder Quellenausgabe ist noch nicht verfügbar."
+  },
+  "Camera format": {
+    "es-ES": "Formato de cámara",
+    "ru-RU": "Формат камеры",
+    "uk-UA": "Формат камери",
+    "de-DE": "Kameraformat"
+  },
+  "Use this resolution at 30 frames per second for the virtual camera.": {
+    "es-ES": "Usar esta resolución a 30 fotogramas por segundo para la cámara virtual.",
+    "ru-RU": "Использовать это разрешение с частотой 30 кадров в секунду для виртуальной камеры.",
+    "uk-UA": "Використовувати цю роздільну здатність із частотою 30 кадрів за секунду для віртуальної камери.",
+    "de-DE": "Diese Auflösung mit 30 Bildern pro Sekunde für die virtuelle Kamera verwenden."
+  },
+  "Stop the virtual camera before changing its format.": {
+    "es-ES": "Detén la cámara virtual antes de cambiar su formato.",
+    "ru-RU": "Остановите виртуальную камеру перед изменением её формата.",
+    "uk-UA": "Зупиніть віртуальну камеру перед зміною її формату.",
+    "de-DE": "Stoppe die virtuelle Kamera, bevor du ihr Format änderst."
+  },
+  "This profile is kept for this application window. Apply does not start the camera.": {
+    "es-ES": "Este perfil se conserva para esta ventana. Aplicar no inicia la cámara.",
+    "ru-RU": "Профиль сохраняется для текущего окна приложения. Кнопка «Применить» не запускает камеру.",
+    "uk-UA": "Профіль зберігається для поточного вікна програми. Кнопка «Застосувати» не запускає камеру.",
+    "de-DE": "Dieses Profil gilt für dieses Anwendungsfenster. Anwenden startet die Kamera nicht."
+  },
+  "Frames: {frames} · Source activations: {starts}": {
+    "es-ES": "Fotogramas: {frames} · Activaciones: {starts}",
+    "ru-RU": "Кадры: {frames} · Активации источника: {starts}",
+    "uk-UA": "Кадри: {frames} · Активації джерела: {starts}",
+    "de-DE": "Bilder: {frames} · Quellenaktivierungen: {starts}"
+  },
+  "Windows 11 x64 (build 22000 or later) and a protected SkyLive virtual-camera installation are required. This window does not install, register or elevate permissions for a device.": {
+    "es-ES": "Se requiere Windows 11 x64 (compilación 22000 o posterior) y la instalación protegida de la cámara virtual SkyLive. Esta ventana no instala, registra ni eleva permisos de dispositivos.",
+    "ru-RU": "Нужны Windows 11 x64 (сборка 22000 или новее) и защищённая установка виртуальной камеры SkyLive. Это окно не устанавливает и не регистрирует устройство и не повышает права.",
+    "uk-UA": "Потрібні Windows 11 x64 (збірка 22000 або новіша) і захищена інсталяція віртуальної камери SkyLive. Це вікно не встановлює та не реєструє пристрій і не підвищує права.",
+    "de-DE": "Windows 11 x64 (Build 22000 oder neuer) und eine geschützte Installation der virtuellen SkyLive-Kamera sind erforderlich. Dieses Fenster installiert oder registriert kein Gerät und erhöht keine Rechte."
+  },
+  "After starting, select SkyLive (Windows Virtual Camera) in the receiving application. Audio uses that application's separate microphone selection.": {
+    "es-ES": "Después de iniciar, elige SkyLive (Windows Virtual Camera) en la aplicación receptora. El audio usa su selección de micrófono independiente.",
+    "ru-RU": "После запуска выберите SkyLive (Windows Virtual Camera) в принимающем приложении. Микрофон для звука выбирается в нём отдельно.",
+    "uk-UA": "Після запуску виберіть SkyLive (Windows Virtual Camera) у програмі-одержувачі. Мікрофон для звуку вибирається в ній окремо.",
+    "de-DE": "Wähle nach dem Start SkyLive (Windows Virtual Camera) in der empfangenden Anwendung. Audio verwendet deren separate Mikrofonwahl."
+  },
+  "Stop the virtual camera independently of recording and streaming.": {
+    "es-ES": "Detener la cámara virtual sin detener la grabación ni la transmisión.",
+    "ru-RU": "Остановить виртуальную камеру независимо от записи и стриминга.",
+    "uk-UA": "Зупинити віртуальну камеру незалежно від запису та стримінгу.",
+    "de-DE": "Die virtuelle Kamera unabhängig von Aufnahme und Stream stoppen."
+  },
+  "Send the actual Program picture, including transitions and source filters, to the installed SkyLive virtual camera.": {
+    "es-ES": "Enviar la imagen real del Programa, con transiciones y filtros, a la cámara virtual SkyLive instalada.",
+    "ru-RU": "Отправить настоящую картинку Program с переходами и фильтрами источников в установленную виртуальную камеру SkyLive.",
+    "uk-UA": "Надіслати справжню картинку Program із переходами та фільтрами джерел до встановленої віртуальної камери SkyLive.",
+    "de-DE": "Das echte Programmbild mit Übergängen und Quellenfiltern an die installierte virtuelle SkyLive-Kamera senden."
+  },
+  "Virtual camera requires Windows 11 x64 (build 22000 or later).": {
+    "es-ES": "La cámara virtual requiere Windows 11 x64 (compilación 22000 o posterior).",
+    "ru-RU": "Виртуальной камере нужны Windows 11 x64 (сборка 22000 или новее).",
+    "uk-UA": "Віртуальній камері потрібні Windows 11 x64 (збірка 22000 або новіша).",
+    "de-DE": "Die virtuelle Kamera benötigt Windows 11 x64 (Build 22000 oder neuer)."
+  },
+  "Use this virtual-camera profile on the next start.": {
+    "es-ES": "Usar este perfil de cámara virtual en el próximo inicio.",
+    "ru-RU": "Использовать этот профиль виртуальной камеры при следующем запуске.",
+    "uk-UA": "Використати цей профіль віртуальної камери під час наступного запуску.",
+    "de-DE": "Dieses Kameraprofil beim nächsten Start verwenden."
+  },
+  "Close virtual-camera settings without applying the draft.": {
+    "es-ES": "Cerrar los ajustes de cámara virtual sin aplicar el borrador.",
+    "ru-RU": "Закрыть настройки виртуальной камеры без применения черновика.",
+    "uk-UA": "Закрити налаштування віртуальної камери без застосування чернетки.",
+    "de-DE": "Kameraeinstellungen schließen, ohne den Entwurf anzuwenden."
+  },
+  "Virtual-camera profile updated for the next start.": {
+    "es-ES": "Perfil de cámara virtual actualizado para el próximo inicio.",
+    "ru-RU": "Профиль виртуальной камеры обновлён для следующего запуска.",
+    "uk-UA": "Профіль віртуальної камери оновлено для наступного запуску.",
+    "de-DE": "Das Kameraprofil wurde für den nächsten Start aktualisiert."
+  },
+  "Stop the virtual camera before replacing the scene collection": {
+    "es-ES": "Detén la cámara virtual antes de sustituir la colección de escenas",
+    "ru-RU": "Остановите виртуальную камеру перед заменой коллекции сцен",
+    "uk-UA": "Зупиніть віртуальну камеру перед заміною колекції сцен",
+    "de-DE": "Stoppe die virtuelle Kamera vor dem Ersetzen der Szenensammlung"
+  },
+  "Finish or close virtual-camera settings first": {
+    "es-ES": "Primero aplica o cierra los ajustes de cámara virtual",
+    "ru-RU": "Сначала завершите или закройте настройки виртуальной камеры",
+    "uk-UA": "Спочатку завершіть або закрийте налаштування віртуальної камери",
+    "de-DE": "Schließe zuerst die Kameraeinstellungen ab oder schließe das Fenster"
+  },
+  "Virtual-camera settings are stale; reopen Settings.": {
+    "es-ES": "Los ajustes de cámara virtual quedaron desactualizados; vuelve a abrirlos.",
+    "ru-RU": "Настройки виртуальной камеры устарели; откройте их заново.",
+    "uk-UA": "Налаштування віртуальної камери застаріли; відкрийте їх знову.",
+    "de-DE": "Die Kameraeinstellungen sind veraltet; öffne sie erneut."
+  },
+  "Virtual-camera document changed; output was stopped.": {
+    "es-ES": "El documento de la cámara virtual cambió; se detuvo la salida.",
+    "ru-RU": "Документ виртуальной камеры изменился; вывод остановлен.",
+    "uk-UA": "Документ віртуальної камери змінився; вивід зупинено.",
+    "de-DE": "Das Kameradokument hat sich geändert; die Ausgabe wurde gestoppt."
+  },
+  "Virtual-camera clock moved backwards": {
+    "es-ES": "El reloj de la cámara virtual retrocedió",
+    "ru-RU": "Часы виртуальной камеры пошли назад",
+    "uk-UA": "Годинник віртуальної камери пішов назад",
+    "de-DE": "Die Uhr der virtuellen Kamera ist rückwärts gelaufen"
+  },
+  "Camera driver controls": {
+    "es-ES": "Controles del controlador de cámara",
+    "ru-RU": "Параметры драйвера камеры",
+    "uk-UA": "Параметри драйвера камери",
+    "de-DE": "Kameratreiber-Regler"
+  },
+  "Live hardware settings. Apply each control directly; closing or cancelling this dialog does not restore camera values.": {
+    "es-ES": "Ajustes activos del dispositivo. Aplica cada control directamente; cerrar o cancelar este diálogo no restaura los valores de la cámara.",
+    "ru-RU": "Текущие аппаратные настройки. Каждый параметр применяется сразу; закрытие или отмена диалога не восстанавливает значения камеры.",
+    "uk-UA": "Поточні апаратні налаштування. Кожен параметр застосовується одразу; закриття чи скасування діалогу не відновлює значення камери.",
+    "de-DE": "Aktuelle Hardwareeinstellungen. Jeder Regler wird direkt angewendet; Schließen oder Abbrechen stellt Kamerawerte nicht wieder her."
+  },
+  "Read driver controls": {
+    "es-ES": "Leer controles del dispositivo",
+    "ru-RU": "Прочитать параметры драйвера",
+    "uk-UA": "Прочитати параметри драйвера",
+    "de-DE": "Treiberregler auslesen"
+  },
+  "Read actual ranges and current values from this running camera; unsupported properties are not shown": {
+    "es-ES": "Leer los rangos y valores actuales de esta cámara en funcionamiento; no se muestran propiedades no compatibles",
+    "ru-RU": "Прочитать реальные диапазоны и текущие значения работающей камеры; неподдерживаемые параметры не показываются",
+    "uk-UA": "Прочитати фактичні діапазони й поточні значення активної камери; непідтримувані параметри не показуються",
+    "de-DE": "Tatsächliche Bereiche und aktuelle Werte dieser laufenden Kamera lesen; nicht unterstützte Eigenschaften werden ausgeblendet"
+  },
+  "Bind and start this exact camera mode first, then reopen its properties": {
+    "es-ES": "Primero vincula e inicia este modo exacto de cámara y vuelve a abrir sus propiedades",
+    "ru-RU": "Сначала привяжите и запустите именно этот режим камеры, затем снова откройте свойства",
+    "uk-UA": "Спочатку прив’яжіть і запустіть саме цей режим камери, потім знову відкрийте властивості",
+    "de-DE": "Zuerst genau diesen Kameramodus zuweisen und starten, dann die Eigenschaften erneut öffnen"
+  },
+  "The driver did not expose standard camera controls for this source.": {
+    "es-ES": "El controlador no ofrece controles de cámara estándar para esta fuente.",
+    "ru-RU": "Драйвер не предоставляет стандартные параметры камеры для этого источника.",
+    "uk-UA": "Драйвер не надає стандартні параметри камери для цього джерела.",
+    "de-DE": "Der Treiber stellt für diese Quelle keine Standard-Kameraregler bereit."
+  },
+  "Last driver readback; raw native units": {
+    "es-ES": "Última lectura del controlador; unidades nativas sin convertir",
+    "ru-RU": "Последнее чтение драйвера; исходные единицы устройства",
+    "uk-UA": "Останнє зчитування драйвера; вихідні одиниці пристрою",
+    "de-DE": "Letzter ausgelesener Treiberwert; unveränderte native Einheiten"
+  },
+  "Auto": {
+    "es-ES": "Automático",
+    "ru-RU": "Авто",
+    "uk-UA": "Авто",
+    "de-DE": "Automatisch"
+  },
+  "Manual": {
+    "es-ES": "Manual",
+    "ru-RU": "Вручную",
+    "uk-UA": "Вручну",
+    "de-DE": "Manuell"
+  },
+  "Let the camera driver control this property": {
+    "es-ES": "Dejar que el controlador ajuste esta propiedad",
+    "ru-RU": "Разрешить драйверу камеры управлять этим параметром",
+    "uk-UA": "Дозволити драйверу камери керувати цим параметром",
+    "de-DE": "Diese Eigenschaft vom Kameratreiber regeln lassen"
+  },
+  "Use an explicit native driver value": {
+    "es-ES": "Usar un valor nativo explícito del controlador",
+    "ru-RU": "Использовать явно заданное значение драйвера",
+    "uk-UA": "Використовувати явно задане значення драйвера",
+    "de-DE": "Einen ausdrücklich angegebenen nativen Treiberwert verwenden"
+  },
+  "Write this control to the running camera and read back its actual value": {
+    "es-ES": "Escribir este ajuste en la cámara activa y volver a leer su valor real",
+    "ru-RU": "Записать параметр в работающую камеру и прочитать фактическое значение",
+    "uk-UA": "Записати параметр в активну камеру й прочитати фактичне значення",
+    "de-DE": "Diesen Wert an die laufende Kamera schreiben und den tatsächlichen Wert zurücklesen"
+  },
+  "Value must match the reported driver range and step": {
+    "es-ES": "El valor debe ajustarse al rango y paso indicados por el controlador",
+    "ru-RU": "Значение должно соответствовать диапазону и шагу, заявленным драйвером",
+    "uk-UA": "Значення має відповідати діапазону й кроку, заявленим драйвером",
+    "de-DE": "Der Wert muss dem gemeldeten Treiberbereich und der Schrittweite entsprechen"
+  },
+  "Write the driver's reported default value in manual mode": {
+    "es-ES": "Escribir en modo manual el valor predeterminado indicado por el controlador",
+    "ru-RU": "Записать в ручном режиме значение по умолчанию, заявленное драйвером",
+    "uk-UA": "Записати в ручному режимі типове значення, заявлене драйвером",
+    "de-DE": "Den vom Treiber gemeldeten Standardwert im manuellen Modus schreiben"
+  },
+  "Unavailable driver properties": {
+    "es-ES": "Propiedades del controlador no disponibles",
+    "ru-RU": "Недоступные параметры драйвера",
+    "uk-UA": "Недоступні параметри драйвера",
+    "de-DE": "Nicht verfügbare Treibereigenschaften"
+  },
+  "Driver Set succeeded": {
+    "es-ES": "Escritura del controlador completada",
+    "ru-RU": "Запись в драйвер выполнена",
+    "uk-UA": "Запис у драйвер виконано",
+    "de-DE": "Schreiben an den Treiber erfolgreich"
+  },
+  "Driver Set failed; hardware state may have changed": {
+    "es-ES": "Falló la escritura; el estado del dispositivo puede haber cambiado",
+    "ru-RU": "Запись в драйвер не выполнена; состояние устройства могло измениться",
+    "uk-UA": "Запис у драйвер не виконано; стан пристрою міг змінитися",
+    "de-DE": "Schreiben an den Treiber fehlgeschlagen; der Hardwarezustand könnte sich geändert haben"
+  },
+  "Driver was not written": {
+    "es-ES": "No se escribió en el controlador",
+    "ru-RU": "Запись в драйвер не выполнялась",
+    "uk-UA": "Запис у драйвер не виконувався",
+    "de-DE": "Es wurde nicht an den Treiber geschrieben"
+  },
+  "Before write": {
+    "es-ES": "Antes de escribir",
+    "ru-RU": "До записи",
+    "uk-UA": "До запису",
+    "de-DE": "Vor dem Schreiben"
+  },
+  "After write": {
+    "es-ES": "Después de escribir",
+    "ru-RU": "После записи",
+    "uk-UA": "Після запису",
+    "de-DE": "Nach dem Schreiben"
+  },
+  "Readback": {
+    "es-ES": "Lectura de confirmación",
+    "ru-RU": "Контрольное чтение",
+    "uk-UA": "Контрольне зчитування",
+    "de-DE": "Rücklesen"
+  },
+  "Interface": {
+    "es-ES": "Interfaz",
+    "ru-RU": "Интерфейс",
+    "uk-UA": "Інтерфейс",
+    "de-DE": "Schnittstelle"
+  },
+  "{value} · {mode}": {
+    "es-ES": "{value} · {mode}",
+    "ru-RU": "{value} · {mode}",
+    "uk-UA": "{value} · {mode}",
+    "de-DE": "{value} · {mode}"
+  },
+  "{minimum}…{maximum}; step {step}; driver default {default}": {
+    "es-ES": "{minimum}…{maximum}; paso {step}; valor predeterminado del controlador {default}",
+    "ru-RU": "{minimum}…{maximum}; шаг {step}; значение драйвера по умолчанию {default}",
+    "uk-UA": "{minimum}…{maximum}; крок {step}; типове значення драйвера {default}",
+    "de-DE": "{minimum}…{maximum}; Schritt {step}; Treiberstandard {default}"
+  },
+  "{control} · {phase}: {state}": {
+    "es-ES": "{control} · {phase}: {state}",
+    "ru-RU": "{control} · {phase}: {state}",
+    "uk-UA": "{control} · {phase}: {state}",
+    "de-DE": "{control} · {phase}: {state}"
+  },
+  " · readback {value} ({mode})": {
+    "es-ES": " · lectura {value} ({mode})",
+    "ru-RU": " · прочитано {value} ({mode})",
+    "uk-UA": " · зчитано {value} ({mode})",
+    "de-DE": " · rückgelesen {value} ({mode})"
+  },
+  "{property} · {operation}: {detail} · HRESULT {hresult} · native values {values}": {
+    "es-ES": "{property} · {operation}: {detail} · HRESULT {hresult} · valores nativos {values}",
+    "ru-RU": "{property} · {operation}: {detail} · HRESULT {hresult} · исходные значения {values}",
+    "uk-UA": "{property} · {operation}: {detail} · HRESULT {hresult} · вихідні значення {values}",
+    "de-DE": "{property} · {operation}: {detail} · HRESULT {hresult} · native Werte {values}"
+  },
+  "{width}×{height} · {num}/{den} fps · {format}": {
+    "es-ES": "{width}×{height} · {num}/{den} fps · {format}",
+    "ru-RU": "{width}×{height} · {num}/{den} кадр/с · {format}",
+    "uk-UA": "{width}×{height} · {num}/{den} кадр/с · {format}",
+    "de-DE": "{width}×{height} · {num}/{den} Bilder/s · {format}"
+  },
+  "native driver call failed": {
+    "es-ES": "falló la llamada al controlador nativo",
+    "ru-RU": "ошибка вызова драйвера устройства",
+    "uk-UA": "помилка виклику драйвера пристрою",
+    "de-DE": "Aufruf des nativen Treibers fehlgeschlagen"
+  },
+  "driver returned an invalid range, step, default or capability flags": {
+    "es-ES": "el controlador devolvió un rango, paso, valor predeterminado o indicadores de capacidad no válidos",
+    "ru-RU": "драйвер вернул некорректный диапазон, шаг, значение по умолчанию или флаги возможностей",
+    "uk-UA": "драйвер повернув некоректний діапазон, крок, типове значення або прапорці можливостей",
+    "de-DE": "Treiber meldete ungültigen Bereich, Schritt, Standardwert oder Fähigkeitsflags"
+  },
+  "driver returned an unsupported mode or out-of-range current value": {
+    "es-ES": "el controlador devolvió un modo no compatible o un valor actual fuera de rango",
+    "ru-RU": "драйвер вернул неподдерживаемый режим или текущее значение вне диапазона",
+    "uk-UA": "драйвер повернув непідтримуваний режим або поточне значення поза діапазоном",
+    "de-DE": "Treiber meldete einen nicht unterstützten Modus oder aktuellen Wert außerhalb des Bereichs"
+  },
+  "driver write has not started": {
+    "es-ES": "la escritura en el controlador no ha comenzado",
+    "ru-RU": "запись в драйвер ещё не началась",
+    "uk-UA": "запис у драйвер ще не почався",
+    "de-DE": "Schreiben an den Treiber hat noch nicht begonnen"
+  },
+  "requested mode/value is outside the current driver capabilities or step": {
+    "es-ES": "el modo o valor solicitado no cumple las capacidades o el paso actuales del controlador",
+    "ru-RU": "запрошенный режим или значение не соответствует текущим возможностям или шагу драйвера",
+    "uk-UA": "запитаний режим або значення не відповідає поточним можливостям чи кроку драйвера",
+    "de-DE": "Angeforderter Modus/Wert liegt außerhalb der aktuellen Treiberfähigkeiten oder Schrittweite"
+  },
+  "write cancelled before the external driver call": {
+    "es-ES": "escritura cancelada antes de llamar al controlador",
+    "ru-RU": "запись отменена до обращения к драйверу",
+    "uk-UA": "запис скасовано до звернення до драйвера",
+    "de-DE": "Schreiben vor dem externen Treiberaufruf abgebrochen"
+  },
+  "Set succeeded; driver readback differs from requested value/mode": {
+    "es-ES": "la escritura se completó; la lectura del controlador difiere del valor o modo solicitado",
+    "ru-RU": "запись выполнена; прочитанные значение или режим отличаются от запрошенных",
+    "uk-UA": "запис виконано; зчитані значення або режим відрізняються від запитаних",
+    "de-DE": "Schreiben erfolgreich; rückgelesener Wert/Modus weicht von der Anforderung ab"
+  },
+  "camera is stopping": {
+    "es-ES": "la cámara se está deteniendo",
+    "ru-RU": "камера останавливается",
+    "uk-UA": "камера зупиняється",
+    "de-DE": "Kamera wird gestoppt"
+  },
+  "camera owner, source or generation changed before write": {
+    "es-ES": "el propietario, la fuente o la generación de cámara cambió antes de escribir",
+    "ru-RU": "владелец камеры, источник или поколение изменились до записи",
+    "uk-UA": "власник камери, джерело або покоління змінилися до запису",
+    "de-DE": "Kameraeigentümer, Quelle oder Generation änderte sich vor dem Schreiben"
+  },
+  "Camera selection changed; read controls again": {
+    "es-ES": "La selección de cámara cambió; vuelve a leer los controles",
+    "ru-RU": "Выбор камеры изменился; прочитайте параметры заново",
+    "uk-UA": "Вибір камери змінився; прочитайте параметри знову",
+    "de-DE": "Die Kameraauswahl wurde geändert; Regler erneut auslesen"
+  },
+  "Exact native RGB24/RGB32/ARGB32, YUY2, NV12 and MJPEG modes. Baseline JPEG is decoded in Rust on the capture owner; H.264 camera modes and unsupported metadata are reported explicitly": {
+    "es-ES": "Modos nativos exactos RGB24/RGB32/ARGB32, YUY2, NV12 y MJPEG. El propietario de captura decodifica JPEG básico en Rust; se indican explícitamente los modos H.264 y metadatos no compatibles",
+    "ru-RU": "Точные нативные режимы RGB24/RGB32/ARGB32, YUY2, NV12 и MJPEG. Базовый JPEG декодируется на Rust владельцем захвата; режимы камеры H.264 и неподдерживаемые метаданные отмечаются явно",
+    "uk-UA": "Точні нативні режими RGB24/RGB32/ARGB32, YUY2, NV12 і MJPEG. Базовий JPEG декодується на Rust власником захоплення; режими камери H.264 і непідтримувані метадані позначаються явно",
+    "de-DE": "Exakte native RGB24/RGB32/ARGB32-, YUY2-, NV12- und MJPEG-Modi. Baseline-JPEG wird beim Capture-Eigentümer in Rust dekodiert; H.264-Kameramodi und nicht unterstützte Metadaten werden ausdrücklich gemeldet"
+  },
+  "Apply binds and starts camera video. Raw formats and baseline MJPEG video are supported. Camera audio, H.264 and vendor configuration dialogs are not connected. Cancel changes no source.": {
+    "es-ES": "Aplicar vincula e inicia el vídeo. Se admiten formatos sin comprimir y MJPEG básico. El audio de cámara, H.264 y los diálogos del fabricante no están conectados. Cancelar no cambia fuentes.",
+    "ru-RU": "«Применить» привязывает и запускает видео камеры. Поддерживаются несжатые форматы и базовый MJPEG. Звук камеры, H.264 и диалоги производителя не подключены. Отмена не меняет источник.",
+    "uk-UA": "«Застосувати» прив’язує й запускає відео камери. Підтримуються нестиснені формати та базовий MJPEG. Звук камери, H.264 і діалоги виробника не підключені. Скасування не змінює джерело.",
+    "de-DE": "Anwenden weist Kameravideo zu und startet es. Rohformate und Baseline-MJPEG werden unterstützt. Kameraaudio, H.264 und Herstellerdialoge sind nicht angeschlossen. Abbrechen ändert keine Quelle."
+  },
+  "No supported 1920 × 1080 mode was reported. Unsupported camera formats remain visible in the full list.": {
+    "es-ES": "No se indicó un modo 1920 × 1080 compatible. Los formatos de cámara no compatibles siguen visibles en la lista completa.",
+    "ru-RU": "Поддерживаемый режим 1920 × 1080 не заявлен. Неподдерживаемые форматы камеры остаются видны в полном списке.",
+    "uk-UA": "Підтримуваний режим 1920 × 1080 не заявлено. Непідтримувані формати камери залишаються видимими в повному списку.",
+    "de-DE": "Kein unterstützter Modus 1920 × 1080 gemeldet. Nicht unterstützte Kameraformate bleiben in der vollständigen Liste sichtbar."
+  },
+  "missing native camera frame size": {
+    "es-ES": "falta el tamaño nativo de imagen de cámara",
+    "ru-RU": "не указан размер нативного кадра камеры",
+    "uk-UA": "не вказано розмір нативного кадру камери",
+    "de-DE": "native Kamerabildgröße fehlt"
+  },
+  "malformed native camera aperture": {
+    "es-ES": "apertura nativa de cámara no válida",
+    "ru-RU": "некорректная область нативного кадра камеры",
+    "uk-UA": "некоректна область нативного кадру камери",
+    "de-DE": "fehlerhafte native Kameraapertur"
+  },
+  "cropped native camera aperture requires explicit aperture support": {
+    "es-ES": "la apertura nativa recortada necesita compatibilidad explícita",
+    "ru-RU": "обрезанная область нативного кадра требует отдельной поддержки",
+    "uk-UA": "обрізана область нативного кадру потребує окремої підтримки",
+    "de-DE": "beschnittene native Kameraapertur erfordert ausdrückliche Aperturunterstützung"
+  },
+  "interlaced camera modes require deinterlacing support": {
+    "es-ES": "los modos entrelazados necesitan desentrelazado",
+    "ru-RU": "чересстрочным режимам камеры требуется деинтерлейсинг",
+    "uk-UA": "черезрядковим режимам камери потрібне усунення черезрядковості",
+    "de-DE": "Interlaced-Kameramodi erfordern Deinterlacing"
+  },
+  "rotated native camera modes require explicit rotation support": {
+    "es-ES": "los modos nativos girados necesitan compatibilidad explícita con rotación",
+    "ru-RU": "повёрнутым нативным режимам камеры нужна отдельная поддержка вращения",
+    "uk-UA": "повернутим нативним режимам камери потрібна окрема підтримка обертання",
+    "de-DE": "gedrehte native Kameramodi erfordern ausdrückliche Rotationsunterstützung"
+  },
+  "non-square native camera pixels are unsupported": {
+    "es-ES": "no se admiten píxeles nativos de cámara no cuadrados",
+    "ru-RU": "неквадратные пиксели нативной камеры не поддерживаются",
+    "uk-UA": "неквадратні пікселі нативної камери не підтримуються",
+    "de-DE": "nicht quadratische native Kamerapixel werden nicht unterstützt"
+  },
+  "malformed native camera pixel aspect ratio": {
+    "es-ES": "proporción de píxel nativo no válida",
+    "ru-RU": "некорректное соотношение сторон пикселей нативной камеры",
+    "uk-UA": "некоректне співвідношення сторін пікселів нативної камери",
+    "de-DE": "fehlerhaftes natives Kamerapixel-Seitenverhältnis"
+  },
+  "native camera transfer function is outside the SDR profile": {
+    "es-ES": "la función de transferencia de cámara queda fuera del perfil SDR",
+    "ru-RU": "передаточная функция нативной камеры вне профиля SDR",
+    "uk-UA": "передавальна функція нативної камери поза профілем SDR",
+    "de-DE": "native Kameraübertragungsfunktion liegt außerhalb des SDR-Profils"
+  },
+  "native camera primaries are outside the SDR profile": {
+    "es-ES": "los colores primarios de cámara quedan fuera del perfil SDR",
+    "ru-RU": "основные цвета нативной камеры вне профиля SDR",
+    "uk-UA": "основні кольори нативної камери поза профілем SDR",
+    "de-DE": "native Kameraprimärfarben liegen außerhalb des SDR-Profils"
+  },
+  "limited-range native RGB camera modes are unsupported": {
+    "es-ES": "no se admiten modos RGB nativos de rango limitado",
+    "ru-RU": "нативные режимы RGB камеры с ограниченным диапазоном не поддерживаются",
+    "uk-UA": "нативні режими RGB камери з обмеженим діапазоном не підтримуються",
+    "de-DE": "native RGB-Kameramodi mit begrenztem Wertebereich werden nicht unterstützt"
+  },
+  "native camera subtype requires an unsupported decoder or conversion": {
+    "es-ES": "el subtipo nativo requiere un decodificador o conversión no compatible",
+    "ru-RU": "подтип нативной камеры требует неподдерживаемого декодера или преобразования",
+    "uk-UA": "підтип нативної камери потребує непідтримуваного декодера чи перетворення",
+    "de-DE": "nativer Kamerasubtyp erfordert einen nicht unterstützten Decoder oder eine Konvertierung"
+  },
+  "native camera YUV matrix is outside BT.601/BT.709": {
+    "es-ES": "la matriz YUV nativa está fuera de BT.601/BT.709",
+    "ru-RU": "матрица YUV нативной камеры отличается от BT.601/BT.709",
+    "uk-UA": "матриця YUV нативної камери відрізняється від BT.601/BT.709",
+    "de-DE": "native Kamera-YUV-Matrix liegt außerhalb BT.601/BT.709"
+  },
+  "native camera nominal range is unsupported": {
+    "es-ES": "no se admite el rango nominal nativo de cámara",
+    "ru-RU": "номинальный диапазон нативной камеры не поддерживается",
+    "uk-UA": "номінальний діапазон нативної камери не підтримується",
+    "de-DE": "nativer nominaler Kamerawertebereich wird nicht unterstützt"
+  },
+  "native camera vertical chroma siting is unsupported": {
+    "es-ES": "no se admite la posición vertical de crominancia nativa",
+    "ru-RU": "вертикальное расположение цветности нативной камеры не поддерживается",
+    "uk-UA": "вертикальне розташування колірності нативної камери не підтримується",
+    "de-DE": "native vertikale Kamera-Chromaposition wird nicht unterstützt"
+  },
+  "Audio Monitoring Device": {
+    "es-ES": "Dispositivo de monitorización de audio",
+    "ru-RU": "Устройство прослушивания звука",
+    "uk-UA": "Пристрій прослуховування звуку",
+    "de-DE": "Audiomonitor-Gerät"
+  },
+  "Monitor Off": {
+    "es-ES": "Monitorización desactivada",
+    "ru-RU": "Прослушивание выключено",
+    "uk-UA": "Прослуховування вимкнено",
+    "de-DE": "Monitor aus"
+  },
+  "Monitor Only (mute output)": {
+    "es-ES": "Solo monitorizar (silenciar salida)",
+    "ru-RU": "Только прослушивание (без вывода)",
+    "uk-UA": "Лише прослуховування (без виводу)",
+    "de-DE": "Nur Monitor (Ausgabe stummschalten)"
+  },
+  "Monitor and Output": {
+    "es-ES": "Monitorizar y emitir",
+    "ru-RU": "Прослушивание и вывод",
+    "uk-UA": "Прослуховування та вивід",
+    "de-DE": "Monitor und Ausgabe"
+  },
+  "Send this source to Program only; physical monitoring stays off": {
+    "es-ES": "Enviar esta fuente solo al Programa; la monitorización física sigue desactivada",
+    "ru-RU": "Отправлять источник только в Program; аппаратное прослушивание выключено",
+    "uk-UA": "Надсилати джерело лише в Program; апаратне прослуховування вимкнено",
+    "de-DE": "Diese Quelle nur an Programm senden; physisches Monitoring bleibt aus"
+  },
+  "Listen on the monitoring device and remove this source from Program": {
+    "es-ES": "Escuchar en el dispositivo de monitorización y quitar esta fuente del Programa",
+    "ru-RU": "Прослушивать на выбранном устройстве и исключить источник из Program",
+    "uk-UA": "Прослуховувати на вибраному пристрої та виключити джерело з Program",
+    "de-DE": "Auf dem Monitor-Gerät abhören und diese Quelle aus Programm entfernen"
+  },
+  "Listen on the monitoring device and also send this source to Program": {
+    "es-ES": "Escuchar en el dispositivo de monitorización y enviar también al Programa",
+    "ru-RU": "Прослушивать на выбранном устройстве и также отправлять источник в Program",
+    "uk-UA": "Прослуховувати на вибраному пристрої та також надсилати джерело в Program",
+    "de-DE": "Auf dem Monitor-Gerät abhören und diese Quelle auch an Programm senden"
+  },
+  "Physical audio monitoring requires the Windows WASAPI output backend": {
+    "es-ES": "La monitorización física requiere la salida WASAPI de Windows",
+    "ru-RU": "Для аппаратного прослушивания нужен вывод Windows WASAPI",
+    "uk-UA": "Для апаратного прослуховування потрібен вивід Windows WASAPI",
+    "de-DE": "Physisches Audiomonitoring erfordert die Windows-WASAPI-Ausgabe"
+  },
+  "Choose whether this source feeds Program, the selected monitor device, or both": {
+    "es-ES": "Elige si esta fuente se envía al Programa, al monitor elegido o a ambos",
+    "ru-RU": "Выберите вывод источника: Program, устройство прослушивания или оба",
+    "uk-UA": "Виберіть вивід джерела: Program, пристрій прослуховування або обидва",
+    "de-DE": "Wählen, ob diese Quelle Programm, das Monitor-Gerät oder beide speist"
+  },
+  "Unavailable endpoint": {
+    "es-ES": "Punto de audio no disponible",
+    "ru-RU": "Недоступное аудиоустройство",
+    "uk-UA": "Недоступний аудіопристрій",
+    "de-DE": "Nicht verfügbarer Audioendpunkt"
+  },
+  "Use the default playback endpoint when monitoring starts": {
+    "es-ES": "Usar el dispositivo de reproducción predeterminado al iniciar la monitorización",
+    "ru-RU": "При запуске прослушивания использовать устройство воспроизведения по умолчанию",
+    "uk-UA": "Під час запуску прослуховування використовувати типовий пристрій відтворення",
+    "de-DE": "Beim Monitoringstart den Standard-Wiedergabeendpunkt verwenden"
+  },
+  "Apply or Cancel the audio format draft before changing the monitoring device": {
+    "es-ES": "Aplica o cancela el formato de audio antes de cambiar el dispositivo de monitorización",
+    "ru-RU": "Примените или отмените черновик аудиоформата перед сменой устройства прослушивания",
+    "uk-UA": "Застосуйте або скасуйте чернетку аудіоформату перед зміною пристрою прослуховування",
+    "de-DE": "Den Audioformat-Entwurf anwenden oder abbrechen, bevor das Monitor-Gerät geändert wird"
+  },
+  "Refresh playback devices": {
+    "es-ES": "Actualizar dispositivos de reproducción",
+    "ru-RU": "Обновить устройства воспроизведения",
+    "uk-UA": "Оновити пристрої відтворення",
+    "de-DE": "Wiedergabegeräte aktualisieren"
+  },
+  "Enumerate actual active Windows playback endpoints; this does not start monitoring": {
+    "es-ES": "Enumerar los dispositivos de reproducción activos de Windows; no inicia la monitorización",
+    "ru-RU": "Прочитать активные устройства воспроизведения Windows; это не запускает прослушивание",
+    "uk-UA": "Прочитати активні пристрої відтворення Windows; це не запускає прослуховування",
+    "de-DE": "Tatsächlich aktive Windows-Wiedergabeendpunkte auflisten; dies startet kein Monitoring"
+  },
+  "Wait for device enumeration": {
+    "es-ES": "Espera a que termine la búsqueda de dispositivos",
+    "ru-RU": "Дождитесь получения списка устройств",
+    "uk-UA": "Дочекайтеся отримання списку пристроїв",
+    "de-DE": "Auf die Geräteauflistung warten"
+  },
+  "Stopping the physical monitoring output…": {
+    "es-ES": "Deteniendo la salida física de monitorización…",
+    "ru-RU": "Остановка аппаратного прослушивания…",
+    "uk-UA": "Зупинення апаратного прослуховування…",
+    "de-DE": "Physische Monitorausgabe wird gestoppt…"
+  },
+  "Opening the selected monitoring device…": {
+    "es-ES": "Abriendo el dispositivo de monitorización seleccionado…",
+    "ru-RU": "Открытие выбранного устройства прослушивания…",
+    "uk-UA": "Відкриття вибраного пристрою прослуховування…",
+    "de-DE": "Ausgewähltes Monitor-Gerät wird geöffnet…"
+  },
+  "Monitoring active: {device} · {frames} frames": {
+    "es-ES": "Monitorización activa: {device} · {frames} fotogramas",
+    "ru-RU": "Прослушивание активно: {device} · кадров: {frames}",
+    "uk-UA": "Прослуховування активне: {device} · кадрів: {frames}",
+    "de-DE": "Monitoring aktiv: {device} · {frames} Frames"
+  },
+  "Select Monitor Off and then a monitor mode to retry a failed output.": {
+    "es-ES": "Selecciona Monitorización desactivada y luego un modo de monitorización para reintentar la salida.",
+    "ru-RU": "Для повторного запуска после ошибки выберите «Прослушивание выключено», затем нужный режим.",
+    "uk-UA": "Для повторного запуску після помилки виберіть «Прослуховування вимкнено», потім потрібний режим.",
+    "de-DE": "Zum erneuten Versuch Monitor aus und anschließend einen Monitormodus wählen."
+  },
+  "Selecting a device does not start playback. Enable a source monitoring mode in Advanced Audio. Capturing and monitoring the same playback endpoint can feed audio back; choose a separate output when needed.": {
+    "es-ES": "Elegir un dispositivo no inicia la reproducción. Activa la monitorización de una fuente en Audio avanzado. Capturar y monitorizar la misma salida puede generar realimentación; usa otra salida si es necesario.",
+    "ru-RU": "Выбор устройства не запускает воспроизведение. Включите прослушивание источника в расширенных настройках аудио. Захват и прослушивание одного выхода могут вызвать обратную связь; при необходимости выберите отдельный выход.",
+    "uk-UA": "Вибір пристрою не запускає відтворення. Увімкніть прослуховування джерела в розширених налаштуваннях аудіо. Захоплення й прослуховування одного виходу можуть спричинити зворотний зв’язок; за потреби виберіть окремий вихід.",
+    "de-DE": "Die Gerätewahl startet keine Wiedergabe. Quellenmonitoring in den erweiterten Audioeinstellungen aktivieren. Aufnahme und Monitoring desselben Endpunkts können Rückkopplung erzeugen; gegebenenfalls eine separate Ausgabe wählen."
+  },
+  "{label} ({device})": {
+    "es-ES": "{label} ({device})",
+    "ru-RU": "{label} ({device})",
+    "uk-UA": "{label} ({device})",
+    "de-DE": "{label} ({device})"
+  },
+  "Built-in · unavailable on this platform": {
+    "es-ES": "Integrado · no disponible en esta plataforma",
+    "ru-RU": "Встроенный · недоступен на этой платформе",
+    "uk-UA": "Вбудований · недоступний на цій платформі",
+    "de-DE": "Integriert · auf dieser Plattform nicht verfügbar"
+  },
+  "This module's sources are available on another operating system.": {
+    "es-ES": "Las fuentes de este módulo están disponibles en otro sistema operativo.",
+    "ru-RU": "Источники этого модуля доступны в другой операционной системе.",
+    "uk-UA": "Джерела цього модуля доступні в іншій операційній системі.",
+    "de-DE": "Die Quellen dieses Moduls sind auf einem anderen Betriebssystem verfügbar."
+  },
+  "Create a scene before adding a source.": {
+    "es-ES": "Crea una escena antes de añadir una fuente.",
+    "ru-RU": "Создайте сцену перед добавлением источника.",
+    "uk-UA": "Створіть сцену перед додаванням джерела.",
+    "de-DE": "Vor dem Hinzufügen einer Quelle eine Szene erstellen."
+  },
+  "Target scene": {
+    "es-ES": "Escena de destino",
+    "ru-RU": "Целевая сцена",
+    "uk-UA": "Цільова сцена",
+    "de-DE": "Zielszene"
+  },
+  "Choose the scene that will receive this source": {
+    "es-ES": "Elige la escena a la que se añadirá esta fuente",
+    "ru-RU": "Выберите сцену для добавления этого источника",
+    "uk-UA": "Виберіть сцену для додавання цього джерела",
+    "de-DE": "Die Szene wählen, der diese Quelle hinzugefügt wird"
+  },
+  "Add {source}": {
+    "es-ES": "Añadir {source}",
+    "ru-RU": "Добавить {source}",
+    "uk-UA": "Додати {source}",
+    "de-DE": "{source} hinzufügen"
+  },
+  "Open source properties for the chosen scene; Apply creates the source": {
+    "es-ES": "Abrir las propiedades de la fuente para la escena elegida; Aplicar crea la fuente",
+    "ru-RU": "Открыть свойства источника для выбранной сцены; «Применить» создаёт источник",
+    "uk-UA": "Відкрити властивості джерела для вибраної сцени; «Застосувати» створює джерело",
+    "de-DE": "Quelleneigenschaften für die gewählte Szene öffnen; Anwenden erstellt die Quelle"
+  },
+  "The source catalog is full.": {
+    "es-ES": "El catálogo de fuentes está lleno.",
+    "ru-RU": "Каталог источников заполнен.",
+    "uk-UA": "Каталог джерел заповнений.",
+    "de-DE": "Der Quellenkatalog ist voll."
+  },
+  "Enable this module before adding its sources.": {
+    "es-ES": "Activa este módulo antes de añadir sus fuentes.",
+    "ru-RU": "Включите модуль перед добавлением его источников.",
+    "uk-UA": "Увімкніть модуль перед додаванням його джерел.",
+    "de-DE": "Dieses Modul vor dem Hinzufügen seiner Quellen aktivieren."
+  },
+  "This native source backend is unavailable in this build.": {
+    "es-ES": "Este backend nativo de fuentes no está disponible en esta compilación.",
+    "ru-RU": "Этот нативный механизм источника недоступен в текущей сборке.",
+    "uk-UA": "Цей нативний механізм джерела недоступний у поточній збірці.",
+    "de-DE": "Dieses native Quellen-Backend ist in diesem Build nicht verfügbar."
+  },
+  "Built-in source modules are always active. Adding a source opens its existing properties; it does not install a native OBS plugin.": {
+    "es-ES": "Los módulos de fuentes integrados siempre están activos. Añadir una fuente abre sus propiedades; no instala un complemento nativo de OBS.",
+    "ru-RU": "Встроенные модули источников всегда активны. Добавление открывает свойства источника; нативный плагин OBS не устанавливается.",
+    "uk-UA": "Вбудовані модулі джерел завжди активні. Додавання відкриває властивості джерела; нативний плагін OBS не встановлюється.",
+    "de-DE": "Integrierte Quellenmodule sind immer aktiv. Hinzufügen öffnet die vorhandenen Eigenschaften und installiert kein natives OBS-Plugin."
+  },
+  "Image (including animated GIF)": {
+    "es-ES": "Imagen (incluido GIF animado)",
+    "ru-RU": "Изображение (включая анимированный GIF)",
+    "uk-UA": "Зображення (зокрема анімований GIF)",
+    "de-DE": "Bild (einschließlich animiertem GIF)"
+  },
+  "Copy selected sources, including their position, crop and visibility.": {
+    "es-ES": "Copiar las fuentes elegidas con su posición, recorte y visibilidad.",
+    "ru-RU": "Скопировать выбранные источники вместе с позицией, обрезкой и видимостью.",
+    "uk-UA": "Скопіювати вибрані джерела разом із позицією, обрізанням і видимістю.",
+    "de-DE": "Ausgewählte Quellen einschließlich Position, Zuschnitt und Sichtbarkeit kopieren."
+  },
+  "Add shared references to the copied sources in the current scene.": {
+    "es-ES": "Añadir referencias compartidas de las fuentes copiadas a la escena actual.",
+    "ru-RU": "Добавить в текущую сцену общие ссылки на скопированные источники.",
+    "uk-UA": "Додати до поточної сцени спільні посилання на скопійовані джерела.",
+    "de-DE": "Gemeinsame Referenzen der kopierten Quellen in die aktuelle Szene einfügen."
+  },
+  "Create independent copies with their current properties and filters.": {
+    "es-ES": "Crear copias independientes con sus propiedades y filtros actuales.",
+    "ru-RU": "Создать независимые копии с текущими свойствами и фильтрами.",
+    "uk-UA": "Створити незалежні копії з поточними властивостями й фільтрами.",
+    "de-DE": "Unabhängige Kopien mit den aktuellen Eigenschaften und Filtern erstellen."
+  },
+  "Copy a source before pasting": {
+    "es-ES": "Copia una fuente antes de pegar",
+    "ru-RU": "Скопируйте источник перед вставкой",
+    "uk-UA": "Скопіюйте джерело перед вставленням",
+    "de-DE": "Vor dem Einfügen eine Quelle kopieren"
+  },
+  "Sources copied": {
+    "es-ES": "Fuentes copiadas",
+    "ru-RU": "Источники скопированы",
+    "uk-UA": "Джерела скопійовано",
+    "de-DE": "Quellen kopiert"
+  },
+  "Too many selected source items": {
+    "es-ES": "Se seleccionaron demasiados elementos de fuentes",
+    "ru-RU": "Выбрано слишком много элементов источников",
+    "uk-UA": "Вибрано забагато елементів джерел",
+    "de-DE": "Zu viele Quellenelemente ausgewählt"
+  },
+  "Select a source to copy": {
+    "es-ES": "Selecciona una fuente para copiar",
+    "ru-RU": "Выберите источник для копирования",
+    "uk-UA": "Виберіть джерело для копіювання",
+    "de-DE": "Eine Quelle zum Kopieren auswählen"
+  },
+  "The selected source was removed": {
+    "es-ES": "La fuente elegida fue eliminada",
+    "ru-RU": "Выбранный источник удалён",
+    "uk-UA": "Вибране джерело видалено",
+    "de-DE": "Die ausgewählte Quelle wurde entfernt"
+  },
+  "Select sources from the current scene": {
+    "es-ES": "Selecciona fuentes de la escena actual",
+    "ru-RU": "Выберите источники текущей сцены",
+    "uk-UA": "Виберіть джерела поточної сцени",
+    "de-DE": "Quellen der aktuellen Szene auswählen"
+  },
+  "The scene, selection or source clipboard changed. Repeat this action.": {
+    "es-ES": "La escena, selección o portapapeles de fuentes cambió. Repite la acción.",
+    "ru-RU": "Сцена, выделение или буфер источников изменились. Повторите действие.",
+    "uk-UA": "Сцена, виділення або буфер джерел змінилися. Повторіть дію.",
+    "de-DE": "Szene, Auswahl oder Quellenzwischenablage wurde geändert. Aktion wiederholen."
+  },
+  "Import Profile": {
+    "es-ES": "Importar perfil",
+    "ru-RU": "Импорт профиля",
+    "uk-UA": "Імпорт профілю",
+    "de-DE": "Profil importieren"
+  },
+  "Export Profile": {
+    "es-ES": "Exportar perfil",
+    "ru-RU": "Экспорт профиля",
+    "uk-UA": "Експорт профілю",
+    "de-DE": "Profil exportieren"
+  },
+  "SkyLive profiles": {
+    "es-ES": "Perfiles de SkyLive",
+    "ru-RU": "Профили SkyLive",
+    "uk-UA": "Профілі SkyLive",
+    "de-DE": "SkyLive-Profile"
+  },
+  "SkyLive profile (*.skyliveprofile)": {
+    "es-ES": "Perfil de SkyLive (*.skyliveprofile)",
+    "ru-RU": "Профиль SkyLive (*.skyliveprofile)",
+    "uk-UA": "Профіль SkyLive (*.skyliveprofile)",
+    "de-DE": "SkyLive-Profil (*.skyliveprofile)"
+  },
+  "Import video, audio and output settings into a separate profile.": {
+    "es-ES": "Importar ajustes de vídeo, audio y salida en un perfil independiente.",
+    "ru-RU": "Импортировать настройки видео, звука и вывода в отдельный профиль.",
+    "uk-UA": "Імпортувати налаштування відео, звуку та виводу в окремий профіль.",
+    "de-DE": "Video-, Audio- und Ausgabeeinstellungen in ein separates Profil importieren."
+  },
+  "Export the selected profile's video, audio and output settings.": {
+    "es-ES": "Exportar los ajustes de vídeo, audio y salida del perfil elegido.",
+    "ru-RU": "Экспортировать настройки видео, звука и вывода выбранного профиля.",
+    "uk-UA": "Експортувати налаштування відео, звуку та виводу вибраного профілю.",
+    "de-DE": "Video-, Audio- und Ausgabeeinstellungen des ausgewählten Profils exportieren."
+  },
+  "Enter a profile file path.": {
+    "es-ES": "Introduce la ruta del archivo de perfil.",
+    "ru-RU": "Введите путь к файлу профиля.",
+    "uk-UA": "Введіть шлях до файлу профілю.",
+    "de-DE": "Einen Pfad zur Profildatei eingeben."
+  },
+  "Profile exported: {path}": {
+    "es-ES": "Perfil exportado: {path}",
+    "ru-RU": "Профиль экспортирован: {path}",
+    "uk-UA": "Профіль експортовано: {path}",
+    "de-DE": "Profil exportiert: {path}"
+  },
+  "Stop active outputs before importing a profile": {
+    "es-ES": "Detén las salidas activas antes de importar un perfil",
+    "ru-RU": "Остановите активные выводы перед импортом профиля",
+    "uk-UA": "Зупиніть активні виводи перед імпортом профілю",
+    "de-DE": "Aktive Ausgaben vor dem Importieren eines Profils stoppen"
+  },
+  "Profile file exceeds 256 KiB": {
+    "es-ES": "El archivo de perfil supera 256 KiB",
+    "ru-RU": "Файл профиля превышает 256 КиБ",
+    "uk-UA": "Файл профілю перевищує 256 КіБ",
+    "de-DE": "Die Profildatei überschreitet 256 KiB"
+  },
+  "Unsupported profile file format or version": {
+    "es-ES": "Formato o versión de archivo de perfil no compatible",
+    "ru-RU": "Неподдерживаемый формат или версия файла профиля",
+    "uk-UA": "Непідтримуваний формат або версія файлу профілю",
+    "de-DE": "Nicht unterstütztes Profildateiformat oder Version"
+  },
+  "Keep this application window above other windows.": {
+    "es-ES": "Mantener esta ventana por encima de las demás.",
+    "ru-RU": "Держать окно приложения поверх других окон.",
+    "uk-UA": "Тримати вікно програми поверх інших вікон.",
+    "de-DE": "Dieses Anwendungsfenster über anderen Fenstern halten."
+  },
+  "Show or hide the application status bar.": {
+    "es-ES": "Mostrar u ocultar la barra de estado.",
+    "ru-RU": "Показать или скрыть строку состояния приложения.",
+    "uk-UA": "Показати або приховати рядок стану програми.",
+    "de-DE": "Die Statusleiste der Anwendung anzeigen oder ausblenden."
+  },
+  "Lock or unlock source editing in Preview.": {
+    "es-ES": "Bloquear o desbloquear la edición de fuentes en la vista previa.",
+    "ru-RU": "Заблокировать или разблокировать редактирование источников в Preview.",
+    "uk-UA": "Заблокувати або розблокувати редагування джерел у Preview.",
+    "de-DE": "Quellenbearbeitung in der Vorschau sperren oder entsperren."
+  },
+  "Show Preview at the canvas pixel scale.": {
+    "es-ES": "Mostrar la vista previa a escala de píxeles del lienzo.",
+    "ru-RU": "Показать Preview в пиксельном масштабе холста.",
+    "uk-UA": "Показати Preview у піксельному масштабі полотна.",
+    "de-DE": "Die Vorschau im Pixelmaßstab der Arbeitsfläche anzeigen."
+  },
+  "Show Preview at the current output pixel scale.": {
+    "es-ES": "Mostrar la vista previa a escala de píxeles de la salida actual.",
+    "ru-RU": "Показать Preview в пиксельном масштабе текущего вывода.",
+    "uk-UA": "Показати Preview у піксельному масштабі поточного виводу.",
+    "de-DE": "Die Vorschau im Pixelmaßstab der aktuellen Ausgabe anzeigen."
+  },
+  "Show or hide source-type icons in the Sources list.": {
+    "es-ES": "Mostrar u ocultar los iconos de tipo en la lista de fuentes.",
+    "ru-RU": "Показать или скрыть значки типов в списке источников.",
+    "uk-UA": "Показати або приховати значки типів у списку джерел.",
+    "de-DE": "Quellentyp-Symbole in der Quellenliste anzeigen oder ausblenden."
+  },
+  "Open advanced audio routing and physical monitoring controls.": {
+    "es-ES": "Abrir el enrutamiento de audio avanzado y la monitorización física.",
+    "ru-RU": "Открыть расширенную маршрутизацию аудио и аппаратное прослушивание.",
+    "uk-UA": "Відкрити розширену маршрутизацію аудіо та апаратне прослуховування.",
+    "de-DE": "Erweiterte Audiowege und physisches Monitoring öffnen."
+  },
+  "Open the current scene video filter stack.": {
+    "es-ES": "Abrir la cadena de filtros de vídeo de la escena actual.",
+    "ru-RU": "Открыть цепочку видеофильтров текущей сцены.",
+    "uk-UA": "Відкрити ланцюжок відеофільтрів поточної сцени.",
+    "de-DE": "Die Videofilterkette der aktuellen Szene öffnen."
+  },
+  "Display scenes as a grid of selectable tiles.": {
+    "es-ES": "Mostrar las escenas como una cuadrícula de elementos seleccionables.",
+    "ru-RU": "Показать сцены сеткой выбираемых плиток.",
+    "uk-UA": "Показати сцени сіткою вибірних плиток.",
+    "de-DE": "Szenen als Raster auswählbarer Kacheln anzeigen."
+  },
+  "Display scenes as a compact list.": {
+    "es-ES": "Mostrar las escenas como una lista compacta.",
+    "ru-RU": "Показать сцены компактным списком.",
+    "uk-UA": "Показати сцени компактним списком.",
+    "de-DE": "Szenen als kompakte Liste anzeigen."
+  },
+  "Zoom in on the Preview display without changing output resolution.": {
+    "es-ES": "Acercar la vista previa sin cambiar la resolución de salida.",
+    "ru-RU": "Увеличить Preview без изменения разрешения вывода.",
+    "uk-UA": "Збільшити Preview без зміни роздільності виводу.",
+    "de-DE": "Die Vorschau vergrößern, ohne die Ausgabeauflösung zu ändern."
+  },
+  "Zoom out on the Preview display without changing output resolution.": {
+    "es-ES": "Alejar la vista previa sin cambiar la resolución de salida.",
+    "ru-RU": "Уменьшить Preview без изменения разрешения вывода.",
+    "uk-UA": "Зменшити Preview без зміни роздільності виводу.",
+    "de-DE": "Die Vorschau verkleinern, ohne die Ausgabeauflösung zu ändern."
+  },
+  "Reset Preview zoom and pan for this window.": {
+    "es-ES": "Restablecer el zoom y desplazamiento de la vista previa de esta ventana.",
+    "ru-RU": "Сбросить масштаб и сдвиг Preview для этого окна.",
+    "uk-UA": "Скинути масштаб і зсув Preview для цього вікна.",
+    "de-DE": "Vorschauzoom und Verschiebung für dieses Fenster zurücksetzen."
+  },
+  "Updating preview…": {
+    "es-ES": "Actualizando vista previa…",
+    "ru-RU": "Обновление предпросмотра…",
+    "uk-UA": "Оновлення попереднього перегляду…",
+    "de-DE": "Vorschau wird aktualisiert…"
+  },
+  "The filter preview belongs to another document or revision.": {
+    "es-ES": "La vista previa del filtro pertenece a otro documento o revisión.",
+    "ru-RU": "Предпросмотр фильтра относится к другому документу или ревизии.",
+    "uk-UA": "Попередній перегляд фільтра належить іншому документу чи ревізії.",
+    "de-DE": "Die Filtervorschau gehört zu einem anderen Dokument oder einer anderen Revision."
+  },
+  "Filter preview generation exhausted.": {
+    "es-ES": "Se agotó la generación de la vista previa del filtro.",
+    "ru-RU": "Исчерпано поколение предпросмотра фильтра.",
+    "uk-UA": "Вичерпано покоління попереднього перегляду фільтра.",
+    "de-DE": "Die Generationskennung der Filtervorschau ist ausgeschöpft."
+  },
+  "Filter preview identity exhausted.": {
+    "es-ES": "Se agotó el identificador de vista previa del filtro.",
+    "ru-RU": "Исчерпан идентификатор предпросмотра фильтра.",
+    "uk-UA": "Вичерпано ідентифікатор попереднього перегляду фільтра.",
+    "de-DE": "Die Identitätskennung der Filtervorschau ist ausgeschöpft."
+  },
+  "{code}: {detail}": {
+    "es-ES": "{code}: {detail}",
+    "ru-RU": "{code}: {detail}",
+    "uk-UA": "{code}: {detail}",
+    "de-DE": "{code}: {detail}"
+  },
+  "Grey": {
+    "es-ES": "Gris",
+    "ru-RU": "Серый",
+    "uk-UA": "Сірий",
+    "de-DE": "Grau"
+  },
+  "Native file chooser initial path exceeds its bounded input contract.": {
+    "es-ES": "La ruta inicial del selector supera el límite permitido.",
+    "ru-RU": "Начальный путь системного диалога превышает допустимый предел.",
+    "uk-UA": "Початковий шлях системного діалогу перевищує допустиму межу.",
+    "de-DE": "Der Anfangspfad des Dateidialogs überschreitet die Eingabegrenze."
+  },
+  "Native file chooser text exceeds its bounded input contract.": {
+    "es-ES": "El texto del selector supera el límite permitido.",
+    "ru-RU": "Текст системного диалога превышает допустимый предел.",
+    "uk-UA": "Текст системного діалогу перевищує допустиму межу.",
+    "de-DE": "Der Text des Dateidialogs überschreitet die Eingabegrenze."
+  },
+  "Native path selection is currently available on Windows.": {
+    "es-ES": "La selección nativa de rutas está disponible actualmente en Windows.",
+    "ru-RU": "Системный выбор пути сейчас доступен в Windows.",
+    "uk-UA": "Системний вибір шляху зараз доступний у Windows.",
+    "de-DE": "Die native Pfadauswahl ist derzeit unter Windows verfügbar."
+  },
+  "The selected path is not valid UTF-8.": {
+    "es-ES": "La ruta seleccionada no es UTF-8 válida.",
+    "ru-RU": "Выбранный путь не является корректной строкой UTF-8.",
+    "uk-UA": "Вибраний шлях не є коректним рядком UTF-8.",
+    "de-DE": "Der ausgewählte Pfad ist kein gültiges UTF-8."
+  },
+  "Each selected path requires 1..=4096 UTF-8 bytes without control characters.": {
+    "es-ES": "Cada ruta debe tener de 1 a 4096 bytes UTF-8 sin caracteres de control.",
+    "ru-RU": "Каждый путь должен содержать от 1 до 4096 байт UTF-8 без управляющих символов.",
+    "uk-UA": "Кожен шлях має містити від 1 до 4096 байтів UTF-8 без керівних символів.",
+    "de-DE": "Jeder Pfad benötigt 1 bis 4096 UTF-8-Bytes ohne Steuerzeichen."
+  },
+  "The native chooser returned an empty path.": {
+    "es-ES": "El selector nativo devolvió una ruta vacía.",
+    "ru-RU": "Системный диалог вернул пустой путь.",
+    "uk-UA": "Системний діалог повернув порожній шлях.",
+    "de-DE": "Der native Dialog lieferte einen leeren Pfad."
+  },
+  "The selected path exceeds 4096 bytes.": {
+    "es-ES": "La ruta seleccionada supera 4096 bytes.",
+    "ru-RU": "Выбранный путь превышает 4096 байт.",
+    "uk-UA": "Вибраний шлях перевищує 4096 байтів.",
+    "de-DE": "Der ausgewählte Pfad überschreitet 4096 Bytes."
+  },
+  "The file chooser's application window is no longer available.": {
+    "es-ES": "La ventana de aplicación del selector ya no está disponible.",
+    "ru-RU": "Окно приложения для системного диалога больше недоступно.",
+    "uk-UA": "Вікно програми для системного діалогу більше недоступне.",
+    "de-DE": "Das Anwendungsfenster des Dateidialogs ist nicht mehr verfügbar."
+  },
+  "Native selection exceeds the allowed file count (maximum 256).": {
+    "es-ES": "La selección supera el número permitido de archivos (máximo 256).",
+    "ru-RU": "Выбрано больше допустимого количества файлов (максимум 256).",
+    "uk-UA": "Вибрано більше допустимої кількості файлів (максимум 256).",
+    "de-DE": "Die Auswahl überschreitet die zulässige Dateizahl (höchstens 256)."
+  },
+  "Native file selection returned an unexpected receipt.": {
+    "es-ES": "La selección nativa devolvió una respuesta inesperada.",
+    "ru-RU": "Системный выбор файлов вернул неожиданный результат.",
+    "uk-UA": "Системний вибір файлів повернув неочікуваний результат.",
+    "de-DE": "Die native Dateiauswahl lieferte eine unerwartete Bestätigung."
+  },
+  "Native file selection exceeds the bounded path contract.": {
+    "es-ES": "La selección nativa supera los límites permitidos de rutas.",
+    "ru-RU": "Системный выбор файлов превышает допустимые ограничения путей.",
+    "uk-UA": "Системний вибір файлів перевищує допустимі обмеження шляхів.",
+    "de-DE": "Die native Dateiauswahl überschreitet die Pfadgrenzen."
+  },
+  "Native file selection has no active matching request.": {
+    "es-ES": "No hay una solicitud activa correspondiente a esta selección.",
+    "ru-RU": "Для системного выбора файлов нет соответствующего активного запроса.",
+    "uk-UA": "Для системного вибору файлів немає відповідного активного запиту.",
+    "de-DE": "Für die native Dateiauswahl besteht keine passende aktive Anforderung."
+  },
+  "Source clipboard identity exhausted": {
+    "es-ES": "Se agotó el identificador del portapapeles de fuentes",
+    "ru-RU": "Исчерпан идентификатор буфера источников",
+    "uk-UA": "Вичерпано ідентифікатор буфера джерел",
+    "de-DE": "Die Kennung der Quellenzwischenablage ist ausgeschöpft"
+  },
+  "The selected source changed. Open the menu again.": {
+    "es-ES": "La fuente seleccionada cambió. Abre el menú de nuevo.",
+    "ru-RU": "Выбранный источник изменился. Откройте меню заново.",
+    "uk-UA": "Вибране джерело змінилося. Відкрийте меню знову.",
+    "de-DE": "Die ausgewählte Quelle wurde geändert. Menü erneut öffnen."
+  },
+  "Fit the preview display to its available window area.": {
+    "es-ES": "Ajustar la vista previa al espacio disponible de la ventana.",
+    "ru-RU": "Вписать Preview в доступную область окна.",
+    "uk-UA": "Вписати Preview у доступну область вікна.",
+    "de-DE": "Die Vorschau in den verfügbaren Fensterbereich einpassen."
+  },
+  "Paste an independent copy of the source.": {
+    "es-ES": "Pegar una copia independiente de la fuente.",
+    "ru-RU": "Вставить независимую копию источника.",
+    "uk-UA": "Вставити незалежну копію джерела.",
+    "de-DE": "Eine unabhängige Kopie der Quelle einfügen."
+  },
+  "Copy": {
+    "es-ES": "Copiar",
+    "ru-RU": "Копировать",
+    "uk-UA": "Копіювати",
+    "de-DE": "Kopieren"
+  },
+  "Paste (Reference)": {
+    "es-ES": "Pegar (referencia)",
+    "ru-RU": "Вставить (ссылку)",
+    "uk-UA": "Вставити (посилання)",
+    "de-DE": "Einfügen (Referenz)"
+  },
+  "Paste (Duplicate)": {
+    "es-ES": "Pegar (duplicado)",
+    "ru-RU": "Вставить (копию)",
+    "uk-UA": "Вставити (копію)",
+    "de-DE": "Einfügen (Duplikat)"
+  },
+  "Monitoring active": {
+    "es-ES": "Monitorización activa",
+    "ru-RU": "Прослушивание активно",
+    "uk-UA": "Прослуховування активне",
+    "de-DE": "Monitoring aktiv"
+  },
+  "Pan": {
+    "es-ES": "Panorama",
+    "ru-RU": "Панорама",
+    "uk-UA": "Панорама",
+    "de-DE": "Panorama"
+  },
+  "Driver controls are unavailable on this platform.": {
+    "es-ES": "Los controles del controlador no están disponibles en esta plataforma.",
+    "ru-RU": "Параметры драйвера недоступны на этой платформе.",
+    "uk-UA": "Параметри драйвера недоступні на цій платформі.",
+    "de-DE": "Treiberregler sind auf dieser Plattform nicht verfügbar."
+  },
+  "driver controls unavailable on this backend": {
+    "es-ES": "controles del controlador no disponibles en este backend",
+    "ru-RU": "параметры драйвера недоступны в этом механизме захвата",
+    "uk-UA": "параметри драйвера недоступні в цьому механізмі захоплення",
+    "de-DE": "Treiberregler sind in diesem Backend nicht verfügbar"
+  },
+  "Source Toolbar": {
+    "es-ES": "Barra de la fuente",
+    "ru-RU": "Панель источника",
+    "uk-UA": "Панель джерела",
+    "de-DE": "Quellen-Werkzeugleiste"
+  },
+  "Dock Toolbars": {
+    "es-ES": "Barras de los paneles",
+    "ru-RU": "Панели инструментов доков",
+    "uk-UA": "Панелі інструментів доків",
+    "de-DE": "Dock-Werkzeugleisten"
+  },
+  "Source Icons": {
+    "es-ES": "Iconos de fuentes",
+    "ru-RU": "Значки источников",
+    "uk-UA": "Значки джерел",
+    "de-DE": "Quellensymbole"
+  },
+  "Grid Mode": {
+    "es-ES": "Modo de cuadrícula",
+    "ru-RU": "Режим сетки",
+    "uk-UA": "Режим сітки",
+    "de-DE": "Rastermodus"
+  },
+  "List Mode": {
+    "es-ES": "Modo de lista",
+    "ru-RU": "Режим списка",
+    "uk-UA": "Режим списку",
+    "de-DE": "Listenmodus"
+  },
+  "Zoom In": {
+    "es-ES": "Acercar",
+    "ru-RU": "Увеличить",
+    "uk-UA": "Збільшити",
+    "de-DE": "Vergrößern"
+  },
+  "Zoom Out": {
+    "es-ES": "Alejar",
+    "ru-RU": "Уменьшить",
+    "uk-UA": "Зменшити",
+    "de-DE": "Verkleinern"
+  },
+  "Reset Zoom": {
+    "es-ES": "Restablecer zoom",
+    "ru-RU": "Сбросить масштаб",
+    "uk-UA": "Скинути масштаб",
+    "de-DE": "Zoom zurücksetzen"
+  },
+  "Video Filters": {
+    "es-ES": "Filtros de vídeo",
+    "ru-RU": "Видеофильтры",
+    "uk-UA": "Відеофільтри",
+    "de-DE": "Videofilter"
+  }
+}

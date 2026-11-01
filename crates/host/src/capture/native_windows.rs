@@ -16,12 +16,14 @@ use skylive_media::{
     ingest_packed_frame,
 };
 use std::{
-    collections::HashMap,
+    collections::{HashMap, HashSet},
     time::{Duration, Instant},
 };
 use std::{ffi::c_void, mem::size_of, ptr};
 #[path = "native_dxgi.rs"]
 mod dxgi;
+#[path = "native_display_color.rs"]
+mod display_color;
 use windows::{
     Win32::{
         Foundation::{BOOL, HANDLE, HWND, LPARAM, RECT},
@@ -52,6 +54,8 @@ pub(super) struct NativeBackend {
     session: u64,
     epoch: u64,
     fallbacks: HashMap<String, (Instant, String)>,
+    color_gate: display_color::DisplayColorGate,
+    dxgi_mixed_sdr: HashSet<String>,
 }
 impl NativeBackend {
     pub(super) fn with_budget(budget: super::super::native_budget::NativeCopyBudget) -> Self {
@@ -61,11 +65,14 @@ impl NativeBackend {
             session: 0,
             epoch: 0,
             fallbacks: HashMap::new(),
+            color_gate: display_color::DisplayColorGate::default(),
+            dxgi_mixed_sdr: HashSet::new(),
         }
     }
 }
 
 impl CaptureBackend for NativeBackend {
+    fn set_sdr_white_nits(&mut self, nits: u16) { self.wgc.set_sdr_white_nits(nits); self.dxgi.set_sdr_white_nits(nits); }
     fn reap_native_resources(&mut self) -> bool {
         self.dxgi.reap() | self.wgc.reap()
     }
@@ -105,12 +112,27 @@ impl CaptureBackend for NativeBackend {
         let reset = self.session != session || self.epoch != epoch;
         if reset {
             self.fallbacks.clear();
+            self.color_gate.clear();
             self.session = session;
             self.epoch = epoch;
         }
+        // Desktop Duplication permits only one duplicator per process/output.
+        // Keep the HDR duplicator shared and route conflicting Force SDR
+        // audiences through an independently retained SDR WGC pool.
+        let mut dxgi_modes: HashMap<String, u8> = HashMap::new();
+        for binding in bindings {
+            if binding.method() == DisplayCaptureMethod::Dxgi {
+                if let DisplayTarget::Windows {device_id} = binding.target() {
+                    *dxgi_modes.entry(device_id.to_ascii_lowercase()).or_default() |= if binding.force_sdr() { 1 } else { 2 };
+                }
+            }
+        }
+        self.dxgi_mixed_sdr = dxgi_modes.into_iter().filter_map(|(key,modes)| (modes == 3).then_some(key)).collect();
         self.dxgi.retain(session, epoch, bindings);
-        let wgc: Vec<_> = bindings.iter().filter(|binding| binding.method() == DisplayCaptureMethod::Wgc)
-            .map(super::super::wgc_engine::Resource::monitor).collect();
+        let wgc: Vec<_> = bindings.iter().filter(|binding| matches!(binding.method(),DisplayCaptureMethod::Wgc|DisplayCaptureMethod::Auto)
+            || (binding.method()==DisplayCaptureMethod::Dxgi && binding.force_sdr()
+                && matches!(binding.target(),DisplayTarget::Windows {device_id} if self.dxgi_mixed_sdr.contains(&device_id.to_ascii_lowercase()))))
+            .flat_map(|binding| [super::super::wgc_engine::Resource::monitor_color(binding,false),super::super::wgc_engine::Resource::monitor_color(binding,true)]).collect();
         self.wgc.retain(&wgc, reset);
         self.fallbacks.retain(|id,_|bindings.iter().any(|binding|binding.method()==DisplayCaptureMethod::Auto&&matches!(binding.target(),DisplayTarget::Windows {device_id} if device_id.eq_ignore_ascii_case(id))));
     }
@@ -130,7 +152,7 @@ impl CaptureBackend for NativeBackend {
                     }),
                 })
         };
-        if binding.method() == DisplayCaptureMethod::Gdi {
+        if binding.method() == DisplayCaptureMethod::Gdi && binding.force_sdr() {
             return make_gdi(self, None);
         }
         let DisplayTarget::Windows { device_id } = binding.target() else {
@@ -139,7 +161,7 @@ impl CaptureBackend for NativeBackend {
             ));
         };
         let key = device_id.to_ascii_lowercase();
-        if binding.method() == DisplayCaptureMethod::Auto {
+        if binding.method() == DisplayCaptureMethod::Auto && binding.force_sdr() {
             if let Some((_, reason)) = self
                 .fallbacks
                 .get(&key)
@@ -152,12 +174,28 @@ impl CaptureBackend for NativeBackend {
         let _dpi = DpiGuard::new()?;
         let monitor=monitors(limits)?.into_iter().find(|monitor|matches!(&monitor.info.target,DisplayTarget::Windows {device_id:id} if id.eq_ignore_ascii_case(device_id)))
             .ok_or_else(||CaptureError::TargetNotFound(binding.target().clone()))?;
-        if binding.method() == DisplayCaptureMethod::Wgc {
+        let mixed_dxgi = binding.method() == DisplayCaptureMethod::Dxgi
+            && binding.force_sdr() && self.dxgi_mixed_sdr.contains(&key);
+        let display_hdr = if !binding.force_sdr() || mixed_dxgi { self.color_gate.is_hdr(&monitor)? } else { false };
+        let shared_sdr_fallback = mixed_dxgi && display_hdr;
+        let hdr = display_hdr && !binding.force_sdr();
+        if hdr && binding.method()==DisplayCaptureMethod::Gdi {
+            return Err(CaptureError::Unavailable("HDR display capture requires DXGI or Windows Graphics Capture"));
+        }
+        if binding.method() == DisplayCaptureMethod::Gdi { return make_gdi(self, None); }
+        if binding.method() == DisplayCaptureMethod::Auto && !binding.force_sdr() && !hdr {
+            if let Some((_, reason)) = self.fallbacks.get(&key).filter(|(until, _)| Instant::now() < *until).cloned() {
+                return make_gdi(self, Some(reason));
+            }
+        }
+        if binding.method() == DisplayCaptureMethod::Wgc || (hdr && binding.method()==DisplayCaptureMethod::Auto) || shared_sdr_fallback {
             use super::super::wgc_engine::{Resource,NativeTarget,Outcome,Error};
-            return self.wgc.capture(Resource::monitor(binding),NativeTarget::Monitor {handle:monitor.handle.0 as usize},limits)
+            return self.wgc.capture(Resource::monitor_color(binding,hdr),NativeTarget::Monitor {handle:monitor.handle.0 as usize},limits)
                 .map(|outcome| match outcome {
                     Outcome::Frame {image,generation} => DisplayCaptureOutcome::Frame {image,metadata:Some(DisplayFrameMetadata {
-                        backend:DisplayCaptureBackend::Wgc,fallback_reason:None,generation:Some(generation) })},
+                        backend:DisplayCaptureBackend::Wgc,
+                        fallback_reason:shared_sdr_fallback.then(|| "Force SDR uses Windows Graphics Capture while another DXGI source captures the same HDR display".to_string()),
+                        generation:Some(generation) })},
                     Outcome::Pending {generation} => DisplayCaptureOutcome::Pending {generation},
                 }).map_err(|error|match error {
                     Error::Unavailable(detail)=>CaptureError::Unavailable(detail),
@@ -169,7 +207,7 @@ impl CaptureBackend for NativeBackend {
                     Error::Backend(detail)|Error::DeviceLost(detail)=>CaptureError::Backend(detail),
                 });
         }
-        match self.dxgi.capture(binding, &monitor, limits) {
+        match self.dxgi.capture(binding, &monitor, limits, hdr) {
             Ok(outcome) => {
                 self.fallbacks.remove(&key);
                 Ok(outcome)

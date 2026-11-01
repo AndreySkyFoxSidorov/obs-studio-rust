@@ -9,9 +9,10 @@ pub enum SourcePlaybackAction{PlayPause,Play,Pause,Restart,Stop,Previous,Next}
 impl SourcePlaybackAction{
     pub const ALL:[Self;7]=[Self::PlayPause,Self::Play,Self::Pause,Self::Restart,Self::Stop,Self::Previous,Self::Next];
     pub const SLIDESHOW:[Self;5]=[Self::PlayPause,Self::Restart,Self::Stop,Self::Previous,Self::Next];
+    pub const GAME:[Self;3]=[Self::PlayPause,Self::Play,Self::Stop];
     pub const MEDIA:[Self;5]=[Self::PlayPause,Self::Play,Self::Pause,Self::Restart,Self::Stop];
     pub fn label(self)->&'static str{match self{Self::PlayPause=>"Play/Pause",Self::Play=>"Play",Self::Pause=>"Pause",Self::Restart=>"Restart",Self::Stop=>"Stop",Self::Previous=>"Previous in Playlist",Self::Next=>"Next in Playlist"}}
-    pub fn supported(self,kind:&SourceKind)->bool{matches!(kind,SourceKind::ImageSlideShow{..})&&Self::SLIDESHOW.contains(&self)||matches!(kind,SourceKind::MediaSource{..})&&Self::MEDIA.contains(&self)}
+    pub fn supported(self,kind:&SourceKind)->bool{matches!(kind,SourceKind::ImageSlideShow{..})&&Self::SLIDESHOW.contains(&self)||matches!(kind,SourceKind::MediaSource{..})&&Self::MEDIA.contains(&self)||matches!(kind,SourceKind::GameCapture{..})&&Self::GAME.contains(&self)}
 }
 #[derive(Clone,Debug,PartialEq,Eq,Serialize,Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -25,7 +26,7 @@ impl SourcePlaybackHotkeys{
         if bindings.len()>10{return Err(Error::Limit("Source playback admits at most two shortcuts per control."));}
         let mut chords=HashSet::new();
         for binding in &bindings{
-            if !crate::global_key_supported(&binding.chord){return Err(Error::Invalid("Source playback shortcuts use the supported Windows global keys; punctuation is unavailable."));}
+            if !crate::global_key_supported(&binding.chord){return Err(Error::Invalid("Source playback shortcuts require a supported Windows global key."));}
             if !chords.insert(&binding.chord){return Err(Error::Invalid("A source playback shortcut is assigned more than once."));}
             if bindings.iter().filter(|value|value.operation==binding.operation).count()>2{return Err(Error::Limit("An action can have at most two shortcuts."));}
         }
@@ -36,7 +37,7 @@ impl SourcePlaybackHotkeys{
     pub fn is_empty(&self)->bool{self.0.is_empty()}
     pub fn chords(&self)->impl Iterator<Item=&HotkeyChord>{self.0.iter().map(|binding|&binding.chord)}
     pub fn validate_kind(&self,kind:&SourceKind)->Result<(),Error>{
-        if self.0.iter().any(|binding|!binding.operation.supported(kind)){return Err(Error::Invalid("Playback shortcuts require a matching Media Source or Slideshow control."));}Ok(())
+        if self.0.iter().any(|binding|!binding.operation.supported(kind)){return Err(Error::Invalid("Source shortcuts require a matching Media Source, Slideshow or Game Capture control."));}Ok(())
     }
 }
 impl StudioSnapshot{

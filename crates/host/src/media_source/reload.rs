@@ -31,7 +31,7 @@ impl MediaOwner{
   // would instantiate a reader just to close it. The actor checks real absence.
   let control=self.control_target(session,target.source).unwrap_or_else(|_|MediaControlTarget{
    instance:self.instance,session:session.identity(),epoch:self.epoch,revision:session.snapshot().revision(),source:target.source,
-   media:Arc::new(target.media.clone()),status:MediaTransportStatus{state:MediaPlaybackState::Stopped,stream_generation:0,ready:false,last_control:None},
+   media:Arc::new(target.media.clone()),status:MediaTransportStatus{state:MediaPlaybackState::Stopped,stream_generation:0,ready:false,last_control:None,position_ns:0,duration_ns:0,seekable:false},
   });
   self.send(key,Job::Control{key,target:control,request:ControlRequest::Direct(MediaControl::Reload),now,sent:std::time::Instant::now(),gate:None})?;
   Ok(key)

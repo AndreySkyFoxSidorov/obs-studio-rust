@@ -2,6 +2,29 @@ use super::*;
 use windows::{Win32::{Foundation::{BOOL,HWND,LPARAM,RECT},UI::WindowsAndMessaging::*}};
 use std::ffi::c_void;
 pub(super) type Raw=*mut c_void;
+#[repr(C)]
+struct MonitorInfo {size:u32,monitor:RECT,work:RECT,flags:u32}
+#[link(name="user32")]
+unsafe extern "system" {
+    #[link_name="GetForegroundWindow"] fn foreground_window()->Raw;
+    #[link_name="GetWindowRect"] fn window_rect(hwnd:Raw,rect:*mut RECT)->i32;
+    #[link_name="GetWindowLongPtrW"] fn window_style(hwnd:Raw,index:i32)->isize;
+    #[link_name="MonitorFromRect"] fn monitor_from_rect(rect:*const RECT,flags:u32)->Raw;
+    #[link_name="GetMonitorInfoW"] fn monitor_info(monitor:Raw,info:*mut MonitorInfo)->i32;
+}
+/// Mirrors OBS get_fullscreen_window: foreground window must cover its monitor
+/// within two physical pixels, excluding ordinary bordered maximized windows.
+pub(super) fn fullscreen_foreground()->Option<u64>{
+    let hwnd=unsafe{foreground_window()};if hwnd.is_null(){return None;}
+    let mut rect=RECT::default();if unsafe{window_rect(hwnd,&mut rect)}==0{return None;}
+    let style=unsafe{window_style(hwnd,-16)} as u32;
+    if style&0x01000000!=0 && style&0x00800000!=0{return None;}
+    let monitor=unsafe{monitor_from_rect(&rect,2)};if monitor.is_null(){return None;}
+    let mut info=MonitorInfo {size:std::mem::size_of::<MonitorInfo>() as u32,monitor:RECT::default(),work:RECT::default(),flags:0};
+    if unsafe{monitor_info(monitor,&mut info)}==0{return None;}
+    let close=|a:i32,b:i32|(i64::from(a)-i64::from(b)).abs()<=2;
+    if close(rect.left,info.monitor.left)&&close(rect.top,info.monitor.top)&&close(rect.right,info.monitor.right)&&close(rect.bottom,info.monitor.bottom){Some(hwnd as usize as u64)}else{None}
+}
 #[link(name="kernel32")]
 unsafe extern "system" {
     pub fn OpenProcess(access:u32,inherit:i32,pid:u32)->Raw;pub fn CloseHandle(handle:Raw)->i32;

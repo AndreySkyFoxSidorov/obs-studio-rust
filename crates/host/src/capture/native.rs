@@ -41,6 +41,10 @@ struct NativeBackend {
 }
 #[cfg(any(target_os = "windows", target_os = "macos"))]
 impl CaptureBackend for NativeBackend {
+    fn set_sdr_white_nits(&mut self, nits: u16) {
+        self.display.set_sdr_white_nits(nits);
+        self.window.set_sdr_white_nits(nits);
+    }
     fn retain_display_bindings(
         &mut self,
         session: u64,

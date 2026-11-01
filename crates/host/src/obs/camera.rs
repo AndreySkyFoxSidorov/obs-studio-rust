@@ -32,7 +32,13 @@ impl CameraImportDevice {
         supported.try_reserve_exact(modes.len()).map_err(|_|issue("$.sources", "camera_catalog_limit", "cannot allocate camera mode catalog"))?;
         for info in modes {
             if let Some(mode)=info.mode {
-                if info.unsupported_reason.is_some() || (mode.width(),mode.height(),mode.fps_num(),mode.fps_den()) != (info.width,info.height,info.fps_num,info.fps_den) {
+                // Equivalent rational frame rates can be reported in different
+                // forms by DirectShow and Media Foundation (e.g. 30/1, 60/2).
+                // Compare their values without rounding or overflowing u32.
+                let same_rate = info.fps_num != 0 && info.fps_den != 0
+                    && u64::from(mode.fps_num()) * u64::from(info.fps_den)
+                        == u64::from(info.fps_num) * u64::from(mode.fps_den());
+                if info.unsupported_reason.is_some() || (mode.width(),mode.height()) != (info.width,info.height) || !same_rate {
                     return Err(issue("$.sources", "camera_catalog_invalid", "camera owner mode metadata is inconsistent"));
                 }
                 supported.push(mode);
@@ -93,6 +99,12 @@ pub(super) fn parse(settings:&Map<String,Value>,path:&str,devices:&[CameraImport
         return Err(issue(path,"camera_catalog_limit","camera import catalog exceeds its bounded size"));
     }
     known(settings,&["video_device_id","last_video_device_id","res_type","resolution","last_resolution","frame_interval","video_format","buffering","flip_vertically","audio_output_mode","use_custom_audio_device","audio_device_id","color_space","color_range","deactivate_when_not_showing","autorotation","hw_decode","active"],path)?;
+    // OBS color settings apply independently of Preferred/Custom resolution.
+    // HDR modes require a separate HDR pipeline and are rejected explicitly.
+    let color_space=match settings.get("color_space") {None=>"default",Some(Value::String(value))=>value.as_str(),_=>return Err(issue(path,"camera_color_unsupported","Camera color space must be a string"))};
+    let color_range=match settings.get("color_range") {None=>"default",Some(Value::String(value))=>value.as_str(),_=>return Err(issue(path,"camera_color_unsupported","Camera color range must be a string"))};
+    let matrix_override=if color_space.eq_ignore_ascii_case("default"){None}else if color_space.eq_ignore_ascii_case("601"){Some(VideoColorMatrix::Bt601)}else if color_space.eq_ignore_ascii_case("709"){Some(VideoColorMatrix::Bt709)}else{return Err(issue(path,"camera_color_unsupported","Only SDR 601 and 709 camera color spaces are supported"));};
+    let range_override=if color_range.eq_ignore_ascii_case("default"){None}else if color_range.eq_ignore_ascii_case("partial"){Some(VideoColorRange::Limited)}else if color_range.eq_ignore_ascii_case("full"){Some(VideoColorRange::Full)}else{return Err(issue(path,"camera_color_unsupported","Unsupported camera color range"));};
     let VideoCaptureTarget::Windows{symbolic_link:device_path}=target(settings,path)? else { unreachable!("OBS DirectShow identities are Windows paths") };
     // libdshowcapture only requests CameraControl_Roll for the exact
     // case-sensitive "StreamCam" substring in the OBS videoConfig.name.
@@ -136,8 +148,6 @@ pub(super) fn parse(settings:&Map<String,Value>,path:&str,devices:&[CameraImport
         // Preferred ignores the Custom resolution/format/interval values.
         // Their values may remain in OBS settings after the user switches mode.
         neutral(settings,"buffering",json!(0),path)?;
-        neutral(settings,"color_space",json!("default"),path)?;
-        neutral(settings,"color_range",json!("default"),path)?;
         neutral(settings,"hw_decode",json!(false),path)?;
         neutral(settings,"active",json!(true),path)?;
         let audio_output=match settings.get("audio_output_mode"){None=>0,Some(v)=>v.as_i64().ok_or_else(||issue(path,"camera_audio_unsupported","Camera audio output mode must be an integer"))?};
@@ -145,43 +155,51 @@ pub(super) fn parse(settings:&Map<String,Value>,path:&str,devices:&[CameraImport
         for key in ["last_video_device_id","last_resolution"] {if settings.get(key).is_some_and(|value|!value.is_string()){return Err(issue(path,"invalid","OBS camera history field must be a string"));}}
         let mode=device.preferred.ok_or_else(||issue(path,"camera_preferred_unresolved","DirectShow preferred probe is required"))?;
         let flip=boolean(settings,"flip_vertically",false,path)?;
+        // Preserve OBS's inactive custom values even when a device is absent,
+        // a format is unsupported, or those values are malformed. Only use a
+        // typed custom mode when the ordinary Custom importer can resolve all
+        // fields exactly against this camera's reported modes.
+        let mut inactive=Map::new();
+        for key in ["resolution","video_format","frame_interval"] {
+            if let Some(value)=settings.get(key) {inactive.insert(key.into(),value.clone());}
+        }
+        let mut custom=None;
+        let mut custom_any=false;
+        let mut custom_fps=CameraFpsPolicy::Fixed;
+        let mut opaque=None;
+        if !inactive.is_empty() {
+            let mut candidate=settings.clone();
+            candidate.insert("res_type".into(),json!(1));
+            match parse(&candidate,path,devices) {
+                Ok(binding)=>{custom=Some(binding.mode());custom_fps=binding.fps_policy();custom_any=binding.any_format();},
+                Err(_)=>{
+                    let encoded=serde_json::to_string(&inactive).map_err(|error|issue(path,"camera_custom_invalid",error.to_string()))?;
+                    if encoded.len()>16*1024{return Err(issue(path,"camera_custom_limit","inactive OBS camera settings exceed 16 KiB"));}
+                    opaque=Some(encoded);
+                }
+            }
+        }
         return VideoCaptureBinding::new(device.target.clone(),mode,boolean(settings,"deactivate_when_not_showing",false,path)?)
-            .and_then(|binding|binding.with_mode_policy(CameraModePolicy::DirectShowPreferred).with_flip_vertically(flip).with_audio(audio))
+            .and_then(|binding|binding.with_mode_policy(CameraModePolicy::DirectShowPreferred).with_fps_policy(custom_fps).with_any_format(custom_any).with_custom_mode(custom))
+            .and_then(|binding|binding.with_obs_custom_settings(opaque))
+            .and_then(|binding|binding.with_color(matrix_override,range_override))
+            .and_then(|binding|binding.with_flip_vertically(flip).with_audio(audio))
             .and_then(|binding|binding.with_embedded_audio(embedded))
             .map_err(|error|issue(path,"camera_mode_invalid",error.to_string()));
     }
-    // Resolve YUV against the reported MF mode, never manufacture color
-    // metadata from the OBS fourcc. OBS resolves default YUV to 709/partial;
-    // its SDR reverse shaders use centered chroma sampling. Only a mode that
-    // already has the same interpretation can faithfully represent it.
-    let format=settings.get("video_format").and_then(Value::as_i64)
-        .ok_or_else(||issue(path,"camera_mode_unsupported","Camera import requires an explicit native video format"))?;
-    let yuv=matches!(format,200..=202|301|302);
-    let (matrix,range)=if yuv {
-        let space=match settings.get("color_space") {None=>"default",Some(Value::String(value))=>value.as_str(),_=>return Err(issue(path,"camera_color_unsupported","Camera color space must be a string"))};
-        let range=match settings.get("color_range") {None=>"default",Some(Value::String(value))=>value.as_str(),_=>return Err(issue(path,"camera_color_unsupported","Camera color range must be a string"))};
-        let matrix=if space.eq_ignore_ascii_case("default")||space.eq_ignore_ascii_case("709"){VideoColorMatrix::Bt709}
-            else if space.eq_ignore_ascii_case("601"){VideoColorMatrix::Bt601}
-            else {return Err(issue(path,"camera_color_unsupported","Only SDR 601 and 709 camera color spaces are supported"));};
-        let range=if range.eq_ignore_ascii_case("default")||range.eq_ignore_ascii_case("partial"){VideoColorRange::Limited}
-            else if range.eq_ignore_ascii_case("full"){VideoColorRange::Full}
-            else {return Err(issue(path,"camera_color_unsupported","Unsupported camera color range"));};
-        (matrix,range)
-    } else {
-        neutral(settings,"color_space",json!("default"),path)?;
-        neutral(settings,"color_range",json!("default"),path)?;
-        (VideoColorMatrix::Bt709,VideoColorRange::Limited)
-    };
-    if !matches!(format,100|101|200..=202|301|302|400|401) {
+    // Negotiate the actual device format independently of authored color
+    // interpretation. OBS SDR YUV defaults to 709/partial.
+    let format=match settings.get("video_format"){None=>0,Some(value)=>value.as_i64().ok_or_else(||issue(path,"camera_mode_unsupported","Camera video format must be an integer"))?};
+    if !matches!(format,0|100|101|200..=202|301|302|400|401) {
         return Err(issue(path,"camera_mode_unsupported","This OBS camera format is not supported by the native camera decoder"));
     }
     let matches_format=|mode:VideoPixelFormat|match (format,mode) {
-        (100,VideoPixelFormat::Bgra8)|(101,VideoPixelFormat::Rgb32)|(400,VideoPixelFormat::Mjpeg)|(401,VideoPixelFormat::H264)=>true,
-        (200,VideoPixelFormat::I420{matrix:m,range:r,chroma_left:false})
-        |(201,VideoPixelFormat::Nv12{matrix:m,range:r,chroma_left:false})
-        |(202,VideoPixelFormat::Yv12{matrix:m,range:r,chroma_left:false})
-        |(301,VideoPixelFormat::Yuy2{matrix:m,range:r,chroma_left:false})
-        |(302,VideoPixelFormat::Uyvy{matrix:m,range:r,chroma_left:false})=>m==matrix&&r==range,
+        (0,_)|(100,VideoPixelFormat::Bgra8)|(101,VideoPixelFormat::Rgb32)|(400,VideoPixelFormat::Mjpeg)|(401,VideoPixelFormat::H264)=>true,
+        (200,VideoPixelFormat::I420{..})
+        |(201,VideoPixelFormat::Nv12{..})
+        |(202,VideoPixelFormat::Yv12{..})
+        |(301,VideoPixelFormat::Yuy2{..})
+        |(302,VideoPixelFormat::Uyvy{..})=>true,
         _=>false,
     };
     // UpdateAudioConfig exits before reading the output mode when there is no
@@ -200,8 +218,17 @@ pub(super) fn parse(settings:&Map<String,Value>,path:&str,devices:&[CameraImport
     neutral(settings,"active",json!(true),path)?;
     for key in ["last_video_device_id","last_resolution"] {if settings.get(key).is_some_and(|value|!value.is_string()){return Err(issue(path,"invalid","OBS camera history field must be a string"));}}
     let resolution=string(settings,"resolution",path)?;
-    let (w,h)=resolution.split_once('x').ok_or_else(||issue(path,"camera_resolution_invalid","OBS camera resolution must be WIDTHxHEIGHT"))?;
-    let (w,h)=(w.parse::<u32>().map_err(|_|issue(path,"camera_resolution_invalid","invalid OBS camera width"))?,h.parse::<u32>().map_err(|_|issue(path,"camera_resolution_invalid","invalid OBS camera height"))?);
+    // win-dshow's ResolutionValid uses sscanf("%dx%d"): each number
+    // accepts leading whitespace and a plus sign; trailing labels are ignored.
+    fn positive_prefix(input:&str)->Option<(u32,&str)> {
+        let input=input.trim_start().strip_prefix('+').unwrap_or(input.trim_start());
+        let end=input.bytes().take_while(u8::is_ascii_digit).count();
+        if end==0{return None;}
+        Some((input[..end].parse().ok()?,&input[end..]))
+    }
+    let (w,rest)=positive_prefix(resolution).ok_or_else(||issue(path,"camera_resolution_invalid","invalid OBS camera width"))?;
+    let rest=rest.strip_prefix('x').ok_or_else(||issue(path,"camera_resolution_invalid","OBS camera resolution must be WIDTHxHEIGHT"))?;
+    let (h,_)=positive_prefix(rest).ok_or_else(||issue(path,"camera_resolution_invalid","invalid OBS camera height"))?;
     let interval=match settings.get("frame_interval"){Some(value)=>value.as_i64().ok_or_else(||issue(path,"invalid","camera frame interval must be an integer"))?,None=>-1};
     let policy=match interval {-1=>CameraFpsPolicy::MatchOutput,0=>CameraFpsPolicy::Highest,1.. =>CameraFpsPolicy::Fixed,_=>return Err(issue(path,"camera_interval_invalid","unsupported OBS camera interval"))};
     let mut modes:Vec<_>=device.modes.iter().copied().filter(|mode|mode.width()==w&&mode.height()==h&&matches_format(mode.format())).collect();
@@ -212,7 +239,8 @@ pub(super) fn parse(settings:&Map<String,Value>,path:&str,devices:&[CameraImport
         .ok_or_else(||issue(path,"camera_mode_unresolved","OBS camera mode has no exact match in the supplied native mode catalog"))?;
     let flip=boolean(settings,"flip_vertically",false,path)?;
     VideoCaptureBinding::new(device.target.clone(),mode,boolean(settings,"deactivate_when_not_showing",false,path)?)
-        .and_then(|binding|binding.with_fps_policy(policy).with_flip_vertically(flip).with_audio(audio))
+        .and_then(|binding|binding.with_fps_policy(policy).with_any_format(format==0).with_flip_vertically(flip).with_audio(audio))
+        .and_then(|binding|binding.with_color(matrix_override,range_override))
         .and_then(|binding|binding.with_embedded_audio(embedded))
         .map_err(|error|issue(path,"camera_mode_invalid",error.to_string()))
 }
@@ -261,19 +289,42 @@ pub(super) fn export(binding:&VideoCaptureBinding,path:&str)->Result<Value,ObsEr
             } else {String::new()};
             object.insert("audio_device_id".into(),json!(audio_id));
         }
-        if binding.mode_policy()==CameraModePolicy::DirectShowPreferred {
-            object.insert("res_type".into(),json!(0));
-        } else {
-            let mode=binding.mode();
-            let (format,color)=match mode.format() {
+        let preferred=binding.mode_policy()==CameraModePolicy::DirectShowPreferred;
+        object.insert("res_type".into(),json!(if preferred {0} else {1}));
+        if let Some(raw)=binding.obs_custom_settings() {
+            let preserved:Value=serde_json::from_str(raw).map_err(|error|issue(path,"camera_custom_invalid",error.to_string()))?;
+            let preserved=preserved.as_object().ok_or_else(||issue(path,"camera_custom_invalid","retained OBS camera settings must be an object"))?;
+            if preserved.keys().any(|key|!matches!(key.as_str(),"resolution"|"video_format"|"frame_interval"|"color_space"|"color_range")) {
+                return Err(issue(path,"camera_custom_invalid","retained OBS camera settings contain an unknown field"));
+            }
+            // Older documents can retain color keys in this opaque payload,
+            // while newer documents author color separately on the binding.
+            // These settings are active even in OBS Preferred mode. Never
+            // silently choose one side if the two representations disagree:
+            // reselecting the desired value in Properties updates this key and
+            // keeps the unrelated unresolved Custom fields intact.
+            let authored_space=match binding.color_matrix(){None=>"default",Some(VideoColorMatrix::Bt601)=>"601",Some(VideoColorMatrix::Bt709)=>"709"};
+            let authored_range=match binding.color_range(){None=>"default",Some(VideoColorRange::Limited)=>"partial",Some(VideoColorRange::Full)=>"full"};
+            for (key,authored) in [("color_space",authored_space),("color_range",authored_range)] {
+                if preserved.get(key).is_some_and(|value|value.as_str().is_none_or(|raw|!raw.eq_ignore_ascii_case(authored))) {
+                    return Err(issue(&format!("{path}.{key}"),"camera_color_conflict",
+                        "The retained OBS camera color setting conflicts with the active setting. Reselect the desired Color Space or Color Range in camera Properties before exporting."));
+                }
+            }
+            for (key,value) in preserved {object.insert(key.clone(),value.clone());}
+        }
+        // OBS retains custom settings while Device Default is active so the
+        // user can return to them after importing the exported collection.
+        if let Some(mode)=if preferred {binding.custom_mode()} else {Some(binding.mode())} {
+            let (format,color)=if binding.any_format(){(0,None)}else{match mode.format() {
                 VideoPixelFormat::Bgra8=>(100,None), VideoPixelFormat::Rgb32=>(101,None), VideoPixelFormat::Mjpeg=>(400,None), VideoPixelFormat::H264=>(401,None),
-                VideoPixelFormat::I420{matrix,range,chroma_left:false}=>(200,Some((matrix,range))),
-                VideoPixelFormat::Nv12{matrix,range,chroma_left:false}=>(201,Some((matrix,range))),
-                VideoPixelFormat::Yv12{matrix,range,chroma_left:false}=>(202,Some((matrix,range))),
-                VideoPixelFormat::Yuy2{matrix,range,chroma_left:false}=>(301,Some((matrix,range))),
-                VideoPixelFormat::Uyvy{matrix,range,chroma_left:false}=>(302,Some((matrix,range))),
+                VideoPixelFormat::I420{matrix,range,..}=>(200,Some((matrix,range))),
+                VideoPixelFormat::Nv12{matrix,range,..}=>(201,Some((matrix,range))),
+                VideoPixelFormat::Yv12{matrix,range,..}=>(202,Some((matrix,range))),
+                VideoPixelFormat::Yuy2{matrix,range,..}=>(301,Some((matrix,range))),
+                VideoPixelFormat::Uyvy{matrix,range,..}=>(302,Some((matrix,range))),
                 _=>return Err(issue(path,"camera_format_unsupported","This camera format or chroma position cannot be represented by OBS dshow_input")),
-            };
+            }};
             let interval=match binding.fps_policy() {
                 CameraFpsPolicy::Highest=>0i64,
                 CameraFpsPolicy::MatchOutput=>-1,
@@ -281,15 +332,16 @@ pub(super) fn export(binding:&VideoCaptureBinding,path:&str)->Result<Value,ObsEr
                 // conversion used by the importer and OBS device capabilities.
                 CameraFpsPolicy::Fixed=>(u64::from(mode.fps_den())*10_000_000/u64::from(mode.fps_num())) as i64,
             };
-            object.insert("res_type".into(),json!(1));
             object.insert("resolution".into(),json!(format!("{}x{}",mode.width(),mode.height())));
-            object.insert("video_format".into(),json!(format));
+            object.insert("video_format".into(),json!(if binding.any_format(){0}else{format}));
             object.insert("frame_interval".into(),json!(interval));
-            if let Some((matrix,range))=color {
-                object.insert("color_space".into(),json!(match matrix {VideoColorMatrix::Bt601=>"601",VideoColorMatrix::Bt709=>"709"}));
-                object.insert("color_range".into(),json!(match range {VideoColorRange::Limited=>"partial",VideoColorRange::Full=>"full"}));
-            }
+            let _=color;
         }
+        // Explicit settings remain authored for Preferred and encoded input.
+        if let Some(matrix)=binding.color_matrix(){object.insert("color_space".into(),json!(match matrix {VideoColorMatrix::Bt601=>"601",VideoColorMatrix::Bt709=>"709"}));}
+        if let Some(range)=binding.color_range(){object.insert("color_range".into(),json!(match range {VideoColorRange::Limited=>"partial",VideoColorRange::Full=>"full"}));}
+        object.entry("color_space".to_owned()).or_insert_with(||json!("default"));
+        object.entry("color_range".to_owned()).or_insert_with(||json!("default"));
         Ok(settings)
     }
 }

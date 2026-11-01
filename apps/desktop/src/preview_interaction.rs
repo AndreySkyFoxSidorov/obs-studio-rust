@@ -59,15 +59,25 @@ struct Gesture {
     epoch: u64,
     output: Option<FrameComposition>,
 }
+struct Marquee {
+    session:u64,
+    revision:u64,
+    scene:Id,
+    owner:Id,
+    start:egui::Pos2,
+    previous:Vec<Id>,
+}
 #[derive(Default)]
 pub struct PreviewInteraction {
     gesture: Option<Gesture>,
+    marquee: Option<Marquee>,
     serial: u64,
     pub error: Option<String>,
 }
 impl PreviewInteraction {
     pub fn cancel(&mut self) {
         self.gesture = None;
+        self.marquee = None;
     }
     pub fn draft_output(
         &mut self,
@@ -272,6 +282,7 @@ impl PreviewInteraction {
             ui.id().with("editable-preview"),
             egui::Sense::click_and_drag(),
         );
+        crate::preview_display::set_editable_preview_focus(ui.ctx(),response.id);
         let widget_info = {
             egui::WidgetInfo::labeled(
                 egui::WidgetType::Image,
@@ -285,8 +296,14 @@ impl PreviewInteraction {
         // Reuse the source-list commands so filters, properties and transforms
         // continue through the same validated application actions.
         if menu_enabled { response.clone().context_menu(|ui| {
+            // A selected item may live inside a group. Source-list actions
+            // resolve the item within the supplied container, so passing the
+            // root scene hides all item commands for nested sources.
+            let owner=selected.and_then(|item|model.item_container(item).map(|(owner,_)|owner))
+                .filter(|owner|model.root_scene_for_container(*owner)==Some(scene))
+                .unwrap_or(scene);
             crate::views::docks::source_list_actions(
-                ui, &model, scene, selected, session.identity(), &mut actions.intents,
+                ui, &model, owner, selected, session.identity(), &mut actions.intents,
             );
             ui.separator();
             crate::projectors::menu(
@@ -302,10 +319,16 @@ impl PreviewInteraction {
             self.cancel();
             return actions;
         }
+        // In fixed Preview scaling, Space-drag belongs to the viewport, not
+        // to a source transform. The display adapter owns that transient pan.
+        if crate::preview_display::space_pan_mode(ui,"preview",viewport) {
+            self.cancel();
+            return actions;
+        }
         response.clone().on_hover_ui(|ui| {
             ui.label(crate::i18n::tr(ui,"Select and drag a source. Drag a square handle to resize or the round handle to rotate. Hold Shift to stretch or snap rotation, Alt to crop, or Ctrl for free rotation. Arrow keys move by one pixel; Shift moves by ten. Escape cancels the current edit."));
             ui.label(crate::i18n::tr(ui,"Hold Ctrl while dragging to bypass source alignment snapping."));
-            ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Preview.GroupMoveHelp","Ctrl-click toggles selection. Drag a selected source to move its selected siblings; drag the outer handles to scale uniformly."));
+            ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Preview.GroupMoveHelp","Ctrl-click toggles selection. Drag a selected source to move all selected sources; drag the outer handles to scale uniformly."));
         });
         let (position, press, released, escape, focused, modifiers) = ui.input(|input| {
             // A slow frame can contain the complete drag. The current pointer
@@ -319,13 +342,30 @@ impl PreviewInteraction {
                 } => Some((*pos, *modifiers)),
                 _ => None,
             });
+            // Use the modifier state attached to the release itself. Later
+            // keyboard events in this frame must not alter the committed drag.
+            let release_modifiers = input.events.iter().rev().find_map(|event| match event {
+                egui::Event::PointerButton { button: egui::PointerButton::Primary, pressed: false, modifiers, .. } => Some(*modifiers),
+                _ => None,
+            });
             (
-                input.pointer.interact_pos(),
+                // PointerGone can arrive in the same frame as button release
+                // (for example when leaving the window). Use that release's
+                // position to finish the active gesture instead of retaining a
+                // stuck marquee or transform until the next interaction.
+                // If the pointer moves again after release within the same
+                // frame, the release event is the actual gesture endpoint.
+                (if input.pointer.primary_released() {
+                    input.events.iter().rev().find_map(|event| match event {
+                        egui::Event::PointerButton {pos,button:egui::PointerButton::Primary,pressed:false,..} => Some(*pos),
+                        _ => None,
+                    })
+                } else {None}).or_else(||input.pointer.interact_pos()),
                 press,
                 input.pointer.primary_released(),
                 input.key_pressed(egui::Key::Escape),
                 input.focused,
-                input.modifiers,
+                if input.pointer.primary_released() {release_modifiers.unwrap_or(input.modifiers)} else {input.modifiers},
             )
         });
         if escape || !focused {
@@ -333,9 +373,26 @@ impl PreviewInteraction {
             // draft was visible, schedule the next frame to restore the
             // canonical scene after cancelling the gesture.
             let had_draft=self.gesture.as_ref().is_some_and(|gesture|gesture.output.is_some());
-            self.cancel();
+            // Arrow-key nudges are already visible as an edit when focus is
+            // lost. OBS applies each nudge immediately; preserve the final
+            // validated draft rather than silently discarding it when the
+            // window is deactivated before the key-up arrives. Escape still
+            // explicitly cancels, and pointer gestures still require release.
+            if !escape && self.gesture.as_ref().is_some_and(|gesture|matches!(gesture.mode,Mode::Keyboard)) {
+                self.finish(session,capture,auto_text,&mut actions);
+            } else {
+                self.cancel();
+            }
             if had_draft {ui.ctx().request_repaint();}
             return actions;
+        }
+        if position.is_none() && !ui.input(|input|input.pointer.primary_down())
+            && (self.marquee.is_some() || self.gesture.as_ref().is_some_and(|gesture|!matches!(gesture.mode,Mode::Keyboard))) {
+            // Some window systems lose pointer capture without a release
+            // coordinate. Cancel the transient edit and show authored state.
+            let had_draft=self.gesture.as_ref().is_some_and(|gesture|gesture.output.is_some());
+            self.cancel();
+            if had_draft {ui.ctx().request_repaint();}
         }
         if let Some(gesture) = &self.gesture {
             if gesture.target.scene != scene || Some(gesture.target.item) != selected {
@@ -348,7 +405,7 @@ impl PreviewInteraction {
         let (target,selected_problem)=match selected.map(|item|read_target(item)){Some(Ok(target))=>(Some(target),None),Some(Err(error))=>(None,Some(error.to_string())),None=>(None,None)};
         let group_targets:Vec<Target>=crate::views::group_source::selected_items_context(ui.ctx(),&model,scene,session.identity(),selected)
             .into_iter().filter_map(|item|read_target(item).ok()).collect();
-        let group_box=if group_targets.len()>1 && target.as_ref().is_some_and(|target|group_targets.iter().all(|item|item.container==target.container)) {
+        let group_box=if group_targets.len()>1 && target.is_some() {
             selection_geometry(&group_targets,&[])
         }else{None};
         let group_rotation_supported=group_box.is_some()&&group_targets.iter().all(Target::can_rotate_group);
@@ -362,9 +419,9 @@ impl PreviewInteraction {
         }) {
             response.request_focus();
             {
-                let handle = target.as_ref().filter(|target|target.container==scene).and_then(|target| nearest_handle(target.geometry,position,&to_view));
+                let handle = target.as_ref().and_then(|target| nearest_handle(target.geometry,position,&to_view));
                 let rotate=target.as_ref().is_some_and(|target| {
-                    target.container==scene && rotation_handle(target.geometry,target.transform.flip_y,&to_view).1.distance(position)<=8.0
+                    rotation_handle(target.geometry,target.transform.flip_y,&to_view).1.distance(position)<=8.0
                 });
                 let group_handle=group_box.and_then(|geometry|nearest_handle(geometry,position,&to_view));
                 let group_rotate=group_rotation_supported && group_box.is_some_and(|bounds|rotation_handle(bounds,false,&to_view).1.distance(position)<=8.0);
@@ -402,9 +459,10 @@ impl PreviewInteraction {
                             .filter_map(|item|read_target(*item).ok()).collect()
                     } else { Vec::new() };
                     let cycle=target.container==scene && group.is_empty() && Some(target.item)==selected && !press_modifiers.alt && !press_modifiers.shift && !press_modifiers.ctrl && !press_modifiers.command;
-                    let toggle = if press_modifiers.ctrl || press_modifiers.command {
-                        Some(crate::views::group_source::selected_items_context(ui.ctx(), &model, scene, session.identity(), selected))
-                    } else { None };
+                    // A click is resolved on release, and Ctrl can change
+                    // between the press and release. Keep the exact original
+                    // selection until we know which operation to apply.
+                    let toggle = Some(selection.clone());
                     if !group.is_empty() {
                         let _=crate::views::group_source::focus_preview_selection(ui.ctx(),&model,scene,session.identity(),target.item,selection);
                     }
@@ -412,10 +470,47 @@ impl PreviewInteraction {
                     self.start(target, to_canvas(position), Mode::Move, false);
                     if let Some(gesture)=&mut self.gesture {gesture.cycle_on_click=cycle;gesture.toggle_selection=toggle;gesture.group=group;gesture.snap_excluded=snap_excluded;}
                 } else {
-                    if !press_modifiers.ctrl && !press_modifiers.command {
-                        actions.selection = Some(None);
-                    }
                     self.cancel();
+                    let owner=selected.and_then(|id|model.item_container(id).map(|(owner,_)|owner)).unwrap_or(scene);
+                    self.marquee=Some(Marquee {session:session.identity(),revision:model.revision(),scene,owner,start:position,
+                        previous:crate::views::group_source::selected_items_context(ui.ctx(),&model,scene,session.identity(),selected)});
+                }
+            }
+        }
+        if let Some(marquee)=&self.marquee {
+            if marquee.session!=session.identity() || marquee.revision!=model.revision() || marquee.scene!=scene {
+                self.marquee=None;
+            } else if let Some(position)=position {
+                let rect=egui::Rect::from_two_pos(marquee.start,position).intersect(viewport);
+                if marquee.start.distance(position)>3.0 {
+                    let color=crate::theme::interface_color(ui,skylive_core::InterfaceColor::Selection);
+                    ui.painter().with_clip_rect(viewport).rect_stroke(rect,0.0,egui::Stroke::new(1.0,color),egui::StrokeKind::Inside);
+                }
+                if released {
+                    let marquee=self.marquee.take().expect("marquee exists");
+                    let moved=marquee.start.distance(position)>3.0;
+                    // OBS applies the modifiers present at mouse release, so
+                    // the user may change the selection mode while dragging.
+                    if !moved && (modifiers.shift || modifiers.ctrl || modifiers.command || modifiers.alt) {
+                        return actions;
+                    }
+                    let mut items=if modifiers.shift || modifiers.ctrl || modifiers.command || modifiers.alt {
+                        marquee.previous.into_iter().filter(|id|model.item_container(*id).is_some_and(|(owner,_)|model.root_scene_for_container(owner)==Some(scene))).collect::<Vec<_>>()
+                    } else {Vec::new()};
+                    if moved {
+                        if let Some(container)=model.scene_container(marquee.owner) {
+                            for item in container.items() {
+                                let Ok(target)=read_target(item.id()) else{continue;};
+                                let a=to_canvas(rect.min);let b=to_canvas(rect.max);
+                                if !target.intersects_box([a[0].min(b[0]),a[1].min(b[1])],[a[0].max(b[0]),a[1].max(b[1])]) {continue;}
+                                if modifiers.alt {items.retain(|id|*id!=item.id());}
+                                else if modifiers.ctrl || modifiers.command {
+                                    if let Some(index)=items.iter().position(|id|*id==item.id()){items.remove(index);}else{items.push(item.id());}
+                                } else if !items.contains(&item.id()){items.push(item.id());}
+                            }
+                        }
+                    }
+                    actions.selection=Some(crate::views::group_source::set_preview_selection(ui.ctx(),&model,scene,session.identity(),marquee.owner,items));
                 }
             }
         }
@@ -427,17 +522,16 @@ impl PreviewInteraction {
             let delta = [current[0] - gesture.start[0], current[1] - gesture.start[1]];
             let next = match gesture.mode {
                 Mode::Move if gesture.moved && (!gesture.group.is_empty()||gesture.snap_excluded.len()>1) => Some(gesture.target.moved_group_snapped(session,capture,&gesture.group,&gesture.snap_excluded,delta,[f64::from(canvas.width())/size[0],f64::from(canvas.height())/size[1]],modifiers.ctrl)),
-                Mode::Move if gesture.moved && gesture.target.container!=scene => Some(gesture.target.moved(delta).map(|t|(t,[None;2]))),
-                Mode::Move if gesture.moved => Some(gesture.target.moved_snapped(session,capture,delta,[f64::from(canvas.width())/size[0],f64::from(canvas.height())/size[1]],modifiers.ctrl).map(|t|(t,[None;2]))),
+                Mode::Move if gesture.moved => Some(gesture.target.moved_group_snapped(session,capture,&[],&[],delta,[f64::from(canvas.width())/size[0],f64::from(canvas.height())/size[1]],modifiers.ctrl)),
                 Mode::Move => None,
                 Mode::Rotate => Some(gesture.target.rotated(gesture.start,current,modifiers.shift,modifiers.ctrl).map(|t|(t,[None;2]))),
-                Mode::Resize(handle) => Some(gesture.target.resized_snapped(
+                Mode::Resize(handle) => Some(gesture.target.resized_snapped_with_guides(
                     session,capture,handle,
                     delta,
                     modifiers.shift,
                     gesture.crop,
                     [f64::from(canvas.width())/size[0],f64::from(canvas.height())/size[1]],modifiers.ctrl,
-                ).map(|t|(t,[None;2]))),
+                )),
                 Mode::GroupResize(_) | Mode::GroupRotate | Mode::Keyboard => None,
             };
             if let Some(next) = next {
@@ -482,13 +576,21 @@ impl PreviewInteraction {
                 .as_ref()
                 .is_some_and(|gesture| !matches!(gesture.mode, Mode::Keyboard))
         {
-            if let Some(gesture) = self.gesture.as_ref().filter(|gesture| {
+            if let Some(gesture) = self.gesture.as_mut().filter(|gesture| {
                 matches!(gesture.mode, Mode::Move) && !gesture.moved && gesture.draft == gesture.target.transform
                     && gesture.target.validate(session, capture).is_ok()
             }) {
-                if let Some(previous) = gesture.toggle_selection.clone() {
-                    let focus = crate::views::group_source::toggle_preview_selection(
-                        ui.ctx(), &model, scene, session.identity(), gesture.target.item, previous,
+                if modifiers.ctrl || modifiers.command {
+                    gesture.cycle_on_click=false;
+                    if let Some(previous) = gesture.toggle_selection.clone() {
+                        let focus = crate::views::group_source::toggle_preview_selection(
+                            ui.ctx(), &model, scene, session.identity(), gesture.target.item, previous,
+                        );
+                        actions.selection = Some(focus);
+                    }
+                } else {
+                    let focus = crate::views::group_source::set_preview_selection(
+                        ui.ctx(), &model, scene, session.identity(), gesture.target.container, vec![gesture.target.item],
                     );
                     actions.selection = Some(focus);
                 }
@@ -504,11 +606,18 @@ impl PreviewInteraction {
             ];
             let mut delta = [0.0, 0.0];
             for (key, direction) in keys {
-                if ui.input_mut(|input| {
-                    input.consume_key(egui::Modifiers::NONE, key)
-                        || input.consume_key(egui::Modifiers::SHIFT, key)
-                }) {
-                    let step = if modifiers.shift { 10.0 } else { 1.0 };
+                // Use the modifiers on the key event, not the state at the
+                // end of the frame: Shift can be released after the arrow
+                // event but before this UI pass processes both events.
+                let step = ui.input_mut(|input| {
+                    // One frame may contain several OS key-repeat events.
+                    // consume_key discards all matches but only returns a bool,
+                    // losing movement when rendering is slower than key repeat.
+                    let shifted=input.count_and_consume_key(egui::Modifiers::SHIFT,key);
+                    let plain=input.count_and_consume_key(egui::Modifiers::NONE,key);
+                    shifted as f64 * 10.0 + plain as f64
+                });
+                if step != 0.0 {
                     delta[0] += direction[0] * step;
                     delta[1] += direction[1] * step;
                 }
@@ -546,7 +655,9 @@ impl PreviewInteraction {
             .as_ref()
             .is_some_and(|gesture| matches!(gesture.mode, Mode::Keyboard))
         {
-            self.cancel();
+            // Focusing another control can consume the arrow key-up. Commit
+            // the last valid nudge once instead of losing the visible edit.
+            self.finish(session,capture,auto_text,&mut actions);
         }
         if self.gesture.is_none() {
             if let Some(position)=position.filter(|position| viewport.contains(*position)&&ui.ctx().layer_id_at(*position)==Some(response.layer_id)) {
@@ -614,7 +725,7 @@ impl PreviewInteraction {
                     egui::Stroke::new(1.5, color),
                 );
             }
-            if group_box.is_some() || target.as_ref().is_some_and(|target|target.container==scene) {
+            if group_box.is_some() || target.is_some() {
             let hovered_handle=if self.gesture.is_none() {
                 position.filter(|position|viewport.contains(*position)
                     &&ui.ctx().layer_id_at(*position)==Some(response.layer_id))

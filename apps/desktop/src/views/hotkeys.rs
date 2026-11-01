@@ -49,7 +49,7 @@ pub fn action_label(action: HotkeyAction) -> &'static str {
 pub fn editor(ui:&mut egui::Ui,draft:&mut HotkeyDraft){
  ui.horizontal_wrapped(|ui|{ui.add_enabled_ui(!draft.is_listening(),|ui|{ui.selectable_value(&mut draft.scope,Scope::Local,crate::i18n::tr(ui,"In SkyLive")).on_hover_text(crate::i18n::tr(ui,"Local shortcuts work while SkyLive is focused, outside text entry and dialogs."));ui.selectable_value(&mut draft.scope,Scope::Global,crate::i18n::tr(ui,"Windows global")).on_hover_text(crate::i18n::tr(ui,"Global shortcuts sample only configured keys and modifiers on Windows, including while another app has focus. They do not reserve shortcuts from other apps."));});});
  ui.add(egui::Label::new(crate::i18n::tr(ui,if draft.scope==Scope::Local {"Local shortcuts work while SkyLive is focused, outside text entry and dialogs."}else{"Global shortcuts sample only configured keys and modifiers on Windows, including while another app has focus. They do not reserve shortcuts from other apps."})).wrap());
- if draft.scope==Scope::Global {ui.add(egui::Label::new(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and punctuation are unavailable.")).wrap());}
+ if draft.scope==Scope::Global {ui.add(egui::Label::new(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and some shifted punctuation are unavailable.")).wrap());}
  if !draft.global_available {ui.add(egui::Label::new(crate::i18n::tr(ui,"Global shortcuts are unavailable on this platform. Saved assignments are retained.")).wrap());}
  ui.label(crate::i18n::tr(ui,&draft.runtime_status));if let Some(detail)=&draft.runtime_detail{ui.add(egui::Label::new(egui::RichText::new(crate::i18n::tr(ui,detail)).color(ui.visuals().warn_fg_color)).wrap());}
  if !draft.capture_ready {ui.label(crate::i18n::tr(ui,"Waiting for configured shortcut input to suspend before capture."));}
@@ -99,7 +99,7 @@ fn key_label(ui:&egui::Ui,key:&str)->String {
   return crate::i18n::tr_key_or(ui,"Hotkeys.NumpadNum","Numpad %1").replace("%1",digit);
  }
  let (id,fallback)=match key {
-  "NumLock"=>("Hotkeys.NumLock","Num Lock"),"NumpadAdd"=>("Hotkeys.NumpadAdd","Numpad Add"),
+  "NumLock"=>("Hotkeys.NumLock","Num Lock"),"Escape"=>("Hotkeys.Escape","Esc"),"CapsLock"=>("Hotkeys.CapsLock","Caps Lock"),"ScrollLock"=>("Hotkeys.ScrollLock","Scroll Lock"),"Pause"=>("Hotkeys.Pause","Pause"),"PrintScreen"=>("Hotkeys.Print","Print Screen"),"NumpadAdd"=>("Hotkeys.NumpadAdd","Numpad Add"),
   "NumpadSubtract"=>("Hotkeys.NumpadSubtract","Numpad Subtract"),"NumpadMultiply"=>("Hotkeys.NumpadMultiply","Numpad Multiply"),
   "NumpadDivide"=>("Hotkeys.NumpadDivide","Numpad Divide"),"NumpadDecimal"=>("Hotkeys.NumpadDecimal","Numpad Decimal"),
   _=>return key.to_owned(),
@@ -116,6 +116,15 @@ pub(super) fn keypad_picker(ui:&mut egui::Ui)->Option<skylive_core::HotkeyChord>
  let title=crate::i18n::tr_key_or(ui,"Hotkeys.NumpadNum","Numpad %1").replace(" %1","");
  ui.menu_button(title,|ui| {
   for key in ["NumLock","Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","NumpadAdd","NumpadSubtract","NumpadMultiply","NumpadDivide","NumpadDecimal"] {
+   if ui.button(key_label(ui,key)).clicked() {
+    let modifiers=ui.input(|input|input.modifiers);
+    result=skylive_core::HotkeyChord::new(key,modifiers.ctrl,modifiers.alt,modifiers.shift).ok();
+    ui.close_menu();
+   }
+  }
+ });
+ ui.menu_button(crate::i18n::tr(ui,"Other"),|ui| {
+  for key in ["Escape","CapsLock","ScrollLock","Pause","PrintScreen"] {
    if ui.button(key_label(ui,key)).clicked() {
     let modifiers=ui.input(|input|input.modifiers);
     result=skylive_core::HotkeyChord::new(key,modifiers.ctrl,modifiers.alt,modifiers.shift).ok();

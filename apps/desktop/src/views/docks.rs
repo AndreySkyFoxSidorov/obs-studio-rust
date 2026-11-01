@@ -125,7 +125,7 @@ pub(super) fn show_plan(
         }
         match index {
             0 => {
-                scenes(&mut child, model, scene, state.session, intents);
+                scenes(&mut child, model, scene, state.session, state.studio, intents);
             }
             1 => {
                 sources(
@@ -182,21 +182,24 @@ fn scenes(
     model: &StudioSnapshot,
     selected: Id,
     session: u64,
+    studio: bool,
     intents: &mut Vec<Intent>,
 ) {
     // Keep this confirmation scoped to the document that owned the focused
     // scene. A later selection or project change must not delete another row.
     let remove_key = egui::Id::new("scene-keyboard-remove-confirmation");
-    let toolbars = super::source_toolbar::listbox_bars_visible(ui.ctx());
+    let toolbars = model.preferences().listbox_toolbars_visible();
     ui.strong(crate::i18n::tr(ui, "Scenes"))
         .on_hover_text(crate::i18n::tr(ui, "Right-click the dock heading for Add and other scene actions."))
         .context_menu(|ui| scene_context(ui, model, selected, session, intents));
     ui.separator();
+    let list_height = (ui.available_height() - if toolbars { 56.0 } else { 28.0 }).max(24.0);
     egui::ScrollArea::vertical()
         .id_salt("scene-list")
-        .max_height((ui.available_height() - if toolbars { 56.0 } else { 28.0 }).max(24.0))
+        .max_height(list_height)
         .auto_shrink([false, false])
         .show(ui, |ui| {
+            let list_top = ui.cursor().top();
             let scope = Scope {
                 session,
                 revision: model.revision(),
@@ -204,7 +207,7 @@ fn scenes(
             };
             let mut rows = Vec::with_capacity(model.scenes().len());
             let mut keyboard_rows = Vec::with_capacity(model.scenes().len());
-            let grid = ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("scene-grid"))).unwrap_or(false);
+            let grid = model.preferences().scene_grid();
             let columns = if grid { (ui.available_width() / 110.0).floor().max(1.0) as usize } else { 1 };
             let width = ((ui.available_width() - ui.spacing().item_spacing.x * columns.saturating_sub(1) as f32) / columns as f32).max(1.0);
             egui::Grid::new("scene-list-presentation").num_columns(columns).show(ui, |ui| {
@@ -221,8 +224,22 @@ fn scenes(
                         )
                         .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Scenes.KeyboardNavigationHelp","Select a scene. Use arrow keys, Home or End to navigate the focused scene list."))
                         .on_disabled_hover_text(crate::hints::text(ui, "Scene"));
-                    if response.clicked() {
+                    if response.clicked() || response.double_clicked() {
                         intents.push(Intent::SelectScene(scene.id()));
+                    }
+                    // OBS shares TransitionOnDoubleClick between the scenes
+                    // list and Multiview; select the clicked preview first.
+                    if response.double_clicked() && studio && model.preferences().projectors().double_click_transition() {
+                        intents.push(Intent::Transition);
+                    }
+                    // OBS's scene list selects the row under a right-click
+                    // before opening its context menu. Keep the highlighted
+                    // scene, keyboard focus and the menu's target in sync.
+                    if response.secondary_clicked() {
+                        ui.ctx().memory_mut(|memory| memory.request_focus(response.id));
+                        if scene.id() != selected {
+                            intents.push(Intent::SelectScene(scene.id()));
+                        }
                     }
                     list_reorder::row(ui, &response, scope, scene.id(), false);
                     rows.push((scene.id(), response.rect));
@@ -260,8 +277,13 @@ fn scenes(
                     let target = ui.input_mut(|input| {
                         if input.consume_key(egui::Modifiers::NONE, egui::Key::Home) { Some(0) }
                         else if input.consume_key(egui::Modifiers::NONE, egui::Key::End) { Some(last) }
-                        else if input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowUp) { Some(index.saturating_sub(columns)) }
-                        else if input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowDown) { Some(index.saturating_add(columns).min(last)) }
+                        else if input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowUp) { Some(index.checked_sub(columns).unwrap_or(index)) }
+                        // Keep the current column in a partially filled last row.
+                        // If there is no scene below this one, retain focus instead
+                        // of jumping diagonally to the final scene.
+                        else if input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowDown) {
+                            Some(index.checked_add(columns).filter(|next| *next <= last).unwrap_or(index))
+                        }
                         else if grid && input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowLeft) { Some(index.saturating_sub(1)) }
                         else if grid && input.consume_key(egui::Modifiers::NONE, egui::Key::ArrowRight) { Some(index.saturating_add(1).min(last)) }
                         else { None }
@@ -274,6 +296,17 @@ fn scenes(
                 }
             }
             list_reorder::finish(ui, scope, &rows, intents);
+            // OBS also exposes Add and the list/grid switch when the context
+            // menu is opened on empty dock space, without targeting a scene.
+            let empty_height = (list_height - (ui.cursor().top() - list_top)).max(0.0);
+            if empty_height > 0.0 {
+                ui.allocate_response(egui::vec2(ui.available_width(), empty_height), egui::Sense::click())
+                    .context_menu(|ui| {
+                        add_scene_action(ui, model, intents);
+                        ui.separator();
+                        scene_grid_mode_action(ui, model, intents);
+                    });
+            }
         });
     if let Some(scene) = model.scene(selected) {
         let effective = scene.transition_override().unwrap_or(model.transition());
@@ -384,6 +417,17 @@ fn add_scene_action(ui: &mut egui::Ui, model: &StudioSnapshot, intents: &mut Vec
 }
 fn scene_context(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, session: u64, intents: &mut Vec<Intent>) {
     add_scene_action(ui, model, intents);
+    for (action,key,hint) in [
+        (crate::edit_clipboard::Action::CopyFilters,"Copy.Filters","actionCopyFilters"),
+        (crate::edit_clipboard::Action::PasteFilters,"Paste.Filters","actionPasteFilters"),
+    ] {
+        let request=crate::edit_clipboard::scene_request(ui.ctx(),model,session,selected,action);
+        if ui.add_enabled(request.is_some(),egui::Button::new(crate::i18n::tr_key(ui,key)))
+            .on_hover_text(crate::hints::text(ui,hint)).clicked() {
+            if let Some(request)=request {intents.push(Intent::MixerFilterClipboard(request));}
+            ui.close_menu();
+        }
+    }
     super::screenshot::button(ui,session,model.revision(),skylive_host::screenshot::Target::Scene {scene:selected},model.scene(selected).is_some(),intents);
     if ui.add_enabled(model.scenes().len() > 1, egui::Button::new(crate::i18n::tr(ui, "Remove"))
         .shortcut_text("Delete / Backspace"))
@@ -393,6 +437,18 @@ fn scene_context(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, sessio
     }
     ui.separator();
     scene_actions(ui, model, selected, session, intents);
+    ui.separator();
+    scene_grid_mode_action(ui, model, intents);
+}
+fn scene_grid_mode_action(ui: &mut egui::Ui, model: &StudioSnapshot, intents: &mut Vec<Intent>) {
+    let grid = model.preferences().scene_grid();
+    let mode = if grid { "Basic.Main.ListMode" } else { "Basic.Main.GridMode" };
+    if ui.button(crate::i18n::tr_key(ui, mode))
+        .on_hover_text(crate::hints::text(ui, if grid { "actionSceneListMode" } else { "actionSceneGridMode" }))
+        .clicked() {
+        intents.push(Intent::SceneGrid(!grid));
+        ui.close_menu();
+    }
 }
 fn scene_actions(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, session: u64, intents: &mut Vec<Intent>) {
     if let Some(scene)=model.scene(selected){let mut show=scene.show_in_multiview();if ui.checkbox(&mut show,crate::i18n::tr(ui,"Show in Multiview")).on_hover_text(crate::i18n::tr(ui,"Include this scene in Multiview scene tiles without changing Program, Preview or its sources.")).changed(){intents.push(Intent::Projector(crate::projectors::Action::SceneVisibility{session,revision:model.revision(),scene:selected,show}));ui.close_menu();}}
@@ -431,6 +487,7 @@ fn scene_actions(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, sessio
                 scene: selected,
                 name: scene.name().into(),
             }));
+            ui.close_menu();
         }
         if ui
             .button(crate::i18n::tr(ui, "Duplicate"))
@@ -445,8 +502,15 @@ fn scene_actions(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, sessio
                     model.scenes().iter().map(|scene| scene.name()),
                 ),
             }));
+            ui.close_menu();
         }
         scene_filters_action(ui, model, selected, session, intents);
+        if ui.button(crate::i18n::tr_key(ui,"Basic.Filters.AudioFilters"))
+            .on_hover_text(crate::hints::text(ui,"Filters"))
+            .clicked() {
+            intents.push(Intent::OpenDialog(Dialog::scene_audio_filters(model,scene)));
+            ui.close_menu();
+        }
         if ui
             .button(crate::i18n::tr(ui, "Transition Override"))
             .on_hover_text(crate::hints::text(ui, "Transition Override"))
@@ -454,6 +518,7 @@ fn scene_actions(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, sessio
             .clicked()
         {
             intents.push(Intent::OpenDialog(scene_transition_dialog(model, selected)));
+            ui.close_menu();
         }
         if ui
             .add_enabled(
@@ -470,6 +535,7 @@ fn scene_actions(ui: &mut egui::Ui, model: &StudioSnapshot, selected: Id, sessio
             .clicked()
         {
             intents.push(Intent::OpenDialog(Dialog::scene_notes(scene)));
+            ui.close_menu();
         }
     }
 }
@@ -517,7 +583,7 @@ fn sources(
     session: u64,
     intents: &mut Vec<Intent>,
 ) {
-    let toolbars = super::source_toolbar::listbox_bars_visible(ui.ctx());
+    let toolbars = model.preferences().listbox_toolbars_visible();
     ui.strong(crate::i18n::tr(ui, "Sources"))
         .interact(egui::Sense::click())
         .on_hover_text(crate::i18n::tr(ui, "Right-click the dock heading for Add and other source actions."))
@@ -549,7 +615,27 @@ fn sources(
             // when there is no selected row in the destination scene.
             let empty_height=(list_height-(ui.cursor().top()-list_top)).max(24.0);
             let empty=ui.allocate_response(egui::vec2(ui.available_width(),empty_height),egui::Sense::click());
-            empty.context_menu(|ui|source_list_actions(ui,model,scene,None,session,intents));
+            if empty.clicked() {
+                super::group_source::clear_selection(ui, scene);
+                ui.ctx().memory_mut(|memory| memory.request_focus(empty.id));
+                intents.push(Intent::SelectItem(None));
+            }
+            empty.context_menu(|ui| {
+                ui.menu_button(crate::i18n::tr(ui,"Add"), |ui| add_source_actions(ui,model,scene,intents))
+                    .response.on_hover_text(crate::hints::text(ui,"Add Source"));
+                ui.separator();
+                if ui.button(crate::i18n::tr_key(ui,"Basic.Main.NewGroup"))
+                    .on_hover_text(crate::i18n::tr(ui,"Add an empty group, then move source items into it."))
+                    .clicked() {
+                    match super::group_source::GroupDraft::for_ui(ui,model,super::group_source::GroupEdit::Empty {scene}) {
+                        Ok(draft) => intents.push(Intent::OpenDialog(Dialog::Group(draft))),
+                        Err(error) => intents.push(Intent::DialogError(error)),
+                    }
+                    ui.close_menu();
+                }
+                ui.separator();
+                crate::source_clipboard::empty_context_menu(ui,session,model.revision(),scene,intents);
+            });
         });
     if !toolbars { return; }
     ui.separator();
@@ -575,7 +661,7 @@ fn sources(
             "Sources",
             "Remove",
             super::dock_toolbar::Icon::Remove,
-            item.is_some_and(|item| !item.locked() && !model.container_is_locked(owner)),
+            item.is_some(),
         )
         .clicked()
         {
@@ -893,7 +979,7 @@ pub(super) fn source_actions(
     if let Some(item) = item {
         let editable = !item.locked() && !model.container_is_locked(scene);
         super::item_compositing::menus(ui,model,scene,item.id(),session,intents);
-        if ui.add_enabled(editable, egui::Button::new(crate::i18n::tr(ui, "Remove")))
+        if ui.add(egui::Button::new(crate::i18n::tr(ui, "Remove")))
             .on_hover_text(crate::hints::text(ui, "Remove")).clicked() {
             let root=model.root_scene_for_container(scene).unwrap_or(scene);
             super::group_source::request_remove_selection(ui,model,root,session,item.id());
@@ -977,8 +1063,12 @@ pub(super) fn source_actions(
                     source: source.id(),
                     name: source.name().into(),
                 }));
+                ui.close_menu();
             }
-            if source.kind().has_audio()
+            // A Windows camera or window capture can retain audio filters
+            // before its optional audio capture is enabled.  Match the model's
+            // authored capability instead of requiring a live audio route.
+            if source.kind().supports_audio_filters()
                 && ui
                     .add_enabled(
                         model
@@ -1001,6 +1091,7 @@ pub(super) fn source_actions(
                     .clicked()
             {
                 intents.push(Intent::OpenDialog(Dialog::audio_filters(source)));
+                ui.close_menu();
             }
             if model
                 .source_video_dimensions(source.kind())
@@ -1033,6 +1124,7 @@ pub(super) fn source_actions(
                     Ok(draft) => intents.push(Intent::OpenDialog(Dialog::VideoFilters(draft))),
                     Err(error) => intents.push(Intent::DialogError(error)),
                 }
+                ui.close_menu();
             }
         }
         let has_video = model.source(item.source()).is_some_and(|source| {
@@ -1093,7 +1185,8 @@ pub(super) fn source_actions(
                 ("MoveToTop", "actionMoveToTop", top),
                 ("MoveToBottom", "actionMoveToBottom", current.map(|_| 0)),
             ] {
-                let enabled = editable && target.is_some() && target != current;
+                // Locking an item protects its transform, not its layer order.
+                let enabled = !model.container_is_locked(scene) && target.is_some() && target != current;
                 let label = format!("Basic.MainMenu.Edit.Order.{key}");
                 if ui.add_enabled(enabled, egui::Button::new(crate::i18n::tr_key(ui, &label)))
                     .on_hover_text(crate::hints::text(ui, hint)).clicked() {

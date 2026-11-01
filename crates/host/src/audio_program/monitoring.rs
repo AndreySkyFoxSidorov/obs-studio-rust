@@ -24,6 +24,10 @@ impl AudioProgram {
         -> Result<Option<crate::audio_monitor::MonitorFrame>, ProgramAudioError>
     {
         self.purge_retired_ndi_inputs()?;
+        // Monitoring uses the live wall grid and can run while Program waits
+        // for lookahead. Keep the shared source history available to both.
+        let end=wall_frame.checked_add(1024).ok_or(ProgramAudioError::TimeOverflow)?;
+        self.histories.service_generators_without_input(&self.groups,&self.fences,&self.push,end,0)?;
         let spans = self.timeline.segments(wall_frame, 1024)?;
         if !spans.iter().any(|span| span.plan.has_monitoring()) {
             self.monitor_lanes.clear(); self.monitor_dsp.reset(); return Ok(None);
@@ -149,7 +153,7 @@ impl AudioProgram {
                 original: self.groups.get(&source.binding).map(|group| group.converter.input_format()),
             }).collect();
             let mixed = plan.mix_processed_on_grid(AudioMixRequest { sample_rate: rate, channels: self.settings.channels(),
-                frames: span.frames, advance_ns: span.advance_ns }, &inputs, now_frame, &|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(gain,muted||blocked)).or(blocked.then_some((0.0,true)))})?;
+                frames: span.frames, advance_ns: span.advance_ns }, &inputs, now_frame, &|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(if blocked&&!muted{0.0}else{gain},muted||blocked)).or_else(||blocked.then(||{let entry=plan.sources().iter().find(|entry|entry.source==source);(entry.filter(|entry|entry.muted).map_or(0.0,|entry|entry.gain),true)}))})?;
             output[span.offset*channels..(span.offset+span.frames)*channels].copy_from_slice(&mixed.monitor_samples);
         }
         if self.has_retired_ndi_input(){return Err(ProgramAudioError::Invalid("NDI audio history changed during monitor rendering"));}

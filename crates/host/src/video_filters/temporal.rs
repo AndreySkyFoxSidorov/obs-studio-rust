@@ -154,7 +154,14 @@ fn person_proofs(source:&Source,model:&StudioSnapshot,rows:RowScope)->Result<[Pe
    // A preceding Person's output depends on an independently evolving mask.
    eligible=false;continue;
   }
-  if matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}|VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}){eligible=false;}
+  // Zero-duration delays neither change the image nor own a temporal queue.
+  // Ignore them in the neural input proof, so adding/removing one does not
+  // force an expensive inference when the upstream image is unchanged.
+  if matches!(filter.effect,VideoEffect::RenderDelay{delay_ms:0}|VideoEffect::AsyncVideoDelay{delay_ms:0}){continue;}
+  // A nonzero asynchronous delay changes which captured frame reaches the
+  // model just like a render delay. Its history cannot be represented by a
+  // static filter-prefix proof.
+  if matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=u16::MAX}|VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}|VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}){eligible=false;}
   if eligible{prefix.push(filter.effect);}
  }
  Ok(result)

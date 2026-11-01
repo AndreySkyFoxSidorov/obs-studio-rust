@@ -124,6 +124,7 @@ type Matrix = [[f32; 4]; 4];
 pub(crate) struct Prepared {
     gamma: f32,
     matrix: Matrix,
+    opaque_identity: bool,
 }
 
 impl Prepared {
@@ -178,10 +179,17 @@ impl Prepared {
             multiply(multiply(multiply(con, bright), sat), hue_opacity),
             color,
         );
-        Self { gamma, matrix }
+        // An opaque source passes through an exact identity matrix and unit
+        // gamma unchanged for every ingress policy. This common default camera
+        // filter requires no per-pixel transfer functions or matrix multiply.
+        let opaque_identity = gamma == 1.0 && matrix == identity();
+        Self { gamma, matrix, opaque_identity }
     }
 
     pub(crate) fn pixel(&self, mut pixel: [u8; 4], encoding: ColorCorrectionInput) -> [u8; 4] {
+        if self.opaque_identity && pixel[3] == 255 {
+            return pixel;
+        }
         let alpha = f32::from(pixel[3]) / 255.0;
         let mut value = [0.0; 4];
         value[3] = alpha;

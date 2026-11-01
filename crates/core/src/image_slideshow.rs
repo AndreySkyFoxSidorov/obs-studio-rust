@@ -46,6 +46,9 @@ pub struct ImageSlideShow {
     #[serde(default,skip_serializing_if="Vec::is_empty")]entry_image_counts:Vec<u16>,
     #[serde(default,skip_serializing_if="no_random")]randomize:bool,
     #[serde(default,skip_serializing_if="SlideShowRandomCompatibility::is_default")]random_compatibility:SlideShowRandomCompatibility,
+    /// An OBS v2 source must retain its provider on round-trip even when it
+    /// is not currently randomized. This does not change runtime playback.
+    #[serde(default,skip_serializing_if="no_random")]obs_v2:bool,
     #[serde(default,skip_serializing_if="SlideShowMode::is_default")]mode:SlideShowMode,
     #[serde(default,skip_serializing_if="SlideShowCanvas::is_default")]canvas:SlideShowCanvas,
     #[serde(default,skip_serializing_if="SlideShowBehavior::is_default")]behavior:SlideShowBehavior,
@@ -54,17 +57,17 @@ pub struct ImageSlideShow {
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
-struct Data {#[serde(default)]entries:Vec<crate::SlideShowEntry>,#[serde(default)]entry_image_counts:Vec<u16>,#[serde(default)]randomize:bool,#[serde(default)]random_compatibility:SlideShowRandomCompatibility,#[serde(default)]mode:SlideShowMode,#[serde(default)]canvas:SlideShowCanvas,#[serde(default)]behavior:SlideShowBehavior,images:Vec<ImageAsset>,duration_ms:u32,transition:SlideTransition,transition_ms:u32,looping:bool,shuffle:bool,hide_when_done:bool}
+struct Data {#[serde(default)]entries:Vec<crate::SlideShowEntry>,#[serde(default)]entry_image_counts:Vec<u16>,#[serde(default)]randomize:bool,#[serde(default)]random_compatibility:SlideShowRandomCompatibility,#[serde(default)]obs_v2:bool,#[serde(default)]mode:SlideShowMode,#[serde(default)]canvas:SlideShowCanvas,#[serde(default)]behavior:SlideShowBehavior,images:Vec<ImageAsset>,duration_ms:u32,transition:SlideTransition,transition_ms:u32,looping:bool,shuffle:bool,hide_when_done:bool}
 impl TryFrom<Data> for ImageSlideShow {
     type Error=Error;
-    fn try_from(v:Data)->Result<Self,Error>{Self::new_with_options(v.images,v.duration_ms,v.transition,v.transition_ms,v.looping,v.shuffle,v.hide_when_done,v.canvas,v.behavior)?.with_mode(v.mode)?.with_randomization(v.randomize,v.random_compatibility)?.with_entries(v.entries,v.entry_image_counts)}
+    fn try_from(v:Data)->Result<Self,Error>{Self::new_with_options(v.images,v.duration_ms,v.transition,v.transition_ms,v.looping,v.shuffle,v.hide_when_done,v.canvas,v.behavior)?.with_mode(v.mode)?.with_randomization(v.randomize,v.random_compatibility)?.with_entries(v.entries,v.entry_image_counts).map(|s|s.with_obs_v2(v.obs_v2))}
 }
 impl ImageSlideShow {
     pub fn new(images:Vec<ImageAsset>,duration_ms:u32,transition:SlideTransition,transition_ms:u32,looping:bool,shuffle:bool,hide_when_done:bool)->Result<Self,Error>{
         Self::new_with_options(images,duration_ms,transition,transition_ms,looping,shuffle,hide_when_done,Default::default(),Default::default())
     }
     pub fn new_with_options(images:Vec<ImageAsset>,duration_ms:u32,transition:SlideTransition,transition_ms:u32,looping:bool,shuffle:bool,hide_when_done:bool,canvas:SlideShowCanvas,behavior:SlideShowBehavior)->Result<Self,Error>{
-        canvas.validate()?;let value=Self {entries:Vec::new(),entry_image_counts:Vec::new(),randomize:false,random_compatibility:SlideShowRandomCompatibility::BufferedV2,mode:SlideShowMode::Automatic,canvas,behavior,images,duration_ms,transition,transition_ms,looping,shuffle,hide_when_done};value.validate()?;Ok(value)
+        canvas.validate()?;let value=Self {entries:Vec::new(),entry_image_counts:Vec::new(),randomize:false,random_compatibility:SlideShowRandomCompatibility::BufferedV2,obs_v2:false,mode:SlideShowMode::Automatic,canvas,behavior,images,duration_ms,transition,transition_ms,looping,shuffle,hide_when_done};value.validate()?;Ok(value)
     }
     pub fn with_entries(mut self,entries:Vec<crate::SlideShowEntry>,counts:Vec<u16>)->Result<Self,Error>{crate::slideshow_entries::validate(&entries,&counts,&self.images)?;self.entries=entries;self.entry_image_counts=counts;self.validate()?;Ok(self)}
     /// Replace prepared resource metadata without changing authored playback/canvas options.
@@ -80,6 +83,8 @@ impl ImageSlideShow {
     pub fn with_randomization(mut self,randomize:bool,compatibility:SlideShowRandomCompatibility)->Result<Self,Error>{Self::validate_randomization(self.shuffle,randomize,compatibility)?;self.randomize=randomize;self.random_compatibility=compatibility;self.validate()?;Ok(self)}
     pub fn randomize(&self)->bool{self.randomize}
     pub fn random_compatibility(&self)->SlideShowRandomCompatibility{self.random_compatibility}
+    pub fn obs_v2(&self)->bool{self.obs_v2}
+    pub fn with_obs_v2(mut self,value:bool)->Self{self.obs_v2=value;self}
     pub fn mode(&self)->SlideShowMode{self.mode}
     pub fn canvas(&self)->SlideShowCanvas{self.canvas}
     pub fn behavior(&self)->SlideShowBehavior{self.behavior}

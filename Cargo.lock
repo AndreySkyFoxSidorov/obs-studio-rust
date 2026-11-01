@@ -3348,8 +3348,10 @@ dependencies = [
  "block2 0.6.2",
  "cosmic-text",
  "dispatch2",
+ "flate2",
  "gif",
  "image",
+ "memchr",
  "native-tls",
  "objc2 0.6.5",
  "objc2-audio-toolbox",
@@ -3386,6 +3388,7 @@ dependencies = [
  "wgpu",
  "windows",
  "windows-core",
+ "zune-jpeg",
 ]
 
 [[package]]

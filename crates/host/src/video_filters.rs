@@ -103,12 +103,14 @@ fn camera_staged_proof_matches(source:&Source,providers:FilterProviders,proof:&c
     let active:Vec<_>=source.video_filters().iter().filter(|filter|filter.enabled&&providers.enabled(filter.plugin_id())).collect();
     let Some(last)=active.iter().rposition(|filter|matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX})) else {return false;};
     if active[..last].len()!=proof.upstream.len() || !active[..last].iter().zip(proof.upstream.iter()).all(|(a,b)|**a==*b) {return false;}
-    if active.iter().any(|filter|matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..})) {return false;}
+    if active.iter().any(|filter|matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500})) {return false;}
     let mut actual=proof.processed.ids().iter().copied();
     let mut expected_blend=SourceBlend::LinearSrgb;
     for filter in &active[..last] {
         match filter.effect {
-            VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}=>{},
+            // Zero-delay filters require no staged operation or marker.
+            VideoEffect::AsyncVideoDelay{..}=>{},
+            VideoEffect::RenderDelay{delay_ms:0}=>{},
             VideoEffect::ImageMask{..} if filter.mask_image().is_none()=>{},
             VideoEffect::ImageMask{..} if filter.id().is_some_and(|id|actual.next()==Some(id))=>{
                 expected_blend=SourceBlend::PremultipliedLinearSrgb;
@@ -198,12 +200,13 @@ impl AsyncCameraGuard {
     }
     fn current(&self)->bool {self.live.load(std::sync::atomic::Ordering::Acquire)==self.generation && self.history_live.load(std::sync::atomic::Ordering::Acquire)}
 }
-/// Only color correction can safely fall back to an unprocessed camera frame.
-/// An active key, mask, crop or any other effect must never be silently skipped.
+/// An unprocessed camera frame is safe only for color corrections which leave
+/// opacity unchanged. A partially transparent correction must not suddenly
+/// reveal the original opaque camera if its filter worker fails.
 pub(crate) fn camera_color_only(filters:&[skylive_core::VideoFilter],providers:FilterProviders)->bool {
     let mut active=filters.iter().filter(|filter|filter.enabled&&providers.enabled(filter.plugin_id()));
-    matches!(active.next(),Some(filter) if matches!(filter.effect,VideoEffect::ColorCorrection{..}))
-        && active.all(|filter|matches!(filter.effect,VideoEffect::ColorCorrection{..}))
+    let opaque=|filter:&skylive_core::VideoFilter| matches!(filter.effect,VideoEffect::ColorCorrection{opacity,..} if opacity==1.0);
+    active.next().is_some_and(opaque) && active.all(opaque)
 }
 #[derive(Clone, Copy)]
 enum FilterStage {
@@ -393,7 +396,7 @@ impl FilterCache {
         // the camera path. Do not silently bypass that provider limitation.
         if matches!(source.kind(),skylive_core::SourceKind::NdiSource {..}) {
             if active.iter().any(|filter|matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX})) {
-                if active.iter().any(|filter|matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..})) {
+                if active.iter().any(|filter|matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500})) {
                     return Err(FilterError {kind:crate::resource_issue::ResourceIssueKind::Unavailable,
                         code:"ndi_delay_filter_order_unsupported",detail:"NDI Async Video Delay cannot be combined with Freeze or Render Delay".into()});
                 }
@@ -444,7 +447,7 @@ impl FilterCache {
             // Delay must be fulfilled before this boundary. Stateful and
             // resource-backed stages still require a lease-aware history.
             if (matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}) && !async_delay_applied)
-                || matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}|VideoEffect::ScaleFilter{..}|VideoEffect::Scroll{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}|VideoEffect::PersonBackgroundRemoval{..}) {
+                || matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500}|VideoEffect::ScaleFilter{..}|VideoEffect::Scroll{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}|VideoEffect::PersonBackgroundRemoval{..}) {
                 return Err(FilterError{kind:crate::resource_issue::ResourceIssueKind::Unavailable,code:"delayed_filter_chain_unavailable",detail:"This delayed frame requires an asynchronous or stateful filter path that is not connected yet".into()});
             }
             if let Some(FilterStage::Point(effect))=prepare_filter(filter).1 {effects.push(effect);}
@@ -470,7 +473,7 @@ impl FilterCache {
         for filter in filters {
             filter.validate().map_err(|error|fail(error.to_string()))?;
             if (matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX})&&!async_delay_applied)
-                || matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}) {
+                || matches!(filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500}) {
                 return Err(FilterError{kind:crate::resource_issue::ResourceIssueKind::Unavailable,code:"delayed_filter_chain_unavailable",detail:"This delayed chain contains an unsupported asynchronous or stateful stage".into()});
             }
         }
@@ -557,6 +560,34 @@ impl FilterCache {
         // Partial alpha still takes the regular OBS-compatible conversion path.
         let mut active=filters.iter().filter(|filter|filter.enabled&&providers.enabled(filter.plugin_id()));
         if let (Some(filter),None)=(active.next(),active.next()) {
+            // Zero-strength Sharpen produces the sampled source unchanged.
+            // An opaque camera frame already has identical straight and
+            // premultiplied representations, so avoid a full raster copy.
+            // Partial alpha must still pass through the normal filter target.
+            if matches!(filter.effect,VideoEffect::Sharpen {sharpness} if sharpness==0.0) {
+                let pixels=input.byte_len()/4;
+                if matches!(blend,SourceBlend::LinearSrgb|SourceBlend::PremultipliedLinearSrgb)
+                    && pixels<=free_pixel_stages && input.pixels().chunks_exact(4).all(|pixel|pixel[3]==255) {
+                    filter.validate().map_err(|error|fail(error.to_string()))?;
+                    return Ok(FilterResult {image:input,blend,new_bytes:0,pixel_stages:pixels});
+                }
+            }
+            // A lone Crop/Pad that preserves the whole frame need not allocate
+            // or convert a second Full HD raster when every pixel is opaque.
+            // Partial alpha still follows the normal premultiplication path.
+            if let VideoEffect::CropPad {relative,left,top,right,bottom,width,height}=filter.effect {
+                let unchanged=left==0 && top==0 && if relative {
+                    right==0 && bottom==0
+                } else {
+                    width.max(1)==input.width() && height.max(1)==input.height()
+                };
+                let pixels=input.byte_len()/4;
+                if unchanged && matches!(blend,SourceBlend::LinearSrgb|SourceBlend::PremultipliedLinearSrgb)
+                    && pixels<=free_pixel_stages && input.pixels().chunks_exact(4).all(|pixel|pixel[3]==255) {
+                    filter.validate().map_err(|error|fail(error.to_string()))?;
+                    return Ok(FilterResult {image:input,blend,new_bytes:0,pixel_stages:pixels});
+                }
+            }
             if matches!(filter.effect,VideoEffect::Scroll {limit_width:false,limit_height:false,..}) {
                 let phase=self.scroll_context.phase(filter);
                 let pixels=input.byte_len()/4;
@@ -690,7 +721,16 @@ impl FilterCache {
 }
 fn prepare_filter(filter:&skylive_core::VideoFilter)->([u32;14],Option<FilterStage>){
     let (mut signature,mut stage)=prepare(filter.effect);
-    if let Some(FilterStage::Person{id,interval_ms,..})=&mut stage{*id=filter.id().map_or(0,|value|value.get());*interval_ms=filter.person_interval_ms();signature[3]=u32::from(*interval_ms);}
+    if let Some(FilterStage::Person{id,interval_ms,..})=&mut stage{
+        *id=filter.id().map_or(0,|value|value.get());
+        *interval_ms=filter.person_interval_ms();
+        signature[3]=u32::from(*interval_ms);
+        // Each person-filter instance owns its own temporal matte history.
+        // Distinct filters can share an input allocation and settings but must
+        // not reuse a result produced from another instance's cached matte.
+        signature[4]=*id as u32;
+        signature[5]=(*id >> 32) as u32;
+    }
     (signature,stage)
 }
 fn prepare(effect: VideoEffect) -> ([u32; 14], Option<FilterStage>) {
@@ -722,17 +762,32 @@ fn prepare(effect: VideoEffect) -> ([u32; 14], Option<FilterStage>) {
         VideoEffect::Exposure{exposure,offset,gamma,bypass_linear}=>{if exposure==0.0&&offset==0.0&&gamma==1.0{return(signature,None);}signature[0]=10;signature[1]=exposure.to_bits();signature[2]=offset.to_bits();signature[3]=gamma.to_bits();signature[4]=u32::from(bypass_linear);CraftVideoEffect::Exposure{gain:2.0f32.powf(exposure),offset,inverse_gamma:1.0/gamma,bypass_linear}}
         VideoEffect::TemperatureTint{temperature,tint}=>{if temperature==0.0&&tint==0.0{return(signature,None);}signature[0]=11;signature[1]=temperature.to_bits();signature[2]=tint.to_bits();CraftVideoEffect::TemperatureTint{temperature,tint}}
         VideoEffect::Vibrance{vibrance,saturation}=>{if vibrance==0.0&&saturation==0.0{return(signature,None);}signature[0]=32;signature[1]=vibrance.to_bits();signature[2]=saturation.to_bits();CraftVideoEffect::Vibrance{vibrance,saturation}}
+        VideoEffect::HlsBalance{hue,lightness,saturation}=>{if hue==0.0&&lightness==0.0&&saturation==0.0{return(signature,None);}signature[0]=50;signature[1]=hue.to_bits();signature[2]=lightness.to_bits();signature[3]=saturation.to_bits();CraftVideoEffect::HlsBalance{hue,lightness,saturation}}
+        VideoEffect::ColorOffset{phase,overflow}=>{if phase.iter().all(|v|*v==0.0){return(signature,None);}signature[0]=52;signature[1]=u32::from(overflow);for(i,v)in phase.iter().enumerate(){signature[2+i]=v.to_bits();}CraftVideoEffect::ColorOffset{phase,overflow}}
+        VideoEffect::SelectiveColor{relative,adjustments}=>{if adjustments.iter().flatten().all(|v|*v==0){return(signature,None);}signature[0]=51;signature[1]=u32::from(relative);for(i,row)in adjustments.iter().enumerate(){signature[i+2]=u32::from_le_bytes(row.map(|v|v as u8));}CraftVideoEffect::SelectiveColor{relative,adjustments}}
         VideoEffect::Tritone{shadows,midtones,highlights,blend}=>{if blend==100.0{return(signature,None);}signature[0]=34;signature[1]=u32::from_le_bytes([shadows[0],shadows[1],shadows[2],0]);signature[2]=u32::from_le_bytes([midtones[0],midtones[1],midtones[2],0]);signature[3]=u32::from_le_bytes([highlights[0],highlights[1],highlights[2],0]);signature[4]=blend.to_bits();CraftVideoEffect::Tritone{shadows,midtones,highlights,blend}}
         VideoEffect::CraftColorBalance{shadows,midtones,highlights,preserve_luminosity}=>{signature[0]=35;for(i,v)in shadows.into_iter().chain(midtones).chain(highlights).enumerate(){signature[1+i]=v.to_bits();}signature[10]=u32::from(preserve_luminosity);CraftVideoEffect::ColorBalance{shadows,midtones,highlights,preserve_luminosity}}
         VideoEffect::CraftChannelMixer{matrix,monochrome}=>{if !monochrome&&matrix==[[100.0,0.0,0.0,0.0],[0.0,100.0,0.0,0.0],[0.0,0.0,100.0,0.0]]{return(signature,None);}signature[0]=36;for(i,v)in matrix.into_iter().flatten().enumerate(){signature[1+i]=v.to_bits();}signature[13]=u32::from(monochrome);CraftVideoEffect::ChannelMixer{matrix,monochrome}}
+        VideoEffect::CraftBlackWhite{weights,tint}=>{signature[0]=55;for(i,v)in weights.into_iter().enumerate(){signature[1+i]=v.to_bits();}if let Some(color)=tint{signature[7]=u32::from_le_bytes([color[0],color[1],color[2],1]);}CraftVideoEffect::BlackWhite{weights,tint}}
         VideoEffect::CraftGammaPedestalGain{gamma,pedestal,gain,black_stretch}=>{signature[0]=37;for(i,v)in gamma.into_iter().chain(pedestal).chain(gain).enumerate(){signature[1+i]=v.to_bits();}signature[10]=black_stretch.to_bits();CraftVideoEffect::GammaPedestalGain{gamma,pedestal,gain,black_stretch}}
         VideoEffect::CraftTint{black,white,amount}=>{if amount==0.0{return(signature,None);}signature[0]=33;signature[1]=u32::from_le_bytes([black[0],black[1],black[2],0]);signature[2]=u32::from_le_bytes([white[0],white[1],white[2],0]);signature[3]=amount.to_bits();CraftVideoEffect::Tint{black,white,amount}}
         VideoEffect::Threshold{level}=>{signature[0]=12;signature[1]=u32::from(level);CraftVideoEffect::Threshold{level}}
+        VideoEffect::Solarize{threshold,amount}=>{if amount==0.0{return(signature,None);}signature[0]=38;signature[1]=threshold.to_bits();signature[2]=amount.to_bits();CraftVideoEffect::Solarize{threshold,amount}}
+        VideoEffect::CraftLevels{input_black,input_white,gamma,output_black,output_white,channels}=>{if [input_black,input_white,gamma,output_black,output_white]==[0.0,1.0,1.0,0.0,1.0]&&channels==[[0.0,1.0,1.0,0.0,1.0];4]{return(signature,None);}signature[0]=53;use sha2::Digest;let mut hash=sha2::Sha256::new();for v in [input_black,input_white,gamma,output_black,output_white].into_iter().chain(channels.into_iter().flatten()){hash.update(v.to_bits().to_le_bytes());}for(i,chunk)in hash.finalize().chunks_exact(4).enumerate(){signature[1+i]=u32::from_le_bytes([chunk[0],chunk[1],chunk[2],chunk[3]]);}CraftVideoEffect::Levels{input_black,input_white,gamma,output_black,output_white,channels}}
+        VideoEffect::LeaveColor{color,amount,tolerance,softness,by_hue}=>{if amount==0.0{return(signature,None);}signature[0]=40;signature[1]=u32::from_le_bytes([color[0],color[1],color[2],0]);signature[2]=amount.to_bits();signature[3]=tolerance.to_bits();signature[4]=softness.to_bits();signature[5]=u32::from(by_hue);CraftVideoEffect::LeaveColor{color,amount,tolerance,softness,by_hue}}
+        VideoEffect::ChannelRemap{channels,alpha}=>{if channels==[0,1,2]&&alpha==5{return(signature,None);}signature[0]=41;signature[1]=u32::from_le_bytes([channels[0],channels[1],channels[2],alpha]);CraftVideoEffect::ChannelRemap{channels,alpha}}
+        VideoEffect::ColorToAlpha{color,transparency,opacity}=>{signature[0]=54;signature[1]=u32::from_le_bytes([color[0],color[1],color[2],0]);signature[2]=transparency.to_bits();signature[3]=opacity.to_bits();CraftVideoEffect::ColorToAlpha{color,transparency,opacity}}
+        VideoEffect::GradientMap{shadows,highlights,stops,reverse,amount,dither}=>{if amount==0.0{return(signature,None);}signature[0]=39;signature[1]=u32::from_le_bytes([shadows[0],shadows[1],shadows[2],0]);signature[2]=u32::from_le_bytes([highlights[0],highlights[1],highlights[2],0]);signature[3]=u32::from(reverse)|(u32::from(dither)<<1);signature[4]=amount.to_bits();for (i,stop) in stops.iter().enumerate(){if let Some((position,color))=stop{signature[5+i]=u32::from_le_bytes([*position,color[0],color[1],color[2]]);}}CraftVideoEffect::GradientMap{shadows,highlights,stops,reverse,amount,dither}}
         VideoEffect::GaussianBlur{blurriness,dimensions,repeat_edge}=>{
             if blurriness==0.0{return(signature,None);}
             signature[0]=31;signature[1]=blurriness.to_bits();signature[2]=dimensions as u32;signature[3]=u32::from(repeat_edge);
             let dimensions=match dimensions{skylive_core::GaussianBlurDimensions::Both=>skylive_media::GaussianBlurDimensions::Both,skylive_core::GaussianBlurDimensions::Horizontal=>skylive_media::GaussianBlurDimensions::Horizontal,skylive_core::GaussianBlurDimensions::Vertical=>skylive_media::GaussianBlurDimensions::Vertical};
             return(signature,Some(FilterStage::Point(SourceVideoEffect::GaussianBlur(skylive_media::GaussianBlurSettings{blurriness,dimensions,repeat_edge}))));
+        }
+        VideoEffect::Mosaic{cell_size}=>{
+            if cell_size==1{return(signature,None);}
+            signature[0]=42;signature[1]=u32::from(cell_size);
+            return(signature,Some(FilterStage::Point(SourceVideoEffect::Mosaic(cell_size))));
         }
         VideoEffect::Vignette {amount,angle_of_view,center,pin_highlights}=>{
             if amount==0.0 || angle_of_view==0.0 {return(signature,None);}

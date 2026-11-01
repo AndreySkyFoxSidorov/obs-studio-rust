@@ -136,15 +136,15 @@ fn scan(
                     }
                     sub_blocks(bytes, &mut position)?;
                 }
-                0x01 => {
-                    return Err(AssetError::rejected(
-                        "image_format",
-                        "GIF plain-text graphic blocks are unsupported",
-                    ));
-                }
+                // OBS/libnsgif skips the plain-text extension rather than
+                // rendering it. Its 12-byte header and text are sub-blocks.
+                0x01 => sub_blocks(bytes, &mut position)?,
                 _ => sub_blocks(bytes, &mut position)?,
             },
-            0x3b if !durations.is_empty() && position == bytes.len() => {
+            // GIF's trailer ends the logical stream. Encoders and transports
+            // may append padding or unrelated bytes; those bytes are not GIF
+            // blocks and must not prevent an otherwise complete image opening.
+            0x3b if !durations.is_empty() => {
                 let decoded_bytes = (frame_bytes * durations.len() as u64) as usize;
                 return Ok(Plan {
                     width,

@@ -117,6 +117,11 @@ impl HotkeyChord {
                 | "PageUp"
                 | "PageDown"
                 | "Space"
+                | "Escape"
+                | "CapsLock"
+                | "ScrollLock"
+                | "Pause"
+                | "PrintScreen"
                 | "Colon"
                 | "Comma"
                 | "Minus"
@@ -242,8 +247,8 @@ impl HotkeyBindings {
 }
 
 pub const MAX_GLOBAL_HOTKEYS:usize=22;
-/// A conservative portable set with unambiguous Windows virtual-key identities.
-/// OEM punctuation/layout aliases are not silently mapped to another chord.
+/// Keys with explicit Windows virtual-key identities used by the native owner.
+/// Shifted aliases that share an OEM key are intentionally not inferred.
 pub fn global_key_supported(chord:&HotkeyChord)->bool {
     let key=chord.key();
     (key.len()==1&&key.bytes().all(|b|b.is_ascii_uppercase()||b.is_ascii_digit()))
@@ -251,7 +256,7 @@ pub fn global_key_supported(chord:&HotkeyChord)->bool {
         || key == "NumLock" || key.strip_prefix("Numpad").is_some_and(|suffix|
             (suffix.len() == 1 && suffix.as_bytes()[0].is_ascii_digit())
                 || matches!(suffix, "Add" | "Subtract" | "Multiply" | "Divide" | "Decimal"))
-        || matches!(key,"ArrowDown"|"ArrowLeft"|"ArrowRight"|"ArrowUp"|"Tab"|"Backspace"|"Enter"|"Insert"|"Delete"|"Home"|"End"|"PageUp"|"PageDown"|"Space")
+        || matches!(key,"ArrowDown"|"ArrowLeft"|"ArrowRight"|"ArrowUp"|"Tab"|"Backspace"|"Enter"|"Insert"|"Delete"|"Home"|"End"|"PageUp"|"PageDown"|"Space"|"Escape"|"CapsLock"|"ScrollLock"|"Pause"|"PrintScreen"|"Quote"|"Plus"|"Comma"|"Minus"|"Period"|"Slash"|"Semicolon"|"OpenBracket"|"Backslash"|"CloseBracket"|"Backtick")
 }
 #[derive(Clone,Debug,Default,PartialEq,Eq,Serialize,Deserialize)]
 #[serde(try_from="Vec<HotkeyBinding>")]
@@ -261,7 +266,7 @@ impl GlobalHotkeyBindings {
     pub fn new(bindings:Vec<HotkeyBinding>)->Result<Self,Error>{
         if bindings.len()>MAX_GLOBAL_HOTKEYS{return Err(Error::Limit("Global shortcuts admit at most 22 assignments."));}
         if bindings.iter().any(|b|!b.action.is_global_action()){return Err(Error::Invalid("Global shortcuts support output, Studio and screenshot actions. Document editing shortcuts work in SkyLive only."));}
-        if bindings.iter().any(|b|!global_key_supported(&b.chord)){return Err(Error::Invalid("Global shortcuts support letters, digits, navigation and function keys; punctuation is unavailable."));}
+        if bindings.iter().any(|b|!global_key_supported(&b.chord)){return Err(Error::Invalid("This key is not supported for Windows global shortcuts."));}
         let local=HotkeyBindings::new(bindings)?;
         Ok(Self(local.0))
     }

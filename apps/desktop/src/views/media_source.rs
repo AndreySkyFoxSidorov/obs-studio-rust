@@ -23,6 +23,10 @@ pub struct MediaPrepare {
     pub close_when_inactive: bool,
     pub clear_on_end: bool,
     pub speed_percent: u16,
+    pub reconnect_delay_sec: u8,
+    pub obs_inactive_network: Option<(String,String)>,
+    pub obs_inactive_local: Option<String>,
+    pub obs_seekable: bool,
 }
 impl MediaPrepare {
     pub fn command(&self, media: MediaSource) -> Command {
@@ -31,7 +35,7 @@ impl MediaPrepare {
             self.restart_on_activate,
             self.close_when_inactive,
             self.clear_on_end,
-        ).with_speed(self.speed_percent).expect("validated media speed");
+        ).with_speed(self.speed_percent).and_then(|media|media.with_reconnect_delay(self.reconnect_delay_sec)).and_then(|media|media.with_obs_inactive_network(self.obs_inactive_network.clone())).and_then(|media|media.with_obs_inactive_local(self.obs_inactive_local.clone())).expect("validated media settings").with_obs_seekable(self.obs_seekable);
         match self.edit {
             MediaEdit::Add { scene } => Command::AddMediaSource {
                 scene,
@@ -56,11 +60,26 @@ pub struct MediaDraft {
     pub close_when_inactive: bool,
     pub clear_on_end: bool,
     pub speed_percent: u16,
+    pub reconnect_delay_sec: u8,
+    obs_inactive_network: Option<(String,String)>,
+    obs_inactive_local: Option<String>,
+    local_file: bool,
+    obs_seekable: bool,
     pub loading: bool,
     pub worker_busy: bool,
     pub error: Option<String>,
 }
 impl MediaDraft {
+    /// A system file picker always selects the local mode; retain any URL
+    /// currently being edited just as the OBS mode switch does.
+    pub fn select_local_path(&mut self,path:String){
+        if !self.local_file || skylive_host::media_source::network_http::is_url(&self.path){
+            let previous=std::mem::take(&mut self.path);
+            let format=self.obs_inactive_network.as_ref().map(|(_,format)|format.clone()).unwrap_or_default();
+            self.obs_inactive_network=if previous.is_empty()&&format.is_empty(){None}else{Some((previous,format))};
+        }
+        self.path=path;self.local_file=true;self.obs_inactive_local=None;
+    }
     pub fn add(scene: Id, name: String) -> Self {
         Self {
             decoder_info:None,
@@ -75,6 +94,11 @@ impl MediaDraft {
             close_when_inactive: false,
             clear_on_end: true,
             speed_percent: 100,
+            reconnect_delay_sec: 10,
+            obs_inactive_network: None,
+            obs_inactive_local: None,
+            local_file: true,
+            obs_seekable: false,
             loading: false,
             worker_busy: false,
             error: None,
@@ -94,6 +118,11 @@ impl MediaDraft {
             close_when_inactive: media.close_when_inactive(),
             clear_on_end: media.clear_on_end(),
             speed_percent: media.speed_percent(),
+            reconnect_delay_sec: media.reconnect_delay_sec(),
+            obs_inactive_network: media.obs_inactive_network().map(|(input,format)|(input.to_owned(),format.to_owned())),
+            obs_inactive_local: media.obs_inactive_local().map(str::to_owned),
+            local_file: !skylive_host::media_source::network_http::is_url(media.path()),
+            obs_seekable: media.obs_seekable(),
             loading: false,
             worker_busy: false,
             error: None,
@@ -111,6 +140,7 @@ impl MediaDraft {
             return Err(WAIT_MEDIA.into());
         }
         if !(1..=200).contains(&self.speed_percent) {return Err("Playback speed must be 1 to 200 percent.".into());}
+        if !(1..=60).contains(&self.reconnect_delay_sec) {return Err("Reconnect delay must be 1 to 60 seconds.".into());}
         if matches!(self.edit, MediaEdit::Add { .. })
             && (self.name.trim().is_empty()
                 || self.name.len() > 256
@@ -126,6 +156,19 @@ impl MediaDraft {
         {
             return Err("Choose a local media file path without control characters (up to 16384 UTF-8 bytes).".into());
         }
+        // The checkbox is an authored choice, not a hint inferred from the
+        // text field. Never silently open a file in network mode or a URL in
+        // local mode: doing so also swaps which inactive path is retained.
+        if self.local_file {
+            if self.path.contains("://") {
+                return Err("Choose a local media file path without control characters (up to 16384 UTF-8 bytes).".into());
+            }
+        } else if skylive_host::media_source::network_http::Request::http_url(&self.path).is_err() {
+            return Err("Choose a local MP4/MOV file or a finite HTTP(S) MP4 URL. Live streams are not supported.".into());
+        }
+        if !self.local_file && self.obs_inactive_network.as_ref().is_some_and(|(_,format)|!skylive_host::media_source::network_http::supports_input_format(format)) {
+            return Err("Input format must be empty or a MOV-family demuxer name (mov, mp4, m4a, 3gp, 3g2, mj2).".into());
+        }
         Ok(MediaPrepare {
             token: self.token,
             session: self.session,
@@ -138,6 +181,10 @@ impl MediaDraft {
             close_when_inactive: self.close_when_inactive,
             clear_on_end: self.clear_on_end,
             speed_percent: self.speed_percent,
+            reconnect_delay_sec: self.reconnect_delay_sec,
+            obs_inactive_network: self.obs_inactive_network.clone(),
+            obs_inactive_local: self.obs_inactive_local.clone(),
+            obs_seekable: self.obs_seekable,
         })
     }
     pub fn matches(&self, request: &MediaPrepare) -> bool {
@@ -152,6 +199,10 @@ impl MediaDraft {
             && self.close_when_inactive == request.close_when_inactive
             && self.clear_on_end == request.clear_on_end
             && self.speed_percent == request.speed_percent
+            && self.reconnect_delay_sec == request.reconnect_delay_sec
+            && self.obs_inactive_network == request.obs_inactive_network
+            && self.obs_inactive_local == request.obs_inactive_local
+            && self.obs_seekable == request.obs_seekable
     }
 }
 
@@ -174,6 +225,20 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut MediaDraft) {
                 ui,
                 "Name this media source so you can find it in Sources.",
             ));
+        }
+        let mut local_file=draft.local_file;
+        if ui.checkbox(&mut local_file,crate::i18n::tr_key_or(ui,"Module.obs-ffmpeg.LocalFile","Local File")).changed(){
+            if local_file {
+                let previous=std::mem::take(&mut draft.path);
+                let format=draft.obs_inactive_network.as_ref().map(|(_,format)|format.clone()).unwrap_or_default();
+                draft.obs_inactive_network=if previous.is_empty()&&format.is_empty(){None}else{Some((previous,format))};
+                draft.path=draft.obs_inactive_local.take().unwrap_or_default();
+            } else {
+                let previous=std::mem::take(&mut draft.path);
+                draft.obs_inactive_local=(!previous.is_empty()).then_some(previous);
+                draft.path=draft.obs_inactive_network.as_ref().map(|(input,_)|input.clone()).unwrap_or_default();
+            }
+            draft.local_file=local_file;
         }
         let label = ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Media.FileOrHttp","File or HTTP(S) URL"));
         let response = ui
@@ -201,12 +266,28 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut MediaDraft) {
         let speed_label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Media.PlaybackSpeed","Playback speed (%)"));
         ui.add(egui::Slider::new(&mut draft.speed_percent,1..=200)).labelled_by(speed_label.id)
             .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Media.PlaybackSpeedHelp","Speed changes video timing and audio pitch."));
+        // Display mode-specific settings even while the selected path is empty
+        // or being edited. Whether a URL is valid is checked when applying.
+        let network=!draft.local_file;
+        if network {
+            let mut input_format=draft.obs_inactive_network.as_ref().map(|(_,format)|format.clone()).unwrap_or_default();
+            let label=ui.label(crate::i18n::tr_key_or(ui,"Module.obs-ffmpeg.InputFormat","Input Format"));
+            if ui.add(egui::TextEdit::singleline(&mut input_format).char_limit(64).desired_width(ui.available_width()).hint_text("mov"))
+                .labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Media.InputFormatHelp","Leave empty for automatic detection or enter mov, mp4, m4a, 3gp, 3g2 or mj2. Other demuxers are not supported.")) .changed() {
+                let input=draft.obs_inactive_network.as_ref().map(|(input,_)|input.clone()).unwrap_or_default();
+                draft.obs_inactive_network=if input.is_empty()&&input_format.is_empty(){None}else{Some((input,input_format))};
+            }
+            ui.checkbox(&mut draft.obs_seekable, crate::i18n::tr_key_or(ui,"Module.obs-ffmpeg.Seekable","Seekable"))
+                .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Media.SeekableHelp","Preserve the OBS network seekable setting. In SkyLive, finite network files can be seeked once fully downloaded."));
+            let label=ui.label(crate::i18n::tr_key_or(ui,"Module.obs-ffmpeg.ReconnectDelayTime","Reconnect Delay"));
+            ui.add(egui::Slider::new(&mut draft.reconnect_delay_sec,1..=60).suffix(" s")).labelled_by(label.id)
+                .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Media.ReconnectHelp","Wait this many seconds before retrying a failed network media connection."));
+        }
+        if !network {
+            ui.checkbox(&mut draft.looping, crate::i18n::tr(ui,"Loop"))
+                .on_hover_text(crate::i18n::tr(ui,"Play the media again when it reaches the end."));
+        }
         for (value, caption, help) in [
-            (
-                &mut draft.looping,
-                "Loop",
-                "Play the media again when it reaches the end.",
-            ),
             (
                 &mut draft.restart_on_activate,
                 "Restart playback when source becomes active",
@@ -230,7 +311,6 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut MediaDraft) {
     });
     ui.label(crate::i18n::tr(ui, "Local MP4/MOV: progressive 8-bit H.264 video and AAC-LC mono/stereo audio. Unsupported files are rejected."));
     ui.label(crate::i18n::tr(ui,"Windows prefers the system software H.264 decoder for admitted Main/High and multi-slice files. Rust playback remains available for other supported formats. Hardware decoding is not enabled."));
-    ui.label(crate::i18n::tr(ui,"Network media and arbitrary codec/container formats are not supported."));
     if let Some(info)=draft.decoder_info {
         ui.label(crate::i18n::tf(ui,"Active decoder: {decoder}",&[("{decoder}",crate::i18n::tr(ui,info.backend.label()))]));
         let profile=match info.profile {66=>"H.264 Baseline",77=>"H.264 Main",100=>"H.264 High",_=>"Other H.264 profile"};

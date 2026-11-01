@@ -1,14 +1,27 @@
 //! Worker-owned source filter history. One source is evaluated once after route
 //! deduplication; candidate state publishes only after a complete successful mix.
 use super::*;
+use super::craft_ring_mod::RingMod;
+use super::craft_maximizer::Maximizer;
+use super::craft_pitch::Pitch;
 #[path = "craft_lofi.rs"] mod craft_lofi;
 use craft_lofi::LoFi;
+#[path = "craft_eq1.rs"] mod craft_eq1;
+use craft_eq1::Eq1;
 #[path = "craft_rectifier.rs"] mod craft_rectifier;
 use craft_rectifier::Rectifier;
 #[path = "craft_dither.rs"] mod craft_dither;
+#[path = "craft_time_shift.rs"] mod craft_time_shift;
+use craft_time_shift::TimeShift;
 use craft_dither::Dither;
 #[path = "craft_dc_removal.rs"] mod craft_dc_removal;
 use craft_dc_removal::DcRemoval;
+#[path = "craft_signal_generator.rs"] mod craft_signal_generator;
+use craft_signal_generator::SignalGenerator;
+#[path = "craft_de_esser.rs"] mod craft_de_esser;
+use craft_de_esser::DeEsser;
+#[path = "craft_sound_reverb.rs"] mod craft_sound_reverb;
+use craft_sound_reverb::SoundReverb;
 #[path = "craft_saturator.rs"] mod craft_saturator;
 use craft_saturator::Saturator;
 use skylive_core::CompressorDetector;
@@ -27,14 +40,22 @@ use skylive_media::obs_three_band_eq::{ObsThreeBandEq,ObsThreeBandEqParameters,O
 pub const MAX_DSP_STATE_BYTES: usize = 512 * 1024;
 #[derive(Clone)]
 enum Kernel {
+    CraftPitch{processor:Pitch,enabled:bool},
+    CraftMaximizer{processor:Maximizer,enabled:bool},
     ObsNoiseSuppression { enabled: bool },
+    CraftRingMod{processor:RingMod,enabled:bool},
+    CraftTimeShift{processor:TimeShift,enabled:bool},
     CraftDither{processor:Dither,enabled:bool},
+    CraftEq1{processor:Eq1,enabled:bool},
     CraftRectifier{processor:Rectifier,enabled:bool},
     CraftDcRemoval{processor:DcRemoval,enabled:bool},
+    CraftSignalGenerator{processor:SignalGenerator,enabled:bool},
+    CraftDeEsser{processor:DeEsser,enabled:bool},
     CraftLoFi{processor:LoFi,enabled:bool},
     CraftSaturator{processor:Saturator,enabled:bool},
     CraftModDelay{processor:Option<Box<ModDelay>>,enabled:bool},
     CraftFdnReverb{processor:Option<Box<FdnReverb>>,enabled:bool},
+    CraftSoundReverb{processor:Option<Box<SoundReverb>>,enabled:bool},
     ObsThreeBandEq {processor:Box<ObsThreeBandEq>,enabled:bool},
     ObsUpwardCompressor {processor:Box<ObsUpwardCompressor>,enabled:bool},
     ObsNoiseGate {processor:ObsNoiseGate,enabled:bool},
@@ -76,13 +97,21 @@ impl Kernel {
     fn new(filter: AudioFilter, rate: u32, channels: u16) -> Result<Self, AudioError> {
         Ok(match filter {
             AudioFilter::ObsNoiseSuppression {enabled} => Self::ObsNoiseSuppression {enabled},
+            AudioFilter::CraftRingMod{enabled,..}=>Self::CraftRingMod{processor:RingMod::new(rate,channels,filter)?,enabled},
+            AudioFilter::CraftTimeShift{enabled,..}=>Self::CraftTimeShift{processor:TimeShift::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftDither{enabled,..}=>Self::CraftDither{processor:Dither::new(channels,filter)?,enabled},
+            AudioFilter::CraftEq1{enabled,..}=>Self::CraftEq1{processor:Eq1::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftRectifier{enabled,..}=>Self::CraftRectifier{processor:Rectifier::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftDcRemoval{enabled,..}=>Self::CraftDcRemoval{processor:DcRemoval::new(rate,channels,filter)?,enabled},
+            AudioFilter::CraftSignalGenerator{enabled,..}=>Self::CraftSignalGenerator{processor:SignalGenerator::new(rate,channels,filter)?,enabled},
+            AudioFilter::CraftPitch{enabled,..}=>Self::CraftPitch{processor:Pitch::new(rate,channels,filter)?,enabled},
+            AudioFilter::CraftMaximizer{enabled,..}=>Self::CraftMaximizer{processor:Maximizer::new(rate,channels,filter)?,enabled},
+            AudioFilter::CraftDeEsser{enabled,..}=>Self::CraftDeEsser{processor:DeEsser::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftLoFi{enabled,..}=>Self::CraftLoFi{processor:LoFi::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftSaturator{enabled,..}=>Self::CraftSaturator{processor:Saturator::new(rate,channels,filter)?,enabled},
             AudioFilter::CraftModDelay{enabled,..}=>Self::CraftModDelay{processor:if enabled{Some(Box::new(ModDelay::new(rate,channels,delay_parameters(filter)?,CraftTimeLimits::default()).map_err(AudioError::CraftTime)?))}else{None},enabled},
             AudioFilter::CraftFdnReverb{enabled,..}=>Self::CraftFdnReverb{processor:if enabled{Some(Box::new(FdnReverb::new(rate,channels,reverb_parameters(filter)?,CraftTimeLimits::default()).map_err(AudioError::CraftTime)?))}else{None},enabled},
+            AudioFilter::CraftSoundReverb{enabled,..}=>Self::CraftSoundReverb{processor:if enabled{Some(Box::new(SoundReverb::new(rate,channels,filter)?))}else{None},enabled},
             AudioFilter::ObsThreeBandEq {enabled,..}=>Self::ObsThreeBandEq {processor:Box::new(ObsThreeBandEq::new(rate,channels,obs_three_band_eq_parameters(filter)?).map_err(AudioError::ObsThreeBandEq)?),enabled},
             AudioFilter::ObsUpwardCompressor {enabled,..}=>Self::ObsUpwardCompressor {
                 processor:Box::new(ObsUpwardCompressor::new(rate,channels,obs_upward_parameters(filter)?).map_err(AudioError::ObsDynamics)?),enabled,
@@ -136,9 +165,16 @@ impl Kernel {
     fn update(&mut self, filter: AudioFilter,rate:u32,channels:u16) -> Result<(), AudioError> {
         match (self, filter) {
             (Self::ObsNoiseSuppression{enabled},AudioFilter::ObsNoiseSuppression{enabled:next})=>{*enabled=next;}
+            (Self::CraftRingMod{processor,enabled},AudioFilter::CraftRingMod{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftTimeShift{processor,enabled},AudioFilter::CraftTimeShift{enabled:next,..})=>{processor.update(filter)?;if *enabled!=next{processor.reset();}*enabled=next;}
             (Self::CraftDither{processor,enabled},AudioFilter::CraftDither{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftEq1{processor,enabled},AudioFilter::CraftEq1{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
             (Self::CraftRectifier{processor,enabled},AudioFilter::CraftRectifier{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
             (Self::CraftDcRemoval{processor,enabled},AudioFilter::CraftDcRemoval{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftSignalGenerator{processor,enabled},AudioFilter::CraftSignalGenerator{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftPitch{processor,enabled},AudioFilter::CraftPitch{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftMaximizer{processor,enabled},AudioFilter::CraftMaximizer{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
+            (Self::CraftDeEsser{processor,enabled},AudioFilter::CraftDeEsser{enabled:next,..})=>{if *enabled!=next{processor.reset();}processor.update(filter)?;*enabled=next;}
             (Self::CraftLoFi{processor,enabled},AudioFilter::CraftLoFi{enabled:next,..})=>{processor.update(filter)?;*enabled=next;}
             (Self::CraftSaturator{processor,enabled},AudioFilter::CraftSaturator{enabled:next,..})=>{processor.update(filter)?;*enabled=next;}
             (Self::CraftModDelay{processor,enabled},AudioFilter::CraftModDelay{enabled:next,..})=>{
@@ -150,6 +186,10 @@ impl Kernel {
                 if !next{*processor=None;}else if let Some(processor)=processor{processor.set_parameters(reverb_parameters(filter)?).map_err(AudioError::CraftTime)?;}
                 else{*processor=Some(Box::new(FdnReverb::new(rate,channels,reverb_parameters(filter)?,CraftTimeLimits::default()).map_err(AudioError::CraftTime)?));}
                 *enabled=next;
+            },
+            (Self::CraftSoundReverb{processor,enabled},AudioFilter::CraftSoundReverb{enabled:next,..})=>{
+                if !next{*processor=None;}else if let Some(processor)=processor{processor.update(filter)?;}
+                else{*processor=Some(Box::new(SoundReverb::new(rate,channels,filter)?));}*enabled=next;
             },
             (Self::ObsThreeBandEq {processor,enabled},AudioFilter::ObsThreeBandEq {enabled:next,..})=>{processor.set_parameters(obs_three_band_eq_parameters(filter)?);*enabled=next;}
             (Self::ObsUpwardCompressor {processor,enabled},AudioFilter::ObsUpwardCompressor {enabled:next,..})=>{
@@ -240,18 +280,35 @@ impl Kernel {
         match self {
             Self::ObsNoiseSuppression{enabled:false}=>Ok(()),
             Self::ObsNoiseSuppression{enabled:true}=>Err(AudioError::InvalidRequest("RNNoise requires the delayed source-history owner")),
+            Self::CraftRingMod{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftRingMod{enabled:false,..}=>Ok(()),
+            Self::CraftTimeShift{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftTimeShift{enabled:false,..}=>Ok(()),
             Self::CraftDither{processor,enabled:true}=>processor.process(samples,channels),
             Self::CraftDither{enabled:false,..}=>Ok(()),
+            Self::CraftEq1{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftEq1{enabled:false,..}=>Ok(()),
             Self::CraftRectifier{processor,enabled:true}=>processor.process(samples,channels),
             Self::CraftRectifier{enabled:false,..}=>Ok(()),
             Self::CraftDcRemoval{processor,enabled:true}=>processor.process(samples,channels),
             Self::CraftDcRemoval{enabled:false,..}=>Ok(()),
+            Self::CraftSignalGenerator{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftSignalGenerator{enabled:false,..}=>Ok(()),
+            Self::CraftPitch{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftPitch{enabled:false,..}=>Ok(()),
+            Self::CraftMaximizer{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftMaximizer{enabled:false,..}=>Ok(()),
+            Self::CraftDeEsser{processor,enabled:true}=>processor.process(samples,channels),
+            Self::CraftDeEsser{enabled:false,..}=>Ok(()),
             Self::CraftLoFi{processor,enabled:true}=>processor.process(samples,channels),
             Self::CraftLoFi{enabled:false,..}=>Ok(()),
             Self::CraftSaturator{processor,enabled:true}=>processor.process(samples,channels),
             Self::CraftSaturator{enabled:false,..}=>Ok(()),
             Self::CraftModDelay{processor:Some(processor),enabled:true}=>processor.process(samples,CraftTimeLimits{max_frames:MAX_AUDIO_FRAMES,..Default::default()}).map_err(AudioError::CraftTime),
             Self::CraftFdnReverb{processor:Some(processor),enabled:true}=>processor.process(samples,CraftTimeLimits{max_frames:MAX_AUDIO_FRAMES,..Default::default()}).map_err(AudioError::CraftTime),
+            Self::CraftSoundReverb{processor:Some(processor),enabled:true}=>processor.process(samples,channels),
+            Self::CraftSoundReverb{enabled:false,..}=>Ok(()),
+            Self::CraftSoundReverb{..}=>Err(AudioError::InvalidRequest("SoundCraft reverb is not prepared")),
             Self::CraftModDelay{enabled:false,..}|Self::CraftFdnReverb{enabled:false,..}=>Ok(()),
             Self::CraftModDelay{..}|Self::CraftFdnReverb{..}=>Err(AudioError::InvalidRequest("Craft kernel is not prepared")),
             Self::ObsThreeBandEq {processor,enabled:true}=>processor.process_interleaved(samples,ObsThreeBandEqLimits::default()).map_err(AudioError::ObsThreeBandEq),
@@ -300,7 +357,7 @@ impl Kernel {
             Self::ObsUpwardCompressor {enabled:false,..}=>Ok(()),
             Self::ObsNoiseGate {processor,enabled:true}=>processor.process_interleaved(frame,DynamicsLimits::default()).map_err(AudioError::ObsDynamics),
             Self::ObsNoiseGate {enabled:false,..}=>Ok(()),
-            Self::CraftDither{..}|Self::CraftRectifier{..}|Self::CraftDcRemoval{..}|Self::CraftLoFi{..}|Self::CraftSaturator{..}|Self::CraftModDelay{..}|Self::CraftFdnReverb{..}|Self::ObsLimiter { .. } | Self::ObsCompressor { .. } | Self::ObsExpander { .. } => Err(
+            Self::CraftSignalGenerator{..}|Self::CraftTimeShift{..}|Self::CraftPitch{..}|Self::CraftMaximizer{..}|Self::CraftDeEsser{..}|Self::CraftRingMod{..}|Self::CraftDither{..}|Self::CraftEq1{..}|Self::CraftRectifier{..}|Self::CraftDcRemoval{..}|Self::CraftLoFi{..}|Self::CraftSaturator{..}|Self::CraftModDelay{..}|Self::CraftFdnReverb{..}|Self::CraftSoundReverb{..}|Self::ObsLimiter { .. } | Self::ObsCompressor { .. } | Self::ObsExpander { .. } => Err(
                 AudioError::InvalidRequest("OBS dynamics requires an admitted source callback"),
             ),
             Self::ObsGain {
@@ -483,8 +540,8 @@ impl AudioDspState {
     }
     pub(crate) fn craft_heap_bytes(&self)->usize{
         self.sources.iter().flat_map(|state|&state.kernels).map(|kernel|match kernel{
-            Kernel::CraftModDelay{processor:Some(processor),..}=>processor.state_bytes(),
-            Kernel::CraftFdnReverb{processor:Some(processor),..}=>processor.state_bytes(),Kernel::CraftSaturator{processor,..}=>processor.state_bytes(),Kernel::CraftLoFi{processor,..}=>processor.state_bytes(),Kernel::CraftDcRemoval{processor,..}=>processor.state_bytes(),Kernel::CraftRectifier{processor,..}=>processor.state_bytes(),Kernel::CraftDither{processor,..}=>processor.state_bytes(),_=>0,
+            Kernel::CraftRingMod{processor,..}=>processor.state_bytes(),Kernel::CraftModDelay{processor:Some(processor),..}=>processor.state_bytes(),
+            Kernel::CraftTimeShift{processor,..}=>processor.state_bytes(),Kernel::CraftPitch{processor,..}=>processor.state_bytes(),Kernel::CraftMaximizer{processor,..}=>processor.state_bytes(),Kernel::CraftDeEsser{processor,..}=>processor.state_bytes(),Kernel::CraftFdnReverb{processor:Some(processor),..}=>processor.state_bytes(),Kernel::CraftSoundReverb{processor:Some(processor),..}=>processor.state_bytes(),Kernel::CraftSaturator{processor,..}=>processor.state_bytes(),Kernel::CraftLoFi{processor,..}=>processor.state_bytes(),Kernel::CraftDcRemoval{processor,..}=>processor.state_bytes(),Kernel::CraftEq1{processor,..}=>processor.state_bytes(),Kernel::CraftRectifier{processor,..}=>processor.state_bytes(),Kernel::CraftDither{processor,..}=>processor.state_bytes(),_=>0,
         }).sum()
     }
     pub(crate) fn prepare_detector_input(&mut self,plan:&AudioPlan,start:u64)->Result<(),AudioError>{
@@ -640,6 +697,7 @@ fn binding_string_bytes(binding: &AudioInputKey) -> usize {
     match binding {
         AudioInputKey::Native(binding) | AudioInputKey::Window {binding,..} => match binding.target() {
             skylive_core::AudioTarget::WindowsEndpoint { id } => id.len(),
+            skylive_core::AudioTarget::WindowsCamera { symbolic_link } => symbolic_link.len(),
             skylive_core::AudioTarget::MacDevice { uid } => uid.len(),
             skylive_core::AudioTarget::WindowsProcess { identity } => identity.executable().len(),
             skylive_core::AudioTarget::WindowsWindow { selector } => selector.title().len()+selector.class().len()+selector.executable().len(),
@@ -904,16 +962,21 @@ pub(crate) const MAX_CRAFT_RETAINED:usize=32*1024*1024;
 pub(crate) fn craft_filter_bytes(filters:&[AudioFilter],rate:u32,channels:u16)->Result<usize,AudioError>{
     filters.iter().try_fold(0usize,|bytes,filter|{
         let next=match filter{
+            AudioFilter::CraftTimeShift{..}=>TimeShift::required_bytes(rate,channels)?,
+            AudioFilter::CraftPitch{..}=>Pitch::required_bytes(rate,channels)?,
+            AudioFilter::CraftMaximizer{..}=>Maximizer::required_bytes(rate,channels)?,
+            AudioFilter::CraftRingMod{..}=>RingMod::required_bytes(rate,channels)?,
             AudioFilter::CraftModDelay{enabled:true,..}=>ModDelay::required_bytes(rate,channels).map_err(AudioError::CraftTime)?,
             AudioFilter::CraftFdnReverb{enabled:true,..}=>FdnReverb::required_bytes(rate,channels).map_err(AudioError::CraftTime)?,
-            AudioFilter::CraftDither{..}=>usize::from(channels)*size_of::<f32>(),AudioFilter::CraftRectifier{..}=>usize::from(channels)*2*size_of::<f32>(),AudioFilter::CraftDcRemoval{..}=>usize::from(channels)*2*size_of::<f32>(),AudioFilter::CraftSaturator{..}=>usize::from(channels)*3*size_of::<f32>(),AudioFilter::CraftLoFi{..}=>usize::from(channels)*size_of::<f32>(),_=>0,
+            AudioFilter::CraftSoundReverb{enabled:true,..}=>SoundReverb::required_bytes(rate,channels)?,
+            AudioFilter::CraftDeEsser{..}=>usize::from(channels)*14*size_of::<f32>(),AudioFilter::CraftDither{..}=>usize::from(channels)*size_of::<f32>(),AudioFilter::CraftEq1{..}=>usize::from(channels)*2*size_of::<f32>(),AudioFilter::CraftRectifier{..}=>usize::from(channels)*2*size_of::<f32>(),AudioFilter::CraftDcRemoval{..}=>usize::from(channels)*2*size_of::<f32>(),AudioFilter::CraftSaturator{..}=>usize::from(channels)*3*size_of::<f32>(),AudioFilter::CraftLoFi{..}=>usize::from(channels)*size_of::<f32>(),_=>0,
         };
         bytes.checked_add(next).ok_or(AudioError::Limit("Craft time-effect state byte overflow"))
     })
 }
 fn delay_parameters(filter:AudioFilter)->Result<ModDelayParameters,AudioError>{
-    if let AudioFilter::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,..}=filter{
-        let parameters=ModDelayParameters{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz};parameters.validate().map_err(AudioError::CraftTime)?;Ok(parameters)
+    if let AudioFilter::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,mode,stereo_spread,phaser_stages,..}=filter{
+        let parameters=ModDelayParameters{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,mode,stereo_spread,phaser_stages};parameters.validate().map_err(AudioError::CraftTime)?;Ok(parameters)
     }else{Err(AudioError::InvalidRequest("not a Craft Mod Delay"))}
 }
 fn reverb_parameters(filter:AudioFilter)->Result<FdnReverbParameters,AudioError>{

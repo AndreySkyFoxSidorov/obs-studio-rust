@@ -45,7 +45,7 @@ pub fn compatible(
     match (operation, target) {
         (PluginOperation::AudioFilters, PluginTarget::Source(id)) => model
             .source(id)
-            .is_some_and(|source| source.kind().has_audio()),
+            .is_some_and(|source| source.kind().supports_audio_settings()),
         (PluginOperation::VideoFilters, PluginTarget::Source(id)) => {
             model.source(id).is_some_and(|source| {
                 model
@@ -65,7 +65,7 @@ fn choices(model: &StudioSnapshot, operation: PluginOperation) -> Vec<PluginTarg
     if operation != PluginOperation::SceneNotes && operation != PluginOperation::Sources {
         for source in model.sources() {
             let matches = match operation {
-                PluginOperation::AudioFilters => source.kind().has_audio(),
+                PluginOperation::AudioFilters => source.kind().supports_audio_settings(),
                 PluginOperation::VideoFilters => model
                     .source_video_dimensions(source.kind())
                     .is_ok_and(|size| size.is_some()),

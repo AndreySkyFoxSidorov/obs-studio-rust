@@ -9,7 +9,11 @@ mod bindings;
 use bindings::Bindings;
 static NEXT:AtomicU64=AtomicU64::new(1);
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]pub struct Scope {pub instance:u64,pub session:u64,pub generation:u64}
-#[derive(Clone,Debug)]pub struct Fired {pub scope:Scope,pub action:HotkeyAction,pub press:u64,pub pressed:bool,pub observed:std::time::Instant,pub(super) binding:usize,pub(super) callback:Callback}
+/// Foreground identity observed on the input thread at the press edge.
+/// The window and process must still be revalidated by the receiving owner.
+#[derive(Clone,Copy,Debug,PartialEq,Eq)]
+pub struct ForegroundIdentity {pub hwnd:u64,pub pid:u32,pub creation_time:u64}
+#[derive(Clone,Debug)]pub struct Fired {pub scope:Scope,pub action:HotkeyAction,pub press:u64,pub pressed:bool,pub observed:std::time::Instant,pub foreground:Option<ForegroundIdentity>,pub(super) binding:usize,pub(super) callback:Callback}
 impl Fired {pub fn callback(&self)->Callback{self.callback.clone()}}
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]pub enum Phase {Idle,Paused,WaitingForRelease,Active,AwaitingCallback,Retiring,Failed,Unavailable,Closed}
 #[derive(Clone,Debug,PartialEq,Eq)]pub struct Status {pub scope:Option<Scope>,pub phase:Phase,pub registered:usize,pub detail:Option<String>}

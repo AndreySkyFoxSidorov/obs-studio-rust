@@ -17,22 +17,30 @@ impl TryFrom<TextFileData> for TextFile {
     type Error = Error;
     fn try_from(value: TextFileData) -> Result<Self, Error> {
         if value.last_lines==Some(0)||value.saved_lines==Some(0)||value.last_lines.is_some()&&value.saved_lines.is_some(){return Err(Error::Invalid("Invalid retained chat-log settings."));}
-        Self::settings(value.path, value.last_lines.is_some(), value.last_lines.or(value.saved_lines).unwrap_or(6))
+        Self::retained_settings(value.path, value.last_lines.is_some(), value.last_lines.or(value.saved_lines).unwrap_or(6))
     }
 }
 impl TextFile {
+    fn is_local_absolute(path:&str)->bool {
+        let bytes=path.as_bytes();
+        !path.contains("://") && (path.starts_with('/') || path.starts_with("\\\\")
+            || (bytes.len()>2 && bytes[0].is_ascii_alphabetic() && bytes[1]==b':' && matches!(bytes[2], b'/' | b'\\')))
+    }
     pub fn new(path: String, last_lines: Option<u16>) -> Result<Self, Error> {
         if path.is_empty() {return Err(Error::Invalid("Active text file requires a path."));}
         Self::settings(path,last_lines.is_some(),last_lines.unwrap_or(6))
     }
     /// Retains the chat-log count while that option or the entire file is inactive.
     pub fn settings(path:String, chatlog:bool, lines:u16)->Result<Self,Error>{
-        let bytes = path.as_bytes();
-        let absolute = path.starts_with('/') || path.starts_with("\\\\")
-            || (bytes.len() > 2 && bytes[0].is_ascii_alphabetic() && bytes[1] == b':' && matches!(bytes[2], b'/' | b'\\'));
-        if (!path.is_empty()&&!absolute) || path.len() > 4096 || path.chars().any(char::is_control) {
+        if !path.is_empty() && !Self::is_local_absolute(&path) {
             return Err(Error::Invalid("Text file requires an absolute path of at most 4096 UTF-8 bytes without controls."));
         }
+        Self::retained_settings(path,chatlog,lines)
+    }
+    /// Preserve inactive file settings from an imported collection without
+    /// treating an unresolved path or URL as a readable local file.
+    pub fn retained_settings(path:String,chatlog:bool,lines:u16)->Result<Self,Error>{
+        if path.len()>4096 || path.chars().any(char::is_control) {return Err(Error::Invalid("Retained text file setting exceeds 4096 UTF-8 bytes or contains controls."));}
         if lines==0 { return Err(Error::Invalid("Chat log line count must be at least one.")); }
         Ok(Self { path, last_lines:chatlog.then_some(lines), saved_lines:(!chatlog&&lines!=6).then_some(lines) })
     }
@@ -319,7 +327,7 @@ impl TextSource {
             }
         }
         if self.file_inactive && self.file.is_none(){return Err(Error::Invalid("Inactive text file settings require metadata."));}
-        if self.file().is_some_and(|file|file.path().is_empty()){return Err(Error::Invalid("Active text file requires a path."));}
+        if self.file().is_some_and(|file|!TextFile::is_local_absolute(file.path())){return Err(Error::Invalid("Active text file requires an absolute local path."));}
         if self.system_font&&self.font.is_none(){return Err(Error::Invalid("System font selection requires an exact prepared font face."));}
         if let Some(font)=&self.font{font.validate()?;}
         if let Some(outline)=self.outline{outline.validate()?;}

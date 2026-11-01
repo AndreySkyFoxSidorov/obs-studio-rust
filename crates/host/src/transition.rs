@@ -269,6 +269,18 @@ impl FrameScene {
         }
         Ok(captured)
     }
+    pub(crate) fn preview_cross_container_transforms(session:u64,current:&StudioSnapshot,scene:Id,
+        transforms:&[(Id,Id,skylive_core::Transform)],auto:&[crate::text::auto_worker::Snapshot])->Result<Self,TransitionError> {
+        let draft=current.snapshot_with_cross_container_transforms_preview(scene,transforms)?;
+        let mut captured=Self::capture(session,&draft,scene,None)?;
+        if let Self::Frozen(instance)=&mut captured {
+            let instance=Arc::make_mut(instance);
+            instance.preview_layout=true;
+            instance.normalized_group_preview=true;
+            instance.auto_text_draft=auto.to_vec();
+        }
+        Ok(captured)
+    }
     pub(crate) fn preview_transforms_with_auto(session:u64,current:&StudioSnapshot,scene:Id,container:Id,
         transforms:&[(Id,skylive_core::Transform)],auto:&[crate::text::auto_worker::Snapshot])->Result<Self,TransitionError>{
         let mut captured=Self::preview_transforms(session,current,scene,container,transforms)?;

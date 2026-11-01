@@ -9,6 +9,8 @@ use std::collections::HashSet;
 
 pub const MAX_PROFILES: usize = 32;
 const MAX_NAME_UTF16: usize = 170;
+pub(crate) fn default_sdr_white_nits() -> u16 { 300 }
+fn is_default_sdr_white_nits(value: &u16) -> bool { *value == default_sdr_white_nits() }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize)]
 #[serde(transparent)]
@@ -33,6 +35,8 @@ impl<'de> Deserialize<'de> for ProfileId {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(try_from = "ProfileData")]
 pub struct Profile {
+    #[serde(skip_serializing_if = "is_default_sdr_white_nits")]
+    sdr_white_nits: u16,
     #[serde(skip_serializing_if="crate::OutputVideoSettings::is_default")]
     output_video:crate::OutputVideoSettings,
     #[serde(skip_serializing_if="crate::ReplayBufferSettings::is_default")]
@@ -50,6 +54,8 @@ pub struct Profile {
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct ProfileData {
+    #[serde(default = "default_sdr_white_nits")]
+    sdr_white_nits: u16,
     #[serde(default)]
     output_video:crate::OutputVideoSettings,
     #[serde(default)]
@@ -74,6 +80,7 @@ impl TryFrom<ProfileData> for Profile {
             value.sample_rate,
             value.speakers,
         )?;
+        profile.sdr_white_nits = value.sdr_white_nits;
         profile.output_video=value.output_video;
         profile.replay_buffer=value.replay_buffer;
         profile.recording = value.recording;
@@ -91,6 +98,7 @@ impl Profile {
         speakers: SpeakerLayout,
     ) -> Result<Self, Error> {
         let value = Self {
+            sdr_white_nits: default_sdr_white_nits(),
             output_video:Default::default(),
             replay_buffer:Default::default(),
             id,
@@ -110,6 +118,7 @@ impl Profile {
     pub fn name(&self) -> &str {
         &self.name
     }
+    pub fn sdr_white_nits(&self) -> u16 { self.sdr_white_nits }
     pub fn output_video_settings(&self)->crate::OutputVideoSettings{self.output_video}
     pub fn output_video(&self)->Result<VideoSettings,Error>{self.output_video.resolve(&self.video)}
     pub fn video(&self) -> &VideoSettings {
@@ -131,6 +140,7 @@ impl Profile {
     fn validate(&self) -> Result<(), Error> {
         ProfileId::new(self.id.get())?;
         validate_name(&self.name)?;
+        if !(80..=480).contains(&self.sdr_white_nits) { return Err(Error::Invalid("SDR white level must be between 80 and 480 nits")); }
         self.video.validate()?;
         self.output_video.resolve(&self.video)?;
         AudioSettings::new(self.sample_rate, self.speakers)?;
@@ -144,6 +154,7 @@ impl Profile {
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 pub enum ProfileCommand {
+    SetSdrWhite { id: ProfileId, nits: u16 },
     SetReconnect {id:ProfileId,settings:crate::ReconnectSettings},
     SetReplayBuffer {id:ProfileId,settings:crate::ReplayBufferSettings},
     SetRecordingAndReplay {id:ProfileId,recording:RecordingSettings,replay:crate::ReplayBufferSettings},
@@ -338,6 +349,7 @@ impl ProfileCatalog {
                 candidate.find_mut(id)?;
                 candidate.selected = id;
             }
+            ProfileCommand::SetSdrWhite { id, nits } => { if !(80..=480).contains(&nits) { return Err(Error::Invalid("SDR white level must be between 80 and 480 nits")); } candidate.find_mut(id)?.sdr_white_nits = nits; },
             ProfileCommand::SetReconnect {id,settings}=>{settings.validate()?;let profile=candidate.find_mut(id)?;profile.streaming=profile.streaming.clone().with_reconnect(settings)?;},
             ProfileCommand::SetStreaming { id, settings } => {
                 settings.validate()?;
@@ -418,9 +430,39 @@ impl ProfileCatalog {
     }
 }
 
+/// Persisted Output Timer settings; active deadlines stay in the frontend.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OutputTimerPreferences {
+    pub stream_seconds:u32,
+    pub record_seconds:u32,
+    pub auto_stream:bool,
+    pub auto_record:bool,
+    pub pause_record:bool,
+}
+impl OutputTimerPreferences {
+    pub fn is_default(&self)->bool {*self==Self::default()}
+    pub fn validate(&self)->Result<(),Error>{
+        if self.stream_seconds>359_999||self.record_seconds>359_999 {
+            return Err(Error::Invalid("output timer duration exceeds 99:59:59"));
+        }
+        Ok(())
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(try_from = "PreferencesData")]
 pub struct UserPreferences {
+    #[serde(default,skip_serializing_if="OutputTimerPreferences::is_default")]
+    output_timer:OutputTimerPreferences,
+    #[serde(default,skip_serializing_if="is_false")]
+    scene_grid: bool,
+    #[serde(default,skip_serializing_if="is_false")]
+    hide_source_icons: bool,
+    #[serde(default,skip_serializing_if="is_false")]
+    hide_source_toolbar: bool,
+    #[serde(default,skip_serializing_if="is_false")]
+    hide_listbox_toolbars: bool,
     #[serde(default,skip_serializing_if="crate::PreviewSnapping::is_default")]
     preview_snapping:crate::PreviewSnapping,
     #[serde(default,skip_serializing_if="crate::ProjectorPreferences::is_default")]
@@ -463,6 +505,16 @@ pub struct UserPreferences {
 #[serde(deny_unknown_fields)]
 struct PreferencesData {
     #[serde(default)]
+    output_timer:OutputTimerPreferences,
+    #[serde(default)]
+    scene_grid: bool,
+    #[serde(default)]
+    hide_source_icons: bool,
+    #[serde(default)]
+    hide_source_toolbar: bool,
+    #[serde(default)]
+    hide_listbox_toolbars: bool,
+    #[serde(default)]
     preview_snapping:crate::PreviewSnapping,
     #[serde(default)]
     projectors:crate::ProjectorPreferences,
@@ -498,6 +550,12 @@ impl TryFrom<PreferencesData> for UserPreferences {
     type Error = Error;
     fn try_from(value: PreferencesData) -> Result<Self, Error> {
         let mut preferences = Self::new(value.audio_buffering)?;
+        value.output_timer.validate()?;
+        preferences.output_timer=value.output_timer;
+        preferences.scene_grid = value.scene_grid;
+        preferences.hide_source_icons = value.hide_source_icons;
+        preferences.hide_source_toolbar = value.hide_source_toolbar;
+        preferences.hide_listbox_toolbars = value.hide_listbox_toolbars;
         preferences.set_preview_snapping(value.preview_snapping)?;
         preferences.set_projectors(value.projectors);
         preferences.set_process_priority(value.process_priority);
@@ -537,6 +595,9 @@ fn default_setup_on_new_profile() -> bool {
 fn is_true(value: &bool) -> bool {
     *value
 }
+fn is_false(value: &bool) -> bool {
+    !*value
+}
 fn default_language() -> String {
     "en-US".into()
 }
@@ -563,6 +624,18 @@ fn validate_language(value: &str) -> Result<(), Error> {
 }
 
 impl UserPreferences {
+    pub fn output_timer(&self)->OutputTimerPreferences {self.output_timer}
+    pub fn with_output_timer(mut self,value:OutputTimerPreferences)->Result<Self,Error>{
+        value.validate()?;self.output_timer=value;Ok(self)
+    }
+    pub fn scene_grid(&self)->bool {self.scene_grid}
+    pub fn with_scene_grid(mut self,value:bool)->Self {self.scene_grid=value;self}
+    pub fn source_icons_visible(&self)->bool {!self.hide_source_icons}
+    pub fn with_source_icons_visible(mut self,value:bool)->Self {self.hide_source_icons=!value;self}
+    pub fn source_toolbar_visible(&self)->bool {!self.hide_source_toolbar}
+    pub fn with_source_toolbar_visible(mut self,value:bool)->Self {self.hide_source_toolbar=!value;self}
+    pub fn listbox_toolbars_visible(&self)->bool {!self.hide_listbox_toolbars}
+    pub fn with_listbox_toolbars_visible(mut self,value:bool)->Self {self.hide_listbox_toolbars=!value;self}
     pub fn preview_snapping(&self)->crate::PreviewSnapping{self.preview_snapping}
     pub(crate) fn set_preview_snapping(&mut self,value:crate::PreviewSnapping)->Result<(),Error>{value.validate()?;self.preview_snapping=value;Ok(())}
     pub fn projectors(&self)->crate::ProjectorPreferences{self.projectors}
@@ -627,6 +700,11 @@ impl UserPreferences {
     pub fn new(audio_buffering: AudioBuffering) -> Result<Self, Error> {
         audio_buffering.validate()?;
         Ok(Self {
+            output_timer:OutputTimerPreferences::default(),
+            scene_grid:false,
+            hide_source_icons:false,
+            hide_source_toolbar:false,
+            hide_listbox_toolbars:false,
             preview_snapping:crate::PreviewSnapping::default(),
             projectors:crate::ProjectorPreferences::default(),
             process_priority:crate::ProcessPriority::Normal,
@@ -690,6 +768,7 @@ impl UserPreferences {
         Ok(())
     }
     pub fn validate(&self) -> Result<(), Error> {
+        self.output_timer.validate()?;
         crate::validate_hotkey_scopes(&self.hotkeys,&self.global_hotkeys)?;
         self.preview_snapping.validate()?;
         self.audio_monitoring_device.validate()?;
@@ -1060,6 +1139,17 @@ mod tests {
         let mut disabled = Vec::with_capacity(512);
         disabled.push(id);
         let decoded = UserPreferences::try_from(PreferencesData {
+            output_timer:legacy.output_timer(),
+            scene_grid:legacy.scene_grid(),
+            hide_source_icons:!legacy.source_icons_visible(),
+            hide_source_toolbar:!legacy.source_toolbar_visible(),
+            hide_listbox_toolbars:!legacy.listbox_toolbars_visible(),
+            preview_snapping:legacy.preview_snapping(),
+            projectors:legacy.projectors(),
+            process_priority:legacy.process_priority(),
+            ndi_output:legacy.ndi_output().clone(),
+            audio_monitoring_device:legacy.audio_monitoring_device().clone(),
+            mixer_display:legacy.mixer_display(),
             audio_buffering: legacy.audio_buffering(),
             appearance: legacy.appearance(),
             accessibility: legacy.accessibility(),

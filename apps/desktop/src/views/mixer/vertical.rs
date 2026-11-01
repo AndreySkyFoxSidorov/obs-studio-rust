@@ -52,7 +52,6 @@ pub(super) fn strip(
             ui.push_id(
                 (
                     session,
-                    model.revision(),
                     source.gain().to_bits(),
                     source.muted(),
                 ),
@@ -83,8 +82,9 @@ pub(super) fn strip(
     let available = update_meter(meter, levels, now);
     let height = (ui.available_height() - 56.0).clamp(32.0, 200.0);
     let mut slider = None;
+    let mut meter_response = None;
     ui.horizontal(|ui| {
-        paint(ui, source, meter, available, height);
+        meter_response=Some(paint(ui, source, meter, available, height));
         let mut deflection = gain_deflection(draft.value);
         let response = ui
             .add_enabled_ui(editable && !locked, |ui| {
@@ -133,6 +133,13 @@ pub(super) fn strip(
         mute.changed(),
         intents,
     );
+    if slider.has_focus() {
+        meter_wheel(ui,model,source,session,editable,draft,&slider,intents);
+    }
+    if let Some(response)=meter_response.as_ref(){
+        if response.clicked() && editable && !locked { slider.request_focus(); }
+        meter_wheel(ui,model,source,session,editable,draft,response,intents);
+    }
     #[cfg(test)]
     ui.data_mut(|data| {
         data.insert_temp(
@@ -158,10 +165,10 @@ pub(super) fn strip(
         ));
     }
 }
-fn paint(ui: &mut egui::Ui, source: &Source, state: &MeterState, available: bool, height: f32) {
+fn paint(ui: &mut egui::Ui, source: &Source, state: &MeterState, available: bool, height: f32) -> egui::Response {
     let channels = state.channels.clamp(1, 8);
     let width = (channels as f32 * 7.0 + 22.0).min(78.0);
-    let (rect, response) = ui.allocate_exact_size(egui::vec2(width, height), egui::Sense::hover());
+    let (rect, response) = ui.allocate_exact_size(egui::vec2(width, height), egui::Sense::click());
     for channel in 0..channels {
         let bar = egui::Rect::from_min_max(
             rect.min + egui::vec2(channel as f32 * 7.0, 0.0),
@@ -201,6 +208,10 @@ fn paint(ui: &mut egui::Ui, source: &Source, state: &MeterState, available: bool
             y(state.rms[channel]),
             egui::Stroke::new(1.0, egui::Color32::WHITE),
         );
+        let input_color=if !available || state.input_held[channel]<=MIN_METER_DB { egui::Color32::from_gray(45) }
+            else if state.input_held[channel]<WARNING_DB { NOMINAL }
+            else if state.input_held[channel]<ERROR_DB { WARNING } else { ERROR };
+        ui.painter().rect_filled(egui::Rect::from_min_size(egui::pos2(bar.left(),bar.bottom()-3.0),egui::vec2(bar.width(),3.0)),0.0,input_color);
         if state.clip_until > ui.input(|input| input.time) {
             ui.painter().rect_filled(
                 egui::Rect::from_min_size(bar.min, egui::vec2(5.0, 3.0)),
@@ -232,5 +243,5 @@ fn paint(ui: &mut egui::Ui, source: &Source, state: &MeterState, available: bool
     response.on_hover_text(crate::i18n::tr(
         ui,
         "Peak, RMS and held peak in decibels. Meter visibility does not change audio processing.",
-    ));
+    ))
 }

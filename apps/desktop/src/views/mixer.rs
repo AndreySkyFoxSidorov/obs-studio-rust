@@ -80,9 +80,8 @@ impl VolumeDraft {
             dirty: false,
         }
     }
-    fn matches(&self, session: u64, revision: u64, source: &Source) -> bool {
+    fn matches(&self, session: u64, source: &Source) -> bool {
         self.session == session
-            && self.revision == revision
             && self.canonical == source.gain()
             && self.canonical_muted == source.muted()
     }
@@ -99,6 +98,8 @@ struct MeterState {
     rms: [f32; 8],
     held: [f32; 8],
     hold_until: [f64; 8],
+    input_held: [f32; 8],
+    input_hold_until: [f64; 8],
     clip_until: f64,
 }
 impl Default for MeterState {
@@ -113,6 +114,8 @@ impl Default for MeterState {
             rms: [MIN_METER_DB; 8],
             held: [MIN_METER_DB; 8],
             hold_until: [0.0; 8],
+            input_held: [MIN_METER_DB; 8],
+            input_hold_until: [0.0; 8],
             clip_until: 0.0,
         }
     }
@@ -131,6 +134,8 @@ struct MixerPresentation {
 
 struct Levels<'a> {
     meters: &'a [ChannelMeter],
+    input_peaks: Option<&'a [f64]>,
+    raw_input_valid: bool,
     scale: f64,
     token: (u64, u64, u64),
     post_filter: bool,
@@ -156,6 +161,10 @@ fn source_levels<'a>(
         {
             return Some(Levels {
                 meters: &meter.channels,
+                // Program publishes an independently measured pre-fader peak
+                // using the selected sample/true-peak mode.
+                input_peaks: Some(&meter.input_peaks),
+                raw_input_valid: false,
                 scale: 1.0,
                 token: (1, program.key.generation, program.start_frame),
                 post_filter: true,
@@ -176,11 +185,9 @@ fn source_levels<'a>(
         .filter(|packet| capture.session() == session && &packet.binding == binding)
         .map(|packet| Levels {
             meters: &packet.meters,
-            scale: if source.muted() {
-                0.0
-            } else {
-                f64::from(source.gain())
-            },
+            input_peaks: None,
+            raw_input_valid: source.audio_filters().is_empty(),
+            scale: f64::from(source.gain()),
             token: (0, packet.stream_generation, packet.sequence),
             post_filter: false,
         })
@@ -270,7 +277,7 @@ pub(super) fn show(
     ui.separator();
     let mut rows = projection::rows(model, session, program_views, preview);
     for row in &mut rows {if !audio.source_runtime_active(row.source.id()){row.active=false;row.preview=false;}}
-    rows.retain(|row|row.active||row.preview||row.global||row.pinned||model.preferences().mixer_display().show_inactive());
+    rows.retain(|row|row.active||row.preview||row.global||row.pinned||row.hidden||model.preferences().mixer_display().show_inactive());
     let memory_id = ui.id().with("mixer-presentation");
     let mut presentation = ui
         .data_mut(|data| data.get_temp::<MixerPresentation>(memory_id))
@@ -323,8 +330,13 @@ pub(super) fn show(
                         .iter_mut()
                         .find(|entry| entry.source == source.id())
                         .expect("inserted source presentation");
-                    if !entry.volume.matches(session, model.revision(), source) {
+                    if !entry.volume.matches(session, source) {
                         entry.volume = VolumeDraft::new(session, model.revision(), source);
+                    } else if entry.volume.revision != model.revision() {
+                        // An unrelated document edit does not invalidate an
+                        // in-progress fader edit. Publish against the current
+                        // revision while the same source gain/mute is intact.
+                        entry.volume.revision = model.revision();
                     }
                     if !audio.source_runtime_active(source.id()){entry.meter=MeterState::default();}
                     let peak_mode = model.preferences().mixer_display().peak_mode();
@@ -450,7 +462,6 @@ fn source_strip(
                 ui.push_id(
                     (
                         session,
-                        model.revision(),
                         source.gain().to_bits(),
                         source.muted(),
                     ),
@@ -558,6 +569,11 @@ fn source_strip(
         mute_changed,
         intents,
     );
+    // OBS volume sliders accept wheel changes while focused; scrolling an
+    // unfocused slider remains available to the surrounding mixer panel.
+    if slider.has_focus() {
+        meter_wheel(ui,model,source,session,editable,draft,&slider,intents);
+    }
     let available = update_meter(meter, levels, now);
     #[cfg(test)]
     if let Some(levels) = levels.filter(|_| available) {
@@ -570,7 +586,10 @@ fn source_strip(
             }
         });
     }
-    paint_meters(ui, source.id(), meter, available, source.muted());
+    let meter_response=paint_meters(ui, source.id(), meter, available, source.muted());
+    // OBS delegates the meter's keyboard focus to its volume fader.
+    if meter_response.clicked() && editable && !locked { slider.request_focus(); }
+    meter_wheel(ui,model,source,session,editable,draft,&meter_response,intents);
     if !available {
         ui.add(egui::Label::new(crate::i18n::tr(ui, "Waiting for audio levels")).wrap());
     }
@@ -670,12 +689,8 @@ pub(super) fn monitor_button(ui:&mut egui::Ui,model:&StudioSnapshot,source:&Sour
 }
 pub(super) fn mute_button(ui: &mut egui::Ui, muted: &mut bool) -> egui::Response {
     let label = crate::i18n::tr(ui, if *muted {"Unmute"} else {"Mute"});
-    let font = egui::FontId::proportional(12.0);
-    let galley = ui
-        .painter()
-        .layout_no_wrap(label.clone(), font, ui.visuals().text_color());
     let (rect, mut response) = ui.allocate_exact_size(
-        egui::vec2(25.0 + galley.size().x, 22.0),
+        egui::vec2(25.0, 22.0),
         egui::Sense::click(),
     );
     if response.clicked() {
@@ -736,11 +751,6 @@ pub(super) fn mute_button(ui: &mut egui::Ui, muted: &mut bool) -> egui::Response
             egui::Stroke::new(1.2, color),
         );
     }
-    ui.painter().galley(
-        egui::pos2(rect.left() + 23.0, rect.center().y - galley.size().y * 0.5),
-        galley,
-        color,
-    );
     response
         .on_hover_text(label.clone())
         .on_disabled_hover_text(label)
@@ -797,6 +807,19 @@ fn update_meter(state: &mut MeterState, levels: Option<&Levels<'_>>, now: f64) -
             state.held[channel] = peak.clamp(MIN_METER_DB, 0.0);
             state.hold_until[channel] = now + PEAK_HOLD_SECONDS;
         }
+        // The OBS input indicator measures before the fader. Capture fallback
+        // is raw and only represents that signal when no filters are active;
+        // Program provides the post-filter peak directly.
+        let input_peak = valid.and_then(|levels| {
+            if !available { None }
+            else if let Some(peaks)=levels.input_peaks { peaks.get(channel).copied() }
+            else if levels.raw_input_valid { levels.meters.get(channel).map(|meter|meter.peak) }
+            else { None }
+        }).filter(|peak|peak.is_finite() && *peak>=0.0).map(level_db).unwrap_or(MIN_METER_DB);
+        if input_peak >= state.input_held[channel] || now >= state.input_hold_until[channel] {
+            state.input_held[channel] = input_peak.clamp(MIN_METER_DB, 0.0);
+            state.input_hold_until[channel] = now + 1.0;
+        }
         if available && peak >= 0.0 {
             state.clip_until = now + 1.0;
         }
@@ -804,11 +827,11 @@ fn update_meter(state: &mut MeterState, levels: Option<&Levels<'_>>, now: f64) -
     available
 }
 
-fn paint_meters(ui: &mut egui::Ui, source: Id, state: &MeterState, available: bool, muted: bool) {
+fn paint_meters(ui: &mut egui::Ui, source: Id, state: &MeterState, available: bool, muted: bool) -> egui::Response {
     let count = state.channels.clamp(1, 8);
     let (rect, response) = ui.allocate_exact_size(
         egui::vec2(ui.available_width().max(1.0), count as f32 * 6.0 + 14.0),
-        egui::Sense::hover(),
+        egui::Sense::click(),
     );
     let bar_width = rect.width();
     let muted_color = egui::Color32::from_gray(95);
@@ -864,6 +887,10 @@ fn paint_meters(ui: &mut egui::Ui, source: Id, state: &MeterState, available: bo
                 },
             ),
         );
+        let input_color=if !available || state.input_held[channel]<=MIN_METER_DB { egui::Color32::from_gray(45) }
+            else if state.input_held[channel]<WARNING_DB { NOMINAL }
+            else if state.input_held[channel]<ERROR_DB { WARNING } else { ERROR };
+        ui.painter().rect_filled(egui::Rect::from_min_size(bar.min,egui::vec2(3.0,bar.height())),0.0,input_color);
     }
     let clipped = ui.input(|input| input.time) < state.clip_until;
     let ticks: &[i32] = if bar_width < 210.0 {
@@ -945,7 +972,29 @@ fn paint_meters(ui: &mut egui::Ui, source: Id, state: &MeterState, available: bo
         if clipped {
             ui.colored_label(crate::theme::interface_color(ui,skylive_core::InterfaceColor::MeterRedActive), crate::i18n::tr(ui, "Clipping"));
         }
-    });
+    })
+}
+
+/// OBS forwards wheel events from its meter to the associated volume slider.
+/// Use the same authored mixer command as the fader; never change mute.
+fn meter_wheel(ui:&mut egui::Ui,model:&StudioSnapshot,source:&Source,session:u64,editable:bool,
+    draft:&mut VolumeDraft,response:&egui::Response,intents:&mut Vec<Intent>) {
+    if !response.hovered() || !editable || source.mixer_state().volume_locked() || draft.dirty
+        || controls::view_action_pending(intents) { return; }
+    let delta=ui.input(|input|input.raw_scroll_delta.y);
+    if !delta.is_finite() || delta==0.0 { return; }
+    // The meter forwards the wheel to its fader even at its endpoints. Keep
+    // the surrounding scroll area still when the value cannot move farther.
+    ui.input_mut(|input|{input.raw_scroll_delta.y=0.0;input.smooth_scroll_delta.y=0.0;});
+    // The OBS fader tops out at 0 dB even when the source was set above
+    // unity elsewhere. An upward wheel at that endpoint must not reset an
+    // existing amplified gain back to unity.
+    if source.gain()>1.0 && delta>0.0 {return;}
+    let deflection=(gain_deflection(source.gain())+delta.clamp(-150.0,150.0)*0.0006).clamp(0.0,1.0);
+    let gain=deflection_gain(deflection);
+    if gain==source.gain() { return; }
+    controls::submit(intents,session,model,Command::SetMixerAudio {source:source.id(),gain,muted:None});
+    draft.value=gain;draft.canonical=gain;draft.dirty=false;
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -997,6 +1046,25 @@ fn source_options(
         .clicked()
     {
         intents.push(Intent::OpenDialog(Dialog::audio_filters(source)));
+        ui.close_menu();
+    }
+    // Audio-capable video sources (for example a camera with a microphone)
+    // also need their video filter editor in the mixer's source menu. OBS
+    // exposes source filters from this menu; SkyLive has separate editors.
+    if model.source_video_dimensions(source.kind()).is_ok_and(|dimensions| dimensions.is_some())
+        && ui.add_enabled(
+            editable && (model.preferences().plugin_enabled(skylive_core::OBS_VIDEO_FILTERS_PLUGIN)
+                || model.preferences().plugin_enabled(skylive_core::CRAFT_VIDEO_PLUGIN)
+                || model.preferences().plugin_enabled(skylive_core::PERSON_BACKGROUND_PLUGIN)
+                || !source.video_filters().is_empty()),
+            egui::Button::new(crate::i18n::tr(ui, "Filters")),
+        ).on_hover_text(crate::hints::text(ui, "Filters"))
+            .clicked()
+    {
+        match super::video_filters::VideoFilterDraft::capture(session, model, source.id()) {
+            Ok(draft) => intents.push(Intent::OpenDialog(Dialog::VideoFilters(draft))),
+            Err(error) => intents.push(Intent::DialogError(error)),
+        }
         ui.close_menu();
     }
     ui.separator();
@@ -1509,6 +1577,8 @@ mod tests {
         let mut state = MeterState::default();
         let levels = Levels {
             meters: &meters,
+            input_peaks: None,
+            raw_input_valid: false,
             scale: 1.0,
             token: (1, 1, 0),
             post_filter: true,
@@ -1664,6 +1734,7 @@ mod tests {
             start_frame: 2048,
             source_meters: vec![skylive_host::audio::SourceMeter {
                 source,
+                input_peaks: vec![0.75],
                 channels: vec![ChannelMeter {
                     peak: 0.75,
                     rms: 0.125,
@@ -1738,7 +1809,7 @@ mod tests {
     fn stale_canonical_audio_edit_invalidates_draft_and_no_source_paint_authors_no_binding() {
         let (mut session, source) = audio_session();
         let original = session.snapshot();
-        let mut draft = VolumeDraft::new(session.identity(), original.source(source).unwrap());
+        let mut draft = VolumeDraft::new(session.identity(), original.revision(), original.source(source).unwrap());
         draft.value = 0.25;
         draft.dirty = true;
         session
@@ -1754,6 +1825,7 @@ mod tests {
         ));
         draft = VolumeDraft::new(
             session.identity(),
+            session.snapshot().revision(),
             session.snapshot().source(source).unwrap(),
         );
         assert_eq!(draft.value, 0.75);

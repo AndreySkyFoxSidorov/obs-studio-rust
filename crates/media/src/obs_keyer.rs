@@ -180,15 +180,14 @@ impl PreparedKeyer {
         result
     }
     pub(crate) fn pixel(self, pixel: [u8; 4], encoding: ColorCorrectionInput) -> [u8; 4] {
-        self.pixel_with_opaque_table(pixel, encoding, opaque_color_table())
+        self.pixel_with_opaque_table(pixel, encoding, opaque_color_table(), decode_table())
     }
     /// Opaque input uses exactly the same decode and nonlinear values as the
     /// general path, but can reuse the 256 possible transfer values. This
     /// avoids three exponentiations per camera pixel without quantising the
     /// color-key distance or changing the partially transparent path.
-    pub(crate) fn pixel_with_opaque_table(self, pixel: [u8; 4], encoding: ColorCorrectionInput, table: &[f32; 256]) -> [u8; 4] {
+    pub(crate) fn pixel_with_opaque_table(self, pixel: [u8; 4], encoding: ColorCorrectionInput, table: &[f32; 256], decoded: &[f32; 256]) -> [u8; 4] {
         if pixel[3] == 255 {
-            let decoded = decode_table();
             let rgb = [decoded[usize::from(pixel[0])], decoded[usize::from(pixel[1])], decoded[usize::from(pixel[2])]];
             let encoded = [table[usize::from(pixel[0])], table[usize::from(pixel[1])], table[usize::from(pixel[2])]];
             let distance = ((encoded[0] - self.key[0]).powi(2)

@@ -21,7 +21,7 @@ impl SourceAudioHotkeys {
         if bindings.len()>10{return Err(Error::Limit("Source audio controls admit at most two shortcuts per control."));}
         let mut chords=HashSet::new();
         for binding in &bindings {
-            if !crate::global_key_supported(&binding.chord){return Err(Error::Invalid("Source mute shortcuts use the supported Windows global keys; punctuation is unavailable."));}
+            if !crate::global_key_supported(&binding.chord){return Err(Error::Invalid("Source mute shortcuts require a supported Windows global key."));}
             if !chords.insert(&binding.chord){return Err(Error::Invalid("A source mute shortcut is assigned more than once. Use Toggle Mute for the common pair."));}
             if bindings.iter().filter(|value|value.operation==binding.operation).count()>2{return Err(Error::Limit("An action can have at most two shortcuts."));}
         }

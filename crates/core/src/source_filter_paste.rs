@@ -9,11 +9,7 @@ impl StudioSnapshot {
         if from == to {
             return Ok(());
         }
-        if !source.audio_filters().is_empty() && !target.kind().supports_audio_settings() {
-            return Err(Error::Invalid(
-                "Filter paste requires an audio-capable destination for every copied audio filter",
-            ));
-        }
+        target.kind().validate_audio_filters(source.audio_filters())?;
         if !source.video_filters().is_empty()
             && self.source_video_dimensions(target.kind())?.is_none()
         {

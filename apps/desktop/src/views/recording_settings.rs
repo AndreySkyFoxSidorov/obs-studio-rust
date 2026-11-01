@@ -14,6 +14,7 @@ pub struct RecordingDraft {
     pub profile: ProfileId,
     pub profile_name: String,
     pub directory: String,
+    pub filename_format:String,
     pub video_bitrate: String,
     pub audio_bitrate: u32,
     pub audio_enabled: bool,
@@ -34,6 +35,7 @@ impl RecordingDraft {
             profile: profile.id(),
             profile_name: profile.name().into(),
             directory: settings.directory().into(),
+            filename_format:settings.filename_format().into(),
             video_bitrate: settings.video_bitrate_kbps().to_string(),
             audio_bitrate: settings.audio_bitrate_kbps(),
             audio_enabled: settings.audio_enabled(),
@@ -55,6 +57,7 @@ impl RecordingDraft {
             self.prefer_hardware,
         )
         .and_then(|v|v.with_audio_tracks(tracks))
+        .and_then(|v|v.with_filename_format(self.filename_format.clone()))
         .and_then(|v|v.with_container(self.container))
         .and_then(|v|v.with_encoder(self.encoder.selection))
         .and_then(|v|v.with_keyframe_interval(if self.encoder.selection.is_default(){2}else{self.keyframe_seconds}))
@@ -79,6 +82,7 @@ impl RecordingDraft {
                 let settings = profile.recording();
                 super::output_audio_tracks::settings(&self.audio_tracks,&self.track_names).is_ok_and(|v|v==*settings.audio_tracks())&&self.replay_audio_track==profile.replay_buffer().audio_track()&&self.container==settings.container()&&self.encoder.selection==settings.encoder()&&(if self.encoder.selection.is_default(){2}else{self.keyframe_seconds})==settings.keyframe_interval_seconds()&&self.replay_duration==profile.replay_buffer().duration_seconds()&&self.replay_memory==profile.replay_buffer().memory_mib()
                     && self.directory == settings.directory()
+                    && self.filename_format == settings.filename_format()
                     && self.video_bitrate.parse::<u32>().ok() == Some(settings.video_bitrate_kbps())
                     && self.audio_bitrate == settings.audio_bitrate_kbps()
                     && self.audio_enabled == settings.audio_enabled()
@@ -130,6 +134,10 @@ fn editor_with_replay(ui:&mut egui::Ui,draft:&mut RecordingDraft,show_replay:boo
             if let Some(intent)=crate::native_browse::button(ui,"Browse",crate::native_browse::Target::RecordingFolder,true){intents.push(intent);}
         }
     });
+    let label=ui.label(crate::i18n::tr(ui,"Filename Formatting"));
+    ui.add(egui::TextEdit::singleline(&mut draft.filename_format).char_limit(180).desired_width(ui.available_width()).hint_text("SkyLive-<timestamp>"))
+        .labelled_by(label.id)
+        .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Recording.FilenameFormatHelp","Leave empty for the default unique name. Windows supports %CCYY %YY %MM %DD %hh %mm %ss %Y %y %m %d %H %I %M %p %S %s %a %A %b %B %z %Z %FPS %CRES %ORES and %%. Subfolders are supported. Existing files are never overwritten."));
     egui::Grid::new("recording-profile-rates").num_columns(2).show(ui,|ui|{
         let label=ui.label(crate::i18n::tr(ui,"Video Bitrate (kbit/s)"));
         let response=ui.add(egui::TextEdit::singleline(&mut draft.video_bitrate).char_limit(10).desired_width(100.0).id_salt("recording-video-bitrate"))

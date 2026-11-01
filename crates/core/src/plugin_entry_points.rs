@@ -29,11 +29,19 @@ const NOISE_SUPPRESSION: &str = crate::AudioFilterFactory::ObsNoiseSuppression.l
 const RENDER_DELAY: &str = crate::VideoFilterFactory::RenderDelay.label();
 const MOD_DELAY: &str = crate::AudioFilterFactory::CraftModDelay.label();
 const FDN_REVERB: &str = crate::AudioFilterFactory::CraftFdnReverb.label();
+const SOUND_REVERB: &str = crate::AudioFilterFactory::CraftSoundReverb.label();
 const SATURATOR: &str = crate::AudioFilterFactory::CraftSaturator.label();
 const LO_FI: &str = crate::AudioFilterFactory::CraftLoFi.label();
 const DC_REMOVAL: &str = crate::AudioFilterFactory::CraftDcRemoval.label();
+const SIGNAL_GENERATOR: &str = crate::AudioFilterFactory::CraftSignalGenerator.label();
+const DE_ESSER: &str = crate::AudioFilterFactory::CraftDeEsser.label();
+const MAXIMIZER: &str = crate::AudioFilterFactory::CraftMaximizer.label();
+const PITCH: &str = crate::AudioFilterFactory::CraftPitch.label();
+const EQ1: &str = crate::AudioFilterFactory::CraftEq1.label();
 const RECTIFIER: &str = crate::AudioFilterFactory::CraftRectifier.label();
+const RING_MOD: &str = crate::AudioFilterFactory::CraftRingMod.label();
 const DITHER: &str = crate::AudioFilterFactory::CraftDither.label();
+const TIME_SHIFT: &str = crate::AudioFilterFactory::CraftTimeShift.label();
 const SEPIA: &str = crate::VideoFilterFactory::Sepia.label();
 const PHOTO_FILTER: &str = crate::VideoFilterFactory::PhotoFilter.label();
 const GAUSSIAN_BLUR: &str = crate::VideoFilterFactory::GaussianBlur.label();
@@ -72,7 +80,7 @@ pub fn plugin_entry_points(id: &str) -> &'static [PluginEntryPoint] {
         ],
         CRAFT_AUDIO_PLUGIN => &[PluginEntryPoint {
             operation: PluginOperation::AudioFilters,
-            features: &["Add Compressor", "Add Gate", "Add Simple EQ",MOD_DELAY,FDN_REVERB,SATURATOR,LO_FI,DC_REMOVAL,RECTIFIER,DITHER],
+            features: &["Add Compressor", "Add Gate", "Add Simple EQ",MOD_DELAY,FDN_REVERB,SOUND_REVERB,SATURATOR,LO_FI,DC_REMOVAL,SIGNAL_GENERATOR,DE_ESSER,MAXIMIZER,PITCH,EQ1,RECTIFIER,DITHER,RING_MOD,TIME_SHIFT],
         }],
         CRAFT_VIDEO_PLUGIN => &[PluginEntryPoint {
             operation: PluginOperation::VideoFilters,
@@ -80,8 +88,8 @@ pub fn plugin_entry_points(id: &str) -> &'static [PluginEntryPoint] {
                 "Linear Color Key",
                 "Brightness & Contrast",
                 "Spill Suppression",
-                "Invert Colors", "Grayscale", "Posterize", "Exposure", "Temperature & Tint", "Vibrance", "Tint (EffectCraft)", "Tritone (EffectCraft)", "Color Balance (EffectCraft)", "Channel Mixer (EffectCraft)", "Threshold", "Vignette",
-                SEPIA,PHOTO_FILTER,GAUSSIAN_BLUR,
+                "Invert Colors", "Grayscale", "Posterize", "Solarize (PhotoCraft)", "Levels (EffectCraft)", "Leave Color (EffectCraft)", "Set RGB Channels (EffectCraft)", "Gradient Map (PhotoCraft)", "Mosaic (PhotoCraft)", "Exposure", "Temperature & Tint", "Vibrance", "Color Balance (HLS)", "CC Color Offset (EffectCraft)", "Selective Color (PhotoCraft)", "Tint (EffectCraft)", "Tritone (EffectCraft)", "Color Balance (EffectCraft)", "Channel Mixer (EffectCraft)", "Threshold", "Vignette",
+                SEPIA,PHOTO_FILTER,GAUSSIAN_BLUR,crate::VideoFilterFactory::ColorToAlpha.label(),crate::VideoFilterFactory::CraftBlackWhite.label(),
             ],
         }],
         AUDIO_PAN_PLUGIN => &[PluginEntryPoint {

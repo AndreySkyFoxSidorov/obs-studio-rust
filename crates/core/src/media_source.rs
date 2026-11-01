@@ -14,9 +14,24 @@ pub struct MediaSource {
     clear_on_end: bool,
     #[serde(default = "normal_speed", skip_serializing_if = "is_normal_speed")]
     speed_percent: u16,
+    #[serde(default = "default_reconnect", skip_serializing_if = "is_default_reconnect")]
+    reconnect_delay_sec: u8,
+    /// OBS retains the network input while local; its format is also retained
+    /// while network input is active. The active input itself remains `path`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    obs_inactive_network: Option<(String, String)>,
+    /// Local OBS file path retained while a network URL is active; never opened in that mode.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    obs_inactive_local: Option<String>,
+    /// OBS network seekable flag; retained while a local file is selected.
+    #[serde(default, skip_serializing_if = "is_false")]
+    obs_seekable: bool,
 }
 fn normal_speed() -> u16 { 100 }
+fn is_false(value:&bool)->bool {!*value}
 fn is_normal_speed(value: &u16) -> bool { *value == 100 }
+fn default_reconnect() -> u8 { 10 }
+fn is_default_reconnect(value: &u8) -> bool { *value == 10 }
 fn enabled() -> bool {
     true
 }
@@ -37,6 +52,14 @@ struct MediaSourceData {
     clear_on_end: bool,
     #[serde(default = "normal_speed")]
     speed_percent: u16,
+    #[serde(default = "default_reconnect")]
+    reconnect_delay_sec: u8,
+    #[serde(default)]
+    obs_inactive_network: Option<(String, String)>,
+    #[serde(default)]
+    obs_inactive_local: Option<String>,
+    #[serde(default)]
+    obs_seekable: bool,
 }
 impl TryFrom<MediaSourceData> for MediaSource {
     type Error = Error;
@@ -47,7 +70,7 @@ impl TryFrom<MediaSourceData> for MediaSource {
                 value.restart_on_activate,
                 value.close_when_inactive,
                 value.clear_on_end,
-            ).with_speed(value.speed_percent)?,
+            ).with_speed(value.speed_percent)?.with_reconnect_delay(value.reconnect_delay_sec)?.with_obs_inactive_network(value.obs_inactive_network)?.with_obs_inactive_local(value.obs_inactive_local)?.with_obs_seekable(value.obs_seekable),
         )
     }
 }
@@ -63,6 +86,10 @@ impl MediaSource {
             close_when_inactive: false,
             clear_on_end: true,
             speed_percent: 100,
+            reconnect_delay_sec: 10,
+            obs_inactive_network: None,
+            obs_inactive_local: None,
+            obs_seekable: false,
         };
         result.validate()?;
         Ok(result)
@@ -115,6 +142,33 @@ impl MediaSource {
     /// The transport must independently validate whether its audio converter
     /// supports the resulting sample rate before accepting a non-default rate.
     pub fn speed_percent(&self) -> u16 { self.speed_percent }
+    /// Delay before retrying a failed network stream, in seconds.
+    pub fn reconnect_delay_sec(&self) -> u8 { self.reconnect_delay_sec }
+    pub fn obs_seekable(&self)->bool {self.obs_seekable}
+    pub fn obs_inactive_local(&self)->Option<&str>{self.obs_inactive_local.as_deref()}
+    /// Preserve inactive OBS text without accessing or validating it as an active file.
+    pub fn with_obs_inactive_local(mut self,value:Option<String>)->Result<Self,Error>{
+        if value.as_ref().is_some_and(|path|path.len()>16_384){return Err(Error::Invalid("Retained OBS local media path exceeds 16384 bytes."));}
+        self.obs_inactive_local=value.filter(|path|!path.is_empty());Ok(self)
+    }
+    pub fn with_obs_seekable(mut self,value:bool)->Self {self.obs_seekable=value;self}
+    /// Retained OBS network input and demuxer name. The input is inactive;
+    /// while network is active, the format is validated by the host importer.
+    pub fn obs_inactive_network(&self) -> Option<(&str,&str)> {
+        self.obs_inactive_network.as_ref().map(|(input,format)|(input.as_str(),format.as_str()))
+    }
+    pub fn with_obs_inactive_network(mut self, value:Option<(String,String)>)->Result<Self,Error>{
+        if value.as_ref().is_some_and(|(input,format)|input.len()>16_384||format.len()>16_384) {
+            return Err(Error::Invalid("Retained OBS network fields exceed 16384 bytes."));
+        }
+        self.obs_inactive_network=value.filter(|(input,format)|!input.is_empty()||!format.is_empty());
+        Ok(self)
+    }
+    pub fn with_reconnect_delay(mut self, seconds:u8)->Result<Self,Error>{
+        if !(1..=60).contains(&seconds) {return Err(Error::Invalid("Media reconnect delay must be 1..=60 seconds."));}
+        self.reconnect_delay_sec=seconds;
+        Ok(self)
+    }
     pub fn with_speed(mut self, speed_percent: u16) -> Result<Self, Error> {
         if !(1..=200).contains(&speed_percent) {
             return Err(Error::Invalid("Media playback speed must be 1..=200 percent."));

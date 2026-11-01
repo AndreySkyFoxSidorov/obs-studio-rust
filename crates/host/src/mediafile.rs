@@ -232,6 +232,12 @@ fn duration(value: u64, scale: u32) -> Result<u64, MediaFileError> {
         .map_err(|_| MediaFileError::TimeOverflow)
 }
 fn check_track(track: &Track) -> Result<(), MediaFileError> {
+    // Empty tracks are legal in an MP4, but cannot provide a playable stream.
+    // Reject them as candidates so a later populated track of the same type
+    // can still be selected, or the other media type can remain playable.
+    if track.samples.is_empty() {
+        return Err(MediaFileError::Unsupported("media track contains no samples"));
+    }
     if !track.self_contained_data || track.entries.iter().any(|e| e.data_reference_index != 1) {
         return Err(MediaFileError::Unsupported(
             "media profile requires one self-contained data reference; external references are not followed",
@@ -258,6 +264,29 @@ fn check_track(track: &Track) -> Result<(), MediaFileError> {
         ));
     }
     Ok(())
+}
+/// Admit one audio stream without publishing it as the selected stream.
+/// A rejected stream does not prevent later enabled streams being considered.
+fn open_audio_track(track: &Track, movie_timescale: u32) -> Result<(skylive_aac::Decoder, AudioFileInfo), MediaFileError> {
+    check_track(track)?;
+    let CodecConfig::Aac(raw) = track.codec().ok_or(MediaFileError::Unsupported("audio codec missing"))? else {
+        return Err(MediaFileError::Unsupported("only AAC-LC audio is supported by this file profile"));
+    };
+    if raw.asc.len() > 4096 { return Err(MediaFileError::Limit("AAC configuration")); }
+    let config = skylive_aac::AudioSpecificConfig::parse(&raw.asc)
+        .map_err(|error| MediaFileError::Decode(error.to_string()))?;
+    if config.sbr || config.ps || config.frame_length_flag || !matches!(config.channel_config, 1 | 2) {
+        return Err(MediaFileError::Unsupported("only AAC-LC mono/stereo without SBR/PS is supported"));
+    }
+    let decoder = skylive_aac::Decoder::new(&raw.asc)
+        .map_err(|error| MediaFileError::Decode(error.to_string()))?;
+    let channels = decoder.channels() as u16;
+    let info = AudioFileInfo {
+        sample_rate: decoder.sample_rate(), channels,
+        channel_mask: if channels == 1 { 4 } else { 3 },
+        samples: track.samples.len(), duration_ns: duration(track.tkhd_duration, movie_timescale)?,
+    };
+    Ok((decoder, info))
 }
 /// Cumulative actual encoded-byte reads across sequential worker preparations.
 /// Shared Cell stays on the calling worker and is never sent to the GUI.
@@ -434,7 +463,9 @@ impl MediaFileReader {
             .map_err(|_| MediaFileError::Container("container parser invariant failed".into()))?
             .map_err(container)?;
         let mut video_track = None;
+        let mut first_video_error = None;
         let mut audio_track = None;
+        let mut first_audio_error = None;
         #[cfg(target_os="windows")] let mut native=None;
         let mut video = None;
         let mut audio = None;
@@ -450,27 +481,52 @@ impl MediaFileReader {
             match track.kind {
                 TrackKind::Video => {
                     if video_track.is_some() {
-                        return Err(MediaFileError::Unsupported(
-                            "multiple enabled video tracks require explicit track selection",
-                        ));
+                        // OBS sends only the selected video stream to its
+                        // decoder. Additional tracks must not reject a file
+                        // after a supported stream was already selected.
+                        // This profile currently chooses the first supported
+                        // enabled track rather than FFmpeg's best stream.
+                        continue;
                     }
+                    // Probe each enabled track independently. A rejected
+                    // decoder must release any reservation before the next
+                    // candidate; retain the first error if none is usable.
+                    let candidate = (|| -> Result<(), MediaFileError> {
                     check_track(track)?;
-                    if track.matrix != [65536, 0, 0, 0, 65536, 0, 0, 0, 1 << 30] {
-                        return Err(MediaFileError::Unsupported(
-                            "media display rotation or transform is unsupported",
-                        ));
-                    }
+                    // OBS media-playback forwards decoded frames without
+                    // applying the container display matrix. Preserve coded
+                    // dimensions and orientation here too: a phone recording
+                    // with rotation metadata must not make the source fail.
                     let params = track.video().ok_or(MediaFileError::Unsupported(
                         "video sample parameters missing",
                     ))?;
-                    if params.pixel_aspect.is_some_and(|(a, b)| a == 0 || a != b)
-                        || params.clean_aperture.is_some()
-                        || params.field_info.is_some()
+                    // OBS media-playback forwards the decoded frame's pixel
+                    // dimensions and does not apply sample-aspect metadata to
+                    // its source frame. Accept valid non-square pixels using
+                    // that same natural-pixel behaviour; malformed ratios are
+                    // still rejected rather than divided by zero downstream.
+                    if params.pixel_aspect.is_some_and(|(a, b)| a == 0 || b == 0)
+                        // A full-frame clean aperture with zero offsets has no
+                        // visual effect. Non-neutral apertures still need an
+                        // explicit crop/translation implementation.
+                        || params.clean_aperture.is_some_and(|aperture| {
+                            let (wn, wd) = aperture.width;
+                            let (hn, hd) = aperture.height;
+                            let (xo, xd) = aperture.horiz_offset;
+                            let (yo, yd) = aperture.vert_offset;
+                            wd == 0 || hd == 0 || xd == 0 || yd == 0 || xo != 0 || yo != 0
+                                || u64::from(wn) != u64::from(params.width) * u64::from(wd)
+                                || u64::from(hn) != u64::from(params.height) * u64::from(hd)
+                        })
+                        // QuickTime `fiel` is also written for progressive
+                        // pictures (field count 1). Only interlaced or
+                        // otherwise unknown counts require deinterlacing.
+                        || params.field_info.is_some_and(|field| field.fields != 1)
                         || params.mastering_display.is_some()
                         || params.content_light.is_some()
                     {
                         return Err(MediaFileError::Unsupported(
-                            "video aspect/aperture/interlace/HDR metadata requires unsupported processing",
+                            "invalid pixel aspect or video aperture/interlace/HDR metadata requires unsupported processing",
                         ));
                     }
                     let CodecConfig::Avc(config) = track
@@ -525,67 +581,59 @@ impl MediaFileReader {
                         duration_ns: duration(track.tkhd_duration, file.timescale)?,
                     });
                     video_track = Some(index);
+                    Ok(())
+                    })();
+                    if let Err(error) = candidate {
+                        video = None;
+                        video_info = None;
+                        video_credit = None;
+                        video_credit_pixels = 0;
+                        #[cfg(target_os="windows")] { native = None; }
+                        if first_video_error.is_none() { first_video_error = Some(error); }
+                    }
                 }
                 TrackKind::Audio => {
                     if audio_track.is_some() {
-                        return Err(MediaFileError::Unsupported(
-                            "multiple enabled audio tracks require explicit track selection",
-                        ));
+                        // OBS recordings commonly contain several enabled AAC
+                        // tracks. Play the first admitted track and leave the
+                        // others untouched, just as non-selected streams are
+                        // not sent to the decoder. The MP4 reader does not yet
+                        // expose FFmpeg's disposition/bitrate-based best-stream
+                        // selection or an explicit track selector.
+                        continue;
                     }
-                    check_track(track)?;
-                    let CodecConfig::Aac(config) = track
-                        .codec()
-                        .ok_or(MediaFileError::Unsupported("audio codec missing"))?
-                    else {
-                        return Err(MediaFileError::Unsupported(
-                            "only AAC-LC audio is supported by this file profile",
-                        ));
-                    };
-                    if config.asc.len() > 4096 {
-                        return Err(MediaFileError::Limit("AAC configuration"));
+                    match open_audio_track(track, file.timescale) {
+                        Ok((decoder, info)) => {
+                            audio_info = Some(info);
+                            audio_track = Some(index);
+                            audio = Some(decoder);
+                        }
+                        Err(error) => {
+                            // Keep the original diagnostic if no enabled track
+                            // can be admitted, while trying subsequent tracks.
+                            if first_audio_error.is_none() { first_audio_error = Some(error); }
+                        }
                     }
-                    let config = skylive_aac::AudioSpecificConfig::parse(&config.asc)
-                        .map_err(|e| MediaFileError::Decode(e.to_string()))?;
-                    if config.sbr
-                        || config.ps
-                        || config.frame_length_flag
-                        || !matches!(config.channel_config, 1 | 2)
-                    {
-                        return Err(MediaFileError::Unsupported(
-                            "only AAC-LC mono/stereo without SBR/PS is supported",
-                        ));
-                    }
-                    let CodecConfig::Aac(raw) = track
-                        .codec()
-                        .ok_or(MediaFileError::Unsupported("AAC configuration missing"))?
-                    else {
-                        return Err(MediaFileError::Unsupported("AAC configuration missing"));
-                    };
-                    let decoder = skylive_aac::Decoder::new(&raw.asc)
-                        .map_err(|e| MediaFileError::Decode(e.to_string()))?;
-                    if decoder.sample_rate() != track.timescale {
-                        return Err(MediaFileError::Unsupported(
-                            "AAC media timescale must equal sample rate",
-                        ));
-                    }
-                    let channels = decoder.channels() as u16;
-                    audio_info = Some(AudioFileInfo {
-                        sample_rate: decoder.sample_rate(),
-                        channels,
-                        channel_mask: if channels == 1 { 4 } else { 3 },
-                        samples: track.samples.len(),
-                        duration_ns: duration(track.tkhd_duration, file.timescale)?,
-                    });
-                    audio_track = Some(index);
-                    audio = Some(decoder);
                 }
                 _ => ignored += 1,
             }
         }
         if video_track.is_none() && audio.is_none() {
+            // OBS accepts media when either decoder can be opened. Preserve
+            // the first useful diagnostic if neither kind is playable.
+            if let Some(error) = first_video_error.or(first_audio_error) { return Err(error); }
             return Err(MediaFileError::Unsupported(
                 "file contains no enabled supported audio/video track",
             ));
+        }
+        // As in OBS, a valid audio or video stream remains playable when the
+        // other kind cannot be decoded. Keep the precise cause visible in the
+        // host log instead of failing the complete source silently.
+        if video_track.is_none() {
+            if let Some(error) = first_video_error { eprintln!("Media Source {path}: video disabled: {error}"); }
+        }
+        if audio_track.is_none() {
+            if let Some(error) = first_audio_error { eprintln!("Media Source {path}: audio disabled: {error}"); }
         }
         let info = MediaFileInfo {
             path,
@@ -648,6 +696,7 @@ impl MediaFileReader {
         bytes.ready_through(end).map_err(MediaFileError::Io)
     }
     pub(crate) fn is_growing(&self)->bool { matches!(&self.source.data,SourceData::Growing(_)) }
+    pub(crate) fn seek_ready(&self)->bool {match &self.source.data {SourceData::Growing(bytes)=>bytes.is_complete(),_=>true}}
     /// Recreate codec state at a preceding random-access point. Packet work
     /// remains bounded by next_video/next_audio; no decoded seek loop occurs here.
     pub fn seek(&mut self, position_ns: u64) -> Result<(), MediaFileError> {
@@ -915,10 +964,31 @@ impl MediaFileReader {
                 .pts
                 .checked_add(self.file.tracks[track].edit_offset)
                 .ok_or(MediaFileError::TimeOverflow)?;
-            let trim = usize::try_from(-i128::from(first).min(0))
+            // MP4 media timestamps use the track timescale, which is not
+            // necessarily the AAC sample rate. Convert both endpoints to the
+            // PCM clock before trimming or comparing against decoded frames.
+            let sample_rate = decoder.sample_rate();
+            let timescale = self.file.tracks[track].timescale;
+            let start_frame = (i128::from(first) * i128::from(sample_rate))
+                .div_euclid(i128::from(timescale));
+            let end_frame = ((i128::from(first) + i128::from(sample.duration))
+                * i128::from(sample_rate)).div_euclid(i128::from(timescale));
+            let trim = usize::try_from(-start_frame.min(0))
                 .map_err(|_| MediaFileError::TimeOverflow)?
                 .min(1024);
-            let count = (sample.duration as usize).min(1024);
+            let represented = (end_frame - start_frame).max(0);
+            // Coarse timebases quantize a full AAC packet duration (for
+            // example 21 ms at 48 kHz); do not discard its final samples just
+            // because the timestamp resolution is coarser than one sample.
+            let tick_samples = (u64::from(sample_rate) + u64::from(timescale) - 1)
+                / u64::from(timescale);
+            let count_frames = if represented >= 1024 || (tick_samples > 1 && represented + i128::from(tick_samples) >= 1024) {
+                1024
+            } else {
+                represented
+            };
+            let count = usize::try_from(count_frames)
+                .map_err(|_| MediaFileError::TimeOverflow)?;
             if trim >= count {
                 continue;
             }
@@ -928,12 +998,10 @@ impl MediaFileReader {
                     samples.push(plane[frame]);
                 }
             }
-            let sample_rate = decoder.sample_rate();
             return Ok(Some(DecodedFileAudio {
                 presentation_ns: timestamp(
-                    first
-                        .checked_add(trim as i64)
-                        .ok_or(MediaFileError::TimeOverflow)?,
+                    i64::try_from(start_frame + trim as i128)
+                        .map_err(|_| MediaFileError::TimeOverflow)?,
                     sample_rate,
                 )?,
                 sample_rate,

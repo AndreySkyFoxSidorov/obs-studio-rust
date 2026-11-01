@@ -53,6 +53,22 @@ pub struct CameraFrameLayout {
     pub format: CameraPixelFormat,
 }
 
+/// Decode already upsampled interleaved JPEG Y/Cb/Cr using the same SDR
+/// coefficients as camera YUV. The caller owns chroma reconstruction.
+pub fn ingest_ycbcr444(bytes:&[u8],width:u32,height:u32,matrix:CameraMatrix,range:CameraRange,limits:PackedFrameLimits)->Result<RgbaFrame,MediaError>{
+    if width==0 || height==0 || width>8192 || height>8192 {return Err(MediaError::InvalidDimensions);}
+    let pixels=u64::from(width)*u64::from(height);
+    let count=usize::try_from(pixels).map_err(|_|MediaError::Overflow)?;
+    let input=count.checked_mul(3).ok_or(MediaError::Overflow)?;
+    let output=count.checked_mul(4).ok_or(MediaError::Overflow)?;
+    if bytes.len()!=input {return Err(MediaError::InvalidBuffer);}
+    if pixels>33_554_432 || input>limits.max_input_bytes || output>limits.max_output_bytes || pixels>limits.max_pixel_visits {return Err(MediaError::BudgetExceeded);}
+    let mut rgba=Vec::new();rgba.try_reserve_exact(output).map_err(|_|MediaError::BudgetExceeded)?;
+    let coefficients=Coefficients::new(matrix,range);
+    for pixel in bytes.chunks_exact(3){let rgb=coefficients.convert(f64::from(pixel[0]),f64::from(pixel[1]),f64::from(pixel[2]));rgba.extend_from_slice(&[rgb[0],rgb[1],rgb[2],255]);}
+    RgbaFrame::new(width,height,rgba)
+}
+
 /// All backing bytes, including padding and extras, count against input limits.
 /// YUV is top-down only. Chroma uses linear/clamp sampling; horizontally
 /// cosited chroma has x/2 position, centered chroma x/2-1/4. 4:2:0 vertical chroma

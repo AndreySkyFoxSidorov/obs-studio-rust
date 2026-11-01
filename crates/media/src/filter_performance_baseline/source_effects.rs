@@ -14,7 +14,7 @@ pub fn source_effect_requirements(
     let mut chroma = 0u64;
     for effect in effects {
         match effect {
-            SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_)=>return Err(MediaError::InvalidBuffer),
+            SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_) | SourceVideoEffect::Mosaic(_)=>return Err(MediaError::InvalidBuffer),
             SourceVideoEffect::LumaKey(_) | SourceVideoEffect::Sharpen(_)=>return Err(MediaError::InvalidBuffer),
             SourceVideoEffect::Craft(e) => e.validate()?,
             SourceVideoEffect::ColorCorrection(e) => e.validate()?,
@@ -93,7 +93,7 @@ pub fn source_video_effects(
     let mut begin = 0;
     for (index, effect) in effects.iter().enumerate() {
         if let SourceVideoEffect::ChromaKey(settings) = effect {
-            mode = point_segment(&mut output, mode, &effects[begin..index])?;
+            mode = point_segment(&mut output, input.width() as usize, mode, &effects[begin..index])?;
             super::baseline_keyer::chroma_in_place(
                 &mut output,
                 input.width() as usize,
@@ -106,7 +106,7 @@ pub fn source_video_effects(
             begin = index + 1;
         }
     }
-    mode = point_segment(&mut output, mode, &effects[begin..])?;
+    mode = point_segment(&mut output, input.width() as usize, mode, &effects[begin..])?;
     Ok(SourceEffectFrame {
         image: RgbaFrame::new(input.width(), input.height(), output)?,
         blend: mode,
@@ -123,6 +123,7 @@ fn encoding(mode: SourceBlend) -> ColorCorrectionInput {
 }
 fn point_segment(
     output: &mut [u8],
+    width: usize,
     ingress: SourceBlend,
     effects: &[SourceVideoEffect],
 ) -> Result<SourceBlend, MediaError> {
@@ -140,7 +141,7 @@ fn point_segment(
             }
             _ => None,
         });
-    for pixel in output.chunks_exact_mut(4) {
+    for (pixel_index,pixel) in output.chunks_exact_mut(4).enumerate() {
         let mut bytes = [pixel[0], pixel[1], pixel[2], pixel[3]];
         let mut c = [0.0; 3];
         let mut alpha = 0.0;
@@ -148,7 +149,7 @@ fn point_segment(
         let mut mode = ingress;
         for (index, effect) in effects.iter().enumerate() {
             match effect {
-            SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_)=>return Err(MediaError::InvalidBuffer),
+            SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_) | SourceVideoEffect::Mosaic(_)=>return Err(MediaError::InvalidBuffer),
                 SourceVideoEffect::Craft(effect) => {
                     if !straight {
                         alpha = f32::from(bytes[3]) / 255.0;
@@ -165,7 +166,7 @@ fn point_segment(
                         });
                         straight = true;
                     }
-                    (c, alpha) = crate::craft_video::process_craft_pixel(c, alpha, effect);
+                    (c, alpha) = crate::craft_video::process_craft_pixel(c, alpha, effect, (pixel_index % width, pixel_index / width));
                 }
                 SourceVideoEffect::ColorCorrection(_) | SourceVideoEffect::ColorKey(_) => {
                     if straight {

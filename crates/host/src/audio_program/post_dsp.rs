@@ -114,6 +114,17 @@ impl Histories {
         self.lanes.retain(|lane| !matches!(&lane.binding,AudioInputKey::Ndi {source:id,..} if *id==source));
         self.cut_push_sidechain(source,frame);
     }
+    pub(super) fn invalidate_native(&mut self,binding:&skylive_core::AudioCaptureBinding,frame:u64)->Vec<Id>{
+        let mut sources=Vec::new();
+        self.lanes.retain(|lane| {
+            if matches!(&lane.binding,AudioInputKey::Native(current) if current==binding) {
+                if !sources.contains(&lane.source) {sources.push(lane.source);}
+                false
+            } else {true}
+        });
+        for source in &sources {self.cut_push_sidechain(*source,frame);}
+        sources
+    }
     pub(super) fn clear(&mut self){self.lanes.clear();self.actions.clear();self.serial=0;self.fair=0;self.sidechain_reserved=false;self.craft_reserved=0;self.neural_reserved=0;}
     pub(super) fn has_binding(&self,binding:&AudioInputKey)->bool{self.lanes.iter().any(|lane|&lane.binding==binding)}
     pub(super) fn has_source(&self,source:Id)->bool{self.lanes.iter().any(|lane|lane.source==source)}
@@ -149,10 +160,12 @@ impl Histories {
                 .is_some_and(|levels|levels.processing_epoch==lane.processing_epoch))else{continue;};
             let Some(levels)=lane.neural_levels else{continue;};
             let action=self.actions.iter().find(|row|row.source==lane.source).and_then(|row|row.events.last());
-            let gain=if push.silent(lane.source,lane.next){0.}else{action.map_or(1_f64,|action|if action.muted{0.}else{f64::from(action.gain)})};
+            let muted=action.is_some_and(|action|action.muted);
+            let gain=if push.silent(lane.source,lane.next)&&!muted{0.}else{action.map_or(1_f64,|action|f64::from(action.gain))};
             for(channel,meter)in meter.channels.iter_mut().enumerate(){
                 meter.peak=levels.peak[channel]*gain;meter.rms=levels.rms[channel]*gain;
             }
+            for(channel,peak) in meter.input_peaks.iter_mut().enumerate(){*peak=levels.peak[channel];}
         }
     }
     pub(super) fn has_delayed_source(&self,source:Id,binding:&AudioInputKey,epoch:u64)->bool{
@@ -368,6 +381,104 @@ impl Histories {
         }
         self.actions.sort_unstable_by_key(|row|row.source.get());
     }
+    /// Fill missing input on the requested Program grid. Never speculate past
+    /// the render horizon or replace native samples still waiting for DSP.
+    pub(super) fn service_generators_without_input(&mut self,groups:&HashMap<AudioInputKey,InputGroup>,
+        fences:&HashMap<AudioInputKey,InputFence>,push:&push_gate::Bank,end:u64,delayed_lookahead:u64)->Result<(),ProgramAudioError>{
+        let mut work=0usize;
+        let mut metadata=self.metadata();
+        let mut range_count=self.lanes.iter().map(|lane|lane.ranges.len()).sum::<usize>();
+        for index in 0..self.lanes.len(){
+            if !self.lanes[index].active{continue;}
+            let delayed=self.lanes[index].neural.is_some()||self.lanes[index].configs.iter().rfind(|config|config.effective<=self.lanes[index].next)
+                .is_some_and(|config|delayed_source::positions(&config.plan.sources()[0].filters).next().is_some());
+            if delayed{
+                // Use the same bounded producer and publication path as native
+                // PCM, with silence admitted only up to this render horizon.
+                let delayed_end=end.checked_add(delayed_lookahead).ok_or(ProgramAudioError::TimeOverflow)?;
+                for _ in 0..PROCESS_BLOCKS{
+                    let step=self.service_delayed_lane(index,groups,fences,64*1024*1024-work,push,Some(delayed_end))?;
+                    work=work.checked_add(step.work).filter(|n|*n<=64*1024*1024).ok_or(ProgramAudioError::Limit("Craft generator work overflow"))?;
+                    if !step.advanced||work==64*1024*1024{break;}
+                    let lane=&self.lanes[index];
+                    if lane.neural.is_none()&&lane.configs.iter().rfind(|config|config.effective<=lane.next)
+                        .is_none_or(|config|delayed_source::positions(&config.plan.sources()[0].filters).next().is_none()){break;}
+                }
+                continue;
+            }
+            let group=groups.get(&self.lanes[index].binding);
+            if group.is_some_and(|group|group.ring.end()>i128::from(self.lanes[index].next)){continue;}
+            let position=self.lanes[index].next.max(self.lanes[index].retired_before);
+            let Some(initial)=self.lanes[index].configs.iter().rfind(|config|config.effective<=position)else{continue;};
+            if !initial.plan.sources()[0].filters.iter().any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..})){continue;}
+            if self.lanes[index].next<position{
+                let lane=&mut self.lanes[index];lane.next=position;lane.dsp.reset();lane.native_epoch=None;
+            }
+            while self.lanes[index].next<end{
+                let lane=&self.lanes[index];
+                if group.is_some_and(|group|group.ring.end()>i128::from(lane.next)){break;}
+                let Some(config_index)=lane.configs.iter().rposition(|config|config.effective<=lane.next)else{break;};
+                let config=&lane.configs[config_index];
+                let filters=&config.plan.sources()[0].filters;
+                if !filters.iter().any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..}))
+                    ||delayed_source::positions(filters).next().is_some(){break;}
+                let at=lane.next;
+                let mut count=usize::try_from((end-at).min(1024)).map_err(|_|ProgramAudioError::TimeOverflow)?;
+                if let Some(next)=lane.configs.get(config_index+1){count=count.min(usize::try_from(next.effective-at).map_err(|_|ProgramAudioError::TimeOverflow)?);}
+                if let Some(stop)=lane.stop{count=count.min(usize::try_from(stop.saturating_sub(at)).map_err(|_|ProgramAudioError::TimeOverflow)?);}
+                if count==0{break;}
+                let until=at.checked_add(count as u64).ok_or(ProgramAudioError::TimeOverflow)?;
+                let store_start=at.max(lane.retired_before);
+                if store_start<until&&!lane.ring.can_place(i128::from(store_start),(until-store_start) as usize){break;}
+                let next_work=count.checked_mul(config.plan.craft_work_per_frame()).and_then(|value|work.checked_add(value))
+                    .ok_or(ProgramAudioError::Limit("Craft generator work overflow"))?;
+                if next_work>64*1024*1024{break;}work=next_work;
+                let native_epoch=group.map_or(0,|group|group.dsp_epoch);
+                let generation=group.map_or(0,|group|group.generation);
+                let epoch=if lane.native_epoch==Some(native_epoch){lane.processing_epoch}else{lane.processing_epoch.checked_add(1)
+                    .ok_or(ProgramAudioError::Limit("source processing epoch exhausted"))?};
+                let original=group.map_or(NativeAudioFormat{sample_rate:lane.settings.sample_rate(),channels:lane.settings.channels(),channel_mask:0},|group|group.format);
+                let merges=lane.ranges.last().is_some_and(|range|range.input_packet.is_none()&&range.lineage==Lineage::default()
+                    &&range.end==store_start&&range.config==config.serial&&range.revision==config.revision
+                    &&range.native_epoch==native_epoch&&range.generation==generation&&range.processing_epoch==epoch&&range.original==original);
+                let stores=store_start<until;
+                if stores&&!merges{
+                    if range_count==MAX_RANGES||metadata.checked_add(std::mem::size_of::<Produced>()).is_none_or(|value|value>MAX_METADATA){
+                        return Err(ProgramAudioError::Backpressure("processed source scope receipts"));
+                    }
+                    let lane=&mut self.lanes[index];let before=lane.ranges.capacity();
+                    lane.ranges.try_reserve_exact(1).map_err(|_|ProgramAudioError::Limit("processed source receipt allocation"))?;
+                    metadata=metadata.checked_add((lane.ranges.capacity()-before)*std::mem::size_of::<Produced>())
+                        .filter(|value|*value<=MAX_METADATA).ok_or(ProgramAudioError::Limit("processed source receipt storage"))?;
+                }
+                let lane=&self.lanes[index];let config=&lane.configs[config_index];
+                let action=self.actions.iter().find(|row|row.source==lane.source).and_then(|row|row.events.last());
+                let muted=action.is_some_and(|event|event.muted);
+                let signal=SignalStamp{lineage:Lineage::default(),session:lane.session,source:Some(lane.source),scope:lane.signal_scope,
+                    epoch:lane.source_epoch,native_epoch,generation,processing_epoch:epoch,config:config.serial,
+                    revision:config.revision,control:action.map_or(0,|event|event.revision),muted,start:at};
+                for (other_index,other) in self.lanes.iter().enumerate(){if other_index!=index{other.dsp.check_signal(signal,count)?;}}
+                let lane=&mut self.lanes[index];let config=&lane.configs[config_index];
+                let channels=usize::from(lane.settings.channels());let mut samples=vec![0.0;count*channels];
+                if lane.native_epoch.is_some_and(|old|old!=native_epoch){lane.dsp.reset();}
+                config.plan.process_converted_source(AudioMixRequest{sample_rate:lane.settings.sample_rate(),channels:lane.settings.channels(),frames:count,advance_ns:0},
+                    at,group.map(|group|group.converter.input_format()),&mut samples,&mut lane.dsp)?;
+                if stores{
+                    let offset=(store_start-at) as usize;
+                    lane.ring.place(i128::from(store_start),&samples[offset*channels..],false)?;
+                    if merges{lane.ranges.last_mut().unwrap().end=until;}else{
+                        lane.ranges.push(Produced{input_packet:None,lineage:Lineage::default(),start:store_start,end:until,config:config.serial,
+                            revision:config.revision,native_epoch,generation,processing_epoch:epoch,original});range_count+=1;
+                    }
+                }
+                lane.native_epoch=Some(native_epoch);lane.processing_epoch=epoch;lane.next=until;
+                if lane.detector_only{lane.ring.discard_before(i128::from(until));lane.ranges.clear();lane.retired_before=until;}
+                for (offset,frame) in samples.chunks_exact_mut(channels).enumerate(){if push.silent(signal.source.expect("source signal"),at+offset as u64){frame.fill(0.0);}}
+                for (other_index,other) in self.lanes.iter_mut().enumerate(){if other_index!=index{other.dsp.publish_signal(signal,&samples,muted);}}
+            }
+        }
+        Ok(())
+    }
     /// Fair bounded service on the existing audio owner. Every successful block
     /// moves one source input cursor exactly once. Consumers never call filters.
     pub(super) fn service(&mut self,groups:&HashMap<AudioInputKey,InputGroup>,fences:&HashMap<AudioInputKey,InputFence>,push:&push_gate::Bank)->Result<(),ProgramAudioError>{
@@ -389,7 +500,7 @@ impl Histories {
             let delayed=self.lanes[index].neural.is_some()||self.lanes[index].configs.iter().rfind(|config|config.effective<=self.lanes[index].next)
                 .is_some_and(|config|delayed_source::positions(&config.plan.sources()[0].filters).next().is_some());
             if delayed{
-                let step=self.service_delayed_lane(index,groups,fences,64*1024*1024-craft_work,push)?;
+                let step=self.service_delayed_lane(index,groups,fences,64*1024*1024-craft_work,push,None)?;
                 craft_work=craft_work.checked_add(step.work).filter(|n|*n<=64*1024*1024).ok_or(ProgramAudioError::Limit("combined source filter work"))?;
                 meta=self.metadata();ranges=self.lanes.iter().map(|lane|lane.ranges.len()).sum();
                 blocks+=1;if step.advanced{idle=0;}else{idle+=1;}continue;
@@ -407,7 +518,9 @@ impl Histories {
             }
             let Some(group)=groups.get(&lane.binding)else{idle+=1;continue;};
             let Some(head)=group.ring.queue_head()else{idle+=1;continue;};
-            if i128::from(lane.next)<head{
+            let generator_before_head=lane.active&&lane.configs.iter().rfind(|config|config.effective<=lane.next)
+                .is_some_and(|config|config.plan.sources()[0].filters.iter().any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..})));
+            if i128::from(lane.next)<head&&!generator_before_head{
                 lane.next=u64::try_from(head.max(0)).map_err(|_|ProgramAudioError::TimeOverflow)?;
                 lane.processing_epoch=lane.processing_epoch.checked_add(1).ok_or(ProgramAudioError::Limit("source processing epoch exhausted"))?;lane.dsp.reset();
             }
@@ -418,8 +531,16 @@ impl Histories {
             if let Some(next)=lane.configs.get(config_index+1){frames=frames.min(usize::try_from(next.effective-lane.next).map_err(|_|ProgramAudioError::TimeOverflow)?);}
             if let Some(stop)=lane.stop{frames=frames.min(usize::try_from(stop.saturating_sub(lane.next)).map_err(|_|ProgramAudioError::TimeOverflow)?);}
             if frames==0{idle+=1;continue;}
-            let Some((skip,actual))=group.ring.valid_run(i128::from(lane.next),frames)else{
-                lane.next=lane.next.checked_add(frames as u64).ok_or(ProgramAudioError::TimeOverflow)?;blocks+=1;idle=0;continue;
+            let generator=lane.active&&lane.configs[config_index].plan.sources()[0].filters.iter()
+                .any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..}));
+            // Feed silent PCM through the actual chain during native gaps. A
+            // generator can create signal there and stateful filters must see
+            // the same continuous sample timeline as the generated signal.
+            let (skip,actual,synthetic)=match group.ring.valid_run(i128::from(lane.next),frames){
+                Some((skip,_)) if skip>0&&generator=>(0,skip,true),
+                Some((skip,actual))=>(skip,actual,false),
+                None if generator=>(0,frames,true),
+                None=>{lane.next=lane.next.checked_add(frames as u64).ok_or(ProgramAudioError::TimeOverflow)?;blocks+=1;idle=0;continue;}
             };
             lane.next=lane.next.checked_add(skip as u64).ok_or(ProgramAudioError::TimeOverflow)?;
             let start=lane.next;let end=start.checked_add(actual as u64).ok_or(ProgramAudioError::TimeOverflow)?;
@@ -450,8 +571,10 @@ impl Histories {
             if signal_active{for (other_index,other) in self.lanes.iter().enumerate(){if other_index!=index{other.dsp.check_signal(signal,actual)?;}}}
             let lane=&mut self.lanes[index];let config=&lane.configs[config_index];
             let mut samples=vec![0.0;actual*channels];
-            let missing=group.ring.read(i128::from(start),actual,&mut samples)?;
-            if missing!=0{return Err(ProgramAudioError::Invalid("admitted source input lost validity"));}
+            if !synthetic{
+                let missing=group.ring.read(i128::from(start),actual,&mut samples)?;
+                if missing!=0{return Err(ProgramAudioError::Invalid("admitted source input lost validity"));}
+            }
             if lane.native_epoch.is_some_and(|old|old!=group.dsp_epoch){lane.dsp.reset();}
             config.plan.process_converted_source(AudioMixRequest {sample_rate:lane.settings.sample_rate(),channels:lane.settings.channels(),frames:actual,advance_ns:0},
                 start,Some(group.converter.input_format()),&mut samples,&mut lane.dsp)?;

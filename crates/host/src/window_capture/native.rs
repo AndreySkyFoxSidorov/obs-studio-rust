@@ -3,6 +3,10 @@ use super::WindowCaptureBackend;
 #[cfg(target_os = "windows")]
 #[path = "native_windows.rs"]
 mod platform;
+#[cfg(target_os = "windows")]
+pub(crate) fn top_level_inventory() -> Result<Vec<super::WindowInfo>,super::WindowCaptureError> {
+    platform::top_level_inventory()
+}
 #[cfg(target_os = "macos")]
 #[path = "native_macos.rs"]
 mod platform;

@@ -98,12 +98,12 @@ impl AudioPlan {
         let plan=self.processed_output_plan();let mut state=AudioDspState::default();
         plan.mix_grid_state_track(request,inputs,AudioMixLimits::default(),start,&mut state,Some(actions),track,false,None)
     }
-    /// Optional post-DSP/post-gain source-sample tap for a caller-owned meter.
+    /// Optional post-DSP source-sample tap, before and after gain, for meters.
     /// The callback is invoked only during evaluation and is not a commit or
     /// presentation acknowledgement. Callers must stage its state and publish
     /// it only if the complete mix succeeds. No extra PCM buffer is allocated.
     pub(crate) fn mix_processed_on_grid_metered(&self,request:AudioMixRequest,inputs:&[PcmInput<'_>],start:u64,
-        actions:&dyn Fn(Id,u64)->Option<(f32,bool)>,tap:&mut dyn FnMut(Id,u64,usize,f64))->Result<MixedAudio,AudioError>{
+        actions:&dyn Fn(Id,u64)->Option<(f32,bool)>,tap:&mut dyn FnMut(Id,u64,usize,f64,f64))->Result<MixedAudio,AudioError>{
         let plan=self.processed_output_plan();let mut state=AudioDspState::default();
         plan.mix_grid_state_track(request,inputs,AudioMixLimits::default(),start,&mut state,Some(actions),skylive_core::AudioTrackId::ONE,true,Some(tap))
     }
@@ -121,7 +121,7 @@ impl AudioPlan {
     fn mix_grid_state_track(&self,request:AudioMixRequest,inputs:&[PcmInput<'_>],limits:AudioMixLimits,
         start_frame:u64,state:&mut AudioDspState,actions:Option<&dyn Fn(Id,u64)->Option<(f32,bool)>>,
         track:skylive_core::AudioTrackId,include_monitor:bool,
-        mut meter_tap:Option<&mut dyn FnMut(Id,u64,usize,f64)>)->Result<MixedAudio,AudioError>{
+        mut meter_tap:Option<&mut dyn FnMut(Id,u64,usize,f64,f64)>)->Result<MixedAudio,AudioError>{
         if !(8000..=192000).contains(&request.sample_rate) {
             return Err(AudioError::InvalidRequest(
                 "sample rate must be 8000..192000 Hz",
@@ -266,6 +266,7 @@ impl AudioPlan {
         let mut source_work = allocate_vec(sample_count, 0.0f32)?;
         let mut envelope_work = allocate_vec(request.frames, 0.0f32)?;
         let mut source_peaks = [[0.0f64; MAX_AUDIO_CHANNELS]; MAX_AUDIO_INPUTS];
+        let mut source_input_peaks = [[0.0f64; MAX_AUDIO_CHANNELS]; MAX_AUDIO_INPUTS];
         let mut source_squares = [[0.0f64; MAX_AUDIO_CHANNELS]; MAX_AUDIO_INPUTS];
         for (index, source) in self.sources.iter().enumerate() {
             let input = &inputs[positions[index].ok_or(AudioError::MissingInput(source.source))?];
@@ -275,13 +276,20 @@ impl AudioPlan {
             ))?;
             let process = !source.filters.is_empty() || !transform.is_bypassed();
             if samples.is_none() && source.filters.is_empty() {
+                // Metered mixing still needs a complete, contiguous silent
+                // block for every admitted source. Omitting this tap makes
+                // True Peak reject the entire Program mix when an active
+                // device has not produced a packet yet.
+                if let Some(tap)=meter_tap.as_mut() {
+                    for frame in 0..request.frames {
+                        for channel in 0..channels {
+                            tap(source.source,start_frame+frame as u64,channel,0.0,0.0);
+                        }
+                    }
+                }
                 continue;
             }
-            let gain = if source.muted {
-                0.0
-            } else {
-                f64::from(source.gain)
-            };
+            let gain = f64::from(source.gain);
             if process {
                 match samples {
                     Some(samples) => source_work.copy_from_slice(samples),
@@ -299,11 +307,11 @@ impl AudioPlan {
                 }
             }
             for (frame, factors) in weights.iter().enumerate() {
-                let gain=if let Some((gain,muted))=actions.and_then(|actions|actions(source.source,start_frame+frame as u64)) {
+                let (meter_gain, muted)=if let Some((gain,muted))=actions.and_then(|actions|actions(source.source,start_frame+frame as u64)) {
                     if !gain.is_finite()||gain<0.0{return Err(AudioError::InvalidRequest("invalid timestamped source volume"));}
-                    if muted{0.0}else{f64::from(gain)}
-                }else{gain};
-                let weight = if source.monitoring==skylive_core::AudioMonitoringMode::MonitorOnly {0.0}else{source.routes.weight(*factors)};
+                    (f64::from(gain),muted)
+                }else{(gain,source.muted)};
+                let weight = if source.monitoring==skylive_core::AudioMonitoringMode::MonitorOnly {0.0}else{source.output_weight(*factors)};
                 for channel in 0..channels {
                     let position = frame * channels + channel;
                     let input = if process {
@@ -311,10 +319,14 @@ impl AudioPlan {
                     } else {
                         samples.map_or(0., |s| s[position])
                     };
-                    let value = f64::from(input) * gain;
-                    if let Some(tap)=meter_tap.as_mut(){tap(source.source,start_frame+frame as u64,channel,value);}
-                    source_peaks[index][channel] = source_peaks[index][channel].max(value.abs());
-                    source_squares[index][channel] += value * value;
+                    // OBS keeps the source meter alive when the user mutes the
+                    // source, while still applying the fader to its indication.
+                    let meter_value = f64::from(input) * meter_gain;
+                    source_input_peaks[index][channel] = source_input_peaks[index][channel].max(f64::from(input).abs());
+                    let value = if muted { 0.0 } else { meter_value };
+                    if let Some(tap)=meter_tap.as_mut(){tap(source.source,start_frame+frame as u64,channel,f64::from(input),meter_value);}
+                    source_peaks[index][channel] = source_peaks[index][channel].max(meter_value.abs());
+                    source_squares[index][channel] += meter_value * meter_value;
                     let track_weight=if source.properties.audio_tracks().contains(track){weight}else{0.0};
                     accumulation[position] += value * track_weight;
                     if include_monitor&&!source.monitoring.is_off() {monitor_accumulation[position]+=value;}
@@ -344,6 +356,7 @@ impl AudioPlan {
         for (index, source) in self.sources.iter().enumerate() {
             source_meters.push(SourceMeter {
                 source: source.source,
+                input_peaks: source_input_peaks[index][..channels].to_vec(),
                 channels: meters(
                     &source_peaks[index],
                     &source_squares[index],
@@ -428,8 +441,9 @@ fn accounted_bytes(
         (frames, size_of::<(f32, f32)>()),
         (sources, size_of::<SourceMeter>()),
         (sources * channels + channels, size_of::<ChannelMeter>()),
+        (sources * channels, size_of::<f64>()),
         (channels, size_of::<usize>()),
-        (MAX_AUDIO_INPUTS * MAX_AUDIO_CHANNELS * 2, size_of::<f64>()),
+        (MAX_AUDIO_INPUTS * MAX_AUDIO_CHANNELS * 3, size_of::<f64>()),
         (MAX_AUDIO_INPUTS, size_of::<Option<usize>>()),
         (MAX_AUDIO_CHANNELS * 2, size_of::<f64>()),
         (MAX_AUDIO_CHANNELS, size_of::<usize>()),

@@ -208,6 +208,12 @@ pub(crate) fn static_mask_stages(plans:&[Plan],upstream:&[skylive_core::VideoFil
                 index+=1;found_delay=true;break;
             }
             match filter.effect {
+                // A zero-duration async delay is a no-op, not a stage
+                // boundary. Keep it in the proof's upstream chain but do not
+                // create a queue or a processed-resource marker for it.
+                skylive_core::VideoEffect::AsyncVideoDelay {delay_ms:0}=>{},
+                // OBS bypasses Render Delay when the requested delay is zero.
+                skylive_core::VideoEffect::RenderDelay {delay_ms:0}=>{},
                 skylive_core::VideoEffect::ImageMask {..}=>if filter.mask_image().is_some(){
                     let id=filter.id().ok_or("camera mask identity missing")?;
                     ids.push(id);operations.push(ResourceOp::Mask(id));outputs.push(current_dimensions);chain_blend=skylive_media::SourceBlend::PremultipliedLinearSrgb;

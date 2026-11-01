@@ -78,6 +78,47 @@ impl TextCache {
         self.files.clear();
         self.bytes = 0;
     }
+    // Do not evict a raster still held by the renderer: its allocation would
+    // remain live even after removing the cache's reference. Preserve file
+    // frames waiting for a transient read retry as well.
+    fn evict_one(&mut self) -> bool {
+        let static_key = self.entries.iter().find(|(_, value)| match value {
+            Ok(image) => Arc::strong_count(image) == 1,
+            Err(_) => true,
+        }).map(|(key, _)| key.clone());
+        if let Some(key) = static_key {
+            if let Some(Ok(image)) = self.entries.remove(&key) {
+                self.bytes = self.bytes.saturating_sub(image.byte_len());
+            }
+            return true;
+        }
+        let file_key = self.files.iter().filter(|(_, entry)| {
+            entry.transient.is_none() && match &entry.value {
+                Ok(image) => Arc::strong_count(image) == 1,
+                Err(_) => true,
+            }
+        }).min_by_key(|(_, entry)| entry.checked).map(|(key, _)| key.clone());
+        if let Some(key) = file_key {
+            if let Some(FileEntry { value: Ok(image), .. }) = self.files.remove(&key) {
+                self.bytes = self.bytes.saturating_sub(image.byte_len());
+            }
+            return true;
+        }
+        false
+    }
+    fn make_room_for_key(&mut self) {
+        if self.entries.len().saturating_add(self.files.len()) >= skylive_core::MAX_SOURCES {
+            self.evict_one();
+        }
+    }
+    fn make_room_for_raster(&mut self, size: usize, remaining: usize) {
+        let budget = MAX_TEXT_CACHE_BYTES.min(remaining);
+        // An intrinsically oversized raster cannot be admitted by eviction.
+        if size > budget { return; }
+        while self.bytes.saturating_add(size) > budget {
+            if !self.evict_one() { break; }
+        }
+    }
     /// Last complete raster for the same authored file and text settings.
     /// Used only while a transient read is retried; callers retain diagnostics.
     pub(crate) fn previous_file_frame(&self, settings: &TextSource) -> Option<Arc<RgbaFrame>> {
@@ -95,9 +136,13 @@ impl TextCache {
         if let Some(value) = self.entries.get(settings) {
             return value.clone();
         }
+        self.make_room_for_key();
+        if self.entries.len().saturating_add(self.files.len()) >= skylive_core::MAX_SOURCES {
+            return Err(limit("text_source_count", "Too many cached text sources."));
+        }
         let size = settings.width() as usize * settings.height() as usize * 4;
-        let value = if self.entries.len().saturating_add(self.files.len()) >= skylive_core::MAX_SOURCES
-            || self.bytes.saturating_add(size) > MAX_TEXT_CACHE_BYTES
+        self.make_room_for_raster(size, remaining);
+        let value = if self.bytes.saturating_add(size) > MAX_TEXT_CACHE_BYTES
             || self.bytes.saturating_add(size) > remaining
         {
             Err(limit(
@@ -110,8 +155,18 @@ impl TextCache {
         if let Ok(image) = &value {
             self.bytes += image.byte_len();
         }
-        // At most MAX_SOURCES input-derived keys, including cached errors.
-        if self.entries.len().saturating_add(self.files.len()) < skylive_core::MAX_SOURCES {
+        // Per-render admission and font I/O can recover on the next frame.
+        // Caching those failures would hide a text source indefinitely even
+        // after the shared budget or the linked font becomes available.
+        let retryable = match &value {
+            Err(error) => error.kind == crate::resource_issue::ResourceIssueKind::Unavailable
+                || fonts.exhausted()
+                || matches!(error.code, "text_raster_budget" | "text_outline_limit" | "text_shape_admission"),
+            Ok(_) => false,
+        };
+        // At most MAX_SOURCES input-derived keys, including permanent errors.
+        if self.entries.len().saturating_add(self.files.len()) < skylive_core::MAX_SOURCES
+            && !retryable {
             self.entries.insert(settings.clone(), value.clone());
         }
         value
@@ -123,8 +178,11 @@ impl TextCache {
                 return match &entry.transient { Some(error) => Err(error.clone()), None => entry.value.clone() };
             }
         }
-        if !self.files.contains_key(settings) && self.files.len().saturating_add(self.entries.len())>=skylive_core::MAX_SOURCES {
-            return Err(limit("text_file_count", "Too many cached text sources."));
+        if !self.files.contains_key(settings) {
+            self.make_room_for_key();
+            if self.files.len().saturating_add(self.entries.len()) >= skylive_core::MAX_SOURCES {
+                return Err(limit("text_file_count", "Too many cached text sources."));
+            }
         }
         let content=read_file_text(settings,text_reads);
         // Writers often replace files atomically or hold a Windows sharing
@@ -152,6 +210,7 @@ impl TextCache {
         drop(old);
         let size=settings.width() as usize*settings.height() as usize*4;
         let text=content.as_ref().ok().cloned();
+        if content.is_ok() { self.make_room_for_raster(size, remaining); }
         let result=if self.bytes.saturating_add(size)>MAX_TEXT_CACHE_BYTES || self.bytes.saturating_add(size)>remaining {
             Err(limit("text_raster_budget", "text raster cache exceeds admitted render bytes"))
         } else {

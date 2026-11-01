@@ -2,8 +2,19 @@
 use super::{CameraDraft, VideoCaptureMode, mode_label};
 use eframe::egui;
 use skylive_core::CameraFpsPolicy;
-use skylive_host::camera_capture::{CameraModeRecommendations, best_camera_resolution_mode, highest_camera_frame_rate, camera_frame_rate_matching_project};
+use skylive_host::camera_capture::{CameraModeRecommendations, best_camera_resolution_mode, highest_camera_frame_rate, camera_frame_rate_matching_project, resolve_camera_any_format};
 use std::collections::BTreeSet;
+
+// Media Foundation drivers can report the same rate using different exact
+// rationals (for example 30/1 and 60/2). Compare their values without
+// rounding or overflowing u32, but keep the original native mode intact.
+fn same_rate(a: (u32, u32), b: (u32, u32)) -> bool {
+    u64::from(a.0) * u64::from(b.1) == u64::from(b.0) * u64::from(a.1)
+}
+pub(super) fn same_native_mode(a: VideoCaptureMode, b: VideoCaptureMode) -> bool {
+    a.width() == b.width() && a.height() == b.height() && a.format() == b.format()
+        && same_rate((a.fps_num(), a.fps_den()), (b.fps_num(), b.fps_den()))
+}
 
 pub(super) fn select_resolution(draft: &mut CameraDraft, width: u32, height: u32) {
     // Preserve the chosen native format where the new resolution supports it.
@@ -16,33 +27,38 @@ pub(super) fn select_resolution(draft: &mut CameraDraft, width: u32, height: u32
     });
     if let Some(mode) = preferred.or_else(|| best_camera_resolution_mode(&draft.modes, width, height).ok().flatten()) {
         draft.selected_mode = Some(mode);
+        // The user has explicitly replaced an unresolvable imported OBS
+        // Custom mode. Do not keep warning that its opaque settings are
+        // retained when Apply will commit this newly selected mode instead.
+        draft.custom_obs = None;
     }
 }
 pub(super) fn select_rate(draft: &mut CameraDraft, num: u32, den: u32) {
     let Some(previous) = draft.selected_mode else {
         return;
     };
+    // Choosing the displayed representative of an equivalent rate must not
+    // replace the selected driver's exact rational with a different one.
+    if same_rate((previous.fps_num(), previous.fps_den()), (num, den)) {
+        draft.fps_policy = CameraFpsPolicy::Fixed;
+        draft.custom_obs = None;
+        return;
+    }
     let matches = |mode: VideoCaptureMode| {
         mode.width() == previous.width()
             && mode.height() == previous.height()
-            && mode.fps_num() == num
-            && mode.fps_den() == den
+            && same_rate((mode.fps_num(), mode.fps_den()), (num, den))
     };
-    let selected = draft
-        .modes
-        .iter()
-        .filter_map(|info| info.mode)
+    // OBS filters the FPS list by the selected video format. A different
+    // format can expose the same resolution/rate, but silently switching to
+    // it when choosing FPS changes the capture contract and can alter quality.
+    let selected = draft.modes.iter().filter_map(|info| info.mode)
         .find(|mode| matches(*mode) && mode.format() == previous.format())
-        .or_else(|| {
-            draft
-                .modes
-                .iter()
-                .filter_map(|info| info.mode)
-                .find(|mode| matches(*mode))
-        });
+        .or_else(||if draft.any_format {draft.modes.iter().filter_map(|info|info.mode).find(|mode|matches(*mode))}else{None});
     if let Some(mode) = selected {
         draft.selected_mode = Some(mode);
         draft.fps_policy = CameraFpsPolicy::Fixed;
+        draft.custom_obs = None;
     }
 }
 fn rate_label(ui: &egui::Ui, num: u32, den: u32) -> String {
@@ -78,8 +94,8 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
                 "Select an actual reported 1920 × 1080 mode with its exact frame rate and format. No resolution or frame rate is invented."),
         ];
         match super::super::modal_footer::show(ui, &actions) {
-            Some(0) => { draft.selected_mode = recommended; draft.fps_policy = CameraFpsPolicy::Fixed; },
-            Some(1) => { draft.selected_mode = full_hd; draft.fps_policy = CameraFpsPolicy::Fixed; },
+            Some(0) => { draft.selected_mode = recommended; draft.fps_policy = CameraFpsPolicy::Fixed; draft.any_format=false; draft.custom_obs = None; },
+            Some(1) => { draft.selected_mode = full_hd; draft.fps_policy = CameraFpsPolicy::Fixed; draft.any_format=false; draft.custom_obs = None; },
             _ => {}
         }
     });
@@ -128,6 +144,7 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
         .filter(|mode| {
             selected.is_some_and(|chosen| {
                 chosen.width() == mode.width() && chosen.height() == mode.height()
+                    && (draft.any_format || chosen.format() == mode.format())
             })
         })
         .map(|mode| (mode.fps_num(), mode.fps_den()))
@@ -139,8 +156,14 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
             .cmp(&(u64::from(a.0) * u64::from(b.1)))
             .then_with(|| a.cmp(b))
     });
-    let project_rate_mode = selected.and_then(|current|
-        camera_frame_rate_matching_project(&draft.modes,current,project_fps.0,project_fps.1).ok().flatten());
+    rates.dedup_by(|a, b| same_rate(*a, *b));
+    let project_rate_mode = selected.and_then(|current| {
+        if draft.any_format {
+            resolve_camera_any_format(&draft.modes,current,CameraFpsPolicy::MatchOutput,project_fps).ok().flatten()
+        } else {
+            camera_frame_rate_matching_project(&draft.modes,current,project_fps.0,project_fps.1).ok().flatten()
+        }
+    });
     let name = ui.label(crate::i18n::tr(ui, "Frame rate"));
     ui.add_enabled_ui(available && !rates.is_empty(), |ui| {
         egui::ComboBox::from_id_salt("camera-frame-rate")
@@ -168,15 +191,20 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
                 ui.separator();
                 ui.add_enabled_ui(project_rate_mode.is_some(), |ui| {
                     if ui.selectable_label(false, crate::i18n::tr_key_or(ui, "SkyLive.Camera.MatchProjectFpsOnce", "Match project FPS once"))
-                        .on_hover_text(crate::i18n::tr_key_or(ui, "SkyLive.Camera.MatchProjectFpsFixedHint", "Choose the reported frame interval closest to the current project FPS, keeping the selected resolution and format. This saves a fixed camera mode."))
-                        .clicked() { draft.selected_mode=project_rate_mode; draft.fps_policy=CameraFpsPolicy::Fixed; }
+                        .on_hover_text(if draft.any_format {crate::i18n::tr_key_or(ui,"SkyLive.Camera.AnyFormatHelp","Choose any supported format at the selected resolution and frame rate when opening the camera.")} else {crate::i18n::tr_key_or(ui, "SkyLive.Camera.MatchProjectFpsFixedHint", "Choose the reported frame interval closest to the current project FPS, keeping the selected resolution and format. This saves a fixed camera mode.")})
+                        .clicked() { draft.selected_mode=project_rate_mode; draft.fps_policy=CameraFpsPolicy::Fixed; draft.custom_obs=None; }
                 });
                 if ui.selectable_label(false, crate::i18n::tr_key_or(ui, "SkyLive.Camera.SelectHighestFpsOnce", "Select highest FPS once"))
-                    .on_hover_text(crate::i18n::tr_key_or(ui, "SkyLive.Camera.HighestFixedHint", "Select the highest reported frame rate for the current resolution and format. This selects a fixed mode."))
+                    .on_hover_text(if draft.any_format {crate::i18n::tr_key_or(ui,"SkyLive.Camera.AnyFormatHelp","Choose any supported format at the selected resolution and frame rate when opening the camera.")} else {crate::i18n::tr_key_or(ui, "SkyLive.Camera.HighestFixedHint", "Select the highest reported frame rate for the current resolution and format. This selects a fixed mode.")})
                     .clicked() {
                         if let Some(current)=selected {
-                            match highest_camera_frame_rate(&draft.modes,current) {
-                                Ok(Some(mode)) => { draft.selected_mode=Some(mode); draft.fps_policy=CameraFpsPolicy::Fixed; },
+                            let result=if draft.any_format {
+                                resolve_camera_any_format(&draft.modes,current,CameraFpsPolicy::Highest,project_fps)
+                            } else {
+                                highest_camera_frame_rate(&draft.modes,current)
+                            };
+                            match result {
+                                Ok(Some(mode)) => { draft.selected_mode=Some(mode); draft.fps_policy=CameraFpsPolicy::Fixed; draft.custom_obs=None; },
                                 Ok(None) => {},
                                 Err(error) => draft.error=Some(error.to_string()),
                             }
@@ -187,7 +215,7 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
                     if ui
                         .selectable_label(
                             draft.fps_policy==CameraFpsPolicy::Fixed && selected
-                                .is_some_and(|mode| (mode.fps_num(), mode.fps_den()) == (num, den)),
+                                .is_some_and(|mode| same_rate((mode.fps_num(), mode.fps_den()), (num, den))),
                             rate_label(ui, num, den),
                         )
                         .on_hover_text(crate::i18n::tr(
@@ -218,9 +246,12 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
     let name = ui.label(crate::i18n::tr(ui, "Video format"));
     ui.add_enabled_ui(available && selected.is_some(), |ui| {
         egui::ComboBox::from_id_salt("camera-pixel-format")
-            .selected_text(selected.map_or_else(|| crate::i18n::tr(ui, "Select mode"), |mode| mode_label(ui, mode)))
+            .selected_text(if draft.any_format {crate::i18n::tr_key_or(ui,"Module.win-dshow.VideoFormat.Any","Any")}else{selected.map_or_else(|| crate::i18n::tr(ui, "Select mode"), |mode| mode_label(ui, mode))})
             .width(ui.available_width().min(450.0)).truncate().show_ui(ui, |ui| {
                 if let Some(current) = selected {
+                    if matches!(draft.platform,crate::platform::CapturePlatform::Windows) && ui.selectable_label(draft.any_format,crate::i18n::tr_key_or(ui,"Module.win-dshow.VideoFormat.Any","Any"))
+                        .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.AnyFormatHelp","Choose any supported format at the selected resolution and frame rate when opening the camera."))
+                        .clicked(){draft.any_format=true;draft.custom_obs=None;}
                     let mut shown = std::collections::HashSet::new();
                     for info in &draft.modes {
                         if (info.width, info.height) != (current.width(), current.height()) { continue; }
@@ -232,9 +263,9 @@ pub(super) fn show(ui: &mut egui::Ui, draft: &mut CameraDraft, project_fps:(u32,
                         let Some(mode) = camera_frame_rate_matching_project(&draft.modes, candidate,
                             current.fps_num(), current.fps_den()).ok().flatten() else { continue; };
                         let label = mode_label(ui, mode);
-                        if ui.selectable_label(current.format() == mode.format(), &label)
+                        if ui.selectable_label(!draft.any_format && current.format() == mode.format(), &label)
                             .on_hover_text(crate::i18n::tr(ui, "Select an actual native pixel format and its reported color metadata."))
-                            .clicked() { draft.selected_mode = Some(mode); }
+                            .clicked() { draft.selected_mode = Some(mode); draft.any_format=false; draft.custom_obs = None; }
                     }
                     for info in draft.modes.iter().filter(|info| info.mode.is_none()
                         && (info.width, info.height, info.fps_num, info.fps_den)

@@ -7,7 +7,7 @@ pub(super) struct Step {pub advanced:bool,pub work:usize}
 
 impl Histories {
     pub(super) fn service_delayed_lane(&mut self,index:usize,groups:&HashMap<AudioInputKey,InputGroup>,
-        fences:&HashMap<AudioInputKey,InputFence>,credit:usize,push:&push_gate::Bank)->Result<Step,ProgramAudioError>{
+        fences:&HashMap<AudioInputKey,InputFence>,credit:usize,push:&push_gate::Bank,generator_horizon:Option<u64>)->Result<Step,ProgramAudioError>{
         // Ready PCM has already completed its exact point/model chain. Publish
         // it once before changing structure; explicit seek/privacy fences clear
         // the affected actor separately, never retag an old ready packet.
@@ -20,7 +20,9 @@ impl Histories {
         // retirement cannot invalidate that private pre-cut drain.
         if !lane.neural_eof{
           if let Some(head)=group.and_then(|group|group.ring.queue_head()){
-            if i128::from(lane.next)<head{
+            let generator=lane.active&&lane.configs.iter().rfind(|config|config.effective<=lane.next)
+                .is_some_and(|config|config.plan.sources()[0].filters.iter().any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..})));
+            if i128::from(lane.next)<head&&!generator{
                 lane.next=u64::try_from(head.max(0)).map_err(|_|ProgramAudioError::TimeOverflow)?;
                 lane.neural=None;lane.neural_original=None;lane.neural_levels=None;lane.neural_floor=lane.next.max(lane.retired_before);
                 lane.dsp.reset();
@@ -38,18 +40,29 @@ impl Histories {
             lane.processing_epoch=lane.processing_epoch.checked_add(1).ok_or(ProgramAudioError::Limit("source processing epoch exhausted"))?;
             return Ok(Step{advanced:true,work:0});
         }
-        let available=group.map_or(0,|group|(group.ring.end()-i128::from(lane.next)).max(0));
+        let generator=lane.active&&lane.configs[config_index].plan.sources()[0].filters.iter()
+            .any(|filter|matches!(filter,skylive_core::AudioFilter::CraftSignalGenerator{enabled:true,..}));
+        let native_available=group.map_or(0,|group|(group.ring.end()-i128::from(lane.next)).max(0));
+        let synthetic_available=if generator{generator_horizon.map_or(0,|end|i128::from(end.saturating_sub(lane.next)))}else{0};
+        let available=native_available.max(synthetic_available);
         let stopped=!lane.active&&lane.stop.is_none_or(|stop|lane.next>=stop);
         if lane.neural_eof&&lane.neural.is_none(){
-            let fresh=lane.active&&available>0&&group.is_some_and(|group|lane.native_epoch!=Some(group.dsp_epoch));
+            let fresh=lane.active&&available>0&&(generator&&generator_horizon.is_some()
+                ||group.is_some_and(|group|lane.native_epoch!=Some(group.dsp_epoch)));
             if fresh{lane.neural_eof=false;}else{return Ok(Step{advanced:false,work:0});}
         }
-        let native_ended=available==0&&fences.get(&lane.binding).is_some_and(|fence|fence.sealed);
+        let native_ended=!generator&&available==0&&fences.get(&lane.binding).is_some_and(|fence|fence.sealed);
+        let native_format=group.map_or(NativeAudioFormat{sample_rate:lane.settings.sample_rate(),channels:lane.settings.channels(),channel_mask:0},|group|group.format);
+        let original=if let Some(group)=group{group.converter.input_format()}else{
+            skylive_media::AudioFormat::new(native_format.sample_rate,native_format.channels,native_format.channel_mask)
+                .map_err(crate::audio::AudioError::Media)?
+        };
+        let native_epoch=group.map_or(0,|group|group.dsp_epoch);
+        let generation=group.map_or(0,|group|group.generation);
         if available>0&&!stopped&&!lane.neural_eof{
-            let group=group.ok_or(ProgramAudioError::Invalid("delayed source native group missing"))?;
             let mut scope=Scope{session:lane.session,source:lane.source,binding_scope:lane.signal_scope,
-                source_epoch:lane.source_epoch,native_epoch:group.dsp_epoch,generation:group.generation,
-                processing_epoch:lane.processing_epoch,original:group.converter.input_format()};
+                source_epoch:lane.source_epoch,native_epoch,generation,
+                processing_epoch:lane.processing_epoch,original};
             let filters=&lane.configs[config_index].plan.sources()[0].filters;
             if lane.neural.as_ref().is_none_or(|chain|!chain.matches(filters,scope)){
                 let next_epoch=lane.processing_epoch.checked_add(1).ok_or(ProgramAudioError::Limit("source processing epoch exhausted"))?;
@@ -59,9 +72,9 @@ impl Histories {
                 // before timeline/route publication or this first allocation.
                 if needed.bytes>self.neural_reserved{return Err(ProgramAudioError::Limit("RNNoise source lacks prepared actor credit"));}
                 let replacement=SourceChain::new(lane.settings,filters,scope,needed.bytes)?;
-                lane.neural=Some(replacement);lane.neural_original=Some(group.format);lane.neural_levels=None;
+                lane.neural=Some(replacement);lane.neural_original=Some(native_format);lane.neural_levels=None;
                 lane.neural_floor=lane.next.max(lane.retired_before);lane.processing_epoch=next_epoch;
-                lane.native_epoch=Some(group.dsp_epoch);lane.dsp.reset();
+                lane.native_epoch=Some(native_epoch);lane.dsp.reset();
             }else if let Some(chain)=&mut lane.neural{chain.update_shape(filters);}
         }
         // Deactivation closes this SourceID's producer, independently of a
@@ -91,15 +104,19 @@ impl Histories {
         if step.progress==Progress::WorkLimit||chain.input_ended()||available==0||stopped{
             return Ok(Step{advanced:false,work:step.work});
         }
-        let group=group.ok_or(ProgramAudioError::Invalid("delayed source input group missing"))?;
         let mut frames=usize::try_from(available.min(1024)).map_err(|_|ProgramAudioError::TimeOverflow)?;
         if let Some(next)=lane.configs.get(config_index+1){frames=frames.min(usize::try_from(next.effective.saturating_sub(lane.next)).map_err(|_|ProgramAudioError::TimeOverflow)?);}
         if let Some(stop)=lane.stop{frames=frames.min(usize::try_from(stop.saturating_sub(lane.next)).map_err(|_|ProgramAudioError::TimeOverflow)?);}
         if frames==0{return Ok(Step{advanced:false,work:step.work});}
-        let Some((skip,actual))=group.ring.valid_run(i128::from(lane.next),frames)else{
-            lane.next=lane.next.checked_add(frames as u64).ok_or(ProgramAudioError::TimeOverflow)?;
-            lane.neural=None;lane.neural_original=None;lane.neural_levels=None;lane.neural_floor=lane.next.max(lane.retired_before);
-            lane.dsp.reset();return Ok(Step{advanced:true,work:step.work});
+        let (skip,actual,synthetic)=match group.and_then(|group|group.ring.valid_run(i128::from(lane.next),frames)){
+            Some((skip,_)) if skip>0&&generator=>(0,skip,true),
+            Some((skip,actual))=>(skip,actual,false),
+            None if generator=>(0,frames,true),
+            None=>{
+                lane.next=lane.next.checked_add(frames as u64).ok_or(ProgramAudioError::TimeOverflow)?;
+                lane.neural=None;lane.neural_original=None;lane.neural_levels=None;lane.neural_floor=lane.next.max(lane.retired_before);
+                lane.dsp.reset();return Ok(Step{advanced:true,work:step.work});
+            }
         };
         if skip!=0{
             lane.next=lane.next.checked_add(skip as u64).ok_or(ProgramAudioError::TimeOverflow)?;
@@ -108,8 +125,8 @@ impl Histories {
         }
         let start=lane.next;let end=start.checked_add(actual as u64).ok_or(ProgramAudioError::TimeOverflow)?;
         let scope=Scope{session:lane.session,source:lane.source,binding_scope:lane.signal_scope,
-            source_epoch:lane.source_epoch,native_epoch:group.dsp_epoch,generation:group.generation,
-            processing_epoch:lane.processing_epoch,original:group.converter.input_format()};
+            source_epoch:lane.source_epoch,native_epoch,generation,
+            processing_epoch:lane.processing_epoch,original};
         let stamp=InputStamp{scope,start:i128::from(start),config:config.serial,revision:config.revision,packet:0};
         match chain.admit_input(stamp,actual){
             Ok(())=>{},Err(crate::audio::AudioError::NoiseSuppression(crate::audio::noise_suppression::Error::Backpressure))=>return Ok(Step{advanced:false,work:step.work}),
@@ -120,10 +137,10 @@ impl Histories {
         if point_work>credit{return Ok(Step{advanced:false,work:step.work});}
         let channels=usize::from(lane.settings.channels());
         let mut samples=vec![0_f32;actual*channels];
-        if group.ring.read(i128::from(start),actual,&mut samples)?!=0{return Err(ProgramAudioError::Invalid("admitted delayed input lost validity"));}
+        if !synthetic&&group.ok_or(ProgramAudioError::Invalid("delayed source input group missing"))?.ring.read(i128::from(start),actual,&mut samples)?!=0{return Err(ProgramAudioError::Invalid("admitted delayed input lost validity"));}
         let source_plan=&config.plan.sources()[0];
         let transform=skylive_media::SourceChannelTransform::new(skylive_media::SourceChannelSettings{
-            force_mono:source_plan.properties.force_mono(),balance:source_plan.properties.balance()},Some(group.converter.input_format()),lane.settings.channels())
+            force_mono:source_plan.properties.force_mono(),balance:source_plan.properties.balance()},Some(original),lane.settings.channels())
             .map_err(crate::audio::AudioError::Media)?;
         let mut candidate=lane.dsp.clone();
         let mut envelope=[0_f32;1024];
@@ -133,7 +150,7 @@ impl Histories {
         };
         chain.push(stamp,&samples,&mut point)?;
         candidate.finish(start,actual)?;lane.dsp=candidate;
-        lane.next=end;lane.native_epoch=Some(group.dsp_epoch);
+        lane.next=end;lane.native_epoch=Some(native_epoch);
         Ok(Step{advanced:true,work:point_work})
     }
 

@@ -111,13 +111,21 @@ pub enum ObsExpanderPreset {
 #[serde(try_from = "AudioFilterData", tag = "kind", rename_all = "snake_case")]
 pub enum AudioFilter {
     ObsNoiseSuppression { enabled: bool },
+    CraftTimeShift{delay_ms:f32,delay_samples:u32,enabled:bool},
     CraftDither{bits:u8,noise_shaping:bool,enabled:bool},
+    CraftRingMod{frequency_hz:f32,mix_pct:f32,#[serde(skip_serializing_if="ring_zero_u8")]mode:u8,#[serde(skip_serializing_if="ring_default_resonance_value")]resonance_pct:f32,#[serde(skip_serializing_if="ring_zero_u8")]mod_source:u8,#[serde(skip_serializing_if="ring_default_rate_value")]mod_rate_hz:f32,#[serde(skip_serializing_if="ring_zero_f32")]mod_depth_pct:f32,enabled:bool},
+    CraftEq1{kind:u8,frequency_hz:f32,gain_db:f32,q:f32,output_db:f32,enabled:bool},
     CraftRectifier{full_wave:bool,mix_pct:f32,output_db:f32,enabled:bool},
     CraftDcRemoval{cutoff_hz:f32,enabled:bool},
+    CraftSignalGenerator{wave:u8,frequency_hz:f32,level_db:f32,enabled:bool},
+    CraftPitch{semitones:f32,cents:f32,mix_pct:f32,enabled:bool},
+    CraftMaximizer{threshold_db:f32,ceiling_db:f32,release_ms:f32,enabled:bool},
+    CraftDeEsser{frequency_hz:f32,range_db:f32,threshold_db:f32,listen:bool,enabled:bool},
     CraftLoFi{bits:f32,sample_rate:f32,noise_pct:f32,mix_pct:f32,enabled:bool},
     CraftSaturator{drive_db:f32,bias_pct:f32,tone_hz:f32,mix_pct:f32,output_db:f32,enabled:bool},
-    CraftModDelay{time_ms:f32,feedback_pct:f32,mix_pct:f32,mod_rate_hz:f32,mod_depth_pct:f32,lowpass_hz:f32,enabled:bool},
+    CraftModDelay{time_ms:f32,feedback_pct:f32,mix_pct:f32,mod_rate_hz:f32,mod_depth_pct:f32,lowpass_hz:f32,#[serde(skip_serializing_if="ring_zero_u8")]mode:u8,#[serde(skip_serializing_if="delay_is_default_spread")]stereo_spread:f32,#[serde(skip_serializing_if="phaser_is_default_stages")]phaser_stages:u8,enabled:bool},
     CraftFdnReverb{predelay_ms:f32,decay_seconds:f32,damping_pct:f32,size_pct:f32,mix_pct:f32,enabled:bool},
+    CraftSoundReverb{plate:bool,predelay_ms:f32,decay_seconds:f32,size_pct:f32,damping_hz:f32,diffusion_pct:f32,width_pct:f32,lowcut_hz:f32,mix_pct:f32,enabled:bool},
     ObsThreeBandEq { low_db:f32,mid_db:f32,high_db:f32,enabled:bool },
     ObsUpwardCompressor {
         threshold_db:f32,ratio:f32,attack_ms:u32,release_ms:u32,output_db:f32,knee_db:u32,
@@ -203,13 +211,21 @@ pub enum AudioFilter {
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 enum AudioFilterData {
     ObsNoiseSuppression { #[serde(default="enabled_filter")] enabled: bool },
+    CraftTimeShift{delay_ms:f32,delay_samples:u32,#[serde(default="enabled_filter")]enabled:bool},
     CraftDither{bits:u8,noise_shaping:bool,#[serde(default="enabled_filter")]enabled:bool},
+    CraftRingMod{frequency_hz:f32,mix_pct:f32,#[serde(default)]mode:u8,#[serde(default="ring_default_resonance")]resonance_pct:f32,#[serde(default)]mod_source:u8,#[serde(default="ring_default_rate")]mod_rate_hz:f32,#[serde(default)]mod_depth_pct:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftEq1{kind:u8,frequency_hz:f32,gain_db:f32,q:f32,output_db:f32,#[serde(default="enabled_filter")]enabled:bool},
     CraftRectifier{full_wave:bool,mix_pct:f32,output_db:f32,#[serde(default="enabled_filter")]enabled:bool},
     CraftDcRemoval{cutoff_hz:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftSignalGenerator{wave:u8,frequency_hz:f32,level_db:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftPitch{semitones:f32,cents:f32,mix_pct:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftMaximizer{threshold_db:f32,ceiling_db:f32,release_ms:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftDeEsser{frequency_hz:f32,range_db:f32,threshold_db:f32,listen:bool,#[serde(default="enabled_filter")]enabled:bool},
     CraftLoFi{bits:f32,sample_rate:f32,noise_pct:f32,mix_pct:f32,#[serde(default="enabled_filter")]enabled:bool},
     CraftSaturator{drive_db:f32,bias_pct:f32,tone_hz:f32,mix_pct:f32,output_db:f32,#[serde(default="enabled_filter")]enabled:bool},
-    CraftModDelay{time_ms:f32,feedback_pct:f32,mix_pct:f32,mod_rate_hz:f32,mod_depth_pct:f32,lowpass_hz:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftModDelay{time_ms:f32,feedback_pct:f32,mix_pct:f32,mod_rate_hz:f32,mod_depth_pct:f32,lowpass_hz:f32,#[serde(default)]mode:u8,#[serde(default="delay_default_spread")]stereo_spread:f32,#[serde(default="phaser_default_stages")]phaser_stages:u8,#[serde(default="enabled_filter")]enabled:bool},
     CraftFdnReverb{predelay_ms:f32,decay_seconds:f32,damping_pct:f32,size_pct:f32,mix_pct:f32,#[serde(default="enabled_filter")]enabled:bool},
+    CraftSoundReverb{plate:bool,predelay_ms:f32,decay_seconds:f32,size_pct:f32,damping_hz:f32,diffusion_pct:f32,width_pct:f32,lowcut_hz:f32,mix_pct:f32,#[serde(default="enabled_filter")]enabled:bool},
     ObsThreeBandEq {
         #[serde(default)] low_db:f32,
         #[serde(default)] mid_db:f32,
@@ -312,21 +328,40 @@ enum AudioFilterData {
 fn enabled_filter() -> bool {
     true
 }
+fn delay_default_spread()->f32{100.0}
+fn delay_is_default_spread(value:&f32)->bool{*value==100.0}
+fn phaser_default_stages()->u8{6}
+fn phaser_is_default_stages(value:&u8)->bool{*value==6}
+fn ring_default_resonance()->f32{50.0}
+fn ring_default_rate()->f32{1.0}
+fn ring_default_resonance_value(value:&f32)->bool{*value==50.0}
+fn ring_default_rate_value(value:&f32)->bool{*value==1.0}
+fn ring_zero_u8(value:&u8)->bool{*value==0}
+fn ring_zero_f32(value:&f32)->bool{*value==0.0}
 impl TryFrom<AudioFilterData> for AudioFilter {
     type Error = Error;
     fn try_from(value: AudioFilterData) -> Result<Self, Error> {
         let filter = match value {
             AudioFilterData::ObsNoiseSuppression {enabled} => Self::ObsNoiseSuppression {enabled},
-            AudioFilterData::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,enabled}
-                =>Self::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,enabled},
+            AudioFilterData::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,mode,stereo_spread,phaser_stages,enabled}
+                =>Self::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,mode,stereo_spread,phaser_stages,enabled},
+            AudioFilterData::CraftTimeShift{delay_ms,delay_samples,enabled}=>Self::CraftTimeShift{delay_ms,delay_samples,enabled},
             AudioFilterData::CraftDither{bits,noise_shaping,enabled}=>Self::CraftDither{bits,noise_shaping,enabled},
+            AudioFilterData::CraftEq1{kind,frequency_hz,gain_db,q,output_db,enabled}=>Self::CraftEq1{kind,frequency_hz,gain_db,q,output_db,enabled},
             AudioFilterData::CraftRectifier{full_wave,mix_pct,output_db,enabled}=>Self::CraftRectifier{full_wave,mix_pct,output_db,enabled},
+            AudioFilterData::CraftRingMod{frequency_hz,mix_pct,mode,resonance_pct,mod_source,mod_rate_hz,mod_depth_pct,enabled}=>Self::CraftRingMod{frequency_hz,mix_pct,mode,resonance_pct,mod_source,mod_rate_hz,mod_depth_pct,enabled},
             AudioFilterData::CraftDcRemoval{cutoff_hz,enabled}=>Self::CraftDcRemoval{cutoff_hz,enabled},
+            AudioFilterData::CraftSignalGenerator{wave,frequency_hz,level_db,enabled}=>Self::CraftSignalGenerator{wave,frequency_hz,level_db,enabled},
+            AudioFilterData::CraftPitch{semitones,cents,mix_pct,enabled}=>Self::CraftPitch{semitones,cents,mix_pct,enabled},
+            AudioFilterData::CraftMaximizer{threshold_db,ceiling_db,release_ms,enabled}=>Self::CraftMaximizer{threshold_db,ceiling_db,release_ms,enabled},
+            AudioFilterData::CraftDeEsser{frequency_hz,range_db,threshold_db,listen,enabled}=>Self::CraftDeEsser{frequency_hz,range_db,threshold_db,listen,enabled},
             AudioFilterData::CraftLoFi{bits,sample_rate,noise_pct,mix_pct,enabled}=>Self::CraftLoFi{bits,sample_rate,noise_pct,mix_pct,enabled},
             AudioFilterData::CraftSaturator{drive_db,bias_pct,tone_hz,mix_pct,output_db,enabled}
                 =>Self::CraftSaturator{drive_db,bias_pct,tone_hz,mix_pct,output_db,enabled},
             AudioFilterData::CraftFdnReverb{predelay_ms,decay_seconds,damping_pct,size_pct,mix_pct,enabled}
                 =>Self::CraftFdnReverb{predelay_ms,decay_seconds,damping_pct,size_pct,mix_pct,enabled},
+            AudioFilterData::CraftSoundReverb{plate,predelay_ms,decay_seconds,size_pct,damping_hz,diffusion_pct,width_pct,lowcut_hz,mix_pct,enabled}
+                =>Self::CraftSoundReverb{plate,predelay_ms,decay_seconds,size_pct,damping_hz,diffusion_pct,width_pct,lowcut_hz,mix_pct,enabled},
 
             AudioFilterData::ObsThreeBandEq {low_db,mid_db,high_db,enabled}=>Self::ObsThreeBandEq {low_db,mid_db,high_db,enabled},
             AudioFilterData::ObsUpwardCompressor {threshold_db,ratio,attack_ms,release_ms,output_db,knee_db,detector,enabled}
@@ -471,17 +506,46 @@ impl Default for AudioFilter {
     }
 }
 impl AudioFilter {
+    /// Window used by the SoundCraft pitch processor, in project samples.
+    /// Keep admission, DSP and latency reporting on the same integer grid.
+    pub fn craft_pitch_window_frames(rate:u32)->u64 {
+        ((u64::from(rate)*50+500)/1000).max(16)
+    }
+    /// Lookahead ring length used by the Craft Maximizer, in project samples.
+    pub fn craft_maximizer_lookahead_frames(rate:u32)->u64 {
+        ((u64::from(rate)*15+5000)/10000).max(1)
+    }
+    /// Conservative processing-delay interval for effects with explicit
+    /// delay lines. Pitch's wet heads move continuously; it is not a fixed
+    /// timestamp offset. None means no latency claim for this filter.
+    pub fn craft_delay_bounds_frames(&self,rate:u32)->Option<(u64,u64)> {
+        if rate==0{return None;}
+        match self {
+            Self::CraftTimeShift{delay_ms,delay_samples,enabled}=>{let n=if *enabled {((f64::from(*delay_ms)*f64::from(rate)/1000.0).round() as u64).saturating_add(u64::from(*delay_samples))}else{0};Some((n,n))},
+            Self::CraftPitch{enabled:false,..}|Self::CraftMaximizer{enabled:false,..}=>Some((0,0)),
+            Self::CraftPitch{..}=>Some((1,Self::craft_pitch_window_frames(rate).saturating_add(2))),
+            Self::CraftMaximizer{..}=>{let n=Self::craft_maximizer_lookahead_frames(rate);Some((n,n))},
+            _=>None,
+        }
+    }
     /// Reset an owned settings draft, retaining the filter's bypass state.
     pub fn reset_settings(&mut self){
         let enabled=self.enabled_mut().map(|value|*value);
         let mut defaults=match *self{
             Self::ObsNoiseSuppression{..}=>Self::obs_noise_suppression(),
+            Self::CraftTimeShift{..}=>Self::craft_time_shift(),
             Self::CraftDither{..}=>Self::craft_dither(),
+            Self::CraftRingMod{..}=>Self::craft_ring_mod(),
+            Self::CraftEq1{..}=>Self::craft_eq1(),
             Self::CraftRectifier{..}=>Self::craft_rectifier(),
             Self::CraftDcRemoval{..}=>Self::craft_dc_removal(),
+            Self::CraftSignalGenerator{..}=>Self::craft_signal_generator(),
+            Self::CraftPitch{..}=>Self::craft_pitch(),
+            Self::CraftMaximizer{..}=>Self::craft_maximizer(),
+            Self::CraftDeEsser{..}=>Self::craft_de_esser(),
             Self::CraftLoFi{..}=>Self::craft_lofi(),
             Self::CraftSaturator{..}=>Self::craft_saturator(),
-            Self::CraftModDelay{..}=>Self::craft_mod_delay(),Self::CraftFdnReverb{..}=>Self::craft_fdn_reverb(),
+            Self::CraftModDelay{..}=>Self::craft_mod_delay(),Self::CraftFdnReverb{..}=>Self::craft_fdn_reverb(),Self::CraftSoundReverb{..}=>Self::craft_sound_reverb(),
             Self::ObsThreeBandEq{..}=>Self::obs_three_band_eq(),
             Self::ObsUpwardCompressor{..}=>Self::obs_upward_compressor(),
             Self::ObsNoiseGate{..}=>Self::obs_noise_gate(),Self::ObsLimiter{..}=>Self::obs_limiter(),
@@ -495,7 +559,7 @@ impl AudioFilter {
     }
     fn enabled_mut(&mut self)->Option<&mut bool>{match self{
         Self::ObsNoiseSuppression{enabled}=>Some(enabled),
-        Self::CraftModDelay{enabled,..}|Self::CraftFdnReverb{enabled,..}|Self::CraftSaturator{enabled,..}|Self::CraftLoFi{enabled,..}|Self::CraftDcRemoval{enabled,..}|Self::CraftRectifier{enabled,..}|Self::CraftDither{enabled,..}=>Some(enabled),
+        Self::CraftSignalGenerator{enabled,..}|Self::CraftTimeShift{enabled,..}|Self::CraftPitch{enabled,..}|Self::CraftMaximizer{enabled,..}|Self::CraftDeEsser{enabled,..}|Self::CraftRingMod{enabled,..}|Self::CraftModDelay{enabled,..}|Self::CraftFdnReverb{enabled,..}|Self::CraftSoundReverb{enabled,..}|Self::CraftSaturator{enabled,..}|Self::CraftLoFi{enabled,..}|Self::CraftDcRemoval{enabled,..}|Self::CraftEq1{enabled,..}|Self::CraftRectifier{enabled,..}|Self::CraftDither{enabled,..}=>Some(enabled),
         Self::ObsThreeBandEq{enabled,..}|Self::ObsUpwardCompressor{enabled,..}|
         Self::ObsNoiseGate{enabled,..}|Self::ObsLimiter{enabled,..}|Self::ObsCompressor{enabled,..}|
         Self::ObsExpander{enabled,..}|Self::ObsGain{enabled,..}|Self::ObsPolarityInvert{enabled,..}|
@@ -503,13 +567,21 @@ impl AudioFilter {
         Self::Pan{..}=>None,
     }}
     pub fn obs_noise_suppression()->Self{Self::ObsNoiseSuppression{enabled:true}}
+    pub fn craft_time_shift()->Self{Self::CraftTimeShift{delay_ms:0.0,delay_samples:0,enabled:true}}
     pub fn craft_dither()->Self{Self::CraftDither{bits:16,noise_shaping:false,enabled:true}}
+    pub fn craft_ring_mod()->Self{Self::CraftRingMod{frequency_hz:440.0,mix_pct:100.0,mode:0,resonance_pct:50.0,mod_source:0,mod_rate_hz:1.0,mod_depth_pct:0.0,enabled:true}}
+    pub fn craft_eq1()->Self{Self::CraftEq1{kind:0,frequency_hz:1000.0,gain_db:0.0,q:1.0,output_db:0.0,enabled:true}}
     pub fn craft_rectifier()->Self{Self::CraftRectifier{full_wave:true,mix_pct:100.0,output_db:0.0,enabled:true}}
     pub fn craft_dc_removal()->Self{Self::CraftDcRemoval{cutoff_hz:5.0,enabled:true}}
+    pub fn craft_signal_generator()->Self{Self::CraftSignalGenerator{wave:0,frequency_hz:1000.0,level_db:-20.0,enabled:true}}
+    pub fn craft_pitch()->Self{Self::CraftPitch{semitones:0.,cents:0.,mix_pct:100.,enabled:true}}
+    pub fn craft_maximizer()->Self{Self::CraftMaximizer{threshold_db:0.,ceiling_db:-0.3,release_ms:50.,enabled:true}}
+    pub fn craft_de_esser()->Self{Self::CraftDeEsser{frequency_hz:6000.,range_db:10.,threshold_db:-30.,listen:false,enabled:true}}
     pub fn craft_lofi()->Self{Self::CraftLoFi{bits:8.,sample_rate:11025.,noise_pct:0.,mix_pct:100.,enabled:true}}
     pub fn craft_saturator()->Self{Self::CraftSaturator{drive_db:6.0,bias_pct:0.0,tone_hz:20000.0,mix_pct:100.0,output_db:0.0,enabled:true}}
-    pub fn craft_mod_delay()->Self{Self::CraftModDelay{time_ms:250.,feedback_pct:30.,mix_pct:30.,mod_rate_hz:0.5,mod_depth_pct:0.,lowpass_hz:12000.,enabled:true}}
+    pub fn craft_mod_delay()->Self{Self::CraftModDelay{time_ms:250.,feedback_pct:30.,mix_pct:30.,mod_rate_hz:0.5,mod_depth_pct:0.,lowpass_hz:12000.,mode:0,stereo_spread:100.,phaser_stages:6,enabled:true}}
     pub fn craft_fdn_reverb()->Self{Self::CraftFdnReverb{predelay_ms:20.,decay_seconds:2.,damping_pct:40.,size_pct:50.,mix_pct:25.,enabled:true}}
+    pub fn craft_sound_reverb()->Self{Self::CraftSoundReverb{plate:false,predelay_ms:10.,decay_seconds:1.2,size_pct:50.,damping_hz:6000.,diffusion_pct:70.,width_pct:100.,lowcut_hz:20.,mix_pct:25.,enabled:true}}
     pub fn obs_three_band_eq()->Self{Self::ObsThreeBandEq {low_db:0.0,mid_db:0.0,high_db:0.0,enabled:true}}
     pub fn obs_upward_compressor()->Self{
         Self::ObsUpwardCompressor {threshold_db:-20.,ratio:0.5,attack_ms:10,release_ms:50,output_db:0.,knee_db:10,detector:ObsExpanderDetector::Rms,enabled:true}
@@ -616,7 +688,7 @@ impl AudioFilter {
             | Self::ObsNoiseGate { .. }
             | Self::ObsUpwardCompressor { .. }
             | Self::ObsExpander { .. } => crate::OBS_VIDEO_FILTERS_PLUGIN,
-            Self::CraftDither{..}|Self::CraftRectifier{..}|Self::CraftDcRemoval{..}|Self::CraftLoFi{..}|Self::CraftModDelay{..}|Self::CraftFdnReverb{..}|Self::CraftSaturator{..}|Self::Compressor { .. } | Self::Gate { .. } | Self::SimpleEq { .. } => {
+            Self::CraftSignalGenerator{..}|Self::CraftTimeShift{..}|Self::CraftPitch{..}|Self::CraftMaximizer{..}|Self::CraftDeEsser{..}|Self::CraftRingMod{..}|Self::CraftDither{..}|Self::CraftEq1{..}|Self::CraftRectifier{..}|Self::CraftDcRemoval{..}|Self::CraftLoFi{..}|Self::CraftModDelay{..}|Self::CraftFdnReverb{..}|Self::CraftSoundReverb{..}|Self::CraftSaturator{..}|Self::Compressor { .. } | Self::Gate { .. } | Self::SimpleEq { .. } => {
                 CRAFT_AUDIO_PLUGIN
             }
         }
@@ -627,9 +699,16 @@ impl AudioFilter {
     pub fn validate(&self) -> Result<(), Error> {
         match *self {
             Self::ObsNoiseSuppression {..} => {},
+            Self::CraftRingMod{frequency_hz,mix_pct,mode,resonance_pct,mod_source,mod_rate_hz,mod_depth_pct,..}=>{if !frequency_hz.is_finite() || !(20.0..=5000.0).contains(&frequency_hz) || !mix_pct.is_finite() || !(0.0..=100.0).contains(&mix_pct) || mode>3 || mod_source>2 || !resonance_pct.is_finite() || !(0.0..=95.0).contains(&resonance_pct) || !mod_rate_hz.is_finite() || !(0.05..=20.0).contains(&mod_rate_hz) || !mod_depth_pct.is_finite() || !(0.0..=100.0).contains(&mod_depth_pct){return Err(Error::Invalid("Craft Ring Mod parameters outside range"));}},
+            Self::CraftTimeShift{delay_ms,delay_samples,..}=>{if !delay_ms.is_finite() || !(0.0..=1000.0).contains(&delay_ms) || delay_samples>10000{return Err(Error::Invalid("Craft Time Shift delay must be 0..1000 ms and 0..10000 samples"));}},
             Self::CraftDither{bits,..}=>{if !matches!(bits,16|20|24){return Err(Error::Invalid("Craft Dither bit depth must be 16, 20 or 24"));}},
+            Self::CraftEq1{kind,frequency_hz,gain_db,q,output_db,..}=>{if kind>6 || !frequency_hz.is_finite() || !(20.0..=20000.0).contains(&frequency_hz) || !gain_db.is_finite() || !(-24.0..=24.0).contains(&gain_db) || !q.is_finite() || !(0.1..=10.0).contains(&q) || !output_db.is_finite() || !(-24.0..=24.0).contains(&output_db){return Err(Error::Invalid("Craft EQ1 parameters outside SoundCraft ranges"));}},
             Self::CraftRectifier{mix_pct,output_db,..}=>{if !mix_pct.is_finite() || !(0.0..=100.0).contains(&mix_pct) || !output_db.is_finite() || !(-24.0..=12.0).contains(&output_db){return Err(Error::Invalid("Craft Rectifier parameters outside SoundCraft ranges"));}},
             Self::CraftDcRemoval{cutoff_hz,..}=>{if !cutoff_hz.is_finite() || !(1.0..=40.0).contains(&cutoff_hz){return Err(Error::Invalid("Craft DC Removal cutoff must be 1..40 Hz"));}},
+            Self::CraftSignalGenerator{wave,frequency_hz,level_db,..}=>{if wave>5||!frequency_hz.is_finite()||!(20.0..=20000.0).contains(&frequency_hz)||!level_db.is_finite()||!(-96.0..=0.0).contains(&level_db){return Err(Error::Invalid("Craft Signal Generator parameters outside range"));}},
+            Self::CraftPitch{semitones,cents,mix_pct,..}=>{if !semitones.is_finite()||!(-24.0..=24.0).contains(&semitones)||!cents.is_finite()||!(-100.0..=100.0).contains(&cents)||!mix_pct.is_finite()||!(0.0..=100.0).contains(&mix_pct){return Err(Error::Invalid("Craft Pitch parameters outside range"));}},
+            Self::CraftMaximizer{threshold_db,ceiling_db,release_ms,..}=>{if !threshold_db.is_finite() || !(-30.0..=0.0).contains(&threshold_db) || !ceiling_db.is_finite() || !(-30.0..=0.0).contains(&ceiling_db) || !release_ms.is_finite() || !(1.0..=1000.0).contains(&release_ms){return Err(Error::Invalid("Craft Maximizer parameters outside range"));}},
+            Self::CraftDeEsser{frequency_hz,range_db,threshold_db,..}=>{if !frequency_hz.is_finite() || !(2000.0..=16000.0).contains(&frequency_hz) || !range_db.is_finite() || !(0.0..=40.0).contains(&range_db) || !threshold_db.is_finite() || !(-60.0..=0.0).contains(&threshold_db){return Err(Error::Invalid("Craft De-Esser parameters outside range"));}},
             Self::CraftLoFi{bits,sample_rate,noise_pct,mix_pct,..}=>{
                 for (value,min,max) in [(bits,1.,24.),(sample_rate,500.,48000.),(noise_pct,0.,100.),(mix_pct,0.,100.)] {if !value.is_finite() || !(min..=max).contains(&value) {return Err(Error::Invalid("Craft Lo-Fi parameters are outside SoundCraft ranges"));}}
             },
@@ -638,14 +717,21 @@ impl AudioFilter {
                     if !value.is_finite() || !(min..=max).contains(&value) {return Err(Error::Invalid("Craft Saturator parameters are outside SoundCraft ranges"));}
                 }
             },
-            Self::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,..}=>{
-                for(value,min,max)in[(time_ms,1.,2000.),(feedback_pct,-99.,99.),(mix_pct,0.,100.),(mod_rate_hz,0.01,10.),(mod_depth_pct,0.,100.),(lowpass_hz,500.,20000.)]{
+            Self::CraftModDelay{time_ms,feedback_pct,mix_pct,mod_rate_hz,mod_depth_pct,lowpass_hz,mode,stereo_spread,phaser_stages,..}=>{
+                if ![2,4,6,8,12].contains(&phaser_stages){return Err(Error::Invalid("unsupported Craft Phaser stage count"));}
+                if mode>3{return Err(Error::Invalid("unknown Craft modulation mode"));}
+                for(value,min,max)in[(time_ms,if mode==2{0.1}else{1.},2000.),(feedback_pct,-99.,99.),(mix_pct,0.,100.),(mod_rate_hz,0.01,10.),(mod_depth_pct,0.,100.),(lowpass_hz,if mode==3{100.}else{500.},20000.),(stereo_spread,0.,100.)]{
                     if !value.is_finite()||!(min..=max).contains(&value){return Err(Error::Invalid("Craft Mod Delay parameters are outside their SoundCraft ranges"));}
                 }
             },
             Self::CraftFdnReverb{predelay_ms,decay_seconds,damping_pct,size_pct,mix_pct,..}=>{
                 for(value,min,max)in[(predelay_ms,0.,200.),(decay_seconds,0.1,20.),(damping_pct,0.,100.),(size_pct,0.,100.),(mix_pct,0.,100.)]{
                     if !value.is_finite()||!(min..=max).contains(&value){return Err(Error::Invalid("Craft FDN Reverb parameters are outside their FilmCraft ranges"));}
+                }
+            },
+            Self::CraftSoundReverb{predelay_ms,decay_seconds,size_pct,damping_hz,diffusion_pct,width_pct,lowcut_hz,mix_pct,..}=>{
+                for(value,min,max)in[(predelay_ms,0.,250.),(decay_seconds,0.1,20.),(size_pct,0.,100.),(damping_hz,1000.,20000.),(diffusion_pct,0.,100.),(width_pct,0.,100.),(lowcut_hz,20.,1000.),(mix_pct,0.,100.)]{
+                    if !value.is_finite()||!(min..=max).contains(&value){return Err(Error::Invalid("SoundCraft Reverb parameters outside range"));}
                 }
             },
             Self::ObsThreeBandEq {low_db,mid_db,high_db,..}=>{if ![low_db,mid_db,high_db].iter().all(|value|value.is_finite()&&(-20.0..=20.0).contains(value)){return Err(Error::Invalid("OBS 3-Band Equalizer requires finite gains in -20..20 dB"));}}

@@ -6,7 +6,8 @@ use super::super::{
     decode_pcm,
 };
 use skylive_core::{AudioCaptureBinding, AudioFlow, AudioTarget};
-use std::{cell::Cell, ffi::c_void, mem::size_of, ptr, rc::Rc};
+use std::{cell::Cell, ffi::c_void, mem::size_of, ptr, rc::Rc, time::{Duration,Instant}};
+use std::sync::{atomic::{AtomicUsize, Ordering}, mpsc::{self, Receiver, TryRecvError}};
 use windows::{
     Win32::{
         Devices::FunctionDiscovery::PKEY_Device_FriendlyName,
@@ -48,6 +49,23 @@ const SUBTYPE_FLOAT: GUID = GUID::from_u128(0x00000003_0000_0010_8000_00aa00389b
 const ENDPOINT_NOT_FOUND: i32 = 0x80070490u32 as i32;
 // A bounded worker polls this shared buffer; no event/render helper is opened.
 const CLIENT_DURATION_100NS: i64 = 1_000_000; // 100 ms
+// A stuck device driver may never return. Count its detached probe until the
+// thread actually exits, even if its stream has already timed out or closed.
+const MAX_CAMERA_WATCH_PROBES: usize = 4;
+const CAMERA_WATCH_TIMEOUT_NS: u64 = 5_000_000_000;
+static CAMERA_WATCH_PROBES: AtomicUsize = AtomicUsize::new(0);
+
+struct CameraWatchPermit;
+impl CameraWatchPermit {
+    fn acquire() -> Option<Self> {
+        CAMERA_WATCH_PROBES.fetch_update(Ordering::AcqRel, Ordering::Acquire, |active| {
+            (active < MAX_CAMERA_WATCH_PROBES).then_some(active + 1)
+        }).ok().map(|_| Self)
+    }
+}
+impl Drop for CameraWatchPermit {
+    fn drop(&mut self) { CAMERA_WATCH_PROBES.fetch_sub(1, Ordering::AcqRel); }
+}
 
 pub(super) fn capabilities() -> AudioCapabilities {
     AudioCapabilities {
@@ -67,6 +85,7 @@ pub(super) fn backend() -> Result<Box<dyn NativeAudioBackend>, AudioCaptureError
         apartment: None,
         frequency: Cell::new(None),
         process_activations: std::sync::Arc::new(std::sync::atomic::AtomicUsize::new(0)),
+        camera_opens: Vec::new(),
     }))
 }
 
@@ -95,8 +114,59 @@ struct WasapiBackend {
     apartment: Option<Rc<ComApartment>>,
     frequency: Cell<Option<u64>>,
     process_activations: std::sync::Arc<std::sync::atomic::AtomicUsize>,
+    camera_opens: Vec<CameraOpen>,
+}
+struct CameraOpen {
+    binding: AudioCaptureBinding,
+    started: Instant,
+    result: Option<Receiver<Result<String, AudioCaptureError>>>,
 }
 impl WasapiBackend {
+    fn camera_endpoint(&mut self, binding: &AudioCaptureBinding, link: &str, limits: AudioCaptureLimits) -> Result<String, AudioCaptureError> {
+        let index = match self.camera_opens.iter().position(|pending| pending.binding == *binding) {
+            Some(index) => index,
+            None => {
+                if self.camera_opens.len() >= limits.max_streams { return Err(AudioCaptureError::Limit("pending camera audio openings")); }
+                self.camera_opens.push(CameraOpen { binding: binding.clone(), started: Instant::now(), result: None });
+                self.camera_opens.len() - 1
+            }
+        };
+        let pending = &self.camera_opens[index];
+        if pending.started.elapsed() >= Duration::from_secs(5) {
+            self.camera_opens.remove(index);
+            return Err(AudioCaptureError::DeviceUnavailable("camera audio association timed out".into()));
+        }
+        if let Some(receiver) = &pending.result {
+            return match receiver.try_recv() {
+                Ok(result) => { self.camera_opens.remove(index); result },
+                Err(TryRecvError::Empty) => Err(AudioCaptureError::Busy),
+                Err(TryRecvError::Disconnected) => {
+                    self.camera_opens.remove(index);
+                    Err(AudioCaptureError::DeviceUnavailable("camera audio association worker disconnected".into()))
+                }
+            };
+        }
+        let Some(permit) = CameraWatchPermit::acquire() else { return Err(AudioCaptureError::Busy); };
+        let link = link.to_owned();
+        let max_devices = limits.max_devices;
+        let (sender, result) = mpsc::sync_channel(1);
+        let started = std::thread::Builder::new().name("camera-audio-open".into()).spawn(move || {
+            let _permit = permit;
+            let value = (|| {
+                let _apartment = ComApartment::new()?;
+                let enumerator: IMMDeviceEnumerator = unsafe { CoCreateInstance(&MMDeviceEnumerator, None, CLSCTX_ALL) }
+                    .map_err(|error| native_error("CoCreateInstance(camera open)", error))?;
+                resolve_camera_input(&enumerator, &link, max_devices)
+            })();
+            let _ = sender.send(value);
+        });
+        if started.is_err() {
+            self.camera_opens.remove(index);
+            return Err(AudioCaptureError::DeviceUnavailable("camera audio association worker could not start".into()));
+        }
+        self.camera_opens[index].result = Some(result);
+        Err(AudioCaptureError::Busy)
+    }
     fn initialize(&mut self) -> Result<(), AudioCaptureError> {
         if self.enumerator.is_none() {
             let apartment = ComApartment::new()?;
@@ -124,6 +194,9 @@ impl WasapiBackend {
     }
 }
 impl NativeAudioBackend for WasapiBackend {
+    fn retain_pending_openings(&mut self, bindings: &[AudioCaptureBinding]) {
+        self.camera_opens.retain(|pending| bindings.contains(&pending.binding));
+    }
     fn capabilities(&self) -> AudioCapabilities {
         capabilities()
     }
@@ -225,13 +298,17 @@ impl NativeAudioBackend for WasapiBackend {
         }
         if !matches!(
             binding.target(),
-            AudioTarget::Default | AudioTarget::WindowsEndpoint { .. }
+            AudioTarget::Default | AudioTarget::WindowsEndpoint { .. } | AudioTarget::WindowsCamera { .. }
         ) {
             return Err(AudioCaptureError::Unsupported(
                 "audio target requires a different operating system",
             ));
         }
         validate_limits(limits)?;
+        // The device-driver enumeration runs off the audio owner.
+        let camera_id = if let AudioTarget::WindowsCamera { symbolic_link } = binding.target() {
+            Some(self.camera_endpoint(binding, symbolic_link, limits)?)
+        } else { None };
         self.initialize()?;
         let enumerator = self
             .enumerator
@@ -249,6 +326,13 @@ impl NativeAudioBackend for WasapiBackend {
                 let wide: Vec<u16> = id.encode_utf16().chain(Some(0)).collect();
                 unsafe { enumerator.GetDevice(PCWSTR(wide.as_ptr())) }
                     .map_err(|error| native_error("GetDevice(endpoint ID)", error))?
+            }
+            AudioTarget::WindowsCamera { symbolic_link } => {
+                let _ = symbolic_link;
+                let id = camera_id.ok_or(AudioCaptureError::Invalid("camera endpoint resolution missing"))?;
+                let wide: Vec<u16> = id.encode_utf16().chain(Some(0)).collect();
+                unsafe { enumerator.GetDevice(PCWSTR(wide.as_ptr())) }
+                    .map_err(|error| native_error("GetDevice(camera input)", error))?
             }
             _ => return Err(AudioCaptureError::Unsupported("foreign audio target")),
         };
@@ -336,6 +420,11 @@ impl NativeAudioBackend for WasapiBackend {
         } else {
             None
         };
+        let camera_watch = if let AudioTarget::WindowsCamera { symbolic_link } = binding.target() {
+            Some(CameraWatch { symbolic_link: symbolic_link.clone(),
+                resolved_id: device_id(&device)?, next_check_ns: next_default_check(host_now_ns(frequency)?)?,
+                max_devices: limits.max_devices, invalidated: false, pending: None, due_since_ns: None })
+        } else { None };
         let apartment = self
             .apartment
             .clone()
@@ -345,6 +434,7 @@ impl NativeAudioBackend for WasapiBackend {
             capture,
             client,
             default_watch,
+            camera_watch,
             _apartment: apartment,
             mix,
             limits,
@@ -363,12 +453,107 @@ struct WasapiStream {
     capture: IAudioCaptureClient,
     client: IAudioClient,
     default_watch: Option<DefaultWatch>,
+    camera_watch: Option<CameraWatch>,
     // Retains the apartment until both interfaces above have been released.
     _apartment: Rc<ComApartment>,
     mix: MixFormat,
     limits: AudioCaptureLimits,
     frequency: u64,
     started: bool,
+}
+/// Resolve only an unambiguous active input sharing the camera's physical
+/// container. Neither a device name nor the system default is a fallback.
+fn resolve_camera_input(enumerator: &IMMDeviceEnumerator, symbolic_link: &str, max_devices: usize) -> Result<String, AudioCaptureError> {
+    use crate::camera_capture::audio_association::{associate, Association};
+    use crate::camera_capture::audio_association::windows::{interface_container_id, input_endpoint_container_id};
+    if max_devices == 0 || max_devices > 64 {return Err(AudioCaptureError::Limit("camera audio endpoint enumeration count"));}
+    let camera = interface_container_id(symbolic_link);
+    let collection = unsafe { enumerator.EnumAudioEndpoints(eCapture, DEVICE_STATE_ACTIVE) }
+        .map_err(|error| native_error("EnumAudioEndpoints(camera)", error))?;
+    let count = unsafe { collection.GetCount() }.map_err(|error| native_error("IMMDeviceCollection::GetCount", error))? as usize;
+    if count > max_devices { return Err(AudioCaptureError::Limit("camera audio endpoint enumeration count")); }
+    let mut candidates = Vec::new();
+    for index in 0..count {
+        let Ok(device) = (unsafe { collection.Item(index as u32) }) else { continue; };
+        let Ok(id) = device_id(&device) else { continue; };
+        let container = input_endpoint_container_id(&id);
+        candidates.push((container, AudioTarget::WindowsEndpoint { id }));
+    }
+    match associate(camera, candidates.iter().map(|(container, target)| (*container, target))) {
+        Association::Unique(AudioTarget::WindowsEndpoint { id }) => Ok(id),
+        Association::UnknownCamera => Err(AudioCaptureError::DeviceUnavailable("camera container identity is unavailable".into())),
+        Association::NoMatch => Err(AudioCaptureError::DeviceUnavailable("no associated active camera audio input".into())),
+        Association::Ambiguous => Err(AudioCaptureError::DeviceUnavailable("camera audio input association is ambiguous".into())),
+        _ => Err(AudioCaptureError::Invalid("camera association returned a non-endpoint target")),
+    }
+}
+struct CameraWatch {
+    symbolic_link: String,
+    resolved_id: String,
+    next_check_ns: u64,
+    max_devices: usize,
+    invalidated: bool,
+    pending: Option<Receiver<Result<String, AudioCaptureError>>>,
+    due_since_ns: Option<u64>,
+}
+impl CameraWatch {
+    fn refresh(&mut self, now_ns: u64) -> Result<(), AudioCaptureError> {
+        if self.invalidated { return Err(AudioCaptureError::DeviceUnavailable("camera audio route changed; reopen capture".into())); }
+        if let Some(receiver) = &self.pending {
+            match receiver.try_recv() {
+                Ok(Ok(id)) if id == self.resolved_id => {
+                    self.pending = None;
+                    self.due_since_ns = None;
+                    self.next_check_ns = next_default_check(now_ns)?;
+                    return Ok(());
+                },
+                Ok(Ok(_)) => {
+                    self.pending = None;
+                    self.invalidated = true;
+                    return Err(AudioCaptureError::DeviceUnavailable("camera audio endpoint changed; reopen capture".into()));
+                },
+                Ok(Err(error)) => { self.pending = None; self.invalidated = true; return Err(error); },
+                Err(TryRecvError::Disconnected) => {
+                    self.pending = None;
+                    self.invalidated = true;
+                    return Err(AudioCaptureError::DeviceUnavailable("camera audio association worker disconnected".into()));
+                },
+                Err(TryRecvError::Empty) => {},
+            }
+        }
+        if self.pending.is_none() && now_ns < self.next_check_ns { return Ok(()); }
+        let due = *self.due_since_ns.get_or_insert(now_ns);
+        if now_ns.saturating_sub(due) >= CAMERA_WATCH_TIMEOUT_NS {
+            self.pending = None;
+            self.invalidated = true;
+            return Err(AudioCaptureError::DeviceUnavailable("camera audio association timed out; reopen capture".into()));
+        }
+        if self.pending.is_none() {
+            if let Some(permit) = CameraWatchPermit::acquire() {
+                let link = self.symbolic_link.clone();
+                let max_devices = self.max_devices;
+                let (sender, receiver) = mpsc::sync_channel(1);
+                let started = std::thread::Builder::new().name("camera-audio-watch".into()).spawn(move || {
+                    let _permit = permit;
+                    // COM interfaces never cross apartments: the probe owns
+                    // its MTA and releases all interfaces before uninitializing.
+                    let result = (|| {
+                        let _apartment = ComApartment::new()?;
+                        let enumerator: IMMDeviceEnumerator = unsafe { CoCreateInstance(&MMDeviceEnumerator, None, CLSCTX_ALL) }
+                            .map_err(|error| native_error("CoCreateInstance(camera watch)", error))?;
+                        resolve_camera_input(&enumerator, &link, max_devices)
+                    })();
+                    let _ = sender.send(result);
+                });
+                if started.is_err() {
+                    self.invalidated = true;
+                    return Err(AudioCaptureError::DeviceUnavailable("camera audio association worker could not start".into()));
+                }
+                self.pending = Some(receiver);
+            }
+        }
+        Ok(())
+    }
 }
 struct DefaultWatch {
     enumerator: IMMDeviceEnumerator,
@@ -424,6 +609,9 @@ impl NativeAudioStream for WasapiStream {
             return Err(AudioCaptureError::Closed);
         }
         if let Some(watch) = &mut self.default_watch {
+            watch.refresh(host_now_ns(self.frequency)?)?;
+        }
+        if let Some(watch) = &mut self.camera_watch {
             watch.refresh(host_now_ns(self.frequency)?)?;
         }
         let next = unsafe { self.capture.GetNextPacketSize() }
@@ -884,6 +1072,7 @@ mod tests {
             apartment: None,
             frequency: Cell::new(None),
             process_activations: std::sync::Arc::new(std::sync::atomic::AtomicUsize::new(0)),
+            camera_opens: Vec::new(),
         };
         for binding in [
             AudioCaptureBinding::new(AudioFlow::Output, AudioTarget::MacSystem, true, false)

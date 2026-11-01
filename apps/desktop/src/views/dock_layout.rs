@@ -254,7 +254,7 @@ pub fn show(
                 super::docks::show_plan(ui, model, scene, selected, state.clone(), intents, plan);
             });
     }
-    if super::source_toolbar::source_bar_visible(ctx) {
+    if model.preferences().source_toolbar_visible() {
         egui::TopBottomPanel::bottom("selected-source-toolbar")
             .resizable(false)
             .show(ctx, |ui| {

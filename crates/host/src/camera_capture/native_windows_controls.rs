@@ -1,11 +1,11 @@
-//! Optional standard driver interfaces on the already-open MF source. No second
+//! Optional standard driver interfaces on the already-open native source. No second
 //! camera activation, property-page window, persisted value or automatic retry.
 use super::*;
 use windows::Win32::Media::DirectShow::{IAMCameraControl, IAMVideoProcAmp};
 
 enum Driver { Camera(IAMCameraControl), ProcAmp(IAMVideoProcAmp) }
 impl Driver {
-    fn from_source(source: &IMFMediaSource, camera: bool) -> windows::core::Result<Self> {
+    fn from_source<T: Interface>(source: &T, camera: bool) -> windows::core::Result<Self> {
         if camera { source.cast().map(Self::Camera) } else { source.cast().map(Self::ProcAmp) }
     }
     fn range(&self, id: i32) -> windows::core::Result<ControlRange> {
@@ -41,7 +41,7 @@ fn observed(id:CameraControlId,range:ControlRange,value:i32,flags:i32)->Result<C
         _=>Err(ControlDiagnostic {property:Some(id),operation:"Get",hresult:None,detail:"driver returned an unsupported mode or out-of-range current value",native_values:Some([value,flags,range.minimum,range.maximum,range.flags])}),
     }
 }
-pub(super) fn query(source:&IMFMediaSource)->ControlQuery {
+pub(in crate::camera_capture) fn query<T: Interface>(source:&T)->ControlQuery {
     let camera=Driver::from_source(source,true);
     let procamp=Driver::from_source(source,false);
     let mut result=ControlQuery::default();
@@ -60,7 +60,7 @@ pub(super) fn query(source:&IMFMediaSource)->ControlQuery {
     }
     result
 }
-pub(super) fn set(source:&IMFMediaSource,change:ControlChange,gate:&ControlWriteGate)->ControlReceipt {
+pub(in crate::camera_capture) fn set<T: Interface>(source:&T,change:ControlChange,gate:&ControlWriteGate)->ControlReceipt {
     let (is_camera,property)=change.id.native();
     let mut receipt=ControlReceipt::before(change,"driver write has not started");
     let driver=match Driver::from_source(source,is_camera) {Ok(d)=>d,Err(e)=>{receipt.diagnostic=Some(failure(change.id,"QueryInterface",e));return receipt;}};

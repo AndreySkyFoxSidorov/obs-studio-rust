@@ -6,7 +6,7 @@ use skylive_media::{CraftVideoEffect, ColorKeyMatch, ColorKeyView,
     source_effect_requirements_for_dimensions};
 
 const STAGES:usize=skylive_core::MAX_VIDEO_FILTERS;
-const WORDS:usize=16;
+const WORDS:usize=32;
 pub(super) const CRAFT_BYTES:usize=STAGES*WORDS*4;
 // The payload shares the already-admitted matte buffer on the GPU worker.
 const _: () = assert!(CRAFT_BYTES <= MATTE_BYTES);
@@ -21,6 +21,7 @@ impl Craft {
             let SourceVideoEffect::Craft(effect)=effect else{return Err(Error::Unsupported("Craft GPU run contains another provider"));};
             let mut words=[0u32;WORDS];
             match *effect {
+                CraftVideoEffect::BlackWhite{weights,tint}=>{words[0]=25;words[1]=u32::from(tint.is_some());for(i,v)in weights.into_iter().enumerate(){words[4+i]=(v/100.0).to_bits();}if let Some(color)=tint{for(i,v)in color.into_iter().enumerate(){words[10+i]=(f32::from(v)/255.0).to_bits();}}},
                 CraftVideoEffect::GammaPedestalGain{gamma,pedestal,gain,black_stretch}=>{
                     words[0]=15; words[4]=black_stretch.to_bits();
                     for i in 0..3 {words[5+i]=gamma[i].to_bits();words[8+i]=pedestal[i].to_bits();words[11+i]=gain[i].to_bits();}
@@ -43,6 +44,10 @@ impl Craft {
                 CraftVideoEffect::Tint{black,white,amount}=>{words[0]=10;words[4]=(amount/100.0).to_bits();for i in 0..3{words[5+i]=(f32::from(black[i])/255.0).to_bits();words[8+i]=(f32::from(white[i])/255.0).to_bits();}},
                 CraftVideoEffect::Vibrance{vibrance,saturation}=>{
                     words[0]=9;words[4]=(vibrance/100.0).to_bits();words[5]=(saturation/100.0).to_bits();},
+                CraftVideoEffect::HlsBalance{hue,lightness,saturation}=>{
+                    words[0]=20;words[4]=(hue/360.0).to_bits();words[5]=(lightness/100.0).to_bits();words[6]=(saturation/100.0).to_bits();},
+                CraftVideoEffect::ColorOffset{phase,overflow}=>{words[0]=22;words[1]=u32::from(overflow);for i in 0..3 {words[4+i]=(phase[i]/360.0).rem_euclid(1.0).to_bits();}},
+                CraftVideoEffect::SelectiveColor{relative,adjustments}=>{words[0]=21;words[1]=u32::from(relative);for(i,row)in adjustments.iter().enumerate(){words[4+i]=u32::from_le_bytes(row.map(|v|v as u8));}},
                 CraftVideoEffect::Sepia{density,preserve_luminosity}=>{
                     words[0]=14;words[1]=u32::from(preserve_luminosity);words[4]=(density/100.0).to_bits();
                     for (i,channel) in [170.0f32/255.0,120.0f32/255.0,55.0f32/255.0].into_iter().enumerate(){words[5+i]=channel.to_bits();}
@@ -56,6 +61,12 @@ impl Craft {
                 CraftVideoEffect::TemperatureTint{temperature,tint}=>{
                     words[0]=4;words[4]=(temperature/100.0).to_bits();words[5]=(tint/100.0).to_bits();},
                 CraftVideoEffect::Threshold{level}=>{words[0]=5;words[4]=f32::from(level).to_bits();},
+                CraftVideoEffect::Solarize{threshold,amount}=>{words[0]=16;words[4]=(threshold/100.0).to_bits();words[5]=(amount/100.0).to_bits();},
+                CraftVideoEffect::Levels{input_black,input_white,gamma,output_black,output_white,channels}=>{words[0]=23;for(i,v)in [input_black,input_white,gamma,output_black,output_white].into_iter().chain(channels.into_iter().flatten()).enumerate(){words[4+i]=v.to_bits();}},
+                CraftVideoEffect::LeaveColor{color,amount,tolerance,softness,by_hue}=>{words[0]=18;words[1]=u32::from(by_hue);words[4]=(amount/100.0).to_bits();words[5]=(tolerance/100.0).to_bits();words[6]=(softness/100.0).to_bits();for i in 0..3{words[7+i]=(f32::from(color[i])/255.0).to_bits();}},
+                CraftVideoEffect::ChannelRemap{channels,alpha}=>{words[0]=19;words[4]=u32::from(channels[0]);words[5]=u32::from(channels[1]);words[6]=u32::from(channels[2]);words[7]=u32::from(alpha);},
+                CraftVideoEffect::ColorToAlpha{color,transparency,opacity}=>{words[0]=24;words[4]=transparency.to_bits();words[5]=opacity.to_bits();for i in 0..3{words[6+i]=(f32::from(color[i])/255.0).to_bits();}},
+                CraftVideoEffect::GradientMap{shadows,highlights,stops,reverse,amount,dither}=>{words[0]=17;words[4]=(amount/100.0).to_bits();words[5]=u32::from(reverse)|(u32::from(dither)<<1);for i in 0..3{words[6+i]=(f32::from(shadows[i])/255.0).to_bits();words[9+i]=(f32::from(highlights[i])/255.0).to_bits();}for(i,stop)in stops.iter().enumerate(){if let Some((position,color))=stop{words[12+i]=u32::from_le_bytes([*position,color[0],color[1],color[2]]);}}},
                 CraftVideoEffect::LinearColorKey{color,matching,tolerance,softness,keep,view}=>{
                     words[0]=6;words[1]=match matching{ColorKeyMatch::Rgb=>0,ColorKeyMatch::Hue=>1,ColorKeyMatch::Chroma=>2};
                     words[2]=u32::from(keep);words[3]=match view{ColorKeyView::Final=>0,ColorKeyView::Source=>1,ColorKeyView::Matte=>2};

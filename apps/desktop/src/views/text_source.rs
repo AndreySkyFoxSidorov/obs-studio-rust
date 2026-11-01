@@ -103,7 +103,13 @@ impl TextDraft {
         .map(|settings|settings.with_antialiasing(self.antialiasing).with_decoration(self.underline,self.strikeout))
         .and_then(|settings|{
             let keep=self.read_file||!self.file_path.is_empty()||self.chatlog||self.chatlog_lines!=6;
-            let file=if keep {Some(skylive_core::TextFile::settings(self.file_path.clone(),self.chatlog,self.chatlog_lines)?)}else{None};
+            let file=if keep {
+                Some(if self.read_file {
+                    skylive_core::TextFile::settings(self.file_path.clone(),self.chatlog,self.chatlog_lines)?
+                } else {
+                    skylive_core::TextFile::retained_settings(self.file_path.clone(),self.chatlog,self.chatlog_lines)?
+                })
+            }else{None};
             settings.with_file_settings(file,self.read_file)
         })
         .map_err(|error| error.to_string())

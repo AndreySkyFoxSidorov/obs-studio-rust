@@ -10,14 +10,14 @@ impl StudioApp {
     pub(super) fn apply_game(&mut self,request:views::game_capture::Apply){
         if request.session!=self.session.identity()||request.revision!=self.session.snapshot().revision()||!matches!(&self.dialog,Some(Dialog::GameCapture(d))if d.matches(&request)&&!d.loading){self.message(true,"The game source draft changed. Reopen its properties.");return;}
         if self.publish_command_at(Some(request.revision),request.command(),true){
-            if let Err(error)=self.game.authorize(&self.session,request.binding.target()){self.message(true,error.to_string());}
-            else{self.message(false,"Game capture enabled for the selected process in this session.");}
+            if let Some(target)=request.binding.target(){if let Err(error)=self.game.authorize(&self.session,target){self.message(true,error.to_string());}}
+            else if request.binding.obs_selector().is_some_and(|s|s.hotkey_mode){self.message(false,"Game capture hotkey mode saved; assign Capture Start and Capture Stop shortcuts to this source.");}else{self.message(false,"Game window selector saved; matching games are discovered automatically.");}
         }
     }
     pub(super) fn game_control(&mut self,session:u64,revision:u64,source:Id,start:bool){
         if session!=self.session.identity()||revision!=self.session.snapshot().revision(){self.message(true,"The game source draft changed. Reopen its properties.");return;}
         let model=self.session.snapshot();let Some(skylive_core::SourceKind::GameCapture {binding})=model.source(source).map(|s|s.kind()) else{self.message(true,"Game source is unavailable.");return;};
-        let result=if start{self.game.authorize(&self.session,binding.target())}else{self.game.revoke(&self.session,source)};
+        let result=if start{if let Some(target)=binding.target(){self.game.authorize(&self.session,target)}else{self.game.resume_selector(&self.session,source)}}else{self.game.revoke(&self.session,source)};
         match result{Ok(())=>self.message(false,if start {"Game capture enabled for the selected process in this session."}else{"Game capture permission revoked; native resources retire on their owner."}),Err(error)=>self.message(true,error.to_string())}
     }
     pub(super) fn update_game(&mut self,ctx:&egui::Context,active:&[FrameScene],now:MediaTime,base:Arc<CaptureSnapshot>)->Arc<CaptureSnapshot>{

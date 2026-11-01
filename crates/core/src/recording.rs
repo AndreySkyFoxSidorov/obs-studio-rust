@@ -12,6 +12,8 @@ impl RecordingContainer {
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(try_from = "SettingsData")]
 pub struct RecordingSettings {
+    #[serde(default,skip_serializing_if="String::is_empty")]
+    filename_format: String,
     #[serde(default,skip_serializing_if="crate::RecordingTracks::is_default")]
     audio_tracks:crate::RecordingTracks,
     #[serde(default,skip_serializing_if="RecordingContainer::is_default")]
@@ -29,6 +31,7 @@ pub struct RecordingSettings {
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct SettingsData {
+    #[serde(default)] filename_format:String,
     #[serde(default)]audio_tracks:crate::RecordingTracks,
     #[serde(default)]
     container:RecordingContainer,
@@ -52,12 +55,13 @@ impl TryFrom<SettingsData> for RecordingSettings {
             value.audio_bitrate_kbps,
             value.audio_enabled,
             value.prefer_hardware,
-        )?.with_container(value.container)?.with_encoder(value.encoder)?.with_keyframe_interval(value.keyframe_interval_seconds)?.with_audio_tracks(value.audio_tracks)
+        )?.with_container(value.container)?.with_encoder(value.encoder)?.with_keyframe_interval(value.keyframe_interval_seconds)?.with_audio_tracks(value.audio_tracks)?.with_filename_format(value.filename_format)
     }
 }
 impl Default for RecordingSettings {
     fn default() -> Self {
         Self {
+            filename_format:String::new(),
             audio_tracks:Default::default(),
             container:RecordingContainer::Mp4,
             keyframe_interval_seconds:2,
@@ -79,6 +83,7 @@ impl RecordingSettings {
         prefer_hardware: bool,
     ) -> Result<Self, Error> {
         let value = Self {
+            filename_format:String::new(),
             audio_tracks:Default::default(),
             container:RecordingContainer::Mp4,
             keyframe_interval_seconds:2,
@@ -101,6 +106,10 @@ impl RecordingSettings {
     pub fn directory(&self) -> &str {
         &self.directory
     }
+    /// Empty retains SkyLive's legacy unique filename. A nonempty template
+    /// supports a validated subset of OBS filename formatting tokens.
+    pub fn filename_format(&self)->&str{&self.filename_format}
+    pub fn with_filename_format(mut self,format:String)->Result<Self,Error>{self.filename_format=format;self.validate()?;Ok(self)}
     pub fn encoder(&self)->crate::VideoEncoder{self.encoder}
     pub fn with_encoder(mut self,encoder:crate::VideoEncoder)->Result<Self,Error>{encoder.validate()?;self.encoder=encoder;self.validate()?;Ok(self)}
     pub fn video_bitrate_kbps(&self) -> u32 {
@@ -119,6 +128,7 @@ impl RecordingSettings {
         self == &Self::default()
     }
     pub fn validate(&self) -> Result<(), Error> {
+        validate_filename_format(&self.filename_format)?;
         self.audio_tracks.validate()?;
         self.encoder.validate()?;
         if !self.encoder.is_default()&&self.video_bitrate_kbps>100000{return Err(Error::Invalid("NVENC recording bitrate must be100..100000kbit/s"));}
@@ -143,6 +153,19 @@ impl RecordingSettings {
         }
         Ok(())
     }
+}
+
+fn validate_filename_format(format:&str)->Result<(),Error>{
+    if format.len()>180 || format.chars().any(|c|c.is_control()||matches!(c,'<'|'>'|':'|'"'|'|'|'?'|'*')) || (!format.is_empty() && format.split(['/', '\\']).any(|part|part.is_empty() || part=="." || part==".." || part.ends_with(' ') || part.ends_with('.'))) {
+        return Err(Error::Invalid("recording filename format contains invalid filename characters or exceeds 180 bytes"));
+    }
+    let mut rest=format;
+    while let Some(index)=rest.find('%') {
+        rest=&rest[index+1..];
+        let token=["CCYY","CRES","ORES","FPS","YY","MM","DD","hh","mm","ss","Y","y","m","d","H","I","M","p","S","s","a","A","b","B","z","Z","%"].iter().find(|token|rest.starts_with(**token)).ok_or(Error::Invalid("unsupported recording filename format token"))?;
+        rest=&rest[token.len()..];
+    }
+    Ok(())
 }
 
 #[cfg(test)]

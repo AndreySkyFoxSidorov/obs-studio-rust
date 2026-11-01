@@ -131,7 +131,7 @@ impl VideoFilterDraft {
         }
         if (self.source_is_ndi || self.source_is_camera) && self.rows.iter().any(|row|row.filter.enabled && matches!(row.filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX})) {
             if self.rows.iter().any(|row|row.filter.enabled && matches!(row.filter.effect,
-                VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..})) {
+                VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500})) {
                 return Err("Async Video Delay cannot yet be combined with Freeze or Render Delay.".into());
             }
             // Mask resources and neural inference are evaluated on the
@@ -146,7 +146,10 @@ impl VideoFilterDraft {
                     || matches!(row.filter.effect,VideoEffect::ImageMask{..}) && !row.mask_path.is_empty()));
             for row in self.rows.iter().take(last_delay).filter(|row|row.filter.enabled) {
                 match row.filter.effect {
-                    VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}=>{},
+                    // Zero delay is a neutral stage and may appear anywhere
+                    // before the final active delay without a queue.
+                    VideoEffect::AsyncVideoDelay{..}=>{},
+                    VideoEffect::RenderDelay{delay_ms:0}=>{},
                     VideoEffect::Scroll{..} if (self.source_is_camera || self.source_is_ndi) && cfg!(target_os="windows")=>{},
                     VideoEffect::Scroll{..}=>return Err("Async Video Delay cannot yet be combined with Freeze or Render Delay; Scroll must follow the final delay.".into()),
                     VideoEffect::ImageMask{..} if row.mask_path.is_empty()=>{},
@@ -591,7 +594,8 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
         if matches!(row.filter.effect, VideoEffect::AsyncVideoDelay {..}) {
             ui.strong(crate::i18n::tr_key_or(ui,"Module.obs-filters.AsyncDelayFilter","Video Delay (Async)"));
         } else {
-            ui.strong(crate::i18n::tr(ui,row.filter.effect.name()));
+            let title=if matches!(row.filter.effect,VideoEffect::CraftBlackWhite{..}) {crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.Name",row.filter.effect.name())} else if matches!(row.filter.effect,VideoEffect::HlsBalance{..}) {crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsName",row.filter.effect.name())} else if matches!(row.filter.effect,VideoEffect::ColorOffset{..}) {crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorOffset.Name",row.filter.effect.name())} else if matches!(row.filter.effect,VideoEffect::SelectiveColor{..}) {crate::i18n::tr_key_or(ui,"SkyLive.Craft.SelectiveColor.Name",row.filter.effect.name())} else {crate::i18n::tr(ui,row.filter.effect.name())};
+            ui.strong(title);
         }
         if !available {ui.label(crate::i18n::tr(ui,"Module disabled · settings retained. Enable it in Tools > Plugins to edit these properties."));}
         ui.horizontal(|ui|{let label=ui.label(crate::i18n::tr(ui,"Name"));
@@ -684,9 +688,10 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                         });
                         ui.horizontal(|ui|{ui.label(crate::i18n::tr(ui,"Color"));ui.color_edit_button_srgb(color);});
                         craft_slider(ui,"Opacity",opacity,0.0,1.0,0.01,"Scale source alpha before applying the mask or blend.");
+                        if !row.mask_path.is_empty() { zero_opacity_warning(ui, *opacity); }
                         ui.checkbox(stretch,crate::i18n::tr(ui,"Stretch Image (discard image aspect ratio)")).on_hover_text(crate::i18n::tr(ui,"Disable stretching to center the mask at its original aspect ratio with clamped edges."));
                         let label=ui.label(crate::i18n::tr(ui,"Mask image"));
-                        ui.add(egui::TextEdit::singleline(&mut row.mask_path).char_limit(4096).desired_width(ui.available_width())).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.ImageMask.AnimationFormats","PNG/APNG, JPEG, BMP, TGA, WebP or GIF. Animated GIF, APNG and WebP masks are supported. Changes reload automatically when dimensions stay the same. Empty path bypasses the filter."));
+                        ui.add(egui::TextEdit::singleline(&mut row.mask_path).char_limit(4096).desired_width(ui.available_width())).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.ImageMask.AnimationFormats","PNG/APNG, JPEG, BMP, TGA, WebP, GIF or PSD. Animated GIF, APNG and WebP masks are supported. Changes reload automatically when dimensions stay the same. Empty path bypasses the filter."));
                         if row.mask_path.is_empty(){row.mask_error=None;}
                         ui.label(crate::i18n::tr(ui,"Choose a mask, then Load / Refresh. Apply saves its exact content identity; Cancel retains the original filter."));
                         ui.label(crate::i18n::tr(ui,"Image Mask/Blend · CPU · SDR"));
@@ -695,6 +700,11 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                         }
                         if row.mask_loading {ui.spinner();}
                         if let Some(error)=&row.mask_error {ui.colored_label(ui.visuals().error_fg_color,crate::i18n::tf(ui,"Mask image error: {detail}",&[("{detail}",crate::i18n::tr(ui,error))]));}
+                    }
+                    VideoEffect::Mosaic{cell_size}=>{
+                        let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.Mosaic.Cell","Cell size (pixels)"));
+                        ui.add(egui::Slider::new(cell_size,1..=512)).labelled_by(label.id)
+                            .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.Mosaic.Help","Average the source in square cells. A value of 1 leaves the image unchanged."));
                     }
                     VideoEffect::GaussianBlur{blurriness,dimensions,repeat_edge}=>{
                         ui.label(crate::i18n::tr(ui,"EffectCraft Gaussian Blur · CPU"));
@@ -719,6 +729,14 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                         ui.label(crate::i18n::tr(ui,"The center follows the image size at this filter position, after any earlier Crop/Pad or Scaling filter."));
                     }
                     VideoEffect::Invert{amount}|VideoEffect::Grayscale{amount}=>{craft_slider(ui,"Amount",amount,0.0,100.0,1.0,"Set the effect blend from the original source to the full result.");}
+                    VideoEffect::CraftBlackWhite{weights,tint}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.Description","PhotoCraft monochrome mix · alpha unchanged"));
+                        let labels=[("SkyLive.Craft.BlackWhite.Red","Reds"),("SkyLive.Craft.BlackWhite.Yellow","Yellows"),("SkyLive.Craft.BlackWhite.Green","Greens"),("SkyLive.Craft.BlackWhite.Cyan","Cyans"),("SkyLive.Craft.BlackWhite.Blue","Blues"),("SkyLive.Craft.BlackWhite.Magenta","Magentas")];
+                        for (i,(key,fallback)) in labels.into_iter().enumerate(){let label=crate::i18n::tr_key_or(ui,key,fallback);ui.add(egui::Slider::new(&mut weights[i],-200.0..=300.0).text(label)).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.WeightHint","Adjust the brightness of this color in the monochrome image."));}
+                        let mut enabled=tint.is_some();
+                        if ui.checkbox(&mut enabled,crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.Tint","Tint")).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.TintHint","Color the monochrome image while preserving its brightness.")).changed(){*tint=if enabled{Some([225,211,179])}else{None};}
+                        if let Some(color)=tint {ui.color_edit_button_srgb(color).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.BlackWhite.TintColorHint","Choose a color tint."));}
+                    }
                     VideoEffect::PhotoFilter{preset,custom_color,density,preserve_luminosity}=>photo_filter_controls(ui,preset,custom_color,density,preserve_luminosity),
                     VideoEffect::Sepia{density,preserve_luminosity}=>{
                         ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.SepiaDescription","EffectCraft Sepia photo-filter tint · CPU/GPU · alpha unchanged"));
@@ -727,6 +745,110 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                     }
                     VideoEffect::Posterize{levels}=>{craft_integer(ui,"Levels",levels,2,255,"Choose how many discrete RGB levels remain.");}
                     VideoEffect::Threshold{level}=>{craft_integer(ui,"Threshold Level",level,1,255,"Set the luminosity level separating black and white.");}
+                    VideoEffect::ColorOffset{phase,overflow}=>{
+                        for (i,(key,label)) in [("SkyLive.Craft.ColorOffset.Red","Red Phase"),("SkyLive.Craft.ColorOffset.Green","Green Phase"),("SkyLive.Craft.ColorOffset.Blue","Blue Phase")].into_iter().enumerate(){
+                            let caption=ui.label(crate::i18n::tr_key_or(ui,key,label));
+                            ui.add(egui::Slider::new(&mut phase[i],-360.0..=360.0).suffix("°")).labelled_by(caption.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorOffset.PhaseHelp","Shift this color channel by a phase in degrees."));
+                        }
+                        let choices=[("SkyLive.Craft.ColorOffset.Wrap","Wrap"),("SkyLive.Craft.ColorOffset.Solarize","Solarize"),("SkyLive.Craft.ColorOffset.Polarize","Polarize")];
+                        let choice=choices.get(*overflow as usize).unwrap_or(&choices[0]);
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorOffset.Overflow","Overflow mode"));
+                        egui::ComboBox::from_id_salt("color-offset-overflow").selected_text(crate::i18n::tr_key_or(ui,choice.0,choice.1)).show_ui(ui,|ui|{
+                            for (index,(key,label)) in choices.into_iter().enumerate(){ui.selectable_value(overflow,index as u8,crate::i18n::tr_key_or(ui,key,label));}
+                        });
+                    }
+                    VideoEffect::Solarize{threshold,amount}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.SolarizeDescription","PhotoCraft Solarize · CPU/GPU · alpha unchanged"));
+                        craft_slider(ui,"Threshold",threshold,0.0,100.0,1.0,"Invert individual color channels brighter than this threshold.");
+                        craft_slider(ui,"Amount",amount,0.0,100.0,1.0,"Blend the solarized colors with the original image.");
+                    }
+                    VideoEffect::CraftLevels{input_black,input_white,gamma,output_black,output_white,channels}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.Levels.Description","EffectCraft Levels · master RGB"));
+                        let max_black=(*input_white - 0.001).max(0.0);
+                        let min_white=(*input_black + 0.001).min(1.0);
+                        for (key, fallback, hint_key, hint, value, min, max) in [
+                            ("SkyLive.Craft.Levels.InputBlack", "Input black", "SkyLive.Craft.Levels.InputBlackHint", "Map this input level and darker values to output black.", input_black, 0.0, max_black),
+                            ("SkyLive.Craft.Levels.InputWhite", "Input white", "SkyLive.Craft.Levels.InputWhiteHint", "Map this input level and brighter values to output white.", input_white, min_white, 1.0),
+                            ("SkyLive.Craft.Levels.Gamma", "Gamma", "SkyLive.Craft.Levels.GammaHint", "Adjust the midtones between input black and white.", gamma, 0.01, 10.0),
+                            ("SkyLive.Craft.Levels.OutputBlack", "Output black", "SkyLive.Craft.Levels.OutputBlackHint", "Set the output value for input black.", output_black, 0.0, 1.0),
+                            ("SkyLive.Craft.Levels.OutputWhite", "Output white", "SkyLive.Craft.Levels.OutputWhiteHint", "Set the output value for input white.", output_white, 0.0, 1.0),
+                        ] {
+                            let label=ui.label(crate::i18n::tr_key_or(ui,key,fallback));
+                            ui.add_sized([ui.available_width(),22.0],egui::Slider::new(value,min..=max).clamping(egui::SliderClamping::Edits).step_by(0.001)).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,hint_key,hint));
+                        }
+                        let channel_names=[("SkyLive.Craft.ChannelMixerRedOutput","Red output"),("SkyLive.Craft.ChannelMixerGreenOutput","Green output"),("SkyLive.Craft.ChannelMixerBlueOutput","Blue output"),("SkyLive.Craft.ChannelRemapAlphaOutput","Alpha output")];
+                        for (index,channel) in channels.iter_mut().enumerate() {
+                            let title=crate::i18n::tr_key_or(ui,channel_names[index].0,channel_names[index].1);
+                            egui::CollapsingHeader::new(title).id_salt(("levels-channel",index)).show(ui,|ui|{
+                                let [black,white,gamma,out_black,out_white]=channel;
+                                let max_black=(*white-0.001).max(0.0);let min_white=(*black+0.001).min(1.0);
+                                for (key,fallback,hint_key,hint,value,min,max) in [
+                                    ("SkyLive.Craft.Levels.InputBlack","Input black","SkyLive.Craft.Levels.InputBlackHint","Map this input level and darker values to output black.",black,0.0,max_black),
+                                    ("SkyLive.Craft.Levels.InputWhite","Input white","SkyLive.Craft.Levels.InputWhiteHint","Map this input level and brighter values to output white.",white,min_white,1.0),
+                                    ("SkyLive.Craft.Levels.Gamma","Gamma","SkyLive.Craft.Levels.GammaHint","Adjust the midtones between input black and white.",gamma,0.01,10.0),
+                                    ("SkyLive.Craft.Levels.OutputBlack","Output black","SkyLive.Craft.Levels.OutputBlackHint","Set the output value for input black.",out_black,0.0,1.0),
+                                    ("SkyLive.Craft.Levels.OutputWhite","Output white","SkyLive.Craft.Levels.OutputWhiteHint","Set the output value for input white.",out_white,0.0,1.0),
+                                ] {let label=ui.label(crate::i18n::tr_key_or(ui,key,fallback));ui.add_sized([ui.available_width(),22.0],egui::Slider::new(value,min..=max).clamping(egui::SliderClamping::Edits).step_by(0.001)).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,hint_key,hint));}
+                            });
+                        }
+                    }
+                    VideoEffect::ChannelRemap{channels,alpha}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ChannelRemapRGBA","Set RGBA Channels · CPU/GPU"));
+                        let outputs=[("SkyLive.Craft.ChannelMixerRedOutput","Red output"),("SkyLive.Craft.ChannelMixerGreenOutput","Green output"),("SkyLive.Craft.ChannelMixerBlueOutput","Blue output"),("SkyLive.Craft.ChannelRemapAlphaOutput","Alpha output")];
+                        let choices=[("SkyLive.Craft.ChannelMixerRedInput","Red input"),("SkyLive.Craft.ChannelMixerGreenInput","Green input"),("SkyLive.Craft.ChannelMixerBlueInput","Blue input"),("SkyLive.Craft.ChannelRemapBlack","Black"),("SkyLive.Craft.ChannelRemapWhite","White"),("SkyLive.Craft.ChannelRemapAlphaInput","Alpha input")];
+                        for (index,channel) in channels.iter_mut().chain(std::iter::once(alpha)).enumerate(){
+                            ui.horizontal(|ui|{
+                                ui.label(crate::i18n::tr_key_or(ui,outputs[index].0,outputs[index].1));
+                                egui::ComboBox::from_id_salt(("channel-remap",index))
+                                    .selected_text({let choice=choices[usize::from(*channel).min(5)];crate::i18n::tr_key_or(ui,choice.0,choice.1)})
+                                    .show_ui(ui,|ui|{for (value,(key,label)) in choices.iter().enumerate(){ui.selectable_value(channel,value as u8,crate::i18n::tr_key_or(ui,key,label));}});
+                            });
+                        }
+                    }
+                    VideoEffect::ColorToAlpha{color,transparency,opacity}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorToAlpha.Description","Remove a color and recover translucent edges."));
+                        ui.horizontal_wrapped(|ui|{let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorToAlpha.Color","Color to remove"));ui.color_edit_button_srgb(color).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.ColorToAlpha.ColorHint","Choose the background color to remove."));});
+                        for (key,label,hint_key,hint,value) in [
+                            ("SkyLive.Craft.ColorToAlpha.Transparency","Transparency threshold","SkyLive.Craft.ColorToAlpha.TransparencyHint","Pixels at or below this coverage become transparent.",transparency),
+                            ("SkyLive.Craft.ColorToAlpha.Opacity","Opacity threshold","SkyLive.Craft.ColorToAlpha.OpacityHint","Pixels at or above this coverage remain opaque.",opacity),
+                        ] {let title=ui.label(crate::i18n::tr_key_or(ui,key,label));ui.add_sized([ui.available_width(),22.0],egui::Slider::new(value,0.0..=1.0).clamping(egui::SliderClamping::Edits).step_by(0.001)).labelled_by(title.id).on_hover_text(crate::i18n::tr_key_or(ui,hint_key,hint));}
+                    }
+                    VideoEffect::LeaveColor{color,amount,tolerance,softness,by_hue}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.LeaveColorDescription","EffectCraft Leave Color · CPU/GPU · alpha unchanged"));
+                        ui.horizontal_wrapped(|ui|{let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.LeaveColorKey","Color to leave"));ui.color_edit_button_srgb(color).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.LeaveColorKeyHint","Choose the color that remains saturated."));});
+                        ui.checkbox(by_hue,crate::i18n::tr_key_or(ui,"SkyLive.Craft.LeaveColorHue","Match hue only")).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.LeaveColorHueHint","Match hue rather than RGB distance; gray has no hue."));
+                        craft_slider(ui,"Tolerance",tolerance,0.0,100.0,1.0,"Set how closely colors must match the chosen color.");
+                        craft_slider(ui,"Edge Softness",softness,0.0,100.0,1.0,"Feather the boundary of the retained color range.");
+                        craft_slider(ui,"Amount",amount,0.0,100.0,1.0,"Set how much unmatched colors are desaturated.");
+                    }
+                    VideoEffect::GradientMap{shadows,highlights,stops,reverse,amount,dither}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientMapMultiDescription","PhotoCraft Gradient Map · up to six colors · CPU/GPU · alpha unchanged"));
+                        for (color,key,label,hint_key,hint) in [(shadows,"SkyLive.Craft.TritoneShadows","Shadows","SkyLive.Craft.TritoneShadowsHint","Choose the color for dark tones."),(highlights,"SkyLive.Craft.TritoneHighlights","Highlights","SkyLive.Craft.TritoneHighlightsHint","Choose the color for bright tones.")] {ui.horizontal_wrapped(|ui|{let text=ui.label(crate::i18n::tr_key_or(ui,key,label));ui.color_edit_button_srgb(color).labelled_by(text.id).on_hover_text(crate::i18n::tr_key_or(ui,hint_key,hint));});}
+                        let count=stops.iter().take_while(|v|v.is_some()).count();
+                        let mut remove=None;
+                        for i in 0..count {
+                            let min=if i==0 {1} else {stops[i-1].unwrap().0+1};
+                            let max=if i+1==count {254} else {stops[i+1].unwrap().0-1};
+                            if let Some((position,color))=&mut stops[i] {
+                                ui.push_id(i,|ui|ui.horizontal_wrapped(|ui|{
+                                    let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientStop","Gradient stop"));
+                                    ui.add(egui::DragValue::new(position).range(min..=max).speed(0.5)).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientStopPositionHint","Position between shadows (0) and highlights (255)."));
+                                    ui.color_edit_button_srgb(color).labelled_by(label.id);
+                                    if ui.button(crate::i18n::tr(ui,"Remove")).clicked(){remove=Some(i);}
+                                }));
+                            }
+                        }
+                        if let Some(index)=remove {for i in index..3 {stops[i]=stops[i+1];}stops[3]=None;}
+                        if ui.add_enabled(count<4,egui::Button::new(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientAddStop","Add gradient stop"))).clicked(){
+                            let count=stops.iter().take_while(|v|v.is_some()).count();
+                            let mut previous=0u8;let mut best=(0u8,255u8,0usize);
+                            for i in 0..=count {let next=if i==count {255} else {stops[i].unwrap().0};if u16::from(next)-u16::from(previous)>u16::from(best.1)-u16::from(best.0){best=(previous,next,i);}previous=next;}
+                            if best.1-best.0>1 {let position=best.0+(best.1-best.0)/2;let color=[position;3];for i in (best.2..count).rev(){stops[i+1]=stops[i];}stops[best.2]=Some((position,color));}
+                        }
+                        ui.checkbox(reverse,crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientMapReverse","Reverse gradient")).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientMapReverseHint","Swap the mapping of dark and bright tones."));
+                        ui.checkbox(dither,crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientMapDither","Dither")).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GradientMapDitherHint","Reduce gradient banding using a fixed 4×4 pattern."));
+                        craft_slider(ui,"Amount",amount,0.0,100.0,1.0,"Set the effect blend from the original source to the full result.");
+                    }
                     VideoEffect::CraftGammaPedestalGain{gamma,pedestal,gain,black_stretch}=>{
                         ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GpgDescription","Adjust gamma, pedestal and gain for each color channel · CPU/GPU · alpha unchanged"));
                         let stretch=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.GpgBlackStretch","Black Stretch"));
@@ -791,6 +913,27 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                         let label=ui.label(crate::i18n::tr(ui,"Saturation"));
                         ui.add_sized([ui.available_width(),22.0],egui::Slider::new(saturation,-100.0..=100.0).clamping(egui::SliderClamping::Edits).step_by(1.0)).labelled_by(label.id)
                             .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.VibranceSaturationHint","Adjust the overall HSL saturation. Zero preserves the current saturation."));
+                    }
+                    VideoEffect::SelectiveColor{relative,adjustments}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.SelectiveColor.Description","PhotoCraft Selective Color · CPU/GPU · alpha unchanged"));
+                        ui.checkbox(relative,crate::i18n::tr_key_or(ui,"SkyLive.Craft.SelectiveColor.Relative","Relative"))
+                            .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.SelectiveColor.RelativeHint","Scale adjustments by existing ink. Turn off for absolute adjustments."));
+                        let ranges=[("SkyLive.Craft.SelectiveColor.Reds","Reds"),("SkyLive.Craft.SelectiveColor.Yellows","Yellows"),("SkyLive.Craft.SelectiveColor.Greens","Greens"),("SkyLive.Craft.SelectiveColor.Cyans","Cyans"),("SkyLive.Craft.SelectiveColor.Blues","Blues"),("SkyLive.Craft.SelectiveColor.Magentas","Magentas"),("SkyLive.Craft.SelectiveColor.Whites","Whites"),("SkyLive.Craft.SelectiveColor.Neutrals","Neutrals"),("SkyLive.Craft.SelectiveColor.Blacks","Blacks")];
+                        let channels=[("SkyLive.Craft.SelectiveColor.Cyan","Cyan"),("SkyLive.Craft.SelectiveColor.Magenta","Magenta"),("SkyLive.Craft.SelectiveColor.Yellow","Yellow"),("SkyLive.Craft.SelectiveColor.Black","Black")];
+                        for(index,(key,fallback)) in ranges.into_iter().enumerate(){
+                            egui::CollapsingHeader::new(crate::i18n::tr_key_or(ui,key,fallback)).id_salt(("selective-color-range",index)).show(ui,|ui|{
+                                for(channel,(key,fallback)) in channels.into_iter().enumerate(){let label=ui.label(crate::i18n::tr_key_or(ui,key,fallback));ui.add_sized([ui.available_width(),22.0],egui::Slider::new(&mut adjustments[index][channel],-100..=100).suffix("%")).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.SelectiveColor.ChannelHint","Adjust this ink in the selected color range."));}
+                            });
+                        }
+                    }
+                    VideoEffect::HlsBalance{hue,lightness,saturation}=>{
+                        ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsDescription","EffectCraft Color Balance (HLS) · CPU/GPU · SDR · alpha unchanged"));
+                        let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsHue","Hue"));
+                        ui.add_sized([ui.available_width(),22.0],egui::Slider::new(hue,-360.0..=360.0).clamping(egui::SliderClamping::Edits).suffix("°")).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsHueHint","Rotate the hue around the color wheel."));
+                        let label=ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsLightness","Lightness"));
+                        ui.add_sized([ui.available_width(),22.0],egui::Slider::new(lightness,-100.0..=100.0).clamping(egui::SliderClamping::Edits).suffix("%")).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsLightnessHint","Adjust HSL lightness toward black or white."));
+                        let label=ui.label(crate::i18n::tr(ui,"Saturation"));
+                        ui.add_sized([ui.available_width(),22.0],egui::Slider::new(saturation,-100.0..=100.0).clamping(egui::SliderClamping::Edits).suffix("%")).labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.HlsSaturationHint","Adjust HSL saturation toward grayscale or full color."));
                     }
                     VideoEffect::Exposure{exposure,offset,gamma,bypass_linear}=>{
                         craft_slider(ui,"Exposure Stops",exposure,-20.0,20.0,0.05,"One stop doubles or halves linear-light exposure.");
@@ -876,6 +1019,7 @@ fn properties(ui: &mut egui::Ui, model: &StudioSnapshot, draft: &mut VideoFilter
                             precise_number(ui,"Hue Shift",hue_shift,-180.0,180.0,0.01,"Rotate hue around the RGB diagonal in degrees.");
                             precise_number(ui,"Opacity",opacity,0.0,1.0,0.0001,"Set the filtered source opacity from zero to one.");
                         });
+                        zero_opacity_warning(ui, *opacity);
                         for (caption,color,hint) in [("Color Multiply",color_multiply,"Multiply RGB by this color in linear light."),("Color Add",color_add,"Add this color in linear light.")] {
                             ui.horizontal(|ui|{let name=crate::i18n::tr(ui,caption);let label=ui.label(&name);
                                 let response=ui.color_edit_button_srgb(color).labelled_by(label.id).on_hover_text(crate::i18n::tr(ui,hint));
@@ -1094,6 +1238,15 @@ fn key_values(
             "Adjust the gamma exponent in linear light.",
         );
     });
+    zero_opacity_warning(ui, *opacity);
+}
+
+fn zero_opacity_warning(ui: &mut egui::Ui, opacity: f32) {
+    if opacity == 0.0 {
+        ui.colored_label(ui.visuals().warn_fg_color, crate::i18n::tr_key_or(ui,
+            "SkyLive.VideoFilter.ZeroOpacityWarning",
+            "Opacity is zero. When enabled, this filter makes the source fully transparent."));
+    }
 }
 
 fn precise_number<Num: egui::emath::Numeric>(

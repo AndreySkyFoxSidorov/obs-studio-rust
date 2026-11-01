@@ -66,10 +66,20 @@ impl Preview {
         if self.texture_owner.is_some_and(|owner|owner!=(binding.0,window,target)) {
             self.texture=None;self.texture_dimensions=None;self.texture_owner=None;self.source_dimensions=None;
         }
-        if session.is_closed() || binding!=(session.identity(),session.snapshot().revision())
-            || playback.session()!=session.identity() || playback.revision()!=binding.1 || capture.session()!=binding.0 {
+        if session.is_closed() || binding.0!=session.identity() {
             self.invalidate();self.texture=None;self.texture_dimensions=None;self.texture_owner=None;self.source_dimensions=None;
             self.error=Some("The filter preview belongs to another document or revision.".into());return;
+        }
+        if binding.1!=session.snapshot().revision() || playback.session()!=session.identity()
+            || playback.revision()!=binding.1 || capture.session()!=binding.0 {
+            // A snapshot or revision can change while the same dialog is open.
+            // Cancel work based on the old state, but keep this dialog's last
+            // frame visible and mark it unavailable instead of flashing blank.
+            // The owner check above prevents reusing it for another source.
+            self.invalidate();
+            self.error=Some("The filter preview belongs to another document or revision.".into());
+            if binding.1==session.snapshot().revision() {context.request_repaint_after(ERROR_RETRY);}
+            return;
         }
         let filters=match filters {Ok(value)=>value,Err(error)=>{self.invalidate();self.error=Some(error);return;}};
         if window==0||rows.len()!=filters.len()||rows.len()>skylive_core::MAX_VIDEO_FILTERS||rows.iter().enumerate().any(|(index,row)|*row==0||rows[..index].contains(row)){self.invalidate();self.error=Some("Invalid filter preview draft row ownership".into());return;}

@@ -50,7 +50,7 @@ fn image_folder(path: &Path) -> Result<Vec<String>, String> {
         if !entry.file_type().map_err(|e|e.to_string())?.is_file() { continue; }
         let file=entry.path();
         let supported=file.extension().and_then(|e|e.to_str()).is_some_and(|e| {
-            ["png","apng","jpg","jpeg","bmp","tga","gif","webp"].iter().any(|ext|e.eq_ignore_ascii_case(ext))
+            ["png","apng","jpg","jpeg","bmp","tga","gif","webp","psd","jxr"].iter().any(|ext|e.eq_ignore_ascii_case(ext))
         });
         if !supported { continue; }
         if paths.len() >= MAX_PATHS { return Err("The selected folder contains more than 256 supported images.".into()); }
@@ -124,8 +124,9 @@ mod native {
                 Kind::Font=>"*.ttf;*.ttc",
                 Kind::TextFile=>"*.txt;*.log",
                 Kind::Lut=>"*.cube;*.png",
-                Kind::ImageMask=>"*.png;*.apng;*.jpg;*.jpeg;*.bmp;*.tga;*.gif;*.webp",
-                Kind::Image|Kind::Images => "*.png;*.apng;*.jpg;*.jpeg;*.bmp;*.tga;*.gif;*.webp",
+                Kind::ImageMask=>"*.png;*.apng;*.jpg;*.jpeg;*.bmp;*.tga;*.gif;*.webp;*.psd;*.jxr",
+                Kind::Image => "*.png;*.apng;*.jpg;*.jpeg;*.bmp;*.tga;*.gif;*.webp;*.psd;*.jxr",
+                Kind::Images => "*.png;*.apng;*.jpg;*.jpeg;*.bmp;*.tga;*.gif;*.webp;*.psd;*.jxr",
                 Kind::RemuxRecordings=>"*.mkv",
                 Kind::Media => "*.mp4;*.mov;*.m4a",
                 Kind::DocumentOpen|Kind::DocumentSave|Kind::ObsOpen => "*.json",

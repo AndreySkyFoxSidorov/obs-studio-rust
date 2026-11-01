@@ -83,6 +83,32 @@ pub enum VideoColorRange {
     Full,
 }
 impl VideoPixelFormat {
+    /// Override YUV interpretation without changing the negotiated native
+    /// subtype, dimensions or chroma siting. RGB and compressed transports
+    /// are decoded separately and keep their original representation.
+    pub fn with_yuv_color(self, matrix:Option<VideoColorMatrix>, range:Option<VideoColorRange>)->Self {
+        match self {
+            Self::Yuy2{matrix:m,range:r,chroma_left}=>Self::Yuy2{matrix:matrix.unwrap_or(m),range:range.unwrap_or(r),chroma_left},
+            Self::Uyvy{matrix:m,range:r,chroma_left}=>Self::Uyvy{matrix:matrix.unwrap_or(m),range:range.unwrap_or(r),chroma_left},
+            Self::I420{matrix:m,range:r,chroma_left}=>Self::I420{matrix:matrix.unwrap_or(m),range:range.unwrap_or(r),chroma_left},
+            Self::Yv12{matrix:m,range:r,chroma_left}=>Self::Yv12{matrix:matrix.unwrap_or(m),range:range.unwrap_or(r),chroma_left},
+            Self::Nv12{matrix:m,range:r,chroma_left}=>Self::Nv12{matrix:matrix.unwrap_or(m),range:range.unwrap_or(r),chroma_left},
+            other=>other,
+        }
+    }
+    /// Override sampling interpretation without changing the native format
+    /// selected from the device. Packed and planar Windows OBS camera inputs
+    /// use libobs's left-sited conversion shaders.
+    fn with_yuv_left(self)->Self {
+        match self {
+            Self::Yuy2{matrix,range,..}=>Self::Yuy2{matrix,range,chroma_left:true},
+            Self::Uyvy{matrix,range,..}=>Self::Uyvy{matrix,range,chroma_left:true},
+            Self::I420{matrix,range,..}=>Self::I420{matrix,range,chroma_left:true},
+            Self::Yv12{matrix,range,..}=>Self::Yv12{matrix,range,chroma_left:true},
+            Self::Nv12{matrix,range,..}=>Self::Nv12{matrix,range,chroma_left:true},
+            other=>other,
+        }
+    }
     pub fn label(self) -> &'static str {
         match self {
             Self::Mjpeg => "MJPEG",
@@ -220,6 +246,20 @@ pub struct VideoCaptureBinding {
     mode_policy: CameraModePolicy,
     #[serde(default, skip_serializing_if = "fixed_fps_policy")]
     fps_policy: CameraFpsPolicy,
+    /// OBS Custom mode may request any supported native pixel format.
+    #[serde(default, skip_serializing_if = "is_false")]
+    any_format: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    color_matrix: Option<VideoColorMatrix>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    color_range: Option<VideoColorRange>,
+    /// Inactive Custom mode retained while DirectShow Preferred is selected.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    custom_mode: Option<VideoCaptureMode>,
+    /// Bounded OBS settings that cannot currently be resolved to a native
+    /// mode. Opaque to the engine; the OBS adapter validates them on export.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    obs_custom_settings: Option<String>,
     deactivate_when_hidden: bool,
     #[serde(default, skip_serializing_if = "is_false")]
     flip_vertically: bool,
@@ -238,6 +278,16 @@ struct BindingData {
     mode_policy: CameraModePolicy,
     #[serde(default)]
     fps_policy: CameraFpsPolicy,
+    #[serde(default)]
+    any_format: bool,
+    #[serde(default)]
+    color_matrix: Option<VideoColorMatrix>,
+    #[serde(default)]
+    color_range: Option<VideoColorRange>,
+    #[serde(default)]
+    custom_mode: Option<VideoCaptureMode>,
+    #[serde(default)]
+    obs_custom_settings: Option<String>,
     deactivate_when_hidden: bool,
     #[serde(default)]
     flip_vertically: bool,
@@ -250,7 +300,7 @@ impl TryFrom<BindingData> for VideoCaptureBinding {
     type Error = Error;
     fn try_from(v: BindingData) -> Result<Self, Error> {
         Self::new(v.target, v.mode, v.deactivate_when_hidden)?
-            .with_mode_policy(v.mode_policy).with_fps_policy(v.fps_policy).with_flip_vertically(v.flip_vertically).with_audio(v.audio)?.with_embedded_audio(v.embedded_audio)
+            .with_mode_policy(v.mode_policy).with_fps_policy(v.fps_policy).with_any_format(v.any_format).with_color(v.color_matrix,v.color_range)?.with_custom_mode(v.custom_mode)?.with_obs_custom_settings(v.obs_custom_settings)?.with_flip_vertically(v.flip_vertically).with_audio(v.audio)?.with_embedded_audio(v.embedded_audio)
     }
 }
 impl VideoCaptureBinding {
@@ -264,6 +314,11 @@ impl VideoCaptureBinding {
             mode,
             mode_policy: CameraModePolicy::Fixed,
             fps_policy: CameraFpsPolicy::Fixed,
+            any_format: false,
+            color_matrix: None,
+            color_range: None,
+            custom_mode: None,
+            obs_custom_settings: None,
             deactivate_when_hidden,
             flip_vertically: false,
             audio: None,
@@ -284,6 +339,40 @@ impl VideoCaptureBinding {
     pub fn mode_policy(&self) -> CameraModePolicy { self.mode_policy }
     pub fn with_mode_policy(mut self, policy: CameraModePolicy) -> Self { self.mode_policy = policy; self }
     pub fn fps_policy(&self) -> CameraFpsPolicy { self.fps_policy }
+    pub fn any_format(&self)->bool {self.any_format}
+    pub fn with_any_format(mut self, enabled:bool)->Self {self.any_format=enabled;self}
+    pub fn color_matrix(&self)->Option<VideoColorMatrix>{self.color_matrix}
+    pub fn color_range(&self)->Option<VideoColorRange>{self.color_range}
+    pub fn with_color(mut self,matrix:Option<VideoColorMatrix>,range:Option<VideoColorRange>)->Result<Self,Error>{
+        self.color_matrix=matrix;self.color_range=range;self.validate()?;Ok(self)
+    }
+    /// Decode interpretation only; never use this mode to select a device type.
+    pub fn decode_mode(&self)->VideoCaptureMode {
+        // OBS win-dshow sends raw YUV through VIDEO_CS_DEFAULT and
+        // VIDEO_RANGE_DEFAULT when no override was authored. libobs resolves
+        // those to BT.709 and limited range, regardless of driver metadata.
+        // Compressed H.264 keeps its per-frame metadata when no override was
+        // authored, matching ffmpeg_decode_video; with_yuv_color leaves it
+        // untouched here and the AVC decoder handles its own defaults.
+        let (matrix,range)=if matches!(self.target,VideoCaptureTarget::Windows{..}) {
+            (Some(self.color_matrix.unwrap_or(VideoColorMatrix::Bt709)),Some(self.color_range.unwrap_or(VideoColorRange::Limited)))
+        }else{(self.color_matrix,self.color_range)};
+        let format=self.mode.format.with_yuv_color(matrix,range);
+        let format=if matches!(self.target,VideoCaptureTarget::Windows{..}) {format.with_yuv_left()} else {format};
+        VideoCaptureMode {format,..self.mode}
+    }
+    pub fn custom_mode(&self) -> Option<VideoCaptureMode> { self.custom_mode }
+    pub fn obs_custom_settings(&self) -> Option<&str> { self.obs_custom_settings.as_deref() }
+    pub fn with_obs_custom_settings(mut self, settings: Option<String>) -> Result<Self, Error> {
+        self.obs_custom_settings = settings;
+        self.validate()?;
+        Ok(self)
+    }
+    pub fn with_custom_mode(mut self, mode: Option<VideoCaptureMode>) -> Result<Self, Error> {
+        self.custom_mode = mode;
+        self.validate()?;
+        Ok(self)
+    }
     pub fn with_fps_policy(mut self, policy: CameraFpsPolicy) -> Self {
         self.fps_policy = policy;
         self
@@ -293,6 +382,7 @@ impl VideoCaptureBinding {
     pub fn with_mode(mut self, mode: VideoCaptureMode) -> Result<Self, Error> {
         mode.validate()?;
         self.mode = mode;
+        self.validate()?;
         Ok(self)
     }
     pub fn width(&self) -> u32 {
@@ -314,7 +404,11 @@ impl VideoCaptureBinding {
     /// Physical acquisition identity. Presentation and custom audio edits must
     /// not restart capture, renegotiate the selected mode or revoke manual Stop.
     pub fn same_device_mode(&self, other: &Self) -> bool {
-        self.target == other.target && self.mode == other.mode && self.mode_policy == other.mode_policy && self.fps_policy == other.fps_policy && self.embedded_audio == other.embedded_audio
+        self.target == other.target && self.mode == other.mode && self.mode_policy == other.mode_policy
+            && (self.mode_policy == CameraModePolicy::DirectShowPreferred || self.any_format == other.any_format)
+            && (self.mode_policy == CameraModePolicy::DirectShowPreferred || self.fps_policy == other.fps_policy)
+            && self.color_matrix == other.color_matrix && self.color_range == other.color_range
+            && self.embedded_audio == other.embedded_audio
     }
     /// Manual AV activation policy excludes source presentation orientation.
     /// All physical, visibility and custom audio settings still participate.
@@ -337,16 +431,31 @@ impl VideoCaptureBinding {
         Ok(self)
     }
     /// Native video owners must not reopen a camera when only its audio changes.
-    pub fn video_only(&self) -> Self { Self { target:self.target.clone(),mode:self.mode,mode_policy:self.mode_policy,fps_policy:self.fps_policy,
+    pub fn video_only(&self) -> Self { Self { target:self.target.clone(),mode:self.mode,mode_policy:self.mode_policy,fps_policy:if self.mode_policy==CameraModePolicy::DirectShowPreferred {CameraFpsPolicy::Fixed}else{self.fps_policy},any_format:self.mode_policy!=CameraModePolicy::DirectShowPreferred && self.any_format,color_matrix:self.color_matrix,color_range:self.color_range,custom_mode:None,obs_custom_settings:None,
         deactivate_when_hidden:self.deactivate_when_hidden,flip_vertically:self.flip_vertically,audio:None,embedded_audio:self.embedded_audio } }
     pub fn same_video(&self, other: &Self) -> bool {
-        self.target == other.target && self.mode == other.mode && self.mode_policy == other.mode_policy && self.fps_policy == other.fps_policy && self.embedded_audio == other.embedded_audio
+        self.same_device_mode(other)
             && self.deactivate_when_hidden == other.deactivate_when_hidden
             && self.flip_vertically == other.flip_vertically
     }
     pub(crate) fn validate(&self) -> Result<(), Error> {
         self.target.validate()?;
         self.mode.validate()?;
+        if (self.color_matrix.is_some() || self.color_range.is_some()) && !matches!(self.target,VideoCaptureTarget::Windows{..}) {
+            return Err(Error::Invalid("Camera color override requires a Windows camera"));
+        }
+        if let Some(mode) = self.custom_mode {
+            mode.validate()?;
+            if self.mode_policy != CameraModePolicy::DirectShowPreferred {
+                return Err(Error::Invalid("inactive custom camera mode requires DirectShow preferred mode"));
+            }
+        }
+        if let Some(settings) = &self.obs_custom_settings {
+            if settings.is_empty() || settings.len() > 16 * 1024 || self.custom_mode.is_some()
+                || self.mode_policy != CameraModePolicy::DirectShowPreferred {
+                return Err(Error::Invalid("invalid retained OBS camera custom settings"));
+            }
+        }
         if self.embedded_audio && (!matches!(self.target, VideoCaptureTarget::Windows {..}) || self.audio.is_some()) {
             return Err(Error::Invalid("embedded camera audio requires a Windows camera and excludes custom audio"));
         }
@@ -355,9 +464,14 @@ impl VideoCaptureBinding {
         }
         if let Some(audio) = &self.audio {
             audio.validate()?;
+            if let crate::AudioTarget::WindowsCamera { symbolic_link } = audio.target() {
+                if !matches!(&self.target, VideoCaptureTarget::Windows { symbolic_link: camera } if camera.eq_ignore_ascii_case(symbolic_link)) {
+                    return Err(Error::Invalid("automatic audio must refer to the bound camera"));
+                }
+            }
             if !matches!(self.target, VideoCaptureTarget::Windows {..})
                 || audio.flow() != crate::AudioFlow::Input
-                || !matches!(audio.target(), crate::AudioTarget::Default | crate::AudioTarget::WindowsEndpoint {..}) {
+                || !matches!(audio.target(), crate::AudioTarget::Default | crate::AudioTarget::WindowsEndpoint {..} | crate::AudioTarget::WindowsCamera {..}) {
                 return Err(Error::Invalid("camera custom audio requires a Windows input endpoint"));
             }
         }

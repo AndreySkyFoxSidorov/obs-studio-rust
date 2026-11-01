@@ -700,6 +700,11 @@ impl LiveProgram {
             self.problem(error.code(),error.to_string());self.retire();
         }
     }
+    pub(super) fn invalidate_native(&mut self,binding:&AudioCaptureBinding) {
+        if let Some(Err(error))=self.program.as_mut().map(|program|program.invalidate_native_input(binding)) {
+            self.problem(error.code(),error.to_string());self.retire();
+        }
+    }
     pub(super) fn ingest_browser(&mut self,packet:&crate::browser::BrowserPcmPacket){
         if packet.program!=self.key{return;}let Some(program)=&mut self.program else{return;};
         let input=crate::audio::AudioInputKey::Browser(packet.key.clone());

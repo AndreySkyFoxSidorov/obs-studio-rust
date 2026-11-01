@@ -268,6 +268,9 @@ impl NativePcmBlock {
 pub trait NativeAudioBackend {
     fn capabilities(&self) -> AudioCapabilities;
     fn host_now_ns(&self) -> Result<u64, AudioCaptureError>;
+    /// Retire asynchronous native openings no longer owned by this scope.
+    /// Implementations must discard late completions for removed bindings.
+    fn retain_pending_openings(&mut self, _bindings: &[AudioCaptureBinding]) {}
     fn enumerate(
         &mut self,
         flow: AudioFlow,

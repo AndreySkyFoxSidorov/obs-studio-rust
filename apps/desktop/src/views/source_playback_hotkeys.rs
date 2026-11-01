@@ -5,19 +5,19 @@ use std::sync::atomic::{AtomicU64,Ordering};
 static NEXT:AtomicU64=AtomicU64::new(1);
 pub struct Draft{
     pub session:u64,pub revision:u64,pub source:Id,pub token:u64,pub name:String,
-    baseline:SourcePlaybackHotkeys,bindings:Vec<SourcePlaybackBinding>,slideshow:bool,
+    baseline:SourcePlaybackHotkeys,bindings:Vec<SourcePlaybackBinding>,slideshow:bool,game:bool,
     listening:Option<(Operation,usize)>,pub capture_ready:bool,pub available:bool,
     pub current:bool,pub status:String,pub detail:Option<String>,error:Option<String>,
 }
 impl Draft{
     pub fn capture(session:u64,model:&StudioSnapshot,source:Id)->Result<Self,String>{
-        let value=model.source(source).filter(|value|eligible(value.kind())).ok_or("Choose a Media Source or Slideshow for playback shortcuts.")?;
+        let value=model.source(source).filter(|value|eligible(value.kind())).ok_or("Choose a Media Source, Slideshow or Game Capture source for shortcuts.")?;
         let token=NEXT.fetch_update(Ordering::Relaxed,Ordering::Relaxed,|value|value.checked_add(1)).map_err(|_|"Source shortcut editor identity exhausted.")?;
-        Ok(Self{session,revision:model.revision(),source,token,name:value.name().to_owned(),baseline:value.playback_hotkeys().clone(),bindings:value.playback_hotkeys().bindings().to_vec(),slideshow:matches!(value.kind(),SourceKind::ImageSlideShow{..}),listening:None,capture_ready:false,available:false,current:true,status:"Waiting for global shortcut suspension…".into(),detail:None,error:None})
+        Ok(Self{session,revision:model.revision(),source,token,name:value.name().to_owned(),baseline:value.playback_hotkeys().clone(),bindings:value.playback_hotkeys().bindings().to_vec(),slideshow:matches!(value.kind(),SourceKind::ImageSlideShow{..}),game:matches!(value.kind(),SourceKind::GameCapture{..}),listening:None,capture_ready:false,available:false,current:true,status:"Waiting for global shortcut suspension…".into(),detail:None,error:None})
     }
     pub fn fresh(&self,session:u64,model:&StudioSnapshot)->bool{
         self.session==session&&self.revision==model.revision()&&self.token!=0
-            &&model.source(self.source).is_some_and(|source|source.playback_hotkeys()==&self.baseline&&eligible(source.kind())&&matches!(source.kind(),SourceKind::ImageSlideShow{..})==self.slideshow)
+            &&model.source(self.source).is_some_and(|source|source.playback_hotkeys()==&self.baseline&&eligible(source.kind())&&matches!(source.kind(),SourceKind::ImageSlideShow{..})==self.slideshow&&matches!(source.kind(),SourceKind::GameCapture{..})==self.game)
     }
     pub fn is_listening(&self)->bool{self.listening.is_some()}
     pub fn prepared(&self,model:&StudioSnapshot)->Result<SourcePlaybackHotkeys,String>{
@@ -34,7 +34,7 @@ impl Draft{
         let candidate=SourcePlaybackHotkeys::new(candidate).map_err(|error|error.to_string())?;self.bindings=candidate.bindings().to_vec();Ok(())
     }
 }
-pub fn eligible(kind:&SourceKind)->bool{matches!(kind,SourceKind::ImageSlideShow{..}|SourceKind::MediaSource{..})}
+pub fn eligible(kind:&SourceKind)->bool{matches!(kind,SourceKind::ImageSlideShow{..}|SourceKind::MediaSource{..}|SourceKind::GameCapture{..})}
 pub fn open_button(ui:&mut egui::Ui,session:u64,model:&StudioSnapshot,source:Id,intents:&mut Vec<super::Intent>){
     if !model.source(source).is_some_and(|source|eligible(source.kind())){return;}
     if ui.button(crate::i18n::tr(ui,"Playback Hotkeys…")).on_hover_text(crate::i18n::tr(ui,"Assign Windows global playback shortcuts to this exact source, independently of the selected scene item.")).clicked(){
@@ -48,7 +48,7 @@ pub fn settings_sources(ui:&mut egui::Ui,model:&StudioSnapshot,scope:Option<(u64
             egui::ScrollArea::vertical().id_salt("source-shortcut-targets").max_height(180.0).show(ui,|ui|{
                 let mut found=false;
                 for source in model.sources().iter().filter(|source|eligible(source.kind())){found=true;ui.push_id(source.id(),|ui|{ui.horizontal_wrapped(|ui|{ui.label(source.name()).on_hover_text(source.name());open_button(ui,scope.map_or(0,|scope|scope.0),model,source.id(),intents);});});}
-                if !found{ui.label(crate::i18n::tr(ui,"Add a Media Source or Slideshow to configure source playback shortcuts."));}
+                if !found{ui.label(crate::i18n::tr(ui,"Add a Media Source, Slideshow or Game Capture source to configure shortcuts."));}
             });
         });
     }).header_response.on_hover_text(crate::i18n::tr(ui,"Assign Windows global playback shortcuts to this exact source, independently of the selected scene item."));
@@ -74,21 +74,21 @@ pub fn editor(ui:&mut egui::Ui,model:&StudioSnapshot,draft:&mut Draft){
     }
     if let Some(error)=&draft.error{ui.colored_label(ui.visuals().error_fg_color,crate::i18n::tr(ui,error));}
     if !draft.is_listening(){if let Err(error)=draft.prepared(model){ui.add(egui::Label::new(egui::RichText::new(crate::i18n::tr(ui,error)).color(ui.visuals().warn_fg_color)).wrap());}}
-    let operations:&[Operation]=if draft.slideshow{&Operation::SLIDESHOW}else{&Operation::MEDIA};
-    for &operation in operations{ui.push_id(operation,|ui|{
+    let operations:&[Operation]=if draft.game{&Operation::GAME}else if draft.slideshow{&Operation::SLIDESHOW}else{&Operation::MEDIA};
+    for &operation in operations{let action_label=if draft.game {if operation==Operation::Play {"Capture Start"}else if operation==Operation::Stop{"Capture Stop"}else{"Start/Stop shared (Start priority)"}}else{operation.label()};ui.push_id(operation,|ui|{
         if ui.available_width()>=580.0{
             ui.horizontal(|ui|{
-                let label=ui.add_sized([150.0,28.0],egui::Label::new(crate::i18n::tr(ui,operation.label())).truncate()).on_hover_text(crate::i18n::tr(ui,operation.label()));
+                let label=ui.add_sized([150.0,28.0],egui::Label::new(crate::i18n::tr(ui,action_label)).truncate()).on_hover_text(crate::i18n::tr(ui,action_label));
                 for slot in 0..2{binding_slot(ui,draft,operation,slot,fresh,label.id);}
             });
         }else{
             ui.group(|ui|{
-                let label=ui.label(crate::i18n::tr(ui,operation.label())).on_hover_text(crate::i18n::tr(ui,operation.label()));
+                let label=ui.label(crate::i18n::tr(ui,action_label)).on_hover_text(crate::i18n::tr(ui,action_label));
                 for slot in 0..2{ui.horizontal(|ui|binding_slot(ui,draft,operation,slot,fresh,label.id));}
             });
         }
     });}
-    ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and punctuation are unavailable."));
+    ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and some shifted punctuation are unavailable."));
     ui.label(crate::i18n::tr(ui,"Apply saves these source bindings; Cancel leaves them unchanged. Playback position is never saved by this editor."));
 }
 

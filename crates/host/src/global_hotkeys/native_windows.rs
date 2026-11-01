@@ -28,13 +28,35 @@ impl Registry {
         // sampled. Extra modifiers do not trigger a different configured chord.
         let modifiers=(if down(17){2}else{0})|(if down(18){1}else{0})|(if down(16){4}else{0});
         let windows=down(91)||down(92);
-        for(index,binding)in self.configured.iter().enumerate(){timeline.sample(index,!windows&&modifiers==binding.modifiers&&down(binding.key))?;}
+        for(index,binding)in self.configured.iter().enumerate(){timeline.sample_with_foreground(index,!windows&&modifiers==binding.modifiers&&down(binding.key),foreground_identity)?;}
         timeline.advance(events,wake,push)
     }
 }
 impl Drop for Registry{fn drop(&mut self){let _=self.close();}}
 fn down(key:u32)->bool{(unsafe{GetAsyncKeyState(key as i32)}as u16&0x8000)!=0}
+#[link(name="user32")]
+unsafe extern "system" {
+    #[link_name="GetForegroundWindow"] fn foreground_window()->*mut std::ffi::c_void;
+    #[link_name="GetWindowThreadProcessId"] fn window_process(hwnd:*mut std::ffi::c_void,pid:*mut u32)->u32;
+}
+#[link(name="kernel32")]
+unsafe extern "system" {
+    #[link_name="OpenProcess"] fn open_process(access:u32,inherit:i32,pid:u32)->*mut std::ffi::c_void;
+    #[link_name="GetProcessTimes"] fn process_times(handle:*mut std::ffi::c_void,creation:*mut u64,exit:*mut u64,kernel:*mut u64,user:*mut u64)->i32;
+    #[link_name="CloseHandle"] fn close_handle(handle:*mut std::ffi::c_void)->i32;
+}
+fn foreground_identity()->Option<ForegroundIdentity>{
+    let hwnd=unsafe{foreground_window()};if hwnd.is_null(){return None;}
+    let mut pid=0u32;if unsafe{window_process(hwnd,&mut pid)}==0||pid<=4{return None;}
+    let process=unsafe{open_process(0x1000,0,pid)};if process.is_null(){return None;}
+    let(mut creation,mut exit,mut kernel,mut user)=(0u64,0u64,0u64,0u64);
+    let ok=unsafe{process_times(process,&mut creation,&mut exit,&mut kernel,&mut user)}!=0;
+    unsafe{close_handle(process)};
+    let mut current=0u32;
+    if !ok||creation==0||unsafe{window_process(hwnd,&mut current)}==0||current!=pid{return None;}
+    Some(ForegroundIdentity{hwnd:hwnd as usize as u64,pid,creation_time:creation})
+}
 fn chord(binding:&HotkeyBinding)->(u32,u32){
-    let key=binding.chord.key();let key=if key.len()==1{u32::from(key.as_bytes()[0])}else if let Some(n)=key.strip_prefix('F').and_then(|s|s.parse::<u32>().ok()){111+n}else if let Some(n)=key.strip_prefix("Numpad").filter(|n|n.len()==1).and_then(|s|s.parse::<u32>().ok()).filter(|n|*n<=9){96+n}else{match key{"NumLock"=>144,"NumpadMultiply"=>106,"NumpadAdd"=>107,"NumpadSubtract"=>109,"NumpadDecimal"=>110,"NumpadDivide"=>111,"ArrowLeft"=>37,"ArrowUp"=>38,"ArrowRight"=>39,"ArrowDown"=>40,"Tab"=>9,"Backspace"=>8,"Enter"=>13,"Insert"=>45,"Delete"=>46,"Home"=>36,"End"=>35,"PageUp"=>33,"PageDown"=>34,"Space"=>32,_=>0}};
+    let key=binding.chord.key();let key=if key.len()==1{u32::from(key.as_bytes()[0])}else if let Some(n)=key.strip_prefix('F').and_then(|s|s.parse::<u32>().ok()){111+n}else if let Some(n)=key.strip_prefix("Numpad").filter(|n|n.len()==1).and_then(|s|s.parse::<u32>().ok()).filter(|n|*n<=9){96+n}else{match key{"NumLock"=>144,"CapsLock"=>20,"ScrollLock"=>145,"Pause"=>19,"PrintScreen"=>44,"Escape"=>27,"NumpadMultiply"=>106,"NumpadAdd"=>107,"NumpadSubtract"=>109,"NumpadDecimal"=>110,"NumpadDivide"=>111,"ArrowLeft"=>37,"ArrowUp"=>38,"ArrowRight"=>39,"ArrowDown"=>40,"Tab"=>9,"Backspace"=>8,"Enter"=>13,"Insert"=>45,"Delete"=>46,"Home"=>36,"End"=>35,"PageUp"=>33,"PageDown"=>34,"Space"=>32,"Semicolon"=>186,"Plus"=>187,"Comma"=>188,"Minus"=>189,"Period"=>190,"Slash"=>191,"Backtick"=>192,"OpenBracket"=>219,"Backslash"=>220,"CloseBracket"=>221,"Quote"=>222,_=>0}};
     (key,(if binding.chord.primary(){2}else{0})|(if binding.chord.alt(){1}else{0})|(if binding.chord.shift(){4}else{0}))
 }

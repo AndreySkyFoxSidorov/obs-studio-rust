@@ -55,14 +55,14 @@ pub(super) fn parse(map:&Map<String,Value>,path:&str,base:Option<&Path>)->Result
     let chat=boolean(map,"chatlog",false,path)?;
     let lines=integer(map,"chatlog_lines",6,1,u16::MAX as u64,path)? as u16;
     let raw_file=optional_string(map,"file","",path)?;
-    if read&&raw_file.is_empty()||raw_file.contains("://"){return Err(issue(path,"text_file_path_invalid","Text file requires a local path"));}
+    if read&&(raw_file.is_empty()||raw_file.contains("://")){return Err(issue(path,"text_file_path_invalid","Text file requires a local path"));}
     let file=if read||!raw_file.is_empty()||chat||lines!=6{
-        let input=if raw_file.is_empty(){String::new()}else{
+        let input=if !read {raw_file.to_owned()}else if raw_file.is_empty(){String::new()}else{
             let input=PathBuf::from(raw_file);
             let input=if input.is_absolute(){input}else{base.ok_or_else(||issue(path,"text_file_base_required","Relative text file requires an explicit absolute collection directory"))?.join(input)};
             input.to_str().ok_or_else(||issue(path,"text_file_path_invalid","Text file path must be UTF-8"))?.to_owned()
         };
-        Some(TextFile::settings(input,chat,lines).map_err(|error|issue(path,"text_file_path_invalid",error.to_string()))?)
+        Some(TextFile::retained_settings(input,chat,lines).map_err(|error|issue(path,"text_file_path_invalid",error.to_string()))?)
     }else{None};
     let style=TextStyle{foreground:color(map,"color","opacity",0xffffff,100,path)?,background:color(map,"bk_color","bk_opacity",0,0,path)?,bold:flags&1!=0,italic:flags&2!=0,wrap:boolean(map,"extents_wrap",true,path)?,alignment,vertical_alignment};
     TextSource::new(optional_string(map,"text","",path)?.to_owned(),texture_width,texture_height,size,style)
@@ -83,7 +83,7 @@ pub(super) fn export(value:&TextSource,path:&str)->Result<Value,ObsError>{
     let flags=flags | (if value.underline(){4}else{0}) | (if value.strikeout(){8}else{0});
     let foreground=value.foreground();let background=value.background();let outline=value.outline();let gradient=value.gradient();
     let file=value.file_settings();
-    if file.is_some_and(|f|!f.path().is_empty()&&(!Path::new(f.path()).is_absolute()||f.path().contains("://"))){return Err(issue(path,"text_file_path_invalid","OBS text export requires an absolute local path on this host"));}
+    if value.file().is_some_and(|f|!Path::new(f.path()).is_absolute()||f.path().contains("://")){return Err(issue(path,"text_file_path_invalid","OBS text export requires an absolute local path on this host"));}
     let align=match value.alignment(){TextAlignment::Left=>"left",TextAlignment::Center=>"center",TextAlignment::Right=>"right"};
     let valign=match value.vertical_alignment(){TextVerticalAlignment::Top=>"top",TextVerticalAlignment::Center=>"center",TextVerticalAlignment::Bottom=>"bottom"};
     let transform=match value.case_transform(){TextCaseTransform::None=>0,TextCaseTransform::Uppercase=>1,TextCaseTransform::Lowercase=>2,TextCaseTransform::Startcase=>3};

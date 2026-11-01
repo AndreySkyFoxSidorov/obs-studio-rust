@@ -6,11 +6,28 @@ pub enum Action { FitWindow, Canvas, Output, ZoomIn, ZoomOut, ResetZoom }
 #[derive(Clone,Copy)]
 enum NativeScale {Canvas,Output}
 #[derive(Clone, Copy)]
-struct Display { native: Option<NativeScale>, zoom: f32, pan: egui::Vec2, fitted_pixels: egui::Vec2 }
+struct Display { native: Option<NativeScale>, zoom: f32, pan: egui::Vec2, fitted_pixels: egui::Vec2, pan_dragging: bool }
 impl Default for Display {
-    fn default() -> Self { Self { native: None, zoom: 1.0, pan: egui::Vec2::ZERO, fitted_pixels: egui::vec2(640.0,360.0) } }
+    fn default() -> Self { Self { native: None, zoom: 1.0, pan: egui::Vec2::ZERO, fitted_pixels: egui::vec2(640.0,360.0), pan_dragging:false } }
 }
 fn identity(name: &str) -> egui::Id { egui::Id::new(("preview-display", name)) }
+const EDITABLE_PREVIEW_FOCUS: &str = "editable-preview-focus-id";
+/// Remember the actual editable Preview widget, which itself takes keyboard
+/// focus for arrow-key movement. Other focused widgets must retain Space.
+pub fn set_editable_preview_focus(context:&egui::Context,id:egui::Id) {
+    context.data_mut(|data|data.insert_temp(egui::Id::new(EDITABLE_PREVIEW_FOCUS),id));
+}
+/// Space is reserved for panning only while a fixed/zoomed preview is under
+/// the pointer and no text widget owns the keyboard.
+pub fn space_pan_mode(ui:&egui::Ui,name:&str,stage:egui::Rect)->bool {
+    let state=ui.ctx().data(|data|data.get_temp::<Display>(identity(name))).unwrap_or_default();
+    let fixed=state.native.is_some() || (state.zoom-1.0).abs()>f32::EPSILON;
+    let focused=ui.ctx().memory(|memory|memory.focused());
+    let preview_focus=ui.ctx().data(|data|data.get_temp::<egui::Id>(egui::Id::new(EDITABLE_PREVIEW_FOCUS)));
+    let keyboard_available=focused.is_none() || focused==preview_focus;
+    fixed && keyboard_available && ui.input(|input|input.key_down(egui::Key::Space))
+        && (state.pan_dragging || ui.ctx().pointer_hover_pos().is_some_and(|p|stage.contains(p)))
+}
 pub fn apply(context: &egui::Context, action: Action) {
     context.data_mut(|data| {
         for name in ["preview", "program"] {
@@ -57,12 +74,18 @@ pub fn rectangle_profile(ui:&egui::Ui,name:&str,stage:egui::Rect,fitted:egui::Re
     if bucket(pixels)!=bucket(state.fitted_pixels) {ui.ctx().request_repaint();}
     state.fitted_pixels=pixels;
     let previous_zoom=state.zoom;
+    let space_pan=space_pan_mode(ui,name,stage);
+    let (pressed,down,delta)=ui.input(|input|(input.pointer.primary_pressed(),input.pointer.primary_down(),input.pointer.delta()));
+    if !space_pan || !down {state.pan_dragging=false;}
+    if space_pan && pressed && ui.ctx().pointer_hover_pos().is_some_and(|p|stage.contains(p)) {state.pan_dragging=true;}
+    if state.pan_dragging {state.pan+=delta;ui.ctx().set_cursor_icon(egui::CursorIcon::Grabbing);}
+    else if space_pan {ui.ctx().set_cursor_icon(egui::CursorIcon::Grab);}
     if ui.ctx().pointer_hover_pos().is_some_and(|position| stage.contains(position)) {
         let (scroll, command, middle, delta) = ui.input(|input| (
             input.raw_scroll_delta, input.modifiers.command || input.modifiers.ctrl,
             input.pointer.button_down(egui::PointerButton::Middle), input.pointer.delta(),
         ));
-        if command && scroll.y != 0.0 {
+        if (command || space_pan) && scroll.y != 0.0 {
             state.zoom = (state.zoom * (scroll.y * 0.004).exp()).clamp(0.125, 8.0);
         } else { state.pan += scroll; }
         if middle { state.pan += delta; }

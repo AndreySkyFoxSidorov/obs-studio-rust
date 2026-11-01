@@ -1,7 +1,7 @@
 //! Device discovery and explicit native-mode query are separate staged actions.
 use super::{CameraEdit, Intent};
 use eframe::egui;
-use skylive_core::{CameraFpsPolicy, CameraModePolicy, VideoCaptureBinding, VideoCaptureMode, VideoCaptureTarget};
+use skylive_core::{CameraFpsPolicy, CameraModePolicy, VideoCaptureBinding, VideoCaptureMode, VideoCaptureTarget,VideoColorMatrix,VideoColorRange,VideoPixelFormat};
 use skylive_host::camera_capture::{
     CameraCapabilities, CameraDeviceInfo, CameraError, CameraModeInfo, CameraRequestKey,
 };
@@ -19,7 +19,14 @@ pub struct CameraDraft {
     pub modes: Vec<CameraModeInfo>,
     pub selected_mode: Option<VideoCaptureMode>,
     pub(super) fps_policy: CameraFpsPolicy,
+    pub(super) any_format: bool,
     pub(super) mode_policy: CameraModePolicy,
+    color_matrix:Option<VideoColorMatrix>,
+    color_range:Option<VideoColorRange>,
+    // Keep the inactive Custom selection while probing Device Default. OBS
+    // retains custom resolution/FPS values when switching between the modes.
+    custom_mode: Option<VideoCaptureMode>,
+    custom_obs: Option<String>,
     pub deactivate_when_hidden: bool,
     pub flip_vertically: bool,
     pub capabilities: CameraCapabilities,
@@ -41,6 +48,14 @@ pub struct CameraDraft {
 impl CameraDraft {
     pub fn on_platform(mut self, platform: crate::platform::CapturePlatform) -> Self {
         self.platform = platform;
+        // OBS defaults the frame interval for a new DirectShow source to
+        // Match Output FPS. Keep saved bindings unchanged, but make a new
+        // Windows source follow later output-FPS changes unless the user
+        // explicitly selects a fixed rate.
+        if self.original.is_none() && matches!(platform,crate::platform::CapturePlatform::Windows) {
+            self.fps_policy = CameraFpsPolicy::MatchOutput;
+            self.any_format = true;
+        }
         // Resolve the name of an existing custom audio binding in the
         // background; keep its exact saved target even if enumeration fails.
         if matches!(platform,crate::platform::CapturePlatform::Windows) && self.audio.enabled {
@@ -69,7 +84,12 @@ impl CameraDraft {
             modes: vec![],
             selected_mode: binding.as_ref().map(|b| b.mode()),
             fps_policy: binding.as_ref().map_or(CameraFpsPolicy::Fixed, |b| b.fps_policy()),
+            any_format: binding.as_ref().is_some_and(|b|b.any_format()),
             mode_policy: binding.as_ref().map_or(CameraModePolicy::Fixed, |b| b.mode_policy()),
+            color_matrix:binding.as_ref().and_then(|b|b.color_matrix()),
+            color_range:binding.as_ref().and_then(|b|b.color_range()),
+            custom_mode: binding.as_ref().and_then(|b|if b.mode_policy()==CameraModePolicy::Fixed {Some(b.mode())} else {b.custom_mode()}),
+            custom_obs: binding.as_ref().and_then(|b|b.obs_custom_settings().map(str::to_owned)),
             deactivate_when_hidden: binding.as_ref().is_some_and(|b| b.deactivate_when_hidden()),
             flip_vertically: binding.as_ref().is_some_and(|b| b.flip_vertically()),
             audio: super::camera_audio::CameraAudioDraft::new(binding.as_ref().and_then(|b|b.audio()),binding.as_ref().is_some_and(|b|b.embedded_audio())),
@@ -172,7 +192,9 @@ impl CameraDraft {
                     self.error = Some(error.to_string());
                     return;
                 }
-                if self.selected_mode.is_none() {
+                // An unresolved imported OBS Custom mode must only be
+                // replaced by an explicit choice, not by query defaults.
+                if self.selected_mode.is_none() && self.custom_obs.is_none() {
                     match skylive_host::camera_capture::CameraModeRecommendations::from_modes(
                         &found,
                     ) {
@@ -213,16 +235,21 @@ impl CameraDraft {
             .selected_mode
             .ok_or("Query and select a supported native camera mode")?;
         let verified = self.queried_target.as_ref() == Some(target)
-            && self.modes.iter().any(|m| m.mode == Some(mode));
+            && self.modes.iter().any(|m| m.mode.is_some_and(|candidate|
+                candidate == mode || matches!(self.platform,crate::platform::CapturePlatform::Windows)
+                    && mode_selectors::same_native_mode(candidate, mode)));
         let saved = self
             .original
             .as_ref()
-            .is_some_and(|b| b.target() == target && b.mode() == mode);
+            .is_some_and(|b| b.target() == target && (b.mode() == mode || b.custom_mode() == Some(mode)));
         if !verified && (!saved || self.queried_target.as_ref() == Some(target)) {
             return Err("Select an actual supported camera mode".into());
         }
         let binding = VideoCaptureBinding::new(target.clone(), mode, self.deactivate_when_hidden)
-            .map(|binding| binding.with_mode_policy(self.mode_policy).with_fps_policy(self.fps_policy).with_flip_vertically(self.flip_vertically))
+            .map(|binding| binding.with_mode_policy(self.mode_policy).with_fps_policy(self.fps_policy).with_any_format(self.any_format).with_flip_vertically(self.flip_vertically))
+            .and_then(|binding|binding.with_color(self.color_matrix,self.color_range))
+            .and_then(|binding|binding.with_custom_mode(if self.mode_policy==CameraModePolicy::DirectShowPreferred {self.custom_mode} else {None}))
+            .and_then(|binding|binding.with_obs_custom_settings(if self.mode_policy==CameraModePolicy::DirectShowPreferred && self.custom_mode.is_none() {self.custom_obs.clone()} else {None}))
             .and_then(|binding|self.audio.binding().map_err(skylive_core::Error::Invalid).and_then(|audio|binding.with_audio(audio)))
             .and_then(|binding|binding.with_embedded_audio(self.audio.embedded))
             .map_err(|e| e.to_string())?;
@@ -263,7 +290,6 @@ impl CameraDraft {
         match actual {
             Some(mode) if self.queried_target.as_ref() == Some(&target) => {
                 self.selected_mode = Some(mode);
-                self.fps_policy = CameraFpsPolicy::Fixed;
                 self.mode_policy = CameraModePolicy::DirectShowPreferred;
                 self.error = None;
             }
@@ -398,6 +424,8 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
         // A different camera needs its own DirectShow/MF match before Preferred
         // may be saved; a previous device's result cannot authorize it.
         draft.mode_policy=CameraModePolicy::Fixed;
+        draft.custom_mode=None;
+        draft.custom_obs=None;
         draft.modes.clear();
         draft.selected_mode = None;
         draft.queried_target = None;
@@ -446,6 +474,13 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
         })
         .show_ui(ui,|ui|{
             if ui.selectable_label(draft.mode_policy==CameraModePolicy::Fixed,crate::i18n::tr_key_or(ui,"Module.win-dshow.ResFPSType.Custom","Custom")).clicked() {
+                if draft.mode_policy!=CameraModePolicy::Fixed {
+                    // Preserve the saved choice even if the camera was not
+                    // queried yet or no longer reports it. Validation below
+                    // reports an unavailable mode rather than downgrading it.
+                    if let Some(mode)=draft.custom_mode { draft.selected_mode=Some(mode); }
+                    else if draft.custom_obs.is_some() { draft.selected_mode=None; }
+                }
                 draft.mode_policy=CameraModePolicy::Fixed;
                 draft.error=None;
             }
@@ -453,21 +488,66 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
                 && draft.queried_target==draft.selected && !draft.modes.is_empty();
             ui.add_enabled_ui(can_probe || draft.mode_policy==CameraModePolicy::DirectShowPreferred,|ui|{
                 if ui.selectable_label(draft.mode_policy==CameraModePolicy::DirectShowPreferred,crate::i18n::tr_key_or(ui,"Module.win-dshow.ResFPSType.DevPreferred","Device Default"))
-                    .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.PreferredHint","Query the camera's DirectShow default and match it to a supported capture mode. Stop this camera first if it is active."))
+                    .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.PreferredHint","Query the camera's DirectShow default and match it to a supported capture mode."))
                     .on_disabled_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.PreferredQueryFirst","Query camera modes before selecting Device Default."))
                     .clicked() && can_probe && draft.mode_policy!=CameraModePolicy::DirectShowPreferred {
+                        draft.custom_mode=draft.selected_mode;
+                        if draft.custom_mode.is_some() {draft.custom_obs=None;}
                         draft.query_preferred=true;
                         draft.error=None;
                     }
             });
         }).response.labelled_by(mode_field_label.id); });
     ui.add_enabled_ui(draft.mode_policy==CameraModePolicy::Fixed,|ui|mode_selectors::show(ui, draft, project_fps));
+    if matches!(draft.platform,crate::platform::CapturePlatform::Windows) {
+        let label=ui.label(crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace","Color Space"));
+        let mut matrix_selected=false;
+        egui::ComboBox::from_id_salt("camera-color-space").selected_text(match draft.color_matrix {
+            None=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.Default","Default"),
+            Some(VideoColorMatrix::Bt601)=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.601","Rec. 601"),
+            Some(VideoColorMatrix::Bt709)=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.709","Rec. 709"),
+        }).width(ui.available_width().min(450.0)).show_ui(ui,|ui|{
+            matrix_selected|=ui.selectable_value(&mut draft.color_matrix,None,crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.Default","Default")).clicked();
+                matrix_selected|=ui.selectable_value(&mut draft.color_matrix,Some(VideoColorMatrix::Bt601),crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.601","Rec. 601")).clicked();
+                matrix_selected|=ui.selectable_value(&mut draft.color_matrix,Some(VideoColorMatrix::Bt709),crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorSpace.709","Rec. 709")).clicked();
+        }).response.labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.ColorHelp","Choose SDR 601/709 and limited/full YUV interpretation. Default uses 709/limited for raw YUV and decoder metadata for H.264. Changing this setting reopens the camera."));
+        let label=ui.label(crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange","Color Range"));
+        let mut range_selected=false;
+        egui::ComboBox::from_id_salt("camera-color-range").selected_text(match draft.color_range {
+            None=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Default","Default"),
+            Some(VideoColorRange::Limited)=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Partial","Partial"),
+            Some(VideoColorRange::Full)=>crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Full","Full"),
+        }).width(ui.available_width().min(450.0)).show_ui(ui,|ui|{
+            range_selected|=ui.selectable_value(&mut draft.color_range,None,crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Default","Default")).clicked();
+                range_selected|=ui.selectable_value(&mut draft.color_range,Some(VideoColorRange::Limited),crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Partial","Partial")).clicked();
+                range_selected|=ui.selectable_value(&mut draft.color_range,Some(VideoColorRange::Full),crate::i18n::tr_key_or(ui,"Module.win-dshow.ColorRange.Full","Full")).clicked();
+        }).response.labelled_by(label.id).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Camera.ColorHelp","Choose SDR 601/709 and limited/full YUV interpretation. Default uses 709/limited for raw YUV and decoder metadata for H.264. Changing this setting reopens the camera."));
+        // Older imports may contain inactive raw OBS color keys. Update only
+        // the explicitly selected key so it cannot override the user's choice
+        // on export, while retaining unresolved resolution/FPS and other keys.
+        if (matrix_selected || range_selected) && draft.custom_obs.is_some() {
+            let result=(|| -> Result<String,String> {
+                let mut value:serde_json::Value=serde_json::from_str(draft.custom_obs.as_deref().unwrap()).map_err(|e|e.to_string())?;
+                let object=value.as_object_mut().ok_or("Retained OBS camera settings must be an object")?;
+                if matrix_selected { object.insert("color_space".into(),serde_json::json!(match draft.color_matrix {None=>"default",Some(VideoColorMatrix::Bt601)=>"601",Some(VideoColorMatrix::Bt709)=>"709"})); }
+                if range_selected { object.insert("color_range".into(),serde_json::json!(match draft.color_range {None=>"default",Some(VideoColorRange::Limited)=>"partial",Some(VideoColorRange::Full)=>"full"})); }
+                serde_json::to_string(&value).map_err(|e|e.to_string())
+            })();
+            match result { Ok(raw)=>draft.custom_obs=Some(raw), Err(error)=>draft.error=Some(error) }
+        }
+    }
+    if draft.custom_obs.is_some() {
+        ui.colored_label(ui.visuals().warn_fg_color,crate::i18n::tr(ui,"The saved OBS custom camera settings could not be resolved on this device. They are retained; choose an available Custom mode to replace them."));
+    }
     if let Some((binding, mode, carried)) = &draft.observed_mode {
         // Do not present a live stream as the result of unapplied draft edits.
         if draft.selected.as_ref()==Some(binding.target())
             && draft.selected_mode==Some(binding.mode())
             && draft.mode_policy==binding.mode_policy()
             && draft.fps_policy==binding.fps_policy()
+            && draft.any_format==binding.any_format()
+            && draft.color_matrix==binding.color_matrix()
+            && draft.color_range==binding.color_range()
             && draft.flip_vertically==binding.flip_vertically()
             && draft.deactivate_when_hidden==binding.deactivate_when_hidden() {
             let label=if *carried {
@@ -518,7 +598,14 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
                                     ui,
                                     info.unsupported_reason
                                         .unwrap_or("Unsupported native camera mode"),
-                                )).clicked() { draft.fps_policy = CameraFpsPolicy::Fixed; draft.mode_policy=CameraModePolicy::Fixed; }
+                                )).clicked() {
+                                    draft.fps_policy = CameraFpsPolicy::Fixed;
+                                    draft.mode_policy=CameraModePolicy::Fixed;
+                                    draft.any_format=false;
+                                    // The user explicitly replaced any opaque OBS
+                                    // Custom settings with this native mode.
+                                    draft.custom_obs=None;
+                                }
                         });
                     }
                 })
@@ -533,7 +620,8 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
         && !draft
             .modes
             .iter()
-            .any(|info| info.mode == draft.selected_mode)
+            .any(|info| info.mode.zip(draft.selected_mode).is_some_and(|(reported, selected)|
+                mode_selectors::same_native_mode(reported, selected)))
     {
         ui.colored_label(ui.visuals().warn_fg_color, crate::i18n::tr(ui, "The selected camera mode is not reported by this device. Choose an available mode; the saved selection has not been downgraded."));
     }
@@ -566,7 +654,7 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
     }
     if let CameraEdit::Rebind {source}=draft.edit {
         let original=draft.original.as_ref();
-        let unchanged=original.is_some_and(|binding|draft.selected.as_ref()==Some(binding.target())&&draft.selected_mode==Some(binding.mode())&&draft.mode_policy==binding.mode_policy()&&draft.fps_policy==binding.fps_policy()&&draft.deactivate_when_hidden==binding.deactivate_when_hidden()&&draft.flip_vertically==binding.flip_vertically()&&draft.audio.embedded==binding.embedded_audio()&&draft.audio.binding().is_ok_and(|audio|audio.as_ref()==binding.audio()));
+        let unchanged=original.is_some_and(|binding|draft.selected.as_ref()==Some(binding.target())&&draft.selected_mode==Some(binding.mode())&&draft.mode_policy==binding.mode_policy()&&draft.fps_policy==binding.fps_policy()&&draft.any_format==binding.any_format()&&draft.color_matrix==binding.color_matrix()&&draft.color_range==binding.color_range()&&(draft.mode_policy!=CameraModePolicy::DirectShowPreferred||(draft.custom_mode==binding.custom_mode()&&draft.custom_obs.as_deref()==binding.obs_custom_settings()))&&draft.deactivate_when_hidden==binding.deactivate_when_hidden()&&draft.flip_vertically==binding.flip_vertically()&&draft.audio.embedded==binding.embedded_audio()&&draft.audio.binding().is_ok_and(|audio|audio.as_ref()==binding.audio()));
         let pending=draft.av_status.as_ref().is_some_and(|status|status.pending);
         let stop_queued=draft.av_status.as_ref().is_some_and(|status|status.queued_stop.is_some());
         ui.horizontal_wrapped(|ui| {
@@ -588,7 +676,6 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut CameraDraft, intents: &mut Vec<Inte
     });
     super::camera_audio::editor(ui,draft,intents);
     super::camera_controls::editor(ui,draft,intents);
-    ui.label(crate::i18n::tr(ui,"Apply binds camera video and optional custom input audio. Audio follows Program and uses the source mixer. Embedded camera audio, H.264 and vendor configuration dialogs are not connected. Cancel changes no source."));
 }
 #[cfg(test)]
 mod tests {

@@ -16,6 +16,7 @@ impl ImageSourceSettings {
 #[serde(tag="kind",rename_all="snake_case",deny_unknown_fields)]
 pub enum ImageSourceCommand {
     Add{scene:Id,name:String,asset:ImageAsset,#[serde(default)] settings:ImageSourceSettings},
+    AddAt{scene:Id,name:String,asset:ImageAsset,#[serde(default)] settings:ImageSourceSettings,position:[f32;2]},
     Configure{source:Id,asset:ImageAsset,#[serde(default)] settings:ImageSourceSettings},
 }
 impl Source {
@@ -33,6 +34,16 @@ impl StudioSnapshot {
                 let item=self.add_source(scene,name,SourceKind::Image{asset})?;
                 let source=self.item_container(item).ok_or(Error::NotFound(item))?.1.source();
                 self.source_mut(source)?.image_settings=(!settings.is_default()).then_some(settings);
+                Ok(Some(item))
+            }
+            ImageSourceCommand::AddAt{scene,name,asset,settings,position}=>{
+                if !position.iter().all(|v|v.is_finite()){return Err(Error::Invalid("invalid dropped source position"));}
+                asset.validate()?;
+                let item=self.add_source(scene,name,SourceKind::Image{asset})?;
+                let source=self.item_container(item).ok_or(Error::NotFound(item))?.1.source();
+                self.source_mut(source)?.image_settings=(!settings.is_default()).then_some(settings);
+                let transform=&mut self.item_mut(scene,item)?.transform;
+                transform.x=position[0];transform.y=position[1];
                 Ok(Some(item))
             }
             ImageSourceCommand::Configure{source,asset,settings}=>{

@@ -40,7 +40,7 @@ fn pair(action:HotkeyAction)->Option<(Pair,bool)>{use HotkeyAction::*;match acti
 struct Action {action:HotkeyAction,held:u16,accepted:bool}
 struct Route {canonical:HotkeyAction,members:[Option<usize>;2],physical:bool,source_epoch:Option<skylive_core::SourceDefinitionEpoch>,push:Option<skylive_core::PushAudioSettings>}
 struct PairState {pair:Pair,latched:Option<bool>}
-struct Edge {binding:usize,pressed:bool,id:u64,observed:Instant}
+struct Edge {binding:usize,pressed:bool,id:u64,observed:Instant,foreground:Option<ForegroundIdentity>}
 struct Pending {event:Fired,started:Instant}
 pub(super) struct Timeline {scope:Scope,live:Arc<AtomicBool>,routes:Vec<Route>,actions:Vec<Action>,pairs:Vec<PairState>,edges:VecDeque<Edge>,pending:Option<Pending>,next:u64}
 impl Timeline {
@@ -62,11 +62,14 @@ impl Timeline {
     }
     pub(super) fn waiting(&self)->bool{self.pending.is_some()}
     pub(super) fn sample(&mut self,binding:usize,pressed:bool)->Result<(),String>{
+        self.sample_with_foreground(binding,pressed,||None)
+    }
+    pub(super) fn sample_with_foreground(&mut self,binding:usize,pressed:bool,foreground:impl FnOnce()->Option<ForegroundIdentity>)->Result<(),String>{
         let route=self.routes.get_mut(binding).ok_or("Shortcut sample has an invalid binding identity.")?;
         if route.physical==pressed{return Ok(());}
         if self.edges.len()>=4*bindings::MAX_REGISTRATIONS{return Err("Shortcut press/release buffer is full; input stopped. Release the configured keys and reopen shortcut settings.".into());}
         self.next=self.next.checked_add(1).ok_or("Shortcut press identity exhausted. Restart SkyLive.")?;
-        route.physical=pressed;self.edges.push_back(Edge{binding,pressed,id:self.next,observed:Instant::now()});Ok(())
+        route.physical=pressed;self.edges.push_back(Edge{binding,pressed,id:self.next,observed:Instant::now(),foreground:if pressed{foreground()}else{None}});Ok(())
     }
     pub(super) fn advance(&mut self,events:&mpsc::SyncSender<Fired>,wake:&dyn Fn(),push:Option<&crate::audio_capture::PushAudioSink>)->Result<(),String>{
         if !self.live.load(Ordering::Acquire){self.retire();return Ok(());}
@@ -94,7 +97,7 @@ impl Timeline {
             // A common paired chord is one compound callback. The real media
             // or canonical audio owner chooses its currently allowed side.
             let action=if count==2{canonical}else{allowed[0].expect("admitted callback")};
-            let callback=Callback::new(edge.id,allowed,self.live.clone());let event=Fired{scope:self.scope,action,press:edge.id,pressed:edge.pressed,observed:edge.observed,binding:edge.binding,callback};
+            let callback=Callback::new(edge.id,allowed,self.live.clone());let event=Fired{scope:self.scope,action,press:edge.id,pressed:edge.pressed,observed:edge.observed,foreground:edge.foreground,binding:edge.binding,callback};
             if matches!(action,HotkeyAction::SourceAudio{operation:Audio::PushToMute|Audio::PushToTalk,..}){
                 let epoch=route.source_epoch.ok_or("Push audio source epoch is absent.")?;
                 let settings=route.push.ok_or("Push audio source settings are absent.")?;

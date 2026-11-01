@@ -40,12 +40,14 @@ const JUMP_NS: i128 = 2_000_000_000;
 /// workspace still contains at most64 sources for one span at a time.
 fn render_metadata_bytes(channels: usize) -> Result<usize, ProgramAudioError> {
     let per_source = std::mem::size_of::<Id>()
-        + std::mem::size_of::<(Id, ([f64; 8], [f64; 8]))>()
+        + std::mem::size_of::<(Id, ([f64; 8], [f64; 8], [f64; 8]))>()
         + std::mem::size_of::<(Id, usize)>()
         + std::mem::size_of::<SourceMeter>()
         + channels
             .checked_mul(std::mem::size_of::<ChannelMeter>())
             .ok_or(ProgramAudioError::Limit("Program meter byte overflow"))?
+        + channels.checked_mul(std::mem::size_of::<f64>())
+            .ok_or(ProgramAudioError::Limit("Program input meter byte overflow"))?
         + std::mem::size_of::<ProgramGap>();
     MAX_AUDIO_BLOCK_SOURCES
         .checked_mul(per_source)
@@ -311,6 +313,7 @@ struct InputFence {
 pub struct AudioProgram {
     monitor_frame:Option<crate::audio_monitor::MonitorFrame>,
     true_peak_meters:crate::audio::true_peak::SourceTruePeaks,
+    input_true_peak_meters:crate::audio::true_peak::SourceTruePeaks,
     master_true_peak:crate::audio::true_peak::MasterTruePeak,
     settings: AudioSettings,
     output: AudioFormat,
@@ -572,7 +575,7 @@ impl AudioProgram {
                 original:self.groups.get(&source.binding).map(|group|group.converter.input_format()),
             }).collect();
             let request=||AudioMixRequest{sample_rate:self.settings.sample_rate(),channels:self.settings.channels(),frames:span.frames,advance_ns:span.advance_ns};
-            let gain=|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(gain,muted||blocked)).or(blocked.then_some((0.0,true)))};
+            let gain=|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(if blocked&&!muted{0.0}else{gain},muted||blocked)).or_else(||blocked.then(||{let entry=span.plan.sources().iter().find(|entry|entry.source==source);(entry.filter(|entry|entry.muted).map_or(0.0,|entry|entry.gain),true)}))};
             let mixed=span.plan.mix_processed_on_grid(request(),&inputs,at,&gain)?;
             samples[span.offset*channels..(span.offset+span.frames)*channels].copy_from_slice(&mixed.samples);
             for output in &mut tracks {
@@ -714,6 +717,7 @@ impl AudioProgram {
             fences: HashMap::new(),
             window_guards: HashMap::new(),
             true_peak_meters:crate::audio::true_peak::SourceTruePeaks::default(),
+            input_true_peak_meters:crate::audio::true_peak::SourceTruePeaks::default(),
             master_true_peak:crate::audio::true_peak::MasterTruePeak::default(),
             ndi_guards: HashMap::new(),
             media_controls,
@@ -1021,6 +1025,25 @@ impl AudioProgram {
         self.dsp.reset_source(source);
         self.dsp_streams.remove(&source);
         self.window_guards.remove(&source);
+        self.data_generation=generation;
+        Ok(())
+    }
+    /// A native route can reopen or resolve to a different endpoint without a
+    /// change to its authored binding. Retire raw and processed PCM first.
+    pub(crate) fn invalidate_native_input(&mut self,binding:&skylive_core::AudioCaptureBinding)->Result<(),ProgramAudioError> {
+        let generation=next(self.data_generation)?;
+        let key=AudioInputKey::Native(binding.clone());
+        self.groups.remove(&key);
+        // Keep the existing fence: late packets from the old stream must not
+        // become valid again simply because its buffered group was removed.
+        let mut sources=self.histories.invalidate_native(binding,self.cursor.unwrap_or(0));
+        for required in self.timeline.required_bindings() {
+            if required.binding==key && !sources.contains(&required.source) {sources.push(required.source);}
+        }
+        for source in &sources {self.dsp.reset_source(*source);self.monitor_dsp.reset_source(*source);self.dsp_streams.remove(source);}
+        self.monitor_lanes.retain(|lane|!sources.contains(&lane.source));
+        if let Some(RecordingHistoryStatus::Holding{recording,..})=self.recording_history {self.recording_history=Some(RecordingHistoryStatus::Interrupted{recording});}
+        if let Some(RecordingHistoryStatus::Holding{recording,..})=self.streaming_history {self.streaming_history=Some(RecordingHistoryStatus::Interrupted{recording});}
         self.data_generation=generation;
         Ok(())
     }
@@ -1461,10 +1484,15 @@ impl AudioProgram {
         if self.cursor.is_some_and(|cursor| cursor != start_frame) {
             return Err(ProgramAudioError::ClockRewind);
         }
-        self.service_source_processing()?;
         let end = start_frame
             .checked_add(frames as u64)
             .ok_or(ProgramAudioError::TimeOverflow)?;
+        self.service_source_processing()?;
+        // Delayed source actors need their bounded processing lookahead in
+        // addition to sync offset before this Program window can be read.
+        let generator_end=end.checked_add(self.sync_lookahead_frames()).ok_or(ProgramAudioError::TimeOverflow)?;
+        let delayed_lookahead=self.source_processing_lookahead_frames();
+        self.histories.service_generators_without_input(&self.groups, &self.fences, &self.push, generator_end, delayed_lookahead)?;
         let spans = self.timeline.segments(start_frame, frames)?;
         let source_meter_revision = spans
             .first()
@@ -1494,18 +1522,18 @@ impl AudioProgram {
         let count=frames.checked_mul(channels).ok_or(ProgramAudioError::Limit("track bundle sample overflow"))?;
         let output_bytes=count.checked_mul(4).and_then(|n|n.checked_mul(track_count)).ok_or(ProgramAudioError::Limit("track bundle byte overflow"))?;
         let work=spans.iter().try_fold(0usize,|work,span|span.plan.sources().len().checked_mul(span.frames)
-            .and_then(|n|n.checked_mul(channels)).and_then(|n|n.checked_mul(track_count*3+1+if span.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate {16}else{0})).and_then(|n|work.checked_add(n)))
+            .and_then(|n|n.checked_mul(channels)).and_then(|n|n.checked_mul(track_count*3+1+if span.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate {32}else{0})).and_then(|n|work.checked_add(n)))
             .ok_or(ProgramAudioError::Limit("track mix work overflow"))?;
         //64source input buffers + six outputs + one sequential mixer workspace
         // fit the existing16MiB render reservation. No sixfold source/DSP copies.
         let meter_enabled=spans.iter().any(|span|span.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate);
         let meter_workspace=spans.iter().filter(|span|span.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate)
             .try_fold(0usize,|maximum,span|span.plan.sources().len().checked_mul(span.frames)
-                .and_then(|n|n.checked_mul(channels)).and_then(|n|n.checked_mul(8)).map(|n|maximum.max(n)))
+                .and_then(|n|n.checked_mul(channels)).and_then(|n|n.checked_mul(16)).map(|n|maximum.max(n)))
             .ok_or(ProgramAudioError::Limit("true-peak workspace overflow"))?;
         let workspace=count.checked_mul(4).and_then(|n|n.checked_mul(crate::audio::MAX_AUDIO_INPUTS+track_count+12))
             .and_then(|n|n.checked_add(meter_workspace))
-            .and_then(|n|n.checked_add(if meter_enabled {crate::audio::true_peak::MAX_METER_STATE_BYTES}else{0}))
+            .and_then(|n|n.checked_add(if meter_enabled {crate::audio::true_peak::MAX_METER_STATE_BYTES*2}else{0}))
             .and_then(|n|n.checked_add(render_metadata_bytes(channels).ok()?))
             .ok_or(ProgramAudioError::Limit("track bundle workspace overflow"))?;
         if work>64*1024*1024||workspace>16*1024*1024||output_bytes>PROGRAM_RESIDENT_BYTES{
@@ -1520,7 +1548,7 @@ impl AudioProgram {
         let estimated_true_peak=spans.iter().any(|s|s.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate);
         let master_true_peak_enabled=!spans.is_empty() && spans.iter().all(|s|s.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate) && source_meter_revision.is_some();
         let mut monitor_samples=if monitoring {vec![0.0;frames*channels]}else{Vec::new()};
-        type SourceMetricTotals = (Id, ([f64; 8], [f64; 8]));
+        type SourceMetricTotals = (Id, ([f64; 8], [f64; 8], [f64; 8]));
         let mut source_metrics: Vec<SourceMetricTotals> = Vec::new();
         source_metrics
             .try_reserve_exact(sources.len())
@@ -1535,6 +1563,8 @@ impl AudioProgram {
         // operation succeeds. A failed render must not advance interpolation.
         let mut true_peak_meters=if meter_enabled {self.true_peak_meters.clone()} else {crate::audio::true_peak::SourceTruePeaks::default()};
         true_peak_meters.retain(&sources);
+        let mut input_true_peak_meters=if meter_enabled {self.input_true_peak_meters.clone()} else {crate::audio::true_peak::SourceTruePeaks::default()};
+        input_true_peak_meters.retain(&sources);
 
         for span in spans {
             let mut buffers = Vec::with_capacity(span.plan.sources().len());
@@ -1626,46 +1656,62 @@ impl AudioProgram {
                     advance_ns: span.advance_ns,
                 };
             let at_grid=start_frame.checked_add(span.offset as u64).ok_or(ProgramAudioError::TimeOverflow)?;
-            let gain_at=|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(gain,muted||blocked)).or(blocked.then_some((0.0,true)))};
-            let mut true_peaks:Vec<(Id,[f64;crate::audio::MAX_AUDIO_CHANNELS])>=Vec::new();
+            let gain_at=|source,frame| {
+                let blocked=self.push.silent(source,frame);
+                self.histories.gain_at(source,frame)
+                    .map(|(gain,muted)|(if blocked&&!muted{0.0}else{gain},muted||blocked))
+                    // OBS meters gate a push-muted source, except when the
+                    // user mute button itself is active; input peak is pre-gate.
+                    .or_else(|| blocked.then(|| {
+                        let gain=span.plan.sources().iter().find(|entry|entry.source==source)
+                            .filter(|entry|entry.muted).map_or(0.0,|entry|entry.gain);
+                        (gain,true)
+                    }))
+            };
+            let mut true_peaks:Vec<(Id,[f64;crate::audio::MAX_AUDIO_CHANNELS],[f64;crate::audio::MAX_AUDIO_CHANNELS])>=Vec::new();
             let mut mixed=if span.plan.peak_mode()==skylive_core::MixerPeakMode::TruePeakEstimate {
                 // Tap data is bounded by the Program workspace admission above.
                 // The mixing loop emits source-major, frame-major interleaved
-                // samples, already post-DSP and post-gain.
-                let mut tapped:Vec<(Id,Vec<f64>)>=Vec::new();
+                // samples, post-DSP both before and after gain.
+                let mut tapped:Vec<(Id,Vec<f64>,Vec<f64>)>=Vec::new();
                 tapped.try_reserve_exact(span.plan.sources().len()).map_err(|_|ProgramAudioError::Limit("true-peak source tap allocation"))?;
                 let count=span.frames.checked_mul(channels).ok_or(ProgramAudioError::TimeOverflow)?;
                 for source in span.plan.sources(){
                     let mut values=Vec::new();values.try_reserve_exact(count).map_err(|_|ProgramAudioError::Limit("true-peak sample tap allocation"))?;
                     if values.capacity()!=count {return Err(ProgramAudioError::Limit("true-peak sample allocation exceeds admitted workspace"));}
-                    tapped.push((source.source,values));
+                    let mut input_values=Vec::new();input_values.try_reserve_exact(count).map_err(|_|ProgramAudioError::Limit("true-peak input tap allocation"))?;
+                    if input_values.capacity()!=count {return Err(ProgramAudioError::Limit("true-peak input allocation exceeds admitted workspace"));}
+                    tapped.push((source.source,values,input_values));
                 }
                 let mut current:Option<(Id,usize)>=None;
-                let mut tap=|source:Id,_frame:u64,_channel:usize,value:f64| {
+                let mut tap=|source:Id,_frame:u64,_channel:usize,input:f64,value:f64| {
                     let index=match current {Some((id,index)) if id==source=>Some(index),_=>{
-                        let found=tapped.iter().position(|(id,_)|*id==source);current=found.map(|index|(source,index));found
+                        let found=tapped.iter().position(|(id,_,_)|*id==source);current=found.map(|index|(source,index));found
                     }};
-                    if let Some(index)=index {tapped[index].1.push(value);}
+                    if let Some(index)=index {tapped[index].1.push(value);tapped[index].2.push(input);}
                 };
                 let mixed=span.plan.mix_processed_on_grid_metered(request,&inputs,at_grid,&gain_at,&mut tap)?;
                 drop(tap);
                 true_peaks.try_reserve_exact(tapped.len()).map_err(|_|ProgramAudioError::Limit("true-peak result allocation"))?;
-                for (source,values) in tapped {
-                    if values.len()!=count {return Err(ProgramAudioError::Invalid("incomplete post-gain meter samples"));}
+                for (source,values,input_values) in tapped {
+                    if values.len()!=count || input_values.len()!=count {return Err(ProgramAudioError::Invalid("incomplete source meter samples"));}
                     let generation=(span.plan.revision(),span.plan.sources().iter().find(|entry|entry.source==source)
                         .and_then(|entry|self.groups.get(&entry.binding)).map_or(0,|group|group.generation));
                     let peaks=true_peak_meters.observe(source,generation,self.settings.sample_rate(),channels,at_grid,&values)?;
-                    true_peaks.push((source,peaks));
+                    let input_peaks=input_true_peak_meters.observe(source,generation,self.settings.sample_rate(),channels,at_grid,&input_values)?;
+                    true_peaks.push((source,peaks,input_peaks));
                 }
                 mixed
             }else{
                 // Do not interpolate across time in which the meter was off.
                 true_peak_meters.clear();
+                input_true_peak_meters.clear();
                 span.plan.mix_processed_on_grid(request,&inputs,at_grid,&gain_at)?
             };
             for meter in &mut mixed.source_meters {
-                if let Some((_,peaks))=true_peaks.iter().find(|(source,_)|*source==meter.source) {
+                if let Some((_,peaks,input_peaks))=true_peaks.iter().find(|(source,_,_)|*source==meter.source) {
                     for (channel,channel_meter) in meter.channels.iter_mut().enumerate(){channel_meter.peak=peaks[channel];}
+                    for (channel,peak) in meter.input_peaks.iter_mut().enumerate(){*peak=input_peaks[channel];}
                 }
             }
             samples[span.offset * channels..(span.offset + span.frames) * channels]
@@ -1674,7 +1720,7 @@ impl AudioProgram {
             for track in &mut tracks{
                 let mixed_track=span.plan.mix_processed_on_grid_track(AudioMixRequest{
                     sample_rate:self.settings.sample_rate(),channels:self.settings.channels(),frames:span.frames,advance_ns:span.advance_ns},
-                    &inputs,start_frame+span.offset as u64,&|source,frame|{let blocked=self.push.silent(source,frame);self.histories.gain_at(source,frame).map(|(gain,muted)|(gain,muted||blocked)).or(blocked.then_some((0.0,true)))},track.track)?;
+                    &inputs,start_frame+span.offset as u64,&gain_at,track.track)?;
                 track.samples[span.offset*channels..(span.offset+span.frames)*channels].copy_from_slice(&mixed_track.samples);
             }
             for meter in mixed.source_meters {
@@ -1684,13 +1730,16 @@ impl AudioProgram {
                 {
                     index
                 } else {
-                    source_metrics.push((meter.source, ([0.0; 8], [0.0; 8])));
+                    source_metrics.push((meter.source, ([0.0; 8], [0.0; 8], [0.0; 8])));
                     source_metrics.len() - 1
                 };
                 let metrics = &mut source_metrics[index].1;
                 for (channel, meter) in meter.channels.iter().enumerate() {
                     metrics.0[channel] = metrics.0[channel].max(meter.peak);
                     metrics.1[channel] += meter.rms * meter.rms * span.frames as f64;
+                }
+                for (channel, peak) in meter.input_peaks.iter().enumerate() {
+                    metrics.2[channel] = metrics.2[channel].max(*peak);
                 }
             }
             for (count, addition) in clipped.iter_mut().zip(mixed.clipped_samples) {
@@ -1721,8 +1770,9 @@ impl AudioProgram {
             .collect();
         let mut source_meters: Vec<_> = source_metrics
             .into_iter()
-            .map(|(source, (peaks, squares))| SourceMeter {
+            .map(|(source, (peaks, squares, input_peaks))| SourceMeter {
                 source,
+                input_peaks: input_peaks[..channels].to_vec(),
                 channels: (0..channels)
                     .map(|channel| ChannelMeter {
                         peak: peaks[channel],
@@ -1753,6 +1803,7 @@ impl AudioProgram {
         }
         self.retire_output_to(end, false)?;
         self.true_peak_meters=true_peak_meters;
+        self.input_true_peak_meters=input_true_peak_meters;
         self.master_true_peak=master_true_peak;
 
         self.monitor_frame=monitoring.then(||crate::audio_monitor::MonitorFrame {settings:self.settings,start_frame,samples:monitor_samples});

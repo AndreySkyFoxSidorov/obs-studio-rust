@@ -186,6 +186,7 @@ pub enum WindowCaptureOutcome {
     },
 }
 pub trait WindowCaptureBackend: Send + 'static {
+    fn set_sdr_white_nits(&mut self, _nits: u16) {}
     fn retain_epoch(&mut self, session: u64, _epoch: u64, bindings: &[WindowCaptureBinding]) {
         self.retain_bindings(session, bindings)
     }

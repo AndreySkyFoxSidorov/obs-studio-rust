@@ -27,6 +27,7 @@ pub struct AudioDevicePicker {
 pub enum AudioTargetChoice {
     Default,
     WindowsEndpoint,
+    WindowsCamera,
     WindowsProcess,
     MacDevice,
     MacSystem,
@@ -94,6 +95,7 @@ pub enum Dialog {
         name: String,
         selected: Option<DisplayTarget>,
         capture_cursor: bool,
+        force_sdr: bool,
         method: skylive_core::DisplayCaptureMethod,
         displays: Vec<DisplayInfo>,
         capabilities: CaptureCapabilities,
@@ -156,6 +158,7 @@ pub enum Dialog {
     AudioFilters {
         binding: Option<super::plugin_routes::PluginEditorToken>,
         source: Id,
+        scene: Option<Id>,
         name: String,
         filters: Vec<AudioFilter>,
     },
@@ -212,9 +215,15 @@ impl Dialog {
         Self::AudioFilters {
             binding: None,
             source: source.id(),
+            scene: None,
             name: source.name().into(),
             filters: source.audio_filters().to_vec(),
         }
+    }
+    pub fn scene_audio_filters(model: &StudioSnapshot, scene: &skylive_core::Scene) -> Self {
+        let owner=model.scene_source(scene.id());
+        Self::AudioFilters {binding:None,source:owner.map_or(scene.id(),|source|source.id()),scene:Some(scene.id()),
+            name:scene.name().into(),filters:owner.map_or_else(Vec::new,|source|source.audio_filters().to_vec())}
     }
     pub fn scene_notes(scene: &skylive_core::Scene) -> Self {
         Self::SceneNotes {
@@ -264,6 +273,7 @@ impl Dialog {
             AudioTarget::WindowsWindow { selector } => (AudioTargetChoice::WindowsProcess,serde_json::to_string(selector).unwrap_or_default()),
             AudioTarget::WindowsProcess { identity } => (AudioTargetChoice::WindowsProcess,serde_json::to_string(identity).unwrap_or_default()),
             AudioTarget::WindowsEndpoint { id } => (AudioTargetChoice::WindowsEndpoint, id.clone()),
+            AudioTarget::WindowsCamera { symbolic_link } => (AudioTargetChoice::WindowsCamera, symbolic_link.clone()),
             AudioTarget::MacDevice { uid } => (AudioTargetChoice::MacDevice, uid.clone()),
             AudioTarget::MacSystem => (AudioTargetChoice::MacSystem, String::new()),
         };
@@ -482,15 +492,13 @@ impl Dialog {
             }),
             Self::Collection { name } => Some(Command::RenameCollection { name: name.clone() }),
             Self::AudioFilters {
-                source, filters, ..
+                source, scene, filters, ..
             } => {
                 for filter in filters {
                     filter.validate().map_err(|error| error.to_string())?;
                 }
-                Some(Command::SetSourceAudioFilters {
-                    source: *source,
-                    filters: filters.clone(),
-                })
+                Some(if let Some(scene)=scene {Command::SetSceneAudioFilters {scene:*scene,filters:filters.clone()}}
+                    else {Command::SetSourceAudioFilters {source:*source,filters:filters.clone()}})
             }
             Self::SceneNotes { scene, text, .. } => Some(Command::SetSceneNotes {
                 scene: *scene,
@@ -535,6 +543,7 @@ impl Dialog {
                     AudioTargetChoice::WindowsEndpoint => AudioTarget::WindowsEndpoint {
                         id: identity.clone(),
                     },
+                    AudioTargetChoice::WindowsCamera => AudioTarget::WindowsCamera { symbolic_link: identity.clone() },
                     AudioTargetChoice::MacDevice => AudioTarget::MacDevice {
                         uid: identity.clone(),
                     },
@@ -716,6 +725,7 @@ impl Dialog {
             name,
             selected,
             capture_cursor,
+            force_sdr,
             method,
             displays,
             loading,
@@ -747,6 +757,7 @@ impl Dialog {
             .and_then(|binding| {
                 binding
                     .with_method(*method)
+                    .and_then(|binding|binding.with_force_sdr(*force_sdr))
                     .map_err(skylive_host::capture::CaptureError::Engine)
             })
             .map_err(|error| error.to_string())?;
@@ -863,7 +874,7 @@ pub fn show_with_settings(
             Dialog::Plugins {query,session,token}=>super::plugin_manager::show(ui,model,query,(*session,*token),intents),
             Dialog::AdvancedAudio(draft)=>super::advanced_audio::editor(ui,model,draft,intents),
             Dialog::GlobalAudioDevices(draft)=>super::global_audio_devices::editor(ui,model,draft,intents),
-            Dialog::AudioFilters {binding,source,name,filters}=>super::source_audio_filters::editor(ui,model,*source,*binding,name,filters),
+            Dialog::AudioFilters {binding,source,scene,name,filters}=>super::source_audio_filters::editor_for_scope(ui,model,*source,*binding,name,filters,scene.is_some() || model.source(*source).is_some_and(|s|matches!(s.kind(),skylive_core::SourceKind::Group{..}|skylive_core::SourceKind::Scene{..}))),
             Dialog::VideoFilters(draft)=>{super::video_filters::editor(ui,model,draft);if let Some(intent)=draft.mask_intent.take(){intents.push(*intent);}if let Some(intent)=draft.lut_intent.take(){intents.push(*intent);}},
             Dialog::NativeMigration(report)=>super::native_migration::show(ui,report),
             Dialog::SceneNotes {name,text,..}=>{
@@ -938,7 +949,7 @@ pub fn show_with_settings(
             }
             Dialog::CameraCapture(draft)=>super::camera_capture::editor(ui,draft,intents,(model.video().fps_num(),model.video().fps_den())),
             Dialog::WindowCapture(draft)=>super::window_capture::editor(ui,draft,intents),
-            Dialog::DisplayCapture {edit,name,selected,capture_cursor,method,displays,capabilities,loading,error,platform,..}=>{
+            Dialog::DisplayCapture {edit,name,selected,capture_cursor,force_sdr,method,displays,capabilities,loading,error,platform,..}=>{
                 if matches!(edit,DisplayEdit::Add {..}) {ui.label(crate::i18n::tr(ui,"Name"));ui.add(egui::TextEdit::singleline(name).char_limit(256).id_salt("display-source-name")).on_hover_text(crate::hints::text(ui,"display-source-name")).on_disabled_hover_text(crate::hints::text(ui,"display-source-name"));}
                 ui.label(crate::i18n::tr(ui,"Display"));
                 if *loading {ui.horizontal(|ui|{ui.spinner();ui.label(crate::i18n::tr(ui,"Enumerating displays…"));});}
@@ -977,7 +988,12 @@ pub fn show_with_settings(
                     ui.label(crate::i18n::tf(ui,"Backend: {} · SDR",&[("{}",(capabilities.backend).to_string())]));
                     if let Some(note)=capabilities.note {ui.label(crate::i18n::tr(ui,note));}
                     if selected.as_ref().is_some_and(|target|!platform.display(target)){ui.colored_label(ui.visuals().warn_fg_color,crate::i18n::tr(ui,"This saved display belongs to another platform. Choose an available display."));}
-                    if windows {ui.label(crate::i18n::tr(ui,"Automatic prefers DXGI with optional cursor; reported DXGI failures can use GDI compatibility. Select WGC explicitly to use Windows Graphics Capture. Ordinary no-new-frame waits never switch methods."));}
+                    if windows {
+                        ui.checkbox(force_sdr,crate::i18n::tr_key_or(ui,"Module.win-capture.ForceSdr","Force SDR"))
+                            .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.DisplayCapture.ForceSdrHdrHelp","When disabled, Windows HDR10 displays use Windows Graphics Capture and are tone-mapped to SDR."));
+                        if !*force_sdr {ui.label(crate::i18n::tr_key_or(ui,"SkyLive.DisplayCapture.ForceSdrHdrNotice","HDR10 capture supports Automatic, DXGI, or Windows Graphics Capture. Tone mapping uses the profile SDR white level."));}
+                        ui.label(crate::i18n::tr(ui,"Automatic prefers DXGI with optional cursor; reported DXGI failures can use GDI compatibility. Select WGC explicitly to use Windows Graphics Capture. Ordinary no-new-frame waits never switch methods."));
+                    }
                     else if *platform==crate::platform::CapturePlatform::Macos {ui.label(crate::i18n::tr(ui,"macOS Automatic uses ScreenCaptureKit."));}else{ui.label(crate::i18n::tr(ui,"Display capture is unavailable on this platform."));}
                 });
             }
@@ -1380,6 +1396,7 @@ pub(super) fn audio_target_label(choice: AudioTargetChoice) -> &'static str {
         AudioTargetChoice::Default => "Default device",
         AudioTargetChoice::WindowsProcess => "Application process",
         AudioTargetChoice::WindowsEndpoint => "Windows endpoint",
+        AudioTargetChoice::WindowsCamera => "Automatic camera audio",
         AudioTargetChoice::MacDevice => "macOS device",
         AudioTargetChoice::MacSystem => "macOS system audio",
     }
@@ -1416,6 +1433,7 @@ fn image_path_editor(ui: &mut egui::Ui, path: &mut String) {
     .on_hover_text(crate::hints::text(ui, "image-file"))
     .on_disabled_hover_text(crate::hints::text(ui, "image-file"));
     ui.label(crate::i18n::tr_key_or(ui,"SkyLive.ImageSource.AnimationFormats","PNG/APNG, JPEG, BMP, TGA, GIF and WebP. Animated GIF, APNG and WebP are supported. Reading and decoding happen in the background; rejected files leave this draft unchanged."));
+    ui.small(crate::i18n::tr_key_or(ui,"SkyLive.ImageSource.PsdSupport","PSD: flattened RGB, CMYK, grayscale, bitmap or indexed composite, 1/8/16-bit (grayscale also 32-bit), uncompressed, RLE or ZIP."));
 }
 #[cfg(test)]
 mod settings_layout_tests {

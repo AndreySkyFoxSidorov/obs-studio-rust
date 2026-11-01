@@ -35,7 +35,16 @@ struct Paint {event:wire::Event,_credit:Credit}
 #[derive(Default)]struct AudioState{grant:Option<wire::AudioGrant>,queue:VecDeque<Paint>}
 struct SurfaceBytes {width:usize,height:usize,pixels:Vec<u8>,_credit:Credit}
 #[derive(Default)]struct Surface {base:Option<SurfaceBytes>,popup:Option<SurfaceBytes>,rect:Rect,show:bool,dirty:bool,qpc_ns:u64}
-struct State {audio:Mutex<AudioState>,audio_running:AtomicBool,audio_generation:AtomicU64,audio_sequence:AtomicU64,audio_dropped:AtomicU64,audio_budget:Arc<Budget>,source:wire::Source,session:u64,closed:AtomicBool,visible:AtomicBool,ready:AtomicBool,surface:Mutex<Surface>,budget_reported:AtomicBool,last_paint:Mutex<Option<Instant>>,paint:Mutex<Option<Paint>>,events:mpsc::SyncSender<wire::Event>,budget:Arc<Budget>,handlers:OnceLock<Weak<Handlers>>,frequency:u64,string_free:unsafe extern "C" fn(*mut CefString)}
+// Absolute rational deadlines avoid accumulating the helper's 5ms polling
+// jitter. Missed ticks are coalesced, never emitted in a catch-up burst.
+struct PaintPace {num:u32,den:u32,origin:Instant,next:u128}
+impl PaintPace {
+ fn new(num:u32,den:u32)->Self{Self{num,den,origin:Instant::now(),next:0}}
+ fn due(&self,now:Instant)->bool{now.duration_since(self.origin).as_nanos()*u128::from(self.num)>=self.next*u128::from(self.den)*1_000_000_000}
+ fn advance(&mut self,now:Instant){let elapsed=now.duration_since(self.origin).as_nanos();self.next=elapsed*u128::from(self.num)/(u128::from(self.den)*1_000_000_000)+1;}
+ fn set(&mut self,num:u32,den:u32){if (self.num,self.den)!=(num,den){*self=Self::new(num,den);}}
+}
+struct State {audio:Mutex<AudioState>,audio_running:AtomicBool,audio_generation:AtomicU64,audio_sequence:AtomicU64,audio_dropped:AtomicU64,audio_budget:Arc<Budget>,source:wire::Source,fps:AtomicUsize,session:u64,closed:AtomicBool,visible:AtomicBool,ready:AtomicBool,surface:Mutex<Surface>,budget_reported:AtomicBool,pace:Mutex<PaintPace>,paint:Mutex<Option<Paint>>,events:mpsc::SyncSender<wire::Event>,budget:Arc<Budget>,handlers:OnceLock<Weak<Handlers>>,frequency:u64,string_free:unsafe extern "C" fn(*mut CefString)}
 impl State {fn event(&self,kind:u32,message:String){let message=if message.len()>4096{eprintln!("CEF diagnostic: {message}");"CEF diagnostic exceeds the bounded IPC message; complete text is in the helper log".into()}else{message};let _=self.events.try_send(wire::Event::State {session:self.session,source:self.source.id,lease:self.source.lease,kind,message});}}
 struct Handlers {pointers:[usize;11]}
 impl Drop for Handlers {fn drop(&mut self){for p in self.pointers {unsafe {release(p as *mut Base)};}}}
@@ -76,22 +85,38 @@ unsafe extern "system" fn rect(p:*mut RenderHandler,_:*mut Browser,rect:*mut Rec
 fn qpc(frequency:u64)->Option<u64>{if frequency==0{return None;}let mut count=0i64;unsafe {QueryPerformanceCounter(&mut count)}.ok()?;u64::try_from(u128::try_from(count).ok()?*1_000_000_000/u128::from(frequency)).ok()}
 unsafe extern "system" fn screen(p:*mut RenderHandler,_:*mut Browser,info:*mut ScreenInfo)->i32{if info.is_null(){return 0;}let s=unsafe {state(p)};let rect=Rect{x:0,y:0,width:s.source.width as i32,height:s.source.height as i32};unsafe {*info=ScreenInfo {device_scale_factor:1.0,depth:32,depth_per_component:8,is_monochrome:0,rect,available_rect:rect};}1}
 unsafe extern "system" fn popup_show(p:*mut RenderHandler,_:*mut Browser,show:i32){let s=unsafe {state(p)};if let Ok(mut surface)=s.surface.try_lock(){surface.show=show!=0;if show==0 {surface.popup.take();}surface.dirty=true;surface.qpc_ns=qpc(s.frequency).unwrap_or(surface.qpc_ns);}}
-unsafe extern "system" fn popup_size(p:*mut RenderHandler,_:*mut Browser,rect:*const Rect){if rect.is_null(){return;}let s=unsafe {state(p)};let rect=unsafe {*rect};if let Ok(mut surface)=s.surface.try_lock(){surface.popup.take();surface.dirty=true;if rect.width<=0||rect.height<=0||rect.width>4096||rect.height>4096{surface.show=false;}else{surface.rect=rect;}surface.qpc_ns=qpc(s.frequency).unwrap_or(surface.qpc_ns);}}
+unsafe extern "system" fn popup_size(p:*mut RenderHandler,_:*mut Browser,rect:*const Rect){if rect.is_null(){return;}let s=unsafe {state(p)};let rect=unsafe {*rect};if let Ok(mut surface)=s.surface.try_lock(){
+ // CEF can move an existing popup without sending another OnPaint. Keep the
+ // last pixels when only its position changes; discard them on a real resize
+ // so stale pixels are never interpreted with the new dimensions.
+ if rect.width<=0||rect.height<=0||rect.width>4096||rect.height>4096{surface.popup.take();surface.show=false;}
+ else {if surface.popup.as_ref().is_some_and(|image|image.width!=rect.width as usize||image.height!=rect.height as usize){surface.popup.take();}surface.rect=rect;}
+ surface.dirty=true;surface.qpc_ns=qpc(s.frequency).unwrap_or(surface.qpc_ns);}}
 unsafe extern "system" fn paint(p:*mut RenderHandler,_:*mut Browser,kind:i32,_:usize,_:*const Rect,buffer:*const c_void,width:i32,height:i32){
  let s=unsafe {state(p)};if ![0,1].contains(&kind)||!s.ready.load(Ordering::Acquire)||!s.visible.load(Ordering::Acquire)||s.closed.load(Ordering::Acquire)||width<=0||height<=0||buffer.is_null(){return;}
  if kind==0&&(width!=s.source.width as i32||height!=s.source.height as i32){return;}
  let Ok(bytes)=wire::frame_bytes(width as u32,height as u32)else{return;};if kind==1&&bytes>16*1024*1024{return;}
  let Ok(mut surface)=s.surface.try_lock()else{return;};if kind==1&&(!surface.show||surface.rect.width!=width||surface.rect.height!=height){return;}
- if kind==0 {surface.base.take();}else{surface.popup.take();}
- let Some(credit)=s.budget.reserve(bytes)else{if !s.budget_reported.swap(true,Ordering::AcqRel){s.event(5,"Browser application paint budget exceeded".into());}return;};let Some(qpc_ns)=qpc(s.frequency)else{return;};
- let pixels=unsafe {std::slice::from_raw_parts(buffer.cast::<u8>(),bytes)}.to_vec();let image=SurfaceBytes {width:width as usize,height:height as usize,pixels,_credit:credit};if kind==0{surface.base=Some(image);}else{surface.popup=Some(image);}surface.qpc_ns=qpc_ns;surface.dirty=true;
+ let Some(qpc_ns)=qpc(s.frequency)else{return;};
+ let incoming=unsafe {std::slice::from_raw_parts(buffer.cast::<u8>(),bytes)};
+ // CEF supplies a complete surface even when its dirty-rectangle list is
+ // smaller. Reuse a matching owned buffer under the surface lock: this avoids
+ // an allocation per paint and retains the previous frame on admission errors.
+ let slot=if kind==0 {&mut surface.base}else{&mut surface.popup};
+ if let Some(image)=slot.as_mut().filter(|image|image.width==width as usize&&image.height==height as usize&&image.pixels.len()==bytes) {
+  image.pixels.copy_from_slice(incoming);
+ } else {
+  let Some(credit)=s.budget.reserve(bytes)else{if !s.budget_reported.swap(true,Ordering::AcqRel){s.event(5,"Browser application paint budget exceeded".into());}return;};
+  *slot=Some(SurfaceBytes {width:width as usize,height:height as usize,pixels:incoming.to_vec(),_credit:credit});
+ }
+ surface.qpc_ns=qpc_ns;surface.dirty=true;
 }
 impl State {
- fn flush_surface(&self){if !self.visible.load(Ordering::Acquire)||!self.ready.load(Ordering::Acquire){return;}let Ok(mut last)=self.last_paint.try_lock()else{return;};if last.is_some_and(|at|at.elapsed()<Duration::from_nanos(1_000_000_000/u64::from(self.source.fps))){return;}let Ok(mut surface)=self.surface.try_lock()else{return;};if !surface.dirty{return;}let Some(base)=surface.base.as_ref()else{return;};let Some(credit)=self.budget.reserve(base.pixels.len())else{if !self.budget_reported.swap(true,Ordering::AcqRel){self.event(5,"Browser application paint budget exceeded".into());}return;};let mut pixels=base.pixels.clone();
+ fn flush_surface(&self){if !self.visible.load(Ordering::Acquire)||!self.ready.load(Ordering::Acquire){return;}let Ok(mut pace)=self.pace.try_lock()else{return;};if !pace.due(Instant::now()){return;}let Ok(mut surface)=self.surface.try_lock()else{return;};if !surface.dirty{return;}let Some(base)=surface.base.as_ref()else{return;};let Some(credit)=self.budget.reserve(base.pixels.len())else{if !self.budget_reported.swap(true,Ordering::AcqRel){self.event(5,"Browser application paint budget exceeded".into());}return;};let mut pixels=base.pixels.clone();
   // Compose every popup against the clean full-view base. PET_POPUP can never
   // become a small whole-source frame or accumulate into an earlier overlay.
   if surface.show {if let Some(popup)=&surface.popup {for y in 0..popup.height {let dy=i64::from(surface.rect.y)+y as i64;if !(0..base.height as i64).contains(&dy){continue;}for x in 0..popup.width {let dx=i64::from(surface.rect.x)+x as i64;if !(0..base.width as i64).contains(&dx){continue;}let a=(y*popup.width+x)*4;let b=(dy as usize*base.width+dx as usize)*4;let alpha=u32::from(popup.pixels[a+3]);for channel in 0..4 {pixels[b+channel]=(u32::from(popup.pixels[a+channel])+(u32::from(pixels[b+channel])*(255-alpha)+127)/255).min(255) as u8;}}}}}
-  if let Ok(mut slot)=self.paint.try_lock(){*slot=Some(Paint {event:wire::Event::Paint {session:self.session,source:self.source.id,lease:self.source.lease,width:self.source.width,height:self.source.height,qpc_ns:surface.qpc_ns,pixels},_credit:credit});surface.dirty=false;self.budget_reported.store(false,Ordering::Release);*last=Some(Instant::now());}
+  if let Ok(mut slot)=self.paint.try_lock(){*slot=Some(Paint {event:wire::Event::Paint {session:self.session,source:self.source.id,lease:self.source.lease,width:self.source.width,height:self.source.height,qpc_ns:surface.qpc_ns,pixels},_credit:credit});surface.dirty=false;self.budget_reported.store(false,Ordering::Release);pace.advance(Instant::now());}
  }
 }
 unsafe extern "system" fn popup(_:*mut LifeSpanHandler,_:*mut Browser,_:*mut Frame,_:*const CefString,_:*const CefString,_:i32,_:i32,_:*const c_void,_:*mut WindowInfo,_:*mut *mut Client,_:*mut BrowserSettings,_:*mut *mut c_void,_:*mut i32)->i32{1}
@@ -103,7 +128,7 @@ unsafe extern "system" fn loaded(p:*mut LoadHandler,browser:*mut Browser,frame:*
  // Source-controlled audio is muted per browser and captured by AudioHandler.
  // Native playback also requires an original audio-view eligibility receipt. An engine-generated blank
  // completion is not a loaded source page and never publishes readiness.
- let url=unsafe {(*frame).get_url}.map(|f|unsafe {f(frame)}).unwrap_or(ptr::null_mut());let current=unsafe {read_string(url,16384)};if !url.is_null(){unsafe {(s.string_free)(url)};}if current.as_deref()==Some("about:blank"){return;}
+ let url=unsafe {(*frame).get_url}.map(|f|unsafe {f(frame)}).unwrap_or(ptr::null_mut());let current=unsafe {read_string(url,16384)};if !url.is_null(){unsafe {(s.string_free)(url)};}if current.as_deref()==Some("about:blank") && !(s.source.url.get(..6).is_some_and(|prefix|prefix.eq_ignore_ascii_case("about:")) && s.source.url.get(6..)==Some("blank")){return;}
  let script=format!("(()=>{{let s=document.getElementById('__skylive_css');if(!s){{s=document.createElement('style');s.id='__skylive_css';(document.head||document.documentElement).appendChild(s);}}s.textContent={};}})();",quoted(&s.source.css));
  let mut code=Wide::new(&script);let mut origin=Wide::new("skylive-browser-css");if let Some(run)=unsafe {(*frame).execute_java_script}{unsafe {run(frame,&code.value(),&origin.value(),1)};}
  s.ready.store(true,Ordering::Release);s.event(4,String::new());let host=unsafe {(*browser).get_host}.map(|f|unsafe {f(browser)}).unwrap_or(ptr::null_mut());if !host.is_null(){if let Some(invalidate)=unsafe {(*host).invalidate}{unsafe {invalidate(host,0)};}unsafe {release(host)};}
@@ -141,6 +166,8 @@ struct Node {browser:*mut Browser,state:Arc<State>,closing:bool,visible:bool,nat
  keys:[Option<KeyEvent>;256],buttons:[bool;3],mouse:MouseEvent}
 impl Node {
  fn host(&self)->*mut BrowserHost{unsafe {(*self.browser).get_host}.map(|f|unsafe {f(self.browser)}).unwrap_or(ptr::null_mut())}
+ fn set_fps(&mut self,fps:u32)->Result<(),String>{if self.state.fps.load(Ordering::Acquire)==fps as usize{return Ok(());}if !(1..=60).contains(&fps){return Err("Invalid CEF frame rate".into());}let host=self.host();if host.is_null(){return Err("CEF frame rate host unavailable".into());}let result=if let Some(set)=unsafe {(*host).set_windowless_frame_rate}{unsafe {set(host,fps as i32)};self.state.fps.store(fps as usize,Ordering::Release);Ok(())}else{Err("CEF frame rate API unavailable".into())};unsafe {release(host)};result}
+ fn set_rate(&mut self,num:u32,den:u32)->Result<(),String>{if num==0||den==0||u64::from(num)<u64::from(den)||u64::from(num)>60*u64::from(den){return Err("Invalid browser publication rate".into());}self.state.pace.lock().map_err(|_|"Browser frame clock unavailable")?.set(num,den);Ok(())}
  fn hide(&mut self,visible:bool){let host=self.host();if !visible&&!host.is_null(){self.release_input(host);}if !host.is_null(){if let Some(hidden)=unsafe {(*host).was_hidden}{unsafe {hidden(host,!visible as i32)};}unsafe {release(host)};}self.state.visible.store(visible,Ordering::Release);self.visible=visible;}
  fn flush_native_receipt(&mut self){if let Some((serial,muted))=self.native_receipt{if self.state.events.try_send(wire::Event::NativeAudio{session:self.state.session,source:self.state.source.id,lease:self.state.source.lease,serial,muted}).is_ok(){self.native_receipt=None;}}}
  fn native_audio(&mut self,serial:u64,allowed:bool)->Result<(),String>{if serial<=self.native_serial{self.flush_native_receipt();return Ok(());}let host=self.host();if host.is_null(){return Err("CEF native playback has no host".into());}let result=(||{let mute=unsafe{(*host).set_audio_muted}.ok_or("CEF native mute API missing")?;let read=unsafe{(*host).is_audio_muted}.ok_or("CEF native mute readback API missing")?;let desired=self.state.source.control_audio||!allowed;unsafe{mute(host,desired as i32)};let muted=unsafe{read(host)}!=0;if muted!=desired{return Err("CEF native playback mute readback differs".into());}self.native_serial=serial;self.native_receipt=Some((serial,muted));self.flush_native_receipt();Ok(())})();unsafe{release(host)};result}
@@ -168,6 +195,38 @@ impl Node {
    }},
    wire::Input::Focus(true)=>if let Some(focus)=(*host).set_focus{focus(host,1);},
    wire::Input::Focus(false)=>self.release_input(host),
+   wire::Input::Clipboard(action)=>{
+    // CEF executes the explicit editing command in the focused frame on its
+    // owner thread. Clipboard data itself never crosses SkyLive's IPC.
+    let frame=(*self.browser).get_focused_frame.map(|get|get(self.browser)).unwrap_or(ptr::null_mut());
+    if !frame.is_null(){
+     let command=match action {wire::ClipboardAction::Copy=>(*frame).copy,wire::ClipboardAction::Cut=>(*frame).cut,wire::ClipboardAction::Paste=>(*frame).paste};
+     if let Some(command)=command {command(frame);}else{self.state.event(3,"CEF clipboard editing command is unavailable".into());}
+     release(frame);
+    }else{self.state.event(3,"Browser has no focused frame for the clipboard command".into());}
+   },
+   wire::Input::Navigate(action)=>{
+    // Navigation acts on this exact leased browser, never another source.
+    // CEF methods execute on its owner thread; absent history is a no-op.
+    match action {
+     wire::Navigation::Back=>if let (Some(can),Some(go))=((*self.browser).can_go_back,(*self.browser).go_back){if can(self.browser)!=0 {go(self.browser);}},
+     wire::Navigation::Forward=>if let (Some(can),Some(go))=((*self.browser).can_go_forward,(*self.browser).go_forward){if can(self.browser)!=0 {go(self.browser);}},
+     wire::Navigation::Reload=>if let Some(reload)=(*self.browser).reload_ignore_cache {reload(self.browser);},
+     wire::Navigation::ZoomIn|wire::Navigation::ZoomOut|wire::Navigation::ZoomReset=>{
+      // Match OBS browser's percentage steps; CEF expects logarithmic levels.
+      const STEPS:[i32;16]=[25,33,50,67,75,80,90,100,110,125,150,175,200,250,300,400];
+      if let (Some(get),Some(set))=((*host).get_zoom_level,(*host).set_zoom_level){
+       let current=(1.2_f64.powf(get(host))*100.0).round() as i32;
+       let next=match action {
+        wire::Navigation::ZoomIn=>STEPS.iter().copied().find(|v|*v>current).unwrap_or(400),
+        wire::Navigation::ZoomOut=>STEPS.iter().rev().copied().find(|v|*v<current).unwrap_or(25),
+        _=>100,
+       };
+       set(host,(f64::from(next)/100.0).ln()/1.2_f64.ln());
+      }else{self.state.event(3,"CEF page zoom is unavailable".into());}
+     },
+    }
+   },
   }};
   unsafe {release(host)};
  }
@@ -175,7 +234,7 @@ impl Node {
 }
 impl Drop for Node {fn drop(&mut self){unsafe {release(self.browser)};}}
 fn create(api:&Api,source:wire::Source,session:u64,events:mpsc::SyncSender<wire::Event>,budget:Arc<Budget>,audio_budget:Arc<Budget>,frequency:u64)->Result<Node,String>{
- source.validate().map_err(|e|e.to_string())?;let state=Arc::new(State {audio:Mutex::new(AudioState{grant:source.audio_grant,queue:VecDeque::new()}),audio_running:AtomicBool::new(false),audio_generation:AtomicU64::new(0),audio_sequence:AtomicU64::new(0),audio_dropped:AtomicU64::new(0),audio_budget,visible:AtomicBool::new(source.visible),source,session,closed:AtomicBool::new(false),ready:AtomicBool::new(false),surface:Mutex::new(Surface::default()),budget_reported:AtomicBool::new(false),last_paint:Mutex::new(None),paint:Mutex::new(None),events,budget,handlers:OnceLock::new(),frequency,string_free:api.string_free});
+ source.validate().map_err(|e|e.to_string())?;let fps=source.fps as usize;let pace=PaintPace::new(source.rate_num,source.rate_den);let state=Arc::new(State {audio:Mutex::new(AudioState{grant:source.audio_grant,queue:VecDeque::new()}),audio_running:AtomicBool::new(false),audio_generation:AtomicU64::new(0),audio_sequence:AtomicU64::new(0),audio_dropped:AtomicU64::new(0),audio_budget,visible:AtomicBool::new(source.visible),source,fps:AtomicUsize::new(fps),session,closed:AtomicBool::new(false),ready:AtomicBool::new(false),surface:Mutex::new(Surface::default()),budget_reported:AtomicBool::new(false),pace:Mutex::new(pace),paint:Mutex::new(None),events,budget,handlers:OnceLock::new(),frequency,string_free:api.string_free});
  let c=client(state.clone());let mut window:WindowInfo=zero();window.windowless_rendering_enabled=1;let mut settings:BrowserSettings=zero();settings.size=size_of::<BrowserSettings>();settings.windowless_frame_rate=state.source.fps as i32;settings.background_color=0;let mut initial_url=Wide::new("about:blank");
  let browser=unsafe {(api.create)(&window,c,&initial_url.value(),&settings,ptr::null_mut(),ptr::null_mut())};unsafe {release(c)};if browser.is_null(){return Err("CEF browser creation failed".into());}
  let mut node=Node {browser,state,closing:false,visible:true,native_serial:0,native_receipt:None,keys:[None;256],buttons:[false;3],mouse:Default::default()};let host=node.host();if host.is_null(){eprintln!("CEF created a browser without a host; terminating the owned helper");std::process::exit(3);}let Some(mute)= (unsafe{(*host).set_audio_muted})else{eprintln!("CEF native mute API missing before navigation");std::process::exit(3);};unsafe{mute(host,1);release(host)};
@@ -204,7 +263,7 @@ if !cli.iter().any(|v|v=="--skylive-browser-owner"){return Err("This executable 
  let budget=Arc::new(Budget {bytes:AtomicUsize::new(0),count:AtomicUsize::new(0),max_bytes:wire::PIXEL_BUDGET,max_count:wire::MAX_FRAMES});let audio_budget=Arc::new(Budget{bytes:AtomicUsize::new(0),count:AtomicUsize::new(0),max_bytes:wire::PCM_BUDGET,max_count:wire::MAX_PCM_PACKETS});let mut desired=HashMap::<u64,wire::Source>::new();let mut session=0u64;let mut sync_epoch=0u64;let mut nodes=Vec::<Node>::new();let mut retry=HashMap::<u64,Instant>::new();let mut stopping=false;let initialized_at=Instant::now();
  loop {
   for _ in 0..8 {match input.try_recv(){Ok(wire::Command::Boot)=>{},Ok(wire::Command::Sync {session:next,epoch,sources})=>{if stopping||next==session&&epoch<=sync_epoch{continue;}sync_epoch=epoch;session=next;desired=sources.into_iter().map(|s|(s.id,s)).collect();retry.retain(|id,_|desired.contains_key(id));},Ok(wire::Command::Input {session:input_session,source,lease,event})=>{if input_session==session {if let Some(node)=nodes.iter_mut().find(|n|n.state.source.id==source&&n.state.source.lease==lease&&n.state.session==session){node.input(&event);}}},Ok(wire::Command::Shutdown)=>{stopping=true;desired.clear();},Err(mpsc::TryRecvError::Empty)=>break,Err(_)=>{stopping=true;desired.clear();break;}}}
-  for node in &mut nodes {let wanted=desired.get(&node.state.source.id).filter(|s|node.state.session==session&&s.lease==node.state.source.lease);if let Some(wanted)=wanted {node.grant(wanted.audio_grant);if let Err(error)=node.native_audio(wanted.native_serial,wanted.native_audio){node.state.event(3,error);node.close();}if node.visible!=wanted.visible {node.hide(wanted.visible);}}else{node.close();}}
+  for node in &mut nodes {let wanted=desired.get(&node.state.source.id).filter(|s|node.state.session==session&&s.lease==node.state.source.lease);if let Some(wanted)=wanted {node.grant(wanted.audio_grant);if let Err(error)=node.set_fps(wanted.fps).and_then(|()|node.set_rate(wanted.rate_num,wanted.rate_den)){node.state.event(3,error);node.close();}if let Err(error)=node.native_audio(wanted.native_serial,wanted.native_audio){node.state.event(3,error);node.close();}if node.visible!=wanted.visible {node.hide(wanted.visible);}}else{node.close();}}
   unsafe {(api.pump)()};for node in &nodes {node.state.flush_surface();}nodes.retain(|node|!node.state.closed.load(Ordering::Acquire));
   if stopping&&nodes.is_empty(){break;}
   if !context_initialized.load(Ordering::Acquire){if initialized_at.elapsed()>Duration::from_secs(15){eprintln!("CEF context initialization did not acknowledge readiness");stopping=true;desired.clear();}thread::sleep(Duration::from_millis(5));continue;}

@@ -25,12 +25,22 @@ pub enum CraftVideoEffect {
     Exposure { gain:f32, offset:f32, inverse_gamma:f32, bypass_linear:bool },
     TemperatureTint { temperature:f32, tint:f32 },
     Vibrance { vibrance:f32, saturation:f32 },
+    HlsBalance { hue:f32, lightness:f32, saturation:f32 },
+    ColorOffset { phase:[f32;3], overflow:u8 },
+    SelectiveColor {relative:bool,adjustments:[[i8;4];9]},
     Tint {black:[u8;3],white:[u8;3],amount:f32},
     Tritone {shadows:[u8;3],midtones:[u8;3],highlights:[u8;3],blend:f32},
     ColorBalance {shadows:[f32;3],midtones:[f32;3],highlights:[f32;3],preserve_luminosity:bool},
     ChannelMixer {matrix:[[f32;4];3],monochrome:bool},
+    BlackWhite {weights:[f32;6],tint:Option<[u8;3]>},
     GammaPedestalGain {gamma:[f32;3],pedestal:[f32;3],gain:[f32;3],black_stretch:f32},
     Threshold { level:u16 },
+    Solarize { threshold:f32, amount:f32 },
+    Levels {input_black:f32,input_white:f32,gamma:f32,output_black:f32,output_white:f32,channels:[[f32;5];4]},
+    LeaveColor { color:[u8;3], amount:f32, tolerance:f32, softness:f32, by_hue:bool },
+    ChannelRemap { channels:[u8;3], alpha:u8 },
+    ColorToAlpha { color:[u8;3], transparency:f32, opacity:f32 },
+    GradientMap { shadows:[u8;3], highlights:[u8;3], stops:[Option<(u8,[u8;3])>;4], reverse:bool, amount:f32, dither:bool },
     /// Fixed EffectCraft Photo Filter Sepia RGB[170,120,55]; density is percent.
     Sepia { density:f32, preserve_luminosity:bool },
     /// Already resolved exact donor tint; encoded-sRGB components in0..1.
@@ -58,7 +68,7 @@ pub enum CraftVideoEffect {
 }
 impl CraftVideoEffect {
     /// True when the stage preserves straight RGBA byte values exactly.
-    pub fn is_passthrough(self)->bool{matches!(self,Self::Sepia{density,..}|Self::PhotoFilter{density,..}if density==0.0)||matches!(self,Self::Vibrance{vibrance,saturation} if vibrance==0.0 && saturation==0.0)||matches!(self,Self::Tint{amount,..} if amount==0.0)||matches!(self,Self::Tritone{blend,..} if blend==100.0)||matches!(self,Self::ChannelMixer{matrix,monochrome:false} if matrix==[[100.0,0.0,0.0,0.0],[0.0,100.0,0.0,0.0],[0.0,0.0,100.0,0.0]])}
+    pub fn is_passthrough(self)->bool{matches!(self,Self::Levels{input_black,input_white,gamma,output_black,output_white,channels} if [input_black,input_white,gamma,output_black,output_white]==[0.0,1.0,1.0,0.0,1.0] && channels==[[0.0,1.0,1.0,0.0,1.0];4])||matches!(self,Self::ColorOffset{phase,..} if phase.iter().all(|value| value.rem_euclid(360.0)==0.0))||matches!(self,Self::Sepia{density,..}|Self::PhotoFilter{density,..}if density==0.0)||matches!(self,Self::Vibrance{vibrance,saturation} if vibrance==0.0 && saturation==0.0)||matches!(self,Self::HlsBalance{hue,lightness,saturation} if hue==0.0&&lightness==0.0&&saturation==0.0)||matches!(self,Self::SelectiveColor{adjustments,..} if adjustments==[[0;4];9])||matches!(self,Self::Tint{amount,..} if amount==0.0)||matches!(self,Self::Tritone{blend,..} if blend==100.0)||matches!(self,Self::ChannelMixer{matrix,monochrome:false} if matrix==[[100.0,0.0,0.0,0.0],[0.0,100.0,0.0,0.0],[0.0,0.0,100.0,0.0]])}
     pub(crate) fn validate(self) -> Result<(), MediaError> {
         let pct = |x: f32| x.is_finite() && (0.0..=100.0).contains(&x);
         let valid = match self {
@@ -67,13 +77,23 @@ impl CraftVideoEffect {
             Self::PhotoFilter{color,density,..}=>pct(density)&&color.iter().all(|value|value.is_finite()&&(0.0..=1.0).contains(value)),
             Self::Posterize{levels}=>(2..=255).contains(&levels),
             Self::Threshold{level}=>(1..=255).contains(&level),
+            Self::Solarize{threshold,amount}=>pct(threshold)&&pct(amount),
+            Self::Levels{input_black,input_white,gamma,output_black,output_white,channels}=>{let valid=|p:[f32;5]| [p[0],p[1],p[3],p[4]].into_iter().all(|v|v.is_finite()&&(0.0..=1.0).contains(&v))&&p[0]<p[1]&&p[2].is_finite()&&(0.01..=10.0).contains(&p[2]);valid([input_black,input_white,gamma,output_black,output_white])&&channels.into_iter().all(valid)},
+            Self::LeaveColor{amount,tolerance,softness,..}=>pct(amount)&&pct(tolerance)&&pct(softness),
+            Self::ChannelRemap{channels,alpha}=>channels.into_iter().all(|channel|channel<=5)&&alpha<=5,
+            Self::ColorToAlpha{transparency,opacity,..}=>[transparency,opacity].into_iter().all(|v|v.is_finite()&&(0.0..=1.0).contains(&v)),
+            Self::GradientMap{amount,stops,..}=>{let mut previous=0u8;let mut empty=false;let mut valid=true;for stop in stops {match stop {Some((position,_)) if !empty&&position>previous&&position<255=>previous=position,None=>empty=true,_=>valid=false}}pct(amount)&&valid},
             Self::Exposure{gain,offset,inverse_gamma,..}=>gain.is_finite()&&(1.0/1048576.0..=1048576.0).contains(&gain)&&offset.is_finite()&&(-0.5..=0.5).contains(&offset)&&inverse_gamma.is_finite()&&(1.0/9.99..=100.0).contains(&inverse_gamma),
             Self::TemperatureTint{temperature,tint}=>[temperature,tint].iter().all(|v|v.is_finite()&&(-100.0..=100.0).contains(v)),
             Self::Vibrance{vibrance,saturation}=>[vibrance,saturation].iter().all(|v|v.is_finite()&&(-100.0..=100.0).contains(v)),
+            Self::HlsBalance{hue,lightness,saturation}=>hue.is_finite()&&(-360.0..=360.0).contains(&hue)&&[lightness,saturation].iter().all(|v|v.is_finite()&&(-100.0..=100.0).contains(v)),
+            Self::ColorOffset{phase,overflow}=>overflow<=2&&phase.into_iter().all(|v|v.is_finite()&&(-360.0..=360.0).contains(&v)),
+            Self::SelectiveColor{adjustments,..}=>adjustments.into_iter().flatten().all(|value|(-100..=100).contains(&value)),
             Self::Tint{amount,..}=>pct(amount),
             Self::Tritone{blend,..}=>pct(blend),
             Self::ColorBalance{shadows,midtones,highlights,..}=>shadows.into_iter().chain(midtones).chain(highlights).all(|v|v.is_finite()&&(-100.0..=100.0).contains(&v)),
             Self::ChannelMixer{matrix,..}=>matrix.into_iter().flatten().all(|v|v.is_finite()&&(-200.0..=200.0).contains(&v)),
+            Self::BlackWhite{weights,..}=>weights.into_iter().all(|v|v.is_finite()&&(-200.0..=300.0).contains(&v)),
             Self::GammaPedestalGain{gamma,pedestal,gain,black_stretch}=>gamma.into_iter().all(|v|v.is_finite()&&(0.1..=10.0).contains(&v))&&pedestal.into_iter().all(|v|v.is_finite()&&(-2.0..=2.0).contains(&v))&&gain.into_iter().all(|v|v.is_finite()&&(0.0..=4.0).contains(&v))&&black_stretch.is_finite()&&(0.0..=4.0).contains(&black_stretch),
             Self::LinearColorKey {
                 tolerance,
@@ -130,7 +150,7 @@ pub fn craft_video_effects(
     // A neutral Sepia is byte-identical, including hidden alpha-zero RGB.
     if !effects.is_empty()&&effects.iter().all(|effect|effect.is_passthrough()){return Ok(input.clone());}
     let mut output = input.pixels().to_vec();
-    for pixel in output.chunks_exact_mut(4) {
+    for (index,pixel) in output.chunks_exact_mut(4).enumerate() {
         let mut c = [
             f32::from(pixel[0]) / 255.0,
             f32::from(pixel[1]) / 255.0,
@@ -138,7 +158,7 @@ pub fn craft_video_effects(
         ];
         let mut alpha = f32::from(pixel[3]) / 255.0;
         for effect in effects {
-            (c, alpha) = process_craft_pixel(c, alpha, effect);
+            (c, alpha) = process_craft_pixel(c, alpha, effect, (index % input.width() as usize, index / input.width() as usize));
         }
         if alpha == 0.0 {
             pixel.fill(0);
@@ -156,6 +176,7 @@ pub(crate) fn process_craft_pixel(
     mut c: [f32; 3],
     mut alpha: f32,
     effect: &CraftVideoEffect,
+    position: (usize,usize),
 ) -> ([f32; 3], f32) {
     match *effect {
         // PhotoCraft compose/adjust.rs Invert. Amount is an explicit post-mix.
@@ -183,6 +204,12 @@ pub(crate) fn process_craft_pixel(
             let s=(s*(1.0+saturation/100.0)+(vibrance/100.0)*(1.0-s)*s.min(0.5)).clamp(0.0,1.0);
             c=hsl_to_rgb(h,s,l);
         }
+        CraftVideoEffect::HlsBalance{hue,lightness,saturation}=>{
+            let (h,s,l)=rgb_to_hsl(c);let dl=lightness/100.0;let ds=saturation/100.0;
+            let l=if dl>0.0{l+(1.0-l)*dl}else{l+l*dl};
+            let s=if ds>0.0{s+(1.0-s)*ds}else{s+s*ds};
+            c=hsl_to_rgb(h+hue/360.0,s.clamp(0.0,1.0),l.clamp(0.0,1.0));
+        }
         // PhotoCraft threshold_white(U8): rounded byte luminosity, halves down.
         CraftVideoEffect::Tritone{shadows,midtones,highlights,blend}=>{let l=(0.299*c[0]+0.587*c[1]+0.114*c[2]).clamp(0.0,1.0);let (a,b,t)=if l<0.5{(shadows,midtones,l*2.0)}else{(midtones,highlights,(l-0.5)*2.0)};let mix=1.0-blend/100.0;for i in 0..3{let low=f32::from(a[i])/255.0;let high=f32::from(b[i])/255.0;let target=low+(high-low)*t;c[i]+=(target-c[i])*mix;}}
         CraftVideoEffect::ColorBalance{shadows,midtones,highlights,preserve_luminosity}=>{
@@ -197,6 +224,21 @@ pub(crate) fn process_craft_pixel(
             let row=|r:[f32;4]| (c[0]*(r[0]/100.0)+c[1]*(r[1]/100.0)+c[2]*(r[2]/100.0)+r[3]/100.0).max(0.0);
             c=if monochrome {let value=row(matrix[0]);[value;3]} else {[row(matrix[0]),row(matrix[1]),row(matrix[2])]};
         }
+        CraftVideoEffect::BlackWhite{weights,tint}=>{
+            let hi=c[0].max(c[1]).max(c[2]);let lo=c[0].min(c[1]).min(c[2]);let mid=c[0]+c[1]+c[2]-hi-lo;
+            let primary=if c[0]>=c[1]&&c[0]>=c[2]{0}else if c[1]>=c[2]{2}else{4};
+            let secondary=if c[2]<=c[0]&&c[2]<=c[1]{1}else if c[0]<=c[1]{3}else{5};
+            let grey=(lo+(mid-lo)*weights[secondary]/100.0+(hi-mid)*weights[primary]/100.0).clamp(0.0,1.0);
+            c=[grey;3];
+            if let Some(tint)=tint {
+                let t=tint.map(|v|f32::from(v)/255.0);let d=grey-(0.3*t[0]+0.59*t[1]+0.11*t[2]);
+                let mut v=t.map(|x|x+d);let l=0.3*v[0]+0.59*v[1]+0.11*v[2];
+                let n=v[0].min(v[1]).min(v[2]);let x=v[0].max(v[1]).max(v[2]);
+                if n<0.0 {let den=l-n;v=v.map(|a|if l>0.0&&den>0.0{l+(a-l)*l/den}else{l});}
+                if x>1.0 {let den=x-l;v=v.map(|a|if l<1.0&&den>0.0{l+(a-l)*(1.0-l)/den}else{l});}
+                c=v.map(|a|a.clamp(0.0,1.0));
+            }
+        }
         CraftVideoEffect::GammaPedestalGain{gamma,pedestal,gain,black_stretch}=>{
             for i in 0..3 {
                 let v=c[i];
@@ -206,6 +248,35 @@ pub(crate) fn process_craft_pixel(
         }
         CraftVideoEffect::Tint{black,white,amount}=>{let l=(0.299*c[0]+0.587*c[1]+0.114*c[2]).clamp(0.0,1.0);let k=amount/100.0;for i in 0..3{let b=f32::from(black[i])/255.0;let w=f32::from(white[i])/255.0;let target=b+(w-b)*l;c[i]+=(target-c[i])*k;}}
         CraftVideoEffect::Threshold{level}=>{let q=c.map(|v|(v.clamp(0.0,1.0)*255.0).round());let white=30.0*q[0]+59.0*q[1]+11.0*q[2]>100.0*f32::from(level)-50.0;c=[if white{1.0}else{0.0};3];}
+        CraftVideoEffect::Solarize{threshold,amount}=>{let threshold=threshold/100.0;let blend=amount/100.0;for value in &mut c {if *value>threshold {*value+=(1.0-2.0 * *value)*blend;}}}
+        CraftVideoEffect::Levels{input_black,input_white,gamma,output_black,output_white,channels}=>{let map=|v:f32,p:[f32;5]|p[3]+(p[4]-p[3])*((v-p[0])/(p[1]-p[0])).clamp(0.0,1.0).powf(1.0/p[2]);let master=[input_black,input_white,gamma,output_black,output_white];let identity=[0.0,1.0,1.0,0.0,1.0];for i in 0..3{if master!=identity{c[i]=map(c[i],master);}if channels[i]!=identity{c[i]=map(c[i],channels[i]);}}if channels[3]!=identity{alpha=map(alpha,channels[3]);}}
+        CraftVideoEffect::ColorOffset{phase,overflow}=>{for i in 0..3 {let offset=(phase[i]/360.0).rem_euclid(1.0);if offset!=0.0 {let x=c[i]+offset;c[i]=if x<=1.0{x}else{match overflow {1=>(2.0-x).max(0.0),2=>if x-1.0<0.5{0.0}else{1.0},_=>x.rem_euclid(1.0)}};}}}
+        CraftVideoEffect::SelectiveColor{relative,adjustments}=>{
+            // PhotoCraft selective_color: six chromatic and three tonal weights.
+            let hi=c[0].max(c[1]).max(c[2]);let lo=c[0].min(c[1]).min(c[2]);let mid=c[0]+c[1]+c[2]-hi-lo;
+            let top=|i:usize|if c[i]>=hi {hi-mid} else {0.0};
+            let bottom=|i:usize|if c[i]<=lo {mid-lo} else {0.0};
+            let weights=[top(0),bottom(2),top(1),bottom(0),top(2),bottom(1),((lo-0.5)*2.0).max(0.0),(1.0-(hi-0.5).abs()-(lo-0.5).abs()).clamp(0.0,1.0),((0.5-hi)*2.0).max(0.0)];
+            let mut delta=[0.0;3];
+            for (range,weight) in weights.into_iter().enumerate(){if weight<=0.0{continue;}for channel in 0..3{
+                let ink=1.0-c[channel];let d=(f32::from(adjustments[range][channel])+f32::from(adjustments[range][3]))/100.0;
+                let scaled=if relative{d*ink}else if d>0.0{d*(2.0*(1.0-ink)).min(1.0)}else{d*(2.0*ink).min(1.0)};
+                delta[channel]+=scaled*weight;
+            }}
+            for channel in 0..3{c[channel]=(c[channel]-delta[channel]).clamp(0.0,1.0);}
+        }
+        CraftVideoEffect::LeaveColor{color,amount,tolerance,softness,by_hue}=>{let key=color.map(|v|f32::from(v)/255.0);let distance=if by_hue{hue_distance(c,key)}else{((c[0]-key[0]).powi(2)+(c[1]-key[1]).powi(2)+(c[2]-key[2]).powi(2)).sqrt()/3_f32.sqrt()};let tolerance=tolerance/100.0;let softness=softness/100.0;let keep=if tolerance>=1.0||distance<=tolerance{1.0}else if softness<=1e-6{0.0}else{(1.0-(distance-tolerance)/softness).clamp(0.0,1.0)};let gray=0.2126*c[0]+0.7152*c[1]+0.0722*c[2];let mix=amount/100.0*(1.0-keep);c=c.map(|v|v+(gray-v)*mix);}
+        CraftVideoEffect::ChannelRemap{channels,alpha:alpha_channel}=>{let original=c;let input_alpha=alpha;let pick=|channel|match channel{0..=2=>original[channel as usize],3=>0.0,4=>1.0,_=>input_alpha};c=channels.map(pick);alpha=pick(alpha_channel);}
+        CraftVideoEffect::ColorToAlpha{color,transparency,opacity}=>{
+            let key=color.map(|v|f32::from(v)/255.0);
+            let mut coverage=0.0_f32;
+            for i in 0..3 {let delta=c[i]-key[i];let part=if delta>0.0 {if key[i]<1.0 {delta/(1.0-key[i])} else {1.0}} else if delta<0.0 {if key[i]>0.0 {-delta/key[i]} else {1.0}} else {0.0};if part.is_finite(){coverage=coverage.max(part);}}
+            coverage=coverage.clamp(0.0,1.0);
+            let matte=if coverage<=transparency {0.0} else if coverage>=opacity {1.0} else {(coverage-transparency)/(opacity-transparency)};
+            if matte<=0.0 {c=key;} else if matte<1.0 {for i in 0..3 {c[i]=(key[i]+(c[i]-key[i])/matte).clamp(0.0,1.0);}}
+            alpha*=matte;
+        }
+        CraftVideoEffect::GradientMap{shadows,highlights,stops,reverse,amount,dither}=>{let mut l=(0.3*c[0]+0.59*c[1]+0.11*c[2]).clamp(0.0,1.0);if reverse{l=1.0-l;}let mut lo=(0.0,shadows);let mut hi=(1.0,highlights);for (position,color) in stops.into_iter().flatten(){let p=f32::from(position)/255.0;if l<=p{hi=(p,color);break;}lo=(p,color);}let t=((l-lo.0)/(hi.0-lo.0)).clamp(0.0,1.0);let mix=amount/100.0;let noise=if dither {const BAYER:[u8;16]=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];((f32::from(BAYER[(position.1%4)*4+position.0%4])+0.5)/16.0-0.5)/255.0}else{0.0};for i in 0..3{let a=f32::from(lo.1[i])/255.0;let b=f32::from(hi.1[i])/255.0;c[i]+=((a+(b-a)*t+noise).clamp(0.0,1.0)-c[i])*mix;}}
 
         CraftVideoEffect::LinearColorKey {
             color,

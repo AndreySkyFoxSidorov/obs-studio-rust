@@ -91,6 +91,8 @@ mod game_flow;
 mod virtual_camera_flow;
 #[path = "app_streaming.rs"]
 mod streaming;
+#[path = "app_output_timer.rs"]
+mod output_timer;
 use crate::{
     io::{IoWorker, Job, Reply},
     preview::PreviewPane,
@@ -133,6 +135,7 @@ struct PendingImage {
     session: u64,
     revision: u64,
     edit: ImageEdit,
+    drop_position: Option<[f32;2]>,
 }
 struct PendingCameraStart {
     session: u64,
@@ -181,6 +184,7 @@ pub struct StudioApp {
     media_dialog_sequence: u64,
     recording: recording::Runtime,
     streaming: streaming::Runtime,
+    output_timer: output_timer::Runtime,
     virtual_camera: virtual_camera_flow::Runtime,
     platform: crate::platform::CapturePlatform,
     projectors:crate::projectors::Runtime,
@@ -391,6 +395,7 @@ impl StudioApp {
             media_dialog_sequence: 0,
             recording: recording::Runtime::new_with_render_gpu(render_gpu.clone())?,
             streaming: streaming::Runtime::new_with_render_gpu(render_gpu.clone()),
+            output_timer: output_timer::Runtime::default(),
             virtual_camera: virtual_camera_flow::Runtime::new(render_gpu.clone())?,
             platform,
             explicit_camera_stop: None,
@@ -955,7 +960,10 @@ impl StudioApp {
                     };
                     let command = match pending.edit {
                         ImageEdit::Add { scene, name } => {
-                            Command::ImageSource {command:skylive_core::ImageSourceCommand::Add{scene,name,asset,settings:pending.settings}}
+                            let command=if let Some(position)=pending.drop_position {
+                                skylive_core::ImageSourceCommand::AddAt{scene,name,asset,settings:pending.settings,position}
+                            } else {skylive_core::ImageSourceCommand::Add{scene,name,asset,settings:pending.settings}};
+                            Command::ImageSource {command}
                         }
                         ImageEdit::Replace { source } => Command::ImageSource {command:skylive_core::ImageSourceCommand::Configure{source,asset,settings:pending.settings}},
                     };
@@ -1199,19 +1207,31 @@ impl StudioApp {
                     Err(error) => self.message(true, error),
                 }
             }
-            Intent::ToggleSourceToolbar => views::source_toolbar::toggle_source_bar(context),
-            Intent::ToggleListboxToolbars => views::source_toolbar::toggle_listbox_bars(context),
+            Intent::ToggleSourceToolbar => {
+                let preferences=self.session.snapshot().preferences().clone();
+                let visible=preferences.source_toolbar_visible();
+                self.apply(Command::SetUserPreferences {preferences:preferences.with_source_toolbar_visible(!visible)});
+            },
+            Intent::ToggleListboxToolbars => {
+                let preferences=self.session.snapshot().preferences().clone();
+                let visible=preferences.listbox_toolbars_visible();
+                self.apply(Command::SetUserPreferences {preferences:preferences.with_listbox_toolbars_visible(!visible)});
+            },
             Intent::ToggleStatusBar => { self.status_visible = !self.status_visible; }
             Intent::TogglePreviewLock => {
                 self.preview_locked = !self.preview_locked;
                 self.preview_interaction.cancel();
             }
             Intent::PreviewDisplay(action) => crate::preview_display::apply(context, action),
-            Intent::SceneGrid(grid) => context.data_mut(|data| data.insert_temp(egui::Id::new("scene-grid"), grid)),
-            Intent::ToggleSourceIcons => context.data_mut(|data| {
-                let visible = data.get_temp::<bool>(egui::Id::new("source-type-icons")).unwrap_or(true);
-                data.insert_temp(egui::Id::new("source-type-icons"), !visible);
-            }),
+            Intent::SceneGrid(grid) => {
+                let preferences=self.session.snapshot().preferences().clone().with_scene_grid(grid);
+                self.apply(Command::SetUserPreferences { preferences });
+            },
+            Intent::ToggleSourceIcons => {
+                let preferences=self.session.snapshot().preferences().clone();
+                let visible=preferences.source_icons_visible();
+                self.apply(Command::SetUserPreferences {preferences:preferences.with_source_icons_visible(!visible)});
+            },
             Intent::ToggleFullscreen => {
                 let fullscreen = context.input(|input| input.viewport().fullscreen.unwrap_or(false));
                 context.send_viewport_cmd(egui::ViewportCommand::Fullscreen(!fullscreen));
@@ -1636,6 +1656,10 @@ impl StudioApp {
                     capture_cursor: binding
                         .as_ref()
                         .map_or(capabilities.cursor, |binding| binding.capture_cursor()),
+                    // OBS creates Windows Display Capture with Force SDR off.
+                    // Existing bindings retain their saved setting, including
+                    // legacy SkyLive documents that defaulted to true.
+                    force_sdr: binding.as_ref().map_or(self.platform != crate::platform::CapturePlatform::Windows,|binding|binding.force_sdr()),
                     displays: Vec::new(),
                     capabilities,
                     loading: true,
@@ -1970,6 +1994,7 @@ impl StudioApp {
                     session: self.session.identity(),
                     revision: self.session.snapshot().revision(),
                     edit,
+                    drop_position:None,
                 };
                 match self.io.submit(
                     pending.session,
@@ -2080,6 +2105,7 @@ impl StudioApp {
             Intent::CancelNotesDock(token) => self.cancel_notes_dock(token, context),
             Intent::ToggleDock(dock) => self.layout.toggle(dock),
             Intent::OpenSetup => self.open_setup(views::setup::SetupOrigin::Tools),
+            Intent::OpenOutputTimer => self.output_timer.open = true,
             Intent::SetupAction(token, action) => self.setup_action(token, action),
             Intent::ResetLayout => {
                 self.layout.reset();
@@ -2896,9 +2922,12 @@ impl StudioApp {
         }
     }
     fn poll_image_watch(&mut self,context:&egui::Context,now:MediaTime){
-        // Preserve exact save-receipt revision. The bounded watcher can hold
-        // one completion until the native Save owner finishes.
-        if self.documents.saving(){context.request_repaint_after(std::time::Duration::from_millis(20));return;}
+        // Preserve the exact save receipt and any open source-property draft.
+        // An image refresh advances the document revision, so publishing it
+        // underneath a dialog would make its eventual Apply spuriously stale.
+        // As for slideshow refreshes, retain the bounded completion until the
+        // save or dialog has finished; its source identity is checked below.
+        if self.documents.saving()||self.dialog.is_some(){context.request_repaint_after(std::time::Duration::from_millis(100));return;}
         if let Some(item)=self.image_watch.poll(){
             let current=self.session.snapshot();
             let matches=item.session==self.session.identity()&&matches!(current.source(item.source).map(|source|source.kind()),Some(skylive_core::SourceKind::Image{asset}) if asset==&item.expected);
@@ -2977,6 +3006,7 @@ impl StudioApp {
         self.poll_ndi_outputs(context);
         self.poll_recording(context);
         self.poll_streaming(context);
+        self.output_timer_frame(context);
         self.poll_virtual_camera(context);
         self.poll_io(context);
         self.poll_image_watch(context,now);
@@ -3341,6 +3371,7 @@ impl StudioApp {
         );
         if let (Ok(sample),Some(state))=(&playback,&transition){self.screenshot_frame(context,sample,&state.output,&capture);}else{self.screenshot_no_frame();}
         let mut preview_actions = crate::preview_interaction::Actions::default();
+        let mut preview_drop_rect = None;
         egui::CentralPanel::default().show(context, |ui| {
             if self.studio {
                 ui.columns(2, |columns| {
@@ -3351,6 +3382,7 @@ impl StudioApp {
                         self.session.preview(),
                         &mut intents,
                     );
+                    preview_drop_rect = Some(rect);
                     preview_actions = self.preview_interaction.show(
                         &mut columns[0],
                         crate::preview_interaction::View {
@@ -3388,6 +3420,7 @@ impl StudioApp {
                         }),
                     &mut intents,
                 );
+                preview_drop_rect = Some(rect);
                 preview_actions = self.preview_interaction.show(
                     ui,
                     crate::preview_interaction::View {
@@ -3405,6 +3438,76 @@ impl StudioApp {
             ui.add_enabled_ui(enabled, |ui| views::group_source::confirm_remove_selection(
                 ui,&self.session.snapshot(),self.session.preview(),self.session.identity(),&mut intents));
         });
+        // Reuse bounded preparation workers rather than reading dropped files
+        // on the UI thread. Other windows (e.g. Remux) retain their input.
+        if preview_editable && !self.remux.view.open && self.missing_files.panel.is_none() {
+            let viewport=context.data(|data|data.get_temp::<egui::Rect>(egui::Id::new(("preview-pane-viewport","preview"))));
+            let video=self.session.snapshot().video().clone();
+            let (dropped,drop_position) = context.input(|input| {
+                let point=input.pointer.hover_pos();
+                let rect=preview_drop_rect;
+                let inside=point.is_some_and(|p|rect.is_some_and(|r|r.contains(p)) && viewport.is_some_and(|r|r.contains(p)));
+                let position=if inside {
+                    point.zip(rect).and_then(|(p,r)| {
+                        if r.width()<=0.0 || r.height()<=0.0 {return None;}
+                        let x=(p.x-r.min.x)/r.width()*video.width() as f32;
+                        let y=(p.y-r.min.y)/r.height()*video.height() as f32;
+                        (x.is_finite()&&y.is_finite()).then_some([x,y])
+                    })
+                } else {None};
+                let files=if position.is_some() { input.raw.dropped_files.iter().take(2).filter_map(|file| file.path.clone()).collect::<Vec<_>>() } else { Vec::new() };
+                (files,position)
+            });
+            if dropped.len()==1 {
+                let path=&dropped[0];
+                let extension=path.extension().and_then(|value|value.to_str()).unwrap_or("");
+                let image=["png","apng","jpg","jpeg","bmp","tga","gif","webp","psd"].iter().any(|value|extension.eq_ignore_ascii_case(value))
+                    || cfg!(target_os="windows") && extension.eq_ignore_ascii_case("jxr");
+                let media=["mp4","mov","m4a"].iter().any(|value|extension.eq_ignore_ascii_case(value));
+                if image || media {
+                    if let Some(path)=path.to_str().filter(|value|!value.is_empty()) {
+                        let model=self.session.snapshot();
+                        let base=if image {"Image"} else {"Media Source"};
+                        let name=if model.sources().iter().all(|source|source.name()!=base) {base.to_owned()} else {
+                            (2..=skylive_core::MAX_SOURCES+1).map(|index|format!("{base} {index}"))
+                                .find(|candidate|model.sources().iter().all(|source|source.name()!=candidate)).unwrap_or_else(||base.to_owned())
+                        };
+                        let scene=self.session.preview();
+                        let path=path.to_owned();
+                        if image {
+                            self.intent(Intent::OpenDialog(Dialog::AddImage {scene,name:name.clone(),path:path.clone(),settings:Default::default()}),context);
+                            if matches!(&self.dialog,Some(Dialog::AddImage {scene:s,name:n,path:p,..}) if *s==scene && n==&name && p==&path) {
+                                self.intent(Intent::PrepareImage {path:path.clone(),edit:views::ImageEdit::Add {scene,name:name.clone()}},context);
+                                if let Some(pending)=self.pending_image.as_mut().filter(|p|p.path==path && matches!(&p.edit,ImageEdit::Add {scene:s,name:n} if *s==scene && n==&name)) {
+                                    pending.drop_position=drop_position;
+                                }
+                            }
+                        } else {
+                            let mut draft=views::media_source::MediaDraft::add(scene,name.clone());
+                            draft.select_local_path(path.clone());
+                            self.intent(Intent::OpenDialog(Dialog::MediaSource(draft)),context);
+                            let request=match &self.dialog {
+                                Some(Dialog::MediaSource(draft)) if draft.edit==(views::media_source::MediaEdit::Add {scene}) && draft.name==name && draft.path==path => Some(draft.request()),
+                                _=>None,
+                            };
+                            if let Some(request)=request {
+                                match request {
+                                    Ok(request)=>{
+                                        self.intent(Intent::PrepareMedia(request),context);
+                                        if let Some(pending)=self.pending_media.as_mut().filter(|p|p.request.edit==(views::media_source::MediaEdit::Add {scene}) && p.request.path==path && p.request.name==name) {
+                                            pending.drop_position=drop_position;
+                                        }
+                                    },
+                                    Err(error)=>self.message(true,error)
+                                }
+                            }
+                        }
+                    } else {self.message(true,crate::i18n::tr_key_or_context(context,"SkyLive.Preview.DropInvalidUtf8","The dropped file path is not valid UTF-8"));}
+                }
+            } else if dropped.len()>1 {
+                self.message(true,crate::i18n::tr_key_or_context(context,"SkyLive.Preview.DropOneFile","Drop one image or media file at a time onto the Preview"));
+            }
+        }
         if !self.close_dialog && self.after_io.is_none() && !self.virtual_camera.settings_open() && self.ndi_output.settings.is_none() && !self.remux.view.open && self.missing_files.panel.is_none() && !self.document_repair.owns() {
             if let Some(Dialog::MediaSource(draft)) = &mut self.dialog {
                 draft.worker_busy = self.media.is_busy();
@@ -3487,7 +3590,7 @@ impl StudioApp {
         }
         if let Some(commit) = preview_actions.commit {
             if commit.session == self.session.identity() {
-                let group_scene=match &commit.command {Command::SetTransforms{scene,..}=>Some(*scene),_=>None};
+                let group_scene=match &commit.command {Command::SetTransforms{scene,..}|Command::SetCrossContainerTransforms{scene,..}=>Some(*scene),_=>None};
                 let model=self.session.snapshot();
                 let applied=commit.auto_text.with_current(commit.session,&model,||self.publish_command_at(Some(commit.revision),commit.command,true));
                 if applied==Some(true) {

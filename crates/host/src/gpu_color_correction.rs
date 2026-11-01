@@ -26,12 +26,13 @@ const COLOR_KEY_SHADER:&str=include_str!("gpu_color_correction/color_key.wgsl");
 const CHROMA_KEY_SHADER:&str=include_str!("gpu_color_correction/chroma_key.wgsl");
 const LUMA_KEY_SHADER:&str=include_str!("gpu_color_correction/luma_key.wgsl");
 const SHARPEN_SHADER:&str=include_str!("gpu_color_correction/sharpen.wgsl");
+const MOSAIC_SHADER:&str=include_str!("gpu_color_correction/mosaic.wgsl");
 const CRAFT_SHADER:&str=include_str!("gpu_color_correction/craft.wgsl");
 const LUT_SHADER:&str=include_str!("gpu_color_correction/lut.wgsl");
 const MAX_FRAME: usize = 1920 * 1080 * 4;
 const TABLE_BYTES: usize = 256 * 4 + 65536 * 4;
 const PARAM_BYTES: usize = 96;
-pub const ALGORITHM: &str = "obs-cc-keyers-sharpen-person-matte-craft14-lut-sdr-wgpu24-v8";
+pub const ALGORITHM: &str = "obs-cc-keyers-sharpen-person-matte-craft14-mosaic-lut-sdr-wgpu24-v9";
 static ENGINE: AtomicBool = AtomicBool::new(false);
 static NEXT_DEVICE: AtomicU64 = AtomicU64::new(1);
 
@@ -237,7 +238,7 @@ impl Client {
 
 struct Slot { capacity:usize,input:wgpu::Buffer,output:wgpu::Buffer,readback:wgpu::Buffer,bindings:wgpu::BindGroup,matte_bindings:wgpu::BindGroup }
 struct Native { slot:Option<Slot>,uniform:wgpu::Buffer,decode:wgpu::Buffer,linear:wgpu::Buffer,matte:wgpu::Buffer,lut_table:Option<lut::NativeTable>,
-    pipeline:wgpu::ComputePipeline,matte_pipeline:wgpu::ComputePipeline,color_key_pipeline:wgpu::ComputePipeline,chroma_key_pipeline:wgpu::ComputePipeline,luma_key_pipeline:wgpu::ComputePipeline,sharpen_pipeline:wgpu::ComputePipeline,craft_pipeline:wgpu::ComputePipeline,lut_pipeline:wgpu::ComputePipeline,lut_layout:wgpu::BindGroupLayout,layout:wgpu::BindGroupLayout,queue:wgpu::Queue,device:wgpu::Device,
+    pipeline:wgpu::ComputePipeline,matte_pipeline:wgpu::ComputePipeline,color_key_pipeline:wgpu::ComputePipeline,chroma_key_pipeline:wgpu::ComputePipeline,luma_key_pipeline:wgpu::ComputePipeline,sharpen_pipeline:wgpu::ComputePipeline,mosaic_pipeline:wgpu::ComputePipeline,craft_pipeline:wgpu::ComputePipeline,lut_pipeline:wgpu::ComputePipeline,lut_layout:wgpu::BindGroupLayout,layout:wgpu::BindGroupLayout,queue:wgpu::Queue,device:wgpu::Device,
     _instance:wgpu::Instance,signals:Arc<Mutex<Option<Error>>>,report:Report,limits:Limits,
     _thread_only:std::marker::PhantomData<std::rc::Rc<()>> }
 impl Native {
@@ -265,10 +266,12 @@ impl Native {
         let color_key_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("OBS Color Key v2 SDR"),layout:Some(&pipeline_layout),module:&color_key_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
         let chroma_key_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("OBS Chroma Key v2 SDR"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(CHROMA_KEY_SHADER))});
         let chroma_key_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("OBS Chroma Key v2 SDR"),layout:Some(&pipeline_layout),module:&chroma_key_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
-        let luma_key_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("OBS Luma Key v2 SDR"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(LUMA_KEY_SHADER))});
-        let luma_key_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("OBS Luma Key v2 SDR"),layout:Some(&pipeline_layout),module:&luma_key_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
+        let luma_key_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("OBS Luma Key v1/v2 SDR"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(LUMA_KEY_SHADER))});
+        let luma_key_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("OBS Luma Key v1/v2 SDR"),layout:Some(&pipeline_layout),module:&luma_key_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
         let sharpen_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("OBS Sharpen v2 SDR"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(SHARPEN_SHADER))});
         let sharpen_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("OBS Sharpen v2 SDR"),layout:Some(&pipeline_layout),module:&sharpen_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
+        let mosaic_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("Craft Mosaic SDR"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(MOSAIC_SHADER))});
+        let mosaic_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("Craft Mosaic SDR"),layout:Some(&pipeline_layout),module:&mosaic_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
         let craft_shader=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:Some("Craft ordered point kernels"),source:wgpu::ShaderSource::Wgsl(Cow::Borrowed(CRAFT_SHADER))});
         let craft_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("Craft ordered point kernels"),layout:Some(&pipeline_layout),module:&craft_shader,entry_point:Some("main"),compilation_options:Default::default(),cache:None});
         let lut_layout=device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor{label:Some("OBS LUT packed buffers"),entries:&[
@@ -288,15 +291,15 @@ impl Native {
         queue.write_buffer(&decode,0,&decode_data);queue.write_buffer(&linear,0,&linear_data);queue.submit([]);
         // Finish initialization uploads before per-frame staging admission.
         device.poll(wgpu::Maintain::Wait);
-        let report=Report {backend:format!("{:?}",info.backend),adapter:info.name,driver:info.driver,driver_info:info.driver_info,device_generation:generation,shader_sha256:{let mut hash=Sha256::new();hash.update(SHADER.as_bytes());hash.update([0]);hash.update(MATTE_SHADER.as_bytes());hash.update([0]);hash.update(COLOR_KEY_SHADER.as_bytes());hash.update([0]);hash.update(CHROMA_KEY_SHADER.as_bytes());hash.update([0]);hash.update(LUMA_KEY_SHADER.as_bytes());hash.update([0]);hash.update(SHARPEN_SHADER.as_bytes());hash.update([0]);hash.update(CRAFT_SHADER.as_bytes());hash.update([0]);hash.update(LUT_SHADER.as_bytes());format!("{:x}",hash.finalize())},algorithm:ALGORITHM};
-        Ok(Self {slot:None,uniform,decode,linear,matte,lut_table:None,pipeline,matte_pipeline,color_key_pipeline,chroma_key_pipeline,luma_key_pipeline,sharpen_pipeline,craft_pipeline,lut_pipeline,lut_layout,layout,queue,device,_instance:instance,signals,report,limits,_thread_only:std::marker::PhantomData})
+                let report=Report {backend:format!("{:?}",info.backend),adapter:info.name,driver:info.driver,driver_info:info.driver_info,device_generation:generation,shader_sha256:{let mut hash=Sha256::new();hash.update(SHADER.as_bytes());hash.update([0]);hash.update(MATTE_SHADER.as_bytes());hash.update([0]);hash.update(COLOR_KEY_SHADER.as_bytes());hash.update([0]);hash.update(CHROMA_KEY_SHADER.as_bytes());hash.update([0]);hash.update(LUMA_KEY_SHADER.as_bytes());hash.update([0]);hash.update(SHARPEN_SHADER.as_bytes());hash.update([0]);hash.update(MOSAIC_SHADER.as_bytes());hash.update([0]);hash.update(CRAFT_SHADER.as_bytes());hash.update([0]);hash.update(LUT_SHADER.as_bytes());format!("{:x}",hash.finalize())},algorithm:ALGORITHM};
+        Ok(Self {slot:None,uniform,decode,linear,matte,lut_table:None,pipeline,matte_pipeline,color_key_pipeline,chroma_key_pipeline,luma_key_pipeline,sharpen_pipeline,mosaic_pipeline,craft_pipeline,lut_pipeline,lut_layout,layout,queue,device,_instance:instance,signals,report,limits,_thread_only:std::marker::PhantomData})
     }
     fn point_run_pipeline(&self,stage:&keyers::RunStage)->&wgpu::ComputePipeline {
         match stage {
             keyers::RunStage::Correction(_)=>&self.pipeline,
             keyers::RunStage::Keyer(keyer)=>match keyer {
                 Keyer::Color(_)=>&self.color_key_pipeline,Keyer::Chroma(_)=>&self.chroma_key_pipeline,
-                Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline,
+                Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline,Keyer::Mosaic(_)=>&self.mosaic_pipeline,
             },
         }
     }
@@ -349,7 +352,10 @@ impl Native {
         {let mut pass=encoder.begin_compute_pass(&wgpu::ComputePassDescriptor {label:Some(ALGORITHM),timestamp_writes:None});match &request.operation {Operation::ColorCorrection(_)=>{pass.set_pipeline(&self.pipeline);pass.set_bind_group(0,&slot.bindings,&[]);},
             Operation::Lut(_)=>{pass.set_pipeline(&self.lut_pipeline);if let Some(bindings)=&lut_bindings{pass.set_bind_group(0,bindings,&[]);}},
             Operation::Craft(_)=>{pass.set_pipeline(&self.craft_pipeline);pass.set_bind_group(0,&slot.matte_bindings,&[]);},
-            Operation::PersonMatte(_)=>{pass.set_pipeline(&self.matte_pipeline);pass.set_bind_group(0,&slot.matte_bindings,&[]);},Operation::PointRun(run)=>{pass.set_pipeline(self.point_run_pipeline(&run.stages[0]));pass.set_bind_group(0,&slot.bindings,&[]);},Operation::Keyer(keyer)|Operation::KeyerPair(keyer,_)=>{pass.set_pipeline(match keyer {Keyer::Color(_)=>&self.color_key_pipeline,Keyer::Chroma(_)=>&self.chroma_key_pipeline,Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline});pass.set_bind_group(0,&slot.bindings,&[]);}}pass.dispatch_workgroups((request.image.byte_len() as u32/4).div_ceil(64),1,1);}
+            Operation::PersonMatte(_)=>{pass.set_pipeline(&self.matte_pipeline);pass.set_bind_group(0,&slot.matte_bindings,&[]);},Operation::PointRun(run)=>{pass.set_pipeline(self.point_run_pipeline(&run.stages[0]));pass.set_bind_group(0,&slot.bindings,&[]);},Operation::Keyer(keyer)|Operation::KeyerPair(keyer,_)=>{pass.set_pipeline(match keyer {Keyer::Color(_)=>&self.color_key_pipeline,Keyer::Chroma(_)=>&self.chroma_key_pipeline,Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline,Keyer::Mosaic(_)=>&self.mosaic_pipeline});pass.set_bind_group(0,&slot.bindings,&[]);}}
+            if let Operation::Keyer(Keyer::Mosaic(cell @ 2..))=&request.operation {
+                pass.dispatch_workgroups(request.image.width().div_ceil(u32::from(*cell)),request.image.height().div_ceil(u32::from(*cell)),1);
+            } else {pass.dispatch_workgroups((request.image.byte_len() as u32/4).div_ceil(64),1,1);}}
         if let Operation::PointRun(run)=&request.operation {
             // Each submission orders the following queue write after the previous
             // dispatch, preserving the same uniform buffer and byte boundary.
@@ -383,7 +389,7 @@ impl Native {
             self.queue.write_buffer(&self.uniform,0,&second_parameters);
             let mut second_encoder=self.device.create_command_encoder(&wgpu::CommandEncoderDescriptor {label:Some("OBS keyer pair final")});
             {let mut pass=second_encoder.begin_compute_pass(&wgpu::ComputePassDescriptor {label:Some(ALGORITHM),timestamp_writes:None});
-                pass.set_pipeline(match second {Keyer::Color(_)=>&self.color_key_pipeline,Keyer::Chroma(_)=>&self.chroma_key_pipeline,Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline});
+                pass.set_pipeline(match second {Keyer::Color(_)=>&self.color_key_pipeline,Keyer::Chroma(_)=>&self.chroma_key_pipeline,Keyer::Luma(_)=>&self.luma_key_pipeline,Keyer::Sharpen(_)=>&self.sharpen_pipeline,Keyer::Mosaic(_)=>&self.mosaic_pipeline});
                 pass.set_bind_group(0,&reverse,&[]);pass.dispatch_workgroups((request.image.byte_len() as u32/4).div_ceil(64),1,1);}
             second_encoder.copy_buffer_to_buffer(&slot.input,0,&slot.readback,0,request.image.byte_len() as u64);
             self.queue.submit([second_encoder.finish()]);
@@ -407,7 +413,7 @@ impl Native {
             thread::park_timeout(Duration::from_millis(1));
         }
         let result=if let Some(error)=terminal {Err(error)} else {match mapping.take().ok_or(Error::Closed)? {
-            Ok(())=>{let view=slice.get_mapped_range();output.extend_from_slice(&view);drop(view);RgbaFrame::new(request.image.width(),request.image.height(),output).map(|image|SourceEffectFrame {image,blend:match &request.operation {Operation::ColorCorrection(_)|Operation::Keyer(_)|Operation::KeyerPair(_,_)|Operation::PointRun(_)|Operation::Lut(_)=>SourceBlend::PremultipliedLinearSrgb,Operation::PersonMatte(_)|Operation::Craft(_)=>request.key.ingress}}).map_err(Error::Invalid)},
+            Ok(())=>{let view=slice.get_mapped_range();output.extend_from_slice(&view);drop(view);RgbaFrame::new(request.image.width(),request.image.height(),output).map(|image|SourceEffectFrame {image,blend:match &request.operation {Operation::Keyer(Keyer::Mosaic(_))|Operation::PersonMatte(_)|Operation::Craft(_)=>request.key.ingress,Operation::ColorCorrection(_)|Operation::Keyer(_)|Operation::KeyerPair(_,_)|Operation::PointRun(_)|Operation::Lut(_)=>SourceBlend::PremultipliedLinearSrgb}}).map_err(Error::Invalid)},
             Err(detail)=>Err(Error::Mapping(detail)),}};
         slot.readback.unmap();result
     }

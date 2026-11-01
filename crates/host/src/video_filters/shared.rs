@@ -32,17 +32,46 @@ pub(crate) struct CameraScope {
 }
 fn static_camera_chain(filters:&[VideoFilter],providers:FilterProviders)->bool {
     filters.iter().any(|f|f.enabled&&providers.enabled(f.plugin_id()))
-        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||!matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}|VideoEffect::AsyncVideoDelay{..}
-            |VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::ApplyLut{..}
-            |VideoEffect::ImageMask{..}|VideoEffect::PersonBackgroundRemoval{..}))
+        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||
+            (!matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=u16::MAX}|VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}
+                |VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::PersonBackgroundRemoval{..})
+                && !(matches!(f.effect,VideoEffect::ApplyLut{..}) && f.lut_asset().is_some())
+                && !(matches!(f.effect,VideoEffect::ImageMask{..}) && f.mask_image().is_some())))
+}
+// A completed frame with a static mask or LUT is also safe to retain while
+// its replacement renders, provided the whole chain and resource identities
+// remain identical. Animated masks and temporal filters require fresh frames.
+fn resource_camera_chain(filters:&[VideoFilter],providers:FilterProviders,clock:Option<&crate::mask_animation_clock::Snapshot>)->bool {
+    filters.iter().any(|f|f.enabled&&providers.enabled(f.plugin_id()))
+        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||
+            !matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=u16::MAX}|VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}
+                |VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::PersonBackgroundRemoval{..}))
+        && !image_mask::has_animated_mask(filters,clock)
+}
+// A completed scale-filter output has different dimensions from the raw camera
+// frame, but it is still a valid fallback for an unchanged chain and canvas.
+// camera_fallback compares the exact serialized chain, input geometry, canvas,
+// resource generations and output memory allowance before returning it.
+fn scaled_camera_chain(filters:&[VideoFilter],providers:FilterProviders,clock:Option<&crate::mask_animation_clock::Snapshot>)->bool {
+    filters.iter().any(|f|f.enabled&&providers.enabled(f.plugin_id())&&matches!(f.effect,VideoEffect::ScaleFilter{..}))
+        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||
+            !matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=u16::MAX}|VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}
+                |VideoEffect::Scroll{..}|VideoEffect::PersonBackgroundRemoval{..}))
+        && !image_mask::has_animated_mask(filters,clock)
+}
+fn camera_mask_stamp(filters:&[VideoFilter],context:Option<&(skylive_core::Id,crate::mask_animation_clock::Snapshot)>)->Option<(u64,u64,u64,u64,u64,u64)> {
+    if image_mask::has_live_mask(filters) {context.map(|(source,clock)|(source.get(),clock.session(),clock.scope(),clock.revision(),clock.files_generation(),if image_mask::has_animated_mask(filters,Some(clock)){clock.now().0}else{0}))} else {None}
 }
 // A previous fully processed camera frame can remain visible while a cosmetic
 // adjustment is being recomputed. Preserve every filter identity, ordering,
 // enabled state and resource, and never reuse a frame when a changed stage is
 // upstream of a keyer: that change can alter which pixels the keyer removes.
-fn cosmetic_camera_edit(previous:&[u8],current:&[VideoFilter],providers:FilterProviders)->bool {
+fn cosmetic_camera_edit(previous:&[u8],current:&[VideoFilter],providers:FilterProviders,clock:Option<&crate::mask_animation_clock::Snapshot>)->bool {
     let Ok(previous)=serde_json::from_slice::<Vec<VideoFilter>>(previous) else{return false;};
-    if previous.len()!=current.len()||!static_camera_chain(&previous,providers){return false;}
+    // A static mask or LUT is safe if it is byte-for-byte unchanged in the
+    // filter list; the caller also checks the resource generation and mask
+    // stamp before using any completed frame. Never do this for animation.
+    if previous.len()!=current.len()||!(resource_camera_chain(&previous,providers,clock)||scaled_camera_chain(&previous,providers,clock)){return false;}
     let mut changed=false;
     for (old,new) in previous.iter().zip(current) {
         if old==new { 
@@ -55,11 +84,19 @@ fn cosmetic_camera_edit(previous:&[u8],current:&[VideoFilter],providers:FilterPr
         let color_correction_safe=matches!((old.effect,new.effect),
             (VideoEffect::ColorCorrection {opacity:before,..},VideoEffect::ColorCorrection {opacity:after,..})
                 if before.to_bits()==after.to_bits());
+        // Channel routing may now change alpha; an old frame is cosmetic only
+        // when both revisions preserve their incoming alpha unchanged.
+        let channel_remap_safe=matches!((old.effect,new.effect),
+            (VideoEffect::ChannelRemap {alpha:5,..},VideoEffect::ChannelRemap {alpha:5,..}));
+        let levels_safe=matches!((old.effect,new.effect), (VideoEffect::CraftLevels{channels:before,..},VideoEffect::CraftLevels{channels:after,..}) if before[3]==[0.0,1.0,1.0,0.0,1.0] && after[3]==[0.0,1.0,1.0,0.0,1.0]);
         if !old.enabled||!new.enabled||old.id().is_none()||old.id()!=new.id()
             ||std::mem::discriminant(&old.effect)!=std::mem::discriminant(&new.effect)
-            ||!(color_correction_safe||matches!(new.effect,VideoEffect::Sharpen{..}|VideoEffect::Invert{..}|VideoEffect::Grayscale{..}
-                |VideoEffect::Posterize{..}|VideoEffect::Exposure{..}|VideoEffect::TemperatureTint{..}|VideoEffect::Vibrance{..}|VideoEffect::CraftTint{..}|VideoEffect::Tritone{..}|VideoEffect::CraftColorBalance{..}|VideoEffect::CraftChannelMixer{..}|VideoEffect::CraftGammaPedestalGain{..}
-                |VideoEffect::Threshold{..}|VideoEffect::Vignette{..}|VideoEffect::Sepia{..}
+            // Sharpen processes all four channels, including alpha. Reusing a
+            // frame made with different sharpness can show a stale matte after
+            // a preceding key or mask, so it is not a cosmetic-only edit.
+            ||!(color_correction_safe||channel_remap_safe||levels_safe||matches!(new.effect,VideoEffect::Invert{..}|VideoEffect::Grayscale{..}
+                |VideoEffect::Posterize{..}|VideoEffect::Exposure{..}|VideoEffect::TemperatureTint{..}|VideoEffect::Vibrance{..}|VideoEffect::HlsBalance{..}|VideoEffect::ColorOffset{..}|VideoEffect::SelectiveColor{..}|VideoEffect::CraftTint{..}|VideoEffect::Tritone{..}|VideoEffect::CraftColorBalance{..}|VideoEffect::CraftChannelMixer{..}|VideoEffect::CraftGammaPedestalGain{..}
+                |VideoEffect::CraftBlackWhite{..}|VideoEffect::Threshold{..}|VideoEffect::Solarize{..}|VideoEffect::LeaveColor{..}|VideoEffect::GradientMap{..}|VideoEffect::Vignette{..}|VideoEffect::Sepia{..}
                 |VideoEffect::PhotoFilter{..}|VideoEffect::BrightnessContrast{..}|VideoEffect::SpillSuppression{..})) {return false;}
         let mut normalized=old.clone();normalized.effect=new.effect;
         if normalized!=*new{return false;}
@@ -68,12 +105,15 @@ fn cosmetic_camera_edit(previous:&[u8],current:&[VideoFilter],providers:FilterPr
     changed
 }
 // A person fallback is a previously completed full chain, never a raw camera
-// frame or a mask applied to a different frame. External resources and
-// time-dependent stages need their own provenance and remain fail-closed.
-fn person_camera_chain(filters:&[VideoFilter],providers:FilterProviders)->bool {
-    providers.person && filters.iter().any(|f|f.enabled&&matches!(f.effect,VideoEffect::PersonBackgroundRemoval{..})&&f.person_interval_ms()!=0)
-        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||!matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}|VideoEffect::AsyncVideoDelay{..}
-            |VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}))
+// frame or a mask applied to a different frame. Static resources may be used
+// only with the exact filter chain, resource generation and mask revision
+// checked by camera_fallback. Animated and temporal stages remain excluded.
+fn person_camera_chain(filters:&[VideoFilter],providers:FilterProviders,clock:Option<&crate::mask_animation_clock::Snapshot>)->bool {
+    providers.person && filters.iter().any(|f|f.enabled&&matches!(f.effect,VideoEffect::PersonBackgroundRemoval{..}))
+        && filters.iter().all(|f|!f.enabled||!providers.enabled(f.plugin_id())||
+            !matches!(f.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=u16::MAX}|VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}
+                |VideoEffect::Scroll{..}|VideoEffect::ScaleFilter{..}))
+        && !image_mask::has_animated_mask(filters,clock)
 }
 fn same_person_fallback_scope(mut previous:TemporalContext,mut current:TemporalContext)->bool {
     // Frame sequence and clock may advance; the stream, binding, configuration,
@@ -251,14 +291,24 @@ impl Runtime {
     // Read only an already completed, lease-accounted result. Input allocation
     // and sequence intentionally differ. Cosmetic changes can use the last
     // processed frame under the restrictions in cosmetic_camera_edit; identity,
-    // geometry and privacy-sensitive settings still have to match. Animated and
-    // resource chains, and raw camera images without active filters, are excluded.
+    // geometry and privacy-sensitive settings still have to match. Static mask
+    // and LUT resources and their own settings must match; animated chains and
+    // raw camera images without active filters remain excluded.
     fn camera_fallback(&self,scope:&CameraScope,filters:&[VideoFilter],input:&RgbaFrame,blend:SourceBlend,
         providers:FilterProviders,backend:&Backend,resource_generation:u64,mask_epoch:u64,
-        context:Option<TemporalContext>,free_bytes:usize)->Option<Value> {
-        let person=person_camera_chain(filters,providers);
-        if !person&&!static_camera_chain(filters,providers){return None;}
-        let context=if person{Some(context.filter(|c|c.camera&&c.input_complete)?)}else{None};
+        context:Option<TemporalContext>,mask_context:Option<&(skylive_core::Id,crate::mask_animation_clock::Snapshot)>,free_bytes:usize)->Option<Value> {
+        let person=person_camera_chain(filters,providers,mask_context.map(|(_,clock)|clock));
+        let static_chain=static_camera_chain(filters,providers);
+        let resource_chain=resource_camera_chain(filters,providers,mask_context.map(|(_,clock)|clock));
+        let scaled_chain=scaled_camera_chain(filters,providers,mask_context.map(|(_,clock)|clock));
+        if !person&&!static_chain&&!resource_chain&&!scaled_chain{return None;}
+        // Interval zero means independent inference on every frame: there is
+        // no temporal person history to validate, but camera identity and the
+        // exact complete filter chain are still required below. Timed person
+        // masks additionally require a live temporal scope.
+        let timed_person=person&&filters.iter().any(|f|f.enabled&&providers.enabled(f.plugin_id())
+            &&matches!(f.effect,VideoEffect::PersonBackgroundRemoval{..})&&f.person_interval_ms()!=0);
+        let context=if timed_person{Some(context.filter(|c|c.camera&&c.input_complete)?)}else{None};
         let encoded=serde_json::to_vec(filters).ok()?;
         if encoded.len()>MAX_KEY{return None;}
         let shared=&self.life.shared;
@@ -269,10 +319,10 @@ impl Runtime {
             key.camera.as_ref()==Some(scope)&&key.temporal.is_none()
                 &&(match (key.person_scope,context){(None,None)=>true,(Some(old),Some(now))=>same_person_fallback_scope(old,now)
                     &&temporal::History::current_person_in(&state,old),_=>false})
-                &&(key.filters==encoded||(!person&&cosmetic_camera_edit(&key.filters,filters,providers)))
+                &&(key.filters==encoded||(!person&&(resource_chain||scaled_chain)&&cosmetic_camera_edit(&key.filters,filters,providers,mask_context.map(|(_,clock)|clock))))
                 &&key.width==input.width()&&key.height==input.height()
                 &&key.blend==blend&&key.canvas==scale::canvas_key(filters,providers)
-                &&key.resource_generation==resource_generation&&key.mask_epoch==mask_epoch&&key.craft==providers.craft
+                &&key.resource_generation==resource_generation&&key.mask_epoch==mask_epoch&&key.mask_stamp==camera_mask_stamp(filters,mask_context)&&key.craft==providers.craft
                 &&key.person==providers.person&&key.freeze==false&&key.backend==backend.signature()
                 &&entry.value.output.byte_len()<=free_bytes
         }).max_by_key(|(key,entry)|(key.filters==encoded,entry.touched)).map(|(_,entry)|entry.value.clone())
@@ -325,8 +375,9 @@ impl Runtime {
         if person.is_some_and(|context|!temporal::History::current_person(&self.life.shared,context)){return Err(temporal::stale("Person mask camera scope is obsolete"));}
         let temporal_key=temporal.map(|mut context|{context.at=0;context.stamp=Default::default();context});
         let request_signature={let state=self.life.shared.state.lock().map_err(|_|unavailable("Freeze timer state poisoned"))?;freeze_requests(&state,temporal,filters)};
-        let camera=if temporal.is_none()&&((person.is_none()&&static_camera_chain(filters,providers))
-            ||(person.is_some()&&person_camera_chain(filters,providers))){camera}else{None};
+        let camera=if temporal.is_none()&&((person.is_none()&&(resource_camera_chain(filters,providers,mask_context.as_ref().map(|(_,clock)|clock))
+            ||scaled_camera_chain(filters,providers,mask_context.as_ref().map(|(_,clock)|clock))))
+            ||person_camera_chain(filters,providers,mask_context.as_ref().map(|(_,clock)|clock))){camera}else{None};
         let key=SharedKey {camera,temporal:temporal_key,freeze_requests:request_signature,person_scope:person,canvas:scale::canvas_key(filters,providers),scroll:if temporal.is_some(){Default::default()}else{scroll.key},input:if temporal.is_some(){0}else{input.image() as *const RgbaFrame as usize},pixels:if temporal.is_some(){0}else{input.pixels().as_ptr() as usize},width:input.width(),height:input.height(),blend,
             filters:encoded,mask_epoch,mask_stamp:if image_mask::has_live_mask(filters){mask_context.as_ref().map(|(source,clock)|(source.get(),clock.session(),clock.scope(),clock.revision(),clock.files_generation(),if image_mask::has_animated_mask(filters,Some(clock)){clock.now().0}else{0}))}else{None},resource_generation,craft:providers.craft,person:providers.person,freeze:providers.freeze&&filters.iter().any(|filter|filter.enabled&&matches!(filter.effect,VideoEffect::Freeze{..})),backend:backend.signature(),algorithm:ALGORITHM,model:skylive_person_matte::MODEL_ID,model_sha256:skylive_person_matte::MODEL_SHA256};
         let shared=&self.life.shared;
@@ -383,7 +434,7 @@ fn apply_delayed_points(cache:&mut FilterCache,filters:&[VideoFilter],input:skyl
     let mut effects=Vec::new();
     for filter in filters.iter().filter(|filter|filter.enabled&&providers.enabled(filter.plugin_id())) {
         filter.validate().map_err(|error|fail(error.to_string()))?;
-        if matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}|VideoEffect::Freeze{..}|VideoEffect::RenderDelay{..}|VideoEffect::ScaleFilter{..}|VideoEffect::Scroll{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}|VideoEffect::PersonBackgroundRemoval{..}) {
+        if matches!(filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX}|VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500}|VideoEffect::ScaleFilter{..}|VideoEffect::Scroll{..}|VideoEffect::ApplyLut{..}|VideoEffect::ImageMask{..}|VideoEffect::PersonBackgroundRemoval{..}) {
             return Err(unavailable("delayed input source chain contains an unsupported stateful or resource-backed filter"));
         }
         match prepare_filter(filter).1 {Some(FilterStage::Point(effect))=>effects.push(effect),Some(FilterStage::Person{..})=>return Err(unavailable("delayed input person filter is not yet supported")),None=>{}}
@@ -512,7 +563,7 @@ impl FilterCache {
         let runtime=self.shared.as_ref()?;
         let scope=self.camera_scope.as_ref()?;
         let value=runtime.camera_fallback(scope,source.video_filters(),input,blend,providers,
-            &Backend::from_cache(self),self.resource_generation,self.mask_epoch,self.temporal_context,free_bytes)?;
+            &Backend::from_cache(self),self.resource_generation,self.mask_epoch,self.temporal_context,self.mask_context.as_ref(),free_bytes)?;
         let output=value.output.clone();
         self.camera_fallback_leases.push(value.lease);
         Some(FilterResult {new_bytes:output.byte_len(),image:output,blend:value.blend,pixel_stages:0})
@@ -548,18 +599,22 @@ mod person_fallback_scope_tests {
     }
 
     #[test]
-    fn person_fallback_excludes_external_and_temporal_stages() {
+    fn person_fallback_allows_every_frame_and_excludes_temporal_stages() {
         let person=VideoFilter::new(VideoEffect::person_background_removal()).unwrap();
         let providers=FilterProviders {canvas:None,craft:true,person:true,freeze:true};
-        assert!(person_camera_chain(&[person.clone()],providers));
+        assert!(person_camera_chain(&[person.clone()],providers,None));
         let mut disabled=providers;disabled.person=false;
-        assert!(!person_camera_chain(&[person.clone()],disabled));
+        assert!(!person_camera_chain(&[person.clone()],disabled,None));
         let mut every_frame=person.clone();every_frame.set_person_interval_ms(0).unwrap();
-        assert!(!person_camera_chain(&[every_frame],providers));
-        for effect in [VideoEffect::freeze_filter(),VideoEffect::render_delay(),VideoEffect::scroll(),
-            VideoEffect::scale_filter(),VideoEffect::apply_lut(),VideoEffect::image_mask_v2()] {
+        assert!(person_camera_chain(&[every_frame],providers,None));
+        for effect in [VideoEffect::freeze_filter(),VideoEffect::RenderDelay{delay_ms:1},VideoEffect::scroll(),
+            VideoEffect::scale_filter()] {
             let filter=VideoFilter::new(effect).unwrap();
-            assert!(!person_camera_chain(&[person.clone(),filter],providers));
+            assert!(!person_camera_chain(&[person.clone(),filter],providers,None));
+        }
+        for effect in [VideoEffect::RenderDelay{delay_ms:0},VideoEffect::AsyncVideoDelay{delay_ms:0},VideoEffect::apply_lut(),VideoEffect::image_mask_v2()] {
+            let filter=VideoFilter::new(effect).unwrap();
+            assert!(person_camera_chain(&[person.clone(),filter],providers,None));
         }
     }
 }

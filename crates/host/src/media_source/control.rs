@@ -10,6 +10,8 @@ pub enum MediaControl {
     /// Retire the file reader after the audio cut; reopen only when eligible.
     Reload,
     Stop,
+    /// Seek a playing, fully available finite source to its media timestamp.
+    Seek(u64),
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 pub struct MediaTransportStatus {
@@ -17,6 +19,9 @@ pub struct MediaTransportStatus {
     pub stream_generation: u64,
     pub ready: bool,
     pub last_control: Option<MediaAppliedTime>,
+    pub position_ns: u64,
+    pub duration_ns: u64,
+    pub seekable: bool,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 pub struct MediaAppliedTime {
@@ -233,7 +238,7 @@ impl MediaOwner {
         // Play/PlayPause may resolve to Restart only inside the media owner.
         // Give each hotkey a cancellable admission gate before that decision;
         // its callback receipt remains independent of the later codec result.
-        let gate=matches!(&request,super::ControlRequest::Direct(MediaControl::Restart)|super::ControlRequest::SourceHotkey{..}).then(||Arc::new(super::ControlGate::new()));
+        let gate=matches!(&request,super::ControlRequest::Direct(MediaControl::Restart|MediaControl::Seek(_))|super::ControlRequest::SourceHotkey{..}).then(||Arc::new(super::ControlGate::new()));
         self.send(
             key,
             Job::Control {

@@ -20,6 +20,9 @@ pub(crate) mod sidechain;
 pub mod noise_suppression;
 pub(crate) use sidechain::view_keys as sidechain_view_keys;
 mod dsp;
+mod craft_ring_mod;
+mod craft_maximizer;
+mod craft_pitch;
 pub(crate) mod delayed_source;
 pub(crate) use dsp::{craft_filter_bytes,MAX_CRAFT_RETAINED};
 mod mix;
@@ -224,6 +227,8 @@ pub struct ChannelMeter {
 pub struct SourceMeter {
     pub source: Id,
     pub channels: Vec<ChannelMeter>,
+    /// Post-filter input sample peaks before the source fader and mute.
+    pub input_peaks: Vec<f64>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize)]
@@ -300,6 +305,14 @@ impl PartialEq for AudioInputKey {
                     && x.path() == y.path()
                     && x.video_dimensions() == y.video_dimensions()
                     && x.has_audio() == y.has_audio()
+                    // Speed changes the decoder's output sample rate and
+                    // timeline. A packet produced by the old decoder must
+                    // not match the newly authored source binding.
+                    && x.speed_percent() == y.speed_percent()
+                    // Network property edits recreate the downloader and
+                    // decoder even when their URL and format stay the same.
+                    // Their old PCM must not match the replacement stream.
+                    && (!crate::media_source::network_http::is_url(x.path()) || x == y)
             }
             _ => false,
         }
@@ -323,6 +336,10 @@ impl std::hash::Hash for AudioInputKey {
                 media.path().hash(state);
                 media.video_dimensions().hash(state);
                 media.has_audio().hash(state);
+                media.speed_percent().hash(state);
+                if crate::media_source::network_http::is_url(media.path()) {
+                    media.hash(state);
+                }
             }
         }
     }
@@ -359,7 +376,38 @@ pub struct AudioSourcePlan {
     /// Runtime evaluation reverses this list, matching filter_async_audio.
     pub filters: Vec<AudioFilter>,
     pub routes: AudioRoutes,
+    /// Linear scene-bus gains for each composition side, before the
+    /// transition curve. Global and duplicate-source promotion are handled
+    /// independently by the route policy.
+    pub scene_from_gain: f64,
+    pub scene_to_gain: f64,
     pub initial_weight: f64,
+}
+
+/// One owned edge in the scene audio graph. Scene references preserve their
+/// source identity separately from the referenced scene, so distinct source
+/// instances can later carry independent processing without flattening them.
+#[derive(Clone, Debug, Serialize)]
+#[serde(tag="kind", rename_all="snake_case")]
+pub enum AudioSceneInput {
+    Source { item: Id, source: Id },
+    Scene { item: Id, source: Id, scene: Id, gain: f64, muted: bool },
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub struct AudioSceneNode {
+    pub scene: Id,
+    pub inputs: Vec<AudioSceneInput>,
+}
+
+/// An owned snapshot of one side of the output composition. Nodes are
+/// topologically ordered children first, with the root as the last node.
+#[derive(Clone, Debug, Serialize)]
+pub struct AudioSceneGraph {
+    pub root: Id,
+    pub root_gain: f64,
+    pub root_muted: bool,
+    pub nodes: Vec<AudioSceneNode>,
 }
 
 #[derive(Clone, Copy, Debug, Serialize)]
@@ -438,6 +486,10 @@ pub struct AudioPlan {
     #[serde(skip)]
     peak_mode: skylive_core::MixerPeakMode,
     curve: AudioCurve,
+    #[serde(skip_serializing_if="Option::is_none")]
+    scene_from: Option<AudioSceneGraph>,
+    #[serde(skip_serializing_if="Option::is_none")]
+    scene_to: Option<AudioSceneGraph>,
     sources: Vec<AudioSourcePlan>,
     #[serde(skip_serializing_if="Vec::is_empty")]
     auxiliary: Vec<AudioSourcePlan>,
@@ -462,7 +514,7 @@ impl AudioPlan {
             .map_err(|_|AudioError::InvalidRequest("invalid source channel processing config"))?;
         Ok(Self {monitor_device:skylive_core::AudioMonitoringDevice::default(),session:self.session,
             revision:self.revision,output_key:self.output_key,stable_output_key:self.stable_output_key,
-            audio_settings:self.audio_settings,peak_mode:self.peak_mode,curve:self.curve,sources:vec![source],auxiliary:Vec::new()})
+            audio_settings:self.audio_settings,peak_mode:self.peak_mode,curve:self.curve,scene_from:None,scene_to:None,sources:vec![source],auxiliary:Vec::new()})
     }
     /// Already processed source PCM must never pass through Mono/Balance or
     /// stateful filters a second time. Output-time gain/mute/routes remain real.
@@ -476,9 +528,11 @@ impl AudioPlan {
     pub(crate) fn detector_sources(&self)->&[AudioSourcePlan]{&self.auxiliary}
     pub(crate) fn craft_work_per_frame(&self)->usize{
         self.processing_sources().flat_map(|source|&source.filters).map(|filter|match filter{
-            AudioFilter::CraftModDelay{enabled:true,..}=>usize::from(self.audio_settings.channels())*48+8,
+            AudioFilter::CraftTimeShift{enabled:true,..}=>usize::from(self.audio_settings.channels())*12,
+            AudioFilter::CraftModDelay{enabled:true,..}=>usize::from(self.audio_settings.channels())*72+8,
             AudioFilter::CraftFdnReverb{enabled:true,..}=>256+usize::from(self.audio_settings.channels())*16,
-            AudioFilter::CraftSaturator{enabled:true,..}=>usize::from(self.audio_settings.channels())*30+12,AudioFilter::CraftLoFi{enabled:true,..}=>usize::from(self.audio_settings.channels())*12+8,AudioFilter::CraftDither{enabled:true,..}=>usize::from(self.audio_settings.channels())*12,AudioFilter::CraftRectifier{enabled:true,..}=>usize::from(self.audio_settings.channels())*8,AudioFilter::CraftDcRemoval{enabled:true,..}=>usize::from(self.audio_settings.channels())*5,_=>0,
+            AudioFilter::CraftSoundReverb{enabled:true,..}=>512+usize::from(self.audio_settings.channels())*16,
+            AudioFilter::CraftPitch{enabled:true,..}=>usize::from(self.audio_settings.channels())*32+48,AudioFilter::CraftMaximizer{enabled:true,..}=>usize::from(self.audio_settings.channels())*8+600,AudioFilter::CraftDeEsser{enabled:true,..}=>usize::from(self.audio_settings.channels())*30+40,AudioFilter::CraftRingMod{enabled:true,..}=>usize::from(self.audio_settings.channels())*32+48,AudioFilter::CraftSaturator{enabled:true,..}=>usize::from(self.audio_settings.channels())*30+12,AudioFilter::CraftLoFi{enabled:true,..}=>usize::from(self.audio_settings.channels())*12+8,AudioFilter::CraftDither{enabled:true,..}=>usize::from(self.audio_settings.channels())*12,AudioFilter::CraftEq1{enabled:true,..}=>usize::from(self.audio_settings.channels())*12,AudioFilter::CraftRectifier{enabled:true,..}=>usize::from(self.audio_settings.channels())*8,AudioFilter::CraftDcRemoval{enabled:true,..}=>usize::from(self.audio_settings.channels())*5,_=>0,
         }).sum()
     }
     pub(crate) fn craft_state_bytes(&self)->Result<usize,AudioError>{
@@ -529,6 +583,11 @@ impl AudioPlan {
                     && a.filters == b.filters
                     && a.properties == b.properties
                     && a.routes == b.routes
+                    // Scene/group bus filters and faders are folded into
+                    // these per-side coefficients. They must publish a new
+                    // timeline event even when the leaf source is unchanged.
+                    && a.scene_from_gain.to_bits() == b.scene_from_gain.to_bits()
+                    && a.scene_to_gain.to_bits() == b.scene_to_gain.to_bits()
             })
             && match (self.curve, other.curve) {
                 (
@@ -546,6 +605,18 @@ impl AudioPlan {
                 (AudioCurve::Manual { .. }, _) | (_, AudioCurve::Manual { .. }) => false,
                 _ => true,
             }
+    }
+}
+
+impl AudioSourcePlan {
+    fn output_weight(&self, factors:(f32,f32))->f64 {
+        if self.routes.global || self.routes.duplicated || (self.routes.from && self.routes.to) {
+            1.0
+        } else if self.routes.from {
+            f64::from(factors.0)*self.scene_from_gain
+        } else if self.routes.to {
+            f64::from(factors.1)*self.scene_to_gain
+        } else { 0.0 }
     }
 }
 
@@ -673,12 +744,8 @@ pub fn derive_audio_plan(
     sources
         .try_reserve_exact(MAX_AUDIO_INPUTS)
         .map_err(|_| AudioError::Limit("audio plan allocation"))?;
-    if let Some(view) = from {
-        gather_view(session.identity(), &current, view, false, &mut sources)?;
-    }
-    if let Some(view) = to {
-        gather_view(session.identity(), &current, view, true, &mut sources)?;
-    }
+    let scene_from = from.map(|view|gather_view(session.identity(), &current, view, false, &mut sources)).transpose()?;
+    let scene_to = to.map(|view|gather_view(session.identity(), &current, view, true, &mut sources)).transpose()?;
     for root in current.global_audio() {
         let source = current
             .source(root.source())
@@ -719,7 +786,11 @@ pub fn derive_audio_plan(
     auxiliary.sort_by_key(|source|source.source.get());
     sources.sort_by_key(|source| source.source.get());
     for source in &mut sources {
-        source.initial_weight = source.routes.weight(initial_factors);
+        // libobs promotes duplicated individual sources to root_nodes and
+        // skips their contribution inside scenes and transitions. Global and
+        // cross-transition sources use that same independent root route, so
+        // scene-bus gain does not apply to them.
+        source.initial_weight = source.output_weight(initial_factors);
     }
     Ok(AudioPlan {
         monitor_device:current.preferences().audio_monitoring_device().clone(),
@@ -730,6 +801,8 @@ pub fn derive_audio_plan(
         stable_output_key: output.identity(),
         audio_settings: current.audio(),
         curve,
+        scene_from,
+        scene_to,
         sources,
         auxiliary,
     })
@@ -740,7 +813,7 @@ fn gather_view(
     view: &FrameScene,
     to: bool,
     output: &mut Vec<AudioSourcePlan>,
-) -> Result<(), AudioError> {
+) -> Result<AudioSceneGraph, AudioError> {
     view.validate_session(session)
         .map_err(AudioError::Transition)?;
     let visible = view
@@ -755,16 +828,34 @@ fn gather_view(
                 .map(|scene| (source.id(), scene))
         })
         .collect();
+    let audio_ids: std::collections::HashSet<_> = visible.iter()
+        // Disabled NDI sources are excluded from the actual audio plan by
+        // insert_source_bounded. Exclude them before enforcing the same limit
+        // and counting paths, too, so disabled modules cannot reject an
+        // otherwise valid scene merely by being present in it.
+        .filter(|source| source.kind().has_audio()
+            && (!matches!(source.kind(), SourceKind::NdiSource { .. })
+                || collection.preferences().plugin_enabled(skylive_core::NDI_PLUGIN)))
+        .map(|source| source.id())
+        .collect();
+    if audio_ids.len() > MAX_AUDIO_INPUTS {
+        return Err(AudioError::Limit("audio plan exceeds64 sources"));
+    }
+    // Count all audible leaves in one bounded bottom-up traversal. Shared
+    // child scenes are evaluated once, but each incoming edge contributes to
+    // the count; this preserves the existing OBS duplicate-source promotion.
+    let root_source=view.root_scene_source(collection);
+    let root_gain = root_source.map(|source|scene_bus_gain(source,collection)).transpose()?.unwrap_or(1.0);
+    let mut graph = AudioSceneGraph {root:view.scene(),root_gain,
+        root_muted:root_source.is_some_and(|source|source.muted()),nodes:Vec::new()};
+    let mut seen = std::collections::HashSet::new();
+    build_audio_scene_graph(view,collection,view.scene(),view.items(collection).map_err(AudioError::Transition)?,
+        &nested,&audio_ids,&mut seen,&mut graph.nodes)?;
+    let counts = scene_audio_counts(&graph)?;
+    let gains = scene_audio_gains(&graph)?;
     for source in visible {
-        if source.kind().has_audio() {
-            let duplicated = scene_reference_count(
-                view,
-                collection,
-                view.items(collection).map_err(AudioError::Transition)?,
-                source.id(),
-                &nested,
-                &mut std::collections::HashMap::new(),
-            )? > 1;
+        if audio_ids.contains(&source.id()) {
+            let duplicated = counts.get(&source.id()).copied().unwrap_or(0) > 1;
             insert_source(
                 source,
                 collection,
@@ -776,50 +867,126 @@ fn gather_view(
                 },
                 output,
             )?;
+            if let Some(entry)=output.iter_mut().find(|entry|entry.source==source.id()) {
+                let gain=gains.get(&source.id()).copied().unwrap_or(1.0);
+                if to {entry.scene_to_gain=gain;} else {entry.scene_from_gain=gain;}
+            }
         }
     }
-    Ok(())
+    Ok(graph)
 }
-/// Saturating multiplicity preserves OBS duplicate-source promotion without
-/// expanding DAG paths or mixing the same leaf twice. At most64 admitted audio
-/// leaves each visit each scene/edge once; memo values are only0/1/2.
-fn scene_reference_count(
+
+/// Preserve the visible nested-scene edges and item identities; shared scenes
+/// are stored once and referenced by every parent edge. The earlier
+/// `visible_sources` validation enforces cycle, depth and graph limits.
+fn build_audio_scene_graph(
     view: &FrameScene,
     current: &StudioSnapshot,
+    scene: Id,
     items: &[skylive_core::SceneItem],
-    target: Id,
     nested: &std::collections::HashMap<Id, Id>,
-    memo: &mut std::collections::HashMap<Id, u8>,
-) -> Result<u8, AudioError> {
-    let mut count = 0u8;
+    audio_ids: &std::collections::HashSet<Id>,
+    seen: &mut std::collections::HashSet<Id>,
+    nodes: &mut Vec<AudioSceneNode>,
+) -> Result<(), AudioError> {
+    if !seen.insert(scene) { return Ok(()); }
+    let mut inputs=Vec::new();
+    inputs.try_reserve(items.len()).map_err(|_|AudioError::Limit("audio scene graph allocation"))?;
     for item in items.iter().filter(|item| item.visible()) {
-        let added = if item.source() == target {
-            1
-        } else if let Some(scene) = nested.get(&item.source()) {
-            if let Some(value) = memo.get(scene) {
-                *value
-            } else {
-                let value = scene_reference_count(
-                    view,
-                    current,
-                    view.scene_items(current, *scene)
-                        .map_err(AudioError::Transition)?,
-                    target,
-                    nested,
-                    memo,
-                )?;
-                memo.insert(*scene, value);
-                value
-            }
-        } else {
-            0
-        };
-        count = (count + added).min(2);
-        if count == 2 {
-            break;
+        if audio_ids.contains(&item.source()) {
+            inputs.push(AudioSceneInput::Source {item:item.id(),source:item.source()});
+        }
+        if let Some(child) = nested.get(&item.source()) {
+            build_audio_scene_graph(view,current,*child,view.scene_items(current,*child).map_err(AudioError::Transition)?,
+                nested,audio_ids,seen,nodes)?;
+            let submix=view.source(current,item.source()).ok_or(AudioError::MissingSource(item.source()))?;
+            inputs.push(AudioSceneInput::Scene {item:item.id(),source:item.source(),scene:*child,gain:scene_bus_gain(submix,current)?,muted:submix.muted()});
         }
     }
-    Ok(count)
+    nodes.try_reserve(1).map_err(|_|AudioError::Limit("audio scene graph node allocation"))?;
+    nodes.push(AudioSceneNode {scene,inputs});
+    Ok(())
+}
+
+/// The supported scene filters are linear and stateless, so they commute with
+/// mixing and can be applied once to each unshared leaf on that bus. OBS
+/// promotes shared leaves separately, which continues to bypass this gain.
+fn scene_bus_gain(source:&Source, snapshot:&StudioSnapshot)->Result<f64,AudioError> {
+    let mut gain=f64::from(source.gain());
+    for filter in source.audio_filters() {
+        if !snapshot.preferences().plugin_enabled(filter.plugin_id()) {continue;}
+        match *filter {
+            AudioFilter::ObsGain {db,enabled:true}=>gain*=10.0_f64.powf(f64::from(db)/20.0),
+            AudioFilter::ObsPolarityInvert {enabled:true}=>gain = -gain,
+            AudioFilter::ObsGain {enabled:false,..} | AudioFilter::ObsPolarityInvert {enabled:false}=>{},
+            _=>return Err(AudioError::InvalidRequest("stateful scene audio filters require submix histories")),
+        }
+    }
+    if !gain.is_finite() {return Err(AudioError::InvalidRequest("scene audio gain overflow"));}
+    Ok(gain)
+}
+
+/// Per-node leaf multiplicities retain OBS duplicate-source promotion while
+/// evaluating each shared child once, directly from the owned scene graph.
+fn scene_audio_counts(graph:&AudioSceneGraph)->Result<std::collections::HashMap<Id,u8>,AudioError> {
+    let mut memo:std::collections::HashMap<Id,std::collections::HashMap<Id,u8>>=std::collections::HashMap::new();
+    for node in &graph.nodes {
+        let mut counts=std::collections::HashMap::new();
+        for input in &node.inputs {
+            match input {
+                AudioSceneInput::Source {source,..}=>{
+                    let entry=counts.entry(*source).or_insert(0u8);
+                    *entry=entry.saturating_add(1).min(2);
+                },
+                AudioSceneInput::Scene {scene,..}=>{
+                    let child=memo.get(scene).ok_or(AudioError::InvalidRequest("audio scene graph is not topologically ordered"))?;
+                    for (&source,&multiplicity) in child {
+                        let entry=counts.entry(source).or_insert(0u8);
+                        *entry=entry.saturating_add(multiplicity).min(2);
+                    }
+                },
+            }
+        }
+        memo.insert(node.scene,counts);
+    }
+    memo.remove(&graph.root).ok_or(AudioError::InvalidRequest("audio scene graph root missing"))
+}
+
+/// Linear gain is distributive over a sum, so an unshared leaf can be routed
+/// through a scene bus without allocating another block. Duplicated individual
+/// inputs are promoted by OBS to an independent root and skip all scene buses.
+fn scene_audio_gains(graph:&AudioSceneGraph)->Result<std::collections::HashMap<Id,f64>,AudioError> {
+    type Gains=std::collections::HashMap<Id,(u8,f64)>;
+    let mut memo:std::collections::HashMap<Id,Gains>=std::collections::HashMap::new();
+    for node in &graph.nodes {
+        let mut gains=Gains::new();
+        for input in &node.inputs {
+            match *input {
+                AudioSceneInput::Source {source,..}=>{
+                    let entry=gains.entry(source).or_insert((0,1.0));
+                    entry.0=entry.0.saturating_add(1).min(2);
+                },
+                AudioSceneInput::Scene {scene,gain,muted,..}=>{
+                    let child=memo.get(&scene).ok_or(AudioError::InvalidRequest("audio scene graph is not topologically ordered"))?;
+                    let bus=if muted {0.0}else{gain};
+                    for (&source,&(count,child_gain)) in child {
+                        let value=bus*child_gain;
+                        if !value.is_finite(){return Err(AudioError::InvalidRequest("scene audio gain overflow"));}
+                        let entry=gains.entry(source).or_insert((0,value));
+                        entry.0=entry.0.saturating_add(count).min(2);
+                    }
+                },
+            }
+        }
+        memo.insert(node.scene,gains);
+    }
+    let gains=memo.remove(&graph.root).ok_or(AudioError::InvalidRequest("audio scene graph root missing"))?;
+    let root=if graph.root_muted {0.0}else{graph.root_gain};
+    gains.into_iter().map(|(source,(count,gain))|{
+        let gain=root*gain;
+        if !gain.is_finite(){return Err(AudioError::InvalidRequest("scene audio gain overflow"));}
+        Ok((source,if count>1 {1.0} else {gain}))
+    }).collect()
 }
 fn insert_source(source:&Source,snapshot:&StudioSnapshot,routes:AudioRoutes,output:&mut Vec<AudioSourcePlan>)->Result<(),AudioError>{
     insert_source_bounded(source,snapshot,routes,output,MAX_AUDIO_INPUTS)
@@ -890,6 +1057,8 @@ fn insert_source_bounded(
             muted: source.muted(),
             filters,
             routes,
+            scene_from_gain: 1.0,
+            scene_to_gain: 1.0,
             initial_weight: 0.0,
         });
     }
@@ -914,7 +1083,7 @@ fn pan_settings(filter: AudioFilter) -> Result<StereoPanSettings, AudioError> {
             invert_right,
         )
         .map_err(AudioError::Media),
-        AudioFilter::ObsNoiseSuppression{..}|AudioFilter::CraftDither{..}|AudioFilter::CraftRectifier{..}|AudioFilter::CraftDcRemoval{..}|AudioFilter::CraftLoFi{..}|AudioFilter::CraftSaturator{..}|AudioFilter::CraftModDelay{..}|AudioFilter::CraftFdnReverb{..}|AudioFilter::ObsThreeBandEq { .. }
+        AudioFilter::CraftSignalGenerator{..}|AudioFilter::CraftTimeShift{..}|AudioFilter::CraftPitch{..}|AudioFilter::CraftMaximizer{..}|AudioFilter::CraftDeEsser{..}|AudioFilter::ObsNoiseSuppression{..}|AudioFilter::CraftRingMod{..}|AudioFilter::CraftDither{..}|AudioFilter::CraftEq1{..}|AudioFilter::CraftRectifier{..}|AudioFilter::CraftDcRemoval{..}|AudioFilter::CraftLoFi{..}|AudioFilter::CraftSaturator{..}|AudioFilter::CraftModDelay{..}|AudioFilter::CraftFdnReverb{..}|AudioFilter::CraftSoundReverb{..}|AudioFilter::ObsThreeBandEq { .. }
         | AudioFilter::ObsLimiter { .. }
         | AudioFilter::ObsNoiseGate { .. }
         | AudioFilter::ObsUpwardCompressor { .. }

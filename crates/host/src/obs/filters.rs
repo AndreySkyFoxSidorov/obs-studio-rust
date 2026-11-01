@@ -15,6 +15,7 @@ pub(super) fn parse(
     map: &Map<String, Value>,
     path: &str,
     _is_scene: bool,
+    is_camera: bool,
     uuids: &mut HashSet<String>,
     base_directory:Option<&std::path::Path>,
 ) -> Result<Vec<InputFilter>, ObsError> {
@@ -34,7 +35,7 @@ pub(super) fn parse(
     for (index, value) in list.iter().enumerate() {
         let path = format!("{path}.filters[{index}]");
         let map = object(value, &path)?;
-        if matches!(map.get("id").and_then(Value::as_str),Some("compressor_filter"|"noise_suppress_filter"|"gain_filter"|"noise_gate_filter"|"limiter_filter"|"expander_filter"|"invert_polarity_filter")){continue;}
+        if matches!(map.get("id").and_then(Value::as_str),Some("compressor_filter"|"upward_compressor_filter"|"basic_eq_filter"|"noise_suppress_filter"|"gain_filter"|"noise_gate_filter"|"limiter_filter"|"expander_filter"|"invert_polarity_filter")){continue;}
         if output.len()==MAX_VIDEO_FILTERS{return Err(issue(&path,"limit","at most 32 video filters per source"));}
         known(
             map,
@@ -68,7 +69,7 @@ pub(super) fn parse(
         )?;
         let provider = string(map, "id", &path)?;
         let versioned = map.get("versioned_id").and_then(Value::as_str);
-        if matches!(provider,"freeze_filter"|"gpu_delay"|"clut_filter"|"scroll_filter"|"scale_filter"|"luma_key_filter")&&map.contains_key("versioned_id")&&versioned.is_none(){return Err(issue(&path,"invalid","Filter versioned_id must be text when present"));}
+        if matches!(provider,"freeze_filter"|"gpu_delay"|"async_delay_filter"|"clut_filter"|"scroll_filter"|"scale_filter"|"luma_key_filter")&&map.contains_key("versioned_id")&&versioned.is_none(){return Err(issue(&path,"invalid","Filter versioned_id must be text when present"));}
         if !matches!(
             (provider, versioned),
             ("crop_filter", None | Some("crop_filter"))
@@ -82,6 +83,7 @@ pub(super) fn parse(
                 | ("scroll_filter",None|Some("scroll_filter"))
                 | ("scale_filter",None|Some("scale_filter"))
                 | ("gpu_delay",None|Some("gpu_delay"))
+                | ("async_delay_filter",None|Some("async_delay_filter"))
                 | ("freeze_filter",None|Some("freeze_filter"))
         ) {
             return Err(issue(
@@ -150,6 +152,12 @@ pub(super) fn parse(
         let settings = object(required(map, "settings", &path)?, &settings_path)?;
         let mut mask_path=None;let mut lut_path=None;
         let effect = if provider=="freeze_filter"{parse_freeze(settings,&settings_path)?}
+        else if provider=="async_delay_filter"{
+            if !is_camera{return Err(issue(&path,"unsupported_filter","Video Delay (Async) currently requires a Windows camera source"));}
+            known(settings,&["delay_ms"],&settings_path)?;
+            let delay_ms=match settings.get("delay_ms"){None=>0,Some(value)=>value.as_u64().filter(|ms|*ms<=20_000).ok_or_else(||issue(&settings_path,"invalid","Video Delay (Async) requires integer delay_ms in 0..20000"))? as u16};
+            VideoEffect::AsyncVideoDelay{delay_ms}
+        }
         else if provider=="gpu_delay"{known(settings,&["delay_ms"],&settings_path)?;let delay_ms=match settings.get("delay_ms"){None=>0,Some(value)=>value.as_u64().filter(|ms|*ms<=500).ok_or_else(||issue(&settings_path,"invalid","Render Delay requires an integer delay_ms in0..500"))? as u16};VideoEffect::RenderDelay{delay_ms}}
         else if provider=="scale_filter"{parse_scale(settings,&settings_path)?}
         else if provider=="scroll_filter"{parse_scroll(settings,&settings_path)?}
@@ -172,9 +180,11 @@ pub(super) fn parse(
                     "opacity",
                     "color_multiply",
                     "color_add",
+                    "sdr_only_info",
                 ],
                 &settings_path,
             )?;
+            validate_sdr_info(settings, &settings_path)?;
             let scalar = |key, default, min, max| -> Result<f32, ObsError> {
                 let v = number(settings, key, default, &settings_path)?;
                 if !(min..=max).contains(&v) {
@@ -213,6 +223,36 @@ pub(super) fn parse(
             filter,
             raw: map.clone(),mask_path,lut_path,
         });
+    }
+    // Match the camera editor's currently admitted ordered-delay chains. A
+    // collection must not import successfully only to turn the camera into
+    // an unavailable source when capture starts.
+    if let Some(last)=output.iter().rposition(|entry|entry.filter.enabled && matches!(entry.filter.effect,VideoEffect::AsyncVideoDelay{delay_ms:1..=u16::MAX})) {
+        let total:u32=output.iter().filter_map(|entry|if entry.filter.enabled {if let VideoEffect::AsyncVideoDelay{delay_ms}=entry.filter.effect {Some(u32::from(delay_ms))}else{None}}else{None}).sum();
+        if total>20_000 || output.iter().any(|entry|entry.filter.enabled && matches!(entry.filter.effect,VideoEffect::Freeze{..}|VideoEffect::RenderDelay{delay_ms:1..=500})) {
+            return Err(issue(path,"unsupported_filter","The camera delay chain exceeds 20 seconds or contains an unsupported temporal filter"));
+        }
+        let staged=output.iter().take(last).any(|entry|entry.filter.enabled &&
+            (matches!(entry.filter.effect,VideoEffect::PersonBackgroundRemoval{..}|VideoEffect::ScaleFilter{..}|VideoEffect::Scroll{..})
+                || matches!(entry.filter.effect,VideoEffect::ImageMask{..}) && entry.mask_path.is_some()
+                || matches!(entry.filter.effect,VideoEffect::ApplyLut{..}) && entry.lut_path.is_some()));
+        for entry in output.iter().take(last).filter(|entry|entry.filter.enabled) {
+            match entry.filter.effect {
+                VideoEffect::AsyncVideoDelay{..}|VideoEffect::Scroll{..}|VideoEffect::ApplyLut{..}|VideoEffect::PersonBackgroundRemoval{..}=>{},
+                VideoEffect::RenderDelay{delay_ms:0}=>{},
+                VideoEffect::ScaleFilter{target:skylive_core::ScaleFilterTarget::Resolution{..},..}=>{},
+                VideoEffect::ImageMask{..}=>{
+                    if let Some(mask)=entry.mask_path.as_ref() {
+                        let extension=mask.extension().and_then(|value|value.to_str()).unwrap_or("").to_ascii_lowercase();
+                        if !matches!(extension.as_str(),"jpg"|"jpeg"|"bmp"|"tga"|"png"|"apng"|"webp"|"gif") {
+                            return Err(issue(path,"unsupported_filter","The image mask format is unavailable before camera Video Delay (Async)"));
+                        }
+                    }
+                },
+                _ if staged=>return Err(issue(path,"unsupported_filter","This effect cannot precede a staged camera Video Delay (Async) chain")),
+                _=>{},
+            }
+        }
     }
     Ok(output)
 }
@@ -280,8 +320,9 @@ pub(super) fn export(
                 & 0xff00_0000;
             alpha | u32::from_le_bytes([rgb[0], rgb[1], rgb[2], 0])
         };
-        let (provider, settings) = match filter.effect {
+        let (provider, mut settings) = match filter.effect {
             VideoEffect::Freeze{settings}=>("freeze_filter",export_freeze(settings,original,&path)?),
+            VideoEffect::AsyncVideoDelay{delay_ms}=>{let mut settings=Map::new();settings.insert("delay_ms".into(),json!(delay_ms));("async_delay_filter",settings)},
             VideoEffect::RenderDelay{delay_ms}=>{let mut settings=Map::new();settings.insert("delay_ms".into(),json!(delay_ms));("gpu_delay",settings)},
             effect@VideoEffect::ScaleFilter{..}=>("scale_filter",export_scale(effect,original,&path)?),
             VideoEffect::Scroll{speed_x,speed_y,limit_width,limit_height,width,height,looping}=>{
@@ -364,10 +405,15 @@ pub(super) fn export(
                 ));
             }
         };
+        // OBS exposes this informational field on SDR-only effects. It has no
+        // render effect but may be present in saved settings; keep it on export.
+        if matches!(provider,"color_filter"|"color_key_filter"|"chroma_key_filter"|"luma_key_filter"|"sharpness_filter") {
+            if let Some(info)=original.and_then(|map|map.get("sdr_only_info")) {settings.insert("sdr_only_info".into(),info.clone());}
+        }
         raw.insert("name".into(), json!(filter.name()));
         raw.insert("uuid".into(), json!(uuid));
         raw.insert("id".into(), json!(provider));
-        raw.insert("versioned_id".into(),json!(if matches!(provider,"freeze_filter"|"gpu_delay"|"crop_filter"|"clut_filter"|"scroll_filter"|"scale_filter") || matches!(filter.effect,VideoEffect::LumaKey{legacy:true,..}) {provider.to_owned()}else{format!("{provider}_v2")}));
+        raw.insert("versioned_id".into(),json!(if matches!(provider,"freeze_filter"|"gpu_delay"|"async_delay_filter"|"crop_filter"|"clut_filter"|"scroll_filter"|"scale_filter") || matches!(filter.effect,VideoEffect::LumaKey{legacy:true,..}) {provider.to_owned()}else{format!("{provider}_v2")}));
         raw.insert("enabled".into(), json!(filter.enabled));
         raw.insert("settings".into(), Value::Object(settings));
         output.push(Value::Object(raw));
@@ -385,8 +431,13 @@ fn parse_crop_pad(settings:&Map<String,Value>,path:&str)->Result<VideoEffect,Obs
         top:integer("top",-8192,8192)? as i32,right:integer("right",-8192,8192)? as i32,bottom:integer("bottom",-8192,8192)? as i32,
         width:integer("cx",0,8192)? as u32,height:integer("cy",0,8192)? as u32})
 }
+fn validate_sdr_info(settings:&Map<String,Value>,path:&str)->Result<(),ObsError> {
+    if settings.get("sdr_only_info").is_some_and(|value|!value.is_string()) {return Err(issue(path,"invalid","SDR information must be text"));}
+    Ok(())
+}
 fn parse_luma_sharpen(settings:&Map<String,Value>,path:&str,sharpen:bool,legacy:bool)->Result<VideoEffect,ObsError> {
-    known(settings,if sharpen {&["sharpness"][..]}else{&["luma_max","luma_min","luma_max_smooth","luma_min_smooth"][..]},path)?;
+    known(settings,if sharpen {&["sharpness","sdr_only_info"][..]}else{&["luma_max","luma_min","luma_max_smooth","luma_min_smooth","sdr_only_info"][..]},path)?;
+    validate_sdr_info(settings,path)?;
     let scalar=|key,default|->Result<f32,ObsError>{let value=number(settings,key,default,path)?;
         if !(0.0..=1.0).contains(&value){return Err(issue(&format!("{path}.{key}"),"invalid","value is outside the OBS v2 UI range"));}Ok(value as f32)};
     Ok(if sharpen {VideoEffect::Sharpen {sharpness:scalar("sharpness",0.08)?}}
@@ -417,11 +468,13 @@ fn parse_keyer(
         "contrast",
         "brightness",
         "gamma",
+        "sdr_only_info",
     ];
     if chroma {
         keys.push("spill");
     }
     known(settings, &keys, path)?;
+    validate_sdr_info(settings,path)?;
     let ty = match settings.get("key_color_type") {
         None => "green",
         Some(v) => v

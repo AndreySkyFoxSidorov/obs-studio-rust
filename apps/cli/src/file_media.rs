@@ -233,7 +233,7 @@ impl Runtime {
     }
     pub fn game_control(&mut self,session:&Session,source:Id,start:bool)->Result<Value,CliError>{
         let model=session.snapshot();let skylive_core::SourceKind::GameCapture {binding}=model.source(source).ok_or("Game source is unavailable")?.kind() else{return Err("Source is not Game Capture".into());};
-        if start {self.game.authorize(session,binding.target())?;}else{self.game.revoke(session,source)?;}
+        if start {self.game.authorize(session,binding.target().ok_or("Select a running game window first")?)?;}else{self.game.revoke(session,source)?;}
         Ok(json!({"source":source,"capture_authorized":start,"start_requested":start,"stop_requested":!start,"native_frame_verified":false,"status":self.game_summary(),"video_only":true}))
     }
     pub fn game_summary(&self)->Value {

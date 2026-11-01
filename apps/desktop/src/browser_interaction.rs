@@ -2,14 +2,14 @@
 //! OBS32 OBSBasicInteraction.cpp, copyright2023 Lain Bailey, GPL-2.0-or-later.
 use eframe::egui;
 use skylive_core::{BrowserSource,Id,Session,SourceKind,VideoFilterPreviewTarget};
-use skylive_host::{browser::{BrowserOwner,BrowserError,BrowserInput,BrowserInputLease,BrowserFrame,BrowserSnapshot,interaction::{Preview,Key,MAX_PREVIEW_EDGE,MAX_PREVIEW_PIXELS}},transition::FrameScene};
+use skylive_host::{browser::{BrowserOwner,BrowserError,BrowserInput,BrowserClipboardAction,BrowserNavigation,BrowserInputLease,BrowserFrame,BrowserSnapshot,interaction::{Preview,Key,MAX_PREVIEW_EDGE,MAX_PREVIEW_PIXELS}},transition::FrameScene};
 use std::{collections::VecDeque,sync::Arc};
 #[derive(Default)]pub struct Runtime {next:u64,window:Option<Window>,pending:Option<(u64,Id,Arc<BrowserSource>)>}
 #[derive(Clone,Copy,PartialEq,Eq)]struct Lease {instance:u64,native_epoch:u64,native:u64,binding:u64}
 struct Window {token:u64,view:u64,session:u64,source:Id,browser:Arc<BrowserSource>,lease:Option<Lease>,worker:Preview,
  texture:Option<egui::TextureHandle>,extent:(u32,u32),submitted:Option<Key>,presented:u64,
  focused:bool,closing:bool,finished:bool,hovered:bool,buttons:[bool;3],modifiers:egui::Modifiers,
- pointer:[i32;2],last_click:Option<(i32,f64,egui::Pos2,i32)>,queue:VecDeque<BrowserInput>,error:Option<String>}
+ pointer:[i32;2],wheel_remainder:[f64;2],wheel_flags:Option<u32>,last_click:Option<(i32,f64,egui::Pos2,i32)>,queue:VecDeque<BrowserInput>,error:Option<String>}
 impl Runtime {
  pub fn open(&mut self,session:&Session,source:Id,context:&egui::Context)->Result<(),String>{
   let model=session.snapshot();let browser=model.source(source).and_then(|s|match s.kind(){SourceKind::Browser {browser}=>Some(Arc::new(browser.clone())),_=>None}).ok_or("Select a Browser Source to interact with it.")?;
@@ -21,7 +21,7 @@ impl Runtime {
  }
  fn create(&mut self,session:u64,source:Id,browser:Arc<BrowserSource>)->Result<(),String>{
   self.next=self.next.checked_add(1).ok_or("Browser interaction identity exhausted.")?;
-  self.window=Some(Window {token:self.next,view:1,session,source,browser,lease:None,worker:Preview::new().map_err(|e|e.to_string())?,texture:None,extent:(1,1),submitted:None,presented:0,focused:false,closing:false,finished:false,hovered:false,buttons:[false;3],modifiers:Default::default(),pointer:[0;2],last_click:None,queue:VecDeque::with_capacity(16),error:None});Ok(())
+  self.window=Some(Window {token:self.next,view:1,session,source,browser,lease:None,worker:Preview::new().map_err(|e|e.to_string())?,texture:None,extent:(1,1),submitted:None,presented:0,focused:false,closing:false,finished:false,hovered:false,buttons:[false;3],modifiers:Default::default(),pointer:[0;2],wheel_remainder:[0.0;2],wheel_flags:None,last_click:None,queue:VecDeque::with_capacity(16),error:None});Ok(())
  }
  pub fn scope(&mut self,session:&Session,owner:&mut BrowserOwner)->Option<FrameScene>{
   self.observe(session,owner);
@@ -77,7 +77,7 @@ impl Window {
   // Normal focus loss preserves already staged text/key ordering. Normal input
   // uses at most15 slots, leaving the16th for one exact-lease release.
   if self.lease.is_some()&&!matches!(self.queue.back(),Some(BrowserInput::Focus(false)))&&self.queue.len()<16 {self.queue.push_back(BrowserInput::Focus(false));}
-  self.focused=false;self.buttons=[false;3];self.modifiers=Default::default();self.hovered=false;}
+  self.focused=false;self.buttons=[false;3];self.modifiers=Default::default();self.hovered=false;self.wheel_remainder=[0.0;2];self.wheel_flags=None;}
  fn cancel_close(&mut self){self.queue.clear();self.closing=true;self.release();}
  fn begin_close(&mut self){if !self.closing{self.closing=true;self.release();}}
  fn push(&mut self,event:BrowserInput)->bool{
@@ -100,16 +100,29 @@ impl Window {
  fn body(&mut self,ui:&mut egui::Ui,session:&Session,owner:&mut BrowserOwner){
   let snapshot=owner.snapshot();let frame=self.frame(&snapshot);
   if self.lease.is_none(){if let Some(frame)=frame {self.lease=Some(Lease {instance:snapshot.instance(),native_epoch:snapshot.native_epoch(),native:frame.lease,binding:frame.binding_lease});}}
-  let actions=[crate::views::modal_footer::Action::new("Refresh Browser",self.valid(session)&&!self.closing,"Reload the real browser page and reset interaction focus."),crate::views::modal_footer::Action::new("Close",true,"Close browser interaction and release its keyboard and mouse focus.")];
+  let actions=[crate::views::modal_footer::Action::new("Refresh Browser",self.valid(session)&&self.lease.is_some()&&!self.closing,"Reload the real browser page and reset interaction focus."),crate::views::modal_footer::Action::new("Close",true,"Close browser interaction and release its keyboard and mouse focus.")];
   let footer=crate::views::modal_footer::required_height(ui,&actions);
   let status_height=(ui.available_height()*0.28).clamp(64.0,140.0);
   egui::ScrollArea::vertical().id_salt(("browser-status",self.token)).max_height(status_height).auto_shrink([false,true]).show(ui,|ui|{
    ui.add(egui::Label::new(crate::i18n::tr(ui,"Click the preview to use the page. Escape releases keyboard focus.")).wrap());
    egui::CollapsingHeader::new(crate::i18n::tr(ui,"Input compatibility")).show(ui,|ui|{
-    ui.add(egui::Label::new(crate::i18n::tr(ui,"Native IME composition and scan codes are unavailable; Unicode text events are forwarded as UTF-16. Clipboard integration is not provided.")).wrap());
+    ui.add(egui::Label::new(crate::i18n::tr_key_or(ui,"SkyLive.Browser.InteractionClipboardHelp","Copy, cut and paste use the focused browser frame. Native IME composition and scan codes are unavailable; Unicode text events are forwarded as UTF-16.")).wrap());
    });
    if let Some(problem)=snapshot.problems().iter().find(|p|p.source==self.source){ui.add(egui::Label::new(egui::RichText::new(&problem.detail).color(ui.visuals().warn_fg_color)).wrap());}
    if let Some(error)=&self.error{ui.add(egui::Label::new(egui::RichText::new(crate::i18n::tr(ui,error)).color(ui.visuals().warn_fg_color)).wrap());}
+  });
+  ui.horizontal(|ui|{
+   let enabled=self.lease.is_some()&&frame.is_some()&&!self.closing;
+   if ui.add_enabled(enabled,egui::Button::new(crate::i18n::tr_key_or(ui,"Back","Back"))).clicked(){self.release();self.push(BrowserInput::Navigate(BrowserNavigation::Back));}
+   if ui.add_enabled(enabled,egui::Button::new(crate::i18n::tr_key_or(ui,"Next","Next"))).clicked(){self.release();self.push(BrowserInput::Navigate(BrowserNavigation::Forward));}
+   ui.separator();
+   for (label,key,tooltip,action) in [
+    ("-","Basic.MainMenu.Edit.Scale.ZoomOut","Zoom Out",BrowserNavigation::ZoomOut),
+    ("100%","Basic.MainMenu.Edit.Scale.ResetZoom","Reset Zoom",BrowserNavigation::ZoomReset),
+    ("+","Basic.MainMenu.Edit.Scale.ZoomIn","Zoom In",BrowserNavigation::ZoomIn),
+   ] {
+    if ui.add_enabled(enabled,egui::Button::new(label)).on_hover_text(crate::i18n::tr_key_or(ui,key,tooltip)).clicked(){self.release();self.push(BrowserInput::Navigate(action));}
+   }
   });
   let size=egui::vec2(ui.available_width().max(1.0),(ui.available_height()-footer-18.0).max(60.0));
   let (stage,_)=ui.allocate_exact_size(size,egui::Sense::hover());
@@ -134,10 +147,23 @@ impl Window {
   if let Some(texture)=&self.texture{ui.painter().image(texture.id(),rect,egui::Rect::from_min_max(egui::Pos2::ZERO,egui::pos2(1.0,1.0)),egui::Color32::WHITE);}else{ui.painter().text(rect.center(),egui::Align2::CENTER_CENTER,crate::i18n::tr(ui,"Waiting for browser frame"),egui::TextStyle::Body.resolve(ui.style()),ui.visuals().text_color());}
   if self.focused {ui.painter().rect_stroke(rect,0.0,egui::Stroke::new(2.0,ui.visuals().selection.stroke.color),egui::StrokeKind::Inside);}
   if frame.is_some()&&self.texture.is_some()&&!self.closing {self.events(ui,&response,rect);}else if self.focused{self.release();}
-  ui.separator();match crate::views::modal_footer::show(ui,&actions){Some(0)=>{self.release();self.flush(session,owner);match owner.refresh(session,self.source){Ok(())=>{self.queue.clear();self.lease=None;self.texture=None;self.submitted=None;self.presented=0;self.error=None;},Err(error)=>self.error=Some(error.to_string())}},Some(1)=>self.begin_close(),_=>{}}
+  ui.separator();match crate::views::modal_footer::show(ui,&actions){Some(0)=>{self.release();self.push(BrowserInput::Navigate(BrowserNavigation::Reload));},Some(1)=>self.begin_close(),_=>{}}
  }
  fn position(&self,point:egui::Pos2,rect:egui::Rect)->[i32;2]{[((point.x-rect.left())/rect.width()*self.browser.width()as f32).floor()as i32,((point.y-rect.top())/rect.height()*self.browser.height()as f32).floor()as i32]}
  fn flags(&self,modifiers:egui::Modifiers)->u32{(if modifiers.shift{2}else{0})|(if modifiers.ctrl{4}else{0})|(if modifiers.alt{8}else{0})|(if modifiers.mac_cmd{128}else{0})|(if self.buttons[0]{16}else{0})|(if self.buttons[1]{32}else{0})|(if self.buttons[2]{64}else{0})}
+ // CEF accepts integral wheel deltas. Keep fractional trackpad movement in
+ // the interaction window instead of rounding every small event to zero.
+ fn wheel_units(&mut self,delta:egui::Vec2,multiplier:egui::Vec2)->Option<[i32;2]>{
+  let values=[f64::from(delta.x)*f64::from(multiplier.x),f64::from(delta.y)*f64::from(multiplier.y)];
+  if values.iter().any(|value|!value.is_finite()){self.wheel_remainder=[0.0;2];return None;}
+  let mut whole=[0;2];
+  for axis in 0..2 {
+   let total=(values[axis]+self.wheel_remainder[axis]).clamp(f64::from(i32::MIN),f64::from(i32::MAX));
+   whole[axis]=total.trunc() as i32;
+   self.wheel_remainder[axis]=total-f64::from(whole[axis]);
+  }
+  (whole!=[0,0]).then_some(whole)
+ }
  fn sync_modifiers(&mut self,next:egui::Modifiers){
   if !self.focused{return;}
   for (old,new,key) in [(self.modifiers.shift,next.shift,16),(self.modifiers.ctrl,next.ctrl,17),(self.modifiers.alt,next.alt,18),(self.modifiers.mac_cmd,next.mac_cmd,91)] {if old!=new&&!self.push(BrowserInput::Key {kind:if new{0}else{2},modifiers:self.flags(next),virtual_key:key,native_key:0,character:0}){return;}}
@@ -155,6 +181,10 @@ impl Window {
   // Move events instead of cloning clipboard/text payloads. Events belonging
   // to other widgets are put back, preserving main-window shortcuts/text.
   let events=ctx.input_mut(|i|std::mem::take(&mut i.events));let mut unused=Vec::new();
+  // Some backends emit both the key-down and a derived egui clipboard event.
+  // Admit exactly one command for such a gesture; direct menu clipboard events
+  // are still handled when no matching key-down is present.
+  let clipboard_key=events.iter().any(|event|matches!(event,egui::Event::Key {key,pressed:true,modifiers,..} if clipboard_shortcut(*key,*modifiers).is_some()));
   for event in events {
    let interested=match &event {
     egui::Event::PointerButton {pos,pressed,button,..}=>rect.contains(*pos)||(*pressed&&self.focused)||match button{egui::PointerButton::Primary=>self.buttons[0],egui::PointerButton::Middle=>self.buttons[1],egui::PointerButton::Secondary=>self.buttons[2],_=>false},
@@ -176,19 +206,27 @@ impl Window {
      self.push(BrowserInput::Click {x:self.pointer[0],y:self.pointer[1],modifiers:self.flags(modifiers),button:button as i32,up:!pressed,count});
     }else if pressed&&self.focused{self.release();response.surrender_focus();}
    },
-   egui::Event::PointerMoved(pos)=>{self.pointer=self.position(pos,rect);let inside=rect.contains(pos);if inside||self.hovered||self.buttons.iter().any(|b|*b){self.push(BrowserInput::Move {x:self.pointer[0],y:self.pointer[1],modifiers:self.flags(ctx.input(|i|i.modifiers)),leave:!inside});}self.hovered=inside;},
-   egui::Event::PointerGone=>{if self.hovered{self.push(BrowserInput::Move {x:self.pointer[0],y:self.pointer[1],modifiers:0,leave:true});self.hovered=false;}},
-   egui::Event::MouseWheel {unit,delta,modifiers}=>if response.hovered(){if let Some(pos)=ctx.input(|i|i.pointer.hover_pos()){self.pointer=self.position(pos,rect);}let multiplier=match unit{egui::MouseWheelUnit::Point=>egui::vec2(1.0,1.0),egui::MouseWheelUnit::Line=>egui::vec2(120.0,120.0),egui::MouseWheelUnit::Page=>egui::vec2(self.browser.width()as f32,self.browser.height()as f32)};self.push(BrowserInput::Wheel {x:self.pointer[0],y:self.pointer[1],modifiers:self.flags(modifiers),dx:(delta.x*multiplier.x).round()as i32,dy:(delta.y*multiplier.y).round()as i32});},
-   egui::Event::Key {key,pressed,repeat,modifiers,..}=>if self.focused{if ((modifiers.command||modifiers.ctrl)&&matches!(key,egui::Key::C|egui::Key::X|egui::Key::V|egui::Key::Insert))||(modifiers.shift&&matches!(key,egui::Key::Insert|egui::Key::Delete)){self.error=Some("Clipboard integration is not provided in Browser Interaction.".into());continue;}self.sync_modifiers(modifiers);if !self.focused{continue;}if let Some(vk)=virtual_key(key){self.push(BrowserInput::Key {kind:if pressed{0}else{2},modifiers:self.flags(modifiers)|if repeat{8192}else{0},virtual_key:vk,native_key:0,character:0});if pressed {if key==egui::Key::Escape{self.release();response.surrender_focus();}else if let Some(text)=match key{egui::Key::Enter=>Some("\r"),egui::Key::Tab=>Some("\t"),egui::Key::Backspace=>Some("\u{8}"),_=>None}{self.text(text,modifiers);}}}},
+   egui::Event::PointerMoved(pos)=>{self.pointer=self.position(pos,rect);let inside=rect.contains(pos);if inside||self.hovered||self.buttons.iter().any(|b|*b){self.push(BrowserInput::Move {x:self.pointer[0],y:self.pointer[1],modifiers:self.flags(ctx.input(|i|i.modifiers)),leave:!inside});}if !inside{self.wheel_remainder=[0.0;2];self.wheel_flags=None;}self.hovered=inside;},
+   egui::Event::PointerGone=>{self.wheel_remainder=[0.0;2];self.wheel_flags=None;if self.hovered{self.push(BrowserInput::Move {x:self.pointer[0],y:self.pointer[1],modifiers:0,leave:true});self.hovered=false;}},
+   egui::Event::MouseWheel {unit,delta,modifiers}=>if response.hovered(){if let Some(pos)=ctx.input(|i|i.pointer.hover_pos()){self.pointer=self.position(pos,rect);}let flags=self.flags(modifiers);if self.wheel_flags!=Some(flags){self.wheel_remainder=[0.0;2];self.wheel_flags=Some(flags);}let multiplier=match unit{egui::MouseWheelUnit::Point=>egui::vec2(1.0,1.0),egui::MouseWheelUnit::Line=>egui::vec2(120.0,120.0),egui::MouseWheelUnit::Page=>egui::vec2(self.browser.width()as f32,self.browser.height()as f32)};if let Some([dx,dy])=self.wheel_units(delta,multiplier){self.push(BrowserInput::Wheel {x:self.pointer[0],y:self.pointer[1],modifiers:flags,dx,dy});}},
+   egui::Event::Key {key,pressed,repeat,modifiers,..}=>if self.focused{if let Some(action)=clipboard_shortcut(key,modifiers){self.sync_modifiers(modifiers);if pressed&&!repeat&&self.focused{self.push(BrowserInput::Clipboard(action));}continue;}self.sync_modifiers(modifiers);if !self.focused{continue;}if let Some(vk)=virtual_key(key){self.push(BrowserInput::Key {kind:if pressed{0}else{2},modifiers:self.flags(modifiers)|if repeat{8192}else{0},virtual_key:vk,native_key:0,character:0});if pressed {if key==egui::Key::Escape{self.release();response.surrender_focus();}else if let Some(text)=match key{egui::Key::Enter=>Some("\r"),egui::Key::Tab=>Some("\t"),egui::Key::Backspace=>Some("\u{8}"),_=>None}{self.text(text,modifiers);}}}},
    egui::Event::Text(text)=>if self.focused{self.text(&text,ctx.input(|i|i.modifiers));},
    egui::Event::Ime(egui::ImeEvent::Commit(text))=>if self.focused{self.text(&text,ctx.input(|i|i.modifiers));},
    egui::Event::WindowFocused(false)=>self.release(),
-   egui::Event::Paste(_)|egui::Event::Copy|egui::Event::Cut=>if self.focused{self.error=Some("Clipboard integration is not provided in Browser Interaction.".into());},
+   egui::Event::Paste(_)=>if self.focused&&!clipboard_key{self.push(BrowserInput::Clipboard(BrowserClipboardAction::Paste));},
+   egui::Event::Copy=>if self.focused&&!clipboard_key{self.push(BrowserInput::Clipboard(BrowserClipboardAction::Copy));},
+   egui::Event::Cut=>if self.focused&&!clipboard_key{self.push(BrowserInput::Clipboard(BrowserClipboardAction::Cut));},
    _=>{},
   }}
   self.sync_modifiers(ctx.input(|i|i.modifiers));
   ctx.input_mut(|i|i.events.extend(unused));
  }
+}
+fn clipboard_shortcut(key:egui::Key,modifiers:egui::Modifiers)->Option<BrowserClipboardAction>{
+ if modifiers.alt||modifiers.mac_cmd{return None;}
+ if modifiers.ctrl&&!modifiers.shift{return match key{egui::Key::C|egui::Key::Insert=>Some(BrowserClipboardAction::Copy),egui::Key::X=>Some(BrowserClipboardAction::Cut),egui::Key::V=>Some(BrowserClipboardAction::Paste),_=>None};}
+ if modifiers.shift&&!modifiers.ctrl{return match key{egui::Key::Insert=>Some(BrowserClipboardAction::Paste),egui::Key::Delete=>Some(BrowserClipboardAction::Cut),_=>None};}
+ None
 }
 fn virtual_key(key:egui::Key)->Option<i32>{use egui::Key::*;Some(match key {
  ArrowLeft=>37,ArrowUp=>38,ArrowRight=>39,ArrowDown=>40,Escape=>27,Tab=>9,Backspace=>8,Enter=>13,Space=>32,Insert=>45,Delete=>46,Home=>36,End=>35,PageUp=>33,PageDown=>34,

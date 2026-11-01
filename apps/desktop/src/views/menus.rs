@@ -128,11 +128,11 @@ impl Catalog {
                             "actionAlwaysOnTop" => Some(ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("window-always-on-top"))).unwrap_or(false)),
                             "toggleStatusBar" => Some(ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("window-status-visible"))).unwrap_or(true)),
                             "actionLockPreview" => Some(ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("window-preview-locked"))).unwrap_or(false)),
-                            "actionSceneGridMode" => Some(ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("scene-grid"))).unwrap_or(false)),
-                            "actionSceneListMode" => Some(!ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("scene-grid"))).unwrap_or(false)),
-                            "toggleContextBar" | "toggleContextToolbars" => Some(super::source_toolbar::source_bar_visible(ui.ctx())),
-                            "toggleListboxToolbars" => Some(super::source_toolbar::listbox_bars_visible(ui.ctx())),
-                            "toggleSourceIcons" => Some(ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("source-type-icons"))).unwrap_or(true)),
+                            "actionSceneGridMode" => Some(session.snapshot().preferences().scene_grid()),
+                            "actionSceneListMode" => Some(!session.snapshot().preferences().scene_grid()),
+                            "toggleContextBar" | "toggleContextToolbars" => Some(session.snapshot().preferences().source_toolbar_visible()),
+                            "toggleListboxToolbars" => Some(session.snapshot().preferences().listbox_toolbars_visible()),
+                            "toggleSourceIcons" => Some(session.snapshot().preferences().source_icons_visible()),
                             _ => None,
                         };
                         let response = if let Some(mut checked) = checked {
@@ -172,6 +172,10 @@ impl Catalog {
                 }
                 _ => {}
             }
+        }
+        if menu.id=="menuTools" {
+            ui.separator();
+            if ui.button(crate::i18n::tr_key_or(ui,"Module.frontend-tools.OutputTimer","Output Timer")).clicked(){intents.push(Intent::OpenOutputTimer);ui.close_menu();}
         }
         if menu.id=="menuTools"&&session.snapshot().preferences().plugin_enabled(skylive_core::NDI_PLUGIN){
             ui.separator();if ui.button(crate::i18n::tr(ui,"NDI Output Settings")).on_hover_text(crate::i18n::tr(ui,"Configure and explicitly start or stop Program and Preview NDI senders.")).clicked(){intents.push(Intent::OpenNdiOutputs);ui.close_menu();}

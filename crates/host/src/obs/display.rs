@@ -18,9 +18,10 @@ impl Importer {
         if settings.get("monitor_wgc").is_some_and(|value|value.as_i64().is_none()) {
             return Err(issue(&format!("{path}.monitor_wgc"),"invalid","legacy monitor_wgc must be an integer"));
         }
-        // HDR-preserving OBS sources cannot be silently flattened to this SDR
-        // engine. Export explicitly writes true; false/missing is not equivalent.
-        if !boolean(settings,"force_sdr",false,path)? {return Err(issue(&format!("{path}.force_sdr"),"unsupported","monitor_capture import requires Force SDR; HDR-preserving capture is not implemented"));}
+        // Retain OBS's authored policy. The Windows capture backend converts
+        // supported HDR frames to the renderer's SDR output; unsupported or
+        // unknown color spaces remain explicit capture errors.
+        let force_sdr=boolean(settings,"force_sdr",false,path)?;
         let id=string(settings,"monitor_id",path)?;
         if id.is_empty() || id.len()>1024 || id.chars().any(char::is_control) {return Err(issue(&format!("{path}.monitor_id"),"invalid","a stable Windows monitor interface ID is required"));}
         let method=match settings.get("method") {
@@ -39,11 +40,11 @@ impl Importer {
             .ok_or_else(||issue(&format!("{path}.monitor_id"),"display_target_not_found","the exact Windows monitor is unavailable; refusing a primary-monitor or canvas-size substitution"))?;
         display.binding(boolean(settings,"capture_cursor",true,path)?)
             .map_err(|error|issue(path,"invalid_display",error.to_string()))?
-            .with_method(method).map_err(|error|issue(path,"invalid_display",error.to_string()))
+            .with_method(method).and_then(|binding|binding.with_force_sdr(force_sdr)).map_err(|error|issue(path,"invalid_display",error.to_string()))
     }
 }
 pub(super) fn export(binding:&DisplayCaptureBinding,path:&str)->Result<Value,ObsError>{
     let DisplayTarget::Windows {device_id}=binding.target() else {return Err(issue(path,"unsupported_platform","macOS display capture does not use the Windows monitor_capture provider"));};
     let method=match binding.method(){DisplayCaptureMethod::Auto=>0,DisplayCaptureMethod::Dxgi=>1,DisplayCaptureMethod::Wgc=>2,DisplayCaptureMethod::Gdi=>return Err(issue(path,"unsupported_capture_method","OBS32 monitor_capture has no GDI method; choose Auto, DXGI or WGC before export"))};
-    Ok(json!({"monitor_id":device_id,"method":method,"capture_cursor":binding.capture_cursor(),"force_sdr":true}))
+    Ok(json!({"monitor_id":device_id,"method":method,"capture_cursor":binding.capture_cursor(),"force_sdr":binding.force_sdr()}))
 }

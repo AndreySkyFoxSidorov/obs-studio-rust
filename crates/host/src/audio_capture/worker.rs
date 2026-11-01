@@ -638,7 +638,7 @@ impl AudioCaptureWorker {
                     let Some(frame)=capture.frame(source.id()).filter(|frame|capture.session()==session.identity()&&frame.binding.matches_source(source.kind()))else{continue;};
                     let Some(origin @ crate::capture::NativeFrameOrigin::Camera {..})=frame.native_origin else {continue;};
                     let Some(clock_epoch)=frame.native_clock_epoch else {continue;};
-                    let strings=if binding.embedded_audio(){match binding.target(){skylive_core::VideoCaptureTarget::Windows{symbolic_link}=>symbolic_link.len(),skylive_core::VideoCaptureTarget::Macos{unique_id}=>unique_id.len()}}else{let audio=binding.audio().ok_or(AudioCaptureError::Invalid("camera audio binding disappeared"))?;match audio.target(){skylive_core::AudioTarget::WindowsEndpoint {id}=>id.len(),_=>0}};
+                    let strings=if binding.embedded_audio(){match binding.target(){skylive_core::VideoCaptureTarget::Windows{symbolic_link}=>symbolic_link.len(),skylive_core::VideoCaptureTarget::Macos{unique_id}=>unique_id.len()}}else{let audio=binding.audio().ok_or(AudioCaptureError::Invalid("camera audio binding disappeared"))?;match audio.target(){skylive_core::AudioTarget::WindowsEndpoint {id}=>id.len(),skylive_core::AudioTarget::WindowsCamera {symbolic_link}=>symbolic_link.len(),_=>0}};
                     // For ordinary camera samples requested_at is the capture
                     // activation time, so observe each new sample once below.
                     // A delayed sample instead needs its original capture time:
@@ -1593,6 +1593,24 @@ struct NativeOwner {
     limits: AudioCaptureLimits,
 }
 impl NativeOwner {
+    fn retain_pending_openings(&mut self) {
+        let keep = self.bindings();
+        if let Some(Ok(backend)) = &mut self.backend {
+            backend.retain_pending_openings(&keep);
+        }
+    }
+    fn retire_changed_open_owners(&mut self, incoming: &[(Id, AudioCaptureBinding)]) {
+        // A request belongs to the source identities which admitted it, not
+        // merely to an equal device string. Remove its receiver immediately
+        // when those owners change, even if Program still retains the binding.
+        let keep: Vec<_> = self.bindings().into_iter().filter(|binding| {
+            self.sources.iter().filter(|(_, value)| value == binding)
+                .all(|(id, _)| incoming.iter().any(|(other, value)| other == id && value == binding))
+                && incoming.iter().filter(|(_, value)| value == binding)
+                    .all(|(id, _)| self.sources.iter().any(|(other, value)| other == id && value == binding))
+        }).collect();
+        if let Some(Ok(backend)) = &mut self.backend { backend.retain_pending_openings(&keep); }
+    }
     fn poll_camera_activation(&mut self){
         use crate::camera_activation::{Phase,Problem};
         let pending=self.camera_pending.take().or_else(||{
@@ -1604,7 +1622,10 @@ impl NativeOwner {
                 pending.watch.publish(Phase::Failed,Some(Problem {code:"camera_av_obsolete",detail:"Old-session audio activation cannot affect the replacement session".into()}),Some(pending.cut));return;
             }
             if cancel.end_session {self.retire_live();self.sources.clear();}else{
-                self.camera_activation=cancel.policy;self.sources.retain(|(id,_)|self.camera_activation.enabled(*id));
+                self.camera_activation=cancel.policy;
+                let next_sources:Vec<_>=self.sources.iter().filter(|(id,_)|self.camera_activation.enabled(*id)).cloned().collect();
+                self.retire_changed_open_owners(&next_sources);
+                self.sources=next_sources;
                 if let Some(live)=&mut self.live {
                     match live.set_capture_bindings(unique_bindings(&self.sources, &self.window_sources))
                         .and_then(|()|live.set_camera_activation(self.camera_activation.sources().to_vec().into(),None)){
@@ -1615,6 +1636,7 @@ impl NativeOwner {
             }
             pending.changes=cancel.changes;pending.cancelled=true;pending.ended=cancel.end_session;
         }}
+        self.retain_pending_openings();
         let keep=self.bindings();close_obsolete(&mut self.streams,&keep);
         let end_session=pending.watch.cancellation().is_some_and(|cancel|cancel.end_session);
         let mut retiring=end_session&&self.streams.iter().any(|stream|stream.owner_session==pending.watch.key.session);let mut problem=None;let mut failed=None;
@@ -1674,6 +1696,7 @@ impl NativeOwner {
     }
     fn synchronize_scope(&mut self, session: u64, clock_epoch: u64) {
         if self.scope != Some((session, clock_epoch)) {
+            if let Some(Ok(backend)) = &mut self.backend { backend.retain_pending_openings(&[]); }
             self.retire_live();
             close_obsolete(&mut self.streams, &[]);
             self.retries.clear();
@@ -1774,6 +1797,7 @@ impl NativeOwner {
     }
     fn drain(&mut self, now: MediaTime, sent: Instant, continuous: bool) {
         let bindings = self.bindings();
+        if let Some(Ok(backend)) = &mut self.backend { backend.retain_pending_openings(&bindings); }
         self.retries
             .retain(|(binding, _, _)| bindings.contains(binding));
         self.latest.retain(|binding, _| bindings.contains(binding));
@@ -1847,6 +1871,13 @@ impl NativeOwner {
                         AudioCaptureError::Busy | AudioCaptureError::Backpressure(_)
                     )
                 {
+                    // Any native stream that is about to be reopened has a
+                    // new capture identity, including a changed default audio
+                    // endpoint. Discard its buffered PCM and DSP history before
+                    // admitting replacement packets under the same binding.
+                    if self.streams.iter().any(|stream|stream.binding==*binding && stream.delivered && !stream.closing) {
+                        if let Some(live)=&mut self.live {live.invalidate_native(binding);}
+                    }
                     if let Some(stream) = self
                         .streams
                         .iter_mut()
@@ -1932,8 +1963,10 @@ impl NativeOwner {
                 use crate::camera_activation::{Phase,Problem,CameraAudioCut};
                 if self.camera_pending.is_some(){watch.publish(Phase::Failed,Some(Problem {code:"camera_av_busy",detail:"Previous camera audio retirement is still pending".into()}),None);return Reply::CameraActivation {key};}
                 self.synchronize_scope(key.session,clock_epoch);self.camera_activation=policy;
+                let sources:Vec<_>=sources.into_iter().filter(|(id,_)|self.camera_activation.enabled(*id)).collect();
+                self.retire_changed_open_owners(&sources);
                 self.sources=sources;
-                self.sources.retain(|(id,_)|self.camera_activation.enabled(*id));
+                self.retain_pending_openings();
                 let result=if let Some(live)=&mut self.live {
                     live.set_capture_bindings(unique_bindings(&self.sources, &self.window_sources))
                         .and_then(|()|live.set_camera_activation(self.camera_activation.sources().to_vec().into(),route.map(|route|*route)))
@@ -1998,9 +2031,11 @@ impl NativeOwner {
                         };
                     }
                 }
+                self.retire_changed_open_owners(&sources);
                 self.sources = sources;
                 self.window_sources = window_sources;
                 self.window_observations = window_observations;
+                self.retain_pending_openings();
                 if self.live.is_none() {
                     self.drain(now, sent, false);
                 } else {
@@ -2171,9 +2206,11 @@ impl NativeOwner {
                         .map_err(|detail|AudioCaptureError::Native {operation:"configure audio monitoring",detail})
                 });
                 if result.is_ok() {
+                    self.retire_changed_open_owners(&sources);
                     self.sources = sources;
                     self.window_sources = window_sources;
                     self.window_observations = window_observations;
+                    self.retain_pending_openings();
                 }
                 let result =
                     result.map(|()| self.live.as_ref().expect("installed Program").stats());

@@ -261,11 +261,16 @@ impl NativeCameraBackend for NativeBackend {
         let reader =
             unsafe { MFCreateSourceReaderFromMediaSource(source.0.as_ref().unwrap(), &attributes) }
                 .map_err(|e| native_error("camera async source reader", e))?;
-        let selected = media_types(&reader, limits)?
-            .into_iter()
-            .find(|(_, info)| info.mode == Some(binding.mode()))
-            .map(|(ty, _)| ty)
+        let mut modes = media_types(&reader, limits)?;
+        // Prefer the exact authored representation. Media Foundation drivers
+        // can report the same rate with a different rational after a reopen;
+        // accept that exact mathematical equivalent without changing format or
+        // persisting an incidental driver representation.
+        let selected_index = modes.iter().position(|(_, info)| info.mode == Some(binding.mode()))
+            .or_else(|| modes.iter().position(|(_, info)| info.mode.is_some_and(|mode|
+                super::super::selection::equivalent_native_mode(mode, binding.mode()))))
             .ok_or(CameraError::ModeNotFound)?;
+        let (selected, _) = modes.swap_remove(selected_index);
         unsafe {
             reader
                 .SetStreamSelection(MF_SOURCE_READER_ALL_STREAMS.0 as u32, false)
@@ -275,12 +280,13 @@ impl NativeCameraBackend for NativeBackend {
         .map_err(|e| native_error("select exact camera native mode", e))?;
         let actual = unsafe { reader.GetCurrentMediaType(STREAM) }
             .map_err(|e| native_error("verify camera native mode", e))?;
-        if mode_info(&actual)?.mode != Some(binding.mode()) {
+        if mode_info(&actual)?.mode.is_none_or(|mode|
+            !super::super::selection::equivalent_native_mode(mode, binding.mode())) {
             return Err(CameraError::ModeNotFound);
         }
         let stride = checked_stride(&actual, binding.mode(), limits)?;
         let avc = if binding.mode().format()==VideoPixelFormat::H264 {
-            Some(avc::CameraAvcDecoder::new(binding.width(),binding.height(),limits,avc_configuration(&actual)?)?)
+            Some(avc::CameraAvcDecoder::new(binding.width(),binding.height(),limits,avc_configuration(&actual)?)?.with_color(binding.color_matrix(),binding.color_range()))
         } else {None};
         let mut stream = NativeStream {
             source: source.0.take().unwrap(),
@@ -289,6 +295,10 @@ impl NativeCameraBackend for NativeBackend {
             state,
             consumer,
             mode: binding.mode(),
+            decode_mode: binding.decode_mode(),
+            color_matrix:binding.color_matrix(),
+            color_range:binding.color_range(),
+            mjpeg_color: mjpeg::ColorState::default(),
             stride,
             avc,
             avc_ready: VecDeque::new(),
@@ -363,10 +373,15 @@ fn media_types(
                 }
                 let mut duplicate = false;
                 for (previous, _) in &types {
+                    // Some camera drivers expose a malformed media type for
+                    // which IMFMediaType::Compare fails, alongside usable
+                    // modes. Failure is not proof of equality: retain the
+                    // entry for metadata validation rather than losing the
+                    // entire list (and valid Full HD modes) from that device.
+                    // The existing scan and distinct-mode limits still bound
+                    // a driver which repeatedly fails comparisons.
                     if unsafe { ty.Compare(previous, MF_ATTRIBUTES_MATCH_ALL_ITEMS) }
-                        .map_err(|e| native_error("camera exact mode comparison", e))?
-                        .as_bool()
-                    {
+                        .is_ok_and(|equal| equal.as_bool()) {
                         duplicate = true;
                         break;
                     }
@@ -1044,6 +1059,10 @@ struct NativeStream {
     state: Arc<CallbackState>,
     consumer: Consumer<QueuedSample>,
     mode: VideoCaptureMode,
+    decode_mode: VideoCaptureMode,
+    color_matrix: Option<VideoColorMatrix>,
+    color_range: Option<VideoColorRange>,
+    mjpeg_color: mjpeg::ColorState,
     stride: Option<i32>,
     avc: Option<avc::CameraAvcDecoder>,
     avc_ready: VecDeque<NativeVideoFrame>,
@@ -1083,7 +1102,7 @@ impl NativeStream {
     }
 }
 #[path = "native_windows_controls.rs"]
-mod driver_controls;
+pub(in crate::camera_capture) mod driver_controls;
 impl NativeCameraStream for NativeStream {
     fn enumerate_modes(&mut self,limits:CameraLimits)->Result<Vec<CameraModeInfo>,CameraError> {
         if self.is_stopping() {return Err(CameraError::Closed);}
@@ -1128,7 +1147,7 @@ impl NativeCameraStream for NativeStream {
             let actual = unsafe { self.reader.GetCurrentMediaType(STREAM) }
                 .map_err(|e| native_error("verify camera mode after format change", e))?;
             let info = mode_info(&actual)?;
-            if info.mode != Some(self.mode) {
+            if info.mode.is_none_or(|mode|!super::super::selection::equivalent_native_mode(mode,self.mode)) {
                 return Err(CameraError::Native {
                     operation: "verify camera mode after format change",
                     detail: format!("selected {:?}; actual {}x{} {}/{} fps {}, unsupported reason: {:?}",
@@ -1142,7 +1161,7 @@ impl NativeCameraStream for NativeStream {
                 // decoded-picture buffers never coexist under one admission.
                 self.avc_ready.clear();
                 self.avc.take();
-                self.avc=Some(avc::CameraAvcDecoder::new(self.mode.width(),self.mode.height(),limits,avc_configuration(&actual)?)?);
+                self.avc=Some(avc::CameraAvcDecoder::new(self.mode.width(),self.mode.height(),limits,avc_configuration(&actual)?)?.with_color(self.color_matrix,self.color_range));
             }
             // A sample delivered with the change may belong to either side of
             // the transition. Discard it before requesting the next one.
@@ -1167,7 +1186,7 @@ impl NativeCameraStream for NativeStream {
             self.resume_read()?;
             return Ok(self.avc_ready.pop_front());
         }
-        let image = copy_sample(&raw, self.mode, self.stride, limits)?;
+        let image = copy_sample(&raw, self.decode_mode, self.stride, limits, self.color_matrix, self.color_range, &mut self.mjpeg_color)?;
         self.resume_read()?;
         let presentation_ns = i128::from(sample.timestamp) * 100;
         let dropped = self.state.dropped.swap(0, Ordering::AcqRel);
@@ -1253,6 +1272,9 @@ fn copy_sample(
     mode: VideoCaptureMode,
     stride: Option<i32>,
     limits: CameraLimits,
+    matrix: Option<VideoColorMatrix>,
+    range: Option<VideoColorRange>,
+    mjpeg_color: &mut mjpeg::ColorState,
 ) -> Result<RgbaFrame, CameraError> {
     if unsafe { sample.GetBufferCount() }.map_err(|e| native_error("camera buffer count", e))? != 1
     {
@@ -1270,7 +1292,7 @@ fn copy_sample(
             let cap=mjpeg::compressed_cap(mode,limits)?;
             if start.is_null()||length==0||length>maximum||length as usize>cap||maximum as usize>mjpeg::native_cap(mode,limits)? {return Err(CameraError::BudgetExceeded("MJPEG native compressed buffer length/capacity"));}
             let bytes=unsafe {std::slice::from_raw_parts(start,length as usize)};
-            mjpeg::decode(bytes,mode,limits)
+            mjpeg::decode_with_color(bytes,mode,limits,matrix,range,mjpeg_color)
         })();
         drop(guard);
         return result;
@@ -1458,8 +1480,8 @@ fn copy_locked(
 /// DirectShow owner-thread conversion of an already owned, bounded sample.
 /// `pitch` is the negotiated stride; negative RGB pitch denotes bottom-up.
 /// No pointer obtained from the driver escapes this call.
-pub(in crate::camera_capture) fn decode_directshow_buffer(raw:&[u8],mode:VideoCaptureMode,pitch:i32,limits:CameraLimits)->Result<RgbaFrame,CameraError> {
-    if mode.format()==VideoPixelFormat::Mjpeg {return mjpeg::decode(raw,mode,limits);}
+pub(in crate::camera_capture) fn decode_directshow_buffer(raw:&[u8],mode:VideoCaptureMode,pitch:i32,limits:CameraLimits,matrix:Option<VideoColorMatrix>,range:Option<VideoColorRange>,mjpeg_color:&mut mjpeg::ColorState)->Result<RgbaFrame,CameraError> {
+    if mode.format()==VideoPixelFormat::Mjpeg {return mjpeg::decode_with_color(raw,mode,limits,matrix,range,mjpeg_color);}
     if mode.format()==VideoPixelFormat::H264 {return Err(CameraError::Unavailable("DirectShow AVC camera decode is not yet supported"));}
     if pitch==0 {return Err(CameraError::InvalidFrame("DirectShow camera stride is zero"));}
     let offset=if pitch<0 {(pitch.unsigned_abs() as usize).checked_mul(mode.height().saturating_sub(1) as usize)

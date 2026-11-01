@@ -458,6 +458,7 @@ fn dialogs(session: &Session) -> Vec<Dialog> {
             name: "Display".into(),
             selected: Some(target.clone()),
             capture_cursor: false,
+            force_sdr: true,
             method: DisplayCaptureMethod::Auto,
             displays: vec![skylive_host::capture::DisplayInfo {
                 target,

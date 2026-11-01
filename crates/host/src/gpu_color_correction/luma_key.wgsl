@@ -58,9 +58,14 @@ fn main(@builtin(global_invocation_id) invocation:vec3<u32>) {
     let raw=source_pixels.values[index];let a=f32(raw>>24u)/255.0;
     var inverse=0.0;if a>0.0 {inverse=1.0/a;}
     let rgb=sampled_rgb(raw)*inverse;
-    let luminance=rgb.x*0.2126+rgb.y*0.7152+rgb.z*0.0722;
+    let legacy=parameters.chroma.x!=0.0;
+    var luminance=rgb.x*0.2126+rgb.y*0.7152+rgb.z*0.0722;
+    if legacy {luminance=rgb.x*0.2989+rgb.y*0.5870+rgb.z*0.1140;}
     let low=hlsl_smoothstep(parameters.key.x,parameters.key.y,luminance);
     let high=1.0-hlsl_smoothstep(parameters.key.z,parameters.key.w,luminance);
-    let alpha=a*(low*high);let color=rgb*alpha;
+    var alpha=a*(low*high);
+    if legacy {alpha=low*high;}
+    var color=rgb*alpha;
+    if legacy {color=rgb;}
     target_pixels.values[index]=encode_byte(color.x)|(encode_byte(color.y)<<8u)|(encode_byte(color.z)<<16u)|(to_byte(alpha)<<24u);
 }

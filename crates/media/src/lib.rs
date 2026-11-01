@@ -82,7 +82,7 @@ mod recording_color;
 pub use recording_color::recording_nv12;
 mod packed_frame;
 pub use camera_color::{
-    CameraFrameLayout, CameraMatrix, CameraPixelFormat, CameraRange, ingest_camera_frame,
+    CameraFrameLayout, CameraMatrix, CameraPixelFormat, CameraRange, ingest_camera_frame, ingest_ycbcr444,
 };
 pub use packed_frame::{
     AlphaMode, PackedFrameLayout, PackedFrameLimits, PackedPixelFormat, RowOrder,

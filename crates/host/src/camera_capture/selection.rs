@@ -6,6 +6,14 @@ use std::cmp::Ordering;
 
 const LIMIT: usize = 1024;
 const FULL_HD_PIXELS: u64 = 1920 * 1080;
+/// The same native format and mathematical frame rate, without treating
+/// merely rounded frame intervals as equal. Drivers may enumerate 30/1 on
+/// one connection and 60/2 on the next.
+pub(crate) fn equivalent_native_mode(a: VideoCaptureMode, b: VideoCaptureMode) -> bool {
+    a.width() == b.width() && a.height() == b.height() && a.format() == b.format()
+        && u64::from(a.fps_num()) * u64::from(b.fps_den())
+            == u64::from(b.fps_num()) * u64::from(a.fps_den())
+}
 /// DirectShow stores an integer 100 ns frame interval; Media Foundation may
 /// report the same interval with a different rational representation.
 pub(crate) fn directshow_mode_matches(a:VideoCaptureMode,b:VideoCaptureMode)->bool {
@@ -18,10 +26,40 @@ pub(crate) fn directshow_mode_matches(a:VideoCaptureMode,b:VideoCaptureMode)->bo
 pub(super) fn resolve_camera_fps_policy(modes:&[CameraModeInfo], current:VideoCaptureMode,
     policy:CameraFpsPolicy, output:(u32,u32))->Result<Option<VideoCaptureMode>,CameraError> {
     match policy {
-        CameraFpsPolicy::Fixed=>{validate(modes)?;Ok(modes.iter().filter_map(|info|info.mode).find(|mode|*mode==current))},
+        // Drivers may express the same FPS using a different rational after
+        // a reconnect. Return the currently reported mode, retaining the
+        // authored width, height and pixel format and the exact rate value.
+        CameraFpsPolicy::Fixed=>{validate(modes)?;Ok(modes.iter().filter_map(|info|info.mode).find(|mode|equivalent_native_mode(*mode,current)))},
         CameraFpsPolicy::Highest=>highest_camera_frame_rate(modes,current),
         CameraFpsPolicy::MatchOutput=>camera_frame_rate_matching_project(modes,current,output.0,output.1),
     }
+}
+/// Resolve OBS's Custom/Any request against current reported formats. The
+/// authored dimensions and FPS policy remain unchanged between device opens.
+pub fn resolve_camera_any_format(modes:&[CameraModeInfo], current:VideoCaptureMode,
+    policy:CameraFpsPolicy, output:(u32,u32))->Result<Option<VideoCaptureMode>,CameraError> {
+    validate(modes)?;
+    if output.0==0 || output.1==0 {return Err(CameraError::InvalidFrame("project frame rate is zero"));}
+    let target=match policy {CameraFpsPolicy::Fixed=>(current.fps_num(),current.fps_den()),CameraFpsPolicy::MatchOutput=>output,CameraFpsPolicy::Highest=>(0,1)};
+    let distance=|mode:VideoCaptureMode| (u128::from(mode.fps_den())*u128::from(target.0)).abs_diff(u128::from(target.1)*u128::from(mode.fps_num()));
+    Ok(modes.iter().filter_map(|info|info.mode)
+        .filter(|mode|mode.width()==current.width()&&mode.height()==current.height())
+        .filter(|mode|policy!=CameraFpsPolicy::Fixed || u128::from(mode.fps_den())*10_000_000/u128::from(mode.fps_num())==u128::from(current.fps_den())*10_000_000/u128::from(current.fps_num()))
+        .min_by(|a,b| {
+            let order=if policy==CameraFpsPolicy::Highest {
+                (u64::from(b.fps_num())*u64::from(a.fps_den())).cmp(&(u64::from(a.fps_num())*u64::from(b.fps_den())))
+            } else {
+                (distance(*a)*u128::from(b.fps_num())).cmp(&(distance(*b)*u128::from(a.fps_num())))
+            };
+            // Match the fixed-format selector when two frame intervals are
+            // equally close: prefer the faster rate before breaking ties on
+            // the actual native format and exact rational representation.
+            order.then_with(||(u64::from(b.fps_num())*u64::from(a.fps_den()))
+                .cmp(&(u64::from(a.fps_num())*u64::from(b.fps_den()))))
+                .then_with(||format_key(a.format()).cmp(&format_key(b.format())))
+                .then_with(||a.fps_den().cmp(&b.fps_den()))
+                .then_with(||a.fps_num().cmp(&b.fps_num()))
+        }))
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct CameraModeRecommendations {

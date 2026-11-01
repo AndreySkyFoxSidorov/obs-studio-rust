@@ -45,7 +45,7 @@ pub(super) struct NativeBackend {
     epoch: u64,
     wgc: wgc::WgcBackend,
     cached: std::collections::HashMap<
-        (WindowTarget, skylive_core::WindowMatchPriority),
+        (WindowTarget, skylive_core::WindowMatchPriority, bool),
         (isize, WindowTarget, u32),
     >,
     audio_processes: std::collections::HashMap<isize, (u32, u64, Process)>,
@@ -99,7 +99,7 @@ impl NativeBackend {
                 .map_err(|_|WindowCaptureError::InvalidFrame("automatic BitBlt client binding"))?)
         }else{None};
         let effective=client_binding.as_ref().unwrap_or(binding);
-        let window=self.resolve_window(effective)?;
+        let window=self.resolve_window(effective,false)?;
         let mut pid=0;
         unsafe { GetWindowThreadProcessId(window.hwnd,Some(&mut pid)); }
         if pid==0 { return Err(WindowCaptureError::TargetNotFound); }
@@ -107,7 +107,7 @@ impl NativeBackend {
         let image=self.capture(effective,limits)?;
         let mut after=0;
         unsafe { GetWindowThreadProcessId(window.hwnd,Some(&mut after)); }
-        let key=(effective.target().clone(),effective.priority());
+        let key=(effective.target().clone(),effective.priority(),false);
         if after!=pid || !unsafe { IsWindow(window.hwnd) }.as_bool()
             || !self.cached.get(&key).is_some_and(|(handle,_,cached_pid)|*handle==window.hwnd.0 as isize && *cached_pid==pid) {
             return Err(WindowCaptureError::TargetNotFound);
@@ -123,8 +123,9 @@ impl NativeBackend {
     fn resolve_window(
         &mut self,
         binding: &WindowCaptureBinding,
+        top_level: bool,
     ) -> Result<Window, WindowCaptureError> {
-        let cache_key = (binding.target().clone(), binding.priority());
+        let cache_key = (binding.target().clone(), binding.priority(), top_level);
         let cached = if let Some((raw, observed, old_pid)) = self.cached.get(&cache_key) {
             let hwnd = HWND(*raw as *mut c_void);
             let mut pid = 0;
@@ -150,7 +151,7 @@ impl NativeBackend {
         } else {
             let mut best = None;
             let mut rating = u32::MAX;
-            for candidate in windows(false)? {
+            for candidate in windows(false,top_level)? {
                 if let Some(score) = super::super::matching::windows_rating(
                     binding.target(),
                     &candidate.info.target,
@@ -192,6 +193,7 @@ impl NativeBackend {
     }
 }
 impl WindowCaptureBackend for NativeBackend {
+    fn set_sdr_white_nits(&mut self, nits:u16) { self.wgc.set_sdr_white_nits(nits); }
     fn retain_epoch(&mut self, session: u64, epoch: u64, bindings: &[WindowCaptureBinding]) {
         let reset = self.session != session || self.epoch != epoch;
         self.retain_bindings(session, bindings);
@@ -212,7 +214,6 @@ impl WindowCaptureBackend for NativeBackend {
                 "Windows window backend requires a Windows target",
             ));
         }
-        let found = self.resolve_window(binding)?;
         let use_wgc = match binding.method() {
             WindowCaptureMethod::Wgc => true,
             WindowCaptureMethod::Gdi => false,
@@ -223,6 +224,9 @@ impl WindowCaptureBackend for NativeBackend {
             }
         };
         if use_wgc {
+            // OBS resolves WGC against top-level windows, whereas BitBlt
+            // matches the actual UWP child. Keep both selectors independent.
+            let found = self.resolve_window(binding,true)?;
             let mut pid = 0;
             unsafe {
                 GetWindowThreadProcessId(found.hwnd, Some(&mut pid));
@@ -260,7 +264,7 @@ impl WindowCaptureBackend for NativeBackend {
         }
         let keys: std::collections::HashSet<_> = bindings
             .iter()
-            .map(|v| (v.target().clone(), v.priority()))
+            .flat_map(|v| [(v.target().clone(), v.priority(), false), (v.target().clone(), v.priority(), true)])
             .collect();
         self.cached.retain(|key, _| keys.contains(key));
         let handles:std::collections::HashSet<_>=self.cached.values().map(|(handle,_,_)|*handle).collect();
@@ -274,7 +278,7 @@ impl WindowCaptureBackend for NativeBackend {
             cursor: true,
             hdr: false,
             note: Some(
-                "SDR GDI client-area or genuine Windows Graphics Capture client/full-window; WGC requires runtime support and retains the OS border. HDR and protected-content bypass are unavailable.",
+                "SDR GDI client-area or Windows Graphics Capture client/full-window; WGC requires runtime support and retains the OS border. HDR WGC input is converted to SDR; HDR output and protected-content bypass are unavailable.",
             ),
         }
     }
@@ -283,7 +287,7 @@ impl WindowCaptureBackend for NativeBackend {
         // OBS populates the chooser with EXCLUDE_MINIMIZED, while the
         // runtime resolver uses INCLUDE_MINIMIZED to retain an existing
         // target while it is minimized or cloaked.
-        Ok(windows(true)?.into_iter().map(|w| w.info).collect())
+        Ok(windows(true,false)?.into_iter().map(|w| w.info).collect())
     }
     fn capture(
         &mut self,
@@ -306,7 +310,7 @@ impl WindowCaptureBackend for NativeBackend {
             ));
         }
         let _dpi = DpiGuard::new()?;
-        let found = self.resolve_window(binding)?;
+        let found = self.resolve_window(binding,false)?;
         let mut rect = RECT::default();
         unsafe { GetClientRect(found.hwnd, &mut rect) }
             .map_err(|e| backend_error("GetClientRect", e))?;
@@ -420,14 +424,16 @@ struct Enumeration {
     bytes: usize,
     error: Option<WindowCaptureError>,
     exclude_minimized: bool,
+    top_level: bool,
 }
-fn windows(exclude_minimized: bool) -> Result<Vec<Window>, WindowCaptureError> {
+fn windows(exclude_minimized: bool, top_level: bool) -> Result<Vec<Window>, WindowCaptureError> {
     let mut data = Enumeration {
         values: Vec::new(),
         visited: 0,
         bytes: 0,
         error: None,
         exclude_minimized,
+        top_level,
     };
     data.values
         .try_reserve_exact(MAX_WINDOWS)
@@ -444,6 +450,12 @@ fn windows(exclude_minimized: bool) -> Result<Vec<Window>, WindowCaptureError> {
     result.map_err(|e| backend_error("EnumWindows", e))?;
     Ok(data.values)
 }
+// OBS WGC resolves selectors over actual top-level windows, including UWP
+// frame hosts. Import uses this same inventory to obtain the correct basis.
+pub(super) fn top_level_inventory() -> Result<Vec<WindowInfo>, WindowCaptureError> {
+    let _dpi = DpiGuard::new()?;
+    Ok(windows(false,true)?.into_iter().map(|window|window.info).collect())
+}
 unsafe extern "system" fn callback(hwnd: HWND, param: LPARAM) -> BOOL {
     let data = unsafe { &mut *(param.0 as *mut Enumeration) };
     data.visited += 1;
@@ -453,10 +465,15 @@ unsafe extern "system" fn callback(hwnd: HWND, param: LPARAM) -> BOOL {
         ));
         return BOOL(0);
     }
-    if data.exclude_minimized && (unsafe { IsIconic(hwnd) }.as_bool() || is_cloaked(hwnd)) {
+    // OBS's top-level WGC lookup excludes cloaked windows even when it is
+    // allowed to consider minimized targets. The ordinary BitBlt resolver
+    // retains its existing include-minimized behavior.
+    if (data.exclude_minimized && unsafe { IsIconic(hwnd) }.as_bool())
+        || ((data.exclude_minimized || data.top_level) && is_cloaked(hwnd)) {
         return BOOL(1);
     }
-    match actual_uwp_window(hwnd).and_then(describe) {
+    let candidate=if data.top_level {Ok(hwnd)} else {actual_uwp_window(hwnd)};
+    match candidate.and_then(describe) {
         Ok(Some(value)) if unsafe { IsWindowVisible(hwnd) }.as_bool() => {
             // OBS hides its own internal Windows shell entries in the chooser,
             // but still permits resolving an existing explicit selector.

@@ -403,7 +403,7 @@ mod tests {
         }
     }
     #[test]
-    fn source_drag_uses_reversed_layer_order_and_locked_row_never_starts_drag() {
+    fn source_drag_uses_reversed_layer_order_and_locked_source_can_reorder() {
         let mut h = Harness::scenes(1, 1.0);
         let scene = h.session.preview();
         for n in 0..3 {
@@ -445,13 +445,16 @@ mod tests {
             })
             .unwrap();
         h.frame(vec![]);
-        let before = h.session.snapshot();
         let start = h.rect(top).center();
         h.press(start);
         h.frame(vec![egui::Event::PointerMoved(end)]);
         h.release(end);
-        assert!(h.intents.is_empty());
-        assert!(Arc::ptr_eq(&before, &h.session.snapshot()));
+        let command = h.command();
+        h.session.apply(command).unwrap();
+        let reordered = h.session.snapshot();
+        let item = &reordered.scene(scene).unwrap().items()[0];
+        assert_eq!(item.id(), top);
+        assert!(item.locked());
     }
     #[test]
     fn actual_edge_drag_scrolls_long_scene_list_before_one_release() {

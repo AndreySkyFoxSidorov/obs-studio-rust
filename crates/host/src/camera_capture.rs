@@ -22,12 +22,13 @@ mod mjpeg;
 #[allow(dead_code)] // Native mode negotiation and the owning stream are not connected yet.
 mod avc;
 mod controls;
+pub mod audio_association;
 pub use controls::*;
 mod selection;
 pub(crate) use selection::directshow_mode_matches;
 #[cfg(target_os = "windows")]
 mod directshow_rank;
-pub use selection::{CameraModeRecommendations, arrange_camera_modes, best_camera_resolution_mode, highest_camera_frame_rate, camera_frame_rate_matching_project};
+pub use selection::{CameraModeRecommendations, arrange_camera_modes, best_camera_resolution_mode, highest_camera_frame_rate, camera_frame_rate_matching_project, resolve_camera_any_format};
 mod scope;
 pub use owner::{
     CameraEvent, CameraFrame, CameraOwner, CameraProblem, CameraRequestKey, CameraSnapshot,

@@ -102,6 +102,7 @@ pub(super) enum Work {
         origin: MediaTime,
         factory: RecordingFactory,
         audio: Arc<AudioState>,
+        auto_suffix: bool,
     },
     Video {
         frame: RecordingFrame,
@@ -273,15 +274,17 @@ impl RecordingOwner {
                         }
                         Work::Start {
                             session,
-                            config,
+                            mut config,
                             origin,
                             factory,
                             audio,
+                            auto_suffix,
                         } => {
                             if active.is_some() {
                                 Err(RecordingError::invalid("recording already active"))
                             } else {
-                                match Active::new(session, config, origin, factory, audio.clone()) {
+                                let start=if auto_suffix {available_recording_path(&config.path).and_then(|path|{config.path=path;Active::new(session,config,origin,factory,audio.clone())})}else{Active::new(session,config,origin,factory,audio.clone())};
+                                match start {
                                     Ok(mut writer) => {
                                         writer.render_gpu=render_gpu.clone();
                                         writer.renderer=writer.render_gpu.output_renderer();
@@ -432,6 +435,11 @@ impl RecordingOwner {
     }
     /// One admitted original-grid bundle supplies every frozen selected track.
     pub fn start_tracks(&mut self,session:u64,config:RecordingConfig,origin:MediaTime,factory:RecordingFactory,mask:u8)->Result<(),RecordingError>{
+        self.start_tracks_with_suffix(session,config,origin,factory,mask,false)
+    }
+    /// Select a numbered unused destination on the worker, while preserving
+    /// no-replacement publication if another process races this selection.
+    pub fn start_tracks_with_suffix(&mut self,session:u64,config:RecordingConfig,origin:MediaTime,factory:RecordingFactory,mask:u8,auto_suffix:bool)->Result<(),RecordingError>{
         let tracks=skylive_core::SourceAudioTrackMask::new(mask).map_err(|_|RecordingError::invalid("recording audio track mask"))?;
         if config.audio.is_some()==tracks.is_empty(){return Err(RecordingError::invalid("recording audio requires selected tracks; video-only requires no audio tracks"));}
         config.validate()?;
@@ -454,6 +462,7 @@ impl RecordingOwner {
             origin,
             factory,
             audio: audio.clone(),
+            auto_suffix,
         })?;
         self.audio = Some(audio);
         self.audio_format = audio_format;
@@ -962,6 +971,21 @@ impl Active {
             audio_frames: self.status.audio_frames,
         })
     }
+}
+
+/// Resolve an OBS-style collision suffix off the GUI thread. Publication still
+/// uses a no-replace operation, so a racing process can never be overwritten.
+fn available_recording_path(path:&Path)->Result<PathBuf,RecordingError>{
+    if !path.try_exists().map_err(|e|RecordingError::io("inspect recording destination",path,e))? {return Ok(path.to_owned());}
+    let stem=path.file_stem().ok_or_else(||RecordingError::invalid("recording filename has no stem"))?;
+    let extension=path.extension();
+    for number in 2..=10_000u32 {
+        let mut name=stem.to_os_string();name.push(format!(" ({number})"));
+        if let Some(extension)=extension {name.push(".");name.push(extension);}
+        let candidate=path.with_file_name(name);
+        if !candidate.try_exists().map_err(|e|RecordingError::io("inspect recording destination",&candidate,e))? {return Ok(candidate);}
+    }
+    Err(RecordingError::invalid("recording filename collision limit exceeded"))
 }
 
 struct OwnedFile {

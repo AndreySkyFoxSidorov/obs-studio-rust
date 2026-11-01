@@ -1,11 +1,11 @@
-//! Fixed validated uniforms for OBS32 Color/Chroma/Luma Key and Sharpen v2. No native calls in
+//! Fixed validated uniforms for OBS32 Color/Chroma/Luma Key and Sharpen. No native calls in
 //! metadata admission, and no CPU keyer implementation is changed or invoked.
 use super::*;
 use skylive_media::{ColorKeySettings, ColorKeyType, ChromaKeySettings, ChromaKeyType,
     source_effect_requirements_for_dimensions};
 
 #[derive(Clone, Copy)]
-pub(super) enum Keyer { Color(Prepared), Chroma(Prepared), Luma(skylive_media::LumaKeySettings), Sharpen(skylive_media::SharpenSettings) }
+pub(super) enum Keyer { Color(Prepared), Chroma(Prepared), Luma(skylive_media::LumaKeySettings), Sharpen(skylive_media::SharpenSettings), Mosaic(u16) }
 #[derive(Clone, Copy)]
 pub(super) struct Prepared {
     key:[f32;3], chroma:[f32;2], similarity:f32, smoothness:f32, spill:f32,
@@ -33,16 +33,18 @@ impl Keyer {
                 Ok(Self::Chroma(Prepared::new(key,settings.similarity,settings.smoothness,settings.spill,
                     settings.opacity,settings.contrast,settings.brightness,settings.gamma,chroma_bits(settings))))
             }
-            SourceVideoEffect::LumaKey(settings)=>{settings.validate().map_err(Error::Invalid)?;if settings.legacy{return Err(Error::Unsupported("GPU Luma Key v1 is not supported"));}Ok(Self::Luma(settings))},
+            SourceVideoEffect::LumaKey(settings)=>{settings.validate().map_err(Error::Invalid)?;Ok(Self::Luma(settings))},
             SourceVideoEffect::Sharpen(settings)=>{settings.validate().map_err(Error::Invalid)?;Ok(Self::Sharpen(settings))},
-            _=>Err(Error::Unsupported("GPU keyer operation requires an OBS v2 keyer or sharpen stage")),
+            SourceVideoEffect::Mosaic(cell) if (1..=512).contains(&cell)=>Ok(Self::Mosaic(cell)),
+            _=>Err(Error::Unsupported("GPU keyer operation requires a supported OBS keyer or sharpen stage")),
         }
     }
-    pub(super) fn operation_id(&self)->u32{match self{Self::Color(_)=>2,Self::Chroma(_)=>3,Self::Luma(_)=>4,Self::Sharpen(_)=>5}}
+    pub(super) fn operation_id(&self)->u32{match self{Self::Color(_)=>2,Self::Chroma(_)=>3,Self::Luma(_)=>4,Self::Sharpen(_)=>5,Self::Mosaic(_)=>10}}
     pub(super) fn authored(&self)->[u32;14] {match self {
         Self::Color(value)|Self::Chroma(value)=>value.authored,
-        Self::Luma(s)=>[s.luma_max.to_bits(),s.luma_min.to_bits(),s.luma_max_smooth.to_bits(),s.luma_min_smooth.to_bits(),0,0,0,0,0,0,0,0,0,0],
+        Self::Luma(s)=>[s.luma_max.to_bits(),s.luma_min.to_bits(),s.luma_max_smooth.to_bits(),s.luma_min_smooth.to_bits(),u32::from(s.legacy),0,0,0,0,0,0,0,0,0],
         Self::Sharpen(s)=>[s.sharpness.to_bits(),0,0,0,0,0,0,0,0,0,0,0,0,0],
+        Self::Mosaic(cell)=>[u32::from(*cell),0,0,0,0,0,0,0,0,0,0,0,0,0],
     }}
     pub(super) fn parameters(&self,image:&RgbaFrame,blend:SourceBlend)->[u8;PARAM_BYTES] {
         let mut bytes=[0u8;PARAM_BYTES];
@@ -58,8 +60,9 @@ impl Keyer {
                 p.chroma[0],p.chroma[1],p.similarity,p.smoothness,
                 p.opacity,p.contrast,p.brightness,p.gamma,
                 p.spill,0.0,0.0,0.0,0.0,0.0,0.0,0.0];},
-            Self::Luma(s)=>values[..4].copy_from_slice(&[s.luma_min,s.luma_min+s.luma_min_smooth,s.luma_max-s.luma_max_smooth,s.luma_max]),
+            Self::Luma(s)=>{values[..4].copy_from_slice(&[s.luma_min,s.luma_min+s.luma_min_smooth,s.luma_max-s.luma_max_smooth,s.luma_max]);values[4]=if s.legacy {1.0}else{0.0};},
             Self::Sharpen(s)=>values[0]=s.sharpness,
+            Self::Mosaic(cell)=>values[0]=f32::from(*cell),
         }
         for (index,value)in values.into_iter().enumerate(){bytes[16+index*4..20+index*4].copy_from_slice(&value.to_le_bytes());}
         bytes
@@ -96,7 +99,7 @@ fn admit_point(dimensions:(u32,u32),effect:SourceVideoEffect,cpu:SourceEffectsLi
     if matches!(effect,SourceVideoEffect::Craft(_)){return craft::admit(dimensions,&[effect],cpu,free_cpu_bytes,profile);}
     match effect {
         SourceVideoEffect::ColorCorrection(settings)=>{ColorCorrectionCoefficients::new(settings).map_err(Error::Invalid)?;}
-        SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_)=>{Keyer::from_effect(effect)?;}
+        SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_)|SourceVideoEffect::Mosaic(_)=>{Keyer::from_effect(effect)?;}
         _=>return Err(Error::Unsupported("point stage has no GPU compute kernel")),
     }
     let required=source_effect_requirements_for_dimensions(dimensions,&[effect]).map_err(Error::Invalid)?;
@@ -107,7 +110,9 @@ fn admit_point(dimensions:(u32,u32),effect:SourceVideoEffect,cpu:SourceEffectsLi
     let bytes=(dimensions.0 as usize).checked_mul(dimensions.1 as usize).and_then(|n|n.checked_mul(4)).ok_or(Error::Limit("GPU point size overflow"))?;
     let peak=bytes.checked_mul(2).and_then(|n|n.checked_add(PARAM_BYTES)).ok_or(Error::Limit("GPU point staging overflow"))?.max(2*TABLE_BYTES);
     let device=bytes.checked_mul(3).and_then(|n|n.checked_add(TABLE_BYTES+PARAM_BYTES+MATTE_BYTES)).ok_or(Error::Limit("GPU point device overflow"))?;
-    let invocations=(bytes as u64/4).div_ceil(64)*64;
+    let invocations=if let SourceVideoEffect::Mosaic(cell @ 2..)=effect {
+        u64::from(dimensions.0.div_ceil(u32::from(cell))) * u64::from(dimensions.1.div_ceil(u32::from(cell))) * 64
+    } else {(bytes as u64/4).div_ceil(64)*64};
     if dimensions.0==0||dimensions.1==0||dimensions.0>4096||dimensions.1>4096||bytes>profile.max_frame_bytes
         ||peak>profile.max_cpu_transient_bytes||peak>free_cpu_bytes||device>profile.max_device_bytes||invocations>profile.max_dispatch_invocations{
         return Err(Error::Limit("GPU point frame/staging/device/dispatch admission"));
@@ -152,6 +157,7 @@ impl Client {
 // A pair is admitted before either dispatch; all normal per-stage limits remain.
 fn admit_pair(dimensions:(u32,u32),effects:&[SourceVideoEffect],cpu:SourceEffectsLimits,free:usize,profile:Limits)->Result<usize,Error>{
     if effects.len()!=2{return Err(Error::Unsupported("GPU keyer pair requires exactly two stages"));}
+    if effects.iter().any(|effect|matches!(effect,SourceVideoEffect::Mosaic(_))){return Err(Error::Unsupported("Mosaic requires an independent spatial dispatch"));}
     let first=Keyer::from_effect(effects[0])?;
     let second=Keyer::from_effect(effects[1])?;
     let _=(first,second);
@@ -189,6 +195,7 @@ pub(super) enum RunStage {Keyer(Keyer),Correction(ColorCorrectionCoefficients)}
 impl RunStage {
     fn prepare(effect:SourceVideoEffect)->Result<Self,Error>{match effect {
         SourceVideoEffect::ColorCorrection(settings)=>Ok(Self::Correction(ColorCorrectionCoefficients::new(settings).map_err(Error::Invalid)?)),
+        SourceVideoEffect::Mosaic(_)=>Err(Error::Unsupported("Mosaic requires an independent spatial dispatch")),
         _=>Ok(Self::Keyer(Keyer::from_effect(effect)?)),
     }}
     pub(super) fn parameters(&self,image:&RgbaFrame,blend:SourceBlend)->[u8;PARAM_BYTES]{match self{

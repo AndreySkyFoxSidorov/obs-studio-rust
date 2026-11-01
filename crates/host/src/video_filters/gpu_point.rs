@@ -50,8 +50,8 @@ impl PointClient {
         match (self,effect){
             (Self::Direct(client),SourceVideoEffect::ColorCorrection(settings))=>client.apply(input,blend,settings,limits,free_cpu_bytes),
             (Self::Shared(runtime),SourceVideoEffect::ColorCorrection(settings))=>runtime.apply(input,blend,settings,limits,free_cpu_bytes),
-            (Self::Direct(client),SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_))=>client.apply_keyer(input,blend,effect,limits,free_cpu_bytes),
-            (Self::Shared(runtime),SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_))=>runtime.apply_keyer(input,blend,effect,limits,free_cpu_bytes),
+            (Self::Direct(client),SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_)|SourceVideoEffect::Mosaic(_))=>client.apply_keyer(input,blend,effect,limits,free_cpu_bytes),
+            (Self::Shared(runtime),SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_)|SourceVideoEffect::Mosaic(_))=>runtime.apply_keyer(input,blend,effect,limits,free_cpu_bytes),
             _=>Err(Error::Unsupported("point stage has no GPU compute kernel")),
         }
     }
@@ -319,10 +319,11 @@ struct PointPlan{peak:usize,gpu:u64,pairs:bool,run_limit:usize,declined:Option<E
 fn neutral_spatial(effect:SourceVideoEffect)->bool {
     matches!(effect,SourceVideoEffect::Vignette(settings) if settings.is_identity())
         ||matches!(effect,SourceVideoEffect::GaussianBlur(settings) if settings.is_identity())
+        ||matches!(effect,SourceVideoEffect::Mosaic(1))
 }
 fn run_stage(effect:SourceVideoEffect)->bool{matches!(effect,SourceVideoEffect::ColorCorrection(_))||pair_keyer(effect)}
 fn pair_keyer(effect:SourceVideoEffect)->bool{matches!(effect,SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_))}
-fn supported(effect:SourceVideoEffect)->bool{matches!(effect,SourceVideoEffect::Craft(_)|SourceVideoEffect::ColorCorrection(_)|SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_))}
+fn supported(effect:SourceVideoEffect)->bool{matches!(effect,SourceVideoEffect::Craft(_)|SourceVideoEffect::ColorCorrection(_)|SourceVideoEffect::ColorKey(_)|SourceVideoEffect::ChromaKey(_)|SourceVideoEffect::LumaKey(_)|SourceVideoEffect::Sharpen(_)|SourceVideoEffect::Mosaic(_))}
 fn frame_bytes(dimensions:(u32,u32))->Result<usize,FilterError>{(dimensions.0 as usize).checked_mul(dimensions.1 as usize).and_then(|value|value.checked_mul(4)).ok_or_else(||limited("point frame dimensions overflow"))}
 fn stage_limits(required:&skylive_media::SourceEffectRequirements)->SourceEffectsLimits{SourceEffectsLimits{max_output_bytes:required.output_bytes,max_workspace_bytes:required.workspace_bytes,max_pixel_stages:required.pixel_stages,max_texel_visits:required.texel_visits}}
 fn first_service_decline(index:usize,policy:GpuFailurePolicy,error:&Error)->bool {

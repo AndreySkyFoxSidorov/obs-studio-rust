@@ -221,7 +221,7 @@ fn validate_entries(session:&Session,entries:&[SourceEpoch])->Result<(),Error>{
     let mut ids=std::collections::HashSet::new();
     for entry in entries {
         if entry.epoch==0||!ids.insert(entry.source)||model.source(entry.source).is_some_and(|source|!matches!(source.kind(),SourceKind::VideoCapture {binding} if binding.same_av_activation(&entry.binding))){return Err(Error::Invalid("camera activation source identity changed"));}
-        bytes=bytes.checked_add(match entry.binding.target(){skylive_core::VideoCaptureTarget::Windows {symbolic_link}=>symbolic_link.len(),skylive_core::VideoCaptureTarget::Macos {unique_id}=>unique_id.len()}).and_then(|v|v.checked_add(entry.binding.audio().map_or(0,|a|match a.target(){skylive_core::AudioTarget::WindowsEndpoint {id}=>id.len(),_=>0}))).filter(|n|*n<=MAX_KEY_BYTES).ok_or(Error::Invalid("camera activation metadata byte bound"))?;
+        bytes=bytes.checked_add(match entry.binding.target(){skylive_core::VideoCaptureTarget::Windows {symbolic_link}=>symbolic_link.len(),skylive_core::VideoCaptureTarget::Macos {unique_id}=>unique_id.len()}).and_then(|v|v.checked_add(entry.binding.audio().map_or(0,|a|match a.target(){skylive_core::AudioTarget::WindowsEndpoint {id}=>id.len(),skylive_core::AudioTarget::WindowsCamera {symbolic_link}=>symbolic_link.len(),_=>0}))).filter(|n|*n<=MAX_KEY_BYTES).ok_or(Error::Invalid("camera activation metadata byte bound"))?;
     }
     Ok(())
 }

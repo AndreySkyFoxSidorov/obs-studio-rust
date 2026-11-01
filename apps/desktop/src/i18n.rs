@@ -62,6 +62,9 @@ pub fn tr_key(ui: &egui::Ui, key: &str) -> String {
 pub fn tr_key_or(ui: &egui::Ui, key: &str, fallback: &str) -> String {
     key_text(ui.ctx(), key, fallback)
 }
+pub fn tr_key_or_context(context: &egui::Context, key: &str, fallback: &str) -> String {
+    key_text(context, key, fallback)
+}
 fn key_text(context: &egui::Context, key: &str, fallback: &str) -> String {
     if let Some(value) = catalog(context).filter(|value| value.translate(key) != key) {
         return value.label(key).into_owned();
@@ -87,6 +90,12 @@ pub fn tf_context(context: &egui::Context, english: &str, args: &[(&str, String)
 }
 pub fn tr_context(context: &egui::Context, english: impl AsRef<str>) -> String {
     let english = english.as_ref();
+    if let Some(key)=match english {
+        "Mosaic (PhotoCraft)"=>Some("SkyLive.Craft.Mosaic.Name"),
+        "Levels (EffectCraft)"=>Some("SkyLive.Craft.Levels.Name"),
+        "Average pixels in square cells to create a mosaic effect."=>Some("SkyLive.Craft.Mosaic.Description"),
+        _=>None,
+    } {return key_text(context,key,english);}
     catalog(context)
         .map(|value| value.text(english).into_owned())
         .unwrap_or_else(|| english.to_owned())

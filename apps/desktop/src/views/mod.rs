@@ -649,6 +649,7 @@ pub enum Intent {
     ToggleDock(Dock),
     ResetLayout,
     OpenSetup,
+    OpenOutputTimer,
     SetupAction(setup::SetupToken, setup::SetupAction),
     SetDockPreset(dock_layout::DockPreset),
     SetDocksLocked(bool),

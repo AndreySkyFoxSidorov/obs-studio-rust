@@ -6,6 +6,8 @@ use super::*;
 mod platform;
 #[cfg(target_os = "windows")]
 pub(super) use platform::{decode_directshow_buffer,directshow_video_layout};
+#[cfg(target_os = "windows")]
+pub(super) use platform::driver_controls;
 #[cfg(target_os = "macos")]
 #[path = "native_macos.rs"]
 mod platform;

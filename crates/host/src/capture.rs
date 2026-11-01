@@ -265,6 +265,7 @@ impl CaptureBinding {
             Self::Display(v) => Self::Display(
                 DisplayCaptureBinding::new(v.target().clone(), v.capture_cursor(), 1, 1)
                     .and_then(|binding| binding.with_method(v.method()))
+                    .and_then(|binding| binding.with_force_sdr(v.force_sdr()))
                     .expect("validated display key"),
             ),
             Self::Window(v) => Self::Window(
@@ -277,13 +278,14 @@ impl CaptureBinding {
                     1,
                 )
                 .and_then(|value| value.with_method(v.method()))
-                .expect("validated window key"),
+                .expect("validated window key").with_force_sdr(v.force_sdr()),
             ),
         }
     }
 }
 
 pub trait CaptureBackend: Send + 'static {
+    fn set_sdr_white_nits(&mut self, _nits: u16) {}
     fn retain_display_bindings(
         &mut self,
         _session: u64,
@@ -720,6 +722,7 @@ enum Work {
         serial: u64,
         requested_at: MediaTime,
         period: u64,
+        sdr_white_nits: u16,
         bindings: Bindings,
     },
 }
@@ -753,6 +756,7 @@ pub struct CaptureWorker {
     epoch: u64,
     session: u64,
     bindings: Bindings,
+    sdr_white_nits: u16,
     latest: Arc<CaptureSnapshot>,
     next_at: Option<u64>,
     last_requested_at: Option<MediaTime>,
@@ -831,8 +835,10 @@ impl CaptureWorker {
                             serial,
                             requested_at,
                             period,
+                            sdr_white_nits,
                             bindings,
                         } => {
+                            backend.set_sdr_white_nits(sdr_white_nits);
                             let mut remaining = limits.max_total_frame_bytes;
                             let window_bindings: Vec<_> = bindings
                                 .iter()
@@ -947,6 +953,7 @@ impl CaptureWorker {
             epoch: 0,
             session: 0,
             bindings: Vec::new(),
+            sdr_white_nits: 300,
             latest: Arc::new(CaptureSnapshot::empty(0)),
             next_at: None,
             last_requested_at: None,
@@ -1033,7 +1040,9 @@ impl CaptureWorker {
         }
         let mut bindings: Bindings = bindings.into_iter().collect();
         bindings.sort_by_key(|(id, _)| id.get());
-        if self.session == session.identity() && self.bindings == bindings {
+        let sdr_white_nits = current.profiles().selected().sdr_white_nits();
+        let white_changed = self.sdr_white_nits != sdr_white_nits;
+        if self.session == session.identity() && self.bindings == bindings && !white_changed {
             return Ok(false);
         }
         let epoch = self
@@ -1045,6 +1054,7 @@ impl CaptureWorker {
             bindings
                 .iter()
                 .filter_map(|(source, binding)| {
+                    if white_changed && matches!(binding, CaptureBinding::Display(_)) { return None; }
                     self.latest
                         .frame(*source)
                         .filter(|frame| &frame.binding == binding)
@@ -1077,6 +1087,7 @@ impl CaptureWorker {
         self.session = session.identity();
         self.epoch = epoch;
         self.bindings = bindings;
+        self.sdr_white_nits = sdr_white_nits;
         self.next_at = None;
         self.last_requested_at = None;
         self.latest = Arc::new(CaptureSnapshot {
@@ -1190,6 +1201,7 @@ impl CaptureWorker {
                 serial,
                 requested_at: now,
                 period,
+                sdr_white_nits: self.sdr_white_nits,
                 bindings: self.bindings.clone(),
             },
             serial,
@@ -1359,9 +1371,11 @@ impl CaptureWorker {
                                 detail: error.to_string(),
                             });
                             // A failed Window lease cannot establish that the same
-                            // native HWND generation remains live. Never retain its
-                            // stale pixels across close/recreate/error.
-                            if matches!(&binding, CaptureBinding::Window(_)) {
+                            // native HWND generation remains live. A display that
+                            // requires native SDR also cannot keep a prior frame
+                            // after an error: its output may have switched to HDR.
+                            if matches!(&binding, CaptureBinding::Window(_))
+                                || matches!(&binding, CaptureBinding::Display(value) if !value.force_sdr()) {
                                 None
                             } else {
                                 self.latest

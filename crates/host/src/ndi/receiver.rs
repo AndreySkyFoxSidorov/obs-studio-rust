@@ -83,6 +83,10 @@ impl Receiver {
 fn video_metadata(video:&Video)->Result<VideoMetadata,NdiError>{
     let (width,height)=(u32::try_from(video.width).map_err(|_|NdiError::Invalid("negative NDI width"))?,u32::try_from(video.height).map_err(|_|NdiError::Invalid("negative NDI height"))?);
     if width==0||height==0||width>8192||height>8192||u64::from(width)*u64::from(height)>33_554_432||video.frame_format!=1||video.fps_num<=0||video.fps_den<=0{return Err(NdiError::Invalid("NDI progressive frame dimensions/rate exceed the admitted profile"));}
-    if !video.aspect.is_finite()||video.aspect<0.0||(video.aspect>0.0&&(f64::from(video.aspect)-f64::from(width)/f64::from(height)).abs()>0.005){return Err(NdiError::Invalid("NDI non-square pixel/aspect conversion is unsupported"));}
+    // DistroAV forwards the native pixel dimensions to obs_source_output_video
+    // without applying NDI's display-aspect metadata. Accept valid non-square
+    // metadata and display the same native pixels instead of rejecting the
+    // entire source. Automatic aspect correction is not yet implemented.
+    if !video.aspect.is_finite()||video.aspect<0.0{return Err(NdiError::Invalid("NDI picture aspect metadata is invalid"));}
     Ok(VideoMetadata {width,height,fps_num:video.fps_num as u32,fps_den:video.fps_den as u32,timecode_100ns:video.timecode,timestamp_100ns:(video.timestamp!=i64::MAX).then_some(video.timestamp)})
 }

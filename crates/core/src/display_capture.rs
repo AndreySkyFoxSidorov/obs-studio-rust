@@ -2,6 +2,8 @@
 //! capture timestamps and current frame dimensions belong to the host.
 use crate::Error;
 use serde::{Deserialize, Serialize};
+fn default_force_sdr() -> bool { true }
+fn is_true(value:&bool) -> bool { *value }
 
 /// Native Display Capture profile: includes 5K/6K/8K displays, independent of
 /// image-file decode limits and preview output dimensions.
@@ -70,6 +72,9 @@ pub struct DisplayCaptureBinding {
     method: DisplayCaptureMethod,
     target: DisplayTarget,
     capture_cursor: bool,
+    /// Preserve the OBS capture policy. The current renderer only admits SDR.
+    #[serde(default = "default_force_sdr", skip_serializing_if = "is_true")]
+    force_sdr: bool,
     width: u32,
     height: u32,
 }
@@ -80,6 +85,8 @@ struct BindingData {
     method: Option<DisplayCaptureMethod>,
     target: DisplayTarget,
     capture_cursor: bool,
+    #[serde(default = "default_force_sdr")]
+    force_sdr: bool,
     width: u32,
     height: u32,
 }
@@ -92,6 +99,7 @@ impl TryFrom<BindingData> for DisplayCaptureBinding {
             value.width,
             value.height,
         )?;
+        let binding=binding.with_force_sdr(value.force_sdr)?;
         if let Some(method) = value.method {
             binding.with_method(method)
         } else {
@@ -108,6 +116,9 @@ impl DisplayCaptureBinding {
         width: u32,
         height: u32,
     ) -> Result<Self, Error> {
+        // New Windows captures follow OBS's Force SDR default. Deserialization
+        // still applies its explicit legacy default before returning a binding.
+        let force_sdr = !matches!(&target, DisplayTarget::Windows { .. });
         let binding = Self {
             method: match &target {
                 DisplayTarget::Windows { .. } => DisplayCaptureMethod::Gdi,
@@ -115,6 +126,7 @@ impl DisplayCaptureBinding {
             },
             target,
             capture_cursor,
+            force_sdr,
             width,
             height,
         };
@@ -138,6 +150,10 @@ impl DisplayCaptureBinding {
     pub fn capture_cursor(&self) -> bool {
         self.capture_cursor
     }
+    pub fn force_sdr(&self) -> bool { self.force_sdr }
+    pub fn with_force_sdr(mut self, force_sdr:bool)->Result<Self,Error> {
+        self.force_sdr=force_sdr;self.validate()?;Ok(self)
+    }
     pub fn width(&self) -> u32 {
         self.width
     }
@@ -146,6 +162,9 @@ impl DisplayCaptureBinding {
     }
     pub(crate) fn validate(&self) -> Result<(), Error> {
         self.target.validate()?;
+        if !self.force_sdr && !matches!(self.target, DisplayTarget::Windows { .. }) {
+            return Err(Error::Invalid("HDR-capable display capture policy requires Windows"));
+        }
         if matches!(self.target, DisplayTarget::Macos { .. })
             && self.method != DisplayCaptureMethod::Auto
         {
@@ -188,6 +207,7 @@ mod tests {
                 method: None,
                 target,
                 capture_cursor: true,
+                force_sdr: true,
                 width: 2,
                 height: 2,
             })

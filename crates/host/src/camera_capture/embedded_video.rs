@@ -32,6 +32,10 @@ pub(crate) struct VideoReceiver {
     free:Producer<Slot>,
     gate:Arc<VideoGate>,
     mode:VideoCaptureMode,
+    decode_mode:VideoCaptureMode,
+    matrix:Option<skylive_core::VideoColorMatrix>,
+    range:Option<skylive_core::VideoColorRange>,
+    mjpeg_color:super::mjpeg::ColorState,
     pitch:i32,
     limits:CameraLimits,
     admitted_bytes:usize,
@@ -149,7 +153,7 @@ pub(crate) mod filter {
 
 /// Allocate the complete sample pool before connecting the DirectShow pin.
 /// The caller accounts `admitted_bytes` for the entire owner lifetime.
-pub(crate) fn pool(mode:VideoCaptureMode,pitch:i32,sample_cap:usize,slots:usize,
+pub(crate) fn pool(mode:VideoCaptureMode,decode_mode:VideoCaptureMode,matrix:Option<skylive_core::VideoColorMatrix>,range:Option<skylive_core::VideoColorRange>,pitch:i32,sample_cap:usize,slots:usize,
     budget:usize,limits:CameraLimits,configuration:Option<Vec<u8>>)->Result<(Arc<VideoGate>,VideoReceiver),CameraError> {
     limits.validate()?;
     super::checked_frame_bytes(mode.width(),mode.height(),limits)?;
@@ -170,9 +174,9 @@ pub(crate) fn pool(mode:VideoCaptureMode,pitch:i32,sample_cap:usize,slots:usize,
     let gate=Arc::new(VideoGate{state:AtomicU8::new(VideoGate::OPEN),callback:Mutex::new(CallbackState{free:free_read,ready:ready_write,parked:None}),
         dropped:AtomicU64::new(0),discontinuity:AtomicBool::new(false),format_changed:AtomicBool::new(false),end_of_stream:AtomicBool::new(false),flush_drained:AtomicBool::new(false),flush_ended:AtomicBool::new(false),sample_cap,clock:Arc::new(super::embedded_audio::directshow_clock::Binding::default())});
     let avc=if mode.format()==skylive_core::VideoPixelFormat::H264 {
-        Some(super::avc::CameraAvcDecoder::new(mode.width(),mode.height(),limits,configuration)?)
+        Some(super::avc::CameraAvcDecoder::new(mode.width(),mode.height(),limits,configuration)?.with_color(matrix,range))
     } else {None};
-    Ok((gate.clone(),VideoReceiver{ready:ready_read,free:free_write,gate,mode,pitch,limits,admitted_bytes:bytes,avc,avc_ready:VecDeque::new()}))
+    Ok((gate.clone(),VideoReceiver{ready:ready_read,free:free_write,gate,mode,decode_mode,matrix,range,mjpeg_color:super::mjpeg::ColorState::default(),pitch,limits,admitted_bytes:bytes,avc,avc_ready:VecDeque::new()}))
 }
 impl VideoReceiver {
     pub(crate) fn admitted_bytes(&self)->usize {self.admitted_bytes}
@@ -200,7 +204,7 @@ impl VideoReceiver {
             self.avc_ready.extend(result?);
             return Ok(self.avc_ready.pop_front());
         }
-        let image=super::native::decode_directshow_buffer(&packet.slot.bytes[..packet.len],self.mode,self.pitch,self.limits);
+        let image=super::native::decode_directshow_buffer(&packet.slot.bytes[..packet.len],self.decode_mode,self.pitch,self.limits,self.matrix,self.range,&mut self.mjpeg_color);
         let frame=image.map(|image|(NativeVideoFrame{image,presentation_ns:i128::from(packet.timestamp_100ns)*100,
             device_qpc_ns:None,directshow_clock:None,discontinuity:packet.discontinuity,dropped_frames:self.gate.dropped.swap(0,Ordering::AcqRel)},packet.clock_generation));
         if self.free.push(packet.slot).is_err(){return Err(CameraError::InvalidFrame("DirectShow video pool ownership"));}

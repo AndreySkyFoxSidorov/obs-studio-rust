@@ -9,13 +9,14 @@ pub(crate) fn select_appended(context:&egui::Context,source:Id,binding:Option<su
     context.data_mut(|data|data.insert_temp(selection_id(source,binding),index));
 }
 
-pub fn editor(
+pub fn editor_for_scope(
     ui: &mut egui::Ui,
     model: &StudioSnapshot,
     source: Id,
     binding: Option<super::plugin_routes::PluginEditorToken>,
     name: &str,
     filters: &mut Vec<AudioFilter>,
+    scene_bus: bool,
 ) {
     ui.label(crate::i18n::tf(
         ui,
@@ -23,6 +24,9 @@ pub fn editor(
         &[("{name}", name.to_owned())],
     ));
     ui.label(crate::i18n::tr(ui,"Filters execute from top to bottom, following OBS. This source's settings are shared by every scene reference. Apply commits the complete chain; Cancel discards this draft."));
+    if scene_bus {
+        ui.small(crate::i18n::tr_key_or(ui,"SkyLive.SceneAudio.LinearOnly","Scene audio currently supports Gain and Invert Polarity. Stateful audio filters are not yet available on scene buses."));
+    }
     let selected_id = selection_id(source,binding);
     let mut selected = ui
         .ctx()
@@ -33,15 +37,17 @@ pub fn editor(
         let mut chosen=None;
         ui.add_enabled_ui(filters.len()<skylive_core::MAX_AUDIO_FILTERS,|ui|{
             ui.menu_button(crate::i18n::tr(ui,"Add Filter"),|ui|{
-                let choices=skylive_core::AudioFilterFactory::ALL.map(|factory|super::filter_add_menu::Choice {
+                let factories:Vec<_>=skylive_core::AudioFilterFactory::ALL.into_iter().filter(|factory|
+                    !scene_bus || matches!(factory,skylive_core::AudioFilterFactory::ObsGain|skylive_core::AudioFilterFactory::ObsPolarityInvert)).collect();
+                let choices:Vec<_>=factories.iter().map(|&factory|super::filter_add_menu::Choice {
                     label:factory.label(),hint:factory.hint(),
                     enabled:model.preferences().plugin_enabled(factory.plugin_id()),disabled_hint:None,group:None,
-                });
-                chosen=super::filter_add_menu::show(ui,&choices);
+                }).collect();
+                chosen=super::filter_add_menu::show(ui,&choices).and_then(|index|factories.get(index).copied());
             }).response.on_hover_text(crate::i18n::tr(ui,"Add an audio filter to the end of this source's chain."))
                 .on_disabled_hover_text(crate::i18n::tr(ui,"A source supports at most eight audio filters. Remove a filter before adding another."));
         });
-        if let Some(factory)=chosen.and_then(|index|skylive_core::AudioFilterFactory::ALL.get(index).copied()) {
+        if let Some(factory)=chosen {
             filters.push(factory.prototype());selected=filters.len()-1;
         }
     });
@@ -80,6 +86,10 @@ pub fn editor(
     ui.ctx()
         .data_mut(|data| data.insert_temp(selected_id, selected));
 }
+#[cfg(test)]
+fn editor(ui:&mut egui::Ui,model:&StudioSnapshot,source:Id,binding:Option<super::plugin_routes::PluginEditorToken>,name:&str,filters:&mut Vec<AudioFilter>) {
+    editor_for_scope(ui,model,source,binding,name,filters,false);
+}
 fn list(
     ui: &mut egui::Ui,
     model: &StudioSnapshot,
@@ -99,12 +109,26 @@ fn list(
                 ui.id().with(source.get()),binding.session,model.revision(),binding.generation,filters));
             let mut rectangles=Vec::with_capacity(filters.len());
             for (index, filter) in filters.iter().enumerate() {
-                let label = if matches!(filter,AudioFilter::CraftDither{..}) {
+                let label = if matches!(filter,AudioFilter::CraftTimeShift{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.TimeShift.Name","Time Shift"),index+1)
+                } else if matches!(filter,AudioFilter::CraftDither{..}) {
                     format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Dither.Name","Craft Dither"),index+1)
+                } else if matches!(filter,AudioFilter::CraftRingMod{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Ring.Name","Craft Ring Mod"),index+1)
+                } else if matches!(filter,AudioFilter::CraftEq1{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Eq1.Name","Craft Parametric EQ"),index+1)
                 } else if matches!(filter,AudioFilter::CraftRectifier{..}) {
                     format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Rectifier.Name","Craft Rectifier"),index+1)
                 } else if matches!(filter,AudioFilter::CraftDcRemoval{..}) {
                     format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Dc.Name","Craft DC Removal"),index+1)
+                } else if matches!(filter,AudioFilter::CraftSignalGenerator{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Generator.Name","Craft Signal Generator"),index+1)
+                } else if matches!(filter,AudioFilter::CraftPitch{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Pitch.Name","Craft Pitch Shifter"),index+1)
+                } else if matches!(filter,AudioFilter::CraftMaximizer{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.Maximizer.Name","Craft Maximizer"),index+1)
+                } else if matches!(filter,AudioFilter::CraftDeEsser{..}) {
+                    format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.DeEsser.Name","Craft De-Esser"),index+1)
                 } else if matches!(filter,AudioFilter::CraftLoFi{..}) {
                     format!("{} {}",crate::i18n::tr_key_or(ui,"SkyLive.Craft.LoFi.Name","Craft Lo-Fi"),index+1)
                 } else if matches!(filter,AudioFilter::CraftSaturator{..}) {
@@ -120,10 +144,18 @@ fn list(
                         AudioFilter::ObsCompressor { .. } => "OBS Compressor {}",
                         AudioFilter::CraftModDelay{..}=>"Craft Mod Delay {}",
                         AudioFilter::CraftFdnReverb{..}=>"Craft FDN Reverb {}",
+                        AudioFilter::CraftSoundReverb{..}=>"SoundCraft Reverb {}",
                         AudioFilter::CraftSaturator{..}=>"Craft Saturator {}",
+                        AudioFilter::CraftTimeShift{..}=>"Craft Time Shift {}",
                         AudioFilter::CraftDither{..}=>"Craft Dither {}",
+                        AudioFilter::CraftRingMod{..}=>"Craft Ring Mod {}",
+                        AudioFilter::CraftEq1{..}=>"Craft Parametric EQ {}",
                         AudioFilter::CraftRectifier{..}=>"Craft Rectifier {}",
                         AudioFilter::CraftDcRemoval{..}=>"Craft DC Removal {}",
+                        AudioFilter::CraftSignalGenerator{..}=>"Craft Signal Generator {}",
+                        AudioFilter::CraftPitch{..}=>"Craft Pitch Shifter {}",
+                        AudioFilter::CraftMaximizer{..}=>"Craft Maximizer {}",
+                        AudioFilter::CraftDeEsser{..}=>"Craft De-Esser {}",
                         AudioFilter::CraftLoFi{..}=>"Craft Lo-Fi {}",
                         AudioFilter::ObsExpander { .. } => "OBS Expander {}",
                         AudioFilter::ObsGain { .. } => "Gain {}",
@@ -240,9 +272,16 @@ fn properties(
     if ui.add_enabled(available,egui::Button::new(crate::i18n::tr(ui,"Defaults")))
         .on_hover_text(crate::i18n::tr(ui,"Restore this filter's default settings in the draft. Apply saves them; Cancel keeps the original settings. The filter name and enabled state are preserved."))
         .on_disabled_hover_text(crate::i18n::tr(ui,"Enable this filter's module in Tools > Plugins before resetting it.")).clicked(){filter.reset_settings();}
+    let rate=model.audio().sample_rate();
+    if let Some((lower,upper))=filter.craft_delay_bounds_frames(rate).filter(|_|available) {
+        let ms=|frames:u64|frames as f64*1000.0/f64::from(rate);
+        let bounds=if lower==upper{format!("{:.2} ms",ms(lower))}else{format!("{:.2}–{:.2} ms",ms(lower),ms(upper))};
+        ui.small(format!("{}: {}",crate::i18n::tr_key_or(ui,"Module.obs-qsv11.Latency","Latency"),bounds))
+          .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Craft.Delay.Uncompensated","This effect's processing delay is not automatically compensated. Pitch delay changes with its moving read heads."));
+    }
     egui::ScrollArea::vertical().id_salt(("selected-audio-filter",selected)).max_height(390.0).show(ui,|ui|{
             ui.add_enabled_ui(available,|ui|match filter{
-                AudioFilter::CraftDither{..}|AudioFilter::CraftRectifier{..}|AudioFilter::CraftDcRemoval{..}|AudioFilter::CraftLoFi{..}|AudioFilter::CraftSaturator{..}|AudioFilter::CraftModDelay{..}|AudioFilter::CraftFdnReverb{..}=>super::craft_time_controls::editor(ui,filter),
+                AudioFilter::CraftSignalGenerator{..}|AudioFilter::CraftTimeShift{..}|AudioFilter::CraftPitch{..}|AudioFilter::CraftMaximizer{..}|AudioFilter::CraftDeEsser{..}|AudioFilter::CraftRingMod{..}|AudioFilter::CraftDither{..}|AudioFilter::CraftEq1{..}|AudioFilter::CraftRectifier{..}|AudioFilter::CraftDcRemoval{..}|AudioFilter::CraftLoFi{..}|AudioFilter::CraftSaturator{..}|AudioFilter::CraftModDelay{..}|AudioFilter::CraftFdnReverb{..}|AudioFilter::CraftSoundReverb{..}=>super::craft_time_controls::editor(ui,filter),
                 AudioFilter::ObsCompressor{..}=>{
                     super::obs_dynamics_controls::editor(ui,filter);
                     if let AudioFilter::ObsCompressor{sidechain,..}=filter{

@@ -1,5 +1,7 @@
 //! Genuine D3D11 game backbuffer owner, separate from WGC/window/desktop capture.
-//! Constructing is inert; injection requires explicit Session-only authorization.
+//! Exact manually selected targets require session-only authorization. Imported
+//! OBS window selectors resolve automatically while visible; every resulting
+//! process and window is revalidated by the native owner before injection.
 use skylive_core::{GameCaptureBinding,GameCaptureTarget,Id,Session,SourceKind};
 use skylive_media::{MediaTime,RgbaFrame};
 use crate::transition::FrameScene;
@@ -39,14 +41,14 @@ impl GameSnapshot {
     pub fn streams(&self)->&[GameStreamStatus]{&self.streams}
 }
 #[derive(Clone)]
-struct Desired {session:u64,revision:u64,epoch:u64,bindings:Vec<(Id,Arc<GameCaptureBinding>)>,authorized:Vec<GameCaptureTarget>,authorization_generation:u64,at:MediaTime,sent:Instant}
+struct Desired {session:u64,revision:u64,epoch:u64,bindings:Vec<(Id,Arc<GameCaptureBinding>)>,authorized:Vec<GameCaptureTarget>,suppressed_selectors:Vec<Id>,hotkey_targets:Vec<(Id,crate::global_hotkeys::ForegroundIdentity)>,authorization_generation:u64,at:MediaTime,sent:Instant}
 pub struct GameOwner {instance:u64,serial:u64,desired:Arc<Mutex<Desired>>,closed:Arc<AtomicBool>,retired:Arc<AtomicBool>,
     query:Option<mpsc::SyncSender<GameRequestKey>>,events:mpsc::Receiver<GameEvent>,snapshots:Arc<Mutex<Arc<GameSnapshot>>>,latest:Arc<GameSnapshot>,handle:Option<thread::JoinHandle<()>>}
 impl GameOwner {
     pub fn available()->bool{cfg!(all(target_os="windows",target_arch="x86_64"))}
     pub fn new()->std::io::Result<Self>{
         let instance=NEXT.fetch_update(Ordering::AcqRel,Ordering::Acquire,|v|v.checked_add(1)).map_err(|_|std::io::Error::other("game owner identity exhausted"))?;
-        let desired=Arc::new(Mutex::new(Desired {session:0,revision:0,epoch:1,bindings:Vec::new(),authorized:Vec::new(),authorization_generation:1,at:MediaTime(0),sent:Instant::now()}));
+        let desired=Arc::new(Mutex::new(Desired {session:0,revision:0,epoch:1,bindings:Vec::new(),authorized:Vec::new(),suppressed_selectors:Vec::new(),hotkey_targets:Vec::new(),authorization_generation:1,at:MediaTime(0),sent:Instant::now()}));
         let closed=Arc::new(AtomicBool::new(false));let retired=Arc::new(AtomicBool::new(false));
         let (query,jobs)=mpsc::sync_channel(1);let (reply,events)=mpsc::sync_channel(1);let snapshots=Arc::new(Mutex::new(Arc::new(GameSnapshot::default())));let publish=snapshots.clone();
         let (wanted,close,done)=(desired.clone(),closed.clone(),retired.clone());
@@ -67,12 +69,12 @@ impl GameOwner {
     pub fn authorize(&mut self,session:&Session,target:&GameCaptureTarget)->Result<(),GameError>{
         if session.is_closed()||self.closed.load(Ordering::Acquire){return Err(GameError::Closed);}
         target.validate().map_err(|_|GameError::Invalid("invalid game authorization target"))?;
-        if !session.snapshot().sources().iter().any(|source|matches!(source.kind(),SourceKind::GameCapture {binding}if binding.target().same_process_window(target))){return Err(GameError::Invalid("select an authored game source first"));}
+        if !session.snapshot().sources().iter().any(|source|matches!(source.kind(),SourceKind::GameCapture {binding}if binding.target().is_some_and(|saved|saved.same_process_window(target)))){return Err(GameError::Invalid("select an authored game source first"));}
         let mut desired=self.desired.try_lock().map_err(|error|match error{std::sync::TryLockError::WouldBlock=>GameError::Busy,std::sync::TryLockError::Poisoned(_)=>GameError::Closed})?;
-        if desired.session!=session.identity(){desired.authorized.clear();desired.bindings.clear();desired.session=session.identity();}
+        if desired.session!=session.identity(){desired.authorized.clear();desired.suppressed_selectors.clear();desired.hotkey_targets.clear();desired.bindings.clear();desired.session=session.identity();}
         let model=session.snapshot();
-        let retained_targets:Vec<_>=desired.bindings.iter().map(|(_,binding)|binding.target().clone()).collect();
-        desired.authorized.retain(|old|retained_targets.iter().any(|target|target.same_process_window(old))||model.sources().iter().any(|source|matches!(source.kind(),SourceKind::GameCapture {binding}if binding.target().same_process_window(old))));
+        let retained_targets:Vec<_>=desired.bindings.iter().filter_map(|(_,binding)|binding.target().cloned()).collect();
+        desired.authorized.retain(|old|retained_targets.iter().any(|target|target.same_process_window(old))||model.sources().iter().any(|source|matches!(source.kind(),SourceKind::GameCapture {binding}if binding.target().is_some_and(|saved|saved.same_process_window(old)))));
         if !desired.authorized.iter().any(|old|old.same_process_window(target)) {
             if desired.authorized.len()>=2{return Err(GameError::Limit("at most two explicitly authorized game targets per session"));}
             desired.authorized.push(target.clone());
@@ -85,8 +87,34 @@ impl GameOwner {
     pub fn revoke(&mut self,session:&Session,source:Id)->Result<(),GameError>{
         let model=session.snapshot();let SourceKind::GameCapture {binding}=model.source(source).ok_or(GameError::TargetChanged)?.kind() else{return Err(GameError::Invalid("source is not game capture"));};
         let mut desired=self.desired.try_lock().map_err(|error|match error{std::sync::TryLockError::WouldBlock=>GameError::Busy,std::sync::TryLockError::Poisoned(_)=>GameError::Closed})?;
-        desired.authorized.retain(|old|!old.same_process_window(binding.target()));desired.authorization_generation=desired.authorization_generation.checked_add(1).ok_or(GameError::Limit("game authorization identity"))?;desired.epoch=desired.epoch.checked_add(1).ok_or(GameError::Limit("game scope identity"))?;
+        desired.hotkey_targets.retain(|(id,_)|*id!=source);desired.authorized.retain(|old|!binding.target().is_some_and(|target|old.same_process_window(target)));if binding.target().is_none()&&binding.obs_selector().is_some()&&!desired.suppressed_selectors.contains(&source){desired.suppressed_selectors.push(source);}desired.authorization_generation=desired.authorization_generation.checked_add(1).ok_or(GameError::Limit("game authorization identity"))?;desired.epoch=desired.epoch.checked_add(1).ok_or(GameError::Limit("game scope identity"))?;
         self.latest=Arc::new(GameSnapshot {instance:self.instance,session:session.identity(),epoch:desired.epoch,..Default::default()});Ok(())
+    }
+    /// Re-enable automatic discovery of an imported OBS selector for this session.
+    pub fn resume_selector(&mut self,session:&Session,source:Id)->Result<(),GameError>{
+        if session.is_closed()||self.closed.load(Ordering::Acquire){return Err(GameError::Closed);}
+        if !session.snapshot().source(source).is_some_and(|source|matches!(source.kind(),SourceKind::GameCapture {binding} if binding.target().is_none()&&binding.obs_selector().is_some())){return Err(GameError::Invalid("source has no unresolved game selector"));}
+        let mut desired=self.desired.try_lock().map_err(|error|match error{std::sync::TryLockError::WouldBlock=>GameError::Busy,std::sync::TryLockError::Poisoned(_)=>GameError::Closed})?;
+        desired.suppressed_selectors.retain(|old|*old!=source);
+        desired.authorization_generation=desired.authorization_generation.checked_add(1).ok_or(GameError::Limit("game authorization identity"))?;
+        desired.epoch=desired.epoch.checked_add(1).ok_or(GameError::Limit("game scope identity"))?;
+        self.latest=Arc::new(GameSnapshot {instance:self.instance,session:session.identity(),epoch:desired.epoch,..Default::default()});Ok(())
+    }
+    /// The captured identity belongs to the foreground window at the physical key press,
+    /// not to whichever window happens to be foreground when the UI drains its queue.
+    pub fn hotkey(&mut self,session:&Session,source:Id,foreground:Option<crate::global_hotkeys::ForegroundIdentity>,accept:impl FnOnce()->bool)->Result<(),GameError>{
+        if session.is_closed()||self.closed.load(Ordering::Acquire){return Err(GameError::Closed);}
+        if !session.snapshot().source(source).is_some_and(|value|matches!(value.kind(),SourceKind::GameCapture{binding} if binding.obs_selector().is_some_and(|s|s.hotkey_mode))){return Err(GameError::Invalid("source is not in hotkey capture mode"));}
+        let mut desired=self.desired.try_lock().map_err(|error|match error{std::sync::TryLockError::WouldBlock=>GameError::Busy,std::sync::TryLockError::Poisoned(_)=>GameError::Closed})?;
+        if desired.session!=session.identity(){return Err(GameError::Stale);}
+        if desired.authorization_generation==u64::MAX||desired.epoch==u64::MAX{return Err(GameError::Limit("game scope identity"));}
+        if !accept(){return Err(GameError::Stale);}
+        desired.hotkey_targets.retain(|(id,_)|*id!=source);
+        if let Some(identity)=foreground{desired.hotkey_targets.push((source,identity));}
+        desired.suppressed_selectors.retain(|id|*id!=source);
+        desired.authorization_generation=desired.authorization_generation.checked_add(1).ok_or(GameError::Limit("game authorization identity"))?;
+        desired.epoch=desired.epoch.checked_add(1).ok_or(GameError::Limit("game scope identity"))?;
+        self.latest=Arc::new(GameSnapshot{instance:self.instance,session:desired.session,epoch:desired.epoch,..Default::default()});Ok(())
     }
     pub fn synchronize(&mut self,session:&Session,views:&[FrameScene],at:MediaTime)->Result<(),GameError>{
         let result=self.synchronize_inner(session,views,at);
@@ -109,7 +137,9 @@ impl GameOwner {
             }
         }
         bindings.sort_by_key(|(id,_)|id.get());let mut desired=self.desired.try_lock().map_err(|error|match error{std::sync::TryLockError::WouldBlock=>GameError::Busy,std::sync::TryLockError::Poisoned(_)=>GameError::Closed})?;
-        if desired.session!=session.identity(){desired.authorized.clear();}
+        if desired.session!=session.identity(){desired.authorized.clear();desired.suppressed_selectors.clear();desired.hotkey_targets.clear();}
+        desired.suppressed_selectors.retain(|id|model.source(*id).is_some());
+        desired.hotkey_targets.retain(|(id,_)|model.source(*id).is_some_and(|source|matches!(source.kind(),SourceKind::GameCapture{binding} if binding.obs_selector().is_some_and(|s|s.hotkey_mode))));
         if desired.session!=session.identity()||desired.revision!=model.revision()||desired.bindings!=bindings {
             desired.epoch=desired.epoch.checked_add(1).ok_or(GameError::Limit("game capture scope identity"))?;
             desired.session=session.identity();desired.revision=model.revision();desired.bindings=bindings;

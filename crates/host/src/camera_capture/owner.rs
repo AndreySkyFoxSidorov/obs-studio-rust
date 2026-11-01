@@ -444,7 +444,10 @@ impl CameraOwner {
         }
         let video = snapshot.video();
         let output_fps = (video.fps_num(),video.fps_den());
-        let rate_changed = self.output_fps != output_fps && bindings.iter().any(|(_,binding)|binding.fps_policy()==skylive_core::CameraFpsPolicy::MatchOutput);
+        // Device Default ignores OBS's inactive custom frame interval. Output
+        // FPS changes must not restart or invalidate its capture pipeline.
+        let rate_changed = self.output_fps != output_fps && bindings.iter().any(|(_,binding)|
+            binding.mode_policy()==skylive_core::CameraModePolicy::Fixed && binding.fps_policy()==skylive_core::CameraFpsPolicy::MatchOutput);
         if self.session == session.identity() && self.bindings == bindings && self.delay_settings == delay_settings && self.delay_upstream == delay_upstream && !rate_changed {
             return Ok(false);
         }
@@ -894,6 +897,9 @@ fn validate_bindings(
 
 struct StreamState {
     stream: Box<dyn NativeCameraStream>,
+    // Read before opening/configuring the device. GetFormat on an already
+    // active graph describes the selected mode, not the device default.
+    preferred_before_open: Option<CameraModeInfo>,
     actual_mode: VideoCaptureMode,
     generation: u64,
     clock_epoch: u64,
@@ -1483,12 +1489,13 @@ impl Runtime {
                 self.dirty=true;
                 continue;
             }
+            let mut preferred_before_open = None;
             let native_binding = if binding.mode_policy()==skylive_core::CameraModePolicy::DirectShowPreferred {
                 // Resolve on each open, after the prior stream has retired.
                 // The DirectShow choice must exist as an exact MF native mode;
                 // otherwise report it rather than silently choosing a different one.
                 let resolved=self.backend().and_then(|backend|backend.directshow_preferred(binding.target()))
-                    .and_then(|info|info.mode.ok_or(CameraError::ModeNotFound))
+                    .and_then(|info|{preferred_before_open=Some(info.clone());info.mode.ok_or(CameraError::ModeNotFound)})
                     .and_then(|preferred|self.backend().and_then(|backend|backend.enumerate_modes(binding.target(),limits))
                         .and_then(|modes|validate_modes(modes,limits))
                         .and_then(|modes|modes.into_iter().filter_map(|item|item.mode).find(|mode|super::directshow_mode_matches(*mode,preferred)).ok_or(CameraError::ModeNotFound)))
@@ -1497,13 +1504,13 @@ impl Runtime {
                     Ok(binding)=>binding,
                     Err(error)=>{self.retry.insert(key,(Instant::now()+Duration::from_secs(1),error));self.dirty=true;continue;}
                 }
-            } else if binding.fps_policy()==skylive_core::CameraFpsPolicy::Fixed {
+            } else if binding.fps_policy()==skylive_core::CameraFpsPolicy::Fixed && !binding.any_format() {
                 binding.as_ref().clone()
             } else {
                 let output_fps=self.output_fps;
                 let resolved=self.backend().and_then(|backend|backend.enumerate_modes(binding.target(),limits))
                     .and_then(|modes|validate_modes(modes,limits))
-                    .and_then(|modes|super::selection::resolve_camera_fps_policy(&modes,binding.mode(),binding.fps_policy(),output_fps))
+                    .and_then(|modes|if binding.any_format(){super::selection::resolve_camera_any_format(&modes,binding.mode(),binding.fps_policy(),output_fps)}else{super::selection::resolve_camera_fps_policy(&modes,binding.mode(),binding.fps_policy(),output_fps)})
                     .and_then(|mode|mode.ok_or(CameraError::ModeNotFound))
                     .and_then(|mode|binding.as_ref().clone().with_mode(mode).map_err(|_|CameraError::ModeNotFound));
                 match resolved {
@@ -1558,6 +1565,14 @@ impl Runtime {
             } else {
                 let scope=self.scope.as_ref().map(|scope|scope.0);
                 let admitted=CameraLimits {max_raw_bytes:raw_bytes,max_frame_bytes:bytes,..limits};
+                // A separate DirectShow probe would contend with an active
+                // camera. Capture its unconfigured preferred mode before
+                // activation, and treat probe failure as optional so that it
+                // never prevents the explicitly selected mode from opening.
+                if preferred_before_open.is_none() && matches!(native_binding.target(), VideoCaptureTarget::Windows { .. })
+                    && !self.streams.keys().any(|resource| physical_target(&resource.0)==physical_target(native_binding.target())) {
+                    preferred_before_open=self.backend().and_then(|backend|backend.directshow_preferred(native_binding.target())).ok();
+                }
                 self.backend().and_then(|backend| {
                     if native_binding.embedded_audio() {
                         let scope=scope.ok_or(CameraError::Closed)?;
@@ -1572,6 +1587,7 @@ impl Runtime {
                         key,
                         StreamState {
                             stream,
+                            preferred_before_open,
                             actual_mode: native_binding.mode(),
                             generation: self.generation,
                             clock_epoch: 1,
@@ -2024,9 +2040,11 @@ fn run(
                         (VideoCaptureTarget::Windows{symbolic_link:a},VideoCaptureTarget::Windows{symbolic_link:b})=>a.eq_ignore_ascii_case(b),
                         _=>other==&target,
                     };
-                    let result=if state.closing.iter().any(|closing|same_device(&closing.key.0))
-                        || state.streams.keys().any(|resource|same_device(&resource.0)) {
+                    let result=if state.closing.iter().any(|closing|same_device(&closing.key.0)) {
                         Err(CameraError::DeviceBusy)
+                    } else if state.streams.keys().any(|resource|same_device(&resource.0)) {
+                        state.streams.iter().filter(|(resource,_)|same_device(&resource.0))
+                            .find_map(|(_,stream)|stream.preferred_before_open.clone()).ok_or(CameraError::DeviceBusy)
                     } else if state.streams.len()+state.closing.len()>=limits.max_streams {
                         Err(CameraError::BudgetExceeded("DirectShow preferred query native admission"))
                     } else {

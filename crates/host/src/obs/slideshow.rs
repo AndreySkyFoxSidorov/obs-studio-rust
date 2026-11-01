@@ -2,7 +2,7 @@
 //! Bounded worker-only folder expansion; no watcher, recursive scan or size guessing.
 use super::*;
 use skylive_core::{ImageSlideShow,SlideTransition,SlideShowCanvas,SlideShowBehavior,SlideShowMode,SlideShowRandomCompatibility,MAX_SLIDES};
-pub(super) struct Input{files:Vec<PathBuf>,expansion:Option<crate::image_slideshow::directories::Expansion>,hold:u32,speed:u32,transition:SlideTransition,looping:bool,hide:bool,canvas:SlideShowCanvas,behavior:SlideShowBehavior,mode:SlideShowMode,randomize:bool,random_compatibility:SlideShowRandomCompatibility,prepared:Option<ImageSlideShow>}
+pub(super) struct Input{files:Vec<PathBuf>,expansion:Option<crate::image_slideshow::directories::Expansion>,hold:u32,speed:u32,transition:SlideTransition,looping:bool,hide:bool,canvas:SlideShowCanvas,behavior:SlideShowBehavior,mode:SlideShowMode,randomize:bool,random_compatibility:SlideShowRandomCompatibility,obs_v2:bool,prepared:Option<ImageSlideShow>}
 fn text<'a>(map:&'a Map<String,Value>,key:&str,default:&'a str,path:&str)->Result<&'a str,ObsError>{map.get(key).map(|value|value.as_str().ok_or_else(||issue(path,"invalid_slideshow",format!("{key} must be a string")))).transpose().map(|value|value.unwrap_or(default))}
 fn millis(map:&Map<String,Value>,key:&str,default:u32,path:&str)->Result<u32,ObsError>{let value=map.get(key).map(|value|value.as_u64().and_then(|v|u32::try_from(v).ok()).ok_or_else(||issue(path,"invalid_slideshow",format!("{key} must be nonnegative integer milliseconds")))).transpose()?.unwrap_or(default);if value>3_600_000{return Err(issue(path,"unsupported_slideshow",format!("{key} exceeds the supported one-hour limit")));}Ok(value)}
 fn canvas(value:&str,v2:bool,path:&str)->Result<SlideShowCanvas,ObsError>{
@@ -14,10 +14,20 @@ fn canvas(value:&str,v2:bool,path:&str)->Result<SlideShowCanvas,ObsError>{
     if !v2 && !value.trim_start().starts_with(|c:char| c.is_ascii_digit() || c == '+' || c == '-') {
         return Ok(SlideShowCanvas::Auto);
     }
-    let parsed=value.split_once('x').map(|v|(false,v)).or_else(||(!v2).then(||value.split_once(':').map(|v|(true,v))).flatten());
-    let Some((aspect,(w,h)))=parsed else{return Err(issue(path,"unsupported_slideshow_size","slideshow size must be canonical pixels or a legacy aspect ratio; localized Auto and empty v2 canvases are not guessed"));};
-    if w.is_empty()||h.is_empty()||!w.bytes().chain(h.bytes()).all(|byte|byte.is_ascii_digit()){return Err(issue(path,"invalid_slideshow_size","slideshow dimensions must be unsigned decimal integers"));}
-    let width=w.parse::<u32>().map_err(|_|issue(path,"invalid_slideshow_size","slideshow width exceeds the supported integer range"))?;let height=h.parse::<u32>().map_err(|_|issue(path,"invalid_slideshow_size","slideshow height exceeds the supported integer range"))?;
+    // OBS reads these editable strings with sscanf("%ux%u") (and the
+    // legacy fallback "%d:%d"). Conversion skips leading whitespace and
+    // stops after the numeric height, so a label such as "1920x1080 (16:9)"
+    // must not make an otherwise valid collection unimportable.
+    fn positive_prefix(input:&str)->Option<(u32,&str)> {
+        let input=input.trim_start();
+        let input=input.strip_prefix('+').unwrap_or(input);
+        let end=input.bytes().take_while(u8::is_ascii_digit).count();
+        if end==0{return None;}
+        Some((input[..end].parse().ok()?,&input[end..]))
+    }
+    let (width,rest)=positive_prefix(value).ok_or_else(||issue(path,"invalid_slideshow_size","slideshow width must be a supported positive integer"))?;
+    let (aspect,rest)=if let Some(rest)=rest.strip_prefix('x'){(false,rest)}else if !v2 {if let Some(rest)=rest.strip_prefix(':'){(true,rest)}else{return Err(issue(path,"unsupported_slideshow_size","slideshow size must specify a resolution or a legacy aspect ratio"));}}else{return Err(issue(path,"unsupported_slideshow_size","slideshow size must specify a resolution"));};
+    let (height,_)=positive_prefix(rest).ok_or_else(||issue(path,"invalid_slideshow_size","slideshow height must be a supported positive integer"))?;
     let canvas=if aspect{SlideShowCanvas::Aspect{width,height}}else{SlideShowCanvas::Resolution{width,height}};canvas.validate().map_err(|e|issue(path,"invalid_slideshow_size",e.to_string()))?;Ok(canvas)
 }
 impl Input{
@@ -53,23 +63,23 @@ impl Input{
             match playback{"loop"=>(true,false),"once"=>(false,false),"random"=>(false,true),_=>return Err(issue(path,"unsupported_slideshow_mode","unknown slideshow playback mode is not representable"))}
         }else{if settings.contains_key("playback_mode"){return Err(issue(path,"unsupported_slideshow_mode","playback_mode belongs to slideshow_v2, not the legacy source"));}(boolean(settings,"loop",true,path)?,boolean(settings,"randomize",false,path)?)};
         let random_compatibility=if !v2&&randomize{SlideShowRandomCompatibility::LegacyV1}else{SlideShowRandomCompatibility::BufferedV2};
-        Ok(Self{files,expansion:None,hold,speed,transition,looping,hide:boolean(settings,"hide",false,path)?,canvas,behavior,mode,randomize,random_compatibility,prepared:None})
+        Ok(Self{files,expansion:None,hold,speed,transition,looping,hide:boolean(settings,"hide",false,path)?,canvas,behavior,mode,randomize,random_compatibility,obs_v2:v2,prepared:None})
     }
     pub fn file_count(&self)->usize{self.expansion.as_ref().map_or(self.files.len(),|plan|plan.image_count())}
     pub fn preflight(&mut self,path:&str,budget:&mut crate::image_slideshow::directories::Budget)->Result<(),ObsError>{let entries=crate::image_slideshow::directories::classify(&self.files,budget).map_err(|error|issue(path,"slideshow_entries",error))?;self.expansion=Some(crate::image_slideshow::directories::expand(&entries,budget).map_err(|error|issue(path,"slideshow_entries",error))?);Ok(())}
     pub fn prepare(&mut self,path:&str,reads:&mut crate::assets::ReadBudget,decoded:&mut usize,budget:&mut crate::image_slideshow::directories::Budget)->Result<(),ObsError>{
         let expansion=self.expansion.take().ok_or_else(||issue(path,"invalid_slideshow","slideshow entries were not preflighted"))?;let prepared=expansion.prepare(budget,reads,decoded,MAX_IMPORT_IMAGE_BYTES).map_err(|error|issue(path,"slideshow_entries",error))?;
-        self.prepared=Some(ImageSlideShow::new_with_options(prepared.images,self.hold,self.transition,self.speed,self.looping,false,self.hide,self.canvas,self.behavior).and_then(|settings|settings.with_mode(self.mode)).and_then(|settings|settings.with_randomization(self.randomize,self.random_compatibility)).and_then(|settings|settings.with_entries(prepared.entries,prepared.counts)).map_err(|error|issue(path,"invalid_slideshow",error.to_string()))?);Ok(())
+        self.prepared=Some(ImageSlideShow::new_with_options(prepared.images,self.hold,self.transition,self.speed,self.looping,false,self.hide,self.canvas,self.behavior).and_then(|settings|settings.with_mode(self.mode)).and_then(|settings|settings.with_randomization(self.randomize,self.random_compatibility)).and_then(|settings|settings.with_entries(prepared.entries,prepared.counts)).map(|settings|settings.with_obs_v2(self.obs_v2)).map_err(|error|issue(path,"invalid_slideshow",error.to_string()))?);Ok(())
     }
     pub fn settings(&self)->Option<&ImageSlideShow>{self.prepared.as_ref()}
 }
-pub(super) fn versioned_id(settings:&ImageSlideShow)->&'static str{if settings.randomize()&&settings.random_compatibility()==SlideShowRandomCompatibility::BufferedV2{"slideshow_v2"}else{"slideshow"}}
+pub(super) fn versioned_id(settings:&ImageSlideShow)->&'static str{if settings.randomize(){if settings.random_compatibility()==SlideShowRandomCompatibility::BufferedV2{"slideshow_v2"}else{"slideshow"}}else if settings.obs_v2(){"slideshow_v2"}else{"slideshow"}}
 pub(super) fn export(settings:&ImageSlideShow,path:&str)->Result<Value,ObsError>{
     if settings.shuffle(){return Err(issue(path,"unsupported_slideshow_random","native stable shuffle cannot be exported as OBS successive random playback"));}
     let entries=settings.authored_entries();let mut files=Vec::with_capacity(entries.len());for entry in &entries{if !Path::new(entry.path()).is_absolute(){return Err(issue(path,"image_path",format!("OBS slideshow export requires an absolute file or folder path: {}",entry.path())));}files.push(json!({"value":entry.path()}));}
     let transition=match settings.transition(){SlideTransition::Cut=>"cut",SlideTransition::Fade=>"fade",SlideTransition::Swipe=>"swipe",SlideTransition::Slide=>"slide"};
-    let modern_random=settings.randomize()&&settings.random_compatibility()==SlideShowRandomCompatibility::BufferedV2;
-    if modern_random&&!matches!(settings.canvas(),SlideShowCanvas::Resolution{..}){return Err(issue(path,"unsupported_slideshow_size","modern OBS random export requires an explicit pixel canvas; automatic and aspect authoring cannot be silently fixed"));}
+    let modern=versioned_id(settings)=="slideshow_v2";
+    if modern&&!matches!(settings.canvas(),SlideShowCanvas::Resolution{..}){return Err(issue(path,"unsupported_slideshow_size","OBS slideshow v2 export requires an explicit pixel canvas; automatic and aspect authoring cannot be silently fixed"));}
     let canvas=match settings.canvas(){SlideShowCanvas::Auto=>String::new(),SlideShowCanvas::Resolution{width,height}=>format!("{width}x{height}"),SlideShowCanvas::Aspect{width,height}=>format!("{width}:{height}")};let behavior=match settings.behavior(){SlideShowBehavior::StopRestart=>"stop_restart",SlideShowBehavior::PauseUnpause=>"pause_unpause",SlideShowBehavior::AlwaysPlay=>"always_play"};
-    let mut value=json!({"transition_speed":settings.transition_ms(),"use_custom_size":canvas,"slide_time":settings.duration_ms(),"transition":transition,"randomize":settings.randomize(),"loop":settings.looping(),"hide":settings.hide_when_done(),"files":files,"playback_behavior":behavior,"slide_mode":match settings.mode(){SlideShowMode::Automatic=>"mode_auto",SlideShowMode::Manual=>"mode_manual"}});if modern_random{value.as_object_mut().expect("object literal").insert("playback_mode".into(),json!("random"));}Ok(value)
+    let mut value=json!({"transition_speed":settings.transition_ms(),"use_custom_size":canvas,"slide_time":settings.duration_ms(),"transition":transition,"randomize":settings.randomize(),"loop":settings.looping(),"hide":settings.hide_when_done(),"files":files,"playback_behavior":behavior,"slide_mode":match settings.mode(){SlideShowMode::Automatic=>"mode_auto",SlideShowMode::Manual=>"mode_manual"}});if modern{let mode=if settings.randomize(){"random"}else if settings.looping(){"loop"}else{"once"};value.as_object_mut().expect("object literal").insert("playback_mode".into(),json!(mode));}Ok(value)
 }

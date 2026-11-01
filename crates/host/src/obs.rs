@@ -355,6 +355,7 @@ struct InputSource {
     kind: InputKind,
 }
 enum InputKind {
+    Game {binding:skylive_core::GameCaptureBinding,gain:f32,muted:bool},
     Camera {binding:skylive_core::VideoCaptureBinding,gain:f32,muted:bool},
     Text {settings:skylive_core::TextSource,system_family:String,gain:f32,muted:bool},
     Group {items:Vec<InputItem>,width:u32,height:u32},
@@ -396,6 +397,7 @@ impl InputKind {
             Self::Display {binding,..} => Some((binding.width(),binding.height())),
             Self::Window {binding,..} => Some((binding.width(),binding.height())),
             Self::Camera {binding,..} => Some((binding.width(),binding.height())),
+            Self::Game {binding,..} => Some((binding.width(),binding.height())),
             Self::Image {
                 asset: Some(asset), ..
             } => Some((asset.width(), asset.height())),
@@ -467,7 +469,15 @@ fn check_source_common(
         neutral(map, "sync", json!(0), path)?;
         transitions::scene_override(map, path, catalog)?;
     } else {
-        neutral(map, "private_settings", json!({}), path)?;
+        // OBS stores these mixer controls on the source, not on its scene item.
+        // Continue rejecting unrepresented private metadata rather than losing it.
+        if let Some(value)=map.get("private_settings") {
+            let private_path=format!("{path}.private_settings");
+            let private=object(value,&private_path)?;
+            known(private,&["mixer_hidden","volume_locked"],&private_path)?;
+            boolean(private,"mixer_hidden",false,&private_path)?;
+            boolean(private,"volume_locked",false,&private_path)?;
+        }
     }
     let audio_tracks=audio_mixers::parse(map,path)?;
     if is_scene&&!audio_tracks.is_all(){
@@ -1000,6 +1010,7 @@ fn import_collection_inner(
         let is_display = id == "monitor_capture";
         let is_window = id == "window_capture";
         let is_camera = id == "dshow_input";
+        let is_game = id == "game_capture";
         if (is_group && versioned!="group")
             || (is_scene && versioned != "scene")
             || (is_image && versioned != "image_source")
@@ -1011,7 +1022,8 @@ fn import_collection_inner(
             || (is_display && versioned != "monitor_capture")
             || (is_window && versioned != "window_capture")
             || (is_camera && versioned != "dshow_input")
-            || (!is_group && !is_scene && !is_image && !is_slideshow && !is_browser && !is_display && !is_window && !is_media && !is_text && !is_wasapi && !is_camera
+            || (is_game && versioned != "game_capture")
+            || (!is_group && !is_scene && !is_image && !is_slideshow && !is_browser && !is_display && !is_window && !is_media && !is_text && !is_wasapi && !is_camera && !is_game
                 && (id != "color_source"
                     || !["color_source", "color_source_v2", "color_source_v3"]
                         .contains(&versioned)))
@@ -1024,9 +1036,16 @@ fn import_collection_inner(
         }
         check_source_common(map, &path, is_scene, &catalog)?;
         if is_group{neutral(map,"volume",json!(1),&path)?;neutral(map,"muted",json!(false),&path)?;}
-        let playback_hotkeys=source_hotkeys::parse(map,&path,if is_slideshow{source_hotkeys::Provider::Slideshow}else if is_media{source_hotkeys::Provider::Media}else{source_hotkeys::Provider::Other})?;
+        let playback_hotkeys=source_hotkeys::parse(map,&path,if is_slideshow{source_hotkeys::Provider::Slideshow}else if is_media{source_hotkeys::Provider::Media}else if is_game{source_hotkeys::Provider::Game}else{source_hotkeys::Provider::Other})?;
         let audio_filters=audio_filters::parse(map,&path,&mut filter_uuids)?;
-        let filters = filters::parse(map, &path, is_scene, &mut filter_uuids,base_directory)?;
+        // OBS scene/group sources are COMPOSITE rather than AUDIO/ASYNC:
+        // their custom audio_render path never calls filter_async_audio.
+        // SkyLive scene-bus filters are an extension with audible behavior,
+        // so importing such a filter as active would silently change sound.
+        if (is_scene || is_group) && !audio_filters.is_empty() {
+            return Err(issue(&path,"unsupported_filter","OBS scene and group audio filters do not execute on composite sources; importing them as SkyLive scene-bus filters would change audio"));
+        }
+        let filters = filters::parse(map, &path, is_scene, is_camera, &mut filter_uuids,base_directory)?;
         let name = string(map, "name", &path)?.to_owned();
         if names.insert(name.clone(), index).is_some() {
             return Err(issue(
@@ -1049,6 +1068,38 @@ fn import_collection_inner(
         )?;
         let kind = if is_group {
             let(width,height)=groups::parse_settings(settings,&format!("{path}.settings"))?;InputKind::Group{items:Vec::new(),width,height}
+        } else if is_game {
+            let settings_path=format!("{path}.settings");
+            known(settings,&["capture_mode","window","priority","sli_compatibility","capture_cursor","allow_transparency","premultiplied_alpha","limit_framerate","capture_overlays","anti_cheat_hook","hook_rate","rgb10a2_space","capture_audio","capture_any_fullscreen"],&settings_path)?;
+            let (mode,hotkey_mode)=match settings.get("capture_mode") {
+                Some(Value::String(value)) if value=="window"=>(false,false),
+                Some(Value::String(value)) if value=="any_fullscreen"=>(true,false),
+                Some(Value::String(value)) if value=="hotkey"=>(false,true),
+                None=>(match settings.get("capture_any_fullscreen") {Some(Value::Bool(value))=>*value,None=>true,_=>return Err(issue(&settings_path,"invalid_game_capture","capture_any_fullscreen must be boolean"))},false),
+                _=>return Err(issue(&settings_path,"game_capture_mode_unsupported","Only OBS specific-window, any-fullscreen and hotkey game capture modes are supported")),
+            };
+            neutral(settings,"sli_compatibility",json!(false),&settings_path)?;
+            neutral(settings,"premultiplied_alpha",json!(false),&settings_path)?;
+            neutral(settings,"limit_framerate",json!(false),&settings_path)?;
+            neutral(settings,"capture_overlays",json!(false),&settings_path)?;
+            neutral(settings,"capture_audio",json!(false),&settings_path)?;
+            if settings.get("capture_any_fullscreen").is_some_and(|value|!value.is_boolean()){return Err(issue(&settings_path,"invalid_game_capture","capture_any_fullscreen must be boolean"));}
+            neutral(settings,"anti_cheat_hook",json!(true),&settings_path)?;
+            neutral(settings,"hook_rate",json!(1),&settings_path)?;
+            neutral(settings,"rgb10a2_space",json!("srgb"),&settings_path)?;
+            let priority=match settings.get("priority"){None=>2,Some(value)=>value.as_u64().and_then(|value|u8::try_from(value).ok()).filter(|value|*value<=2).ok_or_else(||issue(&settings_path,"invalid_window_selector","invalid OBS priority"))?};
+            let window=match settings.get("window"){None if mode||hotkey_mode=>String::new(),Some(Value::String(value))=>value.clone(),_=>return Err(issue(&settings_path,"invalid_window_selector","OBS game window must be text"))};
+            let selector=skylive_core::ObsGameSelector {window,priority,any_fullscreen:mode,hotkey_mode};
+            if !mode && !hotkey_mode && selector.window.split(':').count()!=3 {return Err(issue(&settings_path,"invalid_window_selector","OBS game window requires title, class and executable"));}
+            let fps=if video.fps_den==0{60}else{((u64::from(video.fps_num)+u64::from(video.fps_den)-1)/u64::from(video.fps_den)).clamp(1,120) as u32};
+            let cursor=boolean(settings,"capture_cursor",true,&settings_path)?;
+            let transparency=boolean(settings,"allow_transparency",false,&settings_path)?;
+            let binding=skylive_core::GameCaptureBinding::unresolved_obs(selector,video.width,video.height,fps)
+                .map(|binding|binding.with_capture_cursor(cursor).with_allow_transparency(transparency))
+                .map_err(|error|issue(&settings_path,"invalid_game_capture",error.to_string()))?;
+            let gain=number(map,"volume",1.0,&path)? as f32;
+            if !gain.is_finite()||!(0.0..=20.0).contains(&gain){return Err(issue(&path,"invalid","volume is outside the engine range"));}
+            InputKind::Game{binding,gain,muted:boolean(map,"muted",false,&path)?}
         } else if is_scene {
             known(
                 settings,
@@ -1103,9 +1154,14 @@ fn import_collection_inner(
                 let path=if path.is_absolute(){path}else{base_directory.ok_or_else(||issue(&settings_path,"relative_browser_path","relative browser HTML requires an explicit absolute import base"))?.join(path)};
                 skylive_core::BrowserLocation::LocalFile {path:path.to_str().ok_or_else(||issue(&settings_path,"invalid_browser_path","browser HTML path is not UTF8"))?.into()}
             } else {skylive_core::BrowserLocation::Url {url:settings.get("url").map(|v|v.as_str().ok_or_else(||issue(&settings_path,"invalid","browser URL must be a string"))).transpose()?.unwrap_or("https://obsproject.com/browser-source").into()}};
-            let fps=if boolean(settings,"fps_custom",true,&settings_path)? {dimension(settings,"fps",30,&settings_path)?}else{video.fps_num.div_ceil(video.fps_den)};
-            let css=settings.get("css").map(|v|v.as_str().ok_or_else(||issue(&settings_path,"invalid","browser CSS must be a string"))).transpose()?.unwrap_or("body { background-color: rgba(0,0,0,0); margin: 0; overflow: hidden; }").to_owned();
-            let browser=skylive_core::BrowserSource::new(location,css,dimension(settings,"width",800,&settings_path)?,dimension(settings,"height",600,&settings_path)?,fps,boolean(settings,"shutdown",false,&settings_path)?,boolean(settings,"restart_when_active",false,&settings_path)?).map(|value|value.with_control_audio(control_audio)).map_err(|e|issue(&settings_path,"unsupported_browser",e.to_string()))?;
+            // Windows OBS shared-texture builds default to the canvas rate.
+            // Keep the inactive custom value so toggling the option is lossless.
+            let custom_fps=boolean(settings,"fps_custom",false,&settings_path)?;
+            let fps=dimension(settings,"fps",30,&settings_path)?;
+            let css=settings.get("css").map(|v|v.as_str().ok_or_else(||issue(&settings_path,"invalid","browser CSS must be a string"))).transpose()?.unwrap_or("body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }").to_owned();
+            let inactive_key=if local{"url"}else{"local_file"};
+            let inactive=settings.get(inactive_key).map(|v|v.as_str().ok_or_else(||issue(&settings_path,"invalid","inactive browser URL or path must be a string"))).transpose()?.unwrap_or("").to_owned();
+            let browser=skylive_core::BrowserSource::new(location,css,dimension(settings,"width",800,&settings_path)?,dimension(settings,"height",600,&settings_path)?,fps,boolean(settings,"shutdown",false,&settings_path)?,boolean(settings,"restart_when_active",false,&settings_path)?).and_then(|value|value.with_inactive_location(inactive)).map(|value|value.with_control_audio(control_audio).with_custom_fps(custom_fps)).map_err(|e|issue(&settings_path,"unsupported_browser",e.to_string()))?;
             let gain=number(map,"volume",1.0,&path)? as f32;if !gain.is_finite()||!(0.0..=20.0).contains(&gain){return Err(issue(&path,"invalid","browser source gain is outside engine range"));}
             InputKind::Browser {browser,gain,muted:boolean(map,"muted",false,&path)?}
         } else if is_window {
@@ -1208,19 +1264,27 @@ fn import_collection_inner(
         if !(0.0..=1.0).contains(&balance){return Err(issue(&format!("{path}.balance"),"unsupported","Source balance must be in 0..1"));}
         // OBS loads a JSON double and passes it to the source as float.
         let balance=balance as f32;
-        if (force_mono||balance!=0.5)&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio()){return Err(issue(&path,"unsupported","Force mono and balance require a represented audio-capable source"));}
+        // Windows window capture exposes OBS_SOURCE_AUDIO and can capture the
+        // selected process. The settings remain authored even when capture is
+        // temporarily disabled, just like its existing native source model.
+        // win-dshow advertises OBS_SOURCE_AUDIO even when camera audio is
+        // temporarily disabled. Keep its authored mixer settings in that
+        // case; core stores them on Windows camera sources and the runtime
+        // only routes actual audio when the camera supplies it.
+        let audio_controls=is_media||is_wasapi||matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio())||matches!(&kind,InputKind::Window{..}|InputKind::Camera{..});
+        if (force_mono||balance!=0.5)&&!audio_controls{return Err(issue(&path,"unsupported","Force mono and balance require a represented audio-capable source"));}
         let monitoring=match map.get("monitoring_type"){
             None=>skylive_core::AudioMonitoringMode::Off,
             Some(value)=>match value.as_u64(){Some(0)=>skylive_core::AudioMonitoringMode::Off,Some(1)=>skylive_core::AudioMonitoringMode::MonitorOnly,Some(2)=>skylive_core::AudioMonitoringMode::MonitorAndOutput,_=>return Err(issue(&format!("{path}.monitoring_type"),"unsupported","OBS monitoring type must be 0, 1 or 2"))},
         };
         if !monitoring.is_off()&&!cfg!(target_os="windows"){return Err(issue(&format!("{path}.monitoring_type"),"monitoring_platform_unsupported","The represented physical monitoring backend currently requires Windows"));}
-        if !monitoring.is_off()&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio()){return Err(issue(&format!("{path}.monitoring_type"),"monitoring_source_unsupported","Monitoring requires a represented audio-capable source"));}
-        let audio_hotkeys=source_hotkeys::parse_audio(map,&path,match &kind{InputKind::Media{..}|InputKind::Wasapi{..}=>true,InputKind::Browser{browser,..}=>browser.control_audio(),_=>false})?;
+        if !monitoring.is_off()&&!audio_controls{return Err(issue(&format!("{path}.monitoring_type"),"monitoring_source_unsupported","Monitoring requires a represented audio-capable source"));}
+        let audio_hotkeys=source_hotkeys::parse_audio(map,&path,audio_controls)?;
         if matches!(&kind,InputKind::Wasapi{binding,..}if binding.flow()==skylive_core::AudioFlow::Output)&&!monitoring.is_off(){return Err(issue(&path,"wasapi_monitoring_unsupported","OBS output capture self-monitoring suppression is not represented"));}
         if is_wasapi&&!filters.is_empty(){return Err(issue(&path,"wasapi_video_unsupported","WASAPI audio sources cannot carry video filters"));}
         let delay=|key:&str|->Result<u32,ObsError>{match map.get(key){None=>Ok(0),Some(value)=>value.as_u64().and_then(|v|u32::try_from(v).ok()).filter(|v|*v<=i32::MAX as u32).ok_or_else(||issue(&format!("{path}.{key}"),"unsupported","Push delay requires 0..2147483647 milliseconds"))}};
         let push_audio=skylive_core::PushAudioSettings::new(boolean(map,"push-to-mute",false,&path)?,delay("push-to-mute-delay")?,boolean(map,"push-to-talk",false,&path)?,delay("push-to-talk-delay")?).map_err(|error|issue(&path,"unsupported",error.to_string()))?;
-        if !push_audio.is_default()&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio()){return Err(issue(&path,"unsupported","Push-to-mute/talk settings require an audio-capable source"));}
+        if !push_audio.is_default()&&!audio_controls{return Err(issue(&path,"unsupported","Push-to-mute/talk settings require an audio-capable source"));}
         let sync_ns=match map.get("sync") {
             None=>0,
             Some(value)=>value.as_i64().ok_or_else(||issue(&format!("{path}.sync"),"invalid","source sync requires integral nanoseconds"))?,
@@ -1229,14 +1293,14 @@ fn import_collection_inner(
             return Err(issue(&format!("{path}.sync"),"unsupported","source sync must be whole milliseconds in-950..20000ms"));
         }
         let sync_offset_ms=(sync_ns/1_000_000)as i32;
-        if sync_offset_ms!=0&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser {browser,..} if browser.control_audio()) {
+        if sync_offset_ms!=0&&!audio_controls {
             return Err(issue(&format!("{path}.sync"),"unsupported","nonzero sync requires a supported audio-capable source"));
         }
-        if !audio_filters.is_empty()&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio()){
+        if !audio_filters.is_empty()&&!audio_controls{
             return Err(issue(&path,"unsupported","audio filter import requires a supported audio-capable source"));
         }
         let audio_tracks=audio_mixers::parse(map,&path)?;
-        if !audio_tracks.is_all()&&!is_media&&!is_wasapi&&!matches!(&kind,InputKind::Browser{browser,..}if browser.control_audio()){
+        if !audio_tracks.is_all()&&!audio_controls{
             return Err(issue(&path,"unsupported","nondefault source audio mixes require a supported audio-controlled source"));
         }
         sources.push(InputSource {
@@ -1662,12 +1726,31 @@ fn import_collection_inner(
         let index=ordinary_end+offset;let id=groups::create_global(&mut session,*slot,&sources[index],&mut identities)?;mapping.insert(index,id);
     }
     groups::bootstrap(&mut session,&sources,&order,&mut mapping,&mut identities,&audio_only)?;
+    // Restore source-scoped mixer presentation after all source IDs exist.
+    // Core rejects metadata on non-audio sources or hidden global slots.
+    for (index,source) in sources.iter().enumerate() {
+        if matches!(&source.kind,InputKind::Scene{..}) {continue;}
+        let Some(private)=source.raw.get("private_settings").and_then(Value::as_object) else {continue;};
+        let path=format!("{}.private_settings",source.path);
+        let hidden=boolean(private,"mixer_hidden",false,&path)?;
+        let locked=boolean(private,"volume_locked",false,&path)?;
+        if hidden||locked {
+            let id=*mapping.get(&index).ok_or_else(||issue(&path,"source_identity","Mixer source was not retained in the imported scene graph"))?;
+            for action in [hidden.then_some(skylive_core::MixerSourceAction::SetHidden(true)),locked.then_some(skylive_core::MixerSourceAction::SetVolumeLocked(true))].into_iter().flatten() {
+                session.apply(Command::SetSourceMixerState {source:id,action}).map_err(|error|issue(&path,"mixer_state_unsupported",error.to_string()))?;
+            }
+        }
+    }
     // Resolve real weak keys only after every retained source ID exists.
     for (index,source) in sources.iter().enumerate(){
         if source.audio_filters.is_empty(){continue;}
         let id=*mapping.get(&index).ok_or_else(||issue("$.sources.filters","unsupported","compressor owner is not retained by this imported scene graph"))?;
         let filters=audio_filters::resolve(&source.audio_filters,&names,&mapping)?;
-        apply(&mut session,Command::SetSourceAudioFilters{source:id,filters})?;
+        if matches!(&source.kind,InputKind::Scene {..}) {
+            apply(&mut session,Command::SetSceneAudioFilters {scene:id,filters})?;
+        } else {
+            apply(&mut session,Command::SetSourceAudioFilters{source:id,filters})?;
+        }
     }
     // Source controls belong to retained source identities, not item aliases.
     // Apply once after all IDs are known; Core rechecks every scope/limit.
@@ -1750,12 +1833,12 @@ fn export_snapshot(
     if collection
         .sources()
         .iter()
-        .any(|source| !source.mixer_state().is_default())
+        .any(|source| source.mixer_state().pinned() || (matches!(source.kind(),SourceKind::Scene{..})&&!source.mixer_state().is_default()))
     {
         return Err(issue(
             "$.sources",
             "unsupported",
-            "mixer source view metadata OBS interchange is not implemented; use native persistence",
+            "Pinned mixer sources and scene-source mixer metadata are not representable in OBS interchange; use native persistence",
         ));
     }
     if collection
@@ -1919,9 +2002,9 @@ fn export_snapshot(
                 object.insert("settings".into(),text::export(settings,"$.sources.settings")?);
             }
             SourceKind::Browser {browser}=>{
-                let (local,path,url)=match browser.location(){skylive_core::BrowserLocation::Url {url}=>(false,String::new(),url.clone()),skylive_core::BrowserLocation::LocalFile {path}=>{if !Path::new(path).is_absolute(){return Err(issue("$.sources.settings.local_file","browser_path","OBS browser HTML export requires an absolute path on this host"));}(true,path.clone(),String::new())}};
+                let (local,path,url)=match browser.location(){skylive_core::BrowserLocation::Url {url}=>(false,browser.inactive_location().to_owned(),url.clone()),skylive_core::BrowserLocation::LocalFile {path}=>{if !Path::new(path).is_absolute(){return Err(issue("$.sources.settings.local_file","browser_path","OBS browser HTML export requires an absolute path on this host"));}(true,path.clone(),browser.inactive_location().to_owned())}};
                 object.insert("id".into(),json!("browser_source"));object.insert("versioned_id".into(),json!("browser_source"));
-                object.insert("settings".into(),json!({"is_local_file":local,"local_file":path,"url":url,"width":browser.width(),"height":browser.height(),"fps":browser.fps(),"fps_custom":true,"css":browser.css(),"shutdown":browser.shutdown_when_hidden(),"restart_when_active":browser.refresh_when_active(),"reroute_audio":browser.control_audio(),"webpage_control_level":0}));
+                object.insert("settings".into(),json!({"is_local_file":local,"local_file":path,"url":url,"width":browser.width(),"height":browser.height(),"fps":browser.fps(),"fps_custom":browser.custom_fps(),"css":browser.css(),"shutdown":browser.shutdown_when_hidden(),"restart_when_active":browser.refresh_when_active(),"reroute_audio":browser.control_audio(),"webpage_control_level":0}));
             }
             SourceKind::ImageSlideShow{settings}=>{object.insert("id".into(),json!("slideshow"));object.insert("versioned_id".into(),json!(slideshow::versioned_id(settings)));object.insert("settings".into(),slideshow::export(settings,"$.sources.settings")?);}
             SourceKind::Image { asset } => {
@@ -1952,8 +2035,12 @@ fn export_snapshot(
                 object.insert("versioned_id".into(),json!("window_capture"));
                 object.insert("settings".into(),window::export(binding,"$.sources.settings")?);
             }
-            SourceKind::GameCapture {..}=>{
-                return Err(issue("$.sources","game_capture_exact_target","Game Capture exact process creation-time/HWND identity and session authorization cannot be represented by OBS window-name matching; use native persistence and explicitly select the target in OBS."));
+            SourceKind::GameCapture {binding}=>{
+                let selector=binding.obs_selector().ok_or_else(||issue("$.sources","game_capture_exact_target","Game Capture exact process creation-time/HWND identity cannot be represented by OBS window-name matching"))?;
+                let mut settings=object.get("settings").and_then(Value::as_object).cloned().unwrap_or_default();
+                settings.insert("capture_mode".into(),json!(if selector.any_fullscreen {"any_fullscreen"} else if selector.hotkey_mode {"hotkey"} else {"window"}));settings.insert("window".into(),json!(selector.window.as_str()));settings.insert("priority".into(),json!(selector.priority));
+                settings.insert("capture_cursor".into(),json!(binding.capture_cursor()));settings.insert("allow_transparency".into(),json!(binding.allow_transparency()));
+                object.insert("id".into(),json!("game_capture"));object.insert("versioned_id".into(),json!("game_capture"));object.insert("settings".into(),Value::Object(settings));
             }
             SourceKind::Group {group}=>{
                 let scene=collection.scene_container(group.scene()).ok_or_else(||issue("$.groups","invalid_reference","Group container missing"))?;
@@ -1982,10 +2069,15 @@ fn export_snapshot(
                 object.insert("id".into(),json!(id));object.insert("versioned_id".into(),json!(id));object.insert("settings".into(),settings);
             }
         }
+        let mut private=object.remove("private_settings").map(|value|value.as_object().cloned().ok_or_else(||issue("$.sources.private_settings","invalid","expected object"))).transpose()?.unwrap_or_default();
+        private.remove("mixer_hidden");private.remove("volume_locked");
+        if source.mixer_state().hidden(){private.insert("mixer_hidden".into(),json!(true));}
+        if source.mixer_state().volume_locked(){private.insert("volume_locked".into(),json!(true));}
+        if !private.is_empty(){object.insert("private_settings".into(),Value::Object(private));}
         let properties=source.audio_properties();
         let monitoring=source.audio_monitoring();
         if !monitoring.is_off()&&!cfg!(target_os="windows"){return Err(issue("$.sources.monitoring_type","monitoring_platform_unsupported","The represented physical monitoring backend currently requires Windows"));}
-        if !monitoring.is_off()&&!source.kind().has_audio(){return Err(issue("$.sources.monitoring_type","monitoring_source_unsupported","Monitoring requires a represented audio-capable source"));}
+        if !monitoring.is_off()&&!source.kind().supports_audio_settings(){return Err(issue("$.sources.monitoring_type","monitoring_source_unsupported","Monitoring requires a represented audio-capable source"));}
         object.insert("monitoring_type".into(),json!(match monitoring{skylive_core::AudioMonitoringMode::Off=>0,skylive_core::AudioMonitoringMode::MonitorOnly=>1,skylive_core::AudioMonitoringMode::MonitorAndOutput=>2}));
         object.insert("flags".into(),json!(if properties.force_mono(){2}else{0}));
         object.insert("balance".into(),json!(properties.balance()));
@@ -1997,6 +2089,9 @@ fn export_snapshot(
         object.insert("push-to-talk".into(),json!(push.talk_enabled()));object.insert("push-to-talk-delay".into(),json!(push.talk_delay_ms()));
         object.insert("volume".into(), json!(source.gain()));
         object.insert("muted".into(), json!(source.muted()));
+        if !matches!(source.kind(),SourceKind::VideoCapture {..}) && source.video_filters().iter().any(|filter|matches!(filter.effect,skylive_core::VideoEffect::AsyncVideoDelay{..})) {
+            return Err(issue("$.sources.filters","unsupported_filter","Video Delay (Async) export requires a supported camera source"));
+        }
         object.insert(
             "filters".into(),
             filters::export(
@@ -2007,11 +2102,17 @@ fn export_snapshot(
             )?,
         );
         let mut filter_values=object.remove("filters").unwrap_or_else(||json!([]));
+        if matches!(source.kind(),SourceKind::Group {..}) && !source.audio_filters().is_empty() {
+            return Err(issue("$.sources.filters","unsupported_filter","SkyLive group audio filters cannot be exported with equivalent OBS composite-source behavior"));
+        }
         audio_filters::append(&mut filter_values,source.audio_filters(),collection)?;
         object.insert("filters".into(),filter_values);
         if let Some(key)=global_sources.get(&source.id()){root.insert((*key).into(),Value::Object(object));}else if matches!(source.kind(),SourceKind::Group{..}){group_output.push(Value::Object(object));}else{output.push(Value::Object(object));}
     }
     for scene in collection.scenes() {
+        if collection.scene_source(scene.id()).is_some_and(|owner|owner.video_filters().iter().any(|filter|matches!(filter.effect,skylive_core::VideoEffect::AsyncVideoDelay{..}))) {
+            return Err(issue("$.sources.scene.filters","unsupported_filter","Video Delay (Async) is not supported on scenes"));
+        }
         let mut object = source_objects
             .remove(&scene.id())
             .ok_or_else(|| issue("$", "identity_conflict", "scene identity missing"))?;
@@ -2028,6 +2129,14 @@ fn export_snapshot(
                 "$.sources.scene.filters",
             )?,
         );
+        let mut filter_values=object.remove("filters").unwrap_or_else(||json!([]));
+        if let Some(owner)=collection.scene_source(scene.id()) {
+            if !owner.audio_filters().is_empty() {
+                return Err(issue("$.sources.scene.filters","unsupported_filter","SkyLive scene audio filters cannot be exported with equivalent OBS composite-source behavior"));
+            }
+            audio_filters::append(&mut filter_values,owner.audio_filters(),collection)?;
+        }
+        object.insert("filters".into(),filter_values);
         transitions::encode_override(&mut object, scene, collection)?;
         output.push(Value::Object(object));
     }

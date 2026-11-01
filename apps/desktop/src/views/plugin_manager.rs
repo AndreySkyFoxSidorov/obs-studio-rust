@@ -10,6 +10,8 @@ fn description(ui: &egui::Ui, plugin: &PluginDescriptor) -> String {
 fn scope(ui: &egui::Ui, plugin: &PluginDescriptor) -> String {
     if plugin.id == "skylive/craft-video-effects" {
         crate::i18n::tr_key_or(ui,"SkyLive.Craft.PluginScopeGpu",plugin.port_scope)
+    } else if plugin.id == "obsproject/obs-studio:win-capture" {
+        crate::i18n::tr_key_or(ui,"SkyLive.WinCapture.PluginScope",plugin.port_scope)
     } else {
         crate::i18n::tr(ui,plugin.port_scope)
     }

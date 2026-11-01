@@ -7,6 +7,7 @@
 use super::{CameraError, CameraLimits, NativeVideoFrame, checked_frame_bytes};
 use skylive_h264::{Decoder, DecoderLimits, Picture};
 use skylive_media::{CameraMatrix, CameraRange, PackedFrameLimits, Planar420Layout, Chroma420Vertical, Chroma420Halo, ingest_planar_420_with_halo};
+use skylive_core::{VideoColorMatrix,VideoColorRange};
 use std::collections::VecDeque;
 
 const MAX_ACCESS_UNIT: usize = 8 * 1024 * 1024;
@@ -52,6 +53,8 @@ pub(super) struct CameraAvcDecoder {
     /// Retained across parameter-set-only samples until a picture is submitted.
     pending_discontinuity: bool,
     pending_dropped: u64,
+    color_matrix: Option<VideoColorMatrix>,
+    color_range: Option<VideoColorRange>,
 }
 
 impl CameraAvcDecoder {
@@ -66,7 +69,11 @@ impl CameraAvcDecoder {
             max_coded_pixels: coded_pixels, max_reference_frames: max_dpb_frames as u32, max_dpb_frames };
         let decoder = configured_decoder(decoder_limits, configuration.as_deref())?;
         Ok(Self {width, height, decoder, decoder_limits, configuration, limits, pending: VecDeque::new(),
-            pending_discontinuity:false, pending_dropped:0})
+            pending_discontinuity:false, pending_dropped:0,color_matrix:None,color_range:None})
+    }
+
+    pub(super) fn with_color(mut self,matrix:Option<VideoColorMatrix>,range:Option<VideoColorRange>)->Self {
+        self.color_matrix=matrix;self.color_range=range;self
     }
 
     /// Decode one complete Annex-B access unit. A discontinuity drops the
@@ -128,13 +135,13 @@ impl CameraAvcDecoder {
         if matches!(picture.color.transfer, 16 | 18) {
             return Err(CameraError::InvalidFrame("HDR AVC camera requires tone mapping"));
         }
-        let matrix = match picture.color.matrix {
+        let matrix = if let Some(matrix)=self.color_matrix {match matrix {VideoColorMatrix::Bt601=>CameraMatrix::Bt601,VideoColorMatrix::Bt709=>CameraMatrix::Bt709}} else {match picture.color.matrix {
             1 | 2 => CameraMatrix::Bt709, // unspecified uses OBS SDR default
-            4 => CameraMatrix::Fcc,
-            5 | 6 => CameraMatrix::Bt601,
-            7 => CameraMatrix::Smpte240M,
+            // OBS win-dshow's FFmpeg adapter maps all of these SDR AVC
+            // matrix codes to VIDEO_CS_601 when the setting is Default.
+            4 | 5 | 6 | 7 => CameraMatrix::Bt601,
             _ => return Err(CameraError::InvalidFrame("AVC camera color matrix is unsupported")),
-        };
+        }};
         // For progressive frames H.264 uses the top-field location; the
         // bottom-field value only describes interlaced field sampling.
         let (chroma_left, vertical) = match picture.chroma_location.map(|(top, _)|top).unwrap_or(0) {
@@ -146,7 +153,7 @@ impl CameraAvcDecoder {
             5 => (false, Chroma420Vertical::Bottom),
             _ => return Err(CameraError::InvalidFrame("AVC camera chroma location is unsupported")),
         };
-        let range = if picture.color.full_range {CameraRange::Full} else {CameraRange::Limited};
+        let range = match self.color_range {Some(VideoColorRange::Full)=>CameraRange::Full,Some(VideoColorRange::Limited)=>CameraRange::Limited,None=>if picture.color.full_range {CameraRange::Full} else {CameraRange::Limited}};
         let halo = picture.chroma_halo.as_ref().map(|h| Chroma420Halo {
             u: &h.u, v: &h.v, stride: h.stride, width: h.width, height: h.height,
             origin_x: h.origin_x, origin_y: h.origin_y,

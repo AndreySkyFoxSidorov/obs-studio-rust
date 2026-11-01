@@ -98,7 +98,7 @@ pub(super) fn run(instance:u64,desired:Arc<Mutex<Desired>>,stop:Arc<AtomicBool>,
                 let packet=stream.receiver.capture(available,false);
                 let after_receive=receive_qpc();
                 match packet {
-                    Ok(Packet::None)=>{if !stream.receiver.connected(){stream.delay.reset();stream.audio_clock_missing=true;stream.live_generation.store(0,Ordering::Release);if latest.frames.remove(&stream.id).is_some(){changed=true;}changed|=latest.draft_frames.remove(&stream.id).is_some();changed|=problem(&mut latest,stream.id,NdiError::Unavailable("NDI sender is disconnected; waiting to reconnect"));}break;},
+                    Ok(Packet::None)=>{if !stream.receiver.connected(){stream.delay.reset();stream.audio_clock_missing=true;stream.video_clock_missing=true;stream.live_generation.store(0,Ordering::Release);stream.live_audio_clock.store(0,Ordering::Release);stream.format=None;changed|=latest.formats.remove(&stream.id).is_some();if latest.frames.remove(&stream.id).is_some(){changed=true;}changed|=latest.draft_frames.remove(&stream.id).is_some();changed|=problem(&mut latest,stream.id,NdiError::Unavailable("NDI sender is disconnected; waiting to reconnect"));}break;},
                     Ok(Packet::Status)=>{},
                     Ok(Packet::Video {metadata,image:Some(image)})=>{
                         if stream.live_generation.load(Ordering::Acquire)==0 {
@@ -212,7 +212,28 @@ pub(super) fn run(instance:u64,desired:Arc<Mutex<Desired>>,stop:Arc<AtomicBool>,
                             pcm.push(packet.clone());if audio.sender.try_send(packet).is_err(){changed|=problem(&mut latest,stream.id,NdiError::Limit("NDI Program audio queue is full or closed"));}
                         }
                     },
-                    Err(e)=>{stream.delay.reset();changed|=latest.frames.remove(&stream.id).is_some();changed|=problem(&mut latest,stream.id,e);break;},
+                    Err(e)=>{
+                        // A failed receive is a stream discontinuity, just
+                        // like a reported disconnect. Retire both the normal
+                        // and modal raw video and invalidate outstanding PCM
+                        // leases before accepting another packet. Otherwise a
+                        // stale audio packet or raw draft could survive an
+                        // SDK error and be paired with a later sender epoch.
+                        stream.delay.reset();
+                        stream.audio_clock_missing=true;
+                        // A reconnect is a video clock discontinuity too,
+                        // even if the sender resumes with nearby timestamps.
+                        // Rotate its epoch before accepting the next frame.
+                        stream.video_clock_missing=true;
+                        stream.live_generation.store(0,Ordering::Release);
+                        stream.live_audio_clock.store(0,Ordering::Release);
+                        stream.format=None;
+                        changed|=latest.formats.remove(&stream.id).is_some();
+                        changed|=latest.frames.remove(&stream.id).is_some();
+                        changed|=latest.draft_frames.remove(&stream.id).is_some();
+                        changed|=problem(&mut latest,stream.id,e);
+                        break;
+                    },
                 }
             }
         }

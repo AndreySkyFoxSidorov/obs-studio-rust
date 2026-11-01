@@ -81,7 +81,10 @@ impl Readback {
                 let source=unsafe{std::slice::from_raw_parts(mapped.pData.cast::<u8>().add(y*pitch),row)};
                 output.extend_from_slice(source);
             }
-            for pixel in output.chunks_exact_mut(4){if matches!(desc.format,87|91){pixel.swap(0,2);}pixel[3]=255;}
+            // Retain the backbuffer alpha in the shared frame. Individual
+            // sources choose either raw alpha or a separately bounded opaque
+            // copy; the process may feed both at the same time.
+            for pixel in output.chunks_exact_mut(4){if matches!(desc.format,87|91){pixel.swap(0,2);}}
             RgbaFrame::new(desc.width,desc.height,output).map_err(|e|GameError::Native(e.to_string()))
         })();
         unsafe{self.context.Unmap(&self.staging,0);self.keyed.ReleaseSync(0)}.map_err(native)?;self.held=false;result.map(|image|Some((image,desc)))

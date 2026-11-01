@@ -25,6 +25,7 @@ mod source_item_color;
 pub use source_item_color::{SourceItemColorTag,SourceItemColorPreset};
 pub use item_compositing::{BlendMode,BlendingMethod,ScaleFiltering,ItemCompositing};
 mod geometry;
+mod deferred_window_transform;
 mod group;
 mod group_tree;
 pub use group_tree::{GroupTree,GroupTreeEntry,GroupTreeItem};
@@ -42,6 +43,9 @@ mod scene_source;
 mod scene_canvas;
 use scene_canvas::{CanvasBasis,ScaleAnchor};
 pub use geometry::{Crop, ItemBounds, ItemGeometry, Transform};
+pub use deferred_window_transform::DeferredWindowTransform;
+mod item_placement;
+pub use item_placement::ItemPlacement;
 pub use group::GroupSource;
 mod font_asset;
 pub use font_asset::{FontAsset,FontFace,FontFaceStyle,MAX_FONT_FILE_BYTES,MAX_FONT_FACES};
@@ -70,10 +74,10 @@ pub use display_capture::{
 };
 mod window_capture;
 pub use window_capture::{
-    WindowCaptureBinding, WindowCaptureMethod, WindowMatchPriority, WindowTarget,
+    WindowCaptureBinding, WindowCaptureMethod, WindowCaptureRequest, WindowMatchPriority, WindowTarget,
 };
 mod game_capture;
-pub use game_capture::{GameCaptureBinding,GameCaptureTarget};
+pub use game_capture::{GameCaptureBinding,GameCaptureTarget,ObsGameSelector};
 mod ndi_source;
 mod browser_source;
 pub use browser_source::{BrowserSource,BrowserLocation,BROWSER_PLUGIN};
@@ -141,7 +145,7 @@ mod setup;
 pub use setup::{SetupCommand, SetupConfiguration, SetupDefaultAudio, SetupState};
 mod streaming;
 pub use profiles::{
-    MAX_PROFILES, Profile, ProfileCatalog, ProfileCommand, ProfileId, UserPreferences,
+    MAX_PROFILES, OutputTimerPreferences, Profile, ProfileCatalog, ProfileCommand, ProfileId, UserPreferences,
 };
 mod recording_tracks;
 pub use recording_tracks::{AudioTrackId,RecordingTrack,RecordingTracks};
@@ -237,6 +241,22 @@ impl SourceKind {
             if matches!(binding.target(), VideoCaptureTarget::Windows {..}))
             || matches!(self, Self::WindowCapture {binding}
                 if matches!(binding.target(), WindowTarget::Windows {..}))
+    }
+    /// Scene and group buses currently admit only stateless linear audio
+    /// filters. Stateful processing requires a dedicated per-bus PCM history.
+    pub fn supports_audio_filters(&self) -> bool {
+        self.supports_audio_settings() || matches!(self, Self::Scene { .. } | Self::Group { .. })
+    }
+
+    pub fn validate_audio_filters(&self, filters: &[AudioFilter]) -> Result<(), Error> {
+        if !filters.is_empty() && !self.supports_audio_filters() {
+            return Err(Error::Invalid("audio filters require an audio source or scene bus"));
+        }
+        if matches!(self, Self::Scene { .. } | Self::Group { .. }) && filters.iter().any(|filter|
+            !matches!(filter, AudioFilter::ObsGain { .. } | AudioFilter::ObsPolarityInvert { .. })) {
+            return Err(Error::Unavailable("scene audio buses currently support Gain and Invert Polarity only"));
+        }
+        Ok(())
     }
     pub fn has_audio(&self) -> bool {
         self.audio_capture_binding().is_some()
@@ -704,6 +724,43 @@ impl StudioSnapshot {
         candidate.validate()?;
         Ok(candidate)
     }
+    /// Prepare one scene edit spanning sibling containers. The candidate is
+    /// normalized once, so moving items in two groups remains one atomic edit.
+    pub fn snapshot_with_cross_container_transforms_preview(&self, root:Id, transforms:&[(Id,Id,Transform)])->Result<Self,Error> {
+        let mut candidate=self.clone();
+        candidate.apply_cross_container_transforms(root,transforms)?;
+        candidate.prepare_scale_anchors(Some(self))?;
+        let canvas_changed=candidate.rebase_scene_canvas()?;
+        candidate.normalize_groups(if canvas_changed{None}else{Some(self)})?;
+        candidate.validate()?;
+        Ok(candidate)
+    }
+    fn apply_cross_container_transforms(&mut self, root:Id, transforms:&[(Id,Id,Transform)])->Result<(),Error> {
+        if transforms.is_empty() || transforms.len()>MAX_SOURCES {return Err(Error::Invalid("Invalid group transform count"));}
+        let mut seen=std::collections::HashSet::new();
+        for (container,id,transform) in transforms {
+            if self.root_scene_for_container(*container)!=Some(root) {return Err(Error::Invalid("Transform is outside the selected scene"));}
+            self.ensure_container_unlocked(*container)?;
+            if !seen.insert(*id) {return Err(Error::Invalid("Duplicate group transform item"));}
+            let original=self.item_mut(*container,*id)?.clone();
+            if original.locked {return Err(Error::Locked(*id));}
+            let source=self.source(original.source).ok_or(Error::NotFound(original.source))?;
+            if self.source_video_dimensions(&source.kind)?.is_none() {return Err(Error::Invalid("audio-only sources do not support video geometry commands"));}
+            self.source_item_geometry(source,transform)?;
+            self.item_mut(*container,*id)?.transform=transform.clone();
+        }
+        // A selected group already moves its children. Applying an additional
+        // absolute child transform in the same transaction would move twice.
+        for (container,_,_) in transforms {
+            let mut owner=*container;
+            while owner!=root {
+                let (parent,wrapper)=self.group_parent(owner).ok_or(Error::Invalid("Group hierarchy changed"))?;
+                if seen.contains(&wrapper) {return Err(Error::Invalid("Cannot transform a group and its descendant together"));}
+                owner=parent;
+            }
+        }
+        Ok(())
+    }
     /// Build a derived scene projection for one resolved automatic text frame.
     /// This never publishes a command or changes authored settings. The caller
     /// must retain and revalidate the worker's frame/revision guard while the
@@ -895,9 +952,7 @@ impl Collection {
             if source.audio_filters.len() > MAX_AUDIO_FILTERS {
                 return Err(Error::Limit("audio filter chain limit exceeded"));
             }
-            if !source.audio_filters.is_empty() && !source.kind.supports_audio_settings() {
-                return Err(Error::Invalid("audio filters require an audio source"));
-            }
+            source.kind.validate_audio_filters(&source.audio_filters)?;
             if source.video_filters.len() > MAX_VIDEO_FILTERS {
                 return Err(Error::Limit("video filter stack exceeds 32 effects"));
             }
@@ -1266,7 +1321,7 @@ pub enum Command {
     SetNdiOutputSettings {settings:NdiOutputSettings},
     SetAccessibility {settings:Accessibility},
     SetProcessPriority {priority:ProcessPriority},
-    ConfigureAdvancedSettings {profile:ProfileId,priority:ProcessPriority,reconnect:ReconnectSettings},
+    ConfigureAdvancedSettings {profile:ProfileId,priority:ProcessPriority,reconnect:ReconnectSettings,#[serde(default = "profiles::default_sdr_white_nits")] sdr_white_nits:u16},
     SetHotkeys {
         hotkeys: HotkeyBindings,
     },
@@ -1304,8 +1359,18 @@ pub enum Command {
         from: Id,
         to: Id,
     },
+    /// Paste onto a scene, materializing its source owner only on success.
+    PasteSceneFilters {
+        from: Id,
+        scene: Id,
+    },
     SetSourceAudioFilters {
         source: Id,
+        filters: Vec<AudioFilter>,
+    },
+    /// Set the filters of a scene, creating its owner atomically when needed.
+    SetSceneAudioFilters {
+        scene: Id,
         filters: Vec<AudioFilter>,
     },
     SetSceneNotes {
@@ -1461,6 +1526,7 @@ pub enum Command {
         name: String,
         media: MediaSource,
     },
+    AddMediaSourceAt { scene: Id, name: String, media: MediaSource, position: [f32; 2] },
     RebindMediaSource {
         source: Id,
         media: MediaSource,
@@ -1505,6 +1571,11 @@ pub enum Command {
         scene: Id,
         items: Vec<Id>,
     },
+    /// Remove items from multiple containers of one scene as one history entry.
+    RemoveItemsAcrossContainers {
+        scene: Id,
+        items: Vec<(Id, Id)>,
+    },
     SetColor {
         source: Id,
         rgba: [u8; 4],
@@ -1532,6 +1603,8 @@ pub enum Command {
         transform: Transform,
     },
     SetTransforms { scene: Id, transforms: Vec<(Id, Transform)> },
+    /// One undoable Preview edit across several containers in one scene.
+    SetCrossContainerTransforms { scene: Id, transforms: Vec<(Id, Id, Transform)> },
     TransformItem {
         scene: Id,
         item: Id,
@@ -1982,7 +2055,7 @@ impl Session {
                     }
                     Command::SetNdiOutputSettings {settings}=>candidate.preferences.set_ndi_output(settings)?,
                     Command::SetAccessibility {settings}=>candidate.preferences.set_accessibility(settings)?,
-                    Command::ConfigureAdvancedSettings {profile,priority,reconnect}=>{if candidate.profiles.selected_id()!=profile{return Err(Error::Invalid("Advanced settings belong to another selected profile"));}candidate.profiles.apply(ProfileCommand::SetReconnect{id:profile,settings:reconnect})?;candidate.preferences.set_process_priority(priority);},
+                    Command::ConfigureAdvancedSettings {profile,priority,reconnect,sdr_white_nits}=>{if candidate.profiles.selected_id()!=profile{return Err(Error::Invalid("Advanced settings belong to another selected profile"));}candidate.profiles.apply(ProfileCommand::SetReconnect{id:profile,settings:reconnect})?;candidate.profiles.apply(ProfileCommand::SetSdrWhite{id:profile,nits:sdr_white_nits})?;candidate.preferences.set_process_priority(priority);},
                     Command::SetProcessPriority {priority}=>candidate.preferences.set_process_priority(priority),
                     Command::SetMixerDisplay { preferences } => {
                         candidate.preferences.set_mixer_display(preferences)
@@ -2022,14 +2095,20 @@ impl Session {
                     Command::PasteSourceFilters { from, to } => {
                         candidate.paste_source_filters(from, to)?
                     }
+                    Command::PasteSceneFilters { from, scene } => {
+                        let copied = candidate.source(from).ok_or(Error::NotFound(from))?;
+                        if copied.video_filters().iter().any(|filter| matches!(filter.effect, VideoEffect::AsyncVideoDelay { .. })) {
+                            return Err(Error::Unavailable("Async Video Delay is not supported on scenes"));
+                        }
+                        let to = candidate.ensure_scene_source(scene)?;
+                        candidate.paste_source_filters(from, to)?;
+                    }
                     Command::SetSourceAudioFilters { source, filters } => {
                         if filters.len() > MAX_AUDIO_FILTERS {
                             return Err(Error::Limit("audio filter chain limit exceeded"));
                         }
                         let old = candidate.source(source).ok_or(Error::NotFound(source))?;
-                        if !old.kind.supports_audio_settings() {
-                            return Err(Error::Invalid("audio filters require an audio source"));
-                        }
+                        old.kind.validate_audio_filters(&filters)?;
                         let mut retained = old.audio_filters.clone();
                         for filter in &filters {
                             filter.validate()?;
@@ -2046,6 +2125,26 @@ impl Session {
                         candidate.validate_sidechain_assignment(source,&filters,&candidate.source(source).ok_or(Error::NotFound(source))?.audio_filters)?;
                         candidate.source_mut(source)?.audio_filters =
                             filters.into_boxed_slice().into_vec();
+                    }
+                    Command::SetSceneAudioFilters { scene, filters } => {
+                        if filters.len() > MAX_AUDIO_FILTERS {
+                            return Err(Error::Limit("audio filter chain limit exceeded"));
+                        }
+                        let owner = candidate.ensure_scene_source(scene)?;
+                        let old = candidate.source(owner).ok_or(Error::NotFound(owner))?;
+                        old.kind.validate_audio_filters(&filters)?;
+                        let mut retained = old.audio_filters.clone();
+                        for filter in &filters {
+                            filter.validate()?;
+                            if !candidate.preferences.plugin_enabled(filter.plugin_id()) {
+                                if let Some(index) = retained.iter().position(|old| old == filter) {
+                                    retained.remove(index);
+                                } else {
+                                    return Err(Error::Unavailable("enable the filter module before adding or changing its settings"));
+                                }
+                            }
+                        }
+                        candidate.source_mut(owner)?.audio_filters = filters.into_boxed_slice().into_vec();
                     }
                     Command::Profile { command } => candidate.profiles.apply(command)?,
                     Command::AddScene { name } => {
@@ -2113,6 +2212,8 @@ impl Session {
                                     .collect::<Vec<_>>()
                             })
                             .unwrap_or_default();
+                        let root_audio_filters = candidate.scene_source(scene)
+                            .map(|source| source.audio_filters.clone()).unwrap_or_default();
                         let id = candidate.issue()?;
                         let mut items = original.items;
                         candidate.duplicate_private_groups(&mut items)?;
@@ -2126,9 +2227,10 @@ impl Session {
                             inactive_transition_duration_ms: original
                                 .inactive_transition_duration_ms,
                         });
-                        if !root_filters.is_empty() {
+                        if !root_filters.is_empty() || !root_audio_filters.is_empty() {
                             let owner = candidate.ensure_scene_source(id)?;
                             candidate.set_video_filters(owner, root_filters)?;
+                            candidate.source_mut(owner)?.audio_filters = root_audio_filters;
                         }
                         created = Some(id);
                     }
@@ -2379,6 +2481,16 @@ impl Session {
                             SourceKind::MediaSource { media },
                         )?);
                     }
+                    Command::AddMediaSourceAt { scene, name, media, position } => {
+                        if !position.iter().all(|v|v.is_finite()) { return Err(Error::Invalid("invalid dropped source position")); }
+                        let has_video=media.video_dimensions().is_some();
+                        let item=candidate.add_source(scene,name,SourceKind::MediaSource {media})?;
+                        if has_video {
+                            let transform=&mut candidate.item_mut(scene,item)?.transform;
+                            transform.x=position[0];transform.y=position[1];
+                        }
+                        created=Some(item);
+                    }
                     Command::RebindMediaSource { source, media } => {
                         media.validate()?;
                         let previous = candidate.source_mut(source)?;
@@ -2478,15 +2590,13 @@ impl Session {
                         candidate.source_mut(source)?.name = name
                     }
                     Command::RemoveItem { scene, item } => {
-                        candidate.ensure_container_unlocked(scene)?;
-                        if candidate.item_mut(scene, item)?.locked {
-                            return Err(Error::Locked(item));
-                        }
+                        // OBS item locks protect manipulation, not explicit
+                        // deletion after the user confirms the action.
+                        candidate.item_mut(scene, item)?;
                         candidate.scene_mut(scene)?.items.retain(|i| i.id != item);
                         candidate.prune_sources();
                     }
                     Command::RemoveItems { scene, items } => {
-                        candidate.ensure_container_unlocked(scene)?;
                         if items.is_empty() || items.len() > MAX_ITEMS {
                             return Err(Error::Invalid("Select at least one source to remove"));
                         }
@@ -2495,11 +2605,43 @@ impl Session {
                             if !unique.insert(*item) {
                                 return Err(Error::Invalid("Duplicate source in removal selection"));
                             }
-                            if candidate.item_mut(scene, *item)?.locked {
-                                return Err(Error::Locked(*item));
-                            }
+                            candidate.item_mut(scene, *item)?;
                         }
                         candidate.scene_mut(scene)?.items.retain(|item| !unique.contains(&item.id));
+                        candidate.prune_sources();
+                    }
+                    Command::RemoveItemsAcrossContainers { scene, items } => {
+                        if items.is_empty() || items.len() > MAX_SOURCES {
+                            return Err(Error::Invalid("Select at least one source to remove"));
+                        }
+                        let mut unique = std::collections::HashSet::with_capacity(items.len());
+                        // Validate the complete request before mutating any container.
+                        for (owner, item) in &items {
+                            if candidate.root_scene_for_container(*owner) != Some(scene) {
+                                return Err(Error::Invalid("Source is outside the selected scene"));
+                            }
+                            if !unique.insert(*item) {
+                                return Err(Error::Invalid("Duplicate source in removal selection"));
+                            }
+                            candidate.item_mut(*owner, *item)?;
+                        }
+                        let mut by_owner: std::collections::HashMap<Id, std::collections::HashSet<Id>> = std::collections::HashMap::new();
+                        for (owner, item) in items {
+                            let mut ancestor = owner;
+                            let mut covered = false;
+                            while ancestor != scene {
+                                let (parent, wrapper) = candidate.group_parent(ancestor)
+                                    .ok_or(Error::Invalid("Group hierarchy changed"))?;
+                                if unique.contains(&wrapper) { covered = true; break; }
+                                ancestor = parent;
+                            }
+                            // Removing a selected group already removes its private
+                            // descendants; don't try to mutate a pruned child group.
+                            if !covered { by_owner.entry(owner).or_default().insert(item); }
+                        }
+                        for (owner, removed) in by_owner {
+                            candidate.scene_mut(owner)?.items.retain(|item| !removed.contains(&item.id));
+                        }
                         candidate.prune_sources();
                     }
                     Command::SetColor { source, rgba } => {
@@ -2571,6 +2713,9 @@ impl Session {
                             candidate.source_item_geometry(source, &transform)?;
                             candidate.item_mut(scene, item)?.transform = transform;
                         }
+                    }
+                    Command::SetCrossContainerTransforms { scene, transforms } => {
+                        candidate.apply_cross_container_transforms(scene,&transforms)?;
                     }
                     Command::TransformItem {
                         scene,
@@ -2663,9 +2808,8 @@ impl Session {
                             .iter()
                             .position(|i| i.id == item)
                             .ok_or(Error::NotFound(item))?;
-                        if target.items[position].locked {
-                            return Err(Error::Locked(item));
-                        }
+                        // OBS's source lock protects transforms in the preview;
+                        // it does not prevent changing the item's layer order.
                         if index >= target.items.len() {
                             return Err(Error::Invalid("item order index out of range"));
                         }
@@ -3824,7 +3968,7 @@ mod tests {
         .unwrap();
         let before = s.snapshot();
         assert_eq!(
-            s.apply(Command::RemoveItem { scene, item }).unwrap_err(),
+            s.apply(Command::SetTransform { scene, item, transform: Transform::full(4, 2) }).unwrap_err(),
             Error::Locked(item)
         );
         assert!(
@@ -3850,6 +3994,8 @@ mod tests {
             current.sources()[0].id()
         );
         assert_ne!(current.scene(duplicate).unwrap().items()[0].id(), item);
+        s.apply(Command::RemoveItem { scene, item }).unwrap();
+        assert!(s.snapshot().scene(scene).unwrap().items().is_empty());
     }
     #[test]
     fn stale_save_and_closed_session_cannot_publish() {

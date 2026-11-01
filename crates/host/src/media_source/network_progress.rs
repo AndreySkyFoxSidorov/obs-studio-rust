@@ -69,6 +69,9 @@ impl ByteSource for Reader {
     }
 }
 impl Reader {
+    pub(crate) fn is_complete(&self)->bool {
+        self.0.state.try_lock().ok().is_some_and(|state|matches!(&state.terminal,Some(Ok(()))) && state.bytes.len()==self.0.length)
+    }
     /// Require a small encoded-data cushion to avoid cycling audio barriers for
     /// every network packet; end-of-file reduces the cushion naturally.
     pub(crate) fn ready_through(&self,end:u64)->io::Result<bool> {

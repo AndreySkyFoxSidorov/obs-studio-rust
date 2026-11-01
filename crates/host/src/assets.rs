@@ -47,6 +47,9 @@ use std::{
 mod gif;
 mod webp_animation;
 mod apng;
+mod psd;
+#[cfg(target_os="windows")]
+mod jxr;
 
 pub const MAX_IMAGE_FILE_BYTES: u64 = 32 * 1024 * 1024;
 pub const MAX_IMAGE_PIXELS: u64 = 16_777_216;
@@ -462,6 +465,15 @@ fn decode_clip(
     max_decoded_bytes: usize,
     decoded_work: &mut DecodeBudget,
 ) -> Result<Arc<AnimationClip>, AssetError> {
+    #[cfg(target_os="windows")]
+    if path.extension().and_then(|ext| ext.to_str()).is_some_and(|ext| ext.eq_ignore_ascii_case("jxr")) {
+        let frame=jxr::decode(bytes,expected,max_decoded_bytes,decoded_work)?;
+        return Ok(Arc::new(AnimationClip::static_frame(Arc::new(frame))));
+    }
+    if bytes.starts_with(b"8BPS") {
+        let frame = psd::decode(bytes, expected, max_decoded_bytes, decoded_work)?;
+        return Ok(Arc::new(AnimationClip::static_frame(Arc::new(frame))));
+    }
     let format = detect(bytes, path)?;
     if format == ImageFormat::Gif {
         return gif::decode_clip(bytes, expected, max_decoded_bytes, decoded_work);
@@ -616,6 +628,13 @@ fn decode(
     max_decoded_bytes: usize,
     decoded_work: &mut DecodeBudget,
 ) -> Result<RgbaFrame, AssetError> {
+    #[cfg(target_os="windows")]
+    if path.extension().and_then(|ext| ext.to_str()).is_some_and(|ext| ext.eq_ignore_ascii_case("jxr")) {
+        return jxr::decode(bytes,expected,max_decoded_bytes,decoded_work);
+    }
+    if bytes.starts_with(b"8BPS") {
+        return psd::decode(bytes, expected, max_decoded_bytes, decoded_work);
+    }
     use image::codecs::{
         bmp::BmpDecoder, jpeg::JpegDecoder, png::PngDecoder, tga::TgaDecoder, webp::WebPDecoder,
     };

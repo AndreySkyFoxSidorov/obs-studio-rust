@@ -76,6 +76,9 @@ pub struct Target {
     auto_text:Vec<crate::text::auto_worker::Snapshot>,
     /// Local group coordinates to parent coordinates, innermost first.
     ancestors: Vec<([f64;2],[f64;2],[f64;2])>,
+    /// Visible cropped ancestor rectangles in the rendered canvas. A nested
+    /// item may extend outside these rectangles, but it cannot be picked there.
+    ancestor_clips: Vec<ItemGeometry>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -95,13 +98,27 @@ impl Target {
     /// Build interaction preview from the same auto-text generation used for
     /// the displayed hit-test; authored session state remains untouched.
     pub fn draft_view(&self,session:&Session,transforms:&[(Id,Transform)])->Result<crate::transition::FrameScene,crate::transition::TransitionError>{
+        let authored=session.snapshot();
+        let cross=transforms.iter().any(|(id,_)|authored.item_container(*id).is_some_and(|(owner,_)|owner!=self.container));
+        if cross {
+            let mapped=transforms.iter().map(|(id,value)|{
+                let owner=authored.item_container(*id).map(|(owner,_)|owner).ok_or(skylive_core::Error::NotFound(*id))?;
+                Ok((owner,*id,value.clone()))
+            }).collect::<Result<Vec<_>,skylive_core::Error>>()?;
+            let projected=if self.auto_text.is_empty(){None}else{Some(crate::text::auto_worker::project_all(session.identity(),&authored,&self.auto_text)?)};
+            let current=projected.as_ref().unwrap_or(authored.as_ref());
+            let view=crate::transition::FrameScene::preview_cross_container_transforms(session.identity(),current,self.scene,&mapped,&self.auto_text)?;
+            if !self.auto_text.iter().all(|snapshot|snapshot.matches_model(session.identity(),&authored)) {
+                return Err(crate::transition::TransitionError::Engine(skylive_core::Error::Unavailable("Automatic text changed during preview gesture")));
+            }
+            return Ok(view);
+        }
         if self.auto_text.is_empty(){
             if transforms.len()==1&&self.container==self.scene {
                 return crate::transition::FrameScene::preview_transform(session.identity(),&session.snapshot(),self.scene,transforms[0].0,transforms[0].1.clone());
             }
             return crate::transition::FrameScene::preview_transforms(session.identity(),&session.snapshot(),self.scene,self.container,transforms);
         }
-        let authored=session.snapshot();
         let projected=crate::text::auto_worker::project_all(session.identity(),&authored,&self.auto_text)?;
         let view=crate::transition::FrameScene::preview_transforms_with_auto(session.identity(),&projected,self.scene,self.container,transforms,&self.auto_text)?;
         if !self.auto_text.iter().all(|snapshot|snapshot.matches_model(session.identity(),&authored)){
@@ -112,8 +129,44 @@ impl Target {
     /// Hit-test the same clipped affine box used by preview picking.
     pub fn contains(&self, canvas:[f64;2])->bool {
         if canvas[0]<0.0 || canvas[1]<0.0 || canvas[0]>=f64::from(self.root_extent.0) || canvas[1]>=f64::from(self.root_extent.1){return false;}
+        if self.ancestor_clips.iter().any(|clip| !inverse_vector(*clip,[canvas[0]-clip.origin[0],canvas[1]-clip.origin[1]])
+            .is_ok_and(|uv|(0.0..=1.0).contains(&uv[0])&&(0.0..=1.0).contains(&uv[1]))) {return false;}
         inverse_vector(self.geometry,[canvas[0]-self.geometry.origin[0],canvas[1]-self.geometry.origin[1]])
             .is_ok_and(|uv|(0.0..=1.0).contains(&uv[0])&&(0.0..=1.0).contains(&uv[1]))
+    }
+    /// Intersect the visible source polygon with a canvas-space selection box.
+    /// Parent group crops are convex affine rectangles, so clipping the source
+    /// against each parent avoids selecting content hidden by an ancestor.
+    pub fn intersects_box(&self, min:[f64;2], max:[f64;2])->bool {
+        if min[0]>max[0] || min[1]>max[1] {return false;}
+        let corners=|g:ItemGeometry| [[0.0,0.0],[1.0,0.0],[1.0,1.0],[0.0,1.0]].map(|p|point(g,p));
+        let mut polygon=corners(self.geometry).to_vec();
+        let root=ItemGeometry {origin:[0.0,0.0],axis_x:[f64::from(self.root_extent.0),0.0],axis_y:[0.0,f64::from(self.root_extent.1)],uv:[0.0,0.0,1.0,1.0]};
+        let selection=ItemGeometry {origin:min,axis_x:[max[0]-min[0],0.0],axis_y:[0.0,max[1]-min[1]],uv:[0.0,0.0,1.0,1.0]};
+        for clip in self.ancestor_clips.iter().copied().chain([root,selection]) {
+            let vertices=corners(clip);
+            let area=clip.axis_x[0]*clip.axis_y[1]-clip.axis_x[1]*clip.axis_y[0];
+            if area.abs()<1e-12 {return false;}
+            let sign=area.signum();
+            for edge in 0..4 {
+                let a=vertices[edge];let b=vertices[(edge+1)%4];
+                let side=|p:[f64;2]|sign*((b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]));
+                let mut next=Vec::with_capacity(polygon.len()+1);
+                let Some(mut prev)=polygon.last().copied() else{return false;};
+                let mut prev_side=side(prev);
+                for current in polygon.iter().copied() {
+                    let current_side=side(current);
+                    if (prev_side>=0.0)!=(current_side>=0.0) {
+                        let t=prev_side/(prev_side-current_side);
+                        next.push([prev[0]+t*(current[0]-prev[0]),prev[1]+t*(current[1]-prev[1])]);
+                    }
+                    if current_side>=0.0 {next.push(current);}
+                    prev=current;prev_side=current_side;
+                }
+                polygon=next;
+            }
+        }
+        !polygon.is_empty()
     }
     pub fn read(
         session: &Session,
@@ -213,7 +266,7 @@ impl Target {
         let root_mapping=model.scene_source(scene).map_or(Ok(skylive_core::VideoFilterMapping::identity(root_raw)),|source|model.effective_video_filter_mapping(source,root_raw,Some(root_raw))).map_err(invalid)?;
         if !root_mapping.is_affine(){return Err(InteractionError("Affine Preview editing is unavailable while the scene uses nonlinear scaling or animated Scroll. Edit individual source properties or disable that scene filter."));}
         let root_extent=root_mapping.dimensions();
-        let mut ancestors=Vec::new();let mut owner=container;
+        let mut ancestors=Vec::new();let mut ancestor_geometry=Vec::new();let mut owner=container;
         while owner!=scene {
             if ancestors.len()>=skylive_core::MAX_SCENE_DEPTH {return Err(InteractionError("Group nesting limit exceeded."));}
             let (parent,group_item)=model.group_parent(owner).ok_or(InteractionError("Group parent is unavailable."))?;
@@ -226,11 +279,21 @@ impl Target {
             let geo=wrapper.transform().geometry_for_frame(w,h,w,h).map_err(invalid)?;
             let uv=geo.uv;let ux=uv[2]-uv[0];let uy=uv[3]-uv[1];
             if ux<=0.0||uy<=0.0{return Err(InteractionError("Group crop has no editable area."));}
-            if uv != [0.0,0.0,1.0,1.0] {return Err(InteractionError("Nested Preview editing is unavailable while an ancestor group is cropped."));}
             let x=[geo.axis_x[0]/(ux*f64::from(w)),geo.axis_x[1]/(ux*f64::from(w))];
             let y=[geo.axis_y[0]/(uy*f64::from(h)),geo.axis_y[1]/(uy*f64::from(h))];
             let origin=[geo.origin[0]-geo.axis_x[0]*uv[0]/ux-geo.axis_y[0]*uv[1]/uy,geo.origin[1]-geo.axis_x[1]*uv[0]/ux-geo.axis_y[1]*uv[1]/uy];
-            ancestors.push((origin,x,y));owner=parent;
+            ancestor_geometry.push(geo);ancestors.push((origin,x,y));owner=parent;
+        }
+        let mut ancestor_clips=Vec::with_capacity(ancestor_geometry.len());
+        for (index,mut clip) in ancestor_geometry.into_iter().enumerate() {
+            // The wrapper rectangle is already expressed in its parent space;
+            // only outer ancestors need to be applied to bring it to canvas.
+            for (o,x,y) in &ancestors[index+1..] {
+                clip.origin=[o[0]+x[0]*clip.origin[0]+y[0]*clip.origin[1],o[1]+x[1]*clip.origin[0]+y[1]*clip.origin[1]];
+                clip.axis_x=[x[0]*clip.axis_x[0]+y[0]*clip.axis_x[1],x[1]*clip.axis_x[0]+y[1]*clip.axis_x[1]];
+                clip.axis_y=[x[0]*clip.axis_y[0]+y[0]*clip.axis_y[1],x[1]*clip.axis_y[0]+y[1]*clip.axis_y[1]];
+            }
+            ancestor_clips.push(root_mapping.map_geometry(clip).map_err(invalid)?);
         }
         let mut geometry=transform.geometry_for_frame(basis.0,basis.1,actual.0,actual.1).map_err(invalid)?;
         for (o,x,y) in &ancestors {
@@ -255,7 +318,7 @@ impl Target {
             root_mapping,root_canvas:root_raw,root_extent,
             capture_epoch,
             auto_text:auto.to_vec(),
-            ancestors,
+            ancestors,ancestor_clips,
         })
     }
     pub fn validate(
@@ -306,16 +369,22 @@ impl Target {
     pub fn atomic_command(session:&Session,capture:&CaptureSnapshot,edits:&[(&Target,Transform)])->Result<Command,InteractionError>{
         let Some((first,_))=edits.first() else{return Err(InteractionError("No preview items were edited."));};
         if edits.len()>skylive_core::MAX_SOURCES{return Err(InteractionError("Too many preview items were edited."));}
+        let cross=edits.iter().any(|(target,_)|target.container!=first.container);
         let mut seen=std::collections::HashSet::new();let mut mapped=Vec::with_capacity(edits.len());
         for (target,transform) in edits {
             target.validate(session,capture)?;
-            if target.scene!=first.scene||target.container!=first.container||!seen.insert(target.item)
+            if target.scene!=first.scene||!seen.insert(target.item)
                 ||target.auto_text.len()!=first.auto_text.len()
                 ||!target.auto_text.iter().zip(&first.auto_text).all(|(a,b)|a.same(b)){
                 return Err(InteractionError("Preview selection changed during editing."));
             }
             target.geometry_for(transform)?;
             mapped.push((target.item,target.authored_transform(session,capture,transform)?));
+        }
+        if cross {
+            if !first.auto_text.is_empty(){first.validate_auto_mapping(session,capture,edits,&mapped)?;}
+            let values=edits.iter().zip(mapped).map(|((target,_),(_,transform))|(target.container,target.item,transform)).collect();
+            return Ok(Command::SetCrossContainerTransforms{scene:first.scene,transforms:values});
         }
         if !first.auto_text.is_empty(){first.validate_auto_mapping(session,capture,edits,&mapped)?;}
         if mapped.len()==1{let (item,transform)=mapped.pop().ok_or(InteractionError("No preview items were edited."))?;
@@ -328,7 +397,11 @@ impl Target {
             .try_fold(0usize,|sum,container|sum.checked_add(container.items().len()))
             .ok_or(InteractionError("Preview geometry verification exceeds its work budget."))?;
         if scene_items>skylive_core::MAX_ITEMS||self.auto_text.len()>64{return Err(InteractionError("This automatic-text scene exceeds the interactive geometry verification budget."));}
-        let candidate=authored.snapshot_with_item_transforms_preview(self.container,mapped).map_err(invalid)?;
+        let cross=edits.iter().any(|(target,_)|target.container!=self.container);
+        let candidate=if cross {
+            let values=edits.iter().zip(mapped).map(|((target,_),(_,transform))|(target.container,target.item,transform.clone())).collect::<Vec<_>>();
+            authored.snapshot_with_cross_container_transforms_preview(self.scene,&values).map_err(invalid)?
+        }else{authored.snapshot_with_item_transforms_preview(self.container,mapped).map_err(invalid)?};
         let before=crate::text::auto_worker::project_all(session.identity(),&authored,&self.auto_text).map_err(invalid)?;
         let after=crate::text::auto_worker::project_all(session.identity(),&candidate,&self.auto_text).map_err(invalid)?;
         let mut ancestors=std::collections::HashSet::new();
@@ -524,41 +597,7 @@ impl Target {
     /// Pointer movement through the shared OBS32 alignment policy. Scale is
     /// display points per rendered canvas unit; keyboard nudges use moved().
     pub fn moved_snapped(&self,session:&Session,capture:&CaptureSnapshot,delta:[f64;2],display_scale:[f64;2],control:bool)->Result<Transform,InteractionError>{
-        self.validate(session,capture)?;
-        if !delta.into_iter().all(f64::is_finite)||!display_scale.into_iter().all(|value|value.is_finite()&&value>0.0){return Err(InteractionError("Preview snapping requires finite movement and positive display scales."));}
-        // A click must never author a transform merely because it is near an edge.
-        if delta==[0.0;2]{return Ok(self.transform.clone());}
-        let model=session.snapshot();let settings=model.preferences().preview_snapping();
-        if control||!settings.enabled()||settings.distance_tenths()==0{return self.moved(delta);}
-        let distance=[settings.distance()/display_scale[0],settings.distance()/display_scale[1]];
-        if !distance.into_iter().all(f64::is_finite){return Err(InteractionError("Preview snapping display scale is outside the valid range."));}
-        let moved=self.moved(delta)?;let bounds=self.geometry_for(&moved)?.bounds();
-        const EPSILON:f64=0.0001;
-        let min=[bounds.left,bounds.top];let max=[bounds.right,bounds.bottom];
-        let extent=[f64::from(self.root_extent.0),f64::from(self.root_extent.1)];
-        let mut offset=canvas_snap_offset(bounds,extent,settings,distance);
-        if settings.source_edges()&&offset.iter().any(|value|value.abs()<EPSILON){
-            let scene=model.scene(self.scene).ok_or(InteractionError("The selected scene no longer exists."))?;
-            // Model validation limits this walk to4096 siblings/8 filters each.
-            // Borrow metadata: no per-peer Target/SourceKind/path/CSS clones.
-            for item in scene.items().iter().filter(|item|item.id()!=self.item){
-                let source=model.source(item.source()).ok_or(InteractionError("A snapping source no longer exists."))?;
-                let Some(basis)=model.source_video_dimensions(source.kind()).map_err(invalid)? else{continue;};
-                let actual=if capture.session()==session.identity(){capture.frame(source.id()).filter(|frame|frame.binding.matches_source(source.kind())).map_or(basis,|frame|(frame.image.width(),frame.image.height()))}else{basis};
-                let actual=model.effective_filtered_video_dimensions(source,actual,Some(self.root_canvas)).map_err(invalid)?;
-                let peer=self.root_mapping.map_geometry(item.transform().geometry_for_frame(basis.0,basis.1,actual.0,actual.1).map_err(invalid)?).map_err(invalid)?.bounds();
-                let peer_min=[peer.left,peer.top];let peer_max=[peer.right,peer.bottom];
-                for axis in 0..2{let other=1-axis;
-                    if offset[axis].abs()<EPSILON&&min[other]<peer_max[other]&&max[other]>peer_min[other]{
-                        for correction in [peer_min[axis]-max[axis],peer_max[axis]-min[axis]]{
-                            if offset[axis].abs()<EPSILON&&correction.abs()<distance[axis]{offset[axis]=correction;}
-                        }
-                    }
-                }
-                if offset.iter().all(|value|value.abs()>=EPSILON){break;}
-            }
-        }
-        self.moved([delta[0]+offset[0],delta[1]+offset[1]])
+        self.moved_group_snapped(session,capture,&[],&[],delta,display_scale,control).map(|(transform,_)|transform)
     }
     /// Snap the union of a selected group, never an individual member, and
     /// exclude the moving members from source-edge candidates.
@@ -566,7 +605,7 @@ impl Target {
         self.validate(session,capture)?;
         if !delta.into_iter().all(f64::is_finite)||!display_scale.into_iter().all(|v|v.is_finite()&&v>0.0){return Err(InteractionError("Preview snapping requires finite movement and positive display scales."));}
         if delta==[0.0;2]{return Ok((self.transform.clone(),[None;2]));}
-        for member in group {member.validate(session,capture)?;if member.container!=self.container||member.scene!=self.scene{return Err(InteractionError("Selected items must share a container."));}}
+        for member in group {member.validate(session,capture)?;if member.scene!=self.scene{return Err(InteractionError("Selected items must share a scene."));}}
         let model=session.snapshot();let settings=model.preferences().preview_snapping();
         if control||!settings.enabled()||settings.distance_tenths()==0{return self.moved(delta).map(|t|(t,[None;2]));}
         let distance=[settings.distance()/display_scale[0],settings.distance()/display_scale[1]];
@@ -582,15 +621,15 @@ impl Target {
         let mut guides=[None;2];
         let min=[bounds.left,bounds.top];let max=[bounds.right,bounds.bottom];
         for axis in 0..2 {
-            if offset[axis].abs()>0.0001 {
+            if offset[axis].abs()>0.0001 || (settings.screen_edges() && (min[axis].abs()<0.0001 || (max[axis]-extent[axis]).abs()<0.0001)) || (settings.canvas_center() && (extent[axis]-(max[axis]-min[axis])).abs()>distance[axis] && ((min[axis]+max[axis])*0.5-extent[axis]*0.5).abs()<0.0001) {
                 let center=(min[axis]+max[axis])*0.5+offset[axis];
                 guides[axis]=if settings.canvas_center()&&(center-extent[axis]*0.5).abs()<0.0001 {Some(extent[axis]*0.5)}
-                    else if (min[axis]+offset[axis]).abs()<0.0001 {Some(0.0)}
-                    else if (max[axis]+offset[axis]-extent[axis]).abs()<0.0001 {Some(extent[axis])}else{None};
+                    else if settings.screen_edges()&&(min[axis]+offset[axis]).abs()<0.0001 {Some(0.0)}
+                    else if settings.screen_edges()&&(max[axis]+offset[axis]-extent[axis]).abs()<0.0001 {Some(extent[axis])}else{None};
             }
         }
         const EPSILON:f64=0.0001;
-        if settings.source_edges()&&offset.iter().any(|v|v.abs()<EPSILON){
+        if settings.source_edges()&&(0..2).any(|axis|offset[axis].abs()<EPSILON&&guides[axis].is_none()){
             let container=model.scene_container(self.container).ok_or(InteractionError("The selected container no longer exists."))?;
             let mut moving=std::collections::HashSet::with_capacity(selected.len()+1);
             moving.insert(self.item);moving.extend(selected.iter().copied());
@@ -602,7 +641,10 @@ impl Target {
                 let moving_min=[bounds.left,bounds.top];let moving_max=[bounds.right,bounds.bottom];
                 let peer_min=[b.left,b.top];let peer_max=[b.right,b.bottom];
                 for axis in 0..2 {
-                    if offset[axis].abs()>=EPSILON {continue;}
+                    // A zero correction is still a successful snap. Once an
+                    // edge/center is exactly aligned, later peers must not
+                    // pull the selection away from that guide.
+                    if offset[axis].abs()>=EPSILON || guides[axis].is_some() {continue;}
                     let mc=(moving_min[axis]+moving_max[axis])*0.5;let pc=(peer_min[axis]+peer_max[axis])*0.5;
                     let mw=moving_max[axis]-moving_min[axis];let pw=peer_max[axis]-peer_min[axis];
                     let diff=mc-pc;
@@ -617,7 +659,7 @@ impl Target {
                         if correction.abs()<distance[axis] {offset[axis]=correction;guides[axis]=Some(guide);break;}
                     }
                 }
-                if offset.iter().all(|v|v.abs()>=EPSILON){break;}
+                if (0..2).all(|axis|offset[axis].abs()>=EPSILON||guides[axis].is_some()){break;}
             }
         }
         self.moved([delta[0]+offset[0],delta[1]+offset[1]]).map(|t|(t,guides))
@@ -626,17 +668,37 @@ impl Target {
     /// sides only. Alt crop and Ctrl preserve the existing unsnapped path.
     #[allow(clippy::too_many_arguments)]
     pub fn resized_snapped(&self,session:&Session,capture:&CaptureSnapshot,handle:Handle,delta:[f64;2],free_aspect:bool,crop:bool,display_scale:[f64;2],control:bool)->Result<Transform,InteractionError>{
+        self.resized_snapped_with_guides(session,capture,handle,delta,free_aspect,crop,display_scale,control).map(|(transform,_)|transform)
+    }
+    /// Return the canvas guides used by the resize gesture as well as its
+    /// transform. Callers such as the CLI can use `resized_snapped` when no
+    /// presentation feedback is needed.
+    #[allow(clippy::too_many_arguments)]
+    pub fn resized_snapped_with_guides(&self,session:&Session,capture:&CaptureSnapshot,handle:Handle,delta:[f64;2],free_aspect:bool,crop:bool,display_scale:[f64;2],control:bool)->Result<(Transform,[Option<f64>;2]),InteractionError>{
         self.validate(session,capture)?;
         if !delta.into_iter().all(f64::is_finite)||!display_scale.into_iter().all(|value|value.is_finite()&&value>0.0){return Err(InteractionError("Preview snapping requires finite movement and positive display scales."));}
-        if delta==[0.0;2]{return Ok(self.transform.clone());}
+        if delta==[0.0;2]{return Ok((self.transform.clone(),[None;2]));}
         let settings=session.snapshot().preferences().preview_snapping();
-        if control||crop||!settings.enabled()||settings.distance_tenths()==0{return self.resized(handle,delta,free_aspect,crop);}
+        if control||crop||!settings.enabled()||settings.distance_tenths()==0{return self.resized(handle,delta,free_aspect,crop).map(|transform|(transform,[None;2]));}
         let distance=[settings.distance()/display_scale[0],settings.distance()/display_scale[1]];
         if !distance.into_iter().all(f64::is_finite){return Err(InteractionError("Preview snapping display scale is outside the valid range."));}
         let candidate=self.resized(handle,delta,true,false)?;
         let bounds=self.geometry_for(&candidate)?.bounds();
-        let offset=canvas_snap_offset(bounds,[f64::from(self.root_extent.0),f64::from(self.root_extent.1)],settings,distance);
-        self.resized(handle,[delta[0]+offset[0],delta[1]+offset[1]],free_aspect,false)
+        let extent=[f64::from(self.root_extent.0),f64::from(self.root_extent.1)];
+        let offset=canvas_snap_offset(bounds,extent,settings,distance);
+        let min=[bounds.left,bounds.top];let max=[bounds.right,bounds.bottom];
+        let mut guides=[None;2];
+        for axis in 0..2 {
+            let center=(min[axis]+max[axis])*0.5+offset[axis];
+            if settings.canvas_center() && (extent[axis]-(max[axis]-min[axis])).abs()>distance[axis] && (center-extent[axis]*0.5).abs()<0.0001 {
+                guides[axis]=Some(extent[axis]*0.5);
+            } else if settings.screen_edges() && (min[axis]+offset[axis]).abs()<0.0001 {
+                guides[axis]=Some(0.0);
+            } else if settings.screen_edges() && (max[axis]+offset[axis]-extent[axis]).abs()<0.0001 {
+                guides[axis]=Some(extent[axis]);
+            }
+        }
+        self.resized(handle,[delta[0]+offset[0],delta[1]+offset[1]],free_aspect,false).map(|transform|(transform,guides))
     }
     /// Rotate about the visible box center with OBS's15-degree Shift snap and
     /// five-degree ordinary snap. Control disables ordinary snapping.
@@ -645,7 +707,20 @@ impl Target {
         if !start.into_iter().chain(current).all(f64::is_finite) {
             return Err(InteractionError("Rotation pointer coordinates must be finite."));
         }
-        let current=self.root_mapping.inverse_point(current).map_err(invalid)?;
+        let mut current=self.root_mapping.inverse_point(current).map_err(invalid)?;
+        // A group's children store their transform in the group's local
+        // coordinates. Undo every ancestor from outermost to innermost before
+        // comparing the pointer with the child's local center; otherwise a
+        // translated, scaled or rotated group makes the handle jump.
+        for (origin,x,y) in self.ancestors.iter().rev() {
+            let determinant=x[0]*y[1]-x[1]*y[0];
+            if !determinant.is_finite()||determinant.abs()<1e-12 {
+                return Err(InteractionError("Group transform is not invertible."));
+            }
+            let delta=[current[0]-origin[0],current[1]-origin[1]];
+            current=[(delta[0]*y[1]-delta[1]*y[0])/determinant,
+                (x[0]*delta[1]-x[1]*delta[0])/determinant];
+        }
         let center=point(self.base_geometry(&self.transform)?,[0.5,0.5]);
         let vector=[current[0]-center[0],current[1]-center[1]];
         if vector[0].hypot(vector[1])<f64::EPSILON {return Ok(self.transform.clone());}
@@ -732,22 +807,33 @@ impl Target {
             } else {
                 1.0
             };
-            sx = sx.max(1.0 / f64::from(remaining[0]));
-            sy = sy.max(1.0 / f64::from(remaining[1]));
+            // Keep a nonzero extent, but allow a handle to cross the opposite
+            // edge. OBS represents that crossing as a negative scale (a flip),
+            // rather than pinning the item to one pixel indefinitely.
+            let bounded = |scale:f64, pixels:u32| {
+                let minimum=1.0/f64::from(pixels);
+                if scale.abs()<minimum {if scale<0.0 {-minimum} else {minimum}} else {scale}
+            };
+            sx = bounded(sx,remaining[0]);
+            sy = bounded(sy,remaining[1]);
             if !free_aspect {
                 let width = geometry.axis_x[0].hypot(geometry.axis_x[1]);
                 let height = geometry.axis_y[0].hypot(geometry.axis_y[1]);
                 let aspect = f64::from(remaining[0]) / f64::from(remaining[1]);
+                let sign_x=sx.signum();
+                let sign_y=sy.signum();
                 if handle.unit()[0] == 0.5 {
-                    sx = height * sy * aspect / width;
-                } else if handle.unit()[1] == 0.5 || width * sx > height * sy * aspect {
-                    sy = width * sx / aspect / height;
+                    sx = sign_x * height * sy.abs() * aspect / width;
+                } else if handle.unit()[1] == 0.5 || width * sx.abs() > height * sy.abs() * aspect {
+                    sy = sign_y * width * sx.abs() / aspect / height;
                 } else {
-                    sx = height * sy * aspect / width;
+                    sx = sign_x * height * sy.abs() * aspect / width;
                 }
             }
-            result.width = (f64::from(result.width) * sx) as f32;
-            result.height = (f64::from(result.height) * sy) as f32;
+            result.width = (f64::from(result.width) * sx.abs()) as f32;
+            result.height = (f64::from(result.height) * sy.abs()) as f32;
+            if sx<0.0 { result.flip_x = !result.flip_x; }
+            if sy<0.0 { result.flip_y = !result.flip_y; }
             let dx = if handle.left() { 1.0 - sx } else { 0.0 };
             let dy = if handle.top() { 1.0 - sy } else { 0.0 };
             result.x = (f64::from(result.x)

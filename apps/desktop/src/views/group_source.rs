@@ -29,6 +29,24 @@ fn sibling_range(model: &StudioSnapshot, owner: Id, anchor: Id, target: Id) -> O
 fn selection_id(_root: Id) -> egui::Id {
     egui::Id::new("group-source-selection")
 }
+/// A selected group already moves its children; keep only the outermost
+/// selected identities so a mixed-container edit never applies twice.
+fn remove_selected_descendants(model:&StudioSnapshot,root:Id,items:&mut Vec<Id>){
+    let selected:HashSet<Id>=items.iter().copied().collect();
+    items.retain(|id|{
+        let Some((mut owner,_))=model.item_container(*id) else{return false;};
+        while owner!=root {
+            let Some((parent,wrapper))=model.group_parent(owner) else{return false;};
+            if selected.contains(&wrapper){return false;}
+            owner=parent;
+        }
+        true
+    });
+}
+/// Clear the view-owned selection when the user clicks the empty list area.
+pub(super) fn clear_selection(ui: &egui::Ui, root: Id) {
+    ui.ctx().data_mut(|data| { data.remove::<Selection>(selection_id(root)); });
+}
 #[derive(Clone, Default)]
 struct TreeState {
     session: u64,
@@ -46,8 +64,7 @@ struct RemoveSelection {
     session:u64,
     revision:u64,
     root:Id,
-    owner:Id,
-    items:Vec<Id>,
+    items:Vec<(Id,Id)>,
     name:String,
 }
 fn remove_selection_id() -> egui::Id { egui::Id::new("group-source-remove-selection") }
@@ -57,12 +74,17 @@ fn remove_selection_id() -> egui::Id { egui::Id::new("group-source-remove-select
 pub(super) fn request_remove_selection(ui:&egui::Ui,model:&StudioSnapshot,root:Id,session:u64,focus:Id) {
     let Some((owner,item))=model.item_container(focus) else{return;};
     if model.root_scene_for_container(owner)!=Some(root) {return;}
-    let items=selected_items(ui,model,root,session,Some(focus));
-    if model.container_is_locked(owner)||items.is_empty()||items.iter().any(|id|
-        model.item_container(*id).is_none_or(|(container,item)|container!=owner||item.locked())) {return;}
+    let selection=selected_items(ui,model,root,session,Some(focus));
+    let mut items=Vec::with_capacity(selection.len());
+    for id in selection {
+        let Some((container,_))=model.item_container(id) else{return;};
+        if model.root_scene_for_container(container)!=Some(root) {return;}
+        items.push((container,id));
+    }
+    if items.is_empty() {return;}
     let name=model.source(item.source()).map(|source|source.name().to_owned()).unwrap_or_default();
     ui.ctx().data_mut(|data|data.insert_temp(remove_selection_id(),RemoveSelection {
-        session,revision:model.revision(),root,owner,items,name,
+        session,revision:model.revision(),root,items,name,
     }));
 }
 struct ContainerRows {
@@ -107,17 +129,28 @@ pub(crate) fn selected_items_context(
     session: u64,
     focus: Option<Id>,
 ) -> Vec<Id> {
-    if let Some(state) = context.data(|data| data.get_temp::<Selection>(selection_id(root))) {
+    if let Some(mut state) = context.data(|data| data.get_temp::<Selection>(selection_id(root))) {
         if state.session == session
-            && state.revision == model.revision()
             && model.root_scene_for_container(state.owner) == Some(root)
             && state.items.last().copied() == focus
+            && state.items.iter().all(|id| model.item_container(*id)
+                .is_some_and(|(owner, _)| model.root_scene_for_container(owner) == Some(root)))
             && focus.is_none_or(|id| {
                 model
                     .item_container(id)
                     .is_some_and(|(owner, _)| owner == state.owner)
             })
         {
+            // Selection is presentation state, not a document mutation. Keep
+            // it across unrelated edits (for example a mixer gain change),
+            // but only while every selected identity still belongs here.
+            if state.revision != model.revision() {
+                state.revision = model.revision();
+                if !state.items.contains(&state.anchor) {
+                    if let Some(focus) = focus { state.anchor = focus; }
+                }
+                context.data_mut(|data| data.insert_temp(selection_id(root), state.clone()));
+            }
             return state.items;
         }
     }
@@ -143,17 +176,16 @@ pub(crate) fn toggle_preview_selection(
 ) -> Option<Id> {
     let (owner, _) = model.item_container(target)?;
     if model.root_scene_for_container(owner) != Some(root) { return None; }
-    if items.iter().any(|id| model.item_container(*id).is_none_or(|(container, _)| container != owner)) {
-        items.clear();
-    }
+    items.retain(|id|model.item_container(*id).is_some_and(|(container,_)|model.root_scene_for_container(container)==Some(root)));
     if let Some(index) = items.iter().position(|id| *id == target) {
         items.remove(index);
     } else {
         items.push(target);
     }
+    remove_selected_descendants(model,root,&mut items);
     let focus = items.last().copied();
     context.data_mut(|data| data.insert_temp(selection_id(root), Selection {
-        session, revision: model.revision(), owner, anchor: focus.unwrap_or(target), items,
+        session, revision: model.revision(), owner:focus.and_then(|id|model.item_container(id).map(|(owner,_)|owner)).unwrap_or(owner), anchor: focus.unwrap_or(target), items,
     }));
     focus
 }
@@ -162,11 +194,25 @@ pub(crate) fn toggle_preview_selection(
 pub(crate) fn focus_preview_selection(context:&egui::Context,model:&StudioSnapshot,root:Id,session:u64,target:Id,mut items:Vec<Id>)->Option<Id> {
     let (owner,_)=model.item_container(target)?;
     if model.root_scene_for_container(owner)!=Some(root) || !items.contains(&target)
-        || items.iter().any(|id|model.item_container(*id).is_none_or(|(container,_)|container!=owner)) {return None;}
+        || items.iter().any(|id|model.item_container(*id).is_none_or(|(container,_)|model.root_scene_for_container(container)!=Some(root))) {return None;}
     items.retain(|id|*id!=target);
     items.push(target);
     context.data_mut(|data|data.insert_temp(selection_id(root),Selection {session,revision:model.revision(),owner,anchor:target,items}));
     Some(target)
+}
+/// Replace a Preview marquee selection within a single source container.
+pub(crate) fn set_preview_selection(context:&egui::Context,model:&StudioSnapshot,root:Id,session:u64,owner:Id,items:Vec<Id>)->Option<Id> {
+    if model.root_scene_for_container(owner)!=Some(root) || items.iter().any(|id|model.item_container(*id).is_none_or(|(container,_)|model.root_scene_for_container(container)!=Some(root))) {return None;}
+    let mut items=items;
+    remove_selected_descendants(model,root,&mut items);
+    let focus=items.last().copied();
+    if let Some(anchor)=focus {
+        let focus_owner=model.item_container(anchor).map(|(owner,_)|owner).unwrap_or(owner);
+        context.data_mut(|data|data.insert_temp(selection_id(root),Selection {session,revision:model.revision(),owner:focus_owner,anchor,items}));
+    } else {
+        context.data_mut(|data|{data.remove::<Selection>(selection_id(root));});
+    }
+    focus
 }
 /// Carry the same selection across a successful atomic preview move only.
 pub(crate) fn retain_preview_selection_after_move(context:&egui::Context,model:&StudioSnapshot,root:Id,session:u64,old_revision:u64,focus:Option<Id>) {
@@ -175,7 +221,7 @@ pub(crate) fn retain_preview_selection_after_move(context:&egui::Context,model:&
         let Some(mut state)=data.get_temp::<Selection>(id) else{return;};
         if state.session!=session || state.revision!=old_revision || state.items.last().copied()!=focus
             || model.root_scene_for_container(state.owner)!=Some(root)
-            || state.items.iter().any(|item|model.item_container(*item).is_none_or(|(owner,_)|owner!=state.owner)) {return;}
+            || state.items.iter().any(|item|model.item_container(*item).is_none_or(|(owner,_)|model.root_scene_for_container(owner)!=Some(root))) {return;}
         state.revision=model.revision();
         data.insert_temp(id,state);
     });
@@ -195,7 +241,7 @@ pub(super) fn tree(
     tree_visit(
         ui, model, root, owner, focus, session, intents, depth, &mut frame,
     );
-    keyboard_navigation(ui, model, root, session, &frame, intents);
+    keyboard_navigation(ui, model, root, session, focus, &frame, intents);
     resolve_drop(ui, model, session, &frame, intents);
 }
 
@@ -203,10 +249,10 @@ pub(crate) fn confirm_remove_selection(ui:&mut egui::Ui, model:&StudioSnapshot, 
     let key=remove_selection_id();
     let Some(pending)=ui.ctx().data(|data|data.get_temp::<RemoveSelection>(key)) else{return;};
     let valid=ui.is_enabled() && pending.session==session && pending.revision==model.revision()
-        && pending.root==root && model.root_scene_for_container(pending.owner)==Some(root)
-        && !model.container_is_locked(pending.owner) && !pending.items.is_empty()
-        && pending.items.iter().all(|id|model.item_container(*id)
-            .is_some_and(|(owner,item)|owner==pending.owner&&!item.locked()));
+        && pending.root==root
+        && !pending.items.is_empty()
+        && pending.items.iter().all(|(expected,id)|model.item_container(*id)
+            .is_some_and(|(owner,_)|owner==*expected && model.root_scene_for_container(owner)==Some(root)));
     if !valid {ui.ctx().data_mut(|data|{data.remove::<RemoveSelection>(key);});return;}
     let mut close=false;
     let response=egui::Modal::new(egui::Id::new("source-keyboard-remove-modal")).show(ui.ctx(),|ui|{
@@ -219,7 +265,7 @@ pub(crate) fn confirm_remove_selection(ui:&mut egui::Ui, model:&StudioSnapshot, 
         ui.separator();
         let actions=[super::modal_footer::Action::new("Remove",true,"Remove"),super::modal_footer::Action::new("Cancel",true,"Cancel")];
         match super::modal_footer::show(ui,&actions) {
-            Some(0)=>{intents.push(Intent::Command(Command::RemoveItems {scene:pending.owner,items:pending.items.clone()}));close=true;}
+            Some(0)=>{intents.push(Intent::Command(Command::RemoveItemsAcrossContainers {scene:pending.root,items:pending.items.clone()}));close=true;}
             Some(1)=>close=true,
             _=>{}
         }
@@ -230,13 +276,25 @@ pub(crate) fn confirm_remove_selection(ui:&mut egui::Ui, model:&StudioSnapshot, 
 
 /// Operate only while an actual source-name button owns focus. Text editors,
 /// preview controls and other docks must keep their own arrow and select-all keys.
-fn keyboard_navigation(ui:&mut egui::Ui, model:&StudioSnapshot, root:Id, session:u64, frame:&TreeFrame, intents:&mut Vec<Intent>) {
+fn keyboard_navigation(ui:&mut egui::Ui, model:&StudioSnapshot, root:Id, session:u64, focus:Option<Id>, frame:&TreeFrame, intents:&mut Vec<Intent>) {
     if !ui.is_enabled() { return; }
     let Some(index)=frame.keyboard_rows.iter().position(|row|row.focused) else{return;};
     let current=&frame.keyboard_rows[index];
+    // Ctrl/Cmd+Space toggles the focused row without discarding the existing
+    // selection, complementing Ctrl/Cmd+arrow focus navigation.
+    if ui.input_mut(|input|input.consume_key(egui::Modifiers::COMMAND,egui::Key::Space)) {
+        let items=selected_items_context(ui.ctx(),model,root,session,focus);
+        let selected=toggle_preview_selection(ui.ctx(),model,root,session,current.item,items);
+        intents.push(Intent::SelectItem(selected));
+        return;
+    }
     if ui.input_mut(|input|input.consume_key(egui::Modifiers::NONE,egui::Key::Delete)
         ||input.consume_key(egui::Modifiers::NONE,egui::Key::Backspace)) {
-        request_remove_selection(ui,model,root,session,current.item);
+        // Keyboard focus can move independently of selection with Ctrl/Cmd+Up/Down.
+        // Delete must act on the selection, not an unrelated focused row.
+        if let Some(selected)=focus {
+            request_remove_selection(ui,model,root,session,selected);
+        }
         return;
     }
     if ui.input_mut(|input|input.consume_key(egui::Modifiers::COMMAND,egui::Key::A)) {
@@ -249,6 +307,22 @@ fn keyboard_navigation(ui:&mut egui::Ui, model:&StudioSnapshot, root:Id, session
             session,revision:model.revision(),owner:current.owner,anchor:current.item,items,
         }));
         intents.push(Intent::SelectItem(Some(current.item)));
+        return;
+    }
+    // Move keyboard focus without disturbing a multi-selection. This lets the
+    // user inspect another row and return to the selected range with Ctrl.
+    let focus_target = ui.input_mut(|input| {
+        if input.consume_key(egui::Modifiers::COMMAND, egui::Key::ArrowUp) {
+            index.checked_sub(1)
+        } else if input.consume_key(egui::Modifiers::COMMAND, egui::Key::ArrowDown) {
+            (index + 1 < frame.keyboard_rows.len()).then_some(index + 1)
+        } else {
+            None
+        }
+    });
+    if let Some(next) = focus_target.and_then(|target| frame.keyboard_rows.get(target)) {
+        ui.ctx().memory_mut(|memory| memory.request_focus(next.widget));
+        ui.scroll_to_rect(next.rect, Some(egui::Align::Center));
         return;
     }
     // Standard tree navigation operates only on the focused source row.
@@ -305,13 +379,19 @@ fn keyboard_navigation(ui:&mut egui::Ui, model:&StudioSnapshot, root:Id, session
     let extend=ui.input(|input|input.modifiers.shift && !input.modifiers.command && !input.modifiers.alt);
     if extend {
         let step=ui.input_mut(|input| {
-            if input.consume_key(egui::Modifiers::SHIFT,egui::Key::ArrowUp) {Some(false)}
-            else if input.consume_key(egui::Modifiers::SHIFT,egui::Key::ArrowDown) {Some(true)}
+            if input.consume_key(egui::Modifiers::SHIFT,egui::Key::ArrowUp) {Some(0)}
+            else if input.consume_key(egui::Modifiers::SHIFT,egui::Key::ArrowDown) {Some(1)}
+            else if input.consume_key(egui::Modifiers::SHIFT,egui::Key::Home) {Some(2)}
+            else if input.consume_key(egui::Modifiers::SHIFT,egui::Key::End) {Some(3)}
             else {None}
         });
-        if let Some(down)=step {
-            let next=if down {frame.keyboard_rows[index+1..].iter().find(|row|row.owner==current.owner)}
-                else {frame.keyboard_rows[..index].iter().rev().find(|row|row.owner==current.owner)};
+        if let Some(step)=step {
+            let next=match step {
+                0=>frame.keyboard_rows[..index].iter().rev().find(|row|row.owner==current.owner),
+                1=>frame.keyboard_rows[index+1..].iter().find(|row|row.owner==current.owner),
+                2=>frame.keyboard_rows.iter().find(|row|row.owner==current.owner),
+                _=>frame.keyboard_rows.iter().rev().find(|row|row.owner==current.owner),
+            };
             if let Some(next)=next {
                 let anchor=ui.ctx().data(|data|data.get_temp::<Selection>(selection_id(root)))
                     .filter(|state|state.session==session && state.revision==model.revision()
@@ -421,7 +501,7 @@ fn tree_visit(
                         });
                     }
                 }
-                super::source_icons::show(ui, source.kind());
+                super::source_icons::show(ui, source.kind(), model.preferences().source_icons_visible());
                 let response = ui
                     .add_sized(
                         [
@@ -483,7 +563,7 @@ fn tree_visit(
                     &response,
                     scope,
                     item.id(),
-                    item.locked() || model.container_is_locked(owner),
+                    model.container_is_locked(owner),
                 );
                 rows.push((item.id(), response.rect));
                 frame.keyboard_rows.push(KeyboardRow {owner,item:item.id(),widget:response.id,rect:response.rect,focused:response.has_focus()});
@@ -514,18 +594,13 @@ fn tree_visit(
                     } else {
                         vec![]
                     };
-                    if items.iter().any(|id| {
-                        model
-                            .item_container(*id)
-                            .is_none_or(|(container, _)| container != owner)
-                    }) {
-                        items.clear();
-                    }
+                    items.retain(|id|model.item_container(*id).is_some_and(|(container,_)|model.root_scene_for_container(container)==Some(root)));
                     if let Some(index) = items.iter().position(|id| *id == item.id()) {
                         items.remove(index);
                     } else {
                         items.push(item.id());
                     }
+                    remove_selected_descendants(model,root,&mut items);
                     let focus = items.last().copied();
                     ui.data_mut(|data| {
                         data.insert_temp(
@@ -533,7 +608,7 @@ fn tree_visit(
                             Selection {
                                 session,
                                 revision: model.revision(),
-                                owner,
+                                owner:focus.and_then(|id|model.item_container(id).map(|(owner,_)|owner)).unwrap_or(owner),
                                 anchor: focus.unwrap_or(item.id()),
                                 items,
                             },
@@ -557,16 +632,26 @@ fn tree_visit(
                         intents.push(intent);
                     }
                 }
-                if response.secondary_clicked() && !selected.contains(&item.id()) {
+                if response.secondary_clicked() {
+                    // Right-clicking one of several selected rows must keep
+                    // the whole selection for the context menu. The last
+                    // identity is the focus used by selection-aware actions.
+                    let mut items = if selected.contains(&item.id()) { selected.clone() } else { Vec::new() };
+                    items.retain(|id| *id != item.id());
+                    items.push(item.id());
+                    let anchor = ui.ctx().data(|data| data.get_temp::<Selection>(selection_id(root)))
+                        .filter(|state| state.session == session && state.owner == owner && items.contains(&state.anchor))
+                        .map(|state| state.anchor).unwrap_or(item.id());
                     ui.data_mut(|data| {
                         data.insert_temp(selection_id(root), Selection {
                             session,
                             revision: model.revision(),
                             owner,
-                            anchor: item.id(),
-                            items: vec![item.id()],
+                            anchor,
+                            items,
                         });
                     });
+                    ui.ctx().memory_mut(|memory| memory.request_focus(response.id));
                     intents.push(Intent::SelectItem(Some(item.id())));
                 }
                 response.context_menu(|ui| {
@@ -623,13 +708,15 @@ fn resolve_drop(
     let List::Sources(from) = payload.scope.list else {
         return;
     };
-    if !model
-        .item_container(payload.id)
-        .is_some_and(|(owner, item)| owner == from && !item.locked())
-    {
+    let Some((owner, item)) = model.item_container(payload.id) else {
+        egui::DragAndDrop::clear_payload(ui.ctx());
+        return;
+    };
+    if owner != from || model.container_is_locked(from) {
         egui::DragAndDrop::clear_payload(ui.ctx());
         return;
     }
+    let item_locked = item.locked();
     let Some(pointer) = ui.input(|input| input.pointer.interact_pos()) else {
         return;
     };
@@ -652,7 +739,7 @@ fn resolve_drop(
             )
             .contains(pointer)
     }) {
-        if !target.locked {
+        if !target.locked && !item_locked {
             ui.painter().with_clip_rect(viewport).rect_stroke(
                 target.rect,
                 2.0,
@@ -716,7 +803,9 @@ fn resolve_drop(
         list_reorder::finish(ui, target.scope, &target.rows, intents);
         return;
     }
-    if model.container_is_locked(into) {
+    // Reordering a locked source is allowed. Changing its group would also
+    // rewrite its transform, so retain the existing membership restriction.
+    if item_locked || model.container_is_locked(into) {
         ui.ctx().set_cursor_icon(egui::CursorIcon::NotAllowed);
         if released {
             egui::DragAndDrop::clear_payload(ui.ctx());
@@ -805,7 +894,6 @@ pub(super) fn actions(
             && items.iter().all(|id| {
                 model.item_container(*id).is_some_and(|(container, item)| {
                     container == owner
-                        && !item.locked()
                         && model.source(item.source()).is_some_and(|source| {
                             !matches!(source.kind(), skylive_core::SourceKind::Group { .. })
                         })

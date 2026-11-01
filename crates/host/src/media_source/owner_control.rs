@@ -6,7 +6,7 @@ use super::super::control::{
 use super::*;
 use std::collections::VecDeque;
 pub(super) struct Paused {
-    at: u64,
+    pub(super) at: u64,
     future: VecDeque<Replay>,
 }
 pub(super) struct Replay {
@@ -69,6 +69,9 @@ impl SourceState {
             stream_generation: self.stream_generation,
             ready: matches!(self.buffering,Buffering::None|Buffering::Paused) && self.audio_sync.is_none() && (!self.audio_blocked || self.problem.is_some()),
             last_control: self.last_control,
+            position_ns: 0,
+            duration_ns: self.duration(),
+            seekable: self.problem.is_none() && (self.running || self.paused.is_some()) && self.reader.as_ref().is_some_and(|reader|reader.seek_ready()) && self.duration()>0,
         }
     }
 }
@@ -169,7 +172,7 @@ impl Owner {
         if operation==MediaControl::Reload&&key.instance==self.instance&&target.instance==self.instance
             &&target.session==key.session&&target.epoch==key.epoch&&target.revision==key.revision&&key.request>self.key.request
             &&(self.key.session!=key.session||self.key.epoch!=key.epoch||!self.states.contains_key(&target.source)){
-            return Ok(Some(MediaTransportStatus{state:MediaPlaybackState::Stopped,stream_generation:0,ready:false,last_control:None}));
+            return Ok(Some(MediaTransportStatus{state:MediaPlaybackState::Stopped,stream_generation:0,ready:false,last_control:None,position_ns:0,duration_ns:0,seekable:false}));
         }
         if key.instance != self.instance
             || key.session != self.key.session
@@ -200,7 +203,7 @@ impl Owner {
             MediaControl::Pause => status.state == MediaPlaybackState::Paused,
             MediaControl::Resume => status.state == MediaPlaybackState::Playing,
             MediaControl::Stop => state.explicitly_stopped,
-            MediaControl::Restart | MediaControl::Reload => false,
+            MediaControl::Restart | MediaControl::Reload | MediaControl::Seek(_) => false,
         };
         if noop {
             self.key = key;
@@ -215,6 +218,11 @@ impl Owner {
             return Err(MediaSourceError::Invalid(
                 "Pause requires a playing Media Source",
             ));
+        }
+        if let MediaControl::Seek(position)=operation {
+            if !status.seekable || position>=status.duration_ns {
+                return Err(MediaSourceError::Invalid("Seek requires a playing finite source and a position inside its duration"));
+            }
         }
         let generation = state
             .stream_generation
@@ -246,7 +254,7 @@ impl Owner {
                     .ok_or(MediaSourceError::TimeOverflow)?;
             }
         }
-        let suspend=matches!(operation,MediaControl::Pause|MediaControl::Stop)||(operation==MediaControl::Reload&&(!state.active||state.explicitly_stopped||state.paused.is_some()));
+        let suspend=matches!(operation,MediaControl::Pause|MediaControl::Stop)||(matches!(operation,MediaControl::Reload|MediaControl::Seek(_))&&state.paused.is_some())||(operation==MediaControl::Reload&&(!state.active||state.explicitly_stopped));
         let paused = if operation == MediaControl::Pause {
             let mut future = VecDeque::new();
             future
@@ -305,11 +313,12 @@ impl Owner {
         };
         // Decoder seek preparation is independent and bounded; committing it is
         // infallible after the audio barrier succeeds. No file IO after commit.
-        let seek = if operation == MediaControl::Restart {
+        let seek_position=match operation {MediaControl::Restart=>Some(0),MediaControl::Seek(position)=>Some(position),_=>None};
+        let seek = if let Some(position)=seek_position {
             state
                 .reader
                 .as_ref()
-                .map(|r| r.prepare_seek(0))
+                .map(|r| r.prepare_seek(position))
                 .transpose()?
         } else {
             None
@@ -451,6 +460,7 @@ impl Owner {
                 }
                 MediaControl::Resume => {
                     state.reload_deferred=false;
+                    state.seek_preview_pending=false;
                     let mut pause = state.paused.take().unwrap();
                     let delta = p.at - pause.at;
                     state.start_ns += delta;
@@ -467,7 +477,7 @@ impl Owner {
                     // old decoder before any new open; no second decoder is held.
                     let paused=state.paused.is_some();
                     state.reader=None;state.frame=None;state.audio_format=None;
-                    state.reload_deferred=true;state.start_ns=p.at;state.loop_base=0;
+                    state.reload_deferred=true;state.start_ns=p.at;state.loop_base=0;state.seek_wall_ns=0;state.seek_floor_ns=0;state.seek_preview_pending=false;
                     state.paused=paused.then(||Paused{at:p.at,future:std::collections::VecDeque::new()});
                     state.replay.clear();state.running=state.active&&!state.explicitly_stopped&&!paused;
                     state.ended=false;state.next_video=None;state.next_audio=None;
@@ -479,8 +489,19 @@ impl Owner {
                     if let (Some(reader), Some(seek)) = (&mut state.reader, p.seek.take()) {
                         reader.commit_seek(seek);
                     }
+                    // OBS starts without a preloaded frame when neither
+                    // clear-on-end nor looping requests one. The previously
+                    // displayed frame then disappears until the decoder emits
+                    // a frame from the new playback position. Match the same
+                    // policy used by activation-driven SourceState::restart.
+                    if !state.media.clear_on_end() && !playback_loops(&state.media) {
+                        state.frame = None;
+                    }
                     state.start_ns = p.at;
                     state.loop_base = 0;
+                    state.seek_wall_ns = 0;
+                    state.seek_floor_ns = 0;
+                    state.seek_preview_pending = false;
                     state.paused = None;
                     state.replay.clear();
                     state.running = true;
@@ -494,8 +515,22 @@ impl Owner {
                     state.problem = None;
                     state.retry_at = None;
                 }
+                MediaControl::Seek(position) => {
+                    let paused=state.paused.is_some();
+                    if let (Some(reader),Some(seek))=(&mut state.reader,p.seek.take()){reader.commit_seek(seek);}
+                    state.start_ns=p.at;
+                    state.loop_base=0;
+                    state.seek_wall_ns=(u128::from(position)*100/u128::from(state.media.speed_percent())).min(u128::from(u64::MAX)) as u64;
+                    state.seek_floor_ns=position;
+                    state.seek_preview_pending=paused && state.media.video_dimensions().is_some();
+                    if paused {state.paused=Some(Paused{at:p.at,future:VecDeque::new()});}
+                    state.frame=None;state.next_video=None;state.next_audio=None;state.next_audio_offset=0;
+                    state.replay.clear();state.video_end=false;state.audio_end=false;state.eos_sent=false;
+                    state.ended=false;state.problem=None;state.retry_at=None;
+                }
                 MediaControl::Stop => {
                     state.running = false;
+                    state.seek_preview_pending=false;
                     state.network_download = None;
                     state.progress_probe_budget = None;
                     state.buffering = Buffering::None;

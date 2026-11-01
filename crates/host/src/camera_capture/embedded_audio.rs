@@ -789,7 +789,7 @@ mod directshow_graph {
     use super::{directshow_filter::{self,FilterHandle},directshow_media_type::OwnedMediaType,
         AudioCaptureError,AudioCaptureLimits,EmbeddedAudioScope,ReceiveGate};
     use crate::audio_capture::{NativeAudioStream,NativePcmBlock};
-    use crate::camera_capture::{CameraError,CameraLimits,NativeCameraStream,NativeVideoFrame};
+    use crate::camera_capture::{CameraError,CameraLimits,NativeCameraStream,NativeVideoFrame,ControlQuery,ControlChange,ControlWriteGate,ControlReceipt};
     use crate::camera_capture::embedded_video::{self,VideoGate,VideoReceiver};
     use crate::audio_capture::callback::{self,CallbackPacket,CallbackReceiver};
     use skylive_core::{VideoCaptureBinding,VideoCaptureTarget,VideoCaptureMode};
@@ -862,10 +862,10 @@ mod directshow_graph {
         pub unsafe fn open_shared(scope:EmbeddedAudioScope,binding:&VideoCaptureBinding,
             audio_limits:AudioCaptureLimits,video_limits:CameraLimits)->Result<Self,AudioCaptureError>{
             if binding.target()!=&scope.target{return Err(AudioCaptureError::Invalid("shared DirectShow camera binding"));}
-            unsafe {Self::open_internal(scope,audio_limits,Some((binding.mode(),video_limits)))}
+            unsafe {Self::open_internal(scope,audio_limits,Some((binding.mode(),binding.decode_mode(),binding.color_matrix(),binding.color_range(),video_limits)))}
         }
         unsafe fn open_internal(scope:EmbeddedAudioScope,limits:AudioCaptureLimits,
-            video_request:Option<(VideoCaptureMode,CameraLimits)>)->Result<Self,AudioCaptureError>{
+            video_request:Option<(VideoCaptureMode,VideoCaptureMode,Option<skylive_core::VideoColorMatrix>,Option<skylive_core::VideoColorRange>,CameraLimits)>)->Result<Self,AudioCaptureError>{
             // The callback queues may hold older samples. Keep a small, bounded
             // history of clock observations on the owner, never in callbacks.
             let mut clock_history=VecDeque::new();
@@ -925,7 +925,7 @@ mod directshow_graph {
                     if index==1024{return Err(AudioCaptureError::Limit("DirectShow format count"));}
                     if fetched!=1{return Err(AudioCaptureError::Invalid("DirectShow format count"));}
                     if candidate.is_none() {candidate=unsafe {OwnedMediaType::copy_from(media.0,limits)}.ok();}
-                    if let Some((expected,video_limits))=video_request {
+                    if let Some((expected,_,_,_,video_limits))=video_request {
                         if video_candidate.is_none() {
                             if let Ok((pitch,cap,configuration))=unsafe {crate::camera_capture::native::directshow_video_layout(media.0,expected,video_limits)} {
                                 let owned=unsafe {embedded_video::media_type::Owned::copy_from(media.0)}
@@ -945,8 +945,8 @@ mod directshow_graph {
             }
             let (output,media)=selected.ok_or(AudioCaptureError::Unsupported("camera has no supported embedded DirectShow PCM capture pin"))?;
             if video_request.is_some() && selected_video.is_none(){return Err(AudioCaptureError::Unsupported("camera has no exact shared DirectShow video mode"));}
-            let prepared_video=if let (Some((mode,video_limits)),Some((output,media,pitch,cap,configuration)))=(video_request,selected_video) {
-                let (gate,receiver)=embedded_video::pool(mode,pitch,cap,3,video_limits.max_raw_bytes,video_limits,configuration)
+            let prepared_video=if let (Some((mode,decode_mode,matrix,range,video_limits)),Some((output,media,pitch,cap,configuration)))=(video_request,selected_video) {
+                let (gate,receiver)=embedded_video::pool(mode,decode_mode,matrix,range,pitch,cap,3,video_limits.max_raw_bytes,video_limits,configuration)
                     .map_err(|e|native("DirectShow video pool",e))?;
                 let sink=embedded_video::filter::create(gate.clone(),media.clone())
                     .ok_or(AudioCaptureError::Limit("DirectShow video sink creation"))?;
@@ -1102,6 +1102,18 @@ mod directshow_graph {
     // Both streams must be polled by the same graph-owner thread. This is an
     // internal adapter, not a connection to the separate camera/audio owners.
     impl NativeCameraStream for GraphOwner {
+        fn query_controls(&mut self)->Result<ControlQuery,CameraError> {
+            if self.closing {return Err(CameraError::Closed);}
+            let parts=self.parts.as_ref().ok_or(CameraError::Closed)?;
+            Ok(crate::camera_capture::native::driver_controls::query(&parts.source))
+        }
+        fn set_control(&mut self,change:ControlChange,gate:&ControlWriteGate)->ControlReceipt {
+            if self.closing {return ControlReceipt::before(change,"camera is stopping");}
+            match self.parts.as_ref() {
+                Some(parts)=>crate::camera_capture::native::driver_controls::set(&parts.source,change,gate),
+                None=>ControlReceipt::before(change,"camera is closed"),
+            }
+        }
         fn poll_embedded_audio(&mut self)->Result<Option<NativePcmBlock>,CameraError> {
             NativeAudioStream::poll(self).map_err(|error|CameraError::Native {
                 operation:"read embedded DirectShow audio",detail:error.to_string(),

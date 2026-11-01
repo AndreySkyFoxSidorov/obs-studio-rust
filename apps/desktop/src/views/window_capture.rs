@@ -19,6 +19,7 @@ pub struct WindowDraft {
     pub method: WindowCaptureMethod,
     pub capture_cursor: bool,
     pub client_area: bool,
+    pub force_sdr: bool,
     pub capture_audio: bool,
     pub windows: Vec<WindowInfo>,
     pub capabilities: CaptureCapabilities,
@@ -55,6 +56,7 @@ impl WindowDraft {
             method: WindowCaptureMethod::Auto,
             capture_cursor: capabilities.cursor,
             client_area: false,
+            force_sdr: false,
             capture_audio: false,
             windows: vec![],
             capabilities,
@@ -67,6 +69,7 @@ impl WindowDraft {
             draft.method = binding.method();
             draft.capture_cursor = binding.capture_cursor();
             draft.client_area = binding.client_area();
+            draft.force_sdr = binding.force_sdr();
             draft.capture_audio = binding.capture_audio();
         }
         draft
@@ -161,7 +164,7 @@ impl WindowDraft {
             )
             .map_err(|e| e.to_string())?
             .with_capture_audio(self.capture_audio)
-            .map_err(|e| e.to_string())?;
+            .map_err(|e| e.to_string())?.with_force_sdr(self.force_sdr);
         Ok(Intent::CommitWindow {
             session: self.session,
             revision: self.revision,
@@ -316,6 +319,8 @@ pub fn editor(ui: &mut egui::Ui, draft: &mut WindowDraft, intents: &mut Vec<Inte
         "GDI captures the client area. WGC can capture the complete window or its client area. macOS uses ScreenCaptureKit.",
     ));
     if windows {
+        ui.add_enabled(draft.method!=WindowCaptureMethod::Gdi,egui::Checkbox::new(&mut draft.force_sdr,crate::i18n::tr(ui,"Force SDR")))
+            .on_hover_text(crate::i18n::tr(ui,"Force SDR"));
         ui.checkbox(&mut draft.capture_audio, crate::i18n::tr_key_or(ui,"SkyLive.WindowCapture.CaptureAudio","Capture audio"))
             .on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.WindowCapture.CaptureAudioHint",
                 "Capture audio from the application owning the captured window. Changing the window changes the audio target."));
@@ -471,7 +476,7 @@ fn method_option(
     method: WindowCaptureMethod,
     label: &str,
 ) -> egui::Response {
-    let response=ui.radio_value(&mut draft.method,method,crate::i18n::tr(ui,label)).on_hover_text(crate::i18n::tr(ui,"Choose a real capture backend. WGC keeps the Windows border; protected content and HDR are not supported."));
+    let response=ui.radio_value(&mut draft.method,method,crate::i18n::tr(ui,label)).on_hover_text(crate::i18n::tr_key_or(ui,"SkyLive.Text.Choose_a_real_capture_backend_WGC_keeps_the_.1d25223e","Choose a capture backend. WGC can tone-map HDR to SDR; protected content may be unavailable."));
     response
 }
 #[cfg(test)]

@@ -22,6 +22,7 @@ impl CapturePlatform {
             AudioTarget::Default => self != Self::Unavailable,
             AudioTarget::WindowsProcess { .. } | AudioTarget::WindowsWindow { .. } => self == Self::Windows && flow == AudioFlow::Output,
             AudioTarget::WindowsEndpoint { .. } => self == Self::Windows,
+            AudioTarget::WindowsCamera { .. } => self == Self::Windows && flow == AudioFlow::Input,
             AudioTarget::MacDevice { .. } => self == Self::Macos && flow == AudioFlow::Input,
             AudioTarget::MacSystem => self == Self::Macos && flow == AudioFlow::Output,
         }

@@ -1,4 +1,4 @@
-//! Real SDR Desktop Duplication on the capture owner. No API in construction.
+//! SDR and HDR Desktop Duplication on the capture owner. No API in construction.
 //! Readback is polled with DO_NOT_WAIT; ordinary timeout never means fallback.
 use super::super::super::{
     CaptureError, CaptureLimits, DisplayCaptureBackend, DisplayCaptureOutcome, DisplayFrameMetadata,
@@ -23,13 +23,13 @@ use windows::{
             },
             Dxgi::{
                 Common::{
-                    DXGI_FORMAT_B8G8R8A8_UNORM, DXGI_MODE_ROTATION, DXGI_MODE_ROTATION_IDENTITY,
+                    DXGI_FORMAT_B8G8R8A8_UNORM, DXGI_FORMAT_R16G16B16A16_FLOAT, DXGI_FORMAT, DXGI_MODE_ROTATION, DXGI_MODE_ROTATION_IDENTITY,
                     DXGI_MODE_ROTATION_ROTATE90, DXGI_MODE_ROTATION_ROTATE180,
                     DXGI_MODE_ROTATION_ROTATE270, DXGI_MODE_ROTATION_UNSPECIFIED, DXGI_SAMPLE_DESC,
                 },
                 CreateDXGIFactory1, DXGI_ERROR_NOT_FOUND, DXGI_ERROR_WAIT_TIMEOUT,
                 DXGI_ERROR_WAS_STILL_DRAWING, DXGI_OUTDUPL_FRAME_INFO, IDXGIAdapter1,
-                IDXGIFactory1, IDXGIOutput, IDXGIOutput1, IDXGIOutputDuplication, IDXGIResource,
+                IDXGIFactory1, IDXGIOutput, IDXGIOutput1, IDXGIOutput5, IDXGIOutputDuplication, IDXGIResource,
             },
         },
     },
@@ -50,6 +50,7 @@ pub(super) struct DxgiBackend {
     audiences: HashMap<String,u8>,
     budget: crate::capture::native_budget::NativeCopyBudget,
     retired: Vec<State>,
+    sdr_white_nits: u16,
 }
 impl DxgiBackend {
     pub(super) fn with_budget(budget: crate::capture::native_budget::NativeCopyBudget) -> Self {
@@ -60,8 +61,10 @@ impl DxgiBackend {
             audiences: HashMap::new(),
             budget,
             retired: Vec::new(),
+            sdr_white_nits: 300,
         }
     }
+    pub(super) fn set_sdr_white_nits(&mut self, nits:u16) { self.sdr_white_nits=nits.clamp(80,480); }
     pub(super) fn retain(&mut self, session: u64, epoch: u64, bindings: &[DisplayCaptureBinding]) {
         let reset = self.session != session || self.epoch != epoch;
         self.session = session;
@@ -90,6 +93,7 @@ impl DxgiBackend {
         binding: &DisplayCaptureBinding,
         monitor: &Monitor,
         limits: CaptureLimits,
+        hdr: bool,
     ) -> Result<DisplayCaptureOutcome, CaptureError> {
         let DisplayTarget::Windows { device_id } = binding.target() else {
             return Err(CaptureError::Unavailable(
@@ -104,6 +108,8 @@ impl DxgiBackend {
             state.monitor != monitor.handle.0 as usize
                 || state.audiences != audiences
                 || state.desktop_size != (monitor.info.width, monitor.info.height)
+                || state.hdr != hdr
+                || (hdr && state.sdr_white_nits != self.sdr_white_nits)
         }) {
             if let Some(state) = self.states.remove(&key) {
                 self.retired.push(state);
@@ -123,7 +129,7 @@ impl DxgiBackend {
             }
             self.states.insert(
                 key.clone(),
-                State::open(monitor, limits, self.budget.clone(),audiences)?,
+                State::open(monitor, limits, self.budget.clone(),audiences,hdr,self.sdr_white_nits)?,
             );
         }
         let other_bytes = self
@@ -183,11 +189,14 @@ struct State {
     identity: String,
     desktop_size: (u32, u32),
     rotation: Rotation,
+    hdr: bool,
+    sdr_white_nits: u16,
     device: ID3D11Device,
     context: ID3D11DeviceContext,
     duplication: IDXGIOutputDuplication,
     staging: Option<ID3D11Texture2D>,
     staging_size: (u32, u32),
+    staging_format: DXGI_FORMAT,
     staging_bytes: usize,
     copy_budget: crate::capture::native_budget::NativeCopyBudget,
     copy_reservation: Option<crate::capture::native_budget::NativeCopyLease>,
@@ -210,6 +219,8 @@ impl State {
         limits: CaptureLimits,
         copy_budget: crate::capture::native_budget::NativeCopyBudget,
         audiences:u8,
+        hdr:bool,
+        sdr_white_nits:u16,
     ) -> Result<Self, CaptureError> {
         admitted_bytes(monitor.info.width, monitor.info.height, limits)?;
         let factory: IDXGIFactory1 = unsafe { CreateDXGIFactory1() }
@@ -266,20 +277,28 @@ impl State {
         let context = context.ok_or(CaptureError::InvalidFrame(
             "D3D11CreateDevice returned no context",
         ))?;
-        let output: IDXGIOutput1 = output
-            .cast()
-            .map_err(|error| backend_error("IDXGIOutput1", error))?;
-        let duplication = unsafe { output.DuplicateOutput(&device) }
-            .map_err(|error| backend_error("DuplicateOutput", error))?;
+        // Request scRGB explicitly for HDR: the older DuplicateOutput API
+        // always supplies BGRA8 and silently loses HDR range.
+        let duplication = if hdr {
+            let output: IDXGIOutput5 = output.cast()
+                .map_err(|_| CaptureError::Unavailable("DXGI HDR capture requires IDXGIOutput5"))?;
+            unsafe { output.DuplicateOutput1(&device, 0, &[DXGI_FORMAT_R16G16B16A16_FLOAT, DXGI_FORMAT_B8G8R8A8_UNORM]) }
+                .map_err(|error| backend_error("DuplicateOutput1 HDR", error))?
+        } else {
+            let output: IDXGIOutput1 = output.cast()
+                .map_err(|error| backend_error("IDXGIOutput1", error))?;
+            unsafe { output.DuplicateOutput(&device) }
+                .map_err(|error| backend_error("DuplicateOutput", error))?
+        };
         let duplication_desc = unsafe { duplication.GetDesc() };
         admitted_bytes(
             duplication_desc.ModeDesc.Width,
             duplication_desc.ModeDesc.Height,
             limits,
         )?;
-        if duplication_desc.ModeDesc.Format != DXGI_FORMAT_B8G8R8A8_UNORM {
+        if duplication_desc.ModeDesc.Format != (if hdr { DXGI_FORMAT_R16G16B16A16_FLOAT } else { DXGI_FORMAT_B8G8R8A8_UNORM }) {
             return Err(CaptureError::Unavailable(
-                "DXGI duplication did not supply supported SDR BGRA8",
+                "DXGI duplication did not supply the requested pixel format",
             ));
         }
         if rotation.output_size(
@@ -297,11 +316,14 @@ impl State {
             identity: match &monitor.info.target {DisplayTarget::Windows {device_id}=>device_id.to_ascii_lowercase(),_=>return Err(CaptureError::InvalidFrame("DXGI monitor identity platform"))},
             desktop_size: (monitor.info.width, monitor.info.height),
             rotation,
+            hdr,
+            sdr_white_nits,
             device,
             context,
             duplication,
             staging: None,
             staging_size: (0, 0),
+            staging_format: DXGI_FORMAT_B8G8R8A8_UNORM,
             staging_bytes: 0,
             copy_budget,
             copy_reservation: None,
@@ -371,8 +393,10 @@ impl State {
             .map_err(|error| backend_error("DXGI desktop texture", error))?;
         let mut desc = D3D11_TEXTURE2D_DESC::default();
         unsafe { texture.GetDesc(&mut desc) };
-        let bytes = admitted_bytes(desc.Width, desc.Height, limits)?;
-        if desc.Format != DXGI_FORMAT_B8G8R8A8_UNORM
+        let rgba_bytes = admitted_bytes(desc.Width, desc.Height, limits)?;
+        let bytes = rgba_bytes.checked_mul(if self.hdr {2} else {1})
+            .ok_or(CaptureError::BudgetExceeded("DXGI staging size overflow"))?;
+        if desc.Format != (if self.hdr { DXGI_FORMAT_R16G16B16A16_FLOAT } else { DXGI_FORMAT_B8G8R8A8_UNORM })
             || desc.SampleDesc.Count != 1
             || desc.ArraySize != 1
             || desc.MipLevels != 1
@@ -388,7 +412,7 @@ impl State {
                 "DXGI frame dimensions changed with monitor topology",
             ));
         }
-        if self.staging_size != (desc.Width, desc.Height) {
+        if self.staging_size != (desc.Width, desc.Height) || self.staging_format != desc.Format {
             if bytes > staging_allowance {
                 return Err(CaptureError::BudgetExceeded(
                     "aggregate DXGI staging textures",
@@ -407,7 +431,7 @@ impl State {
                 Height: desc.Height,
                 MipLevels: 1,
                 ArraySize: 1,
-                Format: DXGI_FORMAT_B8G8R8A8_UNORM,
+                Format: desc.Format,
                 SampleDesc: DXGI_SAMPLE_DESC {
                     Count: 1,
                     Quality: 0,
@@ -427,11 +451,12 @@ impl State {
                 "D3D11 staging texture is absent",
             ))?);
             self.staging_size = (desc.Width, desc.Height);
+            self.staging_format = desc.Format;
             self.staging_bytes = bytes;
             self.copy_reservation = Some(reservation);
         }
         if self.retain_clean {
-            self.base_credit=Some(self.copy_budget.reserve(crate::capture::native_budget::NativeCopyKind::Dxgi,bytes)
+            self.base_credit=Some(self.copy_budget.reserve(crate::capture::native_budget::NativeCopyKind::Dxgi,rgba_bytes)
                 .ok_or(CaptureError::BudgetExceeded("DXGI clean-base/native-copy budget"))?);
             self.pending_pointer=Some(pointer);
         }
@@ -476,7 +501,7 @@ impl State {
             texture: texture.clone(),
         };
         let (width, height) = self.staging_size;
-        let extent = required_extent(width, height, mapped.RowPitch as usize, limits)?;
+        let extent = required_extent_format(width, height, mapped.RowPitch as usize, limits, if self.hdr {8} else {4})?;
         if mapped.pData.is_null() {
             return Err(CaptureError::InvalidFrame(
                 "DXGI mapped a null pixel buffer",
@@ -486,14 +511,11 @@ impl State {
         // excludes trailing padding of the final row and all arithmetic/admission
         // checks precede construction; format/layout were verified before Copy.
         let bytes = unsafe { std::slice::from_raw_parts(mapped.pData.cast::<u8>(), extent) };
-        let frame = convert_bgra(
-            bytes,
-            width,
-            height,
-            mapped.RowPitch as usize,
-            self.rotation,
-            limits,
-        )?;
+        let frame = if self.hdr {
+            convert_scrgb(bytes,width,height,mapped.RowPitch as usize,self.rotation,limits,self.sdr_white_nits)?
+        } else {
+            convert_bgra(bytes,width,height,mapped.RowPitch as usize,self.rotation,limits)?
+        };
         drop(guard);
         self.pending_lease
             .take()
@@ -607,9 +629,12 @@ fn required_extent(
     pitch: usize,
     limits: CaptureLimits,
 ) -> Result<usize, CaptureError> {
+    required_extent_format(width,height,pitch,limits,4)
+}
+fn required_extent_format(width:u32,height:u32,pitch:usize,limits:CaptureLimits,bpp:usize)->Result<usize,CaptureError> {
     let bytes = admitted_bytes(width, height, limits)?;
     let row = (width as usize)
-        .checked_mul(4)
+        .checked_mul(bpp)
         .ok_or(CaptureError::BudgetExceeded("DXGI row bytes"))?;
     if pitch < row {
         return Err(CaptureError::InvalidFrame(
@@ -629,6 +654,25 @@ fn required_extent(
         ));
     }
     Ok(extent)
+}
+fn convert_scrgb(raw:&[u8],width:u32,height:u32,pitch:usize,rotation:Rotation,limits:CaptureLimits,white:u16)->Result<RgbaFrame,CaptureError> {
+    let extent=required_extent_format(width,height,pitch,limits,8)?;
+    if raw.len()<extent { return Err(CaptureError::InvalidFrame("truncated DXGI HDR frame")); }
+    let (out_w,out_h)=rotation.output_size(width,height);
+    let len=admitted_bytes(out_w,out_h,limits)?;
+    let mut pixels=Vec::new();
+    pixels.try_reserve_exact(len).map_err(|_|CaptureError::BudgetExceeded("DXGI HDR RGBA allocation"))?;
+    pixels.resize(len,0);
+    for y in 0..out_h { for x in 0..out_w {
+        let (sx,sy)=match rotation {
+            Rotation::Identity=>(x,y), Rotation::Clockwise90=>(y,height-1-x),
+            Rotation::Half=>(width-1-x,height-1-y), Rotation::Clockwise270=>(width-1-y,x),
+        };
+        let from=sy as usize*pitch+sx as usize*8;
+        let to=(y as usize*out_w as usize+x as usize)*4;
+        pixels[to..to+4].copy_from_slice(&crate::capture::wgc_engine::tonemap_scrgb_pixel(&raw[from..from+8],white));
+    }}
+    RgbaFrame::new(out_w,out_h,pixels).map_err(|_|CaptureError::InvalidFrame("DXGI HDR RGBA output"))
 }
 fn convert_bgra(
     raw: &[u8],

@@ -26,6 +26,49 @@ pub fn image_mask_requirements(source:(u32,u32),mask:(u32,u32),settings:ImageMas
 pub fn image_mask_v2(source:&RgbaFrame,ingress:SourceBlend,mask:&RgbaFrame,settings:ImageMaskSettings,limits:ImageMaskLimits)->Result<RgbaFrame,MediaError>{
     let required=image_mask_requirements((source.width(),source.height()),(mask.width(),mask.height()),settings)?;
     if required.input_bytes>limits.max_input_bytes || required.output_bytes>limits.max_output_bytes || required.texel_visits>limits.max_texel_visits{return Err(MediaError::BudgetExceeded);}
+    // Every OBS mask/blend variant multiplies the final RGB by the resulting
+    // alpha. Zero filter opacity therefore produces transparent black for the
+    // entire frame, without reading or interpolating the mask texture.
+    if settings.opacity == 0.0 {
+        return RgbaFrame::new(source.width(),source.height(),vec![0;required.output_bytes]);
+    }
+    // Every mask/blend mode keeps source alpha as a factor. A fully
+    // transparent input produces transparent black even if hidden RGB is
+    // nonzero, so no mask samples are needed for that frame.
+    if source.pixels().chunks_exact(4).all(|pixel| pixel[3] == 0) {
+        return RgbaFrame::new(source.width(),source.height(),vec![0;required.output_bytes]);
+    }
+    // An alpha texture with identical alpha at every texel remains constant
+    // after bilinear sampling, regardless of stretch or the mask dimensions.
+    // This avoids a full sampling pass for common fully transparent masks.
+    if settings.method == ImageMaskMethod::MaskAlpha && mask.width().saturating_mul(mask.height()) > 1
+        && mask.pixels().chunks_exact(4).all(|pixel| pixel[3] == 0)
+    {
+        return RgbaFrame::new(source.width(),source.height(),vec![0;required.output_bytes]);
+    }
+    // A fully opaque alpha texture samples as one everywhere. For opaque
+    // input and neutral tint/opacity the OBS operation is a byte identity,
+    // irrespective of dimensions or aspect-preserving mask coordinates.
+    if settings.method == ImageMaskMethod::MaskAlpha && mask.width().saturating_mul(mask.height()) > 1
+        && settings.opacity == 1.0 && settings.color == [255; 3]
+        && mask.pixels().chunks_exact(4).all(|pixel| pixel[3] == 255)
+        && source.pixels().chunks_exact(4).all(|pixel| pixel[3] == 255)
+    {
+        return Ok(source.clone());
+    }
+    // A one-texel alpha mask is constant for every clamped sample, including
+    // aspect-preserving UVs. Avoid a full sampling/conversion pass when it
+    // either erases the frame or leaves an opaque frame unchanged.
+    if settings.method == ImageMaskMethod::MaskAlpha && mask.width() == 1 && mask.height() == 1 {
+        match mask.pixels()[3] {
+            0 => return RgbaFrame::new(source.width(), source.height(), vec![0; required.output_bytes]),
+            255 if settings.opacity == 1.0 && settings.color == [255; 3]
+                && source.pixels().chunks_exact(4).all(|pixel| pixel[3] == 255) => {
+                return Ok(source.clone());
+            },
+            _ => {},
+        }
+    }
     let encoding=match ingress {SourceBlend::LinearSrgb=>ColorCorrectionInput::LinearAlpha,
         SourceBlend::Encoded|SourceBlend::EncodedPremultipliedSrgb=>ColorCorrectionInput::EncodedAlpha,
         SourceBlend::PremultipliedLinearSrgb=>ColorCorrectionInput::PremultipliedLinearSrgb};
@@ -45,11 +88,10 @@ pub fn image_mask_v2(source:&RgbaFrame,ingress:SourceBlend,mask:&RgbaFrame,setti
     let constant_mask=(mask.width()==1&&mask.height()==1).then(||sample(mask,[0.5,0.5],decoded));
     let mut pixels=vec![0;required.output_bytes];
     for (index,(src,dst)) in source.pixels().chunks_exact(4).zip(pixels.chunks_exact_mut(4)).enumerate(){
-        let lp=crate::obs_keyer::sample_lp([src[0],src[1],src[2],src[3]],encoding);
-        let inverse=if lp[3]>0.0 {1.0/lp[3]}else{0.0};
-        let mut rgb=[lp[0]*inverse,lp[1]*inverse,lp[2]*inverse];
-        for i in 0..3 {rgb[i]*=tint[i];}
-        let mut alpha=lp[3]*settings.opacity;
+        // Zero source alpha forces the OBS shader's final premultiplied RGB
+        // and alpha to zero for every blend method, including premultiplied
+        // input with hidden RGB. Avoid sampling the mask for these pixels.
+        if src[3] == 0 {dst.fill(0);continue;}
         let target=if let Some(value)=constant_mask {value} else {
             let uv=[((index%source.width() as usize) as f32+0.5)/w,((index/source.width() as usize) as f32+0.5)/h];
             let mapped=[uv[0]*mul[0]+add[0],uv[1]*mul[1]+add[1]];
@@ -59,6 +101,22 @@ pub fn image_mask_v2(source:&RgbaFrame,ingress:SourceBlend,mask:&RgbaFrame,setti
                 [0.0,0.0,0.0,sample_alpha(mask,mapped)]
             } else { sample(mask,mapped,decoded) }
         };
+        // Binary alpha masks are common in camera overlays. Their transparent
+        // pixels always produce transparent black; an opaque source through a
+        // neutral, fully opaque mask is an exact byte identity. Avoid color
+        // conversions for these cases while keeping interpolation and partial
+        // alpha on the ordinary OBS-equivalent path.
+        if settings.method==ImageMaskMethod::MaskAlpha {
+            if target[3]==0.0 {dst.fill(0);continue;}
+            if target[3]==1.0 && src[3]==255 && settings.opacity==1.0 && settings.color==[255;3] {
+                dst.copy_from_slice(src);continue;
+            }
+        }
+        let lp=crate::obs_keyer::sample_lp([src[0],src[1],src[2],src[3]],encoding);
+        let inverse=if lp[3]>0.0 {1.0/lp[3]}else{0.0};
+        let mut rgb=[lp[0]*inverse,lp[1]*inverse,lp[2]*inverse];
+        for i in 0..3 {rgb[i]*=tint[i];}
+        let mut alpha=lp[3]*settings.opacity;
         match settings.method {
             ImageMaskMethod::MaskColor=>alpha*=(target[0]+target[1]+target[2])/3.0,
             ImageMaskMethod::MaskAlpha=>alpha*=target[3],

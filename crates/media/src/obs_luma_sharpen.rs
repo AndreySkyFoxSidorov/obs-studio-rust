@@ -25,7 +25,10 @@ impl PreparedLuma {
         let low=smoothstep(self.low,self.low_end,luminance);
         let high=1.0-smoothstep(self.high_begin,self.high,luminance);
         let alpha=if self.legacy {low*high} else {sampled[3]*(low*high)};
-        [encode(rgb[0]*alpha),encode(rgb[1]*alpha),encode(rgb[2]*alpha),unorm(alpha)]
+        // OBS v1 returns unpremultiplied RGB directly, whereas v2 multiplies
+        // RGB by the resulting alpha before writing the filter target.
+        let output=if self.legacy {rgb} else {rgb.map(|value|value*alpha)};
+        [encode(output[0]),encode(output[1]),encode(output[2]),unorm(alpha)]
     }
 }
 #[allow(clippy::manual_clamp)]

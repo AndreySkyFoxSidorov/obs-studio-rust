@@ -7,6 +7,7 @@ use skylive_host::media_source::{MediaRequestKey, MediaSourceError, PreparedMedi
 pub(super) struct PendingMedia {
     pub key: MediaRequestKey,
     pub request: MediaPrepare,
+    pub drop_position: Option<[f32;2]>,
 }
 
 impl StudioApp {
@@ -32,7 +33,7 @@ impl StudioApp {
             .prepare(&self.session, PathBuf::from(&request.path))
         {
             Ok(key) => {
-                self.pending_media = Some(PendingMedia { key, request });
+                self.pending_media = Some(PendingMedia { key, request, drop_position:None });
                 if let Some(Dialog::MediaSource(draft)) = &mut self.dialog {
                     draft.loading = true;
                     draft.error = None;
@@ -99,10 +100,12 @@ impl StudioApp {
                 if let Some(Dialog::MediaSource(draft)) = &mut self.dialog {
                     draft.loading = false;
                 }
-                self.apply_at(
-                    Some(pending.request.revision),
-                    pending.request.command(prepared.media),
-                );
+                let command=pending.request.command(prepared.media);
+                let command=match (command,pending.drop_position) {
+                    (Command::AddMediaSource {scene,name,media},Some(position))=>Command::AddMediaSourceAt {scene,name,media,position},
+                    (command,_)=>command,
+                };
+                self.apply_at(Some(pending.request.revision),command);
             }
             Err(error) => self.media_worker_error(error),
         }

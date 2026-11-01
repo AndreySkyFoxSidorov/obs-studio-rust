@@ -3,20 +3,6 @@ use eframe::egui;
 use skylive_core::{Id, SourceKind, StudioSnapshot};
 use super::{Intent, dialogs::Dialog, media_controls::MediaTransportView};
 
-const SOURCE_BAR: &str = "source-context-bar-visible";
-const LISTBOX_BARS: &str = "listbox-toolbars-visible";
-fn visible(ctx: &egui::Context, id: &str) -> bool {
-    ctx.data(|data| data.get_temp::<bool>(egui::Id::new(id))).unwrap_or(true)
-}
-fn toggle(ctx: &egui::Context, id: &str) {
-    let next = !visible(ctx, id);
-    ctx.data_mut(|data| data.insert_temp(egui::Id::new(id), next));
-}
-pub fn source_bar_visible(ctx: &egui::Context) -> bool { visible(ctx, SOURCE_BAR) }
-pub fn listbox_bars_visible(ctx: &egui::Context) -> bool { visible(ctx, LISTBOX_BARS) }
-pub fn toggle_source_bar(ctx: &egui::Context) { toggle(ctx, SOURCE_BAR); }
-pub fn toggle_listbox_bars(ctx: &egui::Context) { toggle(ctx, LISTBOX_BARS); }
-
 pub fn show(
     ui: &mut egui::Ui, model: &StudioSnapshot, scene: Id, selected: Option<Id>,
     session: u64, media: Option<MediaTransportView<'_>>, intents: &mut Vec<Intent>,
@@ -36,7 +22,7 @@ pub fn show(
             egui::vec2(ui.available_width().min(220.0), 24.0),
             egui::Layout::left_to_right(egui::Align::Center),
             |ui| {
-                super::source_icons::show(ui, source.kind());
+                super::source_icons::show(ui, source.kind(), model.preferences().source_icons_visible());
                 ui.add(egui::Label::new(source.name()).truncate())
                     .on_hover_text(source.name())
                     .context_menu(|ui| {

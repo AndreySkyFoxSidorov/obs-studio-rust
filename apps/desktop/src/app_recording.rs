@@ -5,6 +5,74 @@ use skylive_host::{
     playback::PlaybackSnapshot,
     recording::{RecordingConfig, RecordingEvent, RecordingFrame, RecordingOwner},
 };
+
+/// Filename generation uses the Windows local clock, matching OBS. Empty
+/// formats preserve the previous unique timestamp-based naming convention.
+#[cfg(target_os="windows")]
+fn formatted_recording_stem(format:&str,stamp:std::time::Duration,canvas:&skylive_core::VideoSettings,output:&skylive_core::VideoSettings)->Result<String,String>{
+    #[repr(C)]
+    #[derive(Clone,Copy,Default)]
+    struct SystemTime {year:u16,month:u16,day_of_week:u16,day:u16,hour:u16,minute:u16,second:u16,millis:u16}
+    #[repr(C)]
+    struct TimeZone {bias:i32,standard_name:[u16;32],standard_date:SystemTime,standard_bias:i32,daylight_name:[u16;32],daylight_date:SystemTime,daylight_bias:i32}
+    #[link(name="kernel32")]
+    unsafe extern "system" {
+        fn GetLocalTime(time:*mut SystemTime);
+        fn GetDateFormatW(locale:u32,flags:u32,time:*const SystemTime,format:*const u16,output:*mut u16,capacity:i32)->i32;
+        fn GetTimeFormatW(locale:u32,flags:u32,time:*const SystemTime,format:*const u16,output:*mut u16,capacity:i32)->i32;
+        fn GetTimeZoneInformation(zone:*mut TimeZone)->u32;
+    }
+    let mut local=SystemTime::default();
+    // GetLocalTime writes exactly one initialized SYSTEMTIME structure.
+    unsafe{GetLocalTime(&mut local)};
+    let local_text=|pattern:&str,time_format:bool|->Result<String,String>{
+        let pattern:Vec<u16>=pattern.encode_utf16().chain(Some(0)).collect();let mut buffer=[0u16;256];
+        // Both functions receive a fixed-size UTF-16 output buffer and return
+        // its length including the terminator, or zero on error.
+        let count=unsafe{if time_format{GetTimeFormatW(0x0400,0,&local,pattern.as_ptr(),buffer.as_mut_ptr(),buffer.len() as i32)}else{GetDateFormatW(0x0400,0,&local,pattern.as_ptr(),buffer.as_mut_ptr(),buffer.len() as i32)}};
+        if count<=1{return Err("Unable to format local recording time".into());}
+        String::from_utf16(&buffer[..count as usize-1]).map_err(|_|"Local recording date contains invalid Unicode".into())
+    };
+    let timezone=||->Result<(String,String),String>{
+        let mut zone=TimeZone {bias:0,standard_name:[0;32],standard_date:SystemTime::default(),standard_bias:0,daylight_name:[0;32],daylight_date:SystemTime::default(),daylight_bias:0};
+        let state=unsafe{GetTimeZoneInformation(&mut zone)};
+        if state==u32::MAX{return Err("Unable to obtain the local time zone".into());}
+        let (adjust,name)=if state==2{(zone.daylight_bias,&zone.daylight_name)}else{(zone.standard_bias,&zone.standard_name)};
+        let offset=-(zone.bias+adjust);let sign=if offset<0{'-'}else{'+'};let minutes=offset.unsigned_abs();
+        let end=name.iter().position(|v|*v==0).unwrap_or(name.len());
+        let name=String::from_utf16(&name[..end]).map_err(|_|"Time zone name contains invalid Unicode")?;
+        Ok((format!("{sign}{:02}{:02}",minutes/60,minutes%60),name))
+    };
+    let mut result=String::new();let mut rest=format;
+    while let Some(index)=rest.find('%') {
+        result.push_str(&rest[..index]);rest=&rest[index+1..];
+        let token=["CCYY","CRES","ORES","FPS","YY","MM","DD","hh","mm","ss","Y","y","m","d","H","I","M","p","S","s","a","A","b","B","z","Z","%"].iter().find(|token|rest.starts_with(**token)).ok_or("Unsupported recording filename token")?;
+        let value=match *token {
+            "CCYY"|"Y"=>format!("{:04}",local.year),"YY"|"y"=>format!("{:02}",local.year%100),
+            "MM"|"m"=>format!("{:02}",local.month),"DD"|"d"=>format!("{:02}",local.day),
+            "hh"|"H"=>format!("{:02}",local.hour),"I"=>format!("{:02}",match local.hour%12{0=>12,n=>n}),
+            "mm"|"M"=>format!("{:02}",local.minute),"ss"|"S"=>format!("{:02}",local.second),
+            "p"=>local_text("tt",true)?,"s"=>stamp.as_secs().to_string(),"%"=>"%".into(),
+            "a"=>local_text("ddd",false)?,"A"=>local_text("dddd",false)?,"b"=>local_text("MMM",false)?,"B"=>local_text("MMMM",false)?,
+            "z"=>timezone()?.0,"Z"=>timezone()?.1,
+            "FPS"=>if canvas.fps_den()<=1 {canvas.fps_num().to_string()}else{format!("{:.2}",f64::from(canvas.fps_num())/f64::from(canvas.fps_den()))},
+            "CRES"=>format!("{}x{}",canvas.width(),canvas.height()),"ORES"=>format!("{}x{}",output.width(),output.height()),
+            _=>return Err("Unsupported recording filename token".into()),
+        };
+        if value.chars().any(|c|matches!(c,'/'|'\\')) {return Err("Recording filename token contains a path separator".into());}
+        result.push_str(&value);rest=&rest[token.len()..];
+    }
+    result.push_str(rest);
+    if result.is_empty()||result.len()>240||result.chars().any(|c|c.is_control()||matches!(c,'<'|'>'|':'|'"'|'|'|'?'|'*')) {return Err("Recording filename format produces an invalid Windows filename".into());}
+    for part in result.split(['/', '\\']) {
+        let upper=part.split('.').next().unwrap_or("").to_ascii_uppercase();
+        let reserved=matches!(upper.as_str(),"CON"|"PRN"|"AUX"|"NUL"|"COM1"|"COM2"|"COM3"|"COM4"|"COM5"|"COM6"|"COM7"|"COM8"|"COM9"|"LPT1"|"LPT2"|"LPT3"|"LPT4"|"LPT5"|"LPT6"|"LPT7"|"LPT8"|"LPT9");
+        if part.is_empty()||part=="."||part==".."||reserved||part.ends_with(' ')||part.ends_with('.') {return Err("Recording filename format produces an invalid Windows path component".into());}
+    }
+    Ok(result)
+}
+#[cfg(not(target_os="windows"))]
+fn formatted_recording_stem(_format:&str,_stamp:std::time::Duration,_canvas:&skylive_core::VideoSettings,_output:&skylive_core::VideoSettings)->Result<String,String>{Err("Custom recording filename formats are currently supported on Windows only".into())}
 pub(super) struct Runtime {
     factory: Box<dyn FnMut() -> skylive_host::recording::RecordingFactory>,
     owner: RecordingOwner,
@@ -134,12 +202,12 @@ impl StudioApp {
                 return;
             }
         };
-        let path = directory.join(format!(
-            "SkyLive-{}-{:09}.{}",
-            stamp.as_secs(),
-            stamp.subsec_nanos(),
-            model.profiles().selected().recording().container().extension()
-        ));
+        let settings=model.profiles().selected().recording();
+        let stem=if settings.filename_format().is_empty(){format!("SkyLive-{}-{:09}",stamp.as_secs(),stamp.subsec_nanos())}else{
+            let output=match model.output_video(){Ok(output)=>output,Err(error)=>{self.message(true,error.to_string());return;}};
+            match formatted_recording_stem(settings.filename_format(),stamp,model.video(),&output){Ok(stem)=>stem,Err(error)=>{self.message(true,error);return;}}
+        };
+        let path=directory.join(format!("{}.{}",stem,settings.container().extension()));
         let plan = match skylive_host::recording::MultitrackRecordingConfig::from_session(&self.session, path) {
             Ok(value) => value,
             Err(error) => {
@@ -156,12 +224,13 @@ impl StudioApp {
             self.message(true, "Audio worker is busy; try recording again");
             return;
         }
-        match self.recording.owner.start_tracks(
+        match self.recording.owner.start_tracks_with_suffix(
             self.session.identity(),
             config.clone(),
             self.frame_now,
             factory,
             mask,
+            !settings.filename_format().is_empty(),
         ) {
             Ok(()) => {
                 self.recording.config = Some(config);

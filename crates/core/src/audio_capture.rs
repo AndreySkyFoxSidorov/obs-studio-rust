@@ -74,6 +74,9 @@ impl WindowsAudioWindowSelector {
 pub enum AudioTarget {
     Default,
     WindowsEndpoint { id: String },
+    /// Resolve the input endpoint associated with this camera at runtime.
+    /// The endpoint itself is deliberately not persisted as the route identity.
+    WindowsCamera { symbolic_link: String },
     WindowsProcess { identity: WindowsProcessIdentity },
     WindowsWindow { selector: WindowsAudioWindowSelector },
     MacDevice { uid: String },
@@ -81,6 +84,11 @@ pub enum AudioTarget {
 }
 impl AudioTarget {
     fn validate(&self) -> Result<(), Error> {
+        if let Self::WindowsCamera { symbolic_link } = self {
+            if symbolic_link.trim().is_empty() || symbolic_link.len() > 8192 || symbolic_link.chars().any(char::is_control) {
+                return Err(Error::Invalid("camera audio identity requires a Windows camera symbolic link"));
+            }
+        }
         if let Self::WindowsProcess { identity } = self { identity.validate()?; }
         if let Self::WindowsWindow { selector } = self { selector.validate()?; }
         let id = match self {
@@ -101,6 +109,9 @@ impl AudioTarget {
         match self {
             Self::WindowsEndpoint { id } => Self::WindowsEndpoint {
                 id: id.into_boxed_str().into_string(),
+            },
+            Self::WindowsCamera { symbolic_link } => Self::WindowsCamera {
+                symbolic_link: symbolic_link.into_boxed_str().into_string(),
             },
             Self::WindowsProcess { identity } => Self::WindowsProcess { identity: identity.normalized() },
             Self::MacDevice { uid } => Self::MacDevice {
@@ -170,6 +181,9 @@ impl AudioCaptureBinding {
     }
     pub(crate) fn validate(&self) -> Result<(), Error> {
         self.target.validate()?;
+        if matches!(self.target, AudioTarget::WindowsCamera { .. }) && (self.flow != AudioFlow::Input || self.exclude_own_audio) {
+            return Err(Error::Invalid("automatic camera audio requires input flow"));
+        }
         if self.flow == AudioFlow::Input
             && (matches!(self.target, AudioTarget::MacSystem | AudioTarget::WindowsProcess { .. } | AudioTarget::WindowsWindow { .. }) || self.exclude_own_audio)
         {

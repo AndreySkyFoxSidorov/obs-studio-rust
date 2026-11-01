@@ -15,6 +15,7 @@ pub enum SourceVideoEffect {
     CropPad(crate::CropPadSettings),
     Vignette(crate::VignetteSettings),
     GaussianBlur(crate::GaussianBlurSettings),
+    Mosaic(u16),
     LumaKey(crate::LumaKeySettings),
     Sharpen(crate::SharpenSettings),
     Craft(CraftVideoEffect),
@@ -96,6 +97,10 @@ pub fn source_effect_requirements_for_dimensions(
                     workspace_bytes=workspace_bytes.max(plan.workspace_bytes);work=plan.pixel_stages as u64;visits=plan.texel_visits;
                 }else{work=0;}
             }
+            SourceVideoEffect::Mosaic(cell)=>{
+                if !(1..=512).contains(cell){return Err(MediaError::InvalidBuffer);}
+                if *cell==1 {work=0;} else {visits=pixels.checked_mul(2).ok_or(MediaError::Overflow)?;}
+            }
             SourceVideoEffect::LumaKey(e)=>e.validate()?,
             SourceVideoEffect::Vignette(e)=>{e.validate()?;if e.is_identity(){work=0;}}
             SourceVideoEffect::Sharpen(e)=>{
@@ -142,6 +147,7 @@ pub fn source_video_effects(
         SourceVideoEffect::Craft(value)=>value.is_passthrough(),
         SourceVideoEffect::Vignette(value)=>value.is_identity(),
         SourceVideoEffect::GaussianBlur(value)=>value.is_identity(),
+        SourceVideoEffect::Mosaic(cell)=>*cell==1,
         _=>false,
     }) {return Ok(SourceEffectFrame{image:input.clone(),blend:ingress});}
     if effects
@@ -150,6 +156,7 @@ pub fn source_video_effects(
             SourceVideoEffect::Craft(_)=>true,
             SourceVideoEffect::Vignette(settings)=>settings.is_identity(),
             SourceVideoEffect::GaussianBlur(settings)=>settings.is_identity(),
+            SourceVideoEffect::Mosaic(cell)=>*cell==1,
             _=>false,
         })
         && ingress != SourceBlend::PremultipliedLinearSrgb
@@ -183,23 +190,28 @@ pub fn source_video_effects(
     let mut begin = 0;
     for (index, effect) in effects.iter().enumerate() {
         if let SourceVideoEffect::CropPad(settings)=effect {
-            mode=point_segment(&mut output,mode,&effects[begin..index])?;
+            mode=point_segment(&mut output,width as usize,mode,&effects[begin..index])?;
             let (next,w,h)=crate::obs_crop_pad::apply(&output,width,height,encoding(mode),*settings)?;
             output=next;width=w;height=h;mode=SourceBlend::PremultipliedLinearSrgb;begin=index+1;
         } else if let SourceVideoEffect::GaussianBlur(settings)=effect {
             if settings.is_identity(){continue;}
-            mode=point_segment(&mut output,mode,&effects[begin..index])?;
+            mode=point_segment(&mut output,width as usize,mode,&effects[begin..index])?;
             let (next,w,h)=crate::craft_gaussian::apply(&output,width,height,mode,*settings,&mut workspace)?;
             output=next;width=w;height=h;mode=SourceBlend::PremultipliedLinearSrgb;begin=index+1;
+        } else if let SourceVideoEffect::Mosaic(cell)=effect {
+            if *cell==1 {continue;}
+            mode=point_segment(&mut output,width as usize,mode,&effects[begin..index])?;
+            mosaic_in_place(&mut output,width as usize,height as usize,mode,usize::from(*cell));
+            begin=index+1;
         } else if let SourceVideoEffect::Vignette(settings)=effect {
             // An explicit neutral spatial stage must not insert a new byte
             // rounding boundary inside adjacent floating-point Craft stages.
             if settings.is_identity(){continue;}
-            mode=point_segment(&mut output,mode,&effects[begin..index])?;
+            mode=point_segment(&mut output,width as usize,mode,&effects[begin..index])?;
             mode=crate::craft_vignette::in_place(&mut output,width,height,mode,*settings)?;
             begin=index+1;
         } else if let SourceVideoEffect::ChromaKey(settings) = effect {
-            mode = point_segment(&mut output, mode, &effects[begin..index])?;
+            mode = point_segment(&mut output, width as usize, mode, &effects[begin..index])?;
             crate::obs_keyer::chroma_in_place(
                 &mut output,
                 width as usize,
@@ -211,12 +223,12 @@ pub fn source_video_effects(
             mode = SourceBlend::PremultipliedLinearSrgb;
             begin = index + 1;
         } else if let SourceVideoEffect::Sharpen(settings)=effect {
-            mode=point_segment(&mut output,mode,&effects[begin..index])?;
+            mode=point_segment(&mut output,width as usize,mode,&effects[begin..index])?;
             crate::obs_luma_sharpen::sharpen_in_place(&mut output,width as usize,height as usize,encoding(mode),*settings,&mut workspace)?;
             mode=SourceBlend::PremultipliedLinearSrgb;begin=index+1;
         }
     }
-    mode = point_segment(&mut output, mode, &effects[begin..])?;
+    mode = point_segment(&mut output, width as usize, mode, &effects[begin..])?;
     Ok(SourceEffectFrame {
         image: RgbaFrame::new(width, height, output)?,
         blend: mode,
@@ -233,6 +245,7 @@ fn encoding(mode: SourceBlend) -> ColorCorrectionInput {
 }
 fn point_segment(
     output: &mut [u8],
+    width: usize,
     ingress: SourceBlend,
     effects: &[SourceVideoEffect],
 ) -> Result<SourceBlend, MediaError> {
@@ -253,6 +266,10 @@ fn point_segment(
     // Initialize once per segment rather than checking the static table for
     // every opaque camera pixel.
     let opaque_key_table = keyers.iter().any(Option::is_some).then(crate::obs_keyer::opaque_color_table);
+    // Cache both transfer tables for this entire segment. Checking the shared
+    // OnceLock for every opaque camera pixel adds avoidable synchronization on
+    // the Full HD hot path; the arrays themselves are immutable.
+    let decoded_key_table = keyers.iter().any(Option::is_some).then(crate::color_correction::decode_table);
     let lumas:[Option<crate::obs_luma_sharpen::PreparedLuma>;MAX_SOURCE_VIDEO_EFFECTS]=std::array::from_fn(|i|match effects.get(i){
         Some(SourceVideoEffect::LumaKey(settings))=>Some(crate::obs_luma_sharpen::PreparedLuma::new(*settings)),_=>None,
     });
@@ -260,8 +277,9 @@ fn point_segment(
     // remain fixed for the whole frame. Reuse the immediately preceding
     // result only for identical RGBA input: this preserves all rounding and
     // alpha behavior while avoiding repeated shader work in flat image areas.
+    let position_sensitive=effects.iter().any(|effect| matches!(effect, SourceVideoEffect::Craft(crate::craft_video::CraftVideoEffect::GradientMap { dither: true, .. })));
     let mut previous: Option<([u8; 4], [u8; 4])> = None;
-    for pixel in output.chunks_exact_mut(4) {
+    for (pixel_index,pixel) in output.chunks_exact_mut(4).enumerate() {
         let input = [pixel[0], pixel[1], pixel[2], pixel[3]];
         if let Some((last_input, last_output)) = previous {
             if input == last_input {
@@ -278,6 +296,7 @@ fn point_segment(
             match effect {
                 SourceVideoEffect::Vignette(settings) if settings.is_identity()=>{},
                 SourceVideoEffect::GaussianBlur(settings) if settings.is_identity()=>{},
+                SourceVideoEffect::Mosaic(cell) if *cell==1=>{},
                 SourceVideoEffect::Craft(effect) => {
                     if !straight {
                         alpha = f32::from(bytes[3]) / 255.0;
@@ -294,7 +313,7 @@ fn point_segment(
                         });
                         straight = true;
                     }
-                    (c, alpha) = crate::craft_video::process_craft_pixel(c, alpha, effect);
+                    (c, alpha) = crate::craft_video::process_craft_pixel(c, alpha, effect, (pixel_index % width, pixel_index / width));
                 }
                 SourceVideoEffect::ColorCorrection(_) | SourceVideoEffect::ColorKey(_) | SourceVideoEffect::LumaKey(_) => {
                     if straight {
@@ -311,7 +330,7 @@ fn point_segment(
                         }
                     };
                     bytes = if let Some(keyer) = keyers[index] {
-                        keyer.pixel_with_opaque_table(bytes, encoding, opaque_key_table.expect("color-key table follows prepared keyer"))
+                        keyer.pixel_with_opaque_table(bytes, encoding, opaque_key_table.expect("color-key table follows prepared keyer"), decoded_key_table.expect("decode table follows prepared keyer"))
                     } else if let Some(luma)=lumas[index] {
                         luma.pixel(bytes,encoding)
                     } else {
@@ -322,14 +341,14 @@ fn point_segment(
                     };
                     mode = SourceBlend::PremultipliedLinearSrgb;
                 }
-                SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_) | SourceVideoEffect::ChromaKey(_) | SourceVideoEffect::Sharpen(_) => return Err(MediaError::InvalidBuffer),
+                SourceVideoEffect::CropPad(_) | SourceVideoEffect::Vignette(_) | SourceVideoEffect::GaussianBlur(_) | SourceVideoEffect::Mosaic(_) | SourceVideoEffect::ChromaKey(_) | SourceVideoEffect::Sharpen(_) => return Err(MediaError::InvalidBuffer),
             }
         }
         if straight {
             bytes = flush(c, alpha, mode);
         }
         pixel.copy_from_slice(&bytes);
-        previous = Some((input, bytes));
+        previous = if position_sensitive { None } else { Some((input, bytes)) };
     }
     Ok(
         if effects.iter().any(|e| {
@@ -343,6 +362,29 @@ fn point_segment(
             ingress
         },
     )
+}
+
+// Match PhotoCraft's aligned cell average in premultiplied space. Each cell is
+// read before it is written, so no additional full-frame allocation is needed.
+fn mosaic_in_place(bytes:&mut [u8],width:usize,height:usize,mode:SourceBlend,cell:usize){
+    for top in (0..height).step_by(cell) {for left in (0..width).step_by(cell) {
+        let bottom=(top+cell).min(height);let right=(left+cell).min(width);
+        let count=((bottom-top)*(right-left)) as f64;
+        let mut alpha=0.0f64;let mut rgb=[0.0f64;3];
+        for y in top..bottom {for x in left..right {
+            let i=(y*width+x)*4;let a=f64::from(bytes[i+3])/255.0;alpha+=a;
+            for c in 0..3 {let v=f64::from(bytes[i+c])/255.0;
+                rgb[c]+=if mode==SourceBlend::PremultipliedLinearSrgb {f64::from(decode(v as f32))} else {v*a};
+            }
+        }}
+        let a=(alpha/count).clamp(0.0,1.0);let mut pixel=[0u8;4];pixel[3]=(a*255.0).round() as u8;
+        for c in 0..3 {let value=if mode==SourceBlend::PremultipliedLinearSrgb {
+            f64::from(encode_extended((rgb[c]/count) as f32))
+        } else if alpha>0.0 {rgb[c]/alpha} else {0.0};
+            pixel[c]=(value.clamp(0.0,1.0)*255.0).round() as u8;
+        }
+        for y in top..bottom {for x in left..right {let i=(y*width+x)*4;bytes[i..i+4].copy_from_slice(&pixel);}}
+    }}
 }
 
 fn flush(c: [f32; 3], alpha: f32, mode: SourceBlend) -> [u8; 4] {

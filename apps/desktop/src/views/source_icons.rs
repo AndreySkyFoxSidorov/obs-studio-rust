@@ -1,8 +1,8 @@
 use eframe::egui;
 use skylive_core::SourceKind;
 
-pub fn show(ui: &mut egui::Ui, kind: &SourceKind) {
-    if !ui.ctx().data(|data| data.get_temp::<bool>(egui::Id::new("source-type-icons"))).unwrap_or(true) { return; }
+pub fn show(ui: &mut egui::Ui, kind: &SourceKind, visible: bool) {
+    if !visible { return; }
     let (rect, response) = ui.allocate_exact_size(egui::vec2(16.0, 18.0), egui::Sense::hover());
     let painter = ui.painter().with_clip_rect(rect.intersect(ui.clip_rect()));
     let center = rect.center();

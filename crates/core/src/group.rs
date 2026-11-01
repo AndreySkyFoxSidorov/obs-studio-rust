@@ -190,9 +190,6 @@ impl Collection {
         let mut insertion = parent_scene.items.len();
         for (index, item) in parent_scene.items.iter().enumerate() {
             if seen.remove(&item.id) {
-                if item.locked {
-                    return Err(Error::Locked(item.id));
-                }
                 if matches!(
                     self.source(item.source).map(|source| &source.kind),
                     Some(SourceKind::Group { .. })
@@ -520,6 +517,9 @@ impl Collection {
                 .map(crate::VideoFilter::as_new)
                 .collect();
             self.set_video_filters(source, filters)?;
+            // A duplicated private group owns an independent scene bus but
+            // retains the original group's authored linear audio effects.
+            self.source_mut(source)?.audio_filters = original.audio_filters.clone();
             item.source = source;
         }
         Ok(())
@@ -1034,7 +1034,7 @@ mod tests {
         assert!(session.snapshot().source(source).is_none());
     }
     #[test]
-    fn invalid_selection_locked_missing_cycles_and_malformed_basis_preserve_history() {
+    fn invalid_selection_and_cycles_preserve_history_and_locked_item_can_be_grouped() {
         let mut session = Session::new();
         let scene = session.preview();
         let (a, _) = color(&mut session, scene, "Leaf", 0.0, 0.0);
@@ -1058,11 +1058,10 @@ mod tests {
                 locked: true,
             })
             .unwrap();
-        let before = session.snapshot();
-        assert!(
-            matches!(session.apply(Command::GroupItems { scene, name: "Locked".into(), items: vec![a] }), Err(Error::Locked(id)) if id==a)
-        );
-        assert!(Arc::ptr_eq(&before, &session.snapshot()));
+        let wrapper = session.apply(Command::GroupItems { scene, name: "Locked".into(), items: vec![a] }).unwrap().created.unwrap();
+        let (_, private, _) = grouped(&session, scene, wrapper);
+        assert!(session.snapshot().scene_container(private).unwrap().items[0].locked);
+        session.apply(Command::Undo).unwrap();
         session
             .apply(Command::SetLocked {
                 scene,
@@ -1176,7 +1175,7 @@ mod tests {
         assert_eq!(grouped(&session, scene, group_item).2, (4, 2));
     }
     #[test]
-    fn group_ancestor_lock_blocks_child_geometry_removal_and_reorder() {
+    fn group_ancestor_lock_blocks_child_geometry_and_reorder_but_not_removal() {
         let mut session = Session::new();
         let scene = session.preview();
         let (a, _) = color(&mut session, scene, "Leaf", 0.0, 0.0);
@@ -1202,10 +1201,6 @@ mod tests {
         assert_eq!(before.item_container(a).unwrap().0, private);
         assert_eq!(before.root_scene_for_container(private), Some(scene));
         for command in [
-            Command::RemoveItem {
-                scene: private,
-                item: a,
-            },
             Command::MoveItem {
                 scene: private,
                 item: a,
@@ -1220,6 +1215,8 @@ mod tests {
             assert!(matches!(session.apply(command), Err(Error::Locked(id)) if id==item));
             assert!(Arc::ptr_eq(&before, &session.snapshot()));
         }
+        session.apply(Command::RemoveItem { scene: private, item: a }).unwrap();
+        assert!(session.snapshot().scene_container(private).unwrap().items().is_empty());
     }
     #[test]
     fn duplicate_maximum_utf8_group_name_has_a_bounded_valid_unique_suffix() {

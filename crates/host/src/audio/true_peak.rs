@@ -1,7 +1,7 @@
 //! Source-scoped OBS-style true-peak estimation for already processed PCM.
 //!
-//! The caller supplies post-DSP, post-gain interleaved PCM on a contiguous
-//! output sample grid. These values are presentation diagnostics only: this
+//! The caller supplies post-DSP interleaved PCM on a contiguous output grid,
+//! using separate owners for pre-fader and post-gain samples. These values are presentation diagnostics only: this
 //! owner does not alter audio, provide limiting, or claim sink presentation.
 //! A route owner must retire/reconcile identities when sources disappear.
 

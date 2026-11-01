@@ -16,6 +16,7 @@ pub fn choice_allowed(
         AudioTargetChoice::Default => platform != CapturePlatform::Unavailable,
         AudioTargetChoice::WindowsProcess => platform == CapturePlatform::Windows && flow == AudioFlow::Output,
         AudioTargetChoice::WindowsEndpoint => platform == CapturePlatform::Windows,
+        AudioTargetChoice::WindowsCamera => platform == CapturePlatform::Windows && flow == AudioFlow::Input,
         AudioTargetChoice::MacDevice => {
             platform == CapturePlatform::Macos && flow == AudioFlow::Input
         }
@@ -32,6 +33,7 @@ fn matches(choice: AudioTargetChoice, identity: &str, target: &AudioTarget) -> b
         (AudioTargetChoice::WindowsProcess,AudioTarget::WindowsWindow {selector}) => serde_json::from_str::<skylive_core::WindowsAudioWindowSelector>(identity).is_ok_and(|saved|saved.title()==selector.title()&&saved.class()==selector.class()&&saved.executable()==selector.executable()),
         (AudioTargetChoice::WindowsProcess,AudioTarget::WindowsProcess {identity:process}) => serde_json::from_str::<skylive_core::WindowsProcessIdentity>(identity).is_ok_and(|saved|&saved==process),
         (AudioTargetChoice::WindowsEndpoint, AudioTarget::WindowsEndpoint { id }) => identity == id,
+        (AudioTargetChoice::WindowsCamera, AudioTarget::WindowsCamera { symbolic_link }) => identity == symbolic_link,
         (AudioTargetChoice::MacDevice, AudioTarget::MacDevice { uid }) => identity == uid,
         _ => false,
     }
@@ -44,6 +46,10 @@ fn select(target: &AudioTarget, choice: &mut AudioTargetChoice, identity: &mut S
         AudioTarget::WindowsEndpoint { id } => {
             *choice = AudioTargetChoice::WindowsEndpoint;
             identity.clone_from(id);
+        }
+        AudioTarget::WindowsCamera { symbolic_link } => {
+            *choice = AudioTargetChoice::WindowsCamera;
+            identity.clone_from(symbolic_link);
         }
         AudioTarget::MacDevice { uid } => {
             *choice = AudioTargetChoice::MacDevice;

@@ -34,7 +34,16 @@ impl StudioApp {
   let callback=event.callback();
   if !self.global_hotkeys.owner.accepts(&event,&self.session,self.globals_paused()){callback.reject();return;}
   if let skylive_core::HotkeyAction::SourceAudio{source,operation}=event.action{self.source_audio_hotkey(source,operation,callback,context);return;}
-  if let skylive_core::HotkeyAction::SourcePlayback{source,operation}=event.action{self.source_playback_hotkey(source,operation,callback,context);return;}
+  if let skylive_core::HotkeyAction::SourcePlayback{source,operation}=event.action{
+   let game=self.session.snapshot().source(source).is_some_and(|value|matches!(value.kind(),skylive_core::SourceKind::GameCapture{..}));
+   if game {
+    if !event.pressed {callback.reject();return;}
+    let target=match operation {skylive_core::SourcePlaybackAction::Play|skylive_core::SourcePlaybackAction::PlayPause=>event.foreground,skylive_core::SourcePlaybackAction::Stop=>None,_=>{callback.reject();return;}};
+    if matches!(operation,skylive_core::SourcePlaybackAction::Play|skylive_core::SourcePlaybackAction::PlayPause)&&target.is_none(){callback.reject();return;}
+    match self.game.hotkey(&self.session,source,target,||callback.accept()){Ok(())=>{context.request_repaint();},Err(error)=>{callback.reject();self.message(true,error.to_string());}}return;
+   }
+   self.source_playback_hotkey(source,operation,callback,context);return;
+  }
   use skylive_core::HotkeyAction as Action;
   // Original MAKE_CALLBACK accepts its actual state-gated invocation; native
   // output startup/completion is separate and may still report a later error.

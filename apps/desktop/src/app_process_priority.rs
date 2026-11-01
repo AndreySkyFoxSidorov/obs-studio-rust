@@ -22,7 +22,7 @@ impl StudioApp{
     }
     pub(super) fn request_advanced_process(&mut self,command:Command,token:SettingsToken,action:SettingsAction,context:&egui::Context){self.request_advanced_command(command,Some((token,action)),context);}
     pub(super) fn request_advanced_command(&mut self,command:Command,settings:Option<(SettingsToken,SettingsAction)>,context:&egui::Context){
-        let Command::ConfigureAdvancedSettings{profile,priority,reconnect}=&command else{return;};
+        let Command::ConfigureAdvancedSettings{profile,priority,reconnect,..}=&command else{return;};
         if *profile!=self.session.snapshot().profiles().selected_id(){self.message(true,"The profile changed. Reopen Advanced settings before applying.");return;}if let Err(error)=reconnect.validate(){self.message(true,error.to_string());return;}
         if self.streaming.active()&&self.streaming.blocks_command(&command){self.message(true,"Stop streaming before changing automatic reconnect settings.");return;}
         let previous=self.process_priority.pending.as_ref().map(|p|p.key);

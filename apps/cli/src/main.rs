@@ -2125,7 +2125,8 @@ fn execute_request(
             if let Some(expected)=expected_revision {let actual=session.snapshot().revision();if expected!=actual{return Err(skylive_core::Error::Conflict {expected,actual}.into());}}
             let entries=if entries.is_empty(){paths.iter().map(|path|{let text=path.to_str().ok_or("Slideshow path is not exact UTF-8")?;skylive_core::SlideShowEntry::new(skylive_core::SlideShowEntryKind::File,text.to_owned()).map_err(|error|error.to_string())}).collect::<Result<Vec<_>,String>>()?}else{if !paths.is_empty(){return Err("Choose typed slideshow entries or legacy file paths, not both".into());}entries};
             let prepared=skylive_host::image_slideshow::directories::prepare_entries(&entries)?;
-            let settings=skylive_core::ImageSlideShow::new_with_options(prepared.images,duration_ms,transition,transition_ms,looping,shuffle,hide_when_done,canvas,behavior)?.with_mode(mode)?.with_randomization(randomize,random_compatibility)?.with_entries(prepared.entries,prepared.counts)?;
+            let obs_v2=session.snapshot().source(source).is_some_and(|source|matches!(source.kind(),skylive_core::SourceKind::ImageSlideShow{settings} if settings.obs_v2()));
+            let settings=skylive_core::ImageSlideShow::new_with_options(prepared.images,duration_ms,transition,transition_ms,looping,shuffle,hide_when_done,canvas,behavior)?.with_mode(mode)?.with_randomization(randomize,random_compatibility)?.with_entries(prepared.entries,prepared.counts)?.with_obs_v2(obs_v2);
             camera.before_session_change()?;controller.before_change(session)?;
             let change=session.apply_at(expected_revision,Command::SetImageSlideShow {source,settings})?;
             playback.restart_source(source,controller.now())?;

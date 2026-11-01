@@ -2,6 +2,16 @@
 use crate::{Collection, Error, Id};
 use serde::{Deserialize, Serialize};
 fn is_false(value:&bool)->bool{!*value}
+fn levels_channels_default()->[[f32;5];4]{[[0.0,1.0,1.0,0.0,1.0];4]}
+fn levels_channels_is_default(value:&[[f32;5];4])->bool{*value==levels_channels_default()}
+fn channel_alpha_default()->u8{5}
+fn channel_alpha_is_default(value:&u8)->bool{*value==5}
+fn no_gradient_stops(value:&[Option<(u8,[u8;3])>;4])->bool{value.iter().all(Option::is_none)}
+fn valid_gradient_stops(value:[Option<(u8,[u8;3])>;4])->bool{
+    let mut previous=0u8;let mut empty=false;
+    for stop in value {match stop {Some((position,_)) if !empty&&position>previous&&position<255=>previous=position,None=>empty=true,_=>return false}}
+    true
+}
 
 pub const PERSON_BACKGROUND_PLUGIN: &str = "royshil/obs-backgroundremoval";
 /// New Person filters reuse a camera mask for up to 100 ms by default.
@@ -89,6 +99,12 @@ pub enum VideoEffect {
     TemperatureTint { temperature:f32, tint:f32 },
     /// EffectCraft HSL vibrance and saturation, expressed as percentages.
     Vibrance { vibrance:f32, saturation:f32 },
+    /// EffectCraft Color Balance (HLS), degrees and percentages.
+    HlsBalance { hue:f32, lightness:f32, saturation:f32 },
+    /// EffectCraft CC Color Offset: phase in degrees and overflow mode.
+    ColorOffset { phase:[f32;3], overflow:u8 },
+    /// PhotoCraft selective CMYK adjustments by nine color ranges, in percent.
+    SelectiveColor {relative:bool, adjustments:[[i8;4];9]},
     /// EffectCraft Tint; colors are encoded sRGB, amount is percent.
     CraftTint {black:[u8;3],white:[u8;3],amount:f32},
     /// EffectCraft Tritone; encoded sRGB colors, blend with original in percent.
@@ -97,6 +113,8 @@ pub enum VideoEffect {
     CraftColorBalance {shadows:[f32;3],midtones:[f32;3],highlights:[f32;3],preserve_luminosity:bool},
     /// EffectCraft Channel Mixer coefficients in percent, one row per output channel.
     CraftChannelMixer {matrix:[[f32;4];3],monochrome:bool},
+    /// PhotoCraft six-color monochrome adjustment with optional color tint.
+    CraftBlackWhite {weights:[f32;6],tint:Option<[u8;3]>},
     /// EffectCraft Gamma/Pedestal/Gain, values in native units.
     CraftGammaPedestalGain {gamma:[f32;3],pedestal:[f32;3],gain:[f32;3],black_stretch:f32},
     Threshold { level:u16 },
@@ -105,7 +123,21 @@ pub enum VideoEffect {
     /// EffectCraft Photo Filter, fixed Sepia preset; density is a percentage.
     Sepia { density:f32, preserve_luminosity:bool },
     GaussianBlur {blurriness:f32,dimensions:GaussianBlurDimensions,repeat_edge:bool},
+    /// PhotoCraft Mosaic: average premultiplied pixels in aligned cells.
+    Mosaic {cell_size:u16},
     PhotoFilter {preset:crate::PhotoFilterPreset,custom_color:[f32;3],density:f32,preserve_luminosity:bool},
+    /// PhotoCraft Solarize, with adjustable threshold and blend for live video.
+    Solarize {threshold:f32,amount:f32},
+    /// EffectCraft Levels master RGB controls; values are normalized.
+    CraftLevels {input_black:f32,input_white:f32,gamma:f32,output_black:f32,output_white:f32,#[serde(default="levels_channels_default",skip_serializing_if="levels_channels_is_default")] channels:[[f32;5];4]},
+    /// EffectCraft Leave Color: desaturate colors outside a softened match.
+    LeaveColor {color:[u8;3],amount:f32,tolerance:f32,softness:f32,by_hue:bool},
+    /// EffectCraft Set Channels for this source's RGBA and constants.
+    ChannelRemap {channels:[u8;3],#[serde(default="channel_alpha_default",skip_serializing_if="channel_alpha_is_default")] alpha:u8},
+    /// PhotoCraft color unmixing with transparent and opaque thresholds.
+    ColorToAlpha {color:[u8;3],transparency:f32,opacity:f32},
+    /// Endpoints plus up to four ordered intermediate stops (positions 1..254).
+    GradientMap { shadows:[u8;3], highlights:[u8;3], #[serde(default,skip_serializing_if="no_gradient_stops")] stops:[Option<(u8,[u8;3])>;4], reverse:bool, amount:f32, #[serde(default,skip_serializing_if="is_false")] dither:bool },
     PersonBackgroundRemoval {
         threshold: f32,
         softness: f32,
@@ -164,11 +196,14 @@ impl VideoEffect {
     /// Factory settings for this exact provider/kind. No identity is changed.
     pub fn defaults_for_kind(self)->Self{match self{
         Self::Freeze{..}=>Self::freeze_filter(),Self::AsyncVideoDelay{..}=>Self::async_video_delay(),Self::RenderDelay{..}=>Self::render_delay(),Self::ScaleFilter{..}=>Self::scale_filter(),Self::Scroll{..}=>Self::scroll(),Self::ApplyLut{..}=>Self::apply_lut(),Self::ImageMask{..}=>Self::image_mask_v2(),Self::CropPad{..}=>Self::crop_pad(),
-        Self::LumaKey{..}=>Self::luma_key_v2(),Self::Sharpen{..}=>Self::sharpen_v2(),
+        // Defaults reset parameters, not the OBS filter version. Legacy luma
+        // key has different alpha and luma coefficients from v2, so replacing
+        // it with v2 silently changes the imported filter's behavior.
+        Self::LumaKey{legacy,..}=>Self::LumaKey{luma_max:1.0,luma_min:0.0,luma_max_smooth:0.0,luma_min_smooth:0.0,legacy},Self::Sharpen{..}=>Self::sharpen_v2(),
         Self::Invert{..}=>Self::invert(),Self::Grayscale{..}=>Self::grayscale(),
         Self::Posterize{..}=>Self::posterize(),Self::Exposure{..}=>Self::exposure(),
-        Self::TemperatureTint{..}=>Self::temperature_tint(),Self::Vibrance{..}=>Self::vibrance(),Self::CraftTint{..}=>Self::craft_tint(),Self::Tritone{..}=>Self::tritone(),Self::CraftColorBalance{..}=>Self::craft_color_balance(),Self::CraftChannelMixer{..}=>Self::craft_channel_mixer(),Self::CraftGammaPedestalGain{..}=>Self::craft_gamma_pedestal_gain(),Self::Threshold{..}=>Self::threshold(),Self::Sepia{..}=>Self::sepia(),Self::PhotoFilter{..}=>Self::photo_filter(),
-        Self::Vignette{..}=>Self::vignette(),Self::GaussianBlur{..}=>Self::gaussian_blur(),
+        Self::TemperatureTint{..}=>Self::temperature_tint(),Self::Vibrance{..}=>Self::vibrance(),Self::HlsBalance{..}=>Self::hls_balance(),Self::ColorOffset{..}=>Self::color_offset(),Self::SelectiveColor{..}=>Self::selective_color(),Self::CraftTint{..}=>Self::craft_tint(),Self::Tritone{..}=>Self::tritone(),Self::CraftColorBalance{..}=>Self::craft_color_balance(),Self::CraftChannelMixer{..}=>Self::craft_channel_mixer(),Self::CraftBlackWhite{..}=>Self::craft_black_white(),Self::CraftGammaPedestalGain{..}=>Self::craft_gamma_pedestal_gain(),Self::Threshold{..}=>Self::threshold(),Self::Sepia{..}=>Self::sepia(),Self::PhotoFilter{..}=>Self::photo_filter(),
+        Self::Vignette{..}=>Self::vignette(),Self::GaussianBlur{..}=>Self::gaussian_blur(),Self::Mosaic{..}=>Self::mosaic(),Self::Solarize{..}=>Self::solarize(),Self::CraftLevels{..}=>Self::craft_levels(),Self::GradientMap{..}=>Self::gradient_map(),Self::LeaveColor{..}=>Self::leave_color(),Self::ChannelRemap{..}=>Self::channel_remap(),Self::ColorToAlpha{..}=>Self::color_to_alpha(),
         Self::PersonBackgroundRemoval{..}=>Self::person_background_removal(),
         Self::ColorKey{..}=>Self::color_key_v2(),Self::ChromaKey{..}=>Self::chroma_key_v2(),
         Self::ColorCorrection{..}=>Self::color_correction(),Self::LinearColorKey{..}=>Self::color_key(),
@@ -192,16 +227,27 @@ impl VideoEffect {
             Self::Exposure{..}=>"Exposure",
             Self::TemperatureTint{..}=>"Temperature & Tint",
             Self::Vibrance{..}=>"Vibrance",
+            Self::HlsBalance{..}=>"Color Balance (HLS)",
+            Self::ColorOffset{..}=>"CC Color Offset (EffectCraft)",
+            Self::SelectiveColor{..}=>"Selective Color (PhotoCraft)",
             Self::CraftTint{..}=>"Tint (EffectCraft)",
             Self::Tritone{..}=>"Tritone (EffectCraft)",
             Self::CraftColorBalance{..}=>"Color Balance (EffectCraft)",
             Self::CraftChannelMixer{..}=>"Channel Mixer (EffectCraft)",
+            Self::CraftBlackWhite{..}=>"Black & White (PhotoCraft)",
             Self::CraftGammaPedestalGain{..}=>"Gamma/Pedestal/Gain (EffectCraft)",
             Self::Threshold{..}=>"Threshold",
+            Self::Solarize{..}=>"Solarize (PhotoCraft)",
+            Self::CraftLevels{..}=>"Levels (EffectCraft)",
+            Self::LeaveColor{..}=>"Leave Color (EffectCraft)",
+            Self::ChannelRemap{..}=>"Set RGB Channels (EffectCraft)",
+            Self::ColorToAlpha{..}=>"Color to Alpha (PhotoCraft)",
+            Self::GradientMap{..}=>"Gradient Map (PhotoCraft)",
             Self::Vignette{..}=>"Vignette",
             Self::Sepia{..}=>"Sepia (Photo Filter)",
             Self::PhotoFilter{..}=>"Photo Filter",
             Self::GaussianBlur{..}=>"Gaussian Blur",
+            Self::Mosaic{..}=>"Mosaic (PhotoCraft)",
             Self::PersonBackgroundRemoval { .. } => "AI Background Removal (Person)",
             Self::ColorKey { .. } => "Color Key",
             Self::ChromaKey { .. } => "Chroma Key",
@@ -227,13 +273,24 @@ impl VideoEffect {
     pub fn exposure()->Self{Self::Exposure{exposure:0.0,offset:0.0,gamma:1.0,bypass_linear:false}}
     pub fn temperature_tint()->Self{Self::TemperatureTint{temperature:0.0,tint:0.0}}
     pub fn vibrance()->Self{Self::Vibrance{vibrance:0.0,saturation:0.0}}
+    pub fn hls_balance()->Self{Self::HlsBalance{hue:0.0,lightness:0.0,saturation:0.0}}
+    pub fn color_offset()->Self{Self::ColorOffset{phase:[0.0;3],overflow:0}}
+    pub fn selective_color()->Self{Self::SelectiveColor{relative:true,adjustments:[[0;4];9]}}
     pub fn craft_tint()->Self{Self::CraftTint{black:[0,0,0],white:[255,255,255],amount:100.0}}
     pub fn tritone()->Self{Self::Tritone{shadows:[0,0,0],midtones:[128,102,77],highlights:[255,255,255],blend:0.0}}
     pub fn craft_color_balance()->Self{Self::CraftColorBalance{shadows:[0.0;3],midtones:[0.0;3],highlights:[0.0;3],preserve_luminosity:false}}
     pub fn craft_channel_mixer()->Self{Self::CraftChannelMixer{matrix:[[100.0,0.0,0.0,0.0],[0.0,100.0,0.0,0.0],[0.0,0.0,100.0,0.0]],monochrome:false}}
+    pub fn craft_black_white()->Self{Self::CraftBlackWhite{weights:[40.0,60.0,40.0,60.0,20.0,80.0],tint:None}}
     pub fn craft_gamma_pedestal_gain()->Self{Self::CraftGammaPedestalGain{gamma:[1.0;3],pedestal:[0.0;3],gain:[1.0;3],black_stretch:0.0}}
     pub fn threshold()->Self{Self::Threshold{level:128}}
+    pub fn solarize()->Self{Self::Solarize{threshold:50.0,amount:100.0}}
+    pub fn craft_levels()->Self{Self::CraftLevels{input_black:0.0,input_white:1.0,gamma:1.0,output_black:0.0,output_white:1.0,channels:levels_channels_default()}}
+    pub fn leave_color()->Self{Self::LeaveColor{color:[255,0,0],amount:0.0,tolerance:15.0,softness:0.0,by_hue:false}}
+    pub fn channel_remap()->Self{Self::ChannelRemap{channels:[0,1,2],alpha:5}}
+    pub fn color_to_alpha()->Self{Self::ColorToAlpha{color:[255;3],transparency:0.0,opacity:1.0}}
+    pub fn gradient_map()->Self{Self::GradientMap{shadows:[0,0,0],highlights:[255,255,255],stops:[None;4],reverse:false,amount:100.0,dither:false}}
     pub fn gaussian_blur()->Self{Self::GaussianBlur{blurriness:0.0,dimensions:GaussianBlurDimensions::Both,repeat_edge:false}}
+    pub fn mosaic()->Self{Self::Mosaic{cell_size:16}}
     pub fn vignette()->Self{Self::Vignette {amount:50.0,angle_of_view:60.0,center:[50.0,50.0],pin_highlights:0.0}}
     pub fn sepia()->Self{Self::Sepia{density:25.0,preserve_luminosity:true}}
     pub fn photo_filter()->Self{Self::PhotoFilter{preset:crate::PhotoFilterPreset::Warming85,custom_color:[0.93,0.54,0.09],density:25.0,preserve_luminosity:true}}
@@ -329,7 +386,14 @@ impl VideoEffect {
             Self::LumaKey {luma_max,luma_min,luma_max_smooth,luma_min_smooth,..}=>[luma_max,luma_min,luma_max_smooth,luma_min_smooth].iter().all(|v|v.is_finite() && (0.0..=1.0).contains(v)),
             Self::Sharpen {sharpness}=>sharpness.is_finite() && (0.0..=1.0).contains(&sharpness),
             Self::Invert{amount}|Self::Grayscale{amount}=>percent(amount),
+            Self::Solarize{threshold,amount}=>percent(threshold)&&percent(amount),
+            Self::CraftLevels{input_black,input_white,gamma,output_black,output_white,channels}=>{let valid=|p:[f32;5]| [p[0],p[1],p[3],p[4]].into_iter().all(|v|v.is_finite()&&(0.0..=1.0).contains(&v))&&p[0]<p[1]&&p[2].is_finite()&&(0.01..=10.0).contains(&p[2]);valid([input_black,input_white,gamma,output_black,output_white])&&channels.into_iter().all(valid)},
+            Self::LeaveColor{amount,tolerance,softness,..}=>percent(amount)&&percent(tolerance)&&percent(softness),
+            Self::ChannelRemap{channels,alpha}=>channels.into_iter().all(|channel|channel<=5)&&alpha<=5,
+            Self::ColorToAlpha{transparency,opacity,..}=>[transparency,opacity].into_iter().all(|v|v.is_finite()&&(0.0..=1.0).contains(&v)),
+            Self::GradientMap{amount,stops,..}=>percent(amount)&&valid_gradient_stops(stops),
             Self::GaussianBlur{blurriness,..}=>blurriness.is_finite()&&(0.0..=3000.0).contains(&blurriness),
+            Self::Mosaic{cell_size} => (1..=512).contains(&cell_size),
             Self::Sepia{density,..}=>percent(density),
             Self::PhotoFilter{custom_color,density,..}=>percent(density)&&custom_color.iter().all(|value|value.is_finite()&&(0.0..=1.0).contains(value)),
             Self::Posterize{levels}=>(2..=255).contains(&levels),
@@ -342,10 +406,14 @@ impl VideoEffect {
             Self::Exposure{exposure,offset,gamma,..}=>exposure.is_finite()&&(-20.0..=20.0).contains(&exposure)&&offset.is_finite()&&(-0.5..=0.5).contains(&offset)&&gamma.is_finite()&&(0.01..=9.99).contains(&gamma),
             Self::TemperatureTint{temperature,tint}=>[temperature,tint].iter().all(|value|value.is_finite()&&(-100.0..=100.0).contains(value)),
             Self::Vibrance{vibrance,saturation}=>[vibrance,saturation].iter().all(|value|value.is_finite()&&(-100.0..=100.0).contains(value)),
+            Self::HlsBalance{hue,lightness,saturation}=>hue.is_finite()&&(-360.0..=360.0).contains(&hue)&&[lightness,saturation].iter().all(|v|v.is_finite()&&(-100.0..=100.0).contains(v)),
+            Self::ColorOffset{phase,overflow}=>overflow<=2&&phase.into_iter().all(|v|v.is_finite()&&(-360.0..=360.0).contains(&v)),
+            Self::SelectiveColor{adjustments,..}=>adjustments.into_iter().flatten().all(|value|(-100..=100).contains(&value)),
             Self::CraftTint{amount,..}=>percent(amount),
             Self::Tritone{blend,..}=>percent(blend),
             Self::CraftColorBalance{shadows,midtones,highlights,..}=>shadows.into_iter().chain(midtones).chain(highlights).all(|v|v.is_finite()&&(-100.0..=100.0).contains(&v)),
             Self::CraftChannelMixer{matrix,..}=>matrix.into_iter().flatten().all(|v|v.is_finite()&&(-200.0..=200.0).contains(&v)),
+            Self::CraftBlackWhite{weights,..}=>weights.into_iter().all(|v|v.is_finite()&&(-200.0..=300.0).contains(&v)),
             Self::CraftGammaPedestalGain{gamma,pedestal,gain,black_stretch}=>gamma.into_iter().all(|v|v.is_finite()&&(0.1..=10.0).contains(&v))&&pedestal.into_iter().all(|v|v.is_finite()&&(-2.0..=2.0).contains(&v))&&gain.into_iter().all(|v|v.is_finite()&&(0.0..=4.0).contains(&v))&&black_stretch.is_finite()&&(0.0..=4.0).contains(&black_stretch),
             Self::PersonBackgroundRemoval {
                 threshold,

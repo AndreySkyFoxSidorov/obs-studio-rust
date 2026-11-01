@@ -92,6 +92,7 @@ fn create_leaf(session:&mut Session,scene:Id,source:&InputSource,identities:&mut
         InputKind::Browser{browser,gain,muted}=>(Command::AddBrowserSource{scene,name:source.name.clone(),browser:browser.clone()},None,*gain,*muted),
         InputKind::Window{binding,gain,muted}=>(Command::AddWindowCaptureSource{scene,name:source.name.clone(),binding:binding.clone()},None,*gain,*muted),
         InputKind::Camera{binding,gain,muted}=>(Command::AddVideoCaptureSource{scene,name:source.name.clone(),binding:binding.clone()},None,*gain,*muted),
+        InputKind::Game{binding,gain,muted}=>(Command::AddGameCapture{scene,name:source.name.clone(),binding:binding.clone()},None,*gain,*muted),
         InputKind::Display{binding,gain,muted}=>(Command::AddDisplayCaptureSource{scene,name:source.name.clone(),binding:binding.clone()},None,*gain,*muted),
         InputKind::Color{rgba,width,height,gain,muted}=>(Command::AddColorSource{scene,name:source.name.clone(),rgba:*rgba},Some((*width,*height)),*gain,*muted),
         InputKind::SlideShow{input,gain,muted}=>(Command::AddImageSlideShow{scene,name:source.name.clone(),settings:input.settings().cloned().ok_or_else(||issue(&source.path,"invalid_reference","Slideshow was not prepared"))?},None,*gain,*muted),

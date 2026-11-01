@@ -50,6 +50,26 @@ fn show_inner(
         _ => ("Play", MediaControl::Restart),
     };
     if !compact { ui.label(crate::i18n::tr(ui, state_label)); }
+    let seek_draft_id=egui::Id::new(("media-seek-draft",session,source));
+    if let Some(status)=status.filter(|status|status.duration_ns>0) {
+        let enabled=!view.busy && status.ready && status.seekable && target.is_ok();
+        if !enabled {ui.ctx().data_mut(|data|data.remove::<u64>(seek_draft_id));}
+        let mut position=ui.ctx().data(|data|data.get_temp::<u64>(seek_draft_id))
+            .unwrap_or(status.position_ns).min(status.duration_ns.saturating_sub(1));
+        let response=ui.add_enabled(enabled,
+            egui::Slider::new(&mut position,0..=status.duration_ns.saturating_sub(1)).show_value(false))
+            .on_hover_text(crate::i18n::tr_key_or(ui,"ContextBar.MediaControls.BlindSeek","Seek media"));
+        if response.dragged() {ui.ctx().data_mut(|data|data.insert_temp(seek_draft_id,position));}
+        if response.drag_stopped() || (response.changed() && !response.dragged()) {
+            ui.ctx().data_mut(|data|data.remove::<u64>(seek_draft_id));
+            if let Ok(target)=&target {intents.push(super::Intent::ControlMedia {target:target.clone(),operation:MediaControl::Seek(position)});}
+        } else if !response.dragged() {
+            // A hidden/recreated toolbar can leave an abandoned draft behind.
+            ui.ctx().data_mut(|data|data.remove::<u64>(seek_draft_id));
+        }
+        let format_time=|n:u64|{let seconds=n/1_000_000_000;format!("{}:{:02}",seconds/60,seconds%60)};
+        ui.label(format!("{} / {}",format_time(if response.dragged(){position}else{status.position_ns}),format_time(status.duration_ns)));
+    } else {ui.ctx().data_mut(|data|data.remove::<u64>(seek_draft_id));}
     ui.horizontal_wrapped(|ui| {
         if compact { ui.label(crate::i18n::tr(ui, state_label)); }
         for (label, operation, hint) in [

@@ -98,7 +98,7 @@ pub fn editor(ui:&mut egui::Ui,model:&StudioSnapshot,draft:&mut Draft){
         .on_hover_text(crate::i18n::tr(ui,"Silence this source unless a Push-to-talk shortcut is held. Without an assigned shortcut it stays silent."));
     ui.horizontal(|ui|{let label=ui.label(crate::i18n::tr_key_or(ui,"Basic.Settings.Audio.PushToTalkDelay","Push-to-talk delay"));ui.add(egui::DragValue::new(&mut draft.talk_delay_ms).range(0..=i32::MAX as u32).suffix(" ms")).labelled_by(label.id).on_hover_text(crate::i18n::tr(ui,"Keep the source open for this long after the last Push-to-talk shortcut is released."));});
     ui.label(crate::i18n::tr(ui,"Toggle Mute assigns the same shortcut to both original Mute and Unmute callbacks."));
-    ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and punctuation are unavailable."));
+    ui.label(crate::i18n::tr_key_or(ui,"SkyLive.Hotkeys.WindowsLimits","Ctrl, Alt and Shift are supported. Windows-key combinations and some shifted punctuation are unavailable."));
     ui.label(crate::i18n::tr(ui,"Apply saves these source mute bindings; Cancel leaves them unchanged. These controls do not mute the Windows device."));
 }
 

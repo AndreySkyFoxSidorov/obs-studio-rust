@@ -1,7 +1,7 @@
 //! Native chooser button contract. The app captures the exact current draft.
 use eframe::egui;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Target { PendingFiles,MissingFiles,RemuxFiles,Lut,Mask,TextFont,TextFile,Image, Media, SlideFiles, SlideFolder, DocumentOpen, DocumentSave, Profile, RecordingFolder }
+pub enum Target { PendingFiles,MissingFiles,RemuxFiles,Lut,Mask,TextFont,TextFile,BrowserHtml,Image, Media, SlideFiles, SlideFolder, DocumentOpen, DocumentSave, Profile, RecordingFolder }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Scope { pub session:u64, pub revision:u64, pub epoch:u64, pub available:bool }
 #[derive(Clone, Copy, Debug)]

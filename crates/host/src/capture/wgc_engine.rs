@@ -1,4 +1,5 @@
-//! Genuine SDR WGC. No API is called before an explicit capture worker request.
+//! Genuine WGC: SDR BGRA and HDR10 desktop scRGB, tone-mapped to SDR.
+//! No API is called before an explicit capture worker request.
 //! Geometry/render policy derived from OBS libobs-winrt/winrt-capture.cpp,
 //! GPL-2.0-or-later, revision recorded in doc/migration/display-capture-methods.md. No OBS binary dependency.
 use crate::capture::{CaptureLimits,native_budget::{NativeCopyBudget,NativeCopyKind,NativeCopyLease}};
@@ -32,7 +33,7 @@ use windows::{
             Direct3D11::*,
             Dwm::{DWMWA_EXTENDED_FRAME_BOUNDS, DwmGetWindowAttribute},
             Dxgi::{
-                Common::{DXGI_FORMAT_B8G8R8A8_UNORM, DXGI_SAMPLE_DESC},
+                Common::{DXGI_FORMAT_B8G8R8A8_UNORM, DXGI_FORMAT_R16G16B16A16_FLOAT, DXGI_SAMPLE_DESC},
                 DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET, DXGI_ERROR_WAS_STILL_DRAWING,
                 IDXGIDevice,
             },
@@ -63,20 +64,78 @@ impl From<crate::window_capture::WindowCaptureError> for Error {
 }
 #[derive(Clone,Debug,PartialEq,Eq,Hash)]
 pub(crate) enum Resource {
-    Window {target:WindowTarget,priority:WindowMatchPriority,cursor:bool,client:bool},
-    Monitor {target:DisplayTarget,cursor:bool},
+    Window {target:WindowTarget,priority:WindowMatchPriority,cursor:bool,client:bool,forced_sdr:bool,hdr:bool},
+    Monitor {target:DisplayTarget,cursor:bool,forced_sdr:bool,hdr:bool},
 }
 impl Resource {
-    pub(crate) fn window(binding:&WindowCaptureBinding)->Self {Self::Window {target:binding.target().clone(),priority:binding.priority(),cursor:binding.capture_cursor(),client:binding.client_area()}}
-    pub(crate) fn monitor(binding:&DisplayCaptureBinding)->Self {Self::Monitor {target:binding.target().clone(),cursor:binding.capture_cursor()}}
+    pub(crate) fn window(binding:&WindowCaptureBinding)->Self {Self::window_color(binding,false)}
+    pub(crate) fn window_color(binding:&WindowCaptureBinding,hdr:bool)->Self {Self::Window {target:binding.target().clone(),priority:binding.priority(),cursor:binding.capture_cursor(),client:binding.client_area(),forced_sdr:binding.force_sdr(),hdr}}
+    pub(crate) fn monitor(binding:&DisplayCaptureBinding)->Self {Self::monitor_color(binding,false)}
+    pub(crate) fn monitor_color(binding:&DisplayCaptureBinding,hdr:bool)->Self {Self::Monitor {target:binding.target().clone(),cursor:binding.capture_cursor(),forced_sdr:binding.force_sdr(),hdr}}
     fn capture_cursor(&self)->bool {match self {Self::Window {cursor,..}|Self::Monitor {cursor,..}=>*cursor}}
     fn client_area(&self)->bool {matches!(self,Self::Window {client:true,..})}
     fn monitor_frame(&self)->bool {matches!(self,Self::Monitor {..})}
+    fn hdr(&self)->bool {matches!(self,Self::Monitor {hdr:true,..}|Self::Window {hdr:true,..})}
 }
 #[derive(Clone,Copy,Debug,PartialEq,Eq)]
 pub(crate) enum NativeTarget {Window {handle:usize,pid:u32,process_creation_time_100ns:Option<u64>},Monitor {handle:usize}}
 pub(crate) enum Outcome {Frame {image:RgbaFrame,generation:u64},Pending {generation:u64}}
 const MAX_STATES: usize = 16;
+
+// WGC RGBA16F desktop samples are linear scRGB (1.0 = 80 nits). OBS maps
+// them through Rec.2020 Reinhard into its SDR canvas, using the selected
+// profile SDR white level (300 nits by default).
+fn tonemap_scrgb(bytes:&[u8],width:u32,height:u32,pitch:usize,limits:CaptureLimits,sdr_white_nits:u16,opaque:bool)->Result<RgbaFrame,Error>{
+    let count=(width as usize).checked_mul(height as usize).and_then(|n|n.checked_mul(4))
+        .filter(|n|*n<=limits.max_frame_bytes).ok_or(Error::BudgetExceeded("WGC HDR output"))?;
+    let mut output=Vec::new();output.try_reserve_exact(count).map_err(|_|Error::BudgetExceeded("WGC HDR output allocation"))?;
+    for row in 0..height as usize {
+        let line=&bytes[row*pitch..row*pitch+width as usize*8];
+        for pixel in line.chunks_exact(8) {
+            let mut converted=tonemap_scrgb_pixel(pixel,sdr_white_nits);
+            if !opaque {let alpha=half_to_f32(u16::from_le_bytes([pixel[6],pixel[7]]));converted[3]=if alpha.is_nan(){0}else{(alpha.clamp(0.0,1.0)*255.0).round() as u8};}
+            output.extend_from_slice(&converted);
+        }
+    }
+    RgbaFrame::new(width,height,output).map_err(|_|Error::InvalidFrame("WGC HDR output layout"))
+}
+pub(crate) fn tonemap_scrgb_pixel(pixel:&[u8],sdr_white_nits:u16)->[u8;4] {
+            let linear=std::array::from_fn::<f32,3,_>(|i|{
+                let sample=half_to_f32(u16::from_le_bytes([pixel[i*2],pixel[i*2+1]]));
+                // A single malformed HDR sample must not discard the entire
+                // captured desktop. Preserve finite scRGB (including negative
+                // wide-gamut values), replacing only non-finite components.
+                let sample=if sample.is_nan() {0.0} else if sample==f32::INFINITY {65504.0} else if sample==f32::NEG_INFINITY {-65504.0} else {sample};
+                sample*(80.0/f32::from(sdr_white_nits))
+            });
+            let wide=[0.6274039*linear[0]+0.32928303*linear[1]+0.043313067*linear[2],
+                0.06909729*linear[0]+0.9195404*linear[1]+0.011362316*linear[2],
+                0.01639144*linear[0]+0.08801331*linear[1]+0.89559525*linear[2]];
+            let wide=wide.map(|v|{
+                // OBS applies saturate only after v/(v+1), including for
+                // negative scRGB values. At exactly -1 the shader evaluates
+                // negative infinity, which saturates to zero.
+                let mapped=if v == -1.0 {0.0}else{(v/(v+1.0)).clamp(0.0,1.0)};
+                let v=mapped.powf(1.0/2.4);
+                if v<=0.04045 {v/12.92}else{((v+0.055)/1.055).powf(2.4)}
+            });
+            let rgb=[1.660491*wide[0]-0.5876411*wide[1]-0.07284986*wide[2],
+                -0.12455048*wide[0]+1.1328999*wide[1]-0.008349423*wide[2],
+                -0.018150764*wide[0]-0.1005789*wide[1]+1.1187297*wide[2]];
+            let mut output=[0;4];
+            for (index,v) in rgb.into_iter().enumerate() {let v=v.max(0.0);let v=if v<=0.0031308 {12.92*v}else{1.055*v.powf(1.0/2.4)-0.055};output[index]=(v.clamp(0.0,1.0)*255.0).round() as u8;}
+            output[3]=255;
+            output
+}
+fn half_to_f32(bits:u16)->f32 {
+    let sign=u32::from(bits&0x8000)<<16;let exp=u32::from((bits>>10)&31);let mant=u32::from(bits&1023);
+    let value=match exp {
+        0 if mant==0=>sign,
+        0=>{let shift=mant.leading_zeros()-21;sign|((127-14-shift)<<23)|((mant<<shift&1023)<<13)},
+        31=>sign|0x7f800000|(mant<<13),
+        _=>sign|((exp+112)<<23)|(mant<<13),
+    };f32::from_bits(value)
+}
 
 #[derive(Default)]
 struct Signal {
@@ -168,6 +227,7 @@ pub(crate) struct Engine {
     apartment: Option<Apartment>,
     budget: NativeCopyBudget,
     next_generation: u64,
+    sdr_white_nits: u16,
 }
 impl Engine {
     pub(crate) fn new(budget: NativeCopyBudget) -> Self {
@@ -178,8 +238,10 @@ impl Engine {
             apartment: None,
             budget,
             next_generation: 0,
+            sdr_white_nits: 300,
         }
     }
+    pub(crate) fn set_sdr_white_nits(&mut self, nits: u16) { self.sdr_white_nits = nits.clamp(80, 480); }
     pub(crate) fn retain(&mut self, bindings: &[Resource], reset: bool) {
         let gone: Vec<_> = self
             .states
@@ -222,6 +284,24 @@ impl Engine {
             return Err(Error::TargetNotFound);
         }
         self.reap();
+        // Switching between SDR and HDR must not keep two pools alive for
+        // the same monitor, or allow an old-format frame to be published.
+        if let Resource::Monitor {target:ref monitor,cursor,forced_sdr,..}=key {
+            let stale:Vec<_>=self.states.keys().filter(|other|matches!(other,Resource::Monitor {target,cursor:old_cursor,forced_sdr:old_force,..} if target==monitor && *old_cursor==cursor && *old_force==forced_sdr) && **other!=key).cloned().collect();
+            for old in stale {self.retire_key(&old);}
+            self.reap();
+            if self.retired.iter().any(|old|matches!(&old.key,Resource::Monitor {target,cursor:old_cursor,forced_sdr:old_force,..} if target==monitor && *old_cursor==cursor && *old_force==forced_sdr)) {
+                return Err(Error::Unavailable("previous WGC monitor session is still retiring"));
+            }
+        }
+        if let Resource::Window {target:ref window,priority,cursor,client,forced_sdr,..}=key {
+            let stale:Vec<_>=self.states.keys().filter(|other|matches!(other,Resource::Window {target,priority:p,cursor:c,client:a,forced_sdr:f,..} if target==window && *p==priority && *c==cursor && *a==client && *f==forced_sdr) && **other!=key).cloned().collect();
+            for old in stale {self.retire_key(&old);}
+            self.reap();
+            if self.retired.iter().any(|old|matches!(&old.key,Resource::Window {target,priority:p,cursor:c,client:a,forced_sdr:f,..} if target==window && *p==priority && *c==cursor && *a==client && *f==forced_sdr)) {
+                return Err(Error::Unavailable("previous WGC window session is still retiring"));
+            }
+        }
         if self.states.get(&key).is_some_and(|s|s.target!=target || s.signal.closed.load(Ordering::Acquire)) {
             self.retire_key(&key);self.reap();
         }
@@ -277,9 +357,11 @@ impl Engine {
             self.next_generation = generation;
             self.states.insert(key.clone(), state);
         }
+        let sdr_white_nits = self.sdr_white_nits;
+        let device = self.device.as_ref().expect("WGC device");
         let state = self.states.get_mut(&key).expect("admitted WGC state");
         let result = state.update_cursor_visibility()
-            .and_then(|()| state.capture(self.device.as_ref().expect("WGC device"), limits));
+            .and_then(|()| state.capture(device, limits, sdr_white_nits));
         if result
             .as_ref()
             .is_err_and(|error| matches!(error, Error::DeviceLost(_)))
@@ -359,7 +441,7 @@ impl State {
             u32::try_from(size.Width).map_err(|_| Error::InvalidFrame("negative WGC width"))?,
             u32::try_from(size.Height).map_err(|_| Error::InvalidFrame("negative WGC height"))?,
         );
-        let backing = backing_bytes(width, height).map_err(Error::from)?;
+        let backing = backing_bytes(width, height).map_err(Error::from)?.checked_mul(if key.hdr(){2}else{1}).ok_or(Error::BudgetExceeded("WGC HDR backing overflow"))?;
         let output = u64::from(width) * u64::from(height) * 4;
         if output > limits.max_frame_bytes as u64 || backing > limits.max_raw_bytes {
             return Err(Error::BudgetExceeded("WGC pool/staging logical backing"));
@@ -373,7 +455,7 @@ impl State {
             .map_err(|e| backend_error("WGC resolve device reference", e))?;
         let pool = Direct3D11CaptureFramePool::CreateFreeThreaded(
             &winrt,
-            DirectXPixelFormat::B8G8R8A8UIntNormalized,
+            if key.hdr(){DirectXPixelFormat::R16G16B16A16Float}else{DirectXPixelFormat::B8G8R8A8UIntNormalized},
             2,
             size,
         )
@@ -490,13 +572,14 @@ impl State {
         &mut self,
         d: &Device,
         limits: CaptureLimits,
+        sdr_white_nits: u16,
     ) -> Result<Outcome, Error> {
         if self.signal.closed.load(Ordering::Acquire) {
             return Err(Error::TargetNotFound);
         }
         // Drain the previous copy, then schedule the newest frame in this
         // same poll. Returning immediately on readback halves steady cadence.
-        let ready = self.readback(d, limits)?;
+        let ready = self.readback(d, limits, sdr_white_nits)?;
         if self.pending.is_some() {
             return Ok(Outcome::Pending {
                 generation: self.generation,
@@ -543,7 +626,8 @@ impl State {
             .map_err(|e| backend_error("WGC texture interface", e))?;
         let mut desc = D3D11_TEXTURE2D_DESC::default();
         unsafe { texture.GetDesc(&mut desc) };
-        if desc.Format != DXGI_FORMAT_B8G8R8A8_UNORM
+        let expected_format=if self.key.hdr(){DXGI_FORMAT_R16G16B16A16_FLOAT}else{DXGI_FORMAT_B8G8R8A8_UNORM};
+        if desc.Format != expected_format
             || desc.SampleDesc.Count != 1
             || desc.ArraySize != 1
             || desc.MipLevels != 1
@@ -571,7 +655,7 @@ impl State {
                 Height: region.height,
                 MipLevels: 1,
                 ArraySize: 1,
-                Format: DXGI_FORMAT_B8G8R8A8_UNORM,
+                Format: expected_format,
                 SampleDesc: DXGI_SAMPLE_DESC {
                     Count: 1,
                     Quality: 0,
@@ -611,7 +695,7 @@ impl State {
     fn outcome(&self,ready:Option<RgbaFrame>)->Outcome {
         match ready {Some(image)=>Outcome::Frame {image,generation:self.generation},None=>Outcome::Pending {generation:self.generation}}
     }
-    fn readback(&mut self, d: &Device, limits: CaptureLimits) -> Result<Option<RgbaFrame>, Error> {
+    fn readback(&mut self, d: &Device, limits: CaptureLimits, sdr_white_nits: u16) -> Result<Option<RgbaFrame>, Error> {
         if self.pending.is_none() {
             return Ok(None);
         }
@@ -638,19 +722,19 @@ impl State {
             texture: staging.clone(),
         };
         let (width, height) = self.staging_size;
-        let extent = mapped_extent(
-            width,
-            height,
-            mapped.RowPitch as usize,
-            limits.max_raw_bytes,
-        ).map_err(Error::from)?;
+        let extent = if self.key.hdr() {
+            if (mapped.RowPitch as usize) < width as usize * 8 {return Err(Error::InvalidFrame("WGC HDR short mapped row"));}
+            (mapped.RowPitch as usize).checked_mul(height as usize)
+                .filter(|n|*n<=limits.max_raw_bytes && *n<=isize::MAX as usize)
+                .ok_or(Error::BudgetExceeded("WGC HDR mapped extent"))?
+        } else {mapped_extent(width,height,mapped.RowPitch as usize,limits.max_raw_bytes).map_err(Error::from)?};
         if mapped.pData.is_null() {
             return Err(Error::InvalidFrame("WGC null mapped pixels"));
         }
         // Actual pitch is unknown before Map. Validate the entire mapped read
         // extent independently; the earlier reservation was LOGICAL backing.
         let bytes = unsafe { std::slice::from_raw_parts(mapped.pData.cast::<u8>(), extent) };
-        let image = ingest_packed_frame(
+        let image = if self.key.hdr() {tonemap_scrgb(bytes,width,height,mapped.RowPitch as usize,limits,sdr_white_nits,self.key.monitor_frame())?} else {ingest_packed_frame(
             bytes,
             PackedFrameLayout {
                 width,
@@ -671,7 +755,7 @@ impl State {
                 Error::BudgetExceeded("WGC packed framebuffer ingestion")
             }
             _ => Error::InvalidFrame("WGC packed framebuffer ingestion"),
-        })?;
+        })?};
         drop(guard);
         if let Some(frame) = self.pending.take() {
             let result = frame.Close();

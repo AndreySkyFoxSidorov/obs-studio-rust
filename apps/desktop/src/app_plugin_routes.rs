@@ -13,19 +13,23 @@ impl StudioApp {
             Dialog::AudioFilters {
                 binding,
                 source,
+                scene,
                 name,
                 filters,
             } => {
-                let canonical = model
-                    .source(*source)
-                    .ok_or("The selected source no longer exists.")?;
-                if !canonical.kind().has_audio()
-                    || canonical.name() != name.as_str()
-                    || canonical.audio_filters() != filters.as_slice()
-                {
-                    return Err(
-                        "Plugin settings changed. Reopen this editor before applying.".into(),
-                    );
+                if let Some(scene)=scene {
+                    let canonical=model.scene(*scene).ok_or("The selected scene no longer exists.")?;
+                    let owner=model.scene_source(*scene);
+                    if canonical.name()!=name.as_str() || owner.map_or(*source!=*scene,|owner|owner.id()!=*source||owner.audio_filters()!=filters.as_slice())
+                        || (owner.is_none()&&!filters.is_empty()) {
+                        return Err("Plugin settings changed. Reopen this editor before applying.".into());
+                    }
+                } else {
+                    let canonical = model.source(*source).ok_or("The selected source no longer exists.")?;
+                    if !canonical.kind().supports_audio_filters() || canonical.name() != name.as_str()
+                        || canonical.audio_filters() != filters.as_slice() {
+                        return Err("Plugin settings changed. Reopen this editor before applying.".into());
+                    }
                 }
                 binding
             }
@@ -80,6 +84,7 @@ impl StudioApp {
                 Some(Dialog::AudioFilters {
                     binding,
                     source,
+                    scene: None,
                     filters,
                     ..
                 }),
@@ -88,6 +93,10 @@ impl StudioApp {
                     filters: submitted,
                 },
             ) => *binding == Some(token) && source == target && filters == submitted,
+            (
+                Some(Dialog::AudioFilters { binding, scene: Some(scene), filters, .. }),
+                Command::SetSceneAudioFilters { scene: target, filters: submitted },
+            ) => *binding == Some(token) && scene == target && filters == submitted,
             (
                 Some(Dialog::SceneNotes {
                     binding,

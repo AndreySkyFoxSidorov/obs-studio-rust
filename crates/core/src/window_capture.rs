@@ -78,6 +78,70 @@ fn valid_text(value: &str) -> bool {
     value.len() <= 1024 && !value.chars().any(char::is_control)
 }
 
+/// Durable Window Capture settings before the target's dimensions are known.
+/// Unlike a binding, this value does not assert that the window is open.
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(try_from = "WindowCaptureRequestData")]
+pub struct WindowCaptureRequest {
+    target: WindowTarget,
+    priority: WindowMatchPriority,
+    capture_cursor: bool,
+    client_area: bool,
+    method: WindowCaptureMethod,
+    capture_audio: bool,
+    force_sdr: bool,
+}
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct WindowCaptureRequestData {
+    target: WindowTarget,
+    priority: WindowMatchPriority,
+    capture_cursor: bool,
+    client_area: bool,
+    method: WindowCaptureMethod,
+    capture_audio: bool,
+    force_sdr: bool,
+}
+impl TryFrom<WindowCaptureRequestData> for WindowCaptureRequest {
+    type Error = Error;
+    fn try_from(value: WindowCaptureRequestData) -> Result<Self, Error> {
+        Self::new(value.target, value.priority, value.capture_cursor, value.client_area,
+            value.method, value.capture_audio, value.force_sdr)
+    }
+}
+impl WindowCaptureRequest {
+    pub fn new(target: WindowTarget, priority: WindowMatchPriority, capture_cursor: bool,
+        client_area: bool, method: WindowCaptureMethod, capture_audio: bool, force_sdr: bool) -> Result<Self, Error> {
+        target.validate()?;
+        if matches!(&target, WindowTarget::Macos { .. }) && method != WindowCaptureMethod::Auto {
+            return Err(Error::Invalid("macOS window capture requires the ScreenCaptureKit Auto method"));
+        }
+        if capture_audio {
+            let WindowTarget::Windows { title, class, executable } = &target else {
+                return Err(Error::Invalid("window audio capture requires Windows"));
+            };
+            let audio_priority = match priority {
+                WindowMatchPriority::Title => crate::WindowsAudioWindowPriority::Title,
+                WindowMatchPriority::Class => crate::WindowsAudioWindowPriority::Class,
+                WindowMatchPriority::Executable => crate::WindowsAudioWindowPriority::Executable,
+            };
+            crate::WindowsAudioWindowSelector::new(title.clone(), class.clone(), executable.clone(), audio_priority)?;
+        }
+        Ok(Self { target: target.normalized(), priority, capture_cursor, client_area, method, capture_audio, force_sdr })
+    }
+    pub fn target(&self) -> &WindowTarget { &self.target }
+    pub fn priority(&self) -> WindowMatchPriority { self.priority }
+    pub fn capture_cursor(&self) -> bool { self.capture_cursor }
+    pub fn client_area(&self) -> bool { self.client_area }
+    pub fn method(&self) -> WindowCaptureMethod { self.method }
+    pub fn capture_audio(&self) -> bool { self.capture_audio }
+    pub fn force_sdr(&self) -> bool { self.force_sdr }
+    pub fn resolve(self, width: u32, height: u32) -> Result<WindowCaptureBinding, Error> {
+        WindowCaptureBinding::new(self.target, self.priority, self.capture_cursor, self.client_area, width, height)?
+            .with_method(self.method)?.with_capture_audio(self.capture_audio).map(|binding| binding.with_force_sdr(self.force_sdr))
+    }
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[serde(try_from = "BindingData")]
 pub struct WindowCaptureBinding {
@@ -90,6 +154,8 @@ pub struct WindowCaptureBinding {
     height: u32,
     #[serde(default)]
     capture_audio: bool,
+    #[serde(default = "default_force_sdr", skip_serializing_if = "is_force_sdr_default")]
+    force_sdr: bool,
     // Derived from the durable window selector; it is regenerated on load.
     #[serde(skip)]
     audio: Option<crate::AudioCaptureBinding>,
@@ -107,7 +173,11 @@ struct BindingData {
     height: u32,
     #[serde(default)]
     capture_audio: bool,
+    #[serde(default = "default_force_sdr")]
+    force_sdr: bool,
 }
+fn default_force_sdr() -> bool { true }
+fn is_force_sdr_default(value:&bool) -> bool { *value }
 impl TryFrom<BindingData> for WindowCaptureBinding {
     type Error = Error;
     fn try_from(v: BindingData) -> Result<Self, Error> {
@@ -119,7 +189,7 @@ impl TryFrom<BindingData> for WindowCaptureBinding {
             v.width,
             v.height,
         )?;
-        let binding = binding.with_capture_audio(v.capture_audio)?;
+        let binding = binding.with_capture_audio(v.capture_audio)?.with_force_sdr(v.force_sdr);
         match v.method {
             Some(method) => binding.with_method(method),
             None => Ok(binding),
@@ -127,6 +197,18 @@ impl TryFrom<BindingData> for WindowCaptureBinding {
     }
 }
 impl WindowCaptureBinding {
+    /// Preserve the selector and options independently of the last observed size.
+    pub fn request(&self) -> WindowCaptureRequest {
+        WindowCaptureRequest {
+            target: self.target.clone(),
+            priority: self.priority,
+            capture_cursor: self.capture_cursor,
+            client_area: self.client_area,
+            method: self.method,
+            capture_audio: self.capture_audio,
+            force_sdr: self.force_sdr,
+        }
+    }
     pub fn new(
         target: WindowTarget,
         priority: WindowMatchPriority,
@@ -148,6 +230,7 @@ impl WindowCaptureBinding {
             width,
             height,
             capture_audio: false,
+            force_sdr: true,
             audio: None,
         };
         result.validate()?;
@@ -176,6 +259,8 @@ impl WindowCaptureBinding {
     pub fn client_area(&self) -> bool {
         self.client_area
     }
+    pub fn force_sdr(&self) -> bool { self.force_sdr }
+    pub fn with_force_sdr(mut self, force_sdr: bool) -> Self { self.force_sdr = force_sdr; self }
     pub fn width(&self) -> u32 {
         self.width
     }

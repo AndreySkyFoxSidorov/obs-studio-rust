@@ -15,6 +15,11 @@ const MAX_VIDEO_STATES: usize = 8;
 // Content-Length MP4 uses a bounded growing source; underruns go through the
 // same fenced Program audio pause/replay barrier as an explicit pause.
 const PROGRESSIVE_ENABLED: bool = true;
+// OBS retains the local Loop setting when switching to a network input, but
+// ffmpeg_source disables looping while that network input is selected.
+fn playback_loops(media: &MediaSource) -> bool {
+    media.looping() && !network_http::is_url(media.path())
+}
 type VisualState = Vec<(
     Id,
     Arc<MediaSource>,
@@ -91,6 +96,12 @@ struct SourceState {
     ended: bool,
     start_ns: u64,
     loop_base: u64,
+    /// Wall-clock offset of a user seek in this playback epoch.
+    seek_wall_ns: u64,
+    /// Skip decoder preroll samples before the requested seek position.
+    seek_floor_ns: u64,
+    /// A paused seek decodes the frame at its target without resuming audio.
+    seek_preview_pending: bool,
     stream_generation: u64,
     sequence: u64,
     frame: Option<MediaFrame>,
@@ -131,6 +142,9 @@ impl SourceState {
             ended: false,
             start_ns: now,
             loop_base: 0,
+            seek_wall_ns: 0,
+            seek_floor_ns: 0,
+            seek_preview_pending: false,
             stream_generation: 1,
             sequence: 0,
             frame: None,
@@ -155,7 +169,7 @@ impl SourceState {
         // OBS clears the previous output when playback restarts without a
         // preloaded first frame. Keeping the last frame here shows a stale
         // image from the previous scene until decoding catches up.
-        if !self.media.clear_on_end() && !self.media.looping() {
+        if !self.media.clear_on_end() && !playback_loops(&self.media) {
             self.frame = None;
         }
         self.reload_deferred=false;
@@ -165,6 +179,9 @@ impl SourceState {
         self.sequence = 0;
         self.start_ns = now;
         self.loop_base = 0;
+        self.seek_wall_ns = 0;
+        self.seek_floor_ns = 0;
+        self.seek_preview_pending = false;
         self.running = true;
         self.paused = None;
         self.replay.clear();
@@ -209,7 +226,7 @@ impl SourceState {
         if self.media.clear_on_end() {
             self.frame = None;
         }
-        self.retry_at = Instant::now().checked_add(Duration::from_secs(if super::network_http::is_url(self.media.path()) {10} else {1}));
+        self.retry_at = Instant::now().checked_add(Duration::from_secs(if super::network_http::is_url(self.media.path()) {u64::from(self.media.reconnect_delay_sec())} else {1}));
     }
     fn duration(&self) -> u64 {
         self.reader
@@ -335,10 +352,20 @@ impl Owner {
             if let Some(state) = self.states.get_mut(&id) {
                 let changed_file = state.media.path() != media.path()
                     || state.media.video_dimensions() != media.video_dimensions()
-                    || state.media.has_audio() != media.has_audio();
+                    || state.media.has_audio() != media.has_audio()
+                    // OBS recreates the media decoder when playback speed
+                    // changes. The output audio rate and timestamp mapping
+                    // are derived from speed when the reader is opened, so
+                    // keeping that reader would mix old-rate buffered PCM
+                    // with a newly scaled video clock.
+                    || state.media.speed_percent() != media.speed_percent()
+                    // OBS reopens a network source when its properties are
+                    // updated, including changes to playback options. A new
+                    // owner also retires the old download and buffered audio.
+                    || (super::network_http::is_url(media.path()) && state.media.as_ref() != media.as_ref());
                 let became_active = is_active && !state.active;
                 let enabled_loop =
-                    !state.media.looping() && media.looping() && state.ended && is_active;
+                    !playback_loops(&state.media) && playback_loops(&media) && state.ended && is_active;
                 state.media = media;
                 if changed_file {
                     let old_generation = state.stream_generation;
@@ -400,7 +427,7 @@ impl Owner {
                 let needs_seek = !held && state.pending_scope_seek.is_none();
                 if let Some(reader) = state.reader.as_mut().filter(|_| needs_seek) {
                     let result = reader.seek(
-                        now.0.saturating_sub(state.start_ns).saturating_sub(state.loop_base)
+                        now.0.saturating_sub(state.start_ns).saturating_add(state.seek_wall_ns).saturating_sub(state.loop_base)
                             .saturating_mul(u64::from(state.media.speed_percent())) / 100,
                     );
                     match result {
@@ -582,7 +609,7 @@ impl Owner {
             PendingScopeSeek::Restart => state.restart(now.0)?,
             PendingScopeSeek::Program => {
                 if let Some(reader) = &mut state.reader {
-                    reader.seek(now.0.saturating_sub(state.start_ns).saturating_sub(state.loop_base).saturating_mul(u64::from(state.media.speed_percent())) / 100)?;
+                    reader.seek(now.0.saturating_sub(state.start_ns).saturating_add(state.seek_wall_ns).saturating_sub(state.loop_base).saturating_mul(u64::from(state.media.speed_percent())) / 100)?;
                 }
                 state.pending_scope_seek = None;
                 state.next_video = None;
@@ -735,6 +762,9 @@ impl Owner {
                 // when the fully downloaded object becomes available.
                 state.start_ns = now.0;
                 state.loop_base = 0;
+                state.seek_wall_ns = 0;
+                state.seek_floor_ns = 0;
+                state.seek_preview_pending = false;
                 reader
             } else {
                 MediaFileReader::open_native_preferred(std::path::Path::new(state.media.path()), MediaFileLimits::default())?
@@ -776,7 +806,7 @@ impl Owner {
         if state.audio_format.as_ref().is_some_and(|f| !(80..=384_000).contains(&f.sample_rate)) {
             return Err(MediaSourceError::Invalid("Media speed produces an unsupported audio sample rate"));
         }
-        if !state.running {
+        if !state.running && !state.seek_preview_pending {
             return Ok(());
         }
         let speed = u64::from(state.media.speed_percent());
@@ -786,9 +816,9 @@ impl Owner {
                 "zero media presentation duration",
             ));
         }
-        let elapsed = now.0.saturating_sub(state.start_ns);
+        let elapsed = if state.seek_preview_pending {state.seek_wall_ns} else {now.0.saturating_sub(state.start_ns).saturating_add(state.seek_wall_ns)};
         let local_wall = elapsed.saturating_sub(state.loop_base);
-        if state.media.looping() && local_wall >= duration {
+        if playback_loops(&state.media) && local_wall >= duration {
             // Whole-loop suspension recovery is O(1); ordinary loops keep generation and
             // sequence so the converter does not reset at every seamless boundary.
             let loops = local_wall / duration;
@@ -804,6 +834,7 @@ impl Owner {
                 reader.seek(0)?;
             }
             state.loop_base = next_loop_base;
+            state.seek_floor_ns = 0;
             state.next_video = None;
             state.next_audio = None;
             state.video_end = false;
@@ -852,6 +883,10 @@ impl Owner {
                 requested_at: now,
             });
         }
+        if state.seek_preview_pending {
+            if state.next_video.is_some() || state.video_end {state.seek_preview_pending=false;}
+            return Ok(());
+        }
         if state.audio_blocked {
             return Ok(());
         }
@@ -881,6 +916,13 @@ impl Owner {
             let Some(audio) = state.next_audio.as_ref() else {
                 break;
             };
+            if state.seek_floor_ns>0 {
+                let delta=(i128::from(state.seek_floor_ns)-i128::from(audio.presentation_ns)).max(0) as u128;
+                let skip=(delta*u128::from(audio.sample_rate)).div_ceil(1_000_000_000);
+                let frames=audio.samples.len()/usize::from(audio.channels);
+                state.next_audio_offset=state.next_audio_offset.max(usize::try_from(skip).unwrap_or(usize::MAX).min(frames));
+                if state.next_audio_offset>=frames {state.next_audio=None;state.next_audio_offset=0;*audio_work-=1;source_audio_work+=1;continue;}
+            }
             let offset_ns=(state.next_audio_offset as u128).saturating_mul(1_000_000_000) / u128::from(audio.sample_rate);
             let remaining_pts=i128::from(audio.presentation_ns)+i128::try_from(offset_ns).map_err(|_|MediaSourceError::TimeOverflow)?;
             if remaining_pts
@@ -937,6 +979,7 @@ impl Owner {
             let end=(state.next_audio_offset+chunk_frames)*channels;
             let first = i128::from(state.start_ns)
                 + i128::from(state.loop_base)
+                - i128::from(state.seek_wall_ns)
                 + remaining_pts * 100 / i128::from(speed);
             let packet = Arc::new(MediaPcmPacket {
                 program,
@@ -980,7 +1023,7 @@ impl Owner {
             }
         }
         if state.audio_end
-            && !state.media.looping()
+            && !playback_loops(&state.media)
             && state.audio_active
             && !state.eos_sent
             && state.sequence != 0
@@ -1014,7 +1057,7 @@ impl Owner {
                 }
             }
         }
-        if !state.media.looping()
+        if !playback_loops(&state.media)
             && local >= state.duration()
             && state.video_end
             && (state.audio_end || self.program.is_none() || !state.audio_active)
@@ -1055,6 +1098,7 @@ impl Owner {
                             i128::from(frame.pts)
                                 > i128::from(
                                     now.saturating_sub(state.start_ns)
+                                        .saturating_add(state.seek_wall_ns)
                                         .saturating_sub(state.loop_base)
                                         .saturating_mul(u64::from(state.media.speed_percent())) / 100,
                                 )
@@ -1112,7 +1156,14 @@ impl Owner {
                             *id,
                             super::control::Entry {
                                 media: state.media.clone(),
-                                status: state.transport_status(),
+                                status: {
+                                    let mut status=state.transport_status();
+                                    let effective=state.paused.as_ref().map_or(now,|pause|pause.at);
+                                    let wall=effective.saturating_sub(state.start_ns).saturating_add(state.seek_wall_ns).saturating_sub(state.loop_base);
+                                    let position=wall.saturating_mul(u64::from(state.media.speed_percent()))/100;
+                                    status.position_ns=if state.explicitly_stopped {0} else if state.ended {status.duration_ns} else {position.min(status.duration_ns)};
+                                    status
+                                },
                                 showing:state.showing,
                             },
                         )
